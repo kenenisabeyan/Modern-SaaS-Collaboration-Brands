@@ -4,9 +4,9 @@ import { motion } from 'framer-motion';
 
 const variants = {
   primary: 'bg-white text-[#050816] hover:bg-gray-100 shadow-[0_0_20px_rgba(255,255,255,0.15)] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]',
-  brand: 'bg-indigo-500 text-white hover:bg-indigo-600 shadow-[0_0_20px_rgba(37,99,235,0.25)] hover:shadow-[0_0_30px_rgba(37,99,235,0.4)] border border-white/10',
-  secondary: 'bg-white/[0.03] text-white border border-white/10 hover:bg-white/[0.08] hover:border-white/20 backdrop-blur-sm',
-  ghost: 'bg-transparent text-[#94A3B8] hover:text-white hover:bg-white/5',
+  brand: 'bg-indigo-500 text-white light:text-slate-900 hover:bg-indigo-600 shadow-[0_0_20px_rgba(37,99,235,0.25)] hover:shadow-[0_0_30px_rgba(37,99,235,0.4)] border border-white/10',
+  secondary: 'bg-white/[0.03] text-white light:text-slate-900 border border-white/10 hover:bg-white/[0.08] hover:border-white/20 backdrop-blur-sm',
+  ghost: 'bg-transparent text-[#94A3B8] light:text-slate-500 hover:text-white light:text-slate-900 hover:bg-white/5 light:hover:bg-slate-100 light:bg-slate-100',
   danger: 'bg-rose-500/10 text-rose-400 hover:bg-rose-500/20 border border-rose-500/20 hover:border-rose-500/40'
 };
 

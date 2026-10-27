@@ -80,7 +80,7 @@ export default function Auth({ onNavigate }) {
   }, []);
 
   return (
-    <div className="flex-1 flex items-center justify-center p-4 relative overflow-hidden bg-[#050816] min-h-screen font-sans text-white">
+    <div className="flex-1 flex items-center justify-center p-4 relative overflow-hidden bg-[#050816] light:bg-[#FAFAFA] min-h-screen font-sans text-white light:text-slate-900">
       {/* Background Glow Effects */}
       <div className="absolute bg-purple-600/15 blur-[120px] w-[600px] h-[600px] rounded-full top-[-10%] left-[-10%] pointer-events-none"></div>
       <div className="absolute bg-blue-600/10 blur-[120px] w-[500px] h-[500px] rounded-full bottom-[-10%] right-[-10%] pointer-events-none"></div>
@@ -88,20 +88,20 @@ export default function Auth({ onNavigate }) {
       <div className="premium-card w-full max-w-md p-10 flex flex-col items-center space-y-8 z-10 relative">
         
         {/* Floating Accent */}
-        <div className="absolute top-4 right-4 w-10 h-10 bg-[#050816] border border-purple-500/50 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(147,51,234,0.5)] z-20">
+        <div className="absolute top-4 right-4 w-10 h-10 bg-[#050816] light:bg-slate-50 border border-purple-500/50 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(147,51,234,0.5)] z-20">
           <Lock size={18} className="text-indigo-300" />
         </div>
 
         {/* Logo/Icon */}
         <div className="w-16 h-16 rounded-full bg-indigo-500 p-[1px] shadow-[0_10px_20px_-10px_rgba(0,174,239,0.6)]">
-          <div className="w-full h-full bg-[#0A0F24] rounded-[15px] flex items-center justify-center">
+          <div className="w-full h-full bg-[#0A0F24] light:bg-white rounded-[15px] flex items-center justify-center">
             <Video className="text-indigo-400" size={32} />
           </div>
         </div>
 
         <div className="text-center space-y-2">
-          <h1 className="text-3xl font-bold tracking-tight text-white">WabiSeminar Live</h1>
-          <p className="text-sm text-slate-400">
+          <h1 className="text-3xl font-bold tracking-tight text-white light:text-slate-900">WabiSeminar Live</h1>
+          <p className="text-sm text-slate-400 light:text-slate-500">
             {isLogin ? 'Sign in to your account to continue' : 'Create an account to get started'}
           </p>
         </div>
@@ -115,7 +115,7 @@ export default function Auth({ onNavigate }) {
 
           {!isLogin && (
             <div className="space-y-2 group">
-              <label className="text-xs font-semibold text-slate-300 uppercase tracking-wider ml-1">Username</label>
+              <label className="text-xs font-semibold text-slate-300 light:text-slate-600 uppercase tracking-wider ml-1">Username</label>
               <div className="relative">
                 <input 
                   type="text" 
@@ -130,9 +130,9 @@ export default function Auth({ onNavigate }) {
           )}
 
           <div className="space-y-2 group">
-            <label className="text-xs font-semibold text-slate-300 uppercase tracking-wider ml-1">Email</label>
+            <label className="text-xs font-semibold text-slate-300 light:text-slate-600 uppercase tracking-wider ml-1">Email</label>
             <div className="relative">
-              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-indigo-400 transition-colors" size={18} />
+              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 light:text-slate-400 group-focus-within:text-indigo-400 light:group-focus-within:text-indigo-600 transition-colors" size={18} />
               <input 
                 type="email" 
                 value={email}
@@ -146,15 +146,15 @@ export default function Auth({ onNavigate }) {
           
           <div className="space-y-2 group">
             <div className="flex justify-between items-center ml-1">
-              <label className="text-xs font-semibold text-slate-300 uppercase tracking-wider">Password</label>
+              <label className="text-xs font-semibold text-slate-300 light:text-slate-600 uppercase tracking-wider">Password</label>
               {isLogin && (
-                <button type="button" className="text-xs font-medium text-indigo-400 hover:text-indigo-300 transition-colors">
+                <button type="button" className="text-xs font-medium text-indigo-400 light:text-indigo-600 hover:text-indigo-300 light:hover:text-indigo-500 transition-colors">
                   Forgot password?
                 </button>
               )}
             </div>
             <div className="relative">
-              <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-indigo-600 dark:text-indigo-400 transition-colors" size={18} />
+              <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 light:text-slate-400 group-focus-within:text-indigo-400 light:group-focus-within:text-indigo-600 transition-colors" size={18} />
               <input 
                 type="password" 
                 value={password}
@@ -170,28 +170,28 @@ export default function Auth({ onNavigate }) {
             <button 
               type="submit"
               disabled={isLoading}
-              className="premium-btn premium-btn-primary w-full group disabled:opacity-70 disabled:cursor-not-allowed"
+              className="premium-btn premium-btn-brand w-full group disabled:opacity-70 disabled:cursor-not-allowed py-3.5 text-base shadow-[0_0_20px_rgba(37,99,235,0.4)]"
             >
               {isLoading ? (
                 <>
-                  <Loader2 className="animate-spin mr-2" size={18} />
+                  <Loader2 className="animate-spin mr-3" size={20} />
                   <span>{isLogin ? 'Signing in...' : 'Creating account...'}</span>
                 </>
               ) : (
                 <>
                   <span>{isLogin ? 'Sign In' : 'Create Account'}</span>
-                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
+                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
                 </>
               )}
             </button>
 
             {isLogin && (
-              <div className="relative">
+              <div className="relative py-2">
                 <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-slate-200 dark:border-white/10"></div>
+                  <div className="w-full border-t border-white/10 light:border-slate-200"></div>
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="px-2 bg-slate-950 text-slate-500">Or continue with</span>
+                  <span className="px-4 bg-[#0A0F24] light:bg-white text-[#94A3B8] light:text-slate-500 font-medium rounded-full border border-white/5 light:border-slate-200">Or continue with</span>
                 </div>
               </div>
             )}
@@ -200,7 +200,7 @@ export default function Auth({ onNavigate }) {
               <button
                 type="button"
                 onClick={handleGoogleLogin}
-                className="premium-btn w-full flex items-center justify-center space-x-2 bg-white text-slate-900 hover:bg-slate-100"
+                className="w-full flex items-center justify-center space-x-3 bg-[#0A0F24]/60 light:bg-white border border-white/10 light:border-slate-200 hover:bg-white/5 light:hover:bg-slate-100 light:bg-slate-100 light:hover:bg-slate-50 text-white light:text-slate-900 py-3.5 rounded-full font-semibold transition-all shadow-lg light:shadow-sm hover:shadow-xl light:hover:shadow-md backdrop-blur-md light:backdrop-blur-none"
               >
                 <svg className="w-5 h-5" viewBox="0 0 24 24">
                   <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -214,7 +214,7 @@ export default function Auth({ onNavigate }) {
 
             <button 
               type="button"
-              className="w-full text-sm text-slate-400 hover:text-slate-900 dark:text-white transition-colors"
+              className="w-full pt-2 text-sm font-medium text-slate-400 light:text-slate-500 hover:text-white light:text-slate-900 light:hover:text-slate-900 transition-colors"
               onClick={() => {
                 setIsLogin(!isLogin);
                 setError('');

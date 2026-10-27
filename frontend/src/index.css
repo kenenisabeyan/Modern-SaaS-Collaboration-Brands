@@ -28,6 +28,8 @@
   --color-purple-900: #7C2D12;
 }
 
+@custom-variant light (&:where(.light, .light *));
+
 @layer base {
   html {
     -webkit-font-smoothing: antialiased;
@@ -41,6 +43,12 @@
     overflow-x: hidden;
     /* Optional: modern font feature settings */
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .light {
+    background-color: #FAFAFA;
+    color: #0F172A;
   }
 }
 
@@ -50,9 +58,16 @@
     @apply bg-white/[0.02] backdrop-blur-2xl border border-white/[0.08] shadow-[0_8px_30px_rgb(0,0,0,0.4)] rounded-full md:rounded-3xl relative overflow-hidden transition-all duration-500 hover:border-white/[0.15] hover:bg-white/[0.04];
   }
   
+  .light .premium-card {
+    @apply bg-white backdrop-blur-none border-slate-200 shadow-xl hover:border-slate-300 hover:shadow-2xl hover:bg-slate-50/50;
+  }
+  
   .premium-card::before {
     content: '';
     @apply absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent opacity-0 transition-opacity duration-500 z-0 pointer-events-none;
+  }
+  .light .premium-card::before {
+    @apply hidden;
   }
   .premium-card:hover::before {
     @apply opacity-100;
@@ -61,6 +76,27 @@
   /* Premium SaaS Input */
   .premium-input {
     @apply w-full bg-[#050816]/60 border border-white/10 rounded-full px-4 py-3 text-sm text-white placeholder-[#94A3B8] focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all duration-300 shadow-inner backdrop-blur-md;
+  }
+  
+  .light .premium-input {
+    @apply bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400 focus:bg-white backdrop-blur-none shadow-sm;
+  }
+  
+  .premium-input:-webkit-autofill,
+  .premium-input:-webkit-autofill:hover, 
+  .premium-input:-webkit-autofill:focus, 
+  .premium-input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #0A0F24 inset !important;
+    -webkit-text-fill-color: white !important;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+  
+  .light .premium-input:-webkit-autofill,
+  .light .premium-input:-webkit-autofill:hover, 
+  .light .premium-input:-webkit-autofill:focus, 
+  .light .premium-input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #f8fafc inset !important;
+    -webkit-text-fill-color: #0f172a !important;
   }
   
   /* Buttons Hierarchy */
@@ -72,8 +108,16 @@
     @apply bg-white text-[#050816] hover:bg-gray-100 shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)];
   }
   
+  .light .premium-btn-primary {
+    @apply bg-slate-900 text-white hover:bg-slate-800 shadow-md hover:shadow-lg;
+  }
+  
   .premium-btn-brand {
     @apply bg-indigo-500 text-white hover:bg-indigo-600 shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] border border-white/5;
+  }
+  
+  .light .premium-btn-brand {
+    @apply shadow-indigo-500/30 hover:shadow-indigo-500/40 border-indigo-600;
   }
   
   .premium-btn-orange {
@@ -87,6 +131,10 @@
   .premium-btn-secondary {
     @apply bg-white/[0.03] border border-white/10 text-white hover:bg-white/[0.08] hover:border-white/20 backdrop-blur-sm;
   }
+  
+  .light .premium-btn-secondary {
+    @apply bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-300 shadow-sm;
+  }
 
   /* Custom Scrollbar */
   ::-webkit-scrollbar {
@@ -98,6 +146,9 @@
   }
   ::-webkit-scrollbar-thumb {
     @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
+  }
+  .light ::-webkit-scrollbar-thumb {
+    @apply bg-slate-300 hover:bg-slate-400;
   }
 }
 

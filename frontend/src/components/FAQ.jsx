@@ -75,16 +75,16 @@ const faqData = [
 
 const AccordionItem = ({ q, a, isOpen, onClick }) => {
   return (
-    <div className="border border-white/5 rounded-full mb-4 bg-[#0A0F24]/60 backdrop-blur-md overflow-hidden transition-all duration-300 hover:border-indigo-500/30 hover:bg-[#0A0F24]/80 hover:shadow-[0_10px_30px_-15px_rgba(99,102,241,0.2)]">
+    <div className="border border-white/5 light:border-slate-200 rounded-full mb-4 bg-[#0A0F24]/60 light:bg-white backdrop-blur-md light:backdrop-blur-none overflow-hidden transition-all duration-300 hover:border-indigo-500/30 light:hover:border-indigo-300 hover:bg-[#0A0F24]/80 light:bg-white/90 light:hover:bg-slate-50 hover:shadow-[0_10px_30px_-15px_rgba(99,102,241,0.2)] light:shadow-sm">
       <button
         onClick={onClick}
         className="w-full flex items-center justify-between p-6 text-left focus:outline-none group"
       >
-        <h4 className="text-lg font-semibold text-white pr-8 group-hover:text-indigo-300 transition-colors">{q}</h4>
+        <h4 className="text-lg font-semibold text-white light:text-slate-900 pr-8 group-hover:text-indigo-300 light:group-hover:text-indigo-600 transition-colors">{q}</h4>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
-          className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${isOpen ? 'bg-indigo-500/20 text-indigo-400 border border-indigo-500/30' : 'bg-white/5 text-[#94A3B8] border border-white/5'}`}
+          className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${isOpen ? 'bg-indigo-500/20 light:bg-indigo-100 text-indigo-400 light:text-indigo-600 border border-indigo-500/30 light:border-indigo-200' : 'bg-white/5 light:bg-slate-100 text-[#94A3B8] light:text-slate-500 border border-white/5 light:border-slate-200'}`}
         >
           <ChevronDown size={18} />
         </motion.div>
@@ -97,7 +97,7 @@ const AccordionItem = ({ q, a, isOpen, onClick }) => {
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
-            <div className="p-6 pt-0 text-[#94A3B8] leading-relaxed border-t border-white/5 mt-2">
+            <div className="p-6 pt-0 text-[#94A3B8] light:text-slate-600 leading-relaxed border-t border-white/5 light:border-slate-100 mt-2">
               {a}
             </div>
           </motion.div>
@@ -139,7 +139,7 @@ export default function FAQ({ onNavigate }) {
   }).filter(category => category.questions.length > 0);
 
   return (
-    <div className="min-h-screen bg-[#050816] text-white font-sans overflow-hidden relative">
+    <div className="min-h-screen bg-[#050816] light:bg-[#FAFAFA] text-white light:text-slate-900 font-sans overflow-hidden relative">
       {/* Background Animated Blobs */}
       <div className="fixed bg-blue-600/10 blur-[150px] w-[800px] h-[800px] rounded-full top-[-10%] right-[-10%] pointer-events-none"></div>
       <div className="fixed bg-purple-600/10 blur-[150px] w-[600px] h-[600px] rounded-full bottom-[-20%] left-[-10%] pointer-events-none"></div>
@@ -156,14 +156,11 @@ export default function FAQ({ onNavigate }) {
             variants={staggerContainer}
             className="flex flex-col items-center"
           >
-            <motion.div variants={fadeIn} className="inline-flex items-center space-x-2 px-4 py-2 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-300 w-fit text-sm font-semibold shadow-[0_0_15px_rgba(59,130,246,0.15)] mb-8">
-              <HelpCircle size={16} className="text-blue-400" />
-              <span>Support Center</span>
-            </motion.div>
-            <motion.h1 variants={fadeIn} className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight leading-[1.1]">
+
+            <motion.h1 variants={fadeIn} className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight leading-[1.1] text-white light:text-slate-900">
               How can we <span className="text-indigo-500">help you?</span>
             </motion.h1>
-            <motion.p variants={fadeIn} className="text-lg md:text-xl text-[#94A3B8] leading-relaxed max-w-2xl font-light mb-12">
+            <motion.p variants={fadeIn} className="text-lg md:text-xl text-[#94A3B8] light:text-slate-600 leading-relaxed max-w-2xl font-light mb-12">
               Browse our most frequently asked questions or search for a specific topic to get the answers you need immediately.
             </motion.p>
           </motion.div>
@@ -178,8 +175,8 @@ export default function FAQ({ onNavigate }) {
             className="relative max-w-2xl mx-auto group"
           >
              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-xl group-hover:opacity-100 transition-opacity opacity-50 z-0"></div>
-             <div className="relative z-10 flex items-center bg-[#0A0F24]/80 backdrop-blur-xl border border-white/10 rounded-full p-2 shadow-2xl focus-within:border-indigo-500/50 transition-colors">
-                <div className="pl-4 pr-2 text-[#94A3B8]">
+             <div className="relative z-10 flex items-center bg-[#0A0F24]/80 light:bg-white backdrop-blur-xl border border-white/10 light:border-slate-200 rounded-full p-2 shadow-2xl light:shadow-md focus-within:border-indigo-500/50 light:focus-within:border-indigo-300 transition-colors">
+                <div className="pl-4 pr-2 text-[#94A3B8] light:text-slate-400">
                    <Search size={24} />
                 </div>
                 <input 
@@ -187,12 +184,12 @@ export default function FAQ({ onNavigate }) {
                    value={searchQuery}
                    onChange={(e) => setSearchQuery(e.target.value)}
                    placeholder="Search for answers..." 
-                   className="w-full bg-transparent border-none outline-none text-white text-lg py-3 placeholder:text-slate-600"
+                   className="w-full bg-transparent border-none outline-none text-white light:text-slate-900 text-lg py-3 placeholder:text-slate-600 light:placeholder:text-slate-400"
                 />
                 {searchQuery && (
                    <button 
                      onClick={() => setSearchQuery('')}
-                     className="pr-4 text-[#94A3B8] hover:text-white transition-colors"
+                     className="pr-4 text-[#94A3B8] light:text-slate-500 hover:text-white light:text-slate-900 transition-colors"
                    >
                       Clear
                    </button>
@@ -206,11 +203,11 @@ export default function FAQ({ onNavigate }) {
            {filteredData.length === 0 ? (
               <motion.div 
                 initial={{ opacity: 0 }} animate={{ opacity: 1 }} 
-                className="text-center py-20 bg-[#0A0F24]/40 rounded-[2rem] border border-white/5"
+                className="text-center py-20 bg-[#0A0F24]/40 light:bg-white rounded-[2rem] border border-white/5 light:border-slate-200 light:shadow-md"
               >
-                 <Search size={48} className="mx-auto text-slate-600 mb-6" />
-                 <h3 className="text-2xl font-bold text-white mb-2">No results found</h3>
-                 <p className="text-[#94A3B8]">We couldn't find any questions matching "{searchQuery}".</p>
+                 <Search size={48} className="mx-auto text-slate-600 light:text-slate-400 mb-6" />
+                 <h3 className="text-2xl font-bold text-white light:text-slate-900 mb-2">No results found</h3>
+                 <p className="text-[#94A3B8] light:text-slate-500">We couldn't find any questions matching "{searchQuery}".</p>
               </motion.div>
            ) : (
               <div className="space-y-16">
@@ -222,10 +219,10 @@ export default function FAQ({ onNavigate }) {
                       viewport={{ once: true, margin: "-100px" }}
                     >
                        <div className="flex items-center space-x-4 mb-8 pl-2">
-                          <div className={`w-12 h-12 rounded-full bg-${category.colorClass}-500/10 flex items-center justify-center border border-${category.colorClass}-500/20 shadow-[0_0_15px_rgba(var(--${category.colorClass}-rgb),0.1)]`}>
+                          <div className={`w-12 h-12 rounded-full bg-${category.colorClass}-500/10 light:bg-${category.colorClass}-100 flex items-center justify-center border border-${category.colorClass}-500/20 light:border-${category.colorClass}-200 shadow-[0_0_15px_rgba(var(--${category.colorClass}-rgb),0.1)] light:shadow-none`}>
                              {category.icon}
                           </div>
-                          <h2 className="text-3xl font-extrabold text-white">{category.category}</h2>
+                          <h2 className="text-3xl font-extrabold text-white light:text-slate-900">{category.category}</h2>
                        </div>
                        
                        <div className="space-y-4">
@@ -245,22 +242,22 @@ export default function FAQ({ onNavigate }) {
            )}
         </section>
 
-        {/* 4. Contact Support CTA */}
+         {/* 4. Contact Support CTA */}
         <section className="mb-20">
            <motion.div 
              initial={{ opacity: 0, scale: 0.95 }}
              whileInView={{ opacity: 1, scale: 1 }}
              viewport={{ once: true }}
-             className="bg-gradient-to-br from-[#160B2A] to-[#0A0F24] border border-purple-500/20 rounded-[3rem] p-12 md:p-16 text-center shadow-[0_30px_60px_-15px_rgba(168,85,247,0.2)] relative overflow-hidden group"
+             className="bg-gradient-to-br from-[#160B2A] light:from-slate-100 to-[#0A0F24] light:to-white light:from-[#FAFAFA] light:to-white border border-purple-500/20 light:border-slate-200 rounded-[3rem] p-12 md:p-16 text-center shadow-[0_30px_60px_-15px_rgba(168,85,247,0.2)] light:shadow-xl relative overflow-hidden group"
            >
               <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 group-hover:opacity-10 transition-opacity"></div>
               
               <div className="relative z-10">
-                 <div className="w-20 h-20 bg-indigo-500/20 rounded-full flex items-center justify-center mx-auto mb-8 border border-indigo-500/30 shadow-[0_0_30px_rgba(99,102,241,0.3)]">
-                    <MessageCircle size={36} className="text-indigo-400" />
+                 <div className="w-20 h-20 bg-indigo-500/20 light:bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-8 border border-indigo-500/30 light:border-indigo-200 shadow-[0_0_30px_rgba(99,102,241,0.3)] light:shadow-md">
+                    <MessageCircle size={36} className="text-indigo-400 light:text-indigo-600" />
                  </div>
-                 <h2 className="text-4xl font-extrabold text-white mb-6">Still need help?</h2>
-                 <p className="text-[#94A3B8] text-lg max-w-xl mx-auto mb-10 leading-relaxed">
+                 <h2 className="text-4xl font-extrabold text-white light:text-slate-900 mb-6">Still need help?</h2>
+                 <p className="text-[#94A3B8] light:text-slate-600 text-lg max-w-xl mx-auto mb-10 leading-relaxed">
                     Our technical support team is available 24/7. Drop us a message and we'll get back to you within a few hours.
                  </p>
                  
@@ -269,7 +266,7 @@ export default function FAQ({ onNavigate }) {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => window.location.href = 'mailto:support@wabiseminar.com'}
-                      className="w-full sm:w-auto bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-4 px-8 rounded-full shadow-[0_10px_20px_-10px_rgba(99,102,241,0.6)] flex items-center justify-center space-x-3 transition-colors hover:shadow-[0_15px_30px_-10px_rgba(99,102,241,0.8)]"
+                      className="w-full sm:w-auto bg-indigo-500 hover:bg-indigo-600 text-white light:text-slate-900 font-bold py-4 px-8 rounded-full shadow-[0_10px_20px_-10px_rgba(99,102,241,0.6)] flex items-center justify-center space-x-3 transition-colors hover:shadow-[0_15px_30px_-10px_rgba(99,102,241,0.8)]"
                     >
                        <Mail size={20} />
                        <span>Contact Support</span>
@@ -278,10 +275,10 @@ export default function FAQ({ onNavigate }) {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => onNavigate('dashboard')}
-                      className="w-full sm:w-auto bg-white/5 hover:bg-white/10 text-white font-bold py-4 px-8 rounded-full border border-white/10 flex items-center justify-center space-x-3 transition-colors hover:border-white/20 group"
+                      className="w-full sm:w-auto bg-white/5 light:bg-slate-50 hover:bg-white/10 light:hover:bg-slate-200 light:bg-slate-200 light:hover:bg-slate-100 text-white light:text-slate-900 font-bold py-4 px-8 rounded-full border border-white/10 light:border-slate-200 flex items-center justify-center space-x-3 transition-colors hover:border-white/20 light:hover:border-slate-300 group"
                     >
                        <span>Return to Dashboard</span>
-                       <ArrowRight size={20} className="text-[#94A3B8] group-hover:translate-x-1 transition-transform" />
+                       <ArrowRight size={20} className="text-[#94A3B8] light:text-slate-500 group-hover:translate-x-1 transition-transform" />
                     </motion.button>
                  </div>
               </div>
