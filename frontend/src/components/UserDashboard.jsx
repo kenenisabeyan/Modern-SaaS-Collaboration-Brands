@@ -215,8 +215,8 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
           transition={{ delay: 0.2 }}
           className="flex flex-col gap-6"
         >
-          <div className="bg-[#0A0F24]/60 light:bg-white backdrop-blur-md light:backdrop-blur-none border border-white/10 light:border-slate-200 rounded-[2rem] p-6 flex items-center gap-6 hover:border-white/20 light:hover:border-slate-300 light:shadow-sm transition-all flex-1">
-            <div className="w-12 h-12 rounded-full bg-indigo-500/10 flex items-center justify-center text-indigo-400 border border-indigo-500/20 shrink-0">
+          <div className="bg-[#0A0F24]/60 light:bg-white backdrop-blur-md light:backdrop-blur-none border border-white/10 light:border-slate-200 rounded-full px-8 p-6 flex items-center gap-6 hover:border-white/20 light:hover:border-slate-300 light:shadow-sm transition-all flex-1">
+            <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500 border border-blue-500/20 shrink-0">
               <Activity size={24} />
             </div>
             <div>
@@ -225,8 +225,8 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
             </div>
           </div>
           
-          <div className="bg-[#0A0F24]/60 light:bg-white backdrop-blur-md light:backdrop-blur-none border border-white/10 light:border-slate-200 rounded-[2rem] p-6 flex items-center gap-6 hover:border-white/20 light:hover:border-slate-300 light:shadow-sm transition-all flex-1">
-            <div className="w-12 h-12 rounded-full bg-purple-500/10 flex items-center justify-center text-purple-400 border border-purple-500/20 shrink-0">
+          <div className="bg-[#0A0F24]/60 light:bg-white backdrop-blur-md light:backdrop-blur-none border border-white/10 light:border-slate-200 rounded-full px-8 p-6 flex items-center gap-6 hover:border-white/20 light:hover:border-slate-300 light:shadow-sm transition-all flex-1">
+            <div className="w-12 h-12 rounded-full bg-orange-500/10 flex items-center justify-center text-orange-500 border border-orange-500/20 shrink-0">
               <Shield size={24} />
             </div>
             <div>

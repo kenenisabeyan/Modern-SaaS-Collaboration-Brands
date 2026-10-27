@@ -211,22 +211,22 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               </div>
 
               <div className="flex flex-wrap sm:flex-nowrap gap-4 pt-4 max-w-[550px]">
-                <div className="flex-1 min-w-[140px] bg-[#0A0F24]/60 light:bg-white backdrop-blur-sm light:backdrop-blur-none border border-white/5 light:border-slate-200 rounded-full p-5 hover:bg-[#0A0F24]/80 light:bg-white/90 light:hover:bg-slate-50 transition-all shadow-lg light:shadow-sm">
-                  <Users size={20} className="text-indigo-400 light:text-indigo-600 mb-2" />
+                <div className="flex-1 min-w-[140px] bg-[#0A0F24]/60 light:bg-white backdrop-blur-sm light:backdrop-blur-none border border-white/5 light:border-slate-200 rounded-full px-8 p-5 hover:bg-[#0A0F24]/80 light:bg-white/90 light:hover:bg-slate-50 transition-all shadow-lg light:shadow-sm">
+                  <Users size={20} className="text-blue-500 light:text-blue-600 mb-2" />
                   <div className="text-3xl font-extrabold text-white light:text-slate-900 mb-1">
                     {platformStats.users.toLocaleString()}
                   </div>
                   <div className="text-xs font-semibold text-[#94A3B8] light:text-slate-500 uppercase tracking-wider">Happy Users</div>
                 </div>
-                <div className="flex-1 min-w-[140px] bg-[#0A0F24]/60 light:bg-white backdrop-blur-sm light:backdrop-blur-none border border-white/5 light:border-slate-200 rounded-full p-5 hover:bg-[#0A0F24]/80 light:bg-white/90 light:hover:bg-slate-50 transition-all shadow-lg light:shadow-sm">
-                  <Video size={20} className="text-purple-400 light:text-purple-600 mb-2" />
+                <div className="flex-1 min-w-[140px] bg-[#0A0F24]/60 light:bg-white backdrop-blur-sm light:backdrop-blur-none border border-white/5 light:border-slate-200 rounded-full px-8 p-5 hover:bg-[#0A0F24]/80 light:bg-white/90 light:hover:bg-slate-50 transition-all shadow-lg light:shadow-sm">
+                  <Video size={20} className="text-orange-500 light:text-orange-600 mb-2" />
                   <div className="text-3xl font-extrabold text-white light:text-slate-900 mb-1">
                     {platformStats.meetings.toLocaleString()}
                   </div>
                   <div className="text-xs font-semibold text-[#94A3B8] light:text-slate-500 uppercase tracking-wider">Meetings Hosted</div>
                 </div>
-                <div className="flex-1 min-w-[140px] bg-[#0A0F24]/60 light:bg-white backdrop-blur-sm light:backdrop-blur-none border border-white/5 light:border-slate-200 rounded-full p-5 hover:bg-[#0A0F24]/80 light:bg-white/90 light:hover:bg-slate-50 transition-all shadow-lg light:shadow-sm hidden sm:block">
-                  <Clock size={20} className="text-purple-400 light:text-purple-600 mb-2" />
+                <div className="flex-1 min-w-[140px] bg-[#0A0F24]/60 light:bg-white backdrop-blur-sm light:backdrop-blur-none border border-white/5 light:border-slate-200 rounded-full px-8 p-5 hover:bg-[#0A0F24]/80 light:bg-white/90 light:hover:bg-slate-50 transition-all shadow-lg light:shadow-sm hidden sm:block">
+                  <Clock size={20} className="text-orange-500 light:text-orange-600 mb-2" />
                   <div className="text-3xl font-extrabold text-white light:text-slate-900 mb-1">
                     {platformStats.minutes.toLocaleString()}
                   </div>
