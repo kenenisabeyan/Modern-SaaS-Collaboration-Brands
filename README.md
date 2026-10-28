@@ -55,43 +55,156 @@
 
 ---
 
-## 🏗️ System Architecture
+## 🏗️ Advanced System Architecture
+
+### 🧠 The Architecture in Plain English: The "3-Highway" Model
+
+To deliver **sub-50ms collaboration** without crashing or slowing down, WabiSeminar separates data into **three distinct speed lanes**:
+
+```
+ ┌────────────────────────────────────────────────────────────────────────┐
+ │                      THE 3-HIGHWAY DATA MODEL                         │
+ ├──────────────────┬───────────────────────┬─────────────────────────────┤
+ │ 🏎️ The Fast Lane │ 🚙 The Secure Lane    │ 🏛️ The Durable Vault        │
+ │ (WebSockets/RAM) │ (HTTPS / REST)        │ (TiDB Cloud Distributed SQL)│
+ ├──────────────────┼───────────────────────┼─────────────────────────────┤
+ │ • Pen strokes    │ • User registration   │ • User profiles & avatars   │
+ │ • Cursor coords  │ • Google OAuth login  │ • Persistent room metadata  │
+ │ • Live presence  │ • Room create / join  │ • Chat history & transcripts│
+ │ • Canvas resets  │ • JWT token issuance  │ • Additive migrations       │
+ └──────────────────┴───────────────────────┴─────────────────────────────┘
+```
+
+1. **🏎️ The Real-Time Fast Lane (Sub-50ms)**: Drawing strokes and cursor movements bypass database writes entirely. They travel over binary/JSON WebSocket streams, processed in-memory by Node.js, and broadcast instantly only to users in that specific room.
+2. **🚙 The Secure REST Lane**: Authentication and room configurations use standard, predictable HTTPS requests protected by signed JSON Web Tokens (JWT) and Passport.js.
+3. **🏛️ The Durable Storage Vault**: Messages, user records, and room states are stored in **TiDB Cloud Serverless**—a distributed MySQL-compatible database that scales compute and storage automatically with zero downtime.
+
+---
+
+### 📐 Comprehensive Multi-Tier Architecture Diagram
 
 ```mermaid
 flowchart TB
-    subgraph Client["Frontend Client (React 19 + Vite)"]
-        UI["Modern Glassmorphic UI (Tailwind v4 + Framer Motion)"]
-        Canvas["HTML5 Canvas Drawing Engine"]
-        WSClient["Socket.IO Client (Bi-directional Sync)"]
-        RESTClient["Axios REST API Client"]
+    %% Client Tier
+    subgraph ClientTier["🌐 CLIENT TIER (Edge & Browser - React 19 + Vite)"]
+        direction TB
+        UI["🎨 Glassmorphic Interface\n(Tailwind v4 + Framer Motion)"]
+        CanvasEngine["🖌️ HTML5 Canvas Vector Engine\n(Optimistic Render + Undo/Redo)"]
+        Telemetry["📍 Live Telemetry\n(Cursor Tracker + User Presence)"]
+        SocketClient["⚡ Socket.IO Client\n(Auto-Reconnect + Event Debouncer)"]
+        RestClient["🔒 Axios REST Client\n(JWT Interceptor + Error Boundary)"]
     end
 
-    subgraph Gateway["Backend Application Server (Render / Node.js)"]
-        Express["Express.js REST Gateway"]
-        AuthMiddleware["Passport.js + JWT Verification"]
-        SocketServer["Socket.IO Real-Time Engine (Rooms & Events)"]
-        SequelizeORM["Sequelize ORM (Additive Migrations)"]
+    %% Network & Edge
+    subgraph EdgeRouting["⚡ EDGE & CDN LAYER"]
+        VercelCDN["Vercel Global Edge CDN\n(Static Asset Caching + SPA Rewrites)"]
     end
 
-    subgraph Database["Cloud Database Layer"]
-        TiDB["TiDB Cloud Serverless (MySQL-Compatible Distributed SQL)"]
-        UsersTbl[("Users")]
-        RoomsTbl[("Rooms")]
-        MessagesTbl[("Messages")]
+    %% Application Server Tier
+    subgraph AppTier["🚀 APPLICATION SERVER TIER (Render / Node.js 18+)"]
+        direction TB
+        ReverseProxy["🌐 CORS & HTTP Header Security\n(Helmet + Origin Whitelist)"]
+        
+        subgraph RealTimeCluster["⚡ Real-Time Engine (Socket.IO)"]
+            SocketAuth["Handshake Auth Guard\n(JWT Verification)"]
+            RoomManager["In-Memory Room Hub\n(Isolated Room Namespaces)"]
+            StrokeBroadcaster["Stroke & Cursor Dispatcher\n(Low-Latency Fanout)"]
+        end
+
+        subgraph RestServices["💼 RESTful Micro-Services"]
+            AuthService["Identity & OAuth Pipeline\n(Passport.js + Google OAuth 2.0)"]
+            RoomService["Room Lifecycle Controller\n(Validation & Capacity Checks)"]
+            StatsService["Platform Metrics Engine\n(Live Counter & Telemetry API)"]
+        end
+
+        SequelizePool["🛡️ Sequelize ORM Layer\n(Connection Pooling + Additive Migrations)"]
     end
 
-    Canvas -->|Drawing Events| WSClient
-    WSClient <-->|WebSockets (ws/wss)| SocketServer
-    UI -->|Auth & Room CRUD| RESTClient
-    RESTClient <-->|HTTPS REST| Express
-    Express --> AuthMiddleware
-    AuthMiddleware --> SequelizeORM
-    SocketServer --> SequelizeORM
-    SequelizeORM <-->|Encrypted Connection Pool| TiDB
-    TiDB --- UsersTbl
-    TiDB --- RoomsTbl
-    TiDB --- MessagesTbl
+    %% Database Tier
+    subgraph DataTier["🏛️ DISTRIBUTED CLOUD PERSISTENCE (TiDB Cloud)"]
+        direction TB
+        TiDBServerless["TiDB Cloud Serverless Cluster\n(Distributed MySQL Engine + Auto-Scaling)"]
+        UserTable[("👤 Users Table\n(UUID, Passwords, GoogleId)")]
+        RoomTable[("🚪 Rooms Table\n(Code, Host, Constraints)")]
+        MessageTable[("💬 Messages Table\n(RoomId, Sender, Body, Timestamp)")]
+    end
+
+    %% Connections
+    ClientTier -->|Serves Static Bundle| VercelCDN
+    
+    %% Realtime Flow
+    CanvasEngine -->|High-Frequency Draw Events| SocketClient
+    Telemetry -->|Cursor Coordinates| SocketClient
+    SocketClient <===>|Bi-directional WSS (WebSocket)| SocketAuth
+    SocketAuth --> RoomManager
+    RoomManager --> StrokeBroadcaster
+    StrokeBroadcaster -.->|Persists Chat Only| SequelizePool
+
+    %% REST Flow
+    UI -->|Auth & Room Operations| RestClient
+    RestClient ===>|HTTPS Encrypted API Calls| ReverseProxy
+    ReverseProxy --> AuthService
+    ReverseProxy --> RoomService
+    ReverseProxy --> StatsService
+    AuthService --> SequelizePool
+    RoomService --> SequelizePool
+    StatsService --> SequelizePool
+
+    %% DB Connections
+    SequelizePool <===>|TLS 1.3 / MySQL Port 4000| TiDBServerless
+    TiDBServerless --- UserTable
+    TiDBServerless --- RoomTable
+    TiDBServerless --- MessageTable
+
+    %% Class Styling
+    classDef client fill:#0f172a,stroke:#38bdf8,stroke-width:2px,color:#f8fafc;
+    classDef server fill:#1e1b4b,stroke:#818cf8,stroke-width:2px,color:#f8fafc;
+    classDef db fill:#31101e,stroke:#f43f5e,stroke-width:2px,color:#f8fafc;
+    classDef edge fill:#064e3b,stroke:#34d399,stroke-width:2px,color:#f8fafc;
+
+    class ClientTier,UI,CanvasEngine,Telemetry,SocketClient,RestClient client;
+    class AppTier,ReverseProxy,RealTimeCluster,SocketAuth,RoomManager,StrokeBroadcaster,RestServices,AuthService,RoomService,StatsService,SequelizePool server;
+    class DataTier,TiDBServerless,UserTable,RoomTable,MessageTable db;
+    class EdgeRouting,VercelCDN edge;
 ```
+
+---
+
+### 🔄 End-to-End Data Journeys (How It Actually Works)
+
+#### 1. ✏️ The Life of a Drawing Stroke (Sub-50ms)
+```
+[User drags cursor on Canvas]
+  │
+  ├─► 1. Local Optimistic Render: Stroke draws on sender's screen INSTANTLY (0ms latency).
+  ├─► 2. Event Throttling: Coordinates are packaged into a compact vector payload.
+  ├─► 3. WebSocket Transit: Dispatched via Socket.IO directly to the Node.js server.
+  ├─► 4. Room Isolation: Server verifies room membership and fans out only to peers in `room_123`.
+  └─► 5. Peer Canvas Interpolation: Other attendees see the stroke drawn in real time (< 50ms total).
+```
+
+#### 2. 🔐 The Life of a Deep-Linked Seminar Join
+```
+[User clicks invite: https://app.com/room/dev-team-sync]
+  │
+  ├─► 1. SPA Route Interception: App detects unauthenticated user and caches `/room/dev-team-sync`.
+  ├─► 2. Google OAuth 2.0: Redirects to Google; Google authenticates and signs authorization code.
+  ├─► 3. Backend Exchange: Server creates/retrieves user in TiDB and issues signed JWT.
+  ├─► 4. Preserved Return: User is redirected seamlessly back to `/room/dev-team-sync`.
+  └─► 5. Auto-Handshake: Socket.IO connects, room presence increments, and canvas syncs instantly.
+```
+
+---
+
+### 🛡️ Core Architectural Principles
+
+| Principle | How We Implement It | Why It Matters |
+| :--- | :--- | :--- |
+| **Optimistic UI** | Local canvas paints before socket emits | Users never feel network latency or lag while drawing |
+| **Room Sandboxing** | In-memory socket namespaces per room ID | Zero data leakage between private seminar sessions |
+| **Zero-Downtime DB** | Non-blocking additive migrations (`ADD COLUMN IF NOT EXISTS`) | Schema upgrades happen without kicking live attendees off |
+| **Stateless Scalability**| JWT-secured requests with zero server session locks | Backend can easily scale horizontally across multiple instances |
+| **Deep-Link State Guard**| Query parameter preservation across OAuth redirects | Invited guests land directly in the seminar room after signing in |
 
 ---
 
