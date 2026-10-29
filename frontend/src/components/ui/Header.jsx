@@ -65,8 +65,6 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
 
   return (
     <>
-  return (
-    <>
       <motion.header 
         className={`fixed top-0 w-full flex items-center justify-between px-4 sm:px-6 lg:px-8 xl:px-16 z-50 transition-all duration-300 ${
           isScrolled 
@@ -270,9 +268,6 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
             )}
           </motion.div>
         </>
-      )}
-    </>
-  );
     </>
   );
 }
