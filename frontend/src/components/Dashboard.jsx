@@ -143,16 +143,16 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
       <div className="fixed bg-blue-600/10 blur-[120px] w-[500px] h-[500px] rounded-full bottom-[10%] right-[-10%] pointer-events-none"></div>
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col pt-32 lg:pt-40 relative z-10">
+      <main className="flex-1 flex flex-col pt-24 sm:pt-32 lg:pt-40 relative z-10">
         
         {/* HERO SECTION */}
-        <section className="px-6 lg:px-8 xl:px-16 pb-20 lg:pb-32">
-          <div className="max-w-[1400px] w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+        <section className="px-4 sm:px-6 lg:px-8 xl:px-16 pb-16 sm:pb-20 lg:pb-32">
+          <div className="max-w-[1400px] w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
             
             {actionError && (
-              <div className="lg:col-span-2 p-4 rounded-full border border-rose-500/30 bg-rose-500/10 text-rose-200 text-sm flex items-center shadow-[0_0_20px_rgba(244,63,94,0.1)]">
-                <Shield className="mr-3 text-rose-400" size={18} />
-                {actionError}
+              <div className="lg:col-span-2 p-3.5 sm:p-4 rounded-2xl sm:rounded-full border border-rose-500/30 bg-rose-500/10 text-rose-200 text-xs sm:text-sm flex items-center shadow-[0_0_20px_rgba(244,63,94,0.1)]">
+                <Shield className="mr-2.5 sm:mr-3 text-rose-400 shrink-0" size={18} />
+                <span>{actionError}</span>
               </div>
             )}
 
@@ -161,12 +161,12 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="flex flex-col justify-center space-y-8 lg:space-y-10"
+              className="flex flex-col justify-center space-y-6 sm:space-y-8 lg:space-y-10"
             >
 
 
               {/* Heading */}
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight text-white light:text-slate-900">
+              <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.12] sm:leading-[1.1] tracking-tight text-white light:text-slate-900 break-words">
                 Host Engaging <br/>
                 <span className="text-indigo-500 drop-shadow-lg">
                   Masterclasses
@@ -175,62 +175,63 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               </h1>
               
               {/* Subtext */}
-              <p className="text-[#94A3B8] light:text-slate-600 text-lg sm:text-xl max-w-[550px] leading-relaxed font-light">
+              <p className="text-[#94A3B8] light:text-slate-600 text-base sm:text-lg lg:text-xl max-w-[550px] leading-relaxed font-light">
                 Create a free meeting room instantly or join an existing session in seconds. Built for innovative educators, creators, and teams who value simplicity and connection.
               </p>
 
               {/* Features Row (Hero) */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 pt-2 max-w-[550px]">
-                <div className="flex flex-col space-y-3 group">
-                  <div className="w-12 h-12 rounded-full bg-[#1E113C] light:bg-purple-50 flex items-center justify-center border border-purple-500/20 light:border-purple-200 group-hover:border-purple-500/50 light:group-hover:border-purple-300 transition-all shadow-[0_0_15px_rgba(147,51,234,0.1)] light:shadow-none">
-                    <Zap size={20} className="text-purple-400 light:text-purple-600" />
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-6 pt-2 max-w-[550px]">
+                <div className="flex flex-col space-y-2 sm:space-y-3 group">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#1E113C] light:bg-purple-50 flex items-center justify-center border border-purple-500/20 light:border-purple-200 group-hover:border-purple-500/50 light:group-hover:border-purple-300 transition-all shadow-[0_0_15px_rgba(147,51,234,0.1)] light:shadow-none">
+                    <Zap size={18} className="text-purple-400 light:text-purple-600 sm:w-5 sm:h-5" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-white light:text-slate-900 text-sm mb-1">Instant Setup</h3>
-                    <p className="text-xs text-[#94A3B8] light:text-slate-500 leading-relaxed">Join in one click</p>
+                    <h3 className="font-semibold text-white light:text-slate-900 text-xs sm:text-sm mb-0.5 sm:mb-1">Instant Setup</h3>
+                    <p className="text-[11px] sm:text-xs text-[#94A3B8] light:text-slate-500 leading-relaxed">Join in one click</p>
                   </div>
                 </div>
-                <div className="flex flex-col space-y-3 group">
-                  <div className="w-12 h-12 rounded-full bg-[#0A241A] light:bg-indigo-50 flex items-center justify-center border border-indigo-500/20 light:border-indigo-200 group-hover:border-indigo-500/50 light:group-hover:border-indigo-300 transition-all shadow-[0_0_15px_rgba(0,174,239,0.1)] light:shadow-none">
-                    <Users size={20} className="text-indigo-400 light:text-indigo-600" />
+                <div className="flex flex-col space-y-2 sm:space-y-3 group">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#0A241A] light:bg-indigo-50 flex items-center justify-center border border-indigo-500/20 light:border-indigo-200 group-hover:border-indigo-500/50 light:group-hover:border-indigo-300 transition-all shadow-[0_0_15px_rgba(0,174,239,0.1)] light:shadow-none">
+                    <Users size={18} className="text-indigo-400 light:text-indigo-600 sm:w-5 sm:h-5" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-white light:text-slate-900 text-sm mb-1">No Limits</h3>
-                    <p className="text-xs text-[#94A3B8] light:text-slate-500 leading-relaxed">Host endlessly</p>
+                    <h3 className="font-semibold text-white light:text-slate-900 text-xs sm:text-sm mb-0.5 sm:mb-1">No Limits</h3>
+                    <p className="text-[11px] sm:text-xs text-[#94A3B8] light:text-slate-500 leading-relaxed">Host endlessly</p>
                   </div>
                 </div>
-                <div className="flex flex-col space-y-3 group hidden sm:flex">
-                  <div className="w-12 h-12 rounded-full bg-[#331C0D] light:bg-orange-50 flex items-center justify-center border border-purple-500/20 light:border-orange-200 group-hover:border-purple-500/50 light:group-hover:border-orange-300 transition-all shadow-[0_0_15px_rgba(243,112,33,0.1)] light:shadow-none">
-                    <Shield size={20} className="text-purple-400 light:text-orange-500" />
+                <div className="flex flex-col space-y-2 sm:space-y-3 group col-span-2 sm:col-span-1">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#331C0D] light:bg-orange-50 flex items-center justify-center border border-purple-500/20 light:border-orange-200 group-hover:border-purple-500/50 light:group-hover:border-orange-300 transition-all shadow-[0_0_15px_rgba(243,112,33,0.1)] light:shadow-none">
+                    <Shield size={18} className="text-purple-400 light:text-orange-500 sm:w-5 sm:h-5" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-white light:text-slate-900 text-sm mb-1">Ultra Secure</h3>
-                    <p className="text-xs text-[#94A3B8] light:text-slate-500 leading-relaxed">End-to-end safe</p>
+                    <h3 className="font-semibold text-white light:text-slate-900 text-xs sm:text-sm mb-0.5 sm:mb-1">Ultra Secure</h3>
+                    <p className="text-[11px] sm:text-xs text-[#94A3B8] light:text-slate-500 leading-relaxed">End-to-end safe</p>
                   </div>
                 </div>
               </div>
 
-              <div className="flex flex-wrap sm:flex-nowrap gap-4 pt-4 max-w-[550px]">
-                <div className="flex-1 min-w-[140px] bg-[#0A0F24]/60 light:bg-white backdrop-blur-sm light:backdrop-blur-none border border-white/5 light:border-slate-200 rounded-full px-8 p-5 hover:bg-[#0A0F24]/80 light:bg-white/90 light:hover:bg-slate-50 transition-all shadow-lg light:shadow-sm">
-                  <Users size={20} className="text-blue-500 light:text-blue-600 mb-2" />
-                  <div className="text-3xl font-extrabold text-white light:text-slate-900 mb-1">
+              {/* Stats Cards */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-4 pt-3 max-w-[550px]">
+                <div className="bg-[#0A0F24]/60 light:bg-white backdrop-blur-sm light:backdrop-blur-none border border-white/5 light:border-slate-200 rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 hover:bg-[#0A0F24]/80 light:hover:bg-slate-50 transition-all shadow-lg light:shadow-sm">
+                  <Users size={18} className="text-blue-500 light:text-blue-600 mb-1.5 sm:mb-2 sm:w-5 sm:h-5" />
+                  <div className="text-xl sm:text-3xl font-extrabold text-white light:text-slate-900 mb-0.5 sm:mb-1">
                     {platformStats.users.toLocaleString()}
                   </div>
-                  <div className="text-xs font-semibold text-[#94A3B8] light:text-slate-500 uppercase tracking-wider">Happy Users</div>
+                  <div className="text-[10px] sm:text-xs font-semibold text-[#94A3B8] light:text-slate-500 uppercase tracking-wider">Happy Users</div>
                 </div>
-                <div className="flex-1 min-w-[140px] bg-[#0A0F24]/60 light:bg-white backdrop-blur-sm light:backdrop-blur-none border border-white/5 light:border-slate-200 rounded-full px-8 p-5 hover:bg-[#0A0F24]/80 light:bg-white/90 light:hover:bg-slate-50 transition-all shadow-lg light:shadow-sm">
-                  <Video size={20} className="text-orange-500 light:text-orange-600 mb-2" />
-                  <div className="text-3xl font-extrabold text-white light:text-slate-900 mb-1">
+                <div className="bg-[#0A0F24]/60 light:bg-white backdrop-blur-sm light:backdrop-blur-none border border-white/5 light:border-slate-200 rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 hover:bg-[#0A0F24]/80 light:hover:bg-slate-50 transition-all shadow-lg light:shadow-sm">
+                  <Video size={18} className="text-orange-500 light:text-orange-600 mb-1.5 sm:mb-2 sm:w-5 sm:h-5" />
+                  <div className="text-xl sm:text-3xl font-extrabold text-white light:text-slate-900 mb-0.5 sm:mb-1">
                     {platformStats.meetings.toLocaleString()}
                   </div>
-                  <div className="text-xs font-semibold text-[#94A3B8] light:text-slate-500 uppercase tracking-wider">Meetings Hosted</div>
+                  <div className="text-[10px] sm:text-xs font-semibold text-[#94A3B8] light:text-slate-500 uppercase tracking-wider">Meetings</div>
                 </div>
-                <div className="flex-1 min-w-[140px] bg-[#0A0F24]/60 light:bg-white backdrop-blur-sm light:backdrop-blur-none border border-white/5 light:border-slate-200 rounded-full px-8 p-5 hover:bg-[#0A0F24]/80 light:bg-white/90 light:hover:bg-slate-50 transition-all shadow-lg light:shadow-sm hidden sm:block">
-                  <Clock size={20} className="text-orange-500 light:text-orange-600 mb-2" />
-                  <div className="text-3xl font-extrabold text-white light:text-slate-900 mb-1">
+                <div className="col-span-2 sm:col-span-1 bg-[#0A0F24]/60 light:bg-white backdrop-blur-sm light:backdrop-blur-none border border-white/5 light:border-slate-200 rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 hover:bg-[#0A0F24]/80 light:hover:bg-slate-50 transition-all shadow-lg light:shadow-sm">
+                  <Clock size={18} className="text-orange-500 light:text-orange-600 mb-1.5 sm:mb-2 sm:w-5 sm:h-5" />
+                  <div className="text-xl sm:text-3xl font-extrabold text-white light:text-slate-900 mb-0.5 sm:mb-1">
                     {platformStats.minutes.toLocaleString()}
                   </div>
-                  <div className="text-xs font-semibold text-[#94A3B8] light:text-slate-500 uppercase tracking-wider">Minutes Shared</div>
+                  <div className="text-[10px] sm:text-xs font-semibold text-[#94A3B8] light:text-slate-500 uppercase tracking-wider">Minutes</div>
                 </div>
               </div>
             </motion.div>
@@ -240,27 +241,27 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               initial={{ opacity: 0, scale: 0.9, rotateY: -10 }}
               animate={{ opacity: 1, scale: 1, rotateY: 0 }}
               transition={{ duration: 0.8, delay: 0.2, type: "spring", stiffness: 100 }}
-              className="relative lg:ml-auto w-full max-w-[540px] perspective-[1000px]"
+              className="relative lg:ml-auto w-full max-w-[540px] perspective-[1000px] mt-4 lg:mt-0"
             >
               {/* Interactive Floating Action Button */}
               <button 
                 onClick={handleCreateRoom}
                 disabled={isCreating}
-                className="absolute -top-4 -right-4 h-12 bg-[#050816] light:bg-slate-50 border border-purple-500/50 rounded-full flex items-center shadow-[0_0_30px_rgba(147,51,234,0.8)] z-20 transition-all duration-300 hover:border-purple-400 group cursor-pointer"
+                className="absolute -top-3.5 right-2 sm:-top-4 sm:-right-4 h-11 sm:h-12 bg-[#050816] light:bg-slate-50 border border-purple-500/50 rounded-full flex items-center shadow-[0_0_30px_rgba(147,51,234,0.8)] z-20 transition-all duration-300 hover:border-purple-400 group cursor-pointer"
                 title="Create a new meeting room"
               >
-                <div className="flex items-center w-12 group-hover:w-[130px] transition-all duration-500 ease-out h-full overflow-hidden">
-                  <div className="w-12 h-full flex items-center justify-center shrink-0">
-                    <Plus size={24} className="text-indigo-300 group-hover:rotate-90 transition-transform duration-500" />
+                <div className="flex items-center w-11 sm:w-12 group-hover:w-[130px] transition-all duration-500 ease-out h-full overflow-hidden">
+                  <div className="w-11 sm:w-12 h-full flex items-center justify-center shrink-0">
+                    <Plus size={22} className="text-indigo-300 group-hover:rotate-90 transition-transform duration-500 sm:w-6 sm:h-6" />
                   </div>
-                  <span className="text-sm font-bold text-indigo-200 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 -ml-1 pr-4">
+                  <span className="text-xs sm:text-sm font-bold text-indigo-200 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 -ml-1 pr-4">
                     New Room
                   </span>
                 </div>
               </button>
 
               {/* The Main Glowing Card */}
-              <div className="premium-card p-8 sm:p-10 relative overflow-hidden group">
+              <div className="premium-card p-5 sm:p-8 lg:p-10 relative overflow-hidden group">
 
                 {/* Start Meeting Section */}
                 <div className="mb-10 relative z-10">
@@ -347,19 +348,19 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 </div>
 
                 {/* Bottom Feature Highlights */}
-                <div className="flex justify-between border-t border-white/10 light:border-slate-200 pt-6 relative z-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4 border-t border-white/10 light:border-slate-200 pt-5 sm:pt-6 relative z-10">
                   <div className="flex items-start space-x-3">
-                    <Monitor size={18} className="text-indigo-400 light:text-indigo-500 mt-0.5" />
+                    <Monitor size={18} className="text-indigo-400 light:text-indigo-500 mt-0.5 shrink-0" />
                     <div>
-                      <h4 className="text-sm font-bold text-white light:text-slate-800 mb-0.5">No Downloads</h4>
-                      <p className="text-[11px] text-[#94A3B8] light:text-slate-500 leading-relaxed">Web-based, works<br/>on any device</p>
+                      <h4 className="text-xs sm:text-sm font-bold text-white light:text-slate-800 mb-0.5">No Downloads</h4>
+                      <p className="text-[11px] text-[#94A3B8] light:text-slate-500 leading-relaxed">Web-based, works on any device</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <Sparkles size={18} className="text-indigo-400 light:text-indigo-500 mt-0.5" />
+                    <Sparkles size={18} className="text-indigo-400 light:text-indigo-500 mt-0.5 shrink-0" />
                     <div>
-                      <h4 className="text-sm font-bold text-white light:text-slate-800 mb-0.5">HD Quality</h4>
-                      <p className="text-[11px] text-[#94A3B8] light:text-slate-500 leading-relaxed">Crystal clear audio<br/>and video</p>
+                      <h4 className="text-xs sm:text-sm font-bold text-white light:text-slate-800 mb-0.5">HD Quality</h4>
+                      <p className="text-[11px] text-[#94A3B8] light:text-slate-500 leading-relaxed">Crystal clear audio and video</p>
                     </div>
                   </div>
                 </div>
@@ -370,54 +371,54 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
         </section>
 
         {/* ROLES SECTION */}
-        <section className="py-24 relative z-10 px-6 lg:px-8 xl:px-16 bg-[#0A0F24]/30 light:bg-transparent">
+        <section className="py-16 sm:py-24 relative z-10 px-4 sm:px-6 lg:px-8 xl:px-16 bg-[#0A0F24]/30 light:bg-transparent">
           <div className="max-w-[1400px] mx-auto text-center">
-            <h2 className="text-3xl md:text-5xl font-extrabold mb-16 tracking-tight text-white light:text-slate-900">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold mb-10 sm:mb-16 tracking-tight text-white light:text-slate-900">
               One Platform — <span className="text-[#F97316]">Every Role Connected</span>
             </h2>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               
               {/* Learners */}
-              <div className="bg-[#0A0F24]/60 light:bg-white border border-white/5 light:border-orange-500/20 p-8 rounded-[2rem] flex flex-col items-center shadow-lg light:shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform">
-                <div className="w-16 h-16 rounded-full bg-indigo-500/10 light:bg-indigo-50 border border-indigo-500/20 light:border-transparent flex items-center justify-center text-indigo-400 light:text-indigo-600 mb-6">
-                  <GraduationCap size={28} />
+              <div className="bg-[#0A0F24]/60 light:bg-white border border-white/5 light:border-orange-500/20 p-6 sm:p-8 rounded-2xl sm:rounded-[2rem] flex flex-col items-center shadow-lg light:shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-indigo-500/10 light:bg-indigo-50 border border-indigo-500/20 light:border-transparent flex items-center justify-center text-indigo-400 light:text-indigo-600 mb-5 sm:mb-6">
+                  <GraduationCap size={26} className="sm:w-7 sm:h-7" />
                 </div>
-                <h3 className="text-xl font-bold text-white light:text-slate-900 mb-4">Learners</h3>
-                <p className="text-[#94A3B8] light:text-slate-500 text-sm leading-relaxed">
+                <h3 className="text-lg sm:text-xl font-bold text-white light:text-slate-900 mb-2 sm:mb-4">Learners</h3>
+                <p className="text-[#94A3B8] light:text-slate-500 text-xs sm:text-sm leading-relaxed">
                   Learn step-by-step, track your progress, and build skills for your future.
                 </p>
               </div>
 
               {/* Instructors */}
-              <div className="bg-[#0A0F24]/60 light:bg-white border border-white/5 light:border-orange-500/20 p-8 rounded-[2rem] flex flex-col items-center shadow-lg light:shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform">
-                <div className="w-16 h-16 rounded-full bg-indigo-500/10 light:bg-indigo-50 border border-indigo-500/20 light:border-transparent flex items-center justify-center text-indigo-400 light:text-indigo-600 mb-6">
-                  <BookOpen size={28} />
+              <div className="bg-[#0A0F24]/60 light:bg-white border border-white/5 light:border-orange-500/20 p-6 sm:p-8 rounded-2xl sm:rounded-[2rem] flex flex-col items-center shadow-lg light:shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-indigo-500/10 light:bg-indigo-50 border border-indigo-500/20 light:border-transparent flex items-center justify-center text-indigo-400 light:text-indigo-600 mb-5 sm:mb-6">
+                  <BookOpen size={26} className="sm:w-7 sm:h-7" />
                 </div>
-                <h3 className="text-xl font-bold text-white light:text-slate-900 mb-4">Instructors</h3>
-                <p className="text-[#94A3B8] light:text-slate-500 text-sm leading-relaxed">
+                <h3 className="text-lg sm:text-xl font-bold text-white light:text-slate-900 mb-2 sm:mb-4">Instructors</h3>
+                <p className="text-[#94A3B8] light:text-slate-500 text-xs sm:text-sm leading-relaxed">
                   Create impactful courses and guide learners with structured teaching tools.
                 </p>
               </div>
 
               {/* Parents */}
-              <div className="bg-[#0A0F24]/60 light:bg-white border border-white/5 light:border-slate-200 p-8 rounded-[2rem] flex flex-col items-center shadow-lg light:shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform">
-                <div className="w-16 h-16 rounded-full bg-indigo-500/10 light:bg-indigo-50 border border-indigo-500/20 light:border-transparent flex items-center justify-center text-indigo-400 light:text-indigo-600 mb-6">
-                  <Users size={28} />
+              <div className="bg-[#0A0F24]/60 light:bg-white border border-white/5 light:border-slate-200 p-6 sm:p-8 rounded-2xl sm:rounded-[2rem] flex flex-col items-center shadow-lg light:shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-indigo-500/10 light:bg-indigo-50 border border-indigo-500/20 light:border-transparent flex items-center justify-center text-indigo-400 light:text-indigo-600 mb-5 sm:mb-6">
+                  <Users size={26} className="sm:w-7 sm:h-7" />
                 </div>
-                <h3 className="text-xl font-bold text-white light:text-slate-900 mb-4">Parents</h3>
-                <p className="text-[#94A3B8] light:text-slate-500 text-sm leading-relaxed">
+                <h3 className="text-lg sm:text-xl font-bold text-white light:text-slate-900 mb-2 sm:mb-4">Parents</h3>
+                <p className="text-[#94A3B8] light:text-slate-500 text-xs sm:text-sm leading-relaxed">
                   Stay involved with real-time insights into learning progress and performance.
                 </p>
               </div>
 
               {/* Sponsors */}
-              <div className="bg-[#0A0F24]/60 light:bg-white border border-white/5 light:border-slate-200 p-8 rounded-[2rem] flex flex-col items-center shadow-lg light:shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform">
-                <div className="w-16 h-16 rounded-full bg-indigo-500/10 light:bg-indigo-50 border border-indigo-500/20 light:border-transparent flex items-center justify-center text-indigo-400 light:text-indigo-600 mb-6">
-                  <Heart size={28} />
+              <div className="bg-[#0A0F24]/60 light:bg-white border border-white/5 light:border-slate-200 p-6 sm:p-8 rounded-2xl sm:rounded-[2rem] flex flex-col items-center shadow-lg light:shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-indigo-500/10 light:bg-indigo-50 border border-indigo-500/20 light:border-transparent flex items-center justify-center text-indigo-400 light:text-indigo-600 mb-5 sm:mb-6">
+                  <Heart size={26} className="sm:w-7 sm:h-7" />
                 </div>
-                <h3 className="text-xl font-bold text-white light:text-slate-900 mb-4">Sponsors</h3>
-                <p className="text-[#94A3B8] light:text-slate-500 text-sm leading-relaxed">
+                <h3 className="text-lg sm:text-xl font-bold text-white light:text-slate-900 mb-2 sm:mb-4">Sponsors</h3>
+                <p className="text-[#94A3B8] light:text-slate-500 text-xs sm:text-sm leading-relaxed">
                   Support learners in need and track the real impact of your contribution.
                 </p>
               </div>
