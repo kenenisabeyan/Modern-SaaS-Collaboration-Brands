@@ -950,7 +950,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
               )}
 
               {isHandRaised && (
-                <div className="absolute top-3 left-3 sm:top-4 sm:left-4 bg-yellow-500/90 text-white light:text-slate-900 p-1.5 sm:p-2 rounded-full shadow-[0_0_15px_rgba(234,179,8,0.5)]">
+                <div className="absolute top-3 left-3 sm:top-4 sm:left-4 bg-amber-500 text-white p-1.5 sm:p-2 rounded-full shadow-[0_0_15px_rgba(234,179,8,0.5)]">
                   <Hand size={16} className="fill-current sm:w-5 sm:h-5" />
                 </div>
               )}
@@ -987,7 +987,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
                   )}
                   
                   {participant.handRaised && (
-                    <div className="absolute top-3 left-3 sm:top-4 sm:left-4 bg-yellow-500/90 text-white light:text-slate-900 p-1.5 sm:p-2 rounded-full shadow-[0_0_15px_rgba(234,179,8,0.5)]">
+                    <div className="absolute top-3 left-3 sm:top-4 sm:left-4 bg-amber-500 text-white p-1.5 sm:p-2 rounded-full shadow-[0_0_15px_rgba(234,179,8,0.5)]">
                       <Hand size={16} className="fill-current sm:w-5 sm:h-5" />
                     </div>
                   )}
@@ -1000,7 +1000,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
                     <button
                       type="button"
                       onClick={() => handleKickUser(participant.socketId)}
-                      className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-rose-500/80 hover:bg-rose-500 text-white light:text-slate-900 p-1.5 sm:p-2 rounded-full backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all border border-rose-400/30 shadow-[0_4px_15px_rgba(244,63,94,0.4)]"
+                      className="absolute top-3 right-3 sm:top-4 sm:right-4 bg-rose-600 hover:bg-rose-500 text-white p-1.5 sm:p-2 rounded-full backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all border border-rose-400/30 shadow-[0_4px_15px_rgba(244,63,94,0.4)]"
                       title="Remove participant"
                     >
                       <ShieldBan size={15} />
@@ -1127,7 +1127,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
             {/* Leave Call */}
             <button 
               type="button" 
-              className="px-3.5 sm:px-6 h-10 sm:h-14 rounded-full flex items-center justify-center bg-purple-500 text-white light:text-slate-900 hover:from-rose-500 hover:to-rose-400 transition-all duration-300 shadow-[0_0_20px_rgba(225,29,72,0.4)] ml-1 sm:ml-2 hover:scale-105" 
+              className="px-3.5 sm:px-6 h-10 sm:h-14 rounded-full flex items-center justify-center bg-rose-600 hover:bg-rose-500 text-white transition-all duration-300 shadow-[0_0_20px_rgba(225,29,72,0.4)] ml-1 sm:ml-2 hover:scale-105" 
               onClick={onLeave}
               title="Leave call"
             >
@@ -1198,7 +1198,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
                 </div>
                 <div className={`text-[13px] sm:text-[14px] p-3 sm:p-3.5 shadow-md max-w-[85%] break-words leading-relaxed ${
                   msg.isOwn 
-                    ? 'bg-indigo-500 text-white light:text-slate-900 rounded-2xl rounded-tr-sm shadow-[0_5px_15px_rgba(99,102,241,0.2)]' 
+                    ? 'bg-indigo-600 text-white rounded-2xl rounded-tr-sm shadow-[0_5px_15px_rgba(99,102,241,0.2)]' 
                     : 'bg-white/5 light:bg-slate-100 border border-white/10 light:border-slate-200 text-slate-200 light:text-slate-700 rounded-2xl rounded-tl-sm backdrop-blur-md'
                 }`}>
                   {msg.message}
@@ -1226,7 +1226,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
               type="button" 
               className={`absolute right-1.5 sm:right-2 p-2 sm:p-2.5 rounded-full transition-all ${
                 message.length > 0 
-                  ? 'bg-indigo-500 text-white light:text-slate-900 shadow-[0_0_15px_rgba(99,102,241,0.4)] hover:bg-indigo-400 hover:scale-105' 
+                  ? 'bg-indigo-600 text-white shadow-[0_0_15px_rgba(99,102,241,0.4)] hover:bg-indigo-500 hover:scale-105' 
                   : 'text-slate-600 cursor-not-allowed bg-transparent'
               }`} 
               onClick={handleSendMessage} 
