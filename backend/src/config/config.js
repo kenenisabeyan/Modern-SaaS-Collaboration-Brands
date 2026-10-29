@@ -2,19 +2,38 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-// Parse CORS origins from comma-separated string
+// Parse CORS origins from comma-separated string, with automatic localhost support in development
 function parseCorsOrigins() {
   const corsOrigin = process.env.CORS_ORIGIN;
+  const isDev = (process.env.NODE_ENV || 'development') === 'development';
   
-  if (corsOrigin) {
-    if (corsOrigin.trim() === '*') return true;
-    // Split by comma and trim whitespace
-    const origins = corsOrigin.split(',').map(origin => origin.trim()).filter(Boolean);
-    return origins.length > 0 ? origins : true;
-  }
+  if (corsOrigin && corsOrigin.trim() === '*') return true;
   
-  // Fallback: reflect request origin so credentials: true works without browser rejecting wildcard
-  return true;
+  const origins = corsOrigin
+    ? corsOrigin.split(',').map(origin => origin.trim()).filter(Boolean)
+    : [];
+
+  return (origin, callback) => {
+    // Allow non-browser requests (e.g. mobile apps, curl, server-to-server)
+    if (!origin) return callback(null, true);
+
+    // Allow explicitly configured origins
+    if (origins.includes(origin)) {
+      return callback(null, true);
+    }
+
+    // In development mode, automatically allow any localhost or 127.0.0.1 port (e.g. 5173, 5174, 5175, etc.)
+    if (isDev && /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)) {
+      return callback(null, true);
+    }
+
+    // Fallback if no specific origins are defined: allow request origin
+    if (origins.length === 0) {
+      return callback(null, true);
+    }
+
+    return callback(null, false);
+  };
 }
 
 const config = {
