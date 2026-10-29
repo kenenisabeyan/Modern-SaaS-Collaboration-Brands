@@ -80,7 +80,7 @@ export default function Auth({ onNavigate }) {
   }, []);
 
   return (
-    <div className="flex-1 flex items-center justify-center py-8 px-4 sm:px-6 relative overflow-hidden bg-[#050816] light:bg-[#FAFAFA] min-h-screen font-sans text-white light:text-slate-900">
+    <div className="flex-1 flex items-center justify-center pt-28 sm:pt-36 lg:pt-40 pb-16 sm:pb-20 px-4 sm:px-6 relative overflow-hidden bg-[#050816] light:bg-[#FAFAFA] min-h-[calc(100vh-100px)] font-sans text-white light:text-slate-900">
       {/* Background Glow Effects */}
       <div className="absolute bg-purple-600/15 blur-[120px] w-[600px] h-[600px] rounded-full top-[-10%] left-[-10%] pointer-events-none"></div>
       <div className="absolute bg-blue-600/10 blur-[120px] w-[500px] h-[500px] rounded-full bottom-[-10%] right-[-10%] pointer-events-none"></div>
