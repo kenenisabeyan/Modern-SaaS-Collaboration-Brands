@@ -12,7 +12,6 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
   const username = localStorage.getItem('username') || 'User';
 
   useEffect(() => {
-    // Check initial theme preference
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'light') {
       setIsLight(true);
@@ -68,35 +67,38 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
       <motion.header 
         className={`fixed top-0 w-full flex items-center justify-between px-4 sm:px-6 lg:px-8 xl:px-16 z-50 transition-all duration-300 ${
           isScrolled 
-            ? 'h-16 sm:h-20 lg:h-24 bg-[#050816]/85 light:bg-white/85 backdrop-blur-xl border-b border-white/5 light:border-slate-200 shadow-[0_4px_30px_rgba(0,0,0,0.1)] light:shadow-[0_4px_20px_rgba(0,0,0,0.05)]' 
-            : 'h-18 sm:h-24 lg:h-28 bg-transparent border-b-transparent'
+            ? 'h-16 sm:h-20 bg-white/90 dark:bg-[#050816]/90 backdrop-blur-xl border-b border-slate-200/80 dark:border-white/10 shadow-sm' 
+            : 'h-18 sm:h-22 bg-transparent border-b-transparent'
         }`}
-        initial={{ y: -100 }}
+        initial={{ y: -80 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.4 }}
       >
         {/* Logo */}
-        <div className="flex items-center space-x-2.5 sm:space-x-3 cursor-pointer select-none" onClick={() => handleNavClick('dashboard')}>
-          <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-full bg-indigo-500 flex items-center justify-center shadow-[0_0_15px_rgba(0,174,239,0.4)]">
-            <Video className="text-white light:text-slate-900 w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />
+        <div 
+          className="flex items-center space-x-2.5 sm:space-x-3 cursor-pointer select-none" 
+          onClick={() => handleNavClick('dashboard')}
+        >
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-indigo-600 flex items-center justify-center shadow-md shadow-indigo-600/30">
+            <Video className="text-white w-5 h-5" />
           </div>
-          <span className="font-bold text-base sm:text-lg lg:text-xl tracking-wide text-white light:text-slate-900">
+          <span className="font-extrabold text-lg sm:text-xl tracking-tight text-slate-900 dark:text-white">
             WabiSeminar
           </span>
         </div>
 
         {/* Desktop Links */}
-        <nav className="hidden lg:flex items-center space-x-8">
+        <nav className="hidden lg:flex items-center space-x-1.5 bg-slate-100/70 dark:bg-white/5 p-1 rounded-full border border-slate-200/60 dark:border-white/10">
           {navLinks.map((link) => {
             const isActive = currentView === link.id || (currentView === 'user-dashboard' && link.id === 'dashboard');
             return (
               <button 
                 key={link.id}
                 onClick={() => handleNavClick(link.id)} 
-                className={`text-sm font-medium transition-colors ${
+                className={`text-xs font-semibold px-4 py-1.5 rounded-full transition-all cursor-pointer ${
                   isActive 
-                    ? 'text-purple-300 light:text-orange-600 bg-purple-600/20 light:bg-orange-500/10 px-6 py-2 rounded-full border border-purple-500/20 light:border-orange-500/20 shadow-[0_0_15px_rgba(147,51,234,0.15)] light:shadow-none' 
-                    : 'text-[#94A3B8] light:text-slate-600 hover:text-white light:text-slate-900 light:hover:text-slate-900'
+                    ? 'text-indigo-600 dark:text-white bg-white dark:bg-indigo-600 shadow-sm' 
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 {link.label}
@@ -106,26 +108,26 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
         </nav>
 
         {/* Right Actions */}
-        <div className="flex items-center space-x-2 sm:space-x-3 lg:space-x-4">
+        <div className="flex items-center space-x-2.5 sm:space-x-3">
           <button 
             onClick={toggleTheme}
-            className="flex w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/10 light:border-slate-200 items-center justify-center text-[#94A3B8] light:text-slate-500 hover:text-white light:text-slate-900 light:hover:text-slate-900 transition-colors hover:bg-white/5 light:hover:bg-slate-100 light:bg-slate-100 light:hover:bg-slate-100"
-            title="Toggle theme"
+            className="flex w-9 h-9 sm:w-10 sm:h-10 rounded-2xl border border-slate-200 dark:border-white/10 items-center justify-center text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors bg-white/80 dark:bg-white/5 hover:bg-slate-100 dark:hover:bg-white/10 cursor-pointer shadow-sm"
+            title="Toggle color theme"
           >
-            {isLight ? <Sun size={17} /> : <Moon size={17} />}
+            {isLight ? <Sun size={17} className="text-amber-500" /> : <Moon size={17} />}
           </button>
 
           {isAuthenticated ? (
             <div className="relative">
               <button 
-                className="flex items-center space-x-2 text-xs sm:text-sm font-semibold text-white light:text-slate-900 bg-indigo-500/10 border border-indigo-500/20 light:border-indigo-500/30 px-3 sm:px-4 py-1.5 sm:py-2 lg:py-2.5 rounded-full hover:bg-indigo-500/20 light:hover:bg-indigo-500/10 transition-all"
+                className="flex items-center space-x-2 text-xs sm:text-sm font-semibold text-slate-800 dark:text-white bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-2xl hover:border-slate-300 dark:hover:border-white/20 transition-all shadow-sm cursor-pointer"
                 onClick={() => setIsProfileOpen(!isProfileOpen)}
               >
-                <div className="w-6 h-6 rounded-full bg-indigo-500 flex items-center justify-center text-xs font-bold shadow-lg text-white light:text-slate-900">
+                <div className="w-6 h-6 rounded-full bg-indigo-600 flex items-center justify-center text-xs font-bold text-white shadow-sm">
                   {username.charAt(0).toUpperCase()}
                 </div>
-                <span className="hidden sm:inline max-w-[100px] truncate">{username}</span>
-                <ChevronDown size={14} className={`transition-transform ${isProfileOpen ? 'rotate-180' : ''}`} />
+                <span className="hidden sm:inline max-w-[120px] truncate">{username}</span>
+                <ChevronDown size={14} className={`transition-transform duration-200 ${isProfileOpen ? 'rotate-180' : ''}`} />
               </button>
               
               {/* Dropdown Menu */}
@@ -133,32 +135,32 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
                 <>
                   <div className="fixed inset-0 z-40" onClick={() => setIsProfileOpen(false)}></div>
                   <motion.div 
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="absolute right-0 mt-3 w-52 bg-[#0A0F24] light:bg-white border border-white/10 light:border-slate-200 rounded-2xl shadow-2xl py-2 z-50 overflow-hidden"
+                    initial={{ opacity: 0, scale: 0.95, y: 5 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    className="absolute right-0 mt-2.5 w-52 bg-white dark:bg-[#0A0F24] border border-slate-200 dark:border-white/10 rounded-2xl shadow-xl py-2 z-50 overflow-hidden"
                   >
-                    <div className="px-4 py-3 border-b border-white/5 light:border-slate-100 mb-1">
-                      <p className="text-xs text-[#94A3B8] light:text-slate-500">Signed in as</p>
-                      <p className="text-sm font-bold text-white light:text-slate-900 truncate">{username}</p>
+                    <div className="px-4 py-2.5 border-b border-slate-100 dark:border-white/5 mb-1">
+                      <p className="text-[11px] font-medium text-slate-500">Signed in as</p>
+                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{username}</p>
                     </div>
                     <button 
-                      className="w-full px-4 py-2.5 text-sm text-left text-[#94A3B8] light:text-slate-600 hover:text-white light:text-slate-900 light:hover:text-slate-900 hover:bg-white/5 light:hover:bg-slate-100 flex items-center gap-2.5 transition-colors"
+                      className="w-full px-4 py-2 text-xs sm:text-sm text-left text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-white/5 flex items-center gap-2.5 transition-colors cursor-pointer"
                       onClick={() => { setIsProfileOpen(false); handleNavClick('profile'); }}
                     >
-                      <User size={16} /> Profile
+                      <User size={15} /> Profile
                     </button>
                     <button 
-                      className="w-full px-4 py-2.5 text-sm text-left text-[#94A3B8] light:text-slate-600 hover:text-white light:text-slate-900 light:hover:text-slate-900 hover:bg-white/5 light:hover:bg-slate-100 flex items-center gap-2.5 transition-colors"
+                      className="w-full px-4 py-2 text-xs sm:text-sm text-left text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-white/5 flex items-center gap-2.5 transition-colors cursor-pointer"
                       onClick={() => { setIsProfileOpen(false); handleNavClick('settings'); }}
                     >
-                      <Settings size={16} /> Settings
+                      <Settings size={15} /> Settings
                     </button>
-                    <div className="h-px bg-white/5 light:bg-slate-100 my-1 w-full"></div>
+                    <div className="h-px bg-slate-100 dark:border-white/5 my-1 w-full"></div>
                     <button 
-                      className="w-full px-4 py-2.5 text-sm text-left text-rose-400 hover:text-rose-300 light:hover:text-rose-500 hover:bg-rose-500/10 light:hover:bg-rose-50 flex items-center gap-2.5 transition-colors"
+                      className="w-full px-4 py-2 text-xs sm:text-sm text-left text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-500/10 flex items-center gap-2.5 transition-colors cursor-pointer"
                       onClick={() => { setIsProfileOpen(false); handleAuthAction(); }}
                     >
-                      <LogOut size={16} /> Logout
+                      <LogOut size={15} /> Logout
                     </button>
                   </motion.div>
                 </>
@@ -166,21 +168,21 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
             </div>
           ) : (
             <button 
-              className="flex items-center space-x-1.5 sm:space-x-2 text-xs sm:text-sm font-semibold text-white light:text-slate-900 bg-white/10 light:bg-slate-100 border border-white/10 light:border-slate-200 px-3.5 sm:px-5 py-1.5 sm:py-2 lg:py-2.5 rounded-full hover:bg-white/20 light:hover:bg-slate-200 transition-all shadow-[0_0_15px_rgba(255,255,255,0.05)] light:shadow-sm"
+              className="flex items-center space-x-1.5 sm:space-x-2 text-xs sm:text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-500 px-4 sm:px-5 py-2 rounded-2xl transition-all shadow-md shadow-indigo-600/20 cursor-pointer"
               onClick={() => { setIsMenuOpen(false); handleAuthAction(); }}
             >
-              <LogIn size={15} />
-              <span>Sign In</span>
+              <LogIn size={15} className="text-white" />
+              <span className="text-white">Sign In</span>
             </button>
           )}
           
           {/* Mobile Menu Toggle */}
           <button 
-            className="lg:hidden p-2 text-[#94A3B8] light:text-slate-500 hover:text-white light:text-slate-900 transition-colors rounded-lg focus:outline-none"
+            className="lg:hidden p-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors rounded-xl border border-slate-200 dark:border-white/10"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle navigation menu"
           >
-            {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
+            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </motion.header>
@@ -196,38 +198,38 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-x-0 top-16 sm:top-20 z-40 bg-[#050816]/95 light:bg-white/95 backdrop-blur-2xl px-5 pt-4 pb-8 flex flex-col space-y-3 lg:hidden border-b border-white/10 light:border-slate-200 shadow-2xl max-h-[calc(100dvh-4rem)] overflow-y-auto"
+            className="fixed inset-x-0 top-16 z-40 bg-white dark:bg-[#050816] px-5 pt-4 pb-8 flex flex-col space-y-2 lg:hidden border-b border-slate-200 dark:border-white/10 shadow-2xl max-h-[calc(100dvh-4rem)] overflow-y-auto"
           >
             {/* Authenticated User Snapshot in Mobile Menu */}
             {isAuthenticated && (
-              <div className="p-3.5 mb-2 bg-white/5 light:bg-slate-50 border border-white/5 light:border-slate-200 rounded-2xl flex items-center justify-between">
+              <div className="p-3.5 mb-2 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl flex items-center justify-between">
                 <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 rounded-full bg-indigo-500 flex items-center justify-center font-bold text-white light:text-slate-900 shadow">
+                  <div className="w-10 h-10 rounded-2xl bg-indigo-600 flex items-center justify-center font-bold text-white shadow">
                     {username.charAt(0).toUpperCase()}
                   </div>
                   <div>
-                    <p className="text-sm font-bold text-white light:text-slate-900 leading-tight">{username}</p>
-                    <p className="text-xs text-[#94A3B8] light:text-slate-500">Active Account</p>
+                    <p className="text-sm font-bold text-slate-900 dark:text-white leading-tight">{username}</p>
+                    <p className="text-xs text-slate-500">Active Account</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-1">
                   <button 
                     onClick={() => { setIsMenuOpen(false); handleNavClick('profile'); }}
-                    className="p-2 text-[#94A3B8] hover:text-white light:hover:text-slate-900 rounded-lg hover:bg-white/5 transition-colors"
+                    className="p-2 text-slate-500 hover:text-slate-900 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 transition-colors"
                     title="Profile"
                   >
                     <User size={18} />
                   </button>
                   <button 
                     onClick={() => { setIsMenuOpen(false); handleNavClick('settings'); }}
-                    className="p-2 text-[#94A3B8] hover:text-white light:hover:text-slate-900 rounded-lg hover:bg-white/5 transition-colors"
+                    className="p-2 text-slate-500 hover:text-slate-900 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 transition-colors"
                     title="Settings"
                   >
                     <Settings size={18} />
                   </button>
                   <button 
                     onClick={() => { setIsMenuOpen(false); handleAuthAction(); }}
-                    className="p-2 text-rose-400 hover:text-rose-300 rounded-lg hover:bg-rose-500/10 transition-colors"
+                    className="p-2 text-rose-500 hover:text-rose-600 rounded-lg hover:bg-rose-50 dark:hover:bg-rose-500/10 transition-colors"
                     title="Logout"
                   >
                     <LogOut size={18} />
@@ -243,10 +245,10 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
                 <button 
                   key={link.id}
                   onClick={() => handleNavClick(link.id)} 
-                  className={`text-left text-base font-semibold py-3 px-4 rounded-xl transition-all ${
+                  className={`text-left text-sm font-semibold py-2.5 px-3 rounded-xl transition-all ${
                     isActive 
-                      ? 'text-purple-400 light:text-orange-600 bg-purple-500/15 light:bg-orange-50 font-bold border border-purple-500/20 light:border-orange-500/20' 
-                      : 'text-[#94A3B8] light:text-slate-600 hover:text-white light:hover:text-slate-900 hover:bg-white/5 light:hover:bg-slate-100'
+                      ? 'text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 font-bold border border-indigo-200/60 dark:border-indigo-500/20' 
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-white/5'
                   }`}
                 >
                   {link.label}
@@ -254,12 +256,11 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
               );
             })}
 
-            {/* Mobile Auth Button if not signed in */}
             {!isAuthenticated && (
               <div className="pt-2">
                 <button
                   onClick={() => { setIsMenuOpen(false); handleAuthAction(); }}
-                  className="w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-indigo-500/20 transition-all"
+                  className="w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20 transition-all"
                 >
                   <LogIn size={18} />
                   <span>Sign In / Register</span>
