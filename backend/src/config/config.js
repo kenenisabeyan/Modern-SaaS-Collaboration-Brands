@@ -6,17 +6,14 @@ dotenv.config();
 function parseCorsOrigins() {
   const corsOrigin = process.env.CORS_ORIGIN;
   
-  if (process.env.NODE_ENV === 'production') {
-    if (corsOrigin) {
-      // Split by comma and trim whitespace
-      const origins = corsOrigin.split(',').map(origin => origin.trim()).filter(Boolean);
-      return origins.length > 0 ? origins : '*';
-    }
-    // Fallback to wildcard in production if CORS_ORIGIN not set
-    return '*';
+  if (corsOrigin) {
+    if (corsOrigin.trim() === '*') return true;
+    // Split by comma and trim whitespace
+    const origins = corsOrigin.split(',').map(origin => origin.trim()).filter(Boolean);
+    return origins.length > 0 ? origins : true;
   }
   
-  // Development: allow all origins
+  // Fallback: reflect request origin so credentials: true works without browser rejecting wildcard
   return true;
 }
 
