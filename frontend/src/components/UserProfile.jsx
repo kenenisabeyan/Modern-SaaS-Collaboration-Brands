@@ -1,90 +1,237 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { User, Mail, Calendar, Shield, Edit3 } from 'lucide-react';
+import { User, Mail, Calendar, ShieldCheck, Edit3, ArrowLeft, Check, Sparkles, Video, Clock } from 'lucide-react';
+import api from '../services/api.js';
 
 export default function UserProfile({ onNavigate }) {
-  const username = localStorage.getItem('username') || 'User';
+  const [username, setUsername] = useState(() => localStorage.getItem('username') || 'User');
+  const [email, setEmail] = useState('');
+  const [bio, setBio] = useState(() => localStorage.getItem('user_bio') || 'Passionate about real-time collaboration and online masterclasses.');
+  const [createdAt, setCreatedAt] = useState(null);
+  const [roomCount, setRoomCount] = useState(0);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editUsername, setEditUsername] = useState(username);
+  const [editBio, setEditBio] = useState(bio);
+  const [isSaved, setIsSaved] = useState(false);
+
+  useEffect(() => {
+    const rawUser = localStorage.getItem('user');
+    if (rawUser) {
+      try {
+        const parsed = JSON.parse(rawUser);
+        if (parsed.email) setEmail(parsed.email);
+        if (parsed.username) {
+          setUsername(parsed.username);
+          setEditUsername(parsed.username);
+        }
+        if (parsed.createdAt) setCreatedAt(parsed.createdAt);
+      } catch (e) {
+        console.error('Failed to parse user cache:', e);
+      }
+    }
+
+    const token = localStorage.getItem('token');
+    if (token) {
+      api.getMe(token).then((res) => {
+        if (res.success && res.data) {
+          if (res.data.email) setEmail(res.data.email);
+          if (res.data.username) {
+            setUsername(res.data.username);
+            setEditUsername(res.data.username);
+            localStorage.setItem('username', res.data.username);
+          }
+          if (res.data.createdAt) setCreatedAt(res.data.createdAt);
+        }
+      }).catch(console.error);
+
+      api.getUserRooms(token).then((res) => {
+        if (res.success && Array.isArray(res.data)) {
+          setRoomCount(res.data.length);
+        }
+      }).catch(console.error);
+    }
+  }, []);
+
+  const handleSaveProfile = (e) => {
+    e.preventDefault();
+    const trimmed = editUsername.trim();
+    if (!trimmed) return;
+    setUsername(trimmed);
+    setBio(editBio);
+    localStorage.setItem('username', trimmed);
+    localStorage.setItem('user_bio', editBio);
+    setIsEditing(false);
+    setIsSaved(true);
+    setTimeout(() => setIsSaved(false), 3000);
+  };
 
   return (
-    <main className="flex-1 pt-24 sm:pt-32 lg:pt-40 pb-16 sm:pb-20 relative z-10 px-4 sm:px-6 lg:px-8 xl:px-16 w-full max-w-[1400px] mx-auto text-white light:text-slate-900">
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12">
-        <div>
-          <h1 className="text-2xl sm:text-3xl md:text-5xl font-extrabold mb-1.5 sm:mb-2 tracking-tight">
-            User Profile
-          </h1>
-          <p className="text-[#94A3B8] light:text-slate-600 text-sm sm:text-base md:text-lg">Manage your personal information and presence.</p>
-        </div>
+    <main className="flex-1 pt-24 sm:pt-28 lg:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 w-full max-w-5xl mx-auto text-slate-900 dark:text-white">
+      
+      {/* Top Navigation */}
+      <div className="flex items-center justify-between mb-6 sm:mb-8">
+        <button 
+          onClick={() => onNavigate('dashboard')}
+          className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white transition-colors cursor-pointer"
+        >
+          <ArrowLeft size={16} />
+          <span>Back to Dashboard</span>
+        </button>
+
+        {isSaved && (
+          <motion.div 
+            initial={{ opacity: 0, y: -10 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/20 text-xs font-semibold"
+          >
+            <Check size={13} />
+            <span>Profile Updated!</span>
+          </motion.div>
+        )}
+      </div>
+
+      {/* Header */}
+      <div className="mb-8">
+        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-1.5">
+          User Profile
+        </h1>
+        <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base">
+          Manage your personal information, presence, and session statistics.
+        </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+        
+        {/* Left Column: Avatar & Overview */}
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           className="lg:col-span-1"
         >
-          <div className="bg-[#0A0F24]/60 light:bg-white backdrop-blur-md light:backdrop-blur-none border border-white/10 light:border-slate-200 rounded-2xl sm:rounded-[2rem] p-6 sm:p-8 shadow-[0_10px_30px_-15px_rgba(99,102,241,0.2)] light:shadow-md text-center relative">
-            <button 
-              onClick={() => onNavigate('settings')}
-              className="absolute top-4 right-4 sm:top-6 sm:right-6 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/5 light:bg-slate-100 border border-white/10 light:border-slate-200 flex items-center justify-center text-[#94A3B8] light:text-slate-500 hover:text-white light:text-slate-900 hover:bg-white/10 transition-colors"
-            >
-              <Edit3 size={16} />
-            </button>
-            <div className="w-24 h-24 sm:w-32 sm:h-32 mx-auto rounded-full bg-indigo-500 p-[2px] mb-4 sm:mb-6 shadow-[0_0_30px_rgba(147,51,234,0.3)]">
-              <div className="w-full h-full rounded-full bg-[#050816] light:bg-white flex items-center justify-center text-3xl sm:text-4xl font-bold text-white light:text-slate-900">
-                {username.charAt(0).toUpperCase()}
-              </div>
+          <div className="bg-white dark:bg-[#0A0F24]/80 border border-slate-200 dark:border-white/10 rounded-3xl p-6 sm:p-8 text-center shadow-sm relative">
+            <div className="w-24 h-24 sm:w-28 sm:h-28 mx-auto rounded-3xl bg-indigo-600 text-white flex items-center justify-center text-3xl sm:text-4xl font-extrabold mb-4 shadow-lg shadow-indigo-600/20">
+              {username.charAt(0).toUpperCase()}
             </div>
-            <h2 className="text-xl sm:text-2xl font-bold mb-1">{username}</h2>
-            <p className="text-emerald-400 light:text-emerald-600 text-xs sm:text-sm font-semibold mb-5 sm:mb-6 flex items-center justify-center gap-2">
-              <Shield size={14} /> Verified Account
-            </p>
-            <div className="w-full h-px bg-white/10 light:bg-slate-200 mb-5 sm:mb-6"></div>
-            <div className="flex justify-around text-center">
-              <div>
-                <p className="text-2xl sm:text-3xl font-extrabold text-white light:text-slate-900">12</p>
-                <p className="text-[10px] sm:text-xs font-semibold text-[#94A3B8] light:text-slate-500 uppercase tracking-wider">Meetings</p>
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-1 truncate">{username}</h2>
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 truncate mb-3">{email || `${username.toLowerCase()}@wabiseminar.com`}</p>
+            
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-semibold border border-emerald-200 dark:border-emerald-500/20 mb-6">
+              <ShieldCheck size={14} className="text-emerald-500" />
+              <span>Verified Account</span>
+            </div>
+
+            <div className="w-full h-px bg-slate-100 dark:bg-white/10 mb-6"></div>
+
+            {/* Quick Stats Grid */}
+            <div className="grid grid-cols-2 gap-3 text-center">
+              <div className="p-3 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5">
+                <p className="text-2xl font-extrabold text-indigo-600 dark:text-indigo-400">{roomCount}</p>
+                <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mt-0.5">Rooms Created</p>
               </div>
-              <div>
-                <p className="text-2xl sm:text-3xl font-extrabold text-white light:text-slate-900">84</p>
-                <p className="text-[10px] sm:text-xs font-semibold text-[#94A3B8] light:text-slate-500 uppercase tracking-wider">Hours</p>
+              <div className="p-3 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5">
+                <p className="text-2xl font-extrabold text-emerald-600 dark:text-emerald-400">Pro</p>
+                <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mt-0.5">Tier Plan</p>
               </div>
             </div>
           </div>
         </motion.div>
 
+        {/* Right Column: Profile Form / Edit */}
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="lg:col-span-2 space-y-6 sm:space-y-8"
+          transition={{ delay: 0.08 }}
+          className="lg:col-span-2"
         >
-          <div className="bg-[#0A0F24]/60 light:bg-white backdrop-blur-md light:backdrop-blur-none border border-white/10 light:border-slate-200 rounded-2xl sm:rounded-[2rem] p-6 sm:p-8 light:shadow-sm">
-            <h3 className="text-lg sm:text-xl font-bold mb-5 sm:mb-6 flex items-center gap-2 text-white light:text-slate-900">
-              <User className="text-indigo-400 light:text-indigo-600" /> Personal Information
-            </h3>
-            <div className="space-y-5 sm:space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-                <div>
-                  <label className="text-xs font-semibold text-[#94A3B8] light:text-slate-500 uppercase tracking-wider block mb-2">Username</label>
-                  <input type="text" defaultValue={username} className="w-full bg-[#050816]/60 light:bg-slate-50 border border-white/10 light:border-slate-200 rounded-full px-4 py-2.5 sm:py-3 text-sm text-white light:text-slate-900 focus:outline-none focus:ring-1 focus:ring-indigo-500/50 light:focus:ring-indigo-400 focus:border-indigo-500/50 light:focus:border-indigo-400 transition-all" />
-                </div>
-                <div>
-                  <label className="text-xs font-semibold text-[#94A3B8] light:text-slate-500 uppercase tracking-wider block mb-2">Email Address</label>
-                  <input type="email" defaultValue={`${username.toLowerCase()}@example.com`} className="w-full bg-[#050816]/60 light:bg-slate-50 border border-white/10 light:border-slate-200 rounded-full px-4 py-2.5 sm:py-3 text-sm text-white light:text-slate-900 focus:outline-none focus:ring-1 focus:ring-indigo-500/50 light:focus:ring-indigo-400 focus:border-indigo-500/50 light:focus:border-indigo-400 transition-all" />
-                </div>
-              </div>
-              <div>
-                <label className="text-xs font-semibold text-[#94A3B8] light:text-slate-500 uppercase tracking-wider block mb-2">Bio</label>
-                <textarea rows="3" placeholder="Tell us about yourself..." className="w-full bg-[#050816]/60 light:bg-slate-50 border border-white/10 light:border-slate-200 rounded-2xl px-4 py-3 text-sm text-white light:text-slate-900 focus:outline-none focus:ring-1 focus:ring-indigo-500/50 light:focus:ring-indigo-400 focus:border-indigo-500/50 light:focus:border-indigo-400 transition-all resize-none"></textarea>
-              </div>
-              <div className="flex justify-end pt-2 sm:pt-4">
-                <button 
-                  onClick={() => onNavigate('dashboard')}
-                  className="w-full sm:w-auto px-6 py-3 sm:py-2.5 rounded-full font-bold bg-indigo-600 hover:bg-indigo-500 text-white light:text-slate-900 transition-all shadow-[0_0_20px_rgba(79,70,229,0.3)] text-sm sm:text-base"
-                >
-                  Save Changes
-                </button>
-              </div>
+          <div className="bg-white dark:bg-[#0A0F24]/80 border border-slate-200 dark:border-white/10 rounded-3xl p-6 sm:p-8 shadow-sm">
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <User size={20} className="text-indigo-600 dark:text-indigo-400" />
+                <span>Account Information</span>
+              </h3>
+              <button 
+                type="button"
+                onClick={() => setIsEditing(!isEditing)}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/15 text-slate-700 dark:text-slate-300 transition-colors cursor-pointer"
+              >
+                <Edit3 size={14} />
+                <span>{isEditing ? 'Cancel' : 'Edit Profile'}</span>
+              </button>
             </div>
+
+            {isEditing ? (
+              <form onSubmit={handleSaveProfile} className="space-y-5">
+                <div>
+                  <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-2">Username</label>
+                  <input 
+                    type="text" 
+                    value={editUsername}
+                    onChange={(e) => setEditUsername(e.target.value)}
+                    required
+                    className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:bg-white dark:focus:bg-[#0A0F24] focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 outline-none transition-all"
+                  />
+                </div>
+                <div>
+                  <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-2">Email Address (Read-only)</label>
+                  <input 
+                    type="email" 
+                    value={email || `${username.toLowerCase()}@wabiseminar.com`}
+                    disabled
+                    className="w-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl px-4 py-3 text-sm text-slate-500 cursor-not-allowed opacity-80"
+                  />
+                </div>
+                <div>
+                  <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-2">Bio / About You</label>
+                  <textarea 
+                    rows="3" 
+                    value={editBio}
+                    onChange={(e) => setEditBio(e.target.value)}
+                    placeholder="Tell your attendees about yourself..."
+                    className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:bg-white dark:focus:bg-[#0A0F24] focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 outline-none transition-all resize-none"
+                  ></textarea>
+                </div>
+                <div className="flex justify-end gap-3 pt-2">
+                  <button 
+                    type="button"
+                    onClick={() => setIsEditing(false)}
+                    className="px-5 py-2.5 rounded-xl font-semibold bg-slate-100 dark:bg-white/5 hover:bg-slate-200 text-slate-700 dark:text-slate-300 text-sm transition-colors cursor-pointer"
+                  >
+                    Cancel
+                  </button>
+                  <button 
+                    type="submit"
+                    className="px-6 py-2.5 rounded-xl font-semibold bg-indigo-600 hover:bg-indigo-500 text-white text-sm shadow-md transition-colors cursor-pointer"
+                  >
+                    Save Changes
+                  </button>
+                </div>
+              </form>
+            ) : (
+              <div className="space-y-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5">
+                    <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Username</p>
+                    <p className="text-sm font-bold text-slate-900 dark:text-white">{username}</p>
+                  </div>
+                  <div className="p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5">
+                    <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Email</p>
+                    <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{email || 'Not provided'}</p>
+                  </div>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5">
+                  <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Bio</p>
+                  <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">{bio}</p>
+                </div>
+
+                {createdAt && (
+                  <div className="flex items-center gap-2 text-xs text-slate-500 pt-2">
+                    <Calendar size={14} />
+                    <span>Member since {new Date(createdAt).toLocaleDateString(undefined, { month: 'long', year: 'numeric' })}</span>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </motion.div>
       </div>
