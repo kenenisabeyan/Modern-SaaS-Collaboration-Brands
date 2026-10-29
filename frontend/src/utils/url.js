@@ -8,11 +8,11 @@ export function resolveApiBase() {
   } else if (typeof v === 'string' && v.startsWith('/') && typeof window !== 'undefined') {
     resolved = `${window.location.origin}${v}`;
   } else if (import.meta.env.DEV) {
-    resolved = 'http://localhost:3000/api';
+    resolved = 'http://localhost:5000/api';
   } else if (typeof window !== 'undefined') {
     resolved = `${window.location.origin}/api`;
   } else {
-    resolved = 'http://localhost:3000/api';
+    resolved = 'http://localhost:5000/api';
   }
   
   console.log('[API] Resolved API base:', resolved, '(VITE_API_URL:', v, ')');
@@ -29,14 +29,13 @@ export function resolveSocketOrigin() {
   } else if (typeof v === 'string' && v.startsWith('/') && typeof window !== 'undefined') {
     resolved = window.location.origin;
   } else if (import.meta.env.DEV) {
-    resolved = 'http://localhost:3000';
+    resolved = 'http://localhost:5000';
   } else if (typeof window !== 'undefined') {
     resolved = window.location.origin;
   } else {
-    resolved = 'http://localhost:3000';
+    resolved = 'http://localhost:5000';
   }
   
   console.log('[Socket] Resolved socket origin:', resolved, '(VITE_API_URL:', v, ')');
   return resolved;
 }
-
