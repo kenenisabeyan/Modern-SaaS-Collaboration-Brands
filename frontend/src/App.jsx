@@ -110,7 +110,7 @@ function App() {
     };
   }, []);
 
-  const showHeaderFooter = !['auth', 'meeting'].includes(currentView);
+  const showHeaderFooter = currentView !== 'meeting';
 
   return (
     <div className="min-h-screen flex flex-col font-sans relative overflow-x-hidden bg-[#050816] light:bg-slate-50">
