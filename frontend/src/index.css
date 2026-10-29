@@ -55,7 +55,7 @@
 @layer components {
   /* Premium SaaS Card - Linear/Vercel style */
   .premium-card {
-    @apply bg-white/[0.02] backdrop-blur-2xl border border-white/[0.08] shadow-[0_8px_30px_rgb(0,0,0,0.4)] rounded-full md:rounded-3xl relative overflow-hidden transition-all duration-500 hover:border-white/[0.15] hover:bg-white/[0.04];
+    @apply bg-white/[0.02] backdrop-blur-2xl border border-white/[0.08] shadow-[0_8px_30px_rgb(0,0,0,0.4)] rounded-2xl sm:rounded-3xl relative overflow-hidden transition-all duration-500 hover:border-white/[0.15] hover:bg-white/[0.04];
   }
   
   .light .premium-card {

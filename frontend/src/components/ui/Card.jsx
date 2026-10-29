@@ -6,7 +6,7 @@ export function Card({ children, className = '', hover = true, glow = false, ...
       whileHover={hover ? { y: -4 } : {}}
       className={`
         bg-white/[0.02] backdrop-blur-2xl border border-white/[0.08] 
-        shadow-[0_8px_30px_rgb(0,0,0,0.4)] rounded-full md:rounded-3xl relative overflow-hidden 
+        shadow-[0_8px_30px_rgb(0,0,0,0.4)] rounded-2xl sm:rounded-3xl relative overflow-hidden 
         transition-all duration-500 
         ${hover ? 'hover:border-white/[0.15] hover:bg-white/[0.04]' : ''}
         ${glow ? 'shadow-[0_0_30px_rgba(99,102,241,0.15)] hover:shadow-[0_0_50px_rgba(99,102,241,0.25)]' : ''}
