@@ -80,35 +80,35 @@ export default function Auth({ onNavigate }) {
   }, []);
 
   return (
-    <div className="flex-1 flex items-center justify-center p-4 relative overflow-hidden bg-[#050816] light:bg-[#FAFAFA] min-h-screen font-sans text-white light:text-slate-900">
+    <div className="flex-1 flex items-center justify-center py-8 px-4 sm:px-6 relative overflow-hidden bg-[#050816] light:bg-[#FAFAFA] min-h-screen font-sans text-white light:text-slate-900">
       {/* Background Glow Effects */}
       <div className="absolute bg-purple-600/15 blur-[120px] w-[600px] h-[600px] rounded-full top-[-10%] left-[-10%] pointer-events-none"></div>
       <div className="absolute bg-blue-600/10 blur-[120px] w-[500px] h-[500px] rounded-full bottom-[-10%] right-[-10%] pointer-events-none"></div>
 
-      <div className="premium-card w-full max-w-md p-10 flex flex-col items-center space-y-8 z-10 relative">
+      <div className="premium-card w-full max-w-md p-6 sm:p-10 flex flex-col items-center space-y-6 sm:space-y-8 z-10 relative">
         
         {/* Floating Accent */}
-        <div className="absolute top-4 right-4 w-10 h-10 bg-[#050816] light:bg-slate-50 border border-purple-500/50 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(147,51,234,0.5)] z-20">
-          <Lock size={18} className="text-indigo-300" />
+        <div className="absolute top-3 right-3 sm:top-4 sm:right-4 w-9 h-9 sm:w-10 sm:h-10 bg-[#050816] light:bg-slate-50 border border-purple-500/50 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(147,51,234,0.5)] z-20">
+          <Lock size={16} className="text-indigo-300 sm:w-[18px] sm:h-[18px]" />
         </div>
 
         {/* Logo/Icon */}
-        <div className="w-16 h-16 rounded-full bg-indigo-500 p-[1px] shadow-[0_10px_20px_-10px_rgba(0,174,239,0.6)]">
-          <div className="w-full h-full bg-[#0A0F24] light:bg-white rounded-[15px] flex items-center justify-center">
-            <Video className="text-indigo-400" size={32} />
+        <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-indigo-500 p-[1px] shadow-[0_10px_20px_-10px_rgba(0,174,239,0.6)]">
+          <div className="w-full h-full bg-[#0A0F24] light:bg-white rounded-2xl flex items-center justify-center">
+            <Video className="text-indigo-400" size={28} />
           </div>
         </div>
 
-        <div className="text-center space-y-2">
-          <h1 className="text-3xl font-bold tracking-tight text-white light:text-slate-900">WabiSeminar Live</h1>
-          <p className="text-sm text-slate-400 light:text-slate-500">
+        <div className="text-center space-y-1.5 sm:space-y-2">
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white light:text-slate-900">WabiSeminar Live</h1>
+          <p className="text-xs sm:text-sm text-slate-400 light:text-slate-500">
             {isLogin ? 'Sign in to your account to continue' : 'Create an account to get started'}
           </p>
         </div>
         
-        <form onSubmit={handleSubmit} className="w-full space-y-5">
+        <form onSubmit={handleSubmit} className="w-full space-y-4 sm:space-y-5">
           {error && (
-            <div className="bg-rose-500/10 border border-rose-500/20 text-rose-400 text-sm p-3 rounded-full text-center">
+            <div className="bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs sm:text-sm p-3 rounded-xl sm:rounded-2xl text-center">
               {error}
             </div>
           )}
