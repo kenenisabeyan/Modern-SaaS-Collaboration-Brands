@@ -45,7 +45,8 @@ function App() {
 
   useEffect(() => {
     setIsAuthenticated(!!localStorage.getItem('token'));
-  }, [currentView]); // Re-check on view changes
+    window.scrollTo(0, 0);
+  }, [currentView]); // Re-check on view changes and scroll to top
 
   const handleAuthAction = () => {
     if (isAuthenticated) {
@@ -61,6 +62,7 @@ function App() {
 
   const setCurrentView = (currentView) => {
     setRouteState((prev) => ({ ...prev, currentView }));
+    window.scrollTo(0, 0);
   };
 
   const syncRouteFromLocation = useCallback(() => {
