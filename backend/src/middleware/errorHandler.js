@@ -1,5 +1,17 @@
 export const errorHandler = (err, req, res, next) => {
-  console.error('Error:', err);
+  if (res.headersSent) {
+    return next(err);
+  }
+
+  console.error('Error:', err.message || err);
+
+  // Handle invalid JSON syntax from body-parser
+  if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
+    return res.status(400).json({
+      success: false,
+      message: 'Invalid JSON payload provided',
+    });
+  }
 
   // Sequelize validation errors
   if (err.name === 'SequelizeValidationError') {

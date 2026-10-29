@@ -95,6 +95,15 @@ if (canServeFrontend) {
 app.use(notFoundHandler);
 app.use(errorHandler);
 
+// Process event handlers
+process.on('unhandledRejection', (reason) => {
+  console.error('[Unhandled Rejection]', reason);
+});
+
+process.on('uncaughtException', (error) => {
+  console.error('[Uncaught Exception]', error);
+});
+
 // Initialize database and start server
 const startServer = async () => {
   try {
