@@ -12,11 +12,15 @@ services:
         value: 5000
       - key: DATABASE_URL
         value: mysql://4Qe8CQZuyB1e2jm.root:KI5AsN7Edys2nXJx@gateway01.us-west-2.prod.aws.tidbcloud.com:4000/seminar
+      - key: USE_SQLITE
+        value: "false"
       - key: JWT_SECRET
         generateValue: true
       - key: JWT_EXPIRY
         value: 24h
+      - key: PUBLIC_APP_URL
+        value: https://video.vercel.app
       - key: GOOGLE_CALLBACK_URL
-        value: https://wabiskills-seminar-1.onrender.com/api/auth/google/callback
+        value: https://wabiskills-seminar.onrender.com/api/auth/google/callback
       - key: CORS_ORIGIN
-        value: https://wabiskills-seminar-1.onrender.com,https://wabiskills-seminar.onrender.com
+        value: https://video.vercel.app,https://*.vercel.app,https://wabiskills-seminar.onrender.com,https://wabiskills-seminar-1.onrender.com

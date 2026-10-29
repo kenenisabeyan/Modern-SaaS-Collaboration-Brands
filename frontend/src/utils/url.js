@@ -10,7 +10,12 @@ export function resolveApiBase() {
   } else if (import.meta.env.DEV) {
     resolved = 'http://localhost:5000/api';
   } else if (typeof window !== 'undefined') {
-    resolved = `${window.location.origin}/api`;
+    // If on Vercel and no VITE_API_URL set, default to production Render backend
+    if (window.location.hostname.endsWith('vercel.app')) {
+      resolved = 'https://wabiskills-seminar.onrender.com/api';
+    } else {
+      resolved = `${window.location.origin}/api`;
+    }
   } else {
     resolved = 'http://localhost:5000/api';
   }
@@ -31,7 +36,12 @@ export function resolveSocketOrigin() {
   } else if (import.meta.env.DEV) {
     resolved = 'http://localhost:5000';
   } else if (typeof window !== 'undefined') {
-    resolved = window.location.origin;
+    // If on Vercel and no VITE_API_URL set, default to production Render backend
+    if (window.location.hostname.endsWith('vercel.app')) {
+      resolved = 'https://wabiskills-seminar.onrender.com';
+    } else {
+      resolved = window.location.origin;
+    }
   } else {
     resolved = 'http://localhost:5000';
   }

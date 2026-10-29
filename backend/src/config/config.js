@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-// Parse CORS origins from comma-separated string, with automatic localhost support in development
+// Parse CORS origins from comma-separated string, with automatic localhost and deployment host support
 function parseCorsOrigins() {
   const corsOrigin = process.env.CORS_ORIGIN;
   const isDev = (process.env.NODE_ENV || 'development') === 'development';
@@ -17,8 +17,23 @@ function parseCorsOrigins() {
     // Allow non-browser requests (e.g. mobile apps, curl, server-to-server)
     if (!origin) return callback(null, true);
 
-    // Allow explicitly configured origins
+    // Exact match in configured origins
     if (origins.includes(origin)) {
+      return callback(null, true);
+    }
+
+    // Wildcard matching (e.g. https://*.vercel.app)
+    const matchesWildcard = origins.some((allowed) => {
+      if (allowed.includes('*')) {
+        const pattern = new RegExp('^' + allowed.replace(/\./g, '\\.').replace(/\*/g, '.*') + '$');
+        return pattern.test(origin);
+      }
+      return false;
+    });
+    if (matchesWildcard) return callback(null, true);
+
+    // Automatically allow any Vercel domain (*.vercel.app) or Render domain (*.onrender.com)
+    if (/^https:\/\/([a-zA-Z0-9-]+\.)?vercel\.app$/.test(origin) || /^https:\/\/([a-zA-Z0-9-]+\.)?onrender\.com$/.test(origin)) {
       return callback(null, true);
     }
 
