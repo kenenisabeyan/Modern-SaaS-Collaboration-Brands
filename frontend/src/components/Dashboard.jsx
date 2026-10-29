@@ -444,19 +444,18 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
             </div>
           </div>
         </motion.section>
-
         {/* FEATURES SECTION */}
-        <section id="features" className="py-24 lg:py-32 relative z-10 px-6 lg:px-8 xl:px-16">
+        <section id="features" className="py-16 sm:py-24 lg:py-32 relative z-10 px-4 sm:px-6 lg:px-8 xl:px-16">
           <div className="max-w-[1400px] mx-auto">
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6 }}
-              className="text-center max-w-3xl mx-auto mb-20"
+              className="text-center max-w-3xl mx-auto mb-12 sm:mb-20"
             >
-              <h2 className="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight text-white light:text-slate-900">Everything you need for <br className="hidden md:block"/><span className="text-indigo-500">perfect seminars</span></h2>
-              <p className="text-[#94A3B8] light:text-slate-600 text-lg md:text-xl leading-relaxed">WabiSeminar brings together the best tools for video collaboration in one beautiful, frictionless package. Focus on your audience, not the tech.</p>
+              <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold mb-4 sm:mb-6 tracking-tight text-white light:text-slate-900">Everything you need for <br className="hidden md:block"/><span className="text-indigo-500">perfect seminars</span></h2>
+              <p className="text-[#94A3B8] light:text-slate-600 text-base sm:text-lg md:text-xl leading-relaxed">WabiSeminar brings together the best tools for video collaboration in one beautiful, frictionless package. Focus on your audience, not the tech.</p>
             </motion.div>
             
             <motion.div 
@@ -464,50 +463,50 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
               variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.15 } } }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
             >
               {/* Feature 1 */}
-              <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }} className="bg-[#0A0F24]/60 light:bg-white backdrop-blur-lg light:backdrop-blur-none border border-white/5 light:border-slate-200 hover:border-indigo-500/30 light:hover:border-indigo-300 p-10 rounded-[2rem] hover:-translate-y-2 transition-all duration-500 shadow-xl light:shadow-md hover:shadow-[0_20px_50px_-15px_rgba(99,102,241,0.2)] light:hover:shadow-lg group">
-                <div className="w-16 h-16 bg-indigo-500/10 light:bg-indigo-50 group-hover:bg-indigo-500/20 light:group-hover:bg-indigo-100 transition-colors text-indigo-400 light:text-indigo-600 rounded-full flex items-center justify-center mb-8 shadow-inner light:shadow-none border border-indigo-500/20 light:border-indigo-200"> 
-                  <Video size={32}/> 
+              <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }} className="bg-[#0A0F24]/60 light:bg-white backdrop-blur-lg light:backdrop-blur-none border border-white/5 light:border-slate-200 hover:border-indigo-500/30 light:hover:border-indigo-300 p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2rem] hover:-translate-y-2 transition-all duration-500 shadow-xl light:shadow-md hover:shadow-[0_20px_50px_-15px_rgba(99,102,241,0.2)] light:hover:shadow-lg group">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 bg-indigo-500/10 light:bg-indigo-50 group-hover:bg-indigo-500/20 light:group-hover:bg-indigo-100 transition-colors text-indigo-400 light:text-indigo-600 rounded-full flex items-center justify-center mb-6 sm:mb-8 shadow-inner light:shadow-none border border-indigo-500/20 light:border-indigo-200"> 
+                  <Video size={28} className="sm:w-8 sm:h-8" /> 
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-white light:text-slate-900">Ultra HD Video</h3>
-                <p className="text-[#94A3B8] light:text-slate-500 leading-relaxed text-lg">Experience crystal clear video and audio quality powered by advanced WebRTC architecture, ensuring you always look your best.</p>
+                <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-white light:text-slate-900">Ultra HD Video</h3>
+                <p className="text-[#94A3B8] light:text-slate-500 leading-relaxed text-sm sm:text-base lg:text-lg">Experience crystal clear video and audio quality powered by advanced WebRTC architecture, ensuring you always look your best.</p>
               </motion.div>
 
               {/* Feature 2 */}
-              <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }} className="bg-[#0A0F24]/60 light:bg-white backdrop-blur-lg light:backdrop-blur-none border border-white/5 light:border-slate-200 hover:border-emerald-500/30 light:hover:border-emerald-300 p-10 rounded-[2rem] hover:-translate-y-2 transition-all duration-500 shadow-xl light:shadow-md hover:shadow-[0_20px_50px_-15px_rgba(16,185,129,0.2)] light:hover:shadow-lg group">
-                <div className="w-16 h-16 bg-emerald-500/10 light:bg-emerald-50 group-hover:bg-emerald-500/20 light:group-hover:bg-emerald-100 transition-colors text-emerald-400 light:text-emerald-600 rounded-full flex items-center justify-center mb-8 shadow-inner light:shadow-none border border-emerald-500/20 light:border-emerald-200"> 
-                  <MessageSquare size={32}/> 
+              <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }} className="bg-[#0A0F24]/60 light:bg-white backdrop-blur-lg light:backdrop-blur-none border border-white/5 light:border-slate-200 hover:border-emerald-500/30 light:hover:border-emerald-300 p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2rem] hover:-translate-y-2 transition-all duration-500 shadow-xl light:shadow-md hover:shadow-[0_20px_50px_-15px_rgba(16,185,129,0.2)] light:hover:shadow-lg group">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 bg-emerald-500/10 light:bg-emerald-50 group-hover:bg-emerald-500/20 light:group-hover:bg-emerald-100 transition-colors text-emerald-400 light:text-emerald-600 rounded-full flex items-center justify-center mb-6 sm:mb-8 shadow-inner light:shadow-none border border-emerald-500/20 light:border-emerald-200"> 
+                  <MessageSquare size={28} className="sm:w-8 sm:h-8" /> 
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-white light:text-slate-900">Real-time Chat</h3>
-                <p className="text-[#94A3B8] light:text-slate-500 leading-relaxed text-lg">Keep your audience engaged with lightning-fast built-in chat. Share links, answer questions, and foster community instantly.</p>
+                <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-white light:text-slate-900">Real-time Chat</h3>
+                <p className="text-[#94A3B8] light:text-slate-500 leading-relaxed text-sm sm:text-base lg:text-lg">Keep your audience engaged with lightning-fast built-in chat. Share links, answer questions, and foster community instantly.</p>
               </motion.div>
 
               {/* Feature 3 */}
-              <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }} className="bg-[#0A0F24]/60 light:bg-white backdrop-blur-lg light:backdrop-blur-none border border-white/5 light:border-slate-200 hover:border-purple-500/30 light:hover:border-purple-300 p-10 rounded-[2rem] hover:-translate-y-2 transition-all duration-500 shadow-xl light:shadow-md hover:shadow-[0_20px_50px_-15px_rgba(168,85,247,0.2)] light:hover:shadow-lg group">
-                <div className="w-16 h-16 bg-purple-500/10 light:bg-purple-50 group-hover:bg-purple-500/20 light:group-hover:bg-purple-100 transition-colors text-purple-400 light:text-purple-600 rounded-full flex items-center justify-center mb-8 shadow-inner light:shadow-none border border-purple-500/20 light:border-purple-200"> 
-                  <Monitor size={32}/> 
+              <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }} className="bg-[#0A0F24]/60 light:bg-white backdrop-blur-lg light:backdrop-blur-none border border-white/5 light:border-slate-200 hover:border-purple-500/30 light:hover:border-purple-300 p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2rem] hover:-translate-y-2 transition-all duration-500 shadow-xl light:shadow-md hover:shadow-[0_20px_50px_-15px_rgba(168,85,247,0.2)] light:hover:shadow-lg group">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 bg-purple-500/10 light:bg-purple-50 group-hover:bg-purple-500/20 light:group-hover:bg-purple-100 transition-colors text-purple-400 light:text-purple-600 rounded-full flex items-center justify-center mb-6 sm:mb-8 shadow-inner light:shadow-none border border-purple-500/20 light:border-purple-200"> 
+                  <Monitor size={28} className="sm:w-8 sm:h-8" /> 
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-white light:text-slate-900">Screen Sharing</h3>
-                <p className="text-[#94A3B8] light:text-slate-500 leading-relaxed text-lg">Present your masterclass seamlessly. Share your entire screen, specific windows, or browser tabs with zero lag.</p>
+                <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-white light:text-slate-900">Screen Sharing</h3>
+                <p className="text-[#94A3B8] light:text-slate-500 leading-relaxed text-sm sm:text-base lg:text-lg">Present your masterclass seamlessly. Share your entire screen, specific windows, or browser tabs with zero lag.</p>
               </motion.div>
             </motion.div>
           </div>
         </section>
 
         {/* TESTIMONIALS SECTION */}
-        <section id="testimonials" className="py-24 lg:py-32 relative z-10 bg-gradient-to-b from-transparent to-[#0A0F24] light:to-white px-6 lg:px-8 xl:px-16">
+        <section id="testimonials" className="py-16 sm:py-24 lg:py-32 relative z-10 bg-gradient-to-b from-transparent to-[#0A0F24] light:to-white px-4 sm:px-6 lg:px-8 xl:px-16">
           <div className="max-w-[1400px] mx-auto">
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6 }}
-              className="text-center max-w-3xl mx-auto mb-20"
+              className="text-center max-w-3xl mx-auto mb-12 sm:mb-20"
             >
-              <h2 className="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight text-white light:text-slate-900">Loved by educators</h2>
-              <p className="text-[#94A3B8] light:text-slate-600 text-lg md:text-xl leading-relaxed">See why thousands of professionals choose WabiSeminar over legacy video conferencing platforms.</p>
+              <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold mb-4 sm:mb-6 tracking-tight text-white light:text-slate-900">Loved by educators</h2>
+              <p className="text-[#94A3B8] light:text-slate-600 text-base sm:text-lg md:text-xl leading-relaxed">See why thousands of professionals choose WabiSeminar over legacy video conferencing platforms.</p>
             </motion.div>
             
             <motion.div 
@@ -515,49 +514,49 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
               variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.15 } } }}
-              className="grid grid-cols-1 md:grid-cols-3 gap-8"
+              className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8"
             >
               {/* Testimonial 1 */}
-              <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }} className="bg-[#160B2A]/40 light:bg-white backdrop-blur-md light:backdrop-blur-none border border-purple-500/20 light:border-slate-200 p-10 rounded-[2rem] relative light:shadow-md">
-                <div className="flex gap-1 text-yellow-400 mb-6">
-                  <Star size={20} fill="currentColor" /><Star size={20} fill="currentColor" /><Star size={20} fill="currentColor" /><Star size={20} fill="currentColor" /><Star size={20} fill="currentColor" />
+              <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }} className="bg-[#160B2A]/40 light:bg-white backdrop-blur-md light:backdrop-blur-none border border-purple-500/20 light:border-slate-200 p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2rem] relative light:shadow-md">
+                <div className="flex gap-1 text-yellow-400 mb-5 sm:mb-6">
+                  <Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" />
                 </div>
-                <p className="text-white light:text-slate-700 text-lg leading-relaxed mb-8 font-light">"WabiSeminar completely changed how I host my design masterclasses. The UI is gorgeous, and my students love that they don't have to download any software."</p>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-indigo-500 flex items-center justify-center font-bold text-white light:text-slate-900 text-xl shadow-lg">S</div>
+                <p className="text-white light:text-slate-700 text-sm sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8 font-light">"WabiSeminar completely changed how I host my design masterclasses. The UI is gorgeous, and my students love that they don't have to download any software."</p>
+                <div className="flex items-center gap-3.5 sm:gap-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-indigo-500 flex items-center justify-center font-bold text-white light:text-slate-900 text-lg sm:text-xl shadow-lg shrink-0">S</div>
                   <div>
-                    <h4 className="text-white light:text-slate-900 font-bold">kenenisa beyan</h4>
-                    <p className="text-[#94A3B8] light:text-slate-500 text-sm">Lead Designer, StudioX</p>
+                    <h4 className="text-white light:text-slate-900 font-bold text-sm sm:text-base">kenenisa beyan</h4>
+                    <p className="text-[#94A3B8] light:text-slate-500 text-xs sm:text-sm">Lead Designer, StudioX</p>
                   </div>
                 </div>
               </motion.div>
 
               {/* Testimonial 2 */}
-              <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }} className="bg-[#0A241A]/40 light:bg-white backdrop-blur-md light:backdrop-blur-none border border-emerald-500/20 light:border-slate-200 p-10 rounded-[2rem] relative md:-translate-y-6 light:shadow-md">
-                <div className="flex gap-1 text-yellow-400 mb-6">
-                  <Star size={20} fill="currentColor" /><Star size={20} fill="currentColor" /><Star size={20} fill="currentColor" /><Star size={20} fill="currentColor" /><Star size={20} fill="currentColor" />
+              <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }} className="bg-[#0A241A]/40 light:bg-white backdrop-blur-md light:backdrop-blur-none border border-emerald-500/20 light:border-slate-200 p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2rem] relative md:-translate-y-6 light:shadow-md">
+                <div className="flex gap-1 text-yellow-400 mb-5 sm:mb-6">
+                  <Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" />
                 </div>
-                <p className="text-white light:text-slate-700 text-lg leading-relaxed mb-8 font-light">"The waiting room feature is perfect for managing my 1-on-1 coaching sessions. The video quality has been incredibly stable even on lower bandwidths."</p>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-indigo-500 flex items-center justify-center font-bold text-white light:text-slate-900 text-xl shadow-lg">M</div>
+                <p className="text-white light:text-slate-700 text-sm sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8 font-light">"The waiting room feature is perfect for managing my 1-on-1 coaching sessions. The video quality has been incredibly stable even on lower bandwidths."</p>
+                <div className="flex items-center gap-3.5 sm:gap-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-indigo-500 flex items-center justify-center font-bold text-white light:text-slate-900 text-lg sm:text-xl shadow-lg shrink-0">M</div>
                   <div>
-                    <h4 className="text-white light:text-slate-900 font-bold">yerosan girma</h4>
-                    <p className="text-[#94A3B8] light:text-slate-500 text-sm">Executive Coach</p>
+                    <h4 className="text-white light:text-slate-900 font-bold text-sm sm:text-base">yerosan girma</h4>
+                    <p className="text-[#94A3B8] light:text-slate-500 text-xs sm:text-sm">Executive Coach</p>
                   </div>
                 </div>
               </motion.div>
 
               {/* Testimonial 3 */}
-              <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }} className="bg-[#0A0F24]/80 light:bg-white backdrop-blur-md light:backdrop-blur-none border border-blue-500/20 light:border-slate-200 p-10 rounded-[2rem] relative light:shadow-md">
-                <div className="flex gap-1 text-yellow-400 mb-6">
-                  <Star size={20} fill="currentColor" /><Star size={20} fill="currentColor" /><Star size={20} fill="currentColor" /><Star size={20} fill="currentColor" /><Star size={20} fill="currentColor" />
+              <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }} className="bg-[#0A0F24]/80 light:bg-white backdrop-blur-md light:backdrop-blur-none border border-blue-500/20 light:border-slate-200 p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2rem] relative light:shadow-md">
+                <div className="flex gap-1 text-yellow-400 mb-5 sm:mb-6">
+                  <Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" />
                 </div>
-                <p className="text-white light:text-slate-700 text-lg leading-relaxed mb-8 font-light">"We moved our entire remote engineering team over to WabiSeminar for our daily standups. It's fast, free, and secure. What more could you ask for?"</p>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-indigo-500 flex items-center justify-center font-bold text-white light:text-slate-900 text-xl shadow-lg">D</div>
+                <p className="text-white light:text-slate-700 text-sm sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8 font-light">"We moved our entire remote engineering team over to WabiSeminar for our daily standups. It's fast, free, and secure. What more could you ask for?"</p>
+                <div className="flex items-center gap-3.5 sm:gap-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-indigo-500 flex items-center justify-center font-bold text-white light:text-slate-900 text-lg sm:text-xl shadow-lg shrink-0">D</div>
                   <div>
-                    <h4 className="text-white light:text-slate-900 font-bold">dagin</h4>
-                    <p className="text-[#94A3B8] light:text-slate-500 text-sm">CTO, TechFlow</p>
+                    <h4 className="text-white light:text-slate-900 font-bold text-sm sm:text-base">dagin</h4>
+                    <p className="text-[#94A3B8] light:text-slate-500 text-xs sm:text-sm">CTO, TechFlow</p>
                   </div>
                 </div>
               </motion.div>
@@ -572,18 +571,18 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
       {/* Info Modal */}
       {showInfoModal && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-[#050816]/90 light:bg-slate-50/90 backdrop-blur-md p-4 animate-in fade-in duration-300">
-          <div className="bg-[#0A0F24] light:bg-white border border-white/10 rounded-[2rem] max-w-lg w-full p-10 shadow-2xl relative">
+          <div className="bg-[#0A0F24] light:bg-white border border-white/10 rounded-2xl sm:rounded-[2rem] max-w-lg w-full p-6 sm:p-10 shadow-2xl relative max-h-[90vh] overflow-y-auto">
             <button 
               onClick={() => setShowInfoModal(false)}
-              className="absolute top-6 right-6 text-[#94A3B8] light:text-slate-500 hover:text-white light:text-slate-900 transition-colors bg-white/5 light:bg-slate-100 p-2 rounded-full hover:bg-rose-500/20 hover:text-rose-400"
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 text-[#94A3B8] light:text-slate-500 hover:text-white light:text-slate-900 transition-colors bg-white/5 light:bg-slate-100 p-2 rounded-full hover:bg-rose-500/20 hover:text-rose-400"
             >
               <X size={20} />
             </button>
-            <div className="w-16 h-16 rounded-full bg-indigo-500/20 flex items-center justify-center mb-6 border border-indigo-500/30">
-              <Video className="text-indigo-400" size={32} />
+            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-indigo-500/20 flex items-center justify-center mb-5 sm:mb-6 border border-indigo-500/30">
+              <Video className="text-indigo-400" size={26} />
             </div>
-            <h2 className="text-3xl font-bold text-white light:text-slate-900 mb-4">About WabiSeminar</h2>
-            <div className="space-y-4 text-[#94A3B8] light:text-slate-500 text-lg leading-relaxed">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white light:text-slate-900 mb-3 sm:mb-4">About WabiSeminar</h2>
+            <div className="space-y-3 sm:space-y-4 text-[#94A3B8] light:text-slate-500 text-sm sm:text-base lg:text-lg leading-relaxed">
               <p>
                 WabiSeminar is a completely <strong className="text-white light:text-slate-900">free</strong>, high-quality video conferencing platform designed for seamless collaboration.
               </p>
@@ -593,7 +592,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
             </div>
             <button 
               onClick={() => setShowInfoModal(false)}
-              className="mt-10 w-full bg-indigo-500 hover:from-indigo-400 hover:to-purple-400 text-white light:text-slate-900 py-4 rounded-full font-bold text-lg transition-all hover:shadow-[0_0_20px_rgba(99,102,241,0.4)]"
+              className="mt-6 sm:mt-10 w-full bg-indigo-500 hover:from-indigo-400 hover:to-purple-400 text-white light:text-slate-900 py-3.5 sm:py-4 rounded-full font-bold text-base sm:text-lg transition-all hover:shadow-[0_0_20px_rgba(99,102,241,0.4)]"
             >
               Let's get started!
             </button>
