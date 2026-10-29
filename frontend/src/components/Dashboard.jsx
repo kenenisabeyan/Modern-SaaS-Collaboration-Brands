@@ -323,7 +323,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                         value={joinId}
                         onChange={(e) => setJoinId(e.target.value)}
                         placeholder="Enter Room ID (e.g. abc-defg-hij)" 
-                        className="premium-input pl-11 py-4.5 text-[15px]" 
+                        className="premium-input pl-11 py-3.5 sm:py-4.5 text-sm sm:text-[15px]" 
                         onKeyDown={(e) => e.key === 'Enter' && handleJoinRoom()}
                       />
                     </div>
@@ -331,18 +331,18 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                       type="button"
                       whileHover={{ scale: (!joinId.trim() || isJoining) ? 1 : 1.02 }}
                       whileTap={{ scale: (!joinId.trim() || isJoining) ? 1 : 0.98 }}
-                      className={`group premium-btn premium-btn-orange w-full py-4 px-6 rounded-full text-[16px] font-bold flex items-center justify-between ${(!joinId.trim() || isJoining) ? 'opacity-90 cursor-not-allowed' : 'shadow-lg shadow-purple-500/20'}`}
+                      className={`group premium-btn premium-btn-orange w-full py-3.5 sm:py-4 px-5 sm:px-6 rounded-full text-sm sm:text-[16px] font-bold flex items-center justify-between ${(!joinId.trim() || isJoining) ? 'opacity-90 cursor-not-allowed' : 'shadow-lg shadow-purple-500/20'}`}
                       onClick={handleJoinRoom}
                     >
                       <div className="flex items-center">
                         {isJoining ? (
-                          <Loader2 className="mr-3 animate-spin" size={22} />
+                          <Loader2 className="mr-3 animate-spin" size={20} />
                         ) : (
-                          <Link className="mr-3" size={22} />
+                          <Link className="mr-3" size={20} />
                         )}
                         <span>Join Room</span>
                       </div>
-                      <ChevronRight size={22} className="opacity-90 group-hover:translate-x-1 transition-transform" />
+                      <ChevronRight size={20} className="opacity-90 group-hover:translate-x-1 transition-transform" />
                     </motion.button>
                   </div>
                 </div>
@@ -432,15 +432,15 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="border-y border-white/5 bg-white/[0.01] py-12 relative z-10 backdrop-blur-sm"
+          className="border-y border-white/5 bg-white/[0.01] py-8 sm:py-12 relative z-10 backdrop-blur-sm"
         >
-          <div className="max-w-7xl mx-auto px-6 text-center">
-            <p className="text-slate-400 light:text-slate-500 text-sm font-bold tracking-[0.2em] uppercase mb-8">Trusted by innovative teams worldwide</p>
-            <div className="flex flex-wrap justify-center items-center gap-10 md:gap-20 opacity-50 light:opacity-70 grayscale hover:grayscale-0 transition-all duration-700">
-              <div className="text-2xl font-black flex items-center gap-3 text-white light:text-slate-800"><div className="w-8 h-8 rounded-lg bg-indigo-500 shadow-lg shadow-indigo-500/50"></div> Acme Corp</div>
-              <div className="text-2xl font-black flex items-center gap-3 text-white light:text-slate-800"><div className="w-8 h-8 rounded-full bg-indigo-500 shadow-lg shadow-emerald-500/50"></div> Globex</div>
-              <div className="text-2xl font-black flex items-center gap-3 text-white light:text-slate-800"><div className="w-8 h-8 rounded-tl-2xl rounded-br-2xl bg-gradient-to-tr from-rose-500 to-orange-500 shadow-lg shadow-rose-500/50"></div> Stark Ind</div>
-              <div className="text-2xl font-black flex items-center gap-3 text-white light:text-slate-800 hidden md:flex"><div className="w-8 h-8 rotate-45 bg-gradient-to-tr from-blue-500 to-cyan-500 shadow-lg shadow-blue-500/50"></div> Initech</div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
+            <p className="text-slate-400 light:text-slate-500 text-xs sm:text-sm font-bold tracking-[0.2em] uppercase mb-6 sm:mb-8">Trusted by innovative teams worldwide</p>
+            <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-10 md:gap-20 opacity-50 light:opacity-70 grayscale hover:grayscale-0 transition-all duration-700">
+              <div className="text-lg sm:text-2xl font-black flex items-center gap-2 sm:gap-3 text-white light:text-slate-800"><div className="w-6 h-6 sm:w-8 sm:h-8 rounded-lg bg-indigo-500 shadow-lg shadow-indigo-500/50"></div> Acme Corp</div>
+              <div className="text-lg sm:text-2xl font-black flex items-center gap-2 sm:gap-3 text-white light:text-slate-800"><div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-indigo-500 shadow-lg shadow-emerald-500/50"></div> Globex</div>
+              <div className="text-lg sm:text-2xl font-black flex items-center gap-2 sm:gap-3 text-white light:text-slate-800"><div className="w-6 h-6 sm:w-8 sm:h-8 rounded-tl-2xl rounded-br-2xl bg-gradient-to-tr from-rose-500 to-orange-500 shadow-lg shadow-rose-500/50"></div> Stark Ind</div>
+              <div className="text-lg sm:text-2xl font-black flex items-center gap-2 sm:gap-3 text-white light:text-slate-800 hidden sm:flex"><div className="w-6 h-6 sm:w-8 sm:h-8 rotate-45 bg-gradient-to-tr from-blue-500 to-cyan-500 shadow-lg shadow-blue-500/50"></div> Initech</div>
             </div>
           </div>
         </motion.section>

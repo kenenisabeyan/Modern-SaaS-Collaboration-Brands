@@ -154,12 +154,12 @@ function App() {
       {showHeaderFooter && <Footer onNavigate={setCurrentView} />}
 
       {toast && (
-        <div className="fixed top-4 left-1/2 z-[100] w-[min(calc(100vw-2rem),28rem)] -translate-x-1/2">
+        <div className="fixed top-4 left-1/2 z-[100] w-[min(calc(100vw-1.5rem),28rem)] -translate-x-1/2 px-2 sm:px-0">
           <div
-            className={`rounded-full border px-4 py-3 text-sm shadow-2xl backdrop-blur-md ${
+            className={`rounded-2xl sm:rounded-full border px-4 py-3 text-xs sm:text-sm font-medium shadow-2xl backdrop-blur-md text-center break-words ${
               toast.type === 'error'
-                ? 'border-red-500/30 bg-red-950/80 text-red-100'
-                : 'border-emerald-500/30 bg-emerald-950/80 text-emerald-100'
+                ? 'border-red-500/30 bg-red-950/90 text-red-100'
+                : 'border-emerald-500/30 bg-emerald-950/90 text-emerald-100'
             }`}
           >
             {toast.message}

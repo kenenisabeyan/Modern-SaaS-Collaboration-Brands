@@ -761,17 +761,17 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
 
   if (joinDenied) {
     return (
-      <div className="flex-1 flex items-center justify-center h-screen bg-[#050816] light:bg-slate-50 text-white light:text-slate-900 relative overflow-hidden font-sans">
+      <div className="flex-1 flex items-center justify-center h-screen bg-[#050816] light:bg-slate-50 text-white light:text-slate-900 relative overflow-hidden font-sans p-4">
         <div className="absolute bg-rose-600/10 blur-[120px] w-[500px] h-[500px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
-        <div className="text-center space-y-6 z-10 max-w-md w-full mx-4 p-10 bg-[#0A0F24] light:bg-white shadow-none/80 light:shadow-xl backdrop-blur-2xl border border-white/10 light:border-slate-200 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)]">
-          <div className="w-20 h-20 bg-rose-500/20 rounded-full flex items-center justify-center mx-auto border border-rose-500/30 shadow-[0_0_30px_rgba(244,63,94,0.3)]">
-            <X size={40} className="text-rose-400" />
+        <div className="text-center space-y-5 sm:space-y-6 z-10 max-w-md w-full mx-auto p-6 sm:p-10 bg-[#0A0F24] light:bg-white shadow-none/80 light:shadow-xl backdrop-blur-2xl border border-white/10 light:border-slate-200 rounded-2xl sm:rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-rose-500/20 rounded-full flex items-center justify-center mx-auto border border-rose-500/30 shadow-[0_0_30px_rgba(244,63,94,0.3)]">
+            <X size={32} className="text-rose-400 sm:w-10 sm:h-10" />
           </div>
           <div>
-            <h2 className="text-3xl font-bold text-white light:text-slate-900 mb-2 tracking-tight">Entry Denied</h2>
-            <p className="text-[#94A3B8] light:text-slate-500">The host declined your request to join.</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white light:text-slate-900 mb-2 tracking-tight">Entry Denied</h2>
+            <p className="text-sm sm:text-base text-[#94A3B8] light:text-slate-500">The host declined your request to join.</p>
           </div>
-          <button type="button" onClick={onLeave} className="w-full py-4 px-6 rounded-full font-semibold text-white light:text-slate-900 bg-white/5 light:bg-slate-100 hover:bg-white/10 light:hover:bg-slate-200 light:bg-slate-200 light:hover:bg-slate-200 border border-white/10 light:border-slate-200 transition-all hover:-translate-y-0.5">
+          <button type="button" onClick={onLeave} className="w-full py-3.5 sm:py-4 px-5 sm:px-6 rounded-xl sm:rounded-full font-semibold text-sm sm:text-base text-white light:text-slate-900 bg-white/5 light:bg-slate-100 hover:bg-white/10 light:hover:bg-slate-200 border border-white/10 light:border-slate-200 transition-all hover:-translate-y-0.5">
             Return to Dashboard
           </button>
         </div>
@@ -781,17 +781,17 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
 
   if (roomNotFound) {
     return (
-      <div className="flex-1 flex items-center justify-center h-screen bg-[#050816] light:bg-slate-50 text-white light:text-slate-900 relative overflow-hidden font-sans">
+      <div className="flex-1 flex items-center justify-center h-screen bg-[#050816] light:bg-slate-50 text-white light:text-slate-900 relative overflow-hidden font-sans p-4">
         <div className="absolute bg-rose-600/10 blur-[120px] w-[500px] h-[500px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
-        <div className="text-center space-y-6 z-10 max-w-md w-full mx-4 p-10 bg-[#0A0F24] light:bg-white shadow-none/80 light:shadow-xl backdrop-blur-2xl border border-white/10 light:border-slate-200 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)]">
-          <div className="w-20 h-20 bg-rose-500/20 rounded-full flex items-center justify-center mx-auto border border-rose-500/30 shadow-[0_0_30px_rgba(244,63,94,0.3)]">
-            <X size={40} className="text-rose-400" />
+        <div className="text-center space-y-5 sm:space-y-6 z-10 max-w-md w-full mx-auto p-6 sm:p-10 bg-[#0A0F24] light:bg-white shadow-none/80 light:shadow-xl backdrop-blur-2xl border border-white/10 light:border-slate-200 rounded-2xl sm:rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-rose-500/20 rounded-full flex items-center justify-center mx-auto border border-rose-500/30 shadow-[0_0_30px_rgba(244,63,94,0.3)]">
+            <X size={32} className="text-rose-400 sm:w-10 sm:h-10" />
           </div>
           <div>
-            <h2 className="text-3xl font-bold text-white light:text-slate-900 mb-2 tracking-tight">Room Not Found</h2>
-            <p className="text-[#94A3B8] light:text-slate-500">This meeting link is invalid or the meeting has ended.</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white light:text-slate-900 mb-2 tracking-tight">Room Not Found</h2>
+            <p className="text-sm sm:text-base text-[#94A3B8] light:text-slate-500">This meeting link is invalid or the meeting has ended.</p>
           </div>
-          <button type="button" onClick={onLeave} className="w-full py-4 px-6 rounded-full font-semibold text-white light:text-slate-900 bg-white/5 light:bg-slate-100 hover:bg-white/10 light:hover:bg-slate-200 light:bg-slate-200 light:hover:bg-slate-200 border border-white/10 light:border-slate-200 transition-all hover:-translate-y-0.5">
+          <button type="button" onClick={onLeave} className="w-full py-3.5 sm:py-4 px-5 sm:px-6 rounded-xl sm:rounded-full font-semibold text-sm sm:text-base text-white light:text-slate-900 bg-white/5 light:bg-slate-100 hover:bg-white/10 light:hover:bg-slate-200 border border-white/10 light:border-slate-200 transition-all hover:-translate-y-0.5">
             Return to Dashboard
           </button>
         </div>
@@ -801,19 +801,19 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
 
   if (isWaiting) {
     return (
-      <div className="flex-1 flex items-center justify-center h-screen bg-[#050816] light:bg-slate-50 text-white light:text-slate-900 relative overflow-hidden font-sans">
+      <div className="flex-1 flex items-center justify-center h-screen bg-[#050816] light:bg-slate-50 text-white light:text-slate-900 relative overflow-hidden font-sans p-4">
         <div className="absolute bg-indigo-600/15 blur-[120px] w-[500px] h-[500px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
-        <div className="text-center space-y-6 z-10 max-w-md w-full mx-4 p-10 bg-[#0A0F24] light:bg-white shadow-none/80 light:shadow-xl backdrop-blur-2xl border border-white/10 light:border-slate-200 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)]">
-          <div className="relative w-20 h-20 mx-auto flex items-center justify-center">
+        <div className="text-center space-y-5 sm:space-y-6 z-10 max-w-md w-full mx-auto p-6 sm:p-10 bg-[#0A0F24] light:bg-white shadow-none/80 light:shadow-xl backdrop-blur-2xl border border-white/10 light:border-slate-200 rounded-2xl sm:rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+          <div className="relative w-16 h-16 sm:w-20 sm:h-20 mx-auto flex items-center justify-center">
             <div className="absolute inset-0 border-t-2 border-indigo-500 rounded-full animate-spin"></div>
             <div className="absolute inset-2 border-r-2 border-purple-500 rounded-full animate-[spin_1.5s_linear_infinite_reverse]"></div>
-            <Users size={32} className="text-indigo-400 light:text-indigo-600" />
+            <Users size={28} className="text-indigo-400 light:text-indigo-600 sm:w-8 sm:h-8" />
           </div>
           <div>
-            <h2 className="text-3xl font-bold text-white light:text-slate-900 mb-2 tracking-tight">Waiting for Host</h2>
-            <p className="text-[#94A3B8] light:text-slate-500">Please wait, the meeting host will let you in soon.</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white light:text-slate-900 mb-2 tracking-tight">Waiting for Host</h2>
+            <p className="text-sm sm:text-base text-[#94A3B8] light:text-slate-500">Please wait, the meeting host will let you in soon.</p>
           </div>
-          <button type="button" onClick={onLeave} className="text-rose-400 hover:text-rose-300 mt-2 block mx-auto text-sm font-medium transition-colors hover:underline">
+          <button type="button" onClick={onLeave} className="text-rose-400 hover:text-rose-300 mt-2 block mx-auto text-xs sm:text-sm font-medium transition-colors hover:underline">
             Cancel & Return
           </button>
         </div>
@@ -823,17 +823,17 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
 
   if (isJoining) {
     return (
-      <div className="flex-1 flex items-center justify-center h-screen bg-[#050816] light:bg-slate-50 text-white light:text-slate-900 relative overflow-hidden font-sans">
+      <div className="flex-1 flex items-center justify-center h-screen bg-[#050816] light:bg-slate-50 text-white light:text-slate-900 relative overflow-hidden font-sans p-4">
         <div className="absolute bg-blue-600/15 blur-[120px] w-[500px] h-[500px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
-        <div className="text-center space-y-6 z-10 max-w-md w-full mx-4 p-10 bg-[#0A0F24] light:bg-white shadow-none/80 light:shadow-xl backdrop-blur-2xl border border-white/10 light:border-slate-200 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)]">
-          <div className="relative w-20 h-20 mx-auto flex items-center justify-center">
+        <div className="text-center space-y-5 sm:space-y-6 z-10 max-w-md w-full mx-auto p-6 sm:p-10 bg-[#0A0F24] light:bg-white shadow-none/80 light:shadow-xl backdrop-blur-2xl border border-white/10 light:border-slate-200 rounded-2xl sm:rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+          <div className="relative w-16 h-16 sm:w-20 sm:h-20 mx-auto flex items-center justify-center">
             <div className="absolute inset-0 border-t-2 border-blue-500 rounded-full animate-spin"></div>
             <div className="absolute inset-2 border-l-2 border-indigo-500 rounded-full animate-[spin_1s_linear_infinite_reverse]"></div>
-            <Video size={32} className="text-blue-400 light:text-blue-600" />
+            <Video size={28} className="text-blue-400 light:text-blue-600 sm:w-8 sm:h-8" />
           </div>
           <div>
-            <h2 className="text-3xl font-bold text-white light:text-slate-900 mb-2 tracking-tight">Opening Meeting</h2>
-            <p className="text-[#94A3B8] light:text-slate-500">Checking the room and connecting securely.</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white light:text-slate-900 mb-2 tracking-tight">Opening Meeting</h2>
+            <p className="text-sm sm:text-base text-[#94A3B8] light:text-slate-500">Checking the room and connecting securely.</p>
           </div>
         </div>
       </div>
@@ -1210,21 +1210,21 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
         </div>
 
         {/* Message Input */}
-        <div className="p-5 border-t border-white/10 light:border-slate-200 bg-transparent">
+        <div className="p-3.5 sm:p-5 border-t border-white/10 light:border-slate-200 bg-transparent">
           <div className="relative flex items-center">
             <input
               type="text"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Type your message..."
-              className="w-full bg-[#050816] light:bg-slate-50 border border-white/10 light:border-slate-200 rounded-full pl-5 pr-14 py-4 text-sm text-white light:text-slate-900 placeholder-slate-500 focus:outline-none focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/50 transition-all shadow-inner"
+              className="w-full bg-[#050816] light:bg-slate-50 border border-white/10 light:border-slate-200 rounded-full pl-4 sm:pl-5 pr-12 sm:pr-14 py-3 sm:py-4 text-xs sm:text-sm text-white light:text-slate-900 placeholder-slate-500 focus:outline-none focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/50 transition-all shadow-inner"
               onKeyDown={(e) => {
                 if (e.key === 'Enter' && message.trim()) handleSendMessage();
               }}
             />
             <button 
               type="button" 
-              className={`absolute right-2 p-2.5 rounded-full transition-all ${
+              className={`absolute right-1.5 sm:right-2 p-2 sm:p-2.5 rounded-full transition-all ${
                 message.length > 0 
                   ? 'bg-indigo-500 text-white light:text-slate-900 shadow-[0_0_15px_rgba(99,102,241,0.4)] hover:bg-indigo-400 hover:scale-105' 
                   : 'text-slate-600 cursor-not-allowed bg-transparent'
@@ -1232,7 +1232,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
               onClick={handleSendMessage} 
               disabled={message.length === 0}
             >
-              <Send size={18} />
+              <Send size={16} className="sm:w-[18px] sm:h-[18px]" />
             </button>
           </div>
         </div>
