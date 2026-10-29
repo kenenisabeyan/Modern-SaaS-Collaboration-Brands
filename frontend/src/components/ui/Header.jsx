@@ -268,6 +268,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
             )}
           </motion.div>
         </>
+      )}
     </>
   );
 }
