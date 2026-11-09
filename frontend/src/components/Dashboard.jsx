@@ -5,14 +5,16 @@ import HeroAnimation from './HeroAnimation.jsx';
 import { 
   Video, Users, Loader2, Sparkles, Zap, Shield, Clock, Monitor, 
   ChevronRight, Link, CheckCircle, Star, MessageSquare, GraduationCap, 
-  BookOpen, Heart, ArrowRight, X
+  BookOpen, Heart, ArrowRight, X, ChevronDown
 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
   const [joinId, setJoinId] = useState('');
   const [isCreating, setIsCreating] = useState(false);
   const [isJoining, setIsJoining] = useState(false);
+  const [showJoinInline, setShowJoinInline] = useState(false);
+  const [showJoinModal, setShowJoinModal] = useState(false);
   const [showInfoModal, setShowInfoModal] = useState(false);
   const [actionError, setActionError] = useState('');
   const [platformStats, setPlatformStats] = useState({ users: 36, meetings: 5, minutes: 225 });
@@ -121,6 +123,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
       }
 
       notify?.('success', 'Meeting found. Connecting to the room...');
+      setShowJoinModal(false);
       onJoinRoom(id);
     } catch (error) {
       console.error('Error joining room:', error);
@@ -130,200 +133,199 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
     }
   };
 
-  const scrollToSection = (id) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <div className="flex flex-col min-h-screen bg-white text-slate-900 font-sans overflow-x-hidden selection:bg-[#0DA9CF] selection:text-white">
       
       <main className="flex-1 flex flex-col pt-16 sm:pt-20 relative z-10">
         
         {/* ========================================================
-            HERO SECTION: 2 COLUMNS (TIGHT, COMPACT SPACING)
+            HERO SECTION: 2 COLUMNS (CLEAN, SEAMLESS LIKE ICEADDIS & KENENISA-OS)
            ======================================================== */}
-        <section className="pt-3 sm:pt-6 pb-10 sm:pb-14 px-4 sm:px-8 lg:px-12 xl:px-16 bg-white relative">
-          <div className="max-w-[1440px] w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+        <section className="pt-4 sm:pt-8 md:pt-10 pb-10 sm:pb-14 px-4 sm:px-8 lg:px-12 xl:px-16 bg-white relative">
+          <div className="max-w-[1440px] w-full mx-auto">
             
-            {/* Left Column: Heading and Description */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="lg:col-span-6 flex flex-col justify-center items-start space-y-5 sm:space-y-6 pt-2 sm:pt-4"
-            >
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[64px] xl:text-[76px] font-extrabold tracking-tight leading-[1.05] select-none text-left">
-                <span className="text-[#0DA9CF] block">Host Engaging</span>
-                <span className="text-[#1E293B] block">Masterclasses</span>
-              </h1>
-
-              <p className="text-slate-600 text-sm sm:text-base lg:text-lg max-w-[500px] leading-relaxed font-normal">
-                Create a free, encrypted meeting room instantly or join an existing session in seconds. Built for innovative educators, creators, and teams who value simplicity and connection.
-              </p>
-
-              {/* Feature check marks */}
-              <div className="flex flex-wrap items-center gap-5 pt-1 text-xs sm:text-sm text-slate-500 font-medium">
-                <div className="flex items-center space-x-1.5">
-                  <CheckCircle size={15} className="text-[#04B84C]" />
-                  <span>Zero Downloads</span>
-                </div>
-                <div className="flex items-center space-x-1.5">
-                  <CheckCircle size={15} className="text-[#0DA9CF]" />
-                  <span>Ultra HD Video</span>
-                </div>
-                <div className="flex items-center space-x-1.5">
-                  <CheckCircle size={15} className="text-[#F67E31]" />
-                  <span>End-to-End Secure</span>
-                </div>
-              </div>
-            </motion.div>
-
-
-            {/* Right Column: Instant Collaboration Card with Integrated 3D Visual */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="lg:col-span-6 flex flex-col items-center justify-center w-full max-w-[530px] mx-auto lg:ml-auto"
-            >
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
               
-              {/* Instant Collaboration Card (Compact & Tight) */}
-              <div className="w-full bg-white border border-slate-200 rounded-3xl p-5 sm:p-6 shadow-[0_10px_35px_rgba(0,0,0,0.05)] hover:shadow-[0_16px_45px_rgba(13,169,207,0.1)] transition-all relative">
-                
-                {/* Header with Integrated Compact 3D Turbine Graphic */}
-                <div className="flex items-center justify-between gap-3 mb-3">
-                  <div>
-                    <span className="inline-block px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-[#0DA9CF]/10 text-[#0DA9CF] border border-[#0DA9CF]/20 mb-1.5">
-                      Instant Collaboration
-                    </span>
-                    <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-slate-900 tracking-tight leading-tight">
-                      Start or Join a Session Now
-                    </h2>
-                  </div>
-
-                  {/* Compact 3D Turbine Animation */}
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 aspect-square shrink-0 select-none pointer-events-none -my-2">
-                    <HeroAnimation className="w-full h-full" />
-                  </div>
+              {/* Left Column: Heading, Subtitle, 2 Essential Buttons & Trust Badges */}
+              <motion.div 
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+                className="lg:col-span-6 flex flex-col justify-center items-start text-left"
+              >
+                {/* Instant Collaboration Tag */}
+                <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#0DA9CF]/10 text-[#0DA9CF] border border-[#0DA9CF]/20 mb-4 sm:mb-5">
+                  <span className="w-2 h-2 rounded-full bg-[#04B84C] animate-pulse"></span>
+                  <span>Instant Collaboration</span>
                 </div>
 
-                <p className="text-xs sm:text-sm text-slate-500 mb-4 leading-relaxed">
-                  Seamless real-time meetings with screen sharing, participant controls, and interactive chat.
+                {/* Main Headline (Styled like iceaddis "Amplifying Startups" + kenenisa-os) */}
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[62px] xl:text-[70px] font-extrabold tracking-tight leading-[1.08] text-slate-900 mb-4 sm:mb-5 select-none">
+                  <span className="text-[#0DA9CF] block">Host Engaging</span>
+                  <span className="text-slate-900 block">Masterclasses</span>
+                </h1>
+
+                {/* Subtitle Description */}
+                <p className="text-slate-600 text-sm sm:text-base lg:text-lg leading-relaxed max-w-[520px] mb-6 sm:mb-8 font-normal">
+                  Create a free, encrypted meeting room instantly or join an existing session in seconds. Built for innovative educators, creators, and teams who value simplicity and connection.
                 </p>
 
                 {/* Error Banner */}
                 {actionError && (
-                  <div className="mb-3.5 p-2.5 rounded-xl border border-rose-200 bg-rose-50 text-rose-700 text-xs flex items-center">
-                    <Shield className="mr-2 text-rose-500 shrink-0" size={15} />
+                  <div className="w-full max-w-[500px] mb-4 p-3 rounded-xl border border-rose-200 bg-rose-50 text-rose-700 text-xs flex items-center">
+                    <Shield className="mr-2 text-rose-500 shrink-0" size={16} />
                     <span>{actionError}</span>
                   </div>
                 )}
 
-                {/* 2 Sub-cards: Host a Session & Join a Session */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+                {/* ONLY TWO ESSENTIAL ACTION BUTTONS (User requested) */}
+                <div className="flex flex-wrap items-center gap-3 sm:gap-4 w-full sm:w-auto">
                   
-                  {/* Host a Session */}
-                  <div className="bg-slate-50/80 border border-slate-200/90 rounded-2xl p-3.5 flex flex-col justify-between hover:border-[#0DA9CF]/40 transition-colors">
-                    <div>
-                      <div className="w-8 h-8 rounded-xl bg-[#0DA9CF]/10 text-[#0DA9CF] flex items-center justify-center mb-2">
-                        <Video size={16} />
-                      </div>
-                      <h3 className="text-sm font-bold text-slate-900 mb-1">Host a Session</h3>
-                      <p className="text-[11px] text-slate-500 leading-snug mb-3">
-                        Generate a secure, end-to-end encrypted room instantly and invite your attendees with a single link.
-                      </p>
-                    </div>
+                  {/* Button 1: Solid Orange (#F67E31) - Host a Session / Create Instant Room */}
+                  <button
+                    onClick={handleCreateRoom}
+                    disabled={isCreating}
+                    className="w-full sm:w-auto px-7 py-3.5 sm:py-4 rounded-xl sm:rounded-full bg-[#F67E31] hover:bg-[#CC6A2F] text-white font-bold text-sm sm:text-base shadow-lg shadow-[#F67E31]/25 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center space-x-2.5 cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed"
+                  >
+                    {isCreating ? (
+                      <>
+                        <Loader2 className="animate-spin" size={18} />
+                        <span>Creating Room...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Video size={18} />
+                        <span>Create Instant Room</span>
+                        <ChevronDown size={16} className="opacity-75" />
+                      </>
+                    )}
+                  </button>
 
-                    <button
-                      onClick={handleCreateRoom}
-                      disabled={isCreating}
-                      className="w-full bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white py-2.5 px-3 rounded-full font-bold text-xs transition-all flex items-center justify-center shadow-md shadow-[#0DA9CF]/20 hover:shadow-lg cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed"
-                    >
-                      {isCreating ? (
-                        <>
-                          <Loader2 className="mr-1.5 animate-spin" size={13} />
-                          <span>Creating...</span>
-                        </>
-                      ) : (
-                        <>
-                          <Video className="mr-1.5" size={13} />
-                          <span>Create Instant Room</span>
-                        </>
-                      )}
-                    </button>
-                  </div>
-
-                  {/* Join a Session */}
-                  <div className="bg-slate-50/80 border border-slate-200/90 rounded-2xl p-3.5 flex flex-col justify-between hover:border-[#F67E31]/40 transition-colors">
-                    <div>
-                      <div className="w-8 h-8 rounded-xl bg-[#F67E31]/10 text-[#F67E31] flex items-center justify-center mb-2">
-                        <Users size={16} />
-                      </div>
-                      <h3 className="text-sm font-bold text-slate-900 mb-1">Join a Session</h3>
-                      <p className="text-[11px] text-slate-500 leading-snug mb-2.5">
-                        Enter a room ID or paste an invite link to jump directly into an existing masterclass or webinar.
-                      </p>
-                      <input 
-                        type="text" 
-                        value={joinId}
-                        onChange={(e) => setJoinId(e.target.value)}
-                        placeholder="e.g. abc-defg-hij" 
-                        className="w-full px-3 py-1.5 bg-white border border-slate-200 rounded-full text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#F67E31]/40 focus:border-[#F67E31] text-xs mb-3 transition-all"
-                        onKeyDown={(e) => e.key === 'Enter' && handleJoinRoom()}
-                      />
-                    </div>
-
-                    <button
-                      onClick={handleJoinRoom}
-                      disabled={!joinId.trim() || isJoining}
-                      className="w-full bg-[#F67E31] hover:bg-[#CC6A2F] text-white py-2.5 px-3 rounded-full font-bold text-xs transition-all flex items-center justify-center shadow-md shadow-[#F67E31]/20 hover:shadow-lg cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
-                    >
-                      {isJoining ? (
-                        <>
-                          <Loader2 className="mr-1.5 animate-spin" size={13} />
-                          <span>Joining...</span>
-                        </>
-                      ) : (
-                        <>
-                          <Link className="mr-1.5" size={13} />
-                          <span>Join Room</span>
-                        </>
-                      )}
-                    </button>
-                  </div>
+                  {/* Button 2: White with Cyan (#0DA9CF) Border & Text - Join a Session */}
+                  <button
+                    onClick={() => setShowJoinInline(prev => !prev)}
+                    className="w-full sm:w-auto px-7 py-3.5 sm:py-4 rounded-xl sm:rounded-full bg-white hover:bg-[#0DA9CF]/5 text-[#0DA9CF] border-2 border-[#0DA9CF] font-bold text-sm sm:text-base shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center space-x-2 cursor-pointer"
+                  >
+                    <Users size={18} />
+                    <span>Join a Session ▸</span>
+                  </button>
 
                 </div>
 
-                {/* Stats Strip: 36 Happy Users, 5 Meetings Hosted, 225 Minutes Connected */}
-                <div className="grid grid-cols-3 gap-2 pt-3 border-t border-slate-100 text-center">
-                  <div className="p-2 rounded-xl bg-slate-50/70 border border-slate-100">
-                    <div className="text-base sm:text-lg font-black text-[#0DA9CF]">
-                      {platformStats.users.toLocaleString()}
-                    </div>
-                    <div className="text-[9px] sm:text-[10px] font-bold text-slate-500 uppercase tracking-tight">Happy Users</div>
-                  </div>
+                {/* Smooth Expandable Join Input (Friction-Free Room ID entry) */}
+                <AnimatePresence>
+                  {showJoinInline && (
+                    <motion.div 
+                      initial={{ opacity: 0, height: 0, y: -5 }}
+                      animate={{ opacity: 1, height: 'auto', y: 0 }}
+                      exit={{ opacity: 0, height: 0, y: -5 }}
+                      transition={{ duration: 0.25 }}
+                      className="w-full max-w-[500px] mt-4 p-3 rounded-2xl bg-slate-50 border border-slate-200"
+                    >
+                      <div className="flex items-center gap-2">
+                        <input 
+                          type="text" 
+                          value={joinId}
+                          onChange={(e) => setJoinId(e.target.value)}
+                          placeholder="e.g. abc-defg-hij" 
+                          autoFocus
+                          className="flex-1 px-4 py-2.5 bg-white border border-slate-200 rounded-xl sm:rounded-full text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0DA9CF]/40 focus:border-[#0DA9CF] text-xs sm:text-sm font-medium transition-all"
+                          onKeyDown={(e) => e.key === 'Enter' && handleJoinRoom()}
+                        />
+                        <button
+                          onClick={handleJoinRoom}
+                          disabled={!joinId.trim() || isJoining}
+                          className="px-5 py-2.5 bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white rounded-xl sm:rounded-full font-bold text-xs sm:text-sm transition-all shadow-md shadow-[#0DA9CF]/25 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-1.5"
+                        >
+                          {isJoining ? <Loader2 size={15} className="animate-spin" /> : <span>Join</span>}
+                        </button>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
 
-                  <div className="p-2 rounded-xl bg-slate-50/70 border border-slate-100">
-                    <div className="text-base sm:text-lg font-black text-[#F67E31]">
-                      {platformStats.meetings.toLocaleString()}
-                    </div>
-                    <div className="text-[9px] sm:text-[10px] font-bold text-slate-500 uppercase tracking-tight">Meetings Hosted</div>
+                {/* Feature check marks */}
+                <div className="flex flex-wrap items-center gap-4 sm:gap-6 pt-6 sm:pt-8 text-xs sm:text-sm text-slate-600 font-semibold select-none">
+                  <div className="flex items-center space-x-1.5">
+                    <CheckCircle size={16} className="text-[#04B84C]" />
+                    <span>Zero Downloads</span>
                   </div>
-
-                  <div className="p-2 rounded-xl bg-slate-50/70 border border-slate-100">
-                    <div className="text-base sm:text-lg font-black text-[#04B84C]">
-                      {platformStats.minutes.toLocaleString()}
-                    </div>
-                    <div className="text-[9px] sm:text-[10px] font-bold text-slate-500 uppercase tracking-tight">Minutes Connected</div>
+                  <div className="flex items-center space-x-1.5">
+                    <CheckCircle size={16} className="text-[#0DA9CF]" />
+                    <span>Ultra HD Video</span>
+                  </div>
+                  <div className="flex items-center space-x-1.5">
+                    <CheckCircle size={16} className="text-[#F67E31]" />
+                    <span>End-to-End Secure</span>
                   </div>
                 </div>
 
+              </motion.div>
+
+
+              {/* Right Column: Grand 3D Turbine Animation (Centerpiece like iceaddis Image 1) */}
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.7, delay: 0.1 }}
+                className="lg:col-span-6 flex items-center justify-center relative w-full"
+              >
+                {/* Soft diffused radial ambient glow behind 3D turbine */}
+                <div className="absolute inset-4 rounded-full bg-gradient-to-tr from-[#0DA9CF]/12 via-[#F67E31]/10 to-[#04B84C]/8 blur-3xl pointer-events-none -z-10" />
+
+                <div className="w-full max-w-[460px] sm:max-w-[520px] lg:max-w-[580px] aspect-square flex items-center justify-center">
+                  <HeroAnimation className="w-full h-full" />
+                </div>
+              </motion.div>
+
+            </div>
+
+
+            {/* ========================================================
+                3 METRIC / STAT CARDS (EXACT MATCH TO KENENISA-OS IMAGE 5)
+               ======================================================== */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-12 sm:pt-16">
+              
+              {/* Card 1: Cyan Glow (36+ Happy Users) */}
+              <div className="bg-gradient-to-b from-[#0DA9CF]/12 via-white to-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 text-center hover:border-[#0DA9CF] shadow-sm hover:shadow-xl transition-all group">
+                <div className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 mb-2 transition-transform duration-300 group-hover:scale-105">
+                  {platformStats.users}+
+                </div>
+                <div className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-700 mb-1">
+                  HAPPY USERS
+                </div>
+                <div className="text-xs text-slate-500 font-medium">
+                  Active Learners & Teams
+                </div>
               </div>
 
-            </motion.div>
+              {/* Card 2: Orange Glow (5+ Meetings Hosted) */}
+              <div className="bg-gradient-to-b from-[#F67E31]/12 via-white to-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 text-center hover:border-[#F67E31] shadow-sm hover:shadow-xl transition-all group">
+                <div className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#F67E31] mb-2 transition-transform duration-300 group-hover:scale-105">
+                  {platformStats.meetings}+
+                </div>
+                <div className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-700 mb-1">
+                  MEETINGS HOSTED
+                </div>
+                <div className="text-xs text-slate-500 font-medium">
+                  Masterclasses & Webinars
+                </div>
+              </div>
+
+              {/* Card 3: Green Glow (225+ Minutes Connected) */}
+              <div className="bg-gradient-to-b from-[#04B84C]/12 via-white to-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 text-center hover:border-[#04B84C] shadow-sm hover:shadow-xl transition-all group">
+                <div className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#04B84C] mb-2 transition-transform duration-300 group-hover:scale-105">
+                  {platformStats.minutes}+
+                </div>
+                <div className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-700 mb-1">
+                  MINUTES CONNECTED
+                </div>
+                <div className="text-xs text-slate-500 font-medium">
+                  Verified HD WebRTC Sessions
+                </div>
+              </div>
+
+            </div>
 
           </div>
         </section>

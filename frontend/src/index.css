@@ -117,8 +117,8 @@
     text-rendering: optimizeLegibility;
   }
   body {
-    background-color: #050816;
-    color: #FFFFFF;
+    background-color: #FFFFFF;
+    color: #0F172A;
     font-family: var(--font-sans);
     overflow-x: hidden;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
