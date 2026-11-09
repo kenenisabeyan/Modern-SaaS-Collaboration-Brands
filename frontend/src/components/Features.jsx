@@ -35,8 +35,8 @@ export default function Features({ onNavigate }) {
   return (
     <div className="min-h-screen bg-[#050816] light:bg-[#FAFAFA] text-white light:text-slate-900 font-sans overflow-hidden relative">
       {/* Background Animated Blobs */}
-      <div className="fixed bg-indigo-600/10 blur-[150px] w-[800px] h-[800px] rounded-full top-[-20%] left-[-10%] pointer-events-none"></div>
-      <div className="fixed bg-purple-600/10 blur-[150px] w-[600px] h-[600px] rounded-full bottom-[-10%] right-[-10%] pointer-events-none"></div>
+      <div className="fixed bg-[#0DA9CF]/10 blur-[150px] w-[800px] h-[800px] rounded-full top-[-20%] left-[-10%] pointer-events-none"></div>
+      <div className="fixed bg-[#F67E31]/10 blur-[150px] w-[600px] h-[600px] rounded-full bottom-[-10%] right-[-10%] pointer-events-none"></div>
 
       {/* Navbar handled globally in App.jsx */}
 
@@ -52,7 +52,7 @@ export default function Features({ onNavigate }) {
           >
 
             <motion.h1 variants={fadeIn} className="text-3xl sm:text-5xl md:text-7xl font-extrabold mb-4 sm:mb-6 tracking-tight leading-[1.1] text-white light:text-slate-900 break-words">
-              Built for <span className="text-indigo-500">flawless</span> execution.
+              Built for <span className="text-[#0DA9CF]">flawless</span> execution.
             </motion.h1>
             <motion.p variants={fadeIn} className="text-base sm:text-lg md:text-xl text-[#94A3B8] light:text-slate-600 leading-relaxed max-w-2xl font-light mb-8 sm:mb-10">
               Everything you need to host professional, engaging, and secure meetings without the complexity of legacy platforms. No downloads. No limits. Just instant connection.
@@ -92,11 +92,11 @@ export default function Features({ onNavigate }) {
 
         {/* 3. Interactive Collaboration Section */}
         <section className="px-4 sm:px-6 mb-20 sm:mb-32">
-          <div className="bg-gradient-to-br from-[#0A0F24] light:from-white to-[#160B2A] light:to-slate-100 border border-purple-500/20 rounded-2xl sm:rounded-[3rem] p-6 sm:p-10 md:p-16 lg:p-20 overflow-hidden relative shadow-[0_30px_60px_-15px_rgba(124,58,237,0.2)]">
-            <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-purple-500/10 to-transparent pointer-events-none"></div>
+          <div className="bg-gradient-to-br from-[#0A0F24] light:from-white to-[#160B2A] light:to-slate-100 border border-[#F67E31]/20 rounded-2xl sm:rounded-[3rem] p-6 sm:p-10 md:p-16 lg:p-20 overflow-hidden relative shadow-[0_30px_60px_-15px_rgba(246,126,49,0.2)]">
+            <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#F67E31]/10 to-transparent pointer-events-none"></div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center relative z-10">
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
-                <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-purple-500/30 light:border-purple-200 bg-purple-500/10 light:bg-purple-50 text-purple-300 light:text-purple-600 w-fit text-xs font-bold mb-4 sm:mb-6">
+                <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-[#F67E31]/30 light:border-[#F67E31]/20 bg-[#F67E31]/10 light:bg-[#F67E31]/5 text-[#F67E31] w-fit text-xs font-bold mb-4 sm:mb-6">
                   Collaboration
                 </div>
                 <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold mb-4 sm:mb-6 text-white light:text-slate-900">Designed for interactive masterclasses.</h2>
@@ -110,7 +110,7 @@ export default function Features({ onNavigate }) {
                     "Real-time synchronized chat without interrupting the flow."
                   ].map((item, i) => (
                     <li key={i} className="flex items-center space-x-3 text-sm sm:text-base text-white light:text-slate-700">
-                      <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-purple-500/20 light:bg-purple-100 flex items-center justify-center text-purple-400 light:text-purple-600 text-xs sm:text-sm font-bold flex-shrink-0">✓</div>
+                      <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#04B84C]/20 light:bg-[#04B84C]/10 flex items-center justify-center text-[#04B84C] text-xs sm:text-sm font-bold flex-shrink-0">✓</div>
                       <span>{item}</span>
                     </li>
                   ))}
@@ -126,7 +126,7 @@ export default function Features({ onNavigate }) {
                         <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/10 light:bg-slate-200 flex items-center justify-center"><Video size={16}/></div>
                         <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-rose-500/20 flex items-center justify-center text-rose-400"><Monitor size={16}/></div>
                      </div>
-                     <div className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-purple-500 flex items-center justify-center font-bold text-xs sm:text-sm">End</div>
+                     <div className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-[#F67E31] flex items-center justify-center font-bold text-xs sm:text-sm text-white">End</div>
                   </div>
                 </div>
               </motion.div>
@@ -172,9 +172,9 @@ export default function Features({ onNavigate }) {
         {/* 7. Mobile Compatibility */}
         <section className="px-4 sm:px-6 mb-20 sm:mb-32">
           <div className="bg-[#050816] light:bg-[#FAFAFA] border border-white/10 light:border-slate-200 rounded-2xl sm:rounded-[3rem] p-6 sm:p-10 md:p-16 flex flex-col md:flex-row items-center justify-between relative overflow-hidden group shadow-2xl light:shadow-xl">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-teal-500/5 group-hover:from-blue-500/10 group-hover:to-teal-500/10 transition-colors duration-700"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0DA9CF]/5 to-[#04B84C]/5 group-hover:from-[#0DA9CF]/10 group-hover:to-[#04B84C]/10 transition-colors duration-700"></div>
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="md:w-1/2 relative z-10 mb-10 md:mb-0">
-              <Smartphone size={36} className="text-teal-400 light:text-teal-600 mb-4 sm:mb-6 sm:w-10 sm:h-10" />
+              <Smartphone size={36} className="text-[#04B84C] mb-4 sm:mb-6 sm:w-10 sm:h-10" />
               <h2 className="text-2xl sm:text-4xl font-extrabold mb-4 sm:mb-6 text-white light:text-slate-900">Zero Downloads. <br/>100% Mobile Ready.</h2>
               <p className="text-[#94A3B8] light:text-slate-600 text-base sm:text-lg leading-relaxed max-w-md">
                 Your attendees shouldn't have to install bulky apps just to join your seminar. WabiSeminar runs perfectly in any modern mobile browser with full functionality.
@@ -182,8 +182,8 @@ export default function Features({ onNavigate }) {
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="w-full md:w-5/12 relative z-10 flex justify-center">
                {/* Mock Mobile Device */}
-               <div className="w-[260px] sm:w-[280px] h-[500px] sm:h-[580px] bg-[#0A0F24] light:bg-white rounded-[2.5rem] sm:rounded-[3rem] border-[6px] sm:border-[8px] border-[#1E113C] shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden relative">
-                  <div className="absolute top-0 w-full h-6 bg-[#1E113C] light:bg-slate-100 flex justify-center rounded-b-xl"><div className="w-1/3 h-4 bg-[#0A0F24] light:bg-white rounded-b-xl"></div></div>
+               <div className="w-[260px] sm:w-[280px] h-[500px] sm:h-[580px] bg-[#0A0F24] light:bg-white rounded-[2.5rem] sm:rounded-[3rem] border-[6px] sm:border-[8px] border-[#0A0F24] shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden relative">
+                  <div className="absolute top-0 w-full h-6 bg-[#0A0F24] light:bg-slate-100 flex justify-center rounded-b-xl"><div className="w-1/3 h-4 bg-[#0A0F24] light:bg-white rounded-b-xl"></div></div>
                   <div className="w-full h-full bg-[#050816] light:bg-slate-50 pt-8 sm:pt-10 px-3 sm:px-4 flex flex-col">
                     <div className="flex-1 bg-[#160B2A] light:bg-slate-100 rounded-2xl border border-white/5 mb-4 relative overflow-hidden">
                        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=400')] bg-cover bg-center opacity-70"></div>
@@ -191,7 +191,7 @@ export default function Features({ onNavigate }) {
                     <div className="h-16 sm:h-20 bg-[#0A0F24] light:bg-white rounded-2xl mb-4 flex items-center justify-around border border-white/5">
                       <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-rose-500/20 flex items-center justify-center text-rose-400"><Video size={16}/></div>
                       <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/10 light:bg-slate-200 flex items-center justify-center text-white light:text-slate-900"><Monitor size={16}/></div>
-                      <div className="px-3 py-1.5 rounded-full bg-purple-500 flex items-center justify-center text-white light:text-slate-900 text-xs font-bold">End</div>
+                      <div className="px-3 py-1.5 rounded-full bg-[#F67E31] flex items-center justify-center text-white text-xs font-bold">End</div>
                     </div>
                   </div>
                </div>
@@ -208,7 +208,7 @@ export default function Features({ onNavigate }) {
             className="bg-[#0A0F24]/80 light:bg-white/90 backdrop-blur-xl border border-white/10 rounded-2xl sm:rounded-[3rem] p-8 sm:p-12 md:p-20 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.5)] relative overflow-hidden group"
           >
             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 group-hover:opacity-10 transition-opacity"></div>
-            <div className="absolute inset-0 bg-gradient-to-b from-indigo-500/5 to-transparent pointer-events-none group-hover:from-indigo-500/10 transition-colors duration-500"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-[#0DA9CF]/5 to-transparent pointer-events-none group-hover:from-[#0DA9CF]/10 transition-colors duration-500"></div>
             <div className="relative z-10">
               <h2 className="text-2xl sm:text-4xl md:text-6xl font-extrabold text-white light:text-slate-900 mb-4 sm:mb-6 tracking-tight">Ready to host your next masterpiece?</h2>
               <p className="text-[#94A3B8] light:text-slate-500 text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-8 sm:mb-10 font-medium">Join thousands of professionals who have upgraded their meeting experience with WabiSeminar.</p>
