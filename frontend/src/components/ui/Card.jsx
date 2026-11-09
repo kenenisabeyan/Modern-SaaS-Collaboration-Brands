@@ -9,7 +9,7 @@ export function Card({ children, className = '', hover = true, glow = false, ...
         shadow-[0_8px_30px_rgb(0,0,0,0.4)] rounded-2xl sm:rounded-3xl relative overflow-hidden 
         transition-all duration-500 
         ${hover ? 'hover:border-white/[0.15] hover:bg-white/[0.04]' : ''}
-        ${glow ? 'shadow-[0_0_30px_rgba(99,102,241,0.15)] hover:shadow-[0_0_50px_rgba(99,102,241,0.25)]' : ''}
+        ${glow ? 'shadow-[0_0_30px_rgba(13,169,207,0.18)] hover:shadow-[0_0_50px_rgba(13,169,207,0.3)]' : ''}
         ${className}
       `}
       {...props}
