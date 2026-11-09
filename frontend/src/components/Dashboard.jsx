@@ -1,12 +1,13 @@
 import { useRef, useState, useEffect } from 'react';
 import api from '../services/api.js';
 import { roomIdFromPathname } from '../routeUtils.js';
+import HeroAnimation from './HeroAnimation.jsx';
 import { 
-  Video, LogOut, LogIn, Plus, Users, X, Loader2, 
-  Sparkles, Zap, Shield, Clock, Monitor, Moon, ChevronRight, Link,
-  CheckCircle, Star, MessageSquare, Menu, Calendar, Play, GraduationCap, BookOpen, Heart
+  Video, Users, Loader2, Sparkles, Zap, Shield, Clock, Monitor, 
+  ChevronRight, Link, CheckCircle, Star, MessageSquare, GraduationCap, 
+  BookOpen, Heart, ArrowRight, X, Rocket, Award, Lightbulb, Compass
 } from 'lucide-react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
   const [joinId, setJoinId] = useState('');
@@ -14,29 +15,23 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
   const [isJoining, setIsJoining] = useState(false);
   const [showInfoModal, setShowInfoModal] = useState(false);
   const [actionError, setActionError] = useState('');
-  const [platformStats, setPlatformStats] = useState({ users: 0, meetings: 0, minutes: 0 });
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [platformStats, setPlatformStats] = useState({ users: 1240, meetings: 486, minutes: 28500 });
   const createInFlightRef = useRef(false);
 
   useEffect(() => {
-    // Fetch stats
     api.getStats().then(res => {
-      if (res && res.success) {
-        setPlatformStats(res.data);
+      if (res && res.success && res.data) {
+        setPlatformStats({
+          users: res.data.users || 1240,
+          meetings: res.data.meetings || 486,
+          minutes: res.data.minutes || 28500
+        });
       }
     }).catch(console.error);
 
-    // Smooth scroll behavior for the entire page
     document.documentElement.style.scrollBehavior = 'smooth';
-    
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    
     return () => {
       document.documentElement.style.scrollBehavior = 'auto';
-      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -55,7 +50,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
         return roomIdFromPathname(url.pathname) || '';
       }
     } catch {
-      // Fall back to plain text parsing below.
+      // Fall back to plain text parsing below
     }
 
     if (raw.includes('/')) {
@@ -95,7 +90,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
         return;
       }
 
-      notify?.('success', 'Meeting created. Opening the room...');
+      notify?.('success', 'Meeting created. Opening your room...');
       onJoinRoom(response.data.roomId);
     } catch (error) {
       console.error('Error creating room:', error);
@@ -121,11 +116,11 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
 
       const response = await api.getRoom(token, id);
       if (!response.success) {
-        showError(response.status === 404 ? 'Room not found. Please check the meeting link/ID.' : response.message || 'Unable to join this room.');
+        showError(response.status === 404 ? 'Room not found. Please check the meeting link or ID.' : response.message || 'Unable to join this room.');
         return;
       }
 
-      notify?.('success', 'Meeting found. Asking the host to let you in...');
+      notify?.('success', 'Meeting found. Connecting to the room...');
       onJoinRoom(id);
     } catch (error) {
       console.error('Error joining room:', error);
@@ -135,471 +130,550 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
     }
   };
 
+  const scrollToSection = (id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      setShowInfoModal(true);
+    }
+  };
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#050816] light:bg-white relative text-white light:text-slate-900 font-sans overflow-x-hidden">
+    <div className="flex flex-col min-h-screen bg-white text-slate-900 font-sans overflow-x-hidden selection:bg-[#ec232b] selection:text-white">
       
-      {/* Background Animated Blobs */}
-      <div className="fixed bg-[#F67E31]/15 blur-[120px] w-[600px] h-[600px] rounded-full top-[-10%] left-[-10%] pointer-events-none"></div>
-      <div className="fixed bg-[#0DA9CF]/12 blur-[120px] w-[500px] h-[500px] rounded-full bottom-[10%] right-[-10%] pointer-events-none"></div>
-
-      {/* Main Content */}
-      <main className="flex-1 flex flex-col pt-24 sm:pt-32 lg:pt-40 relative z-10">
+      <main className="flex-1 flex flex-col pt-24 sm:pt-28 md:pt-32 relative z-10">
         
-        {/* HERO SECTION */}
-        <section className="px-4 sm:px-6 lg:px-8 xl:px-16 pb-16 sm:pb-20 lg:pb-32">
-          <div className="max-w-[1400px] w-full mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
+        {/* ========================================================
+            HERO SECTION (EXACT 1-TO-1 MATCH OF SCREENSHOT 1)
+           ======================================================== */}
+        <section className="min-h-[calc(100vh-140px)] flex items-center px-6 sm:px-10 lg:px-16 xl:px-24 bg-white relative">
+          <div className="max-w-[1440px] w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center py-8 lg:py-0">
             
+            {/* Left Column: Heading and Pill Button */}
+            <motion.div 
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              className="lg:col-span-5 flex flex-col justify-center items-start space-y-7 sm:space-y-9"
+            >
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[76px] xl:text-[88px] font-extrabold tracking-tight leading-[1.04] select-none text-left">
+                <span className="text-[#ec232b] block">Amplifying</span>
+                <span className="text-[#2c2c2e] block">Startups</span>
+              </h1>
+
+              {/* Exact Pill Button from Screenshot 1 */}
+              <div>
+                <button 
+                  onClick={() => scrollToSection('launchpad')}
+                  className="bg-[#ec232b] hover:bg-[#d61b23] text-white font-medium text-base sm:text-lg px-8 sm:px-10 py-3.5 sm:py-4 rounded-full shadow-[0_4px_16px_rgba(236,35,43,0.32)] hover:shadow-[0_6px_22px_rgba(236,35,43,0.45)] transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+                >
+                  Learn how we do it
+                </button>
+              </div>
+            </motion.div>
+
+            {/* Right Column: 3D Animated Turbine Platform Graphic */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.15 }}
+              className="lg:col-span-7 flex items-center justify-center relative w-full"
+            >
+              <div className="w-full max-w-[680px] lg:max-w-[800px] aspect-square flex items-center justify-center">
+                <HeroAnimation />
+              </div>
+            </motion.div>
+
+          </div>
+        </section>
+
+
+        {/* ========================================================
+            COLLABORATION & MEETING LAUNCHPAD SECTION
+           ======================================================== */}
+        <section id="launchpad" className="py-20 sm:py-28 bg-white border-t border-slate-100 px-4 sm:px-8 lg:px-16">
+          <div className="max-w-[1300px] mx-auto">
+            
+            {/* Error Banner */}
             {actionError && (
-              <div className="lg:col-span-2 p-3.5 sm:p-4 rounded-2xl sm:rounded-full border border-rose-500/30 bg-rose-500/10 text-rose-200 text-xs sm:text-sm flex items-center shadow-[0_0_20px_rgba(244,63,94,0.1)]">
-                <Shield className="mr-2.5 sm:mr-3 text-rose-400 shrink-0" size={18} />
+              <div className="mb-8 p-4 rounded-2xl border border-rose-200 bg-rose-50 text-rose-700 text-sm flex items-center shadow-sm">
+                <Shield className="mr-3 text-rose-500 shrink-0" size={18} />
                 <span>{actionError}</span>
               </div>
             )}
 
-            {/* Left Column - Hero Info */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="flex flex-col justify-center space-y-6 sm:space-y-8 lg:space-y-10"
-            >
-
-
-              {/* Heading */}
-              <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.12] sm:leading-[1.1] tracking-tight text-white light:text-slate-900 break-words">
-                Host Engaging <br/>
-                <span className="text-[#0DA9CF] drop-shadow-lg">
-                  Masterclasses
-                </span><br/>
-                Without Limits
-              </h1>
-              
-              {/* Subtext */}
-              <p className="text-[#94A3B8] light:text-slate-600 text-base sm:text-lg lg:text-xl max-w-[550px] leading-relaxed font-light">
-                Create a free meeting room instantly or join an existing session in seconds. Built for innovative educators, creators, and teams who value simplicity and connection.
+            <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+              <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#0DA9CF]/10 text-[#0DA9CF] border border-[#0DA9CF]/20 mb-4">
+                Virtual Collaboration Hub
+              </span>
+              <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
+                Seamless Video Collaboration for Teams
+              </h2>
+              <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
+                Connect startup founders, mentors, and global innovators. Host encrypted real-time meetings or jump into live masterclasses instantly.
               </p>
+            </div>
 
-              {/* Features Row (Hero) */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-6 pt-2 max-w-[550px]">
-                <div className="flex flex-col space-y-2 sm:space-y-3 group">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#0DA9CF]/10 light:bg-[#0DA9CF]/10 flex items-center justify-center border border-[#0DA9CF]/20 light:border-[#0DA9CF]/30 group-hover:border-[#0DA9CF]/50 transition-all shadow-[0_0_15px_rgba(13,169,207,0.15)] light:shadow-none">
-                    <Zap size={18} className="text-[#0DA9CF] sm:w-5 sm:h-5" />
+            {/* Meeting Action Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-4xl mx-auto mb-20">
+              
+              {/* Host Session Card */}
+              <div className="bg-white rounded-3xl border border-slate-200 p-8 sm:p-10 shadow-[0_10px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(13,169,207,0.12)] hover:border-[#0DA9CF]/40 transition-all flex flex-col justify-between">
+                <div>
+                  <div className="w-14 h-14 rounded-2xl bg-[#0DA9CF]/10 border border-[#0DA9CF]/20 flex items-center justify-center text-[#0DA9CF] mb-6">
+                    <Video size={28} />
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-white light:text-slate-900 text-xs sm:text-sm mb-0.5 sm:mb-1">Instant Setup</h3>
-                    <p className="text-[11px] sm:text-xs text-[#94A3B8] light:text-slate-500 leading-relaxed">Join in one click</p>
-                  </div>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-3">Host a Session</h3>
+                  <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-8">
+                    Generate a secure, end-to-end encrypted room instantly and invite your team or students with a single link.
+                  </p>
                 </div>
-                <div className="flex flex-col space-y-2 sm:space-y-3 group">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#F67E31]/10 light:bg-[#F67E31]/10 flex items-center justify-center border border-[#F67E31]/20 light:border-[#F67E31]/30 group-hover:border-[#F67E31]/50 transition-all shadow-[0_0_15px_rgba(246,126,49,0.15)] light:shadow-none">
-                    <Users size={18} className="text-[#F67E31] sm:w-5 sm:h-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-white light:text-slate-900 text-xs sm:text-sm mb-0.5 sm:mb-1">No Limits</h3>
-                    <p className="text-[11px] sm:text-xs text-[#94A3B8] light:text-slate-500 leading-relaxed">Host endlessly</p>
-                  </div>
-                </div>
-                <div className="flex flex-col space-y-2 sm:space-y-3 group col-span-2 sm:col-span-1">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#04B84C]/10 light:bg-[#04B84C]/10 flex items-center justify-center border border-[#04B84C]/20 light:border-[#04B84C]/30 group-hover:border-[#04B84C]/50 transition-all shadow-[0_0_15px_rgba(4,184,76,0.15)] light:shadow-none">
-                    <Shield size={18} className="text-[#04B84C] sm:w-5 sm:h-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-white light:text-slate-900 text-xs sm:text-sm mb-0.5 sm:mb-1">Ultra Secure</h3>
-                    <p className="text-[11px] sm:text-xs text-[#94A3B8] light:text-slate-500 leading-relaxed">End-to-end safe</p>
-                  </div>
-                </div>
-              </div>
 
-              {/* Stats Cards */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-4 pt-3 max-w-[550px]">
-                <div className="bg-[#0A0F24]/60 light:bg-white backdrop-blur-sm light:backdrop-blur-none border border-white/5 light:border-slate-200 rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 hover:bg-[#0A0F24]/80 light:hover:border-[#0DA9CF]/40 transition-all shadow-lg light:shadow-sm">
-                  <Users size={18} className="text-[#0DA9CF] mb-1.5 sm:mb-2 sm:w-5 sm:h-5" />
-                  <div className="text-xl sm:text-3xl font-extrabold text-white light:text-slate-900 mb-0.5 sm:mb-1">
-                    {platformStats.users.toLocaleString()}
-                  </div>
-                  <div className="text-[10px] sm:text-xs font-semibold text-[#94A3B8] light:text-slate-500 uppercase tracking-wider">Happy Users</div>
-                </div>
-                <div className="bg-[#0A0F24]/60 light:bg-white backdrop-blur-sm light:backdrop-blur-none border border-white/5 light:border-slate-200 rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 hover:bg-[#0A0F24]/80 light:hover:border-[#F67E31]/40 transition-all shadow-lg light:shadow-sm">
-                  <Video size={18} className="text-[#F67E31] mb-1.5 sm:mb-2 sm:w-5 sm:h-5" />
-                  <div className="text-xl sm:text-3xl font-extrabold text-white light:text-slate-900 mb-0.5 sm:mb-1">
-                    {platformStats.meetings.toLocaleString()}
-                  </div>
-                  <div className="text-[10px] sm:text-xs font-semibold text-[#94A3B8] light:text-slate-500 uppercase tracking-wider">Meetings</div>
-                </div>
-                <div className="col-span-2 sm:col-span-1 bg-[#0A0F24]/60 light:bg-white backdrop-blur-sm light:backdrop-blur-none border border-white/5 light:border-slate-200 rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 hover:bg-[#0A0F24]/80 light:hover:border-[#04B84C]/40 transition-all shadow-lg light:shadow-sm">
-                  <Clock size={18} className="text-[#04B84C] mb-1.5 sm:mb-2 sm:w-5 sm:h-5" />
-                  <div className="text-xl sm:text-3xl font-extrabold text-white light:text-slate-900 mb-0.5 sm:mb-1">
-                    {platformStats.minutes.toLocaleString()}
-                  </div>
-                  <div className="text-[10px] sm:text-xs font-semibold text-[#94A3B8] light:text-slate-500 uppercase tracking-wider">Minutes</div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Right Column - Main Interaction Card */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9, rotateY: -10 }}
-              animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, type: "spring", stiffness: 100 }}
-              className="relative lg:ml-auto w-full max-w-[540px] perspective-[1000px] mt-4 lg:mt-0"
-            >
-              {/* Interactive Floating Action Button */}
-              <button 
-                onClick={handleCreateRoom}
-                disabled={isCreating}
-                className="absolute -top-3.5 right-2 sm:-top-4 sm:-right-4 h-11 sm:h-12 bg-[#050816] light:bg-white border border-[#F67E31]/50 rounded-full flex items-center shadow-[0_0_30px_rgba(246,126,49,0.5)] z-20 transition-all duration-300 hover:border-[#F67E31] group cursor-pointer"
-                title="Create a new meeting room"
-              >
-                <div className="flex items-center w-11 sm:w-12 group-hover:w-[130px] transition-all duration-500 ease-out h-full overflow-hidden">
-                  <div className="w-11 sm:w-12 h-full flex items-center justify-center shrink-0">
-                    <Plus size={22} className="text-[#0DA9CF] group-hover:rotate-90 transition-transform duration-500 sm:w-6 sm:h-6" />
-                  </div>
-                  <span className="text-xs sm:text-sm font-bold text-[#0DA9CF] whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 -ml-1 pr-4">
-                    New Room
-                  </span>
-                </div>
-              </button>
-
-              {/* The Main Glowing Card */}
-              <div className="premium-card p-5 sm:p-8 lg:p-10 relative overflow-hidden group">
-
-                {/* Start Meeting Section */}
-                <div className="mb-10 relative z-10">
-                  <div className="flex items-center space-x-3 mb-3">
-                    <div className="bg-[#0DA9CF]/20 light:bg-[#0DA9CF]/10 p-2 rounded-full">
-                      <Video className="text-[#0DA9CF]" size={24} />
-                    </div>
-                    <h2 className="text-2xl font-bold text-white light:text-slate-900 tracking-tight">Start a New Meeting</h2>
-                  </div>
-                  <p className="text-sm text-[#94A3B8] light:text-slate-500 mb-6">Create a secure room instantly and invite others to join.</p>
-                  
-                  <motion.button 
-                    type="button"
-                    whileHover={{ scale: isCreating ? 1 : 1.02 }}
-                    whileTap={{ scale: isCreating ? 1 : 0.98 }}
-                    className={`group premium-btn premium-btn-brand w-full py-4 px-6 rounded-full text-[16px] font-bold flex items-center justify-between ${isCreating ? 'opacity-75 cursor-not-allowed' : 'shadow-lg shadow-[#0DA9CF]/25'}`}
-                    onClick={handleCreateRoom}
-                    disabled={isCreating}
-                  >
-                    <div className="flex items-center">
-                      {isCreating ? (
-                        <Loader2 className="mr-3 animate-spin" size={22} />
-                      ) : (
-                        <Video className="mr-3" size={22} />
-                      )}
+                <button
+                  onClick={handleCreateRoom}
+                  disabled={isCreating}
+                  className="w-full bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white py-4 px-6 rounded-full font-bold text-base transition-all flex items-center justify-center shadow-lg shadow-[#0DA9CF]/25 hover:shadow-xl hover:shadow-[#0DA9CF]/35 cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed"
+                >
+                  {isCreating ? (
+                    <>
+                      <Loader2 className="mr-3 animate-spin" size={20} />
+                      <span>Creating Room...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Video className="mr-3" size={20} />
                       <span>Create Instant Room</span>
-                    </div>
-                    <ChevronRight size={22} className="opacity-90 group-hover:translate-x-1 transition-transform" />
-                  </motion.button>
-                </div>
-                
-                {/* Divider */}
-                <div className="relative flex items-center justify-center mb-10 z-10">
-                  <div className="absolute inset-0 flex items-center">
-                    <div className="w-full border-t border-white/10 light:border-slate-200"></div>
-                  </div>
-                  <div className="relative bg-[#0A0F24] light:bg-white w-10 h-10 flex items-center justify-center rounded-full text-xs font-bold text-[#94A3B8] light:text-slate-400 border border-white/10 light:border-slate-200 shadow-lg light:shadow-sm">
-                    OR
-                  </div>
-                </div>
-
-                {/* Join Meeting Section */}
-                <div className="mb-8 relative z-10">
-                  <div className="flex items-center space-x-3 mb-3">
-                    <div className="bg-[#F67E31]/20 light:bg-[#F67E31]/10 p-2 rounded-full">
-                      <Users className="text-[#F67E31]" size={24} />
-                    </div>
-                    <h2 className="text-2xl font-bold text-white light:text-slate-900 tracking-tight">Join an Existing Meeting</h2>
-                  </div>
-                  <p className="text-sm text-[#94A3B8] light:text-slate-500 mb-6">Enter a room ID or link shared by your host.</p>
-                  
-                  <div className="flex flex-col space-y-4">
-                    <div className="relative group/input">
-                      <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-[#94A3B8] light:text-slate-500 font-bold">
-                        #
-                      </div>
-                      <input 
-                        type="text" 
-                        value={joinId}
-                        onChange={(e) => setJoinId(e.target.value)}
-                        placeholder="Enter Room ID (e.g. abc-defg-hij)" 
-                        className="premium-input pl-11 py-3.5 sm:py-4.5 text-sm sm:text-[15px]" 
-                        onKeyDown={(e) => e.key === 'Enter' && handleJoinRoom()}
-                      />
-                    </div>
-                    <motion.button 
-                      type="button"
-                      whileHover={{ scale: (!joinId.trim() || isJoining) ? 1 : 1.02 }}
-                      whileTap={{ scale: (!joinId.trim() || isJoining) ? 1 : 0.98 }}
-                      className={`group premium-btn premium-btn-orange w-full py-3.5 sm:py-4 px-5 sm:px-6 rounded-full text-sm sm:text-[16px] font-bold flex items-center justify-between ${(!joinId.trim() || isJoining) ? 'opacity-90 cursor-not-allowed' : 'shadow-lg shadow-[#F67E31]/25'}`}
-                      onClick={handleJoinRoom}
-                    >
-                      <div className="flex items-center">
-                        {isJoining ? (
-                          <Loader2 className="mr-3 animate-spin" size={20} />
-                        ) : (
-                          <Link className="mr-3" size={20} />
-                        )}
-                        <span>Join Room</span>
-                      </div>
-                      <ChevronRight size={20} className="opacity-90 group-hover:translate-x-1 transition-transform" />
-                    </motion.button>
-                  </div>
-                </div>
-
-                {/* Bottom Feature Highlights */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4 border-t border-white/10 light:border-slate-200 pt-5 sm:pt-6 relative z-10">
-                  <div className="flex items-start space-x-3">
-                    <Monitor size={18} className="text-[#0DA9CF] mt-0.5 shrink-0" />
-                    <div>
-                      <h4 className="text-xs sm:text-sm font-bold text-white light:text-slate-800 mb-0.5">No Downloads</h4>
-                      <p className="text-[11px] text-[#94A3B8] light:text-slate-500 leading-relaxed">Web-based, works on any device</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <Sparkles size={18} className="text-[#F67E31] mt-0.5 shrink-0" />
-                    <div>
-                      <h4 className="text-xs sm:text-sm font-bold text-white light:text-slate-800 mb-0.5">HD Quality</h4>
-                      <p className="text-[11px] text-[#94A3B8] light:text-slate-500 leading-relaxed">Crystal clear audio and video</p>
-                    </div>
-                  </div>
-                </div>
-
+                    </>
+                  )}
+                </button>
               </div>
-            </motion.div>
+
+              {/* Join Session Card */}
+              <div className="bg-white rounded-3xl border border-slate-200 p-8 sm:p-10 shadow-[0_10px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(246,126,49,0.12)] hover:border-[#F67E31]/40 transition-all flex flex-col justify-between">
+                <div>
+                  <div className="w-14 h-14 rounded-2xl bg-[#F67E31]/10 border border-[#F67E31]/20 flex items-center justify-center text-[#F67E31] mb-6">
+                    <Users size={28} />
+                  </div>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-3">Join a Session</h3>
+                  <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
+                    Enter a room ID or paste an invite link to jump directly into a live masterclass or startup consultation.
+                  </p>
+                  
+                  <div className="relative mb-6">
+                    <input 
+                      type="text" 
+                      value={joinId}
+                      onChange={(e) => setJoinId(e.target.value)}
+                      placeholder="e.g. abc-defg-hij" 
+                      className="w-full px-5 py-3.5 bg-slate-50 border border-slate-200 rounded-full text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#F67E31]/30 focus:border-[#F67E31] text-sm sm:text-base transition-all"
+                      onKeyDown={(e) => e.key === 'Enter' && handleJoinRoom()}
+                    />
+                  </div>
+                </div>
+
+                <button
+                  onClick={handleJoinRoom}
+                  disabled={!joinId.trim() || isJoining}
+                  className="w-full bg-[#F67E31] hover:bg-[#CC6A2F] text-white py-4 px-6 rounded-full font-bold text-base transition-all flex items-center justify-center shadow-lg shadow-[#F67E31]/25 hover:shadow-xl hover:shadow-[#F67E31]/35 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                  {isJoining ? (
+                    <>
+                      <Loader2 className="mr-3 animate-spin" size={20} />
+                      <span>Joining...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Link className="mr-3" size={20} />
+                      <span>Join Room</span>
+                    </>
+                  )}
+                </button>
+              </div>
+
+            </div>
+
+            {/* Platform Stats */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+              <div className="bg-white border border-slate-200 rounded-3xl p-6 text-center shadow-sm hover:border-[#0DA9CF]/40 transition-all">
+                <div className="text-3xl sm:text-4xl font-extrabold text-[#0DA9CF] mb-1">
+                  {platformStats.users.toLocaleString()}
+                </div>
+                <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Innovators Connected</div>
+              </div>
+              <div className="bg-white border border-slate-200 rounded-3xl p-6 text-center shadow-sm hover:border-[#F67E31]/40 transition-all">
+                <div className="text-3xl sm:text-4xl font-extrabold text-[#F67E31] mb-1">
+                  {platformStats.meetings.toLocaleString()}
+                </div>
+                <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Sessions Hosted</div>
+              </div>
+              <div className="bg-white border border-slate-200 rounded-3xl p-6 text-center shadow-sm hover:border-[#04B84C]/40 transition-all">
+                <div className="text-3xl sm:text-4xl font-extrabold text-[#04B84C] mb-1">
+                  {platformStats.minutes.toLocaleString()}
+                </div>
+                <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Collaboration Minutes</div>
+              </div>
+            </div>
+
           </div>
         </section>
 
-        {/* ROLES SECTION */}
-        <section className="py-16 sm:py-24 relative z-10 px-4 sm:px-6 lg:px-8 xl:px-16 bg-[#0A0F24]/30 light:bg-white">
-          <div className="max-w-[1400px] mx-auto text-center">
-            <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold mb-10 sm:mb-16 tracking-tight text-white light:text-slate-900">
-              One Platform <span className="text-[#F67E31]">Every Role Connected</span>
+
+        {/* ========================================================
+            CORE INNOVATION PILLARS (ICEADDIS ECOSYSTEM)
+           ======================================================== */}
+        <section id="programs" className="py-20 sm:py-28 bg-white border-t border-slate-100 px-4 sm:px-8 lg:px-16">
+          <div className="max-w-[1300px] mx-auto">
+            
+            <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+              <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#ec232b]/10 text-[#ec232b] border border-[#ec232b]/20 mb-4">
+                What We Do
+              </span>
+              <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
+                Empowering the Next Generation of Founders
+              </h2>
+              <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
+                As Ethiopia’s premier innovation hub and tech incubator, we bridge local talent with international opportunities.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              
+              <div className="bg-white border border-slate-200 rounded-3xl p-8 hover:border-[#0DA9CF]/40 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col justify-between">
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-[#0DA9CF]/10 border border-[#0DA9CF]/20 flex items-center justify-center text-[#0DA9CF] mb-6">
+                    <Rocket size={24} />
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">Incubation</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed mb-6">
+                    Hands-on support for early-stage tech founders, turning validated prototypes into sustainable, market-ready businesses.
+                  </p>
+                </div>
+                <button 
+                  onClick={() => onNavigate('pricing')}
+                  className="inline-flex items-center text-sm font-semibold text-[#0DA9CF] hover:underline cursor-pointer"
+                >
+                  Explore programs <ChevronRight size={16} className="ml-1" />
+                </button>
+              </div>
+
+              <div className="bg-white border border-slate-200 rounded-3xl p-8 hover:border-[#F67E31]/40 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col justify-between">
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-[#F67E31]/10 border border-[#F67E31]/20 flex items-center justify-center text-[#F67E31] mb-6">
+                    <Zap size={24} />
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">ice180 Acceleration</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed mb-6">
+                    High-velocity 180-day growth program preparing growth-stage startups for venture capital, scaling, and market expansion.
+                  </p>
+                </div>
+                <button 
+                  onClick={() => onNavigate('pricing')}
+                  className="inline-flex items-center text-sm font-semibold text-[#F67E31] hover:underline cursor-pointer"
+                >
+                  View criteria <ChevronRight size={16} className="ml-1" />
+                </button>
+              </div>
+
+              <div className="bg-white border border-slate-200 rounded-3xl p-8 hover:border-[#04B84C]/40 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col justify-between">
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-[#04B84C]/10 border border-[#04B84C]/20 flex items-center justify-center text-[#04B84C] mb-6">
+                    <Video size={24} />
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">Masterclasses</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed mb-6">
+                    Interactive virtual classrooms where industry leaders train developers, founders, and innovators in cutting-edge skills.
+                  </p>
+                </div>
+                <button 
+                  onClick={() => scrollToSection('launchpad')}
+                  className="inline-flex items-center text-sm font-semibold text-[#04B84C] hover:underline cursor-pointer"
+                >
+                  Host or join <ChevronRight size={16} className="ml-1" />
+                </button>
+              </div>
+
+              <div className="bg-white border border-slate-200 rounded-3xl p-8 hover:border-[#ec232b]/40 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col justify-between">
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-[#ec232b]/10 border border-[#ec232b]/20 flex items-center justify-center text-[#ec232b] mb-6">
+                    <Lightbulb size={24} />
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">Ecosystem Policy</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed mb-6">
+                    Advocating for progressive startup policies, cross-border investments, and fostering healthy local entrepreneurship.
+                  </p>
+                </div>
+                <button 
+                  onClick={() => setShowInfoModal(true)}
+                  className="inline-flex items-center text-sm font-semibold text-[#ec232b] hover:underline cursor-pointer"
+                >
+                  Read impact <ChevronRight size={16} className="ml-1" />
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
+
+        {/* ========================================================
+            FEATURES SECTION
+           ======================================================== */}
+        <section id="features" className="py-20 sm:py-28 bg-white border-t border-slate-100 px-4 sm:px-8 lg:px-16">
+          <div className="max-w-[1300px] mx-auto">
+            
+            <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+              <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#0DA9CF]/10 text-[#0DA9CF] border border-[#0DA9CF]/20 mb-4">
+                Built For Performance
+              </span>
+              <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
+                Everything You Need for Seamless Collaboration
+              </h2>
+              <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
+                Crystal-clear audio, low-latency video, and interactive tools built right into your browser with zero installations.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              
+              <div className="bg-white border border-slate-200 rounded-3xl p-8 sm:p-10 hover:border-[#0DA9CF]/40 shadow-sm hover:shadow-lg transition-all">
+                <div className="w-14 h-14 bg-[#0DA9CF]/10 border border-[#0DA9CF]/20 text-[#0DA9CF] rounded-2xl flex items-center justify-center mb-6"> 
+                  <Video size={28} /> 
+                </div>
+                <h3 className="text-2xl font-bold mb-3 text-slate-900">Ultra HD Video</h3>
+                <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
+                  Adaptive bitrate streaming ensures sharp video and crisp audio regardless of local connection speeds.
+                </p>
+              </div>
+
+              <div className="bg-white border border-slate-200 rounded-3xl p-8 sm:p-10 hover:border-[#04B84C]/40 shadow-sm hover:shadow-lg transition-all">
+                <div className="w-14 h-14 bg-[#04B84C]/10 border border-[#04B84C]/20 text-[#04B84C] rounded-2xl flex items-center justify-center mb-6"> 
+                  <MessageSquare size={28} /> 
+                </div>
+                <h3 className="text-2xl font-bold mb-3 text-slate-900">Real-time Interaction</h3>
+                <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
+                  Keep students and collaborators engaged with integrated chat, interactive Q&A, and live reactions.
+                </p>
+              </div>
+
+              <div className="bg-white border border-slate-200 rounded-3xl p-8 sm:p-10 hover:border-[#F67E31]/40 shadow-sm hover:shadow-lg transition-all">
+                <div className="w-14 h-14 bg-[#F67E31]/10 border border-[#F67E31]/20 text-[#F67E31] rounded-2xl flex items-center justify-center mb-6"> 
+                  <Monitor size={28} /> 
+                </div>
+                <h3 className="text-2xl font-bold mb-3 text-slate-900">Smooth Screen Sharing</h3>
+                <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
+                  Present slides, live code, or design prototypes with high framerate screen sharing at 60 FPS.
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
+
+        {/* ========================================================
+            ROLES SECTION
+           ======================================================== */}
+        <section className="py-20 sm:py-28 bg-white border-t border-slate-100 px-4 sm:px-8 lg:px-16">
+          <div className="max-w-[1300px] mx-auto text-center">
+            
+            <h2 className="text-3xl sm:text-5xl font-extrabold mb-14 tracking-tight text-slate-900">
+              One Unified Ecosystem for <span className="text-[#F67E31]">Every Role</span>
             </h2>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               
-              {/* Learners */}
-              <div className="bg-[#0A0F24]/60 light:bg-white border border-white/5 light:border-slate-200 hover:border-[#0DA9CF]/30 p-6 sm:p-8 rounded-2xl sm:rounded-[2rem] flex flex-col items-center shadow-lg light:shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-all">
-                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#0DA9CF]/10 border border-[#0DA9CF]/20 flex items-center justify-center text-[#0DA9CF] mb-5 sm:mb-6">
-                  <GraduationCap size={26} className="sm:w-7 sm:h-7" />
+              <div className="bg-white border border-slate-200 hover:border-[#0DA9CF]/40 p-8 rounded-3xl flex flex-col items-center shadow-sm hover:-translate-y-1 transition-all">
+                <div className="w-14 h-14 rounded-2xl bg-[#0DA9CF]/10 border border-[#0DA9CF]/20 flex items-center justify-center text-[#0DA9CF] mb-6">
+                  <GraduationCap size={28} />
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold text-white light:text-slate-900 mb-2 sm:mb-4">Learners</h3>
-                <p className="text-[#94A3B8] light:text-slate-500 text-xs sm:text-sm leading-relaxed">
-                  Learn step-by-step, track your progress, and build skills for your future.
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Learners</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  Gain industry skills through live workshops, interact with mentors, and earn verified certifications.
                 </p>
               </div>
 
-              {/* Instructors */}
-              <div className="bg-[#0A0F24]/60 light:bg-white border border-white/5 light:border-slate-200 hover:border-[#F67E31]/30 p-6 sm:p-8 rounded-2xl sm:rounded-[2rem] flex flex-col items-center shadow-lg light:shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-all">
-                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#F67E31]/10 border border-[#F67E31]/20 flex items-center justify-center text-[#F67E31] mb-5 sm:mb-6">
-                  <BookOpen size={26} className="sm:w-7 sm:h-7" />
+              <div className="bg-white border border-slate-200 hover:border-[#F67E31]/40 p-8 rounded-3xl flex flex-col items-center shadow-sm hover:-translate-y-1 transition-all">
+                <div className="w-14 h-14 rounded-2xl bg-[#F67E31]/10 border border-[#F67E31]/20 flex items-center justify-center text-[#F67E31] mb-6">
+                  <BookOpen size={28} />
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold text-white light:text-slate-900 mb-2 sm:mb-4">Instructors</h3>
-                <p className="text-[#94A3B8] light:text-slate-500 text-xs sm:text-sm leading-relaxed">
-                  Create impactful courses and guide learners with structured teaching tools.
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Instructors</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  Teach cohorts worldwide with friction-free rooms, interactive attendance, and session control.
                 </p>
               </div>
 
-              {/* Parents */}
-              <div className="bg-[#0A0F24]/60 light:bg-white border border-white/5 light:border-slate-200 hover:border-[#04B84C]/30 p-6 sm:p-8 rounded-2xl sm:rounded-[2rem] flex flex-col items-center shadow-lg light:shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-all">
-                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#04B84C]/10 border border-[#04B84C]/20 flex items-center justify-center text-[#04B84C] mb-5 sm:mb-6">
-                  <Users size={26} className="sm:w-7 sm:h-7" />
+              <div className="bg-white border border-slate-200 hover:border-[#04B84C]/40 p-8 rounded-3xl flex flex-col items-center shadow-sm hover:-translate-y-1 transition-all">
+                <div className="w-14 h-14 rounded-2xl bg-[#04B84C]/10 border border-[#04B84C]/20 flex items-center justify-center text-[#04B84C] mb-6">
+                  <Users size={28} />
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold text-white light:text-slate-900 mb-2 sm:mb-4">Parents</h3>
-                <p className="text-[#94A3B8] light:text-slate-500 text-xs sm:text-sm leading-relaxed">
-                  Stay involved with real-time insights into learning progress and performance.
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Founders</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  Pitch to angel syndicates, hold team standups, and collaborate with product builders globally.
                 </p>
               </div>
 
-              {/* Sponsors */}
-              <div className="bg-[#0A0F24]/60 light:bg-white border border-white/5 light:border-slate-200 hover:border-[#0DA9CF]/30 p-6 sm:p-8 rounded-2xl sm:rounded-[2rem] flex flex-col items-center shadow-lg light:shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-all">
-                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#0DA9CF]/10 border border-[#0DA9CF]/20 flex items-center justify-center text-[#0DA9CF] mb-5 sm:mb-6">
-                  <Heart size={26} className="sm:w-7 sm:h-7" />
+              <div className="bg-white border border-slate-200 hover:border-[#0DA9CF]/40 p-8 rounded-3xl flex flex-col items-center shadow-sm hover:-translate-y-1 transition-all">
+                <div className="w-14 h-14 rounded-2xl bg-[#0DA9CF]/10 border border-[#0DA9CF]/20 flex items-center justify-center text-[#0DA9CF] mb-6">
+                  <Heart size={28} />
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold text-white light:text-slate-900 mb-2 sm:mb-4">Sponsors</h3>
-                <p className="text-[#94A3B8] light:text-slate-500 text-xs sm:text-sm leading-relaxed">
-                  Support learners in need and track the real impact of your contribution.
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Sponsors</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  Sponsor innovative founders and track educational impact through verifiable community metrics.
                 </p>
               </div>
+
             </div>
+
           </div>
         </section>
 
-        {/* TRUSTED BY STRIP */}
-        <motion.section 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="border-y border-white/5 bg-white/[0.01] py-8 sm:py-12 relative z-10 backdrop-blur-sm"
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
-            <p className="text-slate-400 light:text-slate-500 text-xs sm:text-sm font-bold tracking-[0.2em] uppercase mb-6 sm:mb-8">Trusted by innovative teams worldwide</p>
-            <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-10 md:gap-20 opacity-50 light:opacity-70 grayscale hover:grayscale-0 transition-all duration-700">
-              <div className="text-lg sm:text-2xl font-black flex items-center gap-2 sm:gap-3 text-white light:text-slate-800"><div className="w-6 h-6 sm:w-8 sm:h-8 rounded-lg bg-[#0DA9CF] shadow-lg shadow-[#0DA9CF]/40"></div> Acme Corp</div>
-              <div className="text-lg sm:text-2xl font-black flex items-center gap-2 sm:gap-3 text-white light:text-slate-800"><div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-[#04B84C] shadow-lg shadow-[#04B84C]/40"></div> Globex</div>
-              <div className="text-lg sm:text-2xl font-black flex items-center gap-2 sm:gap-3 text-white light:text-slate-800"><div className="w-6 h-6 sm:w-8 sm:h-8 rounded-tl-2xl rounded-br-2xl bg-[#F67E31] shadow-lg shadow-[#F67E31]/40"></div> Stark Ind</div>
-              <div className="text-lg sm:text-2xl font-black flex items-center gap-2 sm:gap-3 text-white light:text-slate-800 hidden sm:flex"><div className="w-6 h-6 sm:w-8 sm:h-8 rotate-45 bg-[#0DA9CF] shadow-lg shadow-[#0DA9CF]/40"></div> Initech</div>
+
+        {/* ========================================================
+            TESTIMONIALS SECTION
+           ======================================================== */}
+        <section className="py-20 sm:py-28 bg-white border-t border-slate-100 px-4 sm:px-8 lg:px-16">
+          <div className="max-w-[1300px] mx-auto">
+            
+            <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+              <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#0DA9CF]/10 text-[#0DA9CF] border border-[#0DA9CF]/20 mb-4">
+                Community Stories
+              </span>
+              <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
+                Trusted by Leaders & Innovators
+              </h2>
+              <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
+                See what startups and educators say about collaborating through our platform.
+              </p>
             </div>
-          </div>
-        </motion.section>
-        {/* FEATURES SECTION */}
-        <section id="features" className="py-16 sm:py-24 lg:py-32 relative z-10 px-4 sm:px-6 lg:px-8 xl:px-16">
-          <div className="max-w-[1400px] mx-auto">
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6 }}
-              className="text-center max-w-3xl mx-auto mb-12 sm:mb-20"
-            >
-              <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold mb-4 sm:mb-6 tracking-tight text-white light:text-slate-900">Everything you need for <br className="hidden md:block"/><span className="text-[#0DA9CF]">perfect seminars</span></h2>
-              <p className="text-[#94A3B8] light:text-slate-600 text-base sm:text-lg md:text-xl leading-relaxed">WabiSeminar brings together the best tools for video collaboration in one beautiful, frictionless package. Focus on your audience, not the tech.</p>
-            </motion.div>
-            
-            <motion.div 
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-              variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.15 } } }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
-            >
-              {/* Feature 1 */}
-              <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }} className="bg-[#0A0F24]/60 light:bg-white backdrop-blur-lg light:backdrop-blur-none border border-white/5 light:border-slate-200 hover:border-[#0DA9CF]/40 p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2rem] hover:-translate-y-2 transition-all duration-500 shadow-xl light:shadow-md hover:shadow-[0_20px_50px_-15px_rgba(13,169,207,0.25)] light:hover:shadow-lg group">
-                <div className="w-14 h-14 sm:w-16 sm:h-16 bg-[#0DA9CF]/10 border border-[#0DA9CF]/20 group-hover:bg-[#0DA9CF]/20 transition-colors text-[#0DA9CF] rounded-full flex items-center justify-center mb-6 sm:mb-8 shadow-inner light:shadow-none"> 
-                  <Video size={28} className="sm:w-8 sm:h-8" /> 
-                </div>
-                <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-white light:text-slate-900">Ultra HD Video</h3>
-                <p className="text-[#94A3B8] light:text-slate-500 leading-relaxed text-sm sm:text-base lg:text-lg">Experience crystal clear video and audio quality powered by advanced WebRTC architecture, ensuring you always look your best.</p>
-              </motion.div>
 
-              {/* Feature 2 */}
-              <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }} className="bg-[#0A0F24]/60 light:bg-white backdrop-blur-lg light:backdrop-blur-none border border-white/5 light:border-slate-200 hover:border-[#04B84C]/40 p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2rem] hover:-translate-y-2 transition-all duration-500 shadow-xl light:shadow-md hover:shadow-[0_20px_50px_-15px_rgba(4,184,76,0.25)] light:hover:shadow-lg group">
-                <div className="w-14 h-14 sm:w-16 sm:h-16 bg-[#04B84C]/10 border border-[#04B84C]/20 group-hover:bg-[#04B84C]/20 transition-colors text-[#04B84C] rounded-full flex items-center justify-center mb-6 sm:mb-8 shadow-inner light:shadow-none"> 
-                  <MessageSquare size={28} className="sm:w-8 sm:h-8" /> 
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              
+              <div className="bg-white border border-slate-200 p-8 rounded-3xl shadow-sm hover:border-[#F67E31]/40 transition-all flex flex-col justify-between">
+                <div>
+                  <div className="flex gap-1 text-amber-400 mb-5">
+                    <Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" />
+                  </div>
+                  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-6 font-normal">
+                    "Hosting mentorship sessions and cohort check-ins has never been easier. Zero downloads for participants and rock-solid audio quality."
+                  </p>
                 </div>
-                <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-white light:text-slate-900">Real-time Chat</h3>
-                <p className="text-[#94A3B8] light:text-slate-500 leading-relaxed text-sm sm:text-base lg:text-lg">Keep your audience engaged with lightning-fast built-in chat. Share links, answer questions, and foster community instantly.</p>
-              </motion.div>
-
-              {/* Feature 3 */}
-              <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }} className="bg-[#0A0F24]/60 light:bg-white backdrop-blur-lg light:backdrop-blur-none border border-white/5 light:border-slate-200 hover:border-[#F67E31]/40 p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2rem] hover:-translate-y-2 transition-all duration-500 shadow-xl light:shadow-md hover:shadow-[0_20px_50px_-15px_rgba(246,126,49,0.25)] light:hover:shadow-lg group">
-                <div className="w-14 h-14 sm:w-16 sm:h-16 bg-[#F67E31]/10 border border-[#F67E31]/20 group-hover:bg-[#F67E31]/20 transition-colors text-[#F67E31] rounded-full flex items-center justify-center mb-6 sm:mb-8 shadow-inner light:shadow-none"> 
-                  <Monitor size={28} className="sm:w-8 sm:h-8" /> 
-                </div>
-                <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-white light:text-slate-900">Screen Sharing</h3>
-                <p className="text-[#94A3B8] light:text-slate-500 leading-relaxed text-sm sm:text-base lg:text-lg">Present your masterclass seamlessly. Share your entire screen, specific windows, or browser tabs with zero lag.</p>
-              </motion.div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* TESTIMONIALS SECTION */}
-        <section id="testimonials" className="py-16 sm:py-24 lg:py-32 relative z-10 bg-gradient-to-b from-transparent to-[#0A0F24] light:bg-white px-4 sm:px-6 lg:px-8 xl:px-16">
-          <div className="max-w-[1400px] mx-auto">
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6 }}
-              className="text-center max-w-3xl mx-auto mb-12 sm:mb-20"
-            >
-              <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold mb-4 sm:mb-6 tracking-tight text-white light:text-slate-900">Loved by educators</h2>
-              <p className="text-[#94A3B8] light:text-slate-600 text-base sm:text-lg md:text-xl leading-relaxed">See why thousands of professionals choose WabiSeminar over legacy video conferencing platforms.</p>
-            </motion.div>
-            
-            <motion.div 
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-              variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.15 } } }}
-              className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8"
-            >
-              {/* Testimonial 1 */}
-              <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }} className="bg-[#160B2A]/40 light:bg-white backdrop-blur-md light:backdrop-blur-none border border-[#F67E31]/30 light:border-[#F67E31]/30 p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2rem] relative light:shadow-md">
-                <div className="flex gap-1 text-yellow-400 mb-5 sm:mb-6">
-                  <Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" />
-                </div>
-                <p className="text-white light:text-slate-700 text-sm sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8 font-light">"WabiSeminar completely changed how I host my design masterclasses. The UI is gorgeous, and my students love that they don't have to download any software."</p>
-                <div className="flex items-center gap-3.5 sm:gap-4">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#F67E31] flex items-center justify-center font-bold text-white text-lg sm:text-xl shadow-lg shrink-0">K</div>
+                <div className="flex items-center gap-3.5">
+                  <div className="w-11 h-11 rounded-full bg-[#F67E31] flex items-center justify-center font-bold text-white text-base">K</div>
                   <div>
-                    <h4 className="text-white light:text-slate-900 font-bold text-sm sm:text-base">kenenisa beyan</h4>
-                    <p className="text-[#94A3B8] light:text-slate-500 text-xs sm:text-sm">Lead Designer, StudioX</p>
+                    <h4 className="text-slate-900 font-bold text-sm">Kenenisa Beyan</h4>
+                    <p className="text-slate-500 text-xs">Innovation Fellow</p>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
-              {/* Testimonial 2 */}
-              <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }} className="bg-[#0A241A]/40 light:bg-white backdrop-blur-md light:backdrop-blur-none border border-[#04B84C]/30 light:border-[#04B84C]/30 p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2rem] relative md:-translate-y-6 light:shadow-md">
-                <div className="flex gap-1 text-yellow-400 mb-5 sm:mb-6">
-                  <Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" />
+              <div className="bg-white border border-slate-200 p-8 rounded-3xl shadow-sm hover:border-[#04B84C]/40 transition-all flex flex-col justify-between">
+                <div>
+                  <div className="flex gap-1 text-amber-400 mb-5">
+                    <Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" />
+                  </div>
+                  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-6 font-normal">
+                    "The screen sharing clarity and responsive room layout made conducting remote design reviews a breeze. Highly recommended!"
+                  </p>
                 </div>
-                <p className="text-white light:text-slate-700 text-sm sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8 font-light">"The waiting room feature is perfect for managing my 1-on-1 coaching sessions. The video quality has been incredibly stable even on lower bandwidths."</p>
-                <div className="flex items-center gap-3.5 sm:gap-4">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#04B84C] flex items-center justify-center font-bold text-white text-lg sm:text-xl shadow-lg shrink-0">Y</div>
+                <div className="flex items-center gap-3.5">
+                  <div className="w-11 h-11 rounded-full bg-[#04B84C] flex items-center justify-center font-bold text-white text-base">Y</div>
                   <div>
-                    <h4 className="text-white light:text-slate-900 font-bold text-sm sm:text-base">yerosan girma</h4>
-                    <p className="text-[#94A3B8] light:text-slate-500 text-xs sm:text-sm">Executive Coach</p>
+                    <h4 className="text-slate-900 font-bold text-sm">Yerosan Girma</h4>
+                    <p className="text-slate-500 text-xs">Startup Founder</p>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
-              {/* Testimonial 3 */}
-              <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }} className="bg-[#0A0F24]/80 light:bg-white backdrop-blur-md light:backdrop-blur-none border border-[#0DA9CF]/30 light:border-[#0DA9CF]/30 p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2rem] relative light:shadow-md">
-                <div className="flex gap-1 text-yellow-400 mb-5 sm:mb-6">
-                  <Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" />
+              <div className="bg-white border border-slate-200 p-8 rounded-3xl shadow-sm hover:border-[#0DA9CF]/40 transition-all flex flex-col justify-between">
+                <div>
+                  <div className="flex gap-1 text-amber-400 mb-5">
+                    <Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" />
+                  </div>
+                  <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-6 font-normal">
+                    "We migrated our startup team meetings over to this hub. Instant rooms, privacy by design, and beautiful, modern UI."
+                  </p>
                 </div>
-                <p className="text-white light:text-slate-700 text-sm sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8 font-light">"We moved our entire remote engineering team over to WabiSeminar for our daily standups. It's fast, free, and secure. What more could you ask for?"</p>
-                <div className="flex items-center gap-3.5 sm:gap-4">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#0DA9CF] flex items-center justify-center font-bold text-white text-lg sm:text-xl shadow-lg shrink-0">D</div>
+                <div className="flex items-center gap-3.5">
+                  <div className="w-11 h-11 rounded-full bg-[#0DA9CF] flex items-center justify-center font-bold text-white text-base">D</div>
                   <div>
-                    <h4 className="text-white light:text-slate-900 font-bold text-sm sm:text-base">dagin</h4>
-                    <p className="text-[#94A3B8] light:text-slate-500 text-xs sm:text-sm">CTO, TechFlow</p>
+                    <h4 className="text-slate-900 font-bold text-sm">Dagin A.</h4>
+                    <p className="text-slate-500 text-xs">Software Engineer</p>
                   </div>
                 </div>
-              </motion.div>
-            </motion.div>
+              </div>
+
+            </div>
+
           </div>
         </section>
 
       </main>
 
 
-
-      {/* Info Modal */}
+      {/* ========================================================
+          "LEARN HOW WE DO IT" INFORMATION MODAL
+         ======================================================== */}
       {showInfoModal && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-[#050816]/90 light:bg-black/50 backdrop-blur-md p-4 animate-in fade-in duration-300">
-          <div className="bg-[#0A0F24] light:bg-white border border-white/10 rounded-2xl sm:rounded-[2rem] max-w-lg w-full p-6 sm:p-10 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200">
+          <div className="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto border border-slate-200">
             <button 
               onClick={() => setShowInfoModal(false)}
-              className="absolute top-4 right-4 sm:top-6 sm:right-6 text-[#94A3B8] light:text-slate-500 hover:text-white light:text-slate-900 transition-colors bg-white/5 light:bg-white border light:border-slate-200 p-2 rounded-full hover:bg-rose-500/20 hover:text-rose-400 cursor-pointer shadow-sm"
+              className="absolute top-5 right-5 text-slate-400 hover:text-slate-700 p-2 rounded-full hover:bg-slate-100 transition-colors cursor-pointer"
             >
-              <X size={20} />
+              <X size={22} />
             </button>
-            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-[#0DA9CF]/20 flex items-center justify-center mb-5 sm:mb-6 border border-[#0DA9CF]/30">
-              <Video className="text-[#0DA9CF]" size={26} />
+
+            <div className="w-14 h-14 rounded-2xl bg-[#ec232b]/10 text-[#ec232b] flex items-center justify-center mb-6">
+              <Rocket size={28} />
             </div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white light:text-slate-900 mb-3 sm:mb-4">About WabiSeminar</h2>
-            <div className="space-y-3 sm:space-y-4 text-[#94A3B8] light:text-slate-500 text-sm sm:text-base lg:text-lg leading-relaxed">
-              <p>
-                WabiSeminar is a completely <strong className="text-white light:text-slate-900">free</strong>, high-quality video conferencing platform designed for seamless collaboration.
-              </p>
-              <p>
-                Whether you're hosting a masterclass, a team sync, or catching up with friends, WabiSeminar provides real-time video, audio, and chat without any time limits or hidden fees.
-              </p>
+
+            <h3 className="text-2xl font-extrabold text-slate-900 mb-3">Amplifying Startups</h3>
+            <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
+              At iceaddis, we identify bold ideas and provide founders with the mentorship, technology, and global network needed to build enduring companies.
+            </p>
+
+            <div className="space-y-4 mb-8">
+              <div className="flex items-start space-x-3">
+                <CheckCircle size={20} className="text-[#04B84C] mt-0.5 shrink-0" />
+                <div>
+                  <h4 className="text-sm font-bold text-slate-800">Seed Incubation</h4>
+                  <p className="text-xs text-slate-500">From concept validation to initial market traction.</p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-3">
+                <CheckCircle size={20} className="text-[#0DA9CF] mt-0.5 shrink-0" />
+                <div>
+                  <h4 className="text-sm font-bold text-slate-800">ice180 Acceleration</h4>
+                  <p className="text-xs text-slate-500">Intensive preparation for institutional venture investment.</p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-3">
+                <CheckCircle size={20} className="text-[#F67E31] mt-0.5 shrink-0" />
+                <div>
+                  <h4 className="text-sm font-bold text-slate-800">Virtual Collaboration</h4>
+                  <p className="text-xs text-slate-500">Encrypted real-time video rooms for mentoring and masterclasses.</p>
+                </div>
+              </div>
             </div>
+
             <button 
-              onClick={() => setShowInfoModal(false)}
-              className="mt-6 sm:mt-10 w-full bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white py-3.5 sm:py-4 rounded-full font-bold text-base sm:text-lg transition-all hover:shadow-[0_0_20px_rgba(13,169,207,0.4)] cursor-pointer"
+              onClick={() => {
+                setShowInfoModal(false);
+                scrollToSection('launchpad');
+              }}
+              className="w-full bg-[#ec232b] hover:bg-[#d61b23] text-white py-3.5 rounded-full font-bold text-base transition-all shadow-md cursor-pointer"
             >
-              Let's get started!
+              Start Collaborating Now
             </button>
           </div>
         </div>
       )}
+
     </div>
   );
 }

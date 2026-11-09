@@ -113,7 +113,7 @@ function App() {
   const showHeaderFooter = currentView !== 'meeting';
 
   return (
-    <div className="min-h-screen flex flex-col font-sans relative overflow-x-hidden bg-[#050816] light:bg-slate-50">
+    <div className="min-h-screen flex flex-col font-sans relative overflow-x-hidden bg-white text-slate-900">
       <ParticleBackground />
       
       {showHeaderFooter && (
@@ -129,12 +129,16 @@ function App() {
         <PageTransition key={currentView} currentKey={currentView}>
           {currentView === 'auth' && <Auth onNavigate={handleAuthSuccess} />}
           
-          {currentView === 'dashboard' && isAuthenticated && (
-            <UserDashboard onNavigate={setCurrentView} onJoinRoom={navigateToRoom} notify={notify} />
-          )}
-          
-          {currentView === 'dashboard' && !isAuthenticated && (
+          {currentView === 'dashboard' && (
             <Dashboard onNavigate={setCurrentView} onJoinRoom={navigateToRoom} notify={notify} />
+          )}
+
+          {currentView === 'user-dashboard' && (
+            isAuthenticated ? (
+              <UserDashboard onNavigate={setCurrentView} onJoinRoom={navigateToRoom} notify={notify} />
+            ) : (
+              <Auth onNavigate={handleAuthSuccess} />
+            )
           )}
 
           {currentView === 'profile' && isAuthenticated && (

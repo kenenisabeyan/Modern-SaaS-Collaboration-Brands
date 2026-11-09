@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Lottie from 'lottie-react';
+import { Lottie } from 'lottie-react';
 import heroAnimationData from '../assets/hero-lottie.json';
 
 export default function HeroAnimation() {
