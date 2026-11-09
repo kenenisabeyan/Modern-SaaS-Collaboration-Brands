@@ -72,7 +72,7 @@ export default function UserProfile({ onNavigate }) {
       <div className="flex items-center justify-between mb-6 sm:mb-8">
         <button 
           onClick={() => onNavigate('dashboard')}
-          className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white transition-colors cursor-pointer"
+          className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-[#0DA9CF] dark:hover:text-[#0DA9CF] transition-colors cursor-pointer"
         >
           <ArrowLeft size={16} />
           <span>Back to Dashboard</span>
@@ -82,7 +82,7 @@ export default function UserProfile({ onNavigate }) {
           <motion.div 
             initial={{ opacity: 0, y: -10 }} 
             animate={{ opacity: 1, y: 0 }} 
-            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/20 text-xs font-semibold"
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#04B84C]/10 text-[#04B84C] border border-[#04B84C]/20 text-xs font-semibold"
           >
             <Check size={13} />
             <span>Profile Updated!</span>
