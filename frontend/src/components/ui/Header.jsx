@@ -1,23 +1,16 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Video, Moon, Sun, LogOut, LogIn, Menu, X, User, Settings, ChevronDown } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { 
+  X, Plus, Minus, Video, Users, LogIn, LogOut, 
+  User, Settings, ChevronRight, Sparkles, Shield, ArrowRight 
+} from 'lucide-react';
 
 export default function Header({ currentView, onNavigate, isAuthenticated, handleAuthAction }) {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isProfileOpen, setIsProfileOpen] = useState(false);
-  
-  const [isLight, setIsLight] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [openAccordions, setOpenAccordions] = useState({});
   
   const username = localStorage.getItem('username') || 'User';
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
-      setIsLight(true);
-      document.documentElement.classList.add('light');
-    }
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -25,251 +18,288 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    const handleThemeChange = () => {
-      const isLightTheme = document.documentElement.classList.contains('light');
-      setIsLight(isLightTheme);
-    };
-
-    window.addEventListener('themechange', handleThemeChange);
-    return () => window.removeEventListener('themechange', handleThemeChange);
-  }, []);
-
-  const toggleTheme = () => {
-    const nextTheme = !isLight;
-    setIsLight(nextTheme);
-    if (nextTheme) {
-      document.documentElement.classList.add('light');
-      localStorage.setItem('theme', 'light');
-    } else {
-      document.documentElement.classList.remove('light');
-      localStorage.setItem('theme', 'dark');
-    }
-    window.dispatchEvent(new Event('themechange'));
+  const toggleAccordion = (key) => {
+    setOpenAccordions(prev => ({
+      ...prev,
+      [key]: !prev[key]
+    }));
   };
-
-  const navLinks = [
-    { id: 'dashboard', label: 'Home' },
-    { id: 'features', label: 'Features' },
-    { id: 'how-it-works', label: 'How It Works' },
-    { id: 'pricing', label: 'Pricing' },
-    { id: 'faq', label: 'FAQ' },
-  ];
 
   const handleNavClick = (id) => {
-    setIsMenuOpen(false);
+    setIsDrawerOpen(false);
     onNavigate(id);
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const menuItems = [
+    {
+      id: 'about',
+      label: 'About',
+      hasSubmenu: true,
+      subItems: [
+        { label: 'Who We Are', view: 'features' },
+        { label: 'Our Mission & Vision', view: 'how-it-works' },
+        { label: 'Innovation Hub', view: 'features' }
+      ]
+    },
+    {
+      id: 'startups',
+      label: 'Startups',
+      hasSubmenu: true,
+      subItems: [
+        { label: 'Incubation Program', view: 'pricing' },
+        { label: 'Acceleration (ice180)', view: 'pricing' },
+        { label: 'Mentorship & Network', view: 'features' }
+      ]
+    },
+    {
+      id: 'innovation',
+      label: 'Innovation',
+      hasSubmenu: false,
+      view: 'features'
+    },
+    {
+      id: 'collaboration',
+      label: 'Collaboration',
+      hasSubmenu: true,
+      subItems: [
+        { label: 'Video Meeting Rooms', view: 'dashboard' },
+        { label: 'Host a Masterclass', view: 'dashboard' },
+        { label: 'Join Existing Room', view: 'dashboard' }
+      ]
+    },
+    {
+      id: 'entrepreneurship',
+      label: 'Entrepreneurship',
+      hasSubmenu: false,
+      view: 'how-it-works'
+    },
+    {
+      id: 'media',
+      label: 'Media',
+      hasSubmenu: false,
+      view: 'how-it-works'
+    },
+    {
+      id: 'contact',
+      label: 'Contact Us',
+      hasSubmenu: false,
+      view: 'faq'
+    }
+  ];
 
   return (
     <>
-      <motion.header 
-        className={`fixed top-0 w-full flex items-center justify-between px-4 sm:px-6 lg:px-8 xl:px-16 z-50 transition-all duration-300 ${
+      {/* Top Sticky Header */}
+      <header 
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 bg-white ${
           isScrolled 
-            ? 'h-16 sm:h-20 bg-white/95 dark:bg-[#050816]/90 backdrop-blur-xl border-b border-slate-200/80 dark:border-white/10 shadow-sm' 
-            : 'h-18 sm:h-22 bg-transparent border-b-transparent'
+            ? 'h-20 sm:h-24 shadow-[0_2px_15px_rgba(0,0,0,0.04)] border-b border-slate-100' 
+            : 'h-20 sm:h-28'
         }`}
-        initial={{ y: -80 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.4 }}
       >
-        {/* Logo */}
-        <div 
-          className="flex items-center space-x-2.5 sm:space-x-3 cursor-pointer select-none" 
-          onClick={() => handleNavClick('dashboard')}
-        >
-          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-[#0DA9CF] flex items-center justify-center shadow-md shadow-[#0DA9CF]/30">
-            <Video className="text-white w-5 h-5" />
-          </div>
-          <span className="font-extrabold text-lg sm:text-xl tracking-tight text-slate-900 dark:text-white">
-            WabiSeminar
-          </span>
-        </div>
-
-        {/* Desktop Links */}
-        <nav className="hidden lg:flex items-center space-x-1.5 bg-white dark:bg-white/5 p-1 rounded-full border border-slate-200 dark:border-white/10 shadow-sm">
-          {navLinks.map((link) => {
-            const isActive = currentView === link.id || (currentView === 'user-dashboard' && link.id === 'dashboard');
-            return (
-              <button 
-                key={link.id}
-                onClick={() => handleNavClick(link.id)} 
-                className={`text-xs font-semibold px-4 py-1.5 rounded-full transition-all cursor-pointer ${
-                  isActive 
-                    ? 'text-white bg-[#0DA9CF] shadow-sm' 
-                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
-                }`}
-              >
-                {link.label}
-              </button>
-            );
-          })}
-        </nav>
-
-        {/* Right Actions */}
-        <div className="flex items-center space-x-2.5 sm:space-x-3">
-          <button 
-            onClick={toggleTheme}
-            className="flex w-9 h-9 sm:w-10 sm:h-10 rounded-2xl border border-slate-200 dark:border-white/10 items-center justify-center text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors bg-white dark:bg-white/5 hover:bg-slate-50 dark:hover:bg-white/10 cursor-pointer shadow-sm"
-            title="Toggle color theme"
+        <div className="max-w-[1400px] h-full mx-auto px-4 sm:px-8 lg:px-12 flex items-center justify-between">
+          
+          {/* Logo on Left */}
+          <div 
+            onClick={() => handleNavClick('dashboard')}
+            className="flex items-center cursor-pointer select-none group"
           >
-            {isLight ? <Sun size={17} className="text-[#F67E31]" /> : <Moon size={17} />}
-          </button>
+            <img 
+              src="/iceaddis-logo.svg" 
+              alt="iceaddis" 
+              className="h-7 sm:h-9 md:h-10 w-auto transition-transform duration-200 group-hover:scale-105"
+            />
+          </div>
 
-          {isAuthenticated ? (
-            <div className="relative">
+          {/* Right Hamburger Menu (3 red horizontal bars) */}
+          <div className="flex items-center space-x-4 sm:space-x-6">
+            
+            {/* Quick Action Buttons for logged-in users on Desktop */}
+            {isAuthenticated && (
               <button 
-                className="flex items-center space-x-2 text-xs sm:text-sm font-semibold text-slate-800 dark:text-white bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-2xl hover:border-slate-300 dark:hover:border-white/20 transition-all shadow-sm cursor-pointer"
-                onClick={() => setIsProfileOpen(!isProfileOpen)}
+                onClick={() => handleNavClick('user-dashboard')}
+                className="hidden md:flex items-center space-x-2 text-xs sm:text-sm font-semibold text-slate-700 hover:text-slate-900 bg-slate-50 hover:bg-slate-100 border border-slate-200 px-3.5 py-2 rounded-full transition-all cursor-pointer shadow-sm"
               >
-                <div className="w-6 h-6 rounded-full bg-[#0DA9CF] flex items-center justify-center text-xs font-bold text-white shadow-sm">
+                <div className="w-5 h-5 rounded-full bg-[#ec232b] text-white flex items-center justify-center text-[10px] font-bold">
                   {username.charAt(0).toUpperCase()}
                 </div>
-                <span className="hidden sm:inline max-w-[120px] truncate">{username}</span>
-                <ChevronDown size={14} className={`transition-transform duration-200 ${isProfileOpen ? 'rotate-180' : ''}`} />
+                <span>Dashboard</span>
               </button>
-              
-              {/* Dropdown Menu */}
-              {isProfileOpen && (
-                <>
-                  <div className="fixed inset-0 z-40" onClick={() => setIsProfileOpen(false)}></div>
-                  <motion.div 
-                    initial={{ opacity: 0, scale: 0.95, y: 5 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    className="absolute right-0 mt-2.5 w-52 bg-white dark:bg-[#0A0F24] border border-slate-200 dark:border-white/10 rounded-2xl shadow-xl py-2 z-50 overflow-hidden"
-                  >
-                    <div className="px-4 py-2.5 border-b border-slate-100 dark:border-white/5 mb-1">
-                      <p className="text-[11px] font-medium text-slate-500">Signed in as</p>
-                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{username}</p>
-                    </div>
-                    <button 
-                      className="w-full px-4 py-2 text-xs sm:text-sm text-left text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-white/5 flex items-center gap-2.5 transition-colors cursor-pointer"
-                      onClick={() => { setIsProfileOpen(false); handleNavClick('profile'); }}
-                    >
-                      <User size={15} /> Profile
-                    </button>
-                    <button 
-                      className="w-full px-4 py-2 text-xs sm:text-sm text-left text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-white/5 flex items-center gap-2.5 transition-colors cursor-pointer"
-                      onClick={() => { setIsProfileOpen(false); handleNavClick('settings'); }}
-                    >
-                      <Settings size={15} /> Settings
-                    </button>
-                    <div className="h-px bg-slate-100 dark:border-white/5 my-1 w-full"></div>
-                    <button 
-                      className="w-full px-4 py-2 text-xs sm:text-sm text-left text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-500/10 flex items-center gap-2.5 transition-colors cursor-pointer"
-                      onClick={() => { setIsProfileOpen(false); handleAuthAction(); }}
-                    >
-                      <LogOut size={15} /> Logout
-                    </button>
-                  </motion.div>
-                </>
-              )}
-            </div>
-          ) : (
-            <button 
-              className="flex items-center space-x-1.5 sm:space-x-2 text-xs sm:text-sm font-semibold text-white bg-[#0DA9CF] hover:bg-[#0C8DB0] px-4 sm:px-5 py-2 rounded-2xl transition-all shadow-md shadow-[#0DA9CF]/25 cursor-pointer"
-              onClick={() => { setIsMenuOpen(false); handleAuthAction(); }}
+            )}
+
+            {/* Hamburger Button (Matches Screenshots 1 & 3) */}
+            <button
+              onClick={() => setIsDrawerOpen(true)}
+              className="p-2.5 sm:p-3 rounded-2xl hover:bg-slate-50 transition-colors cursor-pointer group focus:outline-none"
+              aria-label="Toggle navigation menu"
+              title="Open Navigation Menu"
             >
-              <LogIn size={15} className="text-white" />
-              <span className="text-white">Sign In</span>
+              <div className="w-7 sm:w-8 h-4 sm:h-5 flex flex-col justify-between items-end">
+                <span className="w-7 sm:w-8 h-[2.5px] bg-[#ec232b] rounded-full transition-all duration-300 group-hover:w-6"></span>
+                <span className="w-5 sm:w-6 h-[2.5px] bg-[#ec232b] rounded-full transition-all duration-300 group-hover:w-8"></span>
+                <span className="w-7 sm:w-8 h-[2.5px] bg-[#ec232b] rounded-full transition-all duration-300 group-hover:w-5"></span>
+              </div>
             </button>
-          )}
-          
-          {/* Mobile Menu Toggle */}
-          <button 
-            className="lg:hidden p-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors rounded-xl border border-slate-200 dark:border-white/10"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle navigation menu"
-          >
-            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
+
+          </div>
         </div>
-      </motion.header>
+      </header>
 
-      {/* Mobile Drawer Menu */}
-      {isMenuOpen && (
-        <>
-          <div 
-            className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm lg:hidden transition-opacity"
-            onClick={() => setIsMenuOpen(false)}
-          />
-          <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-x-0 top-16 z-40 bg-white dark:bg-[#050816] px-5 pt-4 pb-8 flex flex-col space-y-2 lg:hidden border-b border-slate-200 dark:border-white/10 shadow-2xl max-h-[calc(100dvh-4rem)] overflow-y-auto"
-          >
-            {/* Authenticated User Snapshot in Mobile Menu */}
-            {isAuthenticated && (
-              <div className="p-3.5 mb-2 bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl flex items-center justify-between shadow-sm">
-                <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 rounded-2xl bg-[#0DA9CF] flex items-center justify-center font-bold text-white shadow">
-                    {username.charAt(0).toUpperCase()}
-                  </div>
-                  <div>
-                    <p className="text-sm font-bold text-slate-900 dark:text-white leading-tight">{username}</p>
-                    <p className="text-xs text-slate-500">Active Account</p>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-1">
-                  <button 
-                    onClick={() => { setIsMenuOpen(false); handleNavClick('profile'); }}
-                    className="p-2 text-slate-500 hover:text-slate-900 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 transition-colors"
-                    title="Profile"
-                  >
-                    <User size={18} />
-                  </button>
-                  <button 
-                    onClick={() => { setIsMenuOpen(false); handleNavClick('settings'); }}
-                    className="p-2 text-slate-500 hover:text-slate-900 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 transition-colors"
-                    title="Settings"
-                  >
-                    <Settings size={18} />
-                  </button>
-                  <button 
-                    onClick={() => { setIsMenuOpen(false); handleAuthAction(); }}
-                    className="p-2 text-rose-500 hover:text-rose-600 rounded-lg hover:bg-rose-50 dark:hover:bg-rose-500/10 transition-colors"
-                    title="Logout"
-                  >
-                    <LogOut size={18} />
-                  </button>
-                </div>
-              </div>
-            )}
+      {/* Slide-out Right Drawer Menu (Matches Screenshot 2) */}
+      <AnimatePresence>
+        {isDrawerOpen && (
+          <div className="fixed inset-0 z-50 overflow-hidden">
+            
+            {/* Dark Dimmed Backdrop */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+              onClick={() => setIsDrawerOpen(false)}
+            />
 
-            {/* Navigation items */}
-            {navLinks.map((link) => {
-              const isActive = currentView === link.id || (currentView === 'user-dashboard' && link.id === 'dashboard');
-              return (
+            {/* Slide-over Right Panel */}
+            <motion.div 
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 28, stiffness: 240 }}
+              className="absolute inset-y-0 right-0 max-w-full w-full sm:w-[380px] md:w-[420px] bg-[#18181B] text-white shadow-2xl flex flex-col justify-between overflow-y-auto"
+            >
+              {/* Drawer Header */}
+              <div className="p-6 sm:p-8 flex items-center justify-between border-b border-white/10">
+                <div className="flex items-center space-x-2">
+                  <span className="text-sm font-semibold tracking-widest uppercase text-slate-400">Navigation</span>
+                </div>
+                
+                {/* Close Button X (Matches Screenshot 2) */}
                 <button 
-                  key={link.id}
-                  onClick={() => handleNavClick(link.id)} 
-                  className={`text-left text-sm font-semibold py-2.5 px-3 rounded-xl transition-all ${
-                    isActive 
-                      ? 'text-[#0DA9CF] bg-[#0DA9CF]/10 font-bold border border-[#0DA9CF]/20' 
-                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-white/5'
-                  }`}
+                  onClick={() => setIsDrawerOpen(false)}
+                  className="p-2 rounded-full text-slate-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                  aria-label="Close menu"
                 >
-                  {link.label}
-                </button>
-              );
-            })}
-
-            {!isAuthenticated && (
-              <div className="pt-2">
-                <button
-                  onClick={() => { setIsMenuOpen(false); handleAuthAction(); }}
-                  className="w-full py-3 px-4 bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-[#0DA9CF]/25 transition-all"
-                >
-                  <LogIn size={18} />
-                  <span>Sign In / Register</span>
+                  <X size={26} />
                 </button>
               </div>
-            )}
-          </motion.div>
-        </>
-      )}
+
+              {/* Drawer Menu Links (Matches Screenshot 2) */}
+              <div className="px-6 sm:px-8 py-6 flex-1 space-y-1">
+                {menuItems.map((item) => {
+                  const isOpen = openAccordions[item.id];
+
+                  return (
+                    <div key={item.id} className="border-b border-white/5 pb-2">
+                      <div className="flex items-center justify-between py-3">
+                        {item.hasSubmenu ? (
+                          <button
+                            onClick={() => toggleAccordion(item.id)}
+                            className="flex-1 flex items-center justify-between text-left text-lg sm:text-xl font-medium text-slate-200 hover:text-white transition-colors cursor-pointer"
+                          >
+                            <span>{item.label}</span>
+                            <span className="text-slate-400 text-lg font-light pl-4">
+                              {isOpen ? <Minus size={18} /> : <Plus size={18} />}
+                            </span>
+                          </button>
+                        ) : (
+                          <button
+                            onClick={() => handleNavClick(item.view || 'dashboard')}
+                            className="w-full text-left text-lg sm:text-xl font-medium text-slate-200 hover:text-white transition-colors cursor-pointer"
+                          >
+                            {item.label}
+                          </button>
+                        )}
+                      </div>
+
+                      {/* Submenu Accordion */}
+                      {item.hasSubmenu && isOpen && (
+                        <motion.div 
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          exit={{ opacity: 0, height: 0 }}
+                          className="pl-4 pb-2 space-y-2 border-l border-white/10 my-1"
+                        >
+                          {item.subItems.map((sub, idx) => (
+                            <button
+                              key={idx}
+                              onClick={() => handleNavClick(sub.view)}
+                              className="block w-full text-left text-sm text-slate-400 hover:text-[#ec232b] py-1 transition-colors cursor-pointer"
+                            >
+                              {sub.label}
+                            </button>
+                          ))}
+                        </motion.div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Drawer Footer Actions (Video Meetings & Auth) */}
+              <div className="p-6 sm:p-8 bg-black/30 border-t border-white/10 space-y-3">
+                {isAuthenticated ? (
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between bg-white/5 p-3 rounded-2xl border border-white/10">
+                      <div className="flex items-center space-x-3">
+                        <div className="w-9 h-9 rounded-full bg-[#ec232b] text-white flex items-center justify-center font-bold text-sm">
+                          {username.charAt(0).toUpperCase()}
+                        </div>
+                        <div>
+                          <p className="text-sm font-bold text-white truncate max-w-[150px]">{username}</p>
+                          <p className="text-[11px] text-slate-400">Logged In</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <button 
+                          onClick={() => handleNavClick('profile')} 
+                          className="p-1.5 text-slate-300 hover:text-white rounded-lg hover:bg-white/10 transition-colors"
+                          title="Profile"
+                        >
+                          <User size={16} />
+                        </button>
+                        <button 
+                          onClick={() => handleNavClick('settings')} 
+                          className="p-1.5 text-slate-300 hover:text-white rounded-lg hover:bg-white/10 transition-colors"
+                          title="Settings"
+                        >
+                          <Settings size={16} />
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-2 pt-1">
+                      <button
+                        onClick={() => handleNavClick('user-dashboard')}
+                        className="py-2.5 px-3 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-semibold text-center transition-colors cursor-pointer"
+                      >
+                        My Meetings
+                      </button>
+                      <button
+                        onClick={() => { setIsDrawerOpen(false); handleAuthAction(); }}
+                        className="py-2.5 px-3 rounded-xl bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 text-xs font-semibold text-center transition-colors cursor-pointer flex items-center justify-center gap-1.5"
+                      >
+                        <LogOut size={13} />
+                        <span>Sign Out</span>
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <button
+                    onClick={() => { setIsDrawerOpen(false); handleAuthAction(); }}
+                    className="w-full py-3.5 rounded-full bg-[#ec232b] hover:bg-[#d41c24] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg transition-transform active:scale-95 cursor-pointer"
+                  >
+                    <LogIn size={16} />
+                    <span>Sign In / Create Account</span>
+                  </button>
+                )}
+              </div>
+
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
