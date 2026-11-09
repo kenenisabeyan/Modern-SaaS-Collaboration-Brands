@@ -267,8 +267,8 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 {/* Start Meeting Section */}
                 <div className="mb-10 relative z-10">
                   <div className="flex items-center space-x-3 mb-3">
-                    <div className="bg-indigo-500/20 light:bg-indigo-100 p-2 rounded-full">
-                      <Video className="text-indigo-400 light:text-indigo-600" size={24} />
+                    <div className="bg-[#0DA9CF]/20 light:bg-[#0DA9CF]/10 p-2 rounded-full">
+                      <Video className="text-[#0DA9CF]" size={24} />
                     </div>
                     <h2 className="text-2xl font-bold text-white light:text-slate-900 tracking-tight">Start a New Meeting</h2>
                   </div>
@@ -278,7 +278,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                     type="button"
                     whileHover={{ scale: isCreating ? 1 : 1.02 }}
                     whileTap={{ scale: isCreating ? 1 : 0.98 }}
-                    className={`group premium-btn premium-btn-brand w-full py-4 px-6 rounded-full text-[16px] font-bold flex items-center justify-between ${isCreating ? 'opacity-75 cursor-not-allowed' : 'shadow-lg shadow-indigo-500/20'}`}
+                    className={`group premium-btn premium-btn-brand w-full py-4 px-6 rounded-full text-[16px] font-bold flex items-center justify-between ${isCreating ? 'opacity-75 cursor-not-allowed' : 'shadow-lg shadow-[#0DA9CF]/25'}`}
                     onClick={handleCreateRoom}
                     disabled={isCreating}
                   >
@@ -307,8 +307,8 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 {/* Join Meeting Section */}
                 <div className="mb-8 relative z-10">
                   <div className="flex items-center space-x-3 mb-3">
-                    <div className="bg-purple-500/20 light:bg-orange-100 p-2 rounded-full">
-                      <Users className="text-purple-400 light:text-orange-500" size={24} />
+                    <div className="bg-[#F67E31]/20 light:bg-[#F67E31]/10 p-2 rounded-full">
+                      <Users className="text-[#F67E31]" size={24} />
                     </div>
                     <h2 className="text-2xl font-bold text-white light:text-slate-900 tracking-tight">Join an Existing Meeting</h2>
                   </div>
@@ -332,7 +332,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                       type="button"
                       whileHover={{ scale: (!joinId.trim() || isJoining) ? 1 : 1.02 }}
                       whileTap={{ scale: (!joinId.trim() || isJoining) ? 1 : 0.98 }}
-                      className={`group premium-btn premium-btn-orange w-full py-3.5 sm:py-4 px-5 sm:px-6 rounded-full text-sm sm:text-[16px] font-bold flex items-center justify-between ${(!joinId.trim() || isJoining) ? 'opacity-90 cursor-not-allowed' : 'shadow-lg shadow-purple-500/20'}`}
+                      className={`group premium-btn premium-btn-orange w-full py-3.5 sm:py-4 px-5 sm:px-6 rounded-full text-sm sm:text-[16px] font-bold flex items-center justify-between ${(!joinId.trim() || isJoining) ? 'opacity-90 cursor-not-allowed' : 'shadow-lg shadow-[#F67E31]/25'}`}
                       onClick={handleJoinRoom}
                     >
                       <div className="flex items-center">
@@ -351,14 +351,14 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 {/* Bottom Feature Highlights */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4 border-t border-white/10 light:border-slate-200 pt-5 sm:pt-6 relative z-10">
                   <div className="flex items-start space-x-3">
-                    <Monitor size={18} className="text-indigo-400 light:text-indigo-500 mt-0.5 shrink-0" />
+                    <Monitor size={18} className="text-[#0DA9CF] mt-0.5 shrink-0" />
                     <div>
                       <h4 className="text-xs sm:text-sm font-bold text-white light:text-slate-800 mb-0.5">No Downloads</h4>
                       <p className="text-[11px] text-[#94A3B8] light:text-slate-500 leading-relaxed">Web-based, works on any device</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <Sparkles size={18} className="text-indigo-400 light:text-indigo-500 mt-0.5 shrink-0" />
+                    <Sparkles size={18} className="text-[#F67E31] mt-0.5 shrink-0" />
                     <div>
                       <h4 className="text-xs sm:text-sm font-bold text-white light:text-slate-800 mb-0.5">HD Quality</h4>
                       <p className="text-[11px] text-[#94A3B8] light:text-slate-500 leading-relaxed">Crystal clear audio and video</p>
@@ -438,10 +438,10 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
             <p className="text-slate-400 light:text-slate-500 text-xs sm:text-sm font-bold tracking-[0.2em] uppercase mb-6 sm:mb-8">Trusted by innovative teams worldwide</p>
             <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-10 md:gap-20 opacity-50 light:opacity-70 grayscale hover:grayscale-0 transition-all duration-700">
-              <div className="text-lg sm:text-2xl font-black flex items-center gap-2 sm:gap-3 text-white light:text-slate-800"><div className="w-6 h-6 sm:w-8 sm:h-8 rounded-lg bg-indigo-500 shadow-lg shadow-indigo-500/50"></div> Acme Corp</div>
-              <div className="text-lg sm:text-2xl font-black flex items-center gap-2 sm:gap-3 text-white light:text-slate-800"><div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-indigo-500 shadow-lg shadow-emerald-500/50"></div> Globex</div>
-              <div className="text-lg sm:text-2xl font-black flex items-center gap-2 sm:gap-3 text-white light:text-slate-800"><div className="w-6 h-6 sm:w-8 sm:h-8 rounded-tl-2xl rounded-br-2xl bg-gradient-to-tr from-rose-500 to-orange-500 shadow-lg shadow-rose-500/50"></div> Stark Ind</div>
-              <div className="text-lg sm:text-2xl font-black flex items-center gap-2 sm:gap-3 text-white light:text-slate-800 hidden sm:flex"><div className="w-6 h-6 sm:w-8 sm:h-8 rotate-45 bg-gradient-to-tr from-blue-500 to-cyan-500 shadow-lg shadow-blue-500/50"></div> Initech</div>
+              <div className="text-lg sm:text-2xl font-black flex items-center gap-2 sm:gap-3 text-white light:text-slate-800"><div className="w-6 h-6 sm:w-8 sm:h-8 rounded-lg bg-[#0DA9CF] shadow-lg shadow-[#0DA9CF]/40"></div> Acme Corp</div>
+              <div className="text-lg sm:text-2xl font-black flex items-center gap-2 sm:gap-3 text-white light:text-slate-800"><div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-[#04B84C] shadow-lg shadow-[#04B84C]/40"></div> Globex</div>
+              <div className="text-lg sm:text-2xl font-black flex items-center gap-2 sm:gap-3 text-white light:text-slate-800"><div className="w-6 h-6 sm:w-8 sm:h-8 rounded-tl-2xl rounded-br-2xl bg-[#F67E31] shadow-lg shadow-[#F67E31]/40"></div> Stark Ind</div>
+              <div className="text-lg sm:text-2xl font-black flex items-center gap-2 sm:gap-3 text-white light:text-slate-800 hidden sm:flex"><div className="w-6 h-6 sm:w-8 sm:h-8 rotate-45 bg-[#0DA9CF] shadow-lg shadow-[#0DA9CF]/40"></div> Initech</div>
             </div>
           </div>
         </motion.section>
@@ -455,7 +455,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               transition={{ duration: 0.6 }}
               className="text-center max-w-3xl mx-auto mb-12 sm:mb-20"
             >
-              <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold mb-4 sm:mb-6 tracking-tight text-white light:text-slate-900">Everything you need for <br className="hidden md:block"/><span className="text-indigo-500">perfect seminars</span></h2>
+              <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold mb-4 sm:mb-6 tracking-tight text-white light:text-slate-900">Everything you need for <br className="hidden md:block"/><span className="text-[#0DA9CF]">perfect seminars</span></h2>
               <p className="text-[#94A3B8] light:text-slate-600 text-base sm:text-lg md:text-xl leading-relaxed">WabiSeminar brings together the best tools for video collaboration in one beautiful, frictionless package. Focus on your audience, not the tech.</p>
             </motion.div>
             
