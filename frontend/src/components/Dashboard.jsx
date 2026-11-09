@@ -169,7 +169,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               {/* Heading */}
               <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.12] sm:leading-[1.1] tracking-tight text-white light:text-slate-900 break-words">
                 Host Engaging <br/>
-                <span className="text-indigo-500 drop-shadow-lg">
+                <span className="text-[#0DA9CF] drop-shadow-lg">
                   Masterclasses
                 </span><br/>
                 Without Limits
