@@ -245,7 +245,7 @@ export default function HowItWorks({ onNavigate }) {
 
         {/* 4. Demo Preview Section */}
         <section className="mb-24 sm:mb-40">
-          <div className="bg-gradient-to-br from-[#160B2A] light:from-slate-100 to-[#0A0F24] light:to-white border border-purple-500/20 light:border-slate-200 rounded-2xl sm:rounded-[3rem] p-6 sm:p-10 md:p-16 overflow-hidden relative shadow-[0_30px_60px_-15px_rgba(99,102,241,0.2)] light:shadow-xl">
+          <div className="bg-gradient-to-br from-[#160B2A] light:from-slate-100 to-[#0A0F24] light:to-white border border-[#0DA9CF]/20 light:border-slate-200 rounded-2xl sm:rounded-[3rem] p-6 sm:p-10 md:p-16 overflow-hidden relative shadow-[0_30px_60px_-15px_rgba(13,169,207,0.2)] light:shadow-xl">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
               <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
                 <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold mb-4 sm:mb-6 text-white light:text-slate-900">See it in action.</h2>
@@ -254,15 +254,15 @@ export default function HowItWorks({ onNavigate }) {
                 </p>
                 <ul className="space-y-3 sm:space-y-4 mb-8 sm:mb-10">
                   <li className="flex items-center space-x-3 text-sm sm:text-base text-white light:text-slate-700">
-                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-yellow-500/20 light:bg-yellow-100 flex items-center justify-center flex-shrink-0"><Zap size={16} className="text-yellow-400 light:text-yellow-600"/></div>
+                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#F67E31]/20 light:bg-[#F67E31]/10 flex items-center justify-center flex-shrink-0"><Zap size={16} className="text-[#F67E31]"/></div>
                     <span className="font-medium">One-click room generation</span>
                   </li>
                   <li className="flex items-center space-x-3 text-sm sm:text-base text-white light:text-slate-700">
-                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-indigo-500/20 light:bg-indigo-100 flex items-center justify-center flex-shrink-0"><LinkIcon size={16} className="text-indigo-400 light:text-indigo-600"/></div>
+                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#0DA9CF]/20 light:bg-[#0DA9CF]/10 flex items-center justify-center flex-shrink-0"><LinkIcon size={16} className="text-[#0DA9CF]"/></div>
                     <span className="font-medium">Shareable URL links</span>
                   </li>
                   <li className="flex items-center space-x-3 text-sm sm:text-base text-white light:text-slate-700">
-                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-emerald-500/20 light:bg-emerald-100 flex items-center justify-center flex-shrink-0"><Video size={16} className="text-emerald-400 light:text-emerald-600"/></div>
+                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#04B84C]/20 light:bg-[#04B84C]/10 flex items-center justify-center flex-shrink-0"><Video size={16} className="text-[#04B84C]"/></div>
                     <span className="font-medium">Instant camera and mic detection</span>
                   </li>
                 </ul>
@@ -270,33 +270,33 @@ export default function HowItWorks({ onNavigate }) {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => onNavigate('dashboard')}
-                  className="bg-white text-indigo-900 px-6 sm:px-8 py-3 sm:py-3.5 rounded-full font-bold flex items-center space-x-3 shadow-lg group hover:shadow-[0_0_20px_rgba(255,255,255,0.4)] text-sm sm:text-base"
+                  className="bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white px-6 sm:px-8 py-3 sm:py-3.5 rounded-full font-bold flex items-center space-x-3 shadow-lg group hover:shadow-[0_0_20px_rgba(13,169,207,0.4)] text-sm sm:text-base cursor-pointer"
                 >
-                  <PlayCircle size={20} className="text-indigo-600 group-hover:scale-110 transition-transform"/>
+                  <PlayCircle size={20} className="text-white group-hover:scale-110 transition-transform"/>
                   <span>Try it yourself</span>
                 </motion.button>
               </motion.div>
               <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="relative">
                 {/* Abstract UI representation */}
                 <div className="aspect-square max-w-md mx-auto relative group">
-                  <div className="absolute inset-0 bg-indigo-500/20 light:bg-indigo-100 rounded-full blur-[80px] group-hover:bg-indigo-500/30 light:group-hover:bg-indigo-200 transition-colors duration-500"></div>
+                  <div className="absolute inset-0 bg-[#0DA9CF]/20 light:bg-[#0DA9CF]/10 rounded-full blur-[80px] group-hover:bg-[#0DA9CF]/30 transition-colors duration-500"></div>
                   
                   {/* Center Hub */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 sm:w-32 sm:h-32 bg-[#0A0F24] light:bg-white border border-indigo-500/50 light:border-indigo-200 rounded-2xl sm:rounded-[2rem] flex flex-col items-center justify-center shadow-[0_0_30px_rgba(99,102,241,0.4)] light:shadow-xl z-20 group-hover:scale-110 transition-transform duration-500">
-                    <Video size={28} className="text-indigo-400 light:text-indigo-600 mb-2 sm:w-8 sm:h-8" />
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 sm:w-32 sm:h-32 bg-[#0A0F24] light:bg-white border border-[#0DA9CF]/50 light:border-[#0DA9CF]/30 rounded-2xl sm:rounded-[2rem] flex flex-col items-center justify-center shadow-[0_0_30px_rgba(13,169,207,0.4)] light:shadow-xl z-20 group-hover:scale-110 transition-transform duration-500">
+                    <Video size={28} className="text-[#0DA9CF] mb-2 sm:w-8 sm:h-8" />
                     <span className="text-xs font-bold text-white light:text-slate-900">Room Active</span>
                   </div>
 
                   {/* Orbiting Elements */}
                   <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 20, ease: "linear" }} className="absolute inset-4 rounded-full border border-white/5 light:border-slate-200 z-10">
-                    <div className="absolute -top-5 sm:-top-6 left-1/2 -translate-x-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-[#160B2A] light:bg-white border border-emerald-500/30 light:border-emerald-200 rounded-full flex items-center justify-center shadow-lg" style={{ transform: "rotate(-0deg)" }}>
-                       <Monitor size={16} className="text-emerald-400 light:text-emerald-600 sm:w-[18px] sm:h-[18px]"/>
+                    <div className="absolute -top-5 sm:-top-6 left-1/2 -translate-x-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-[#160B2A] light:bg-white border border-[#04B84C]/30 light:border-[#04B84C]/30 rounded-full flex items-center justify-center shadow-lg" style={{ transform: "rotate(-0deg)" }}>
+                       <Monitor size={16} className="text-[#04B84C] sm:w-[18px] sm:h-[18px]"/>
                     </div>
                   </motion.div>
 
                   <motion.div animate={{ rotate: -360 }} transition={{ repeat: Infinity, duration: 25, ease: "linear" }} className="absolute inset-12 sm:inset-16 rounded-full border border-white/10 light:border-slate-200 z-10">
-                     <div className="absolute top-1/2 -left-5 sm:-left-6 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-[#160B2A] light:bg-white border border-purple-500/30 light:border-purple-200 rounded-full flex items-center justify-center shadow-lg" style={{ transform: "rotate(0deg)" }}>
-                       <MessageSquare size={16} className="text-purple-400 light:text-purple-600 sm:w-[18px] sm:h-[18px]"/>
+                     <div className="absolute top-1/2 -left-5 sm:-left-6 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-[#160B2A] light:bg-white border border-[#F67E31]/30 light:border-[#F67E31]/30 rounded-full flex items-center justify-center shadow-lg" style={{ transform: "rotate(0deg)" }}>
+                       <MessageSquare size={16} className="text-[#F67E31] sm:w-[18px] sm:h-[18px]"/>
                     </div>
                   </motion.div>
                 </div>
@@ -313,8 +313,8 @@ export default function HowItWorks({ onNavigate }) {
             viewport={{ once: true }}
             className="bg-[#0A0F24]/80 light:bg-white backdrop-blur-xl light:backdrop-blur-none border border-white/10 light:border-slate-200 rounded-2xl sm:rounded-[3rem] p-6 sm:p-12 md:p-16 text-center shadow-[0_20px_50px_-10px_rgba(0,0,0,0.5)] light:shadow-xl relative overflow-hidden group"
           >
-            <div className="absolute inset-0 bg-gradient-to-b from-indigo-500/5 light:from-indigo-100 to-transparent pointer-events-none group-hover:from-indigo-500/10 light:group-hover:from-indigo-200 transition-colors duration-500"></div>
-            <HelpCircle size={40} className="text-indigo-400 light:text-indigo-600 mx-auto mb-4 sm:mb-6 group-hover:scale-110 transition-transform sm:w-12 sm:h-12" />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#0DA9CF]/5 light:from-[#0DA9CF]/10 to-transparent pointer-events-none group-hover:from-[#0DA9CF]/10 transition-colors duration-500"></div>
+            <HelpCircle size={40} className="text-[#0DA9CF] mx-auto mb-4 sm:mb-6 group-hover:scale-110 transition-transform sm:w-12 sm:h-12" />
             <h2 className="text-2xl sm:text-3xl md:text-5xl font-extrabold mb-4 sm:mb-6 text-white light:text-slate-900">Still have questions?</h2>
             <p className="text-[#94A3B8] light:text-slate-600 text-base sm:text-lg max-w-xl mx-auto mb-8 sm:mb-10 leading-relaxed">
               Check out our detailed documentation or reach out to our support team. We're here to help you host the perfect masterclass.

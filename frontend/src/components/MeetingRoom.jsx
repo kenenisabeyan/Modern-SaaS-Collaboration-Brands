@@ -802,12 +802,12 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
   if (isWaiting) {
     return (
       <div className="flex-1 flex items-center justify-center h-screen bg-[#050816] light:bg-slate-50 text-white light:text-slate-900 relative overflow-hidden font-sans p-4">
-        <div className="absolute bg-indigo-600/15 blur-[120px] w-[500px] h-[500px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+        <div className="absolute bg-[#0DA9CF]/15 blur-[120px] w-[500px] h-[500px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
         <div className="text-center space-y-5 sm:space-y-6 z-10 max-w-md w-full mx-auto p-6 sm:p-10 bg-[#0A0F24] light:bg-white shadow-none/80 light:shadow-xl backdrop-blur-2xl border border-white/10 light:border-slate-200 rounded-2xl sm:rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)]">
           <div className="relative w-16 h-16 sm:w-20 sm:h-20 mx-auto flex items-center justify-center">
-            <div className="absolute inset-0 border-t-2 border-indigo-500 rounded-full animate-spin"></div>
-            <div className="absolute inset-2 border-r-2 border-purple-500 rounded-full animate-[spin_1.5s_linear_infinite_reverse]"></div>
-            <Users size={28} className="text-indigo-400 light:text-indigo-600 sm:w-8 sm:h-8" />
+            <div className="absolute inset-0 border-t-2 border-[#0DA9CF] rounded-full animate-spin"></div>
+            <div className="absolute inset-2 border-r-2 border-[#F67E31] rounded-full animate-[spin_1.5s_linear_infinite_reverse]"></div>
+            <Users size={28} className="text-[#0DA9CF] sm:w-8 sm:h-8" />
           </div>
           <div>
             <h2 className="text-2xl sm:text-3xl font-bold text-white light:text-slate-900 mb-2 tracking-tight">Waiting for Host</h2>
@@ -824,12 +824,12 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
   if (isJoining) {
     return (
       <div className="flex-1 flex items-center justify-center h-screen bg-[#050816] light:bg-slate-50 text-white light:text-slate-900 relative overflow-hidden font-sans p-4">
-        <div className="absolute bg-blue-600/15 blur-[120px] w-[500px] h-[500px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+        <div className="absolute bg-[#0DA9CF]/15 blur-[120px] w-[500px] h-[500px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
         <div className="text-center space-y-5 sm:space-y-6 z-10 max-w-md w-full mx-auto p-6 sm:p-10 bg-[#0A0F24] light:bg-white shadow-none/80 light:shadow-xl backdrop-blur-2xl border border-white/10 light:border-slate-200 rounded-2xl sm:rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)]">
           <div className="relative w-16 h-16 sm:w-20 sm:h-20 mx-auto flex items-center justify-center">
-            <div className="absolute inset-0 border-t-2 border-blue-500 rounded-full animate-spin"></div>
-            <div className="absolute inset-2 border-l-2 border-indigo-500 rounded-full animate-[spin_1s_linear_infinite_reverse]"></div>
-            <Video size={28} className="text-blue-400 light:text-blue-600 sm:w-8 sm:h-8" />
+            <div className="absolute inset-0 border-t-2 border-[#0DA9CF] rounded-full animate-spin"></div>
+            <div className="absolute inset-2 border-l-2 border-[#F67E31] rounded-full animate-[spin_1s_linear_infinite_reverse]"></div>
+            <Video size={28} className="text-[#0DA9CF] sm:w-8 sm:h-8" />
           </div>
           <div>
             <h2 className="text-2xl sm:text-3xl font-bold text-white light:text-slate-900 mb-2 tracking-tight">Opening Meeting</h2>
@@ -868,7 +868,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
                 <button 
                   type="button" 
                   onClick={handleCopyLink} 
-                  className="sm:hidden flex items-center space-x-1.5 px-2.5 py-1 bg-indigo-500/20 active:bg-indigo-500/30 border border-indigo-500/30 rounded-full text-indigo-300 text-xs font-semibold"
+                  className="sm:hidden flex items-center space-x-1.5 px-2.5 py-1 bg-[#0DA9CF]/20 active:bg-[#0DA9CF]/30 border border-[#0DA9CF]/30 rounded-full text-[#0DA9CF] text-xs font-semibold"
                   title="Copy meeting link"
                 >
                   {copied ? <Check size={13} /> : <Copy size={13} />}
