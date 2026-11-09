@@ -109,14 +109,14 @@ export default function UserProfile({ onNavigate }) {
           className="lg:col-span-1"
         >
           <div className="bg-white dark:bg-[#0A0F24]/80 border border-slate-200 dark:border-white/10 rounded-3xl p-6 sm:p-8 text-center shadow-sm relative">
-            <div className="w-24 h-24 sm:w-28 sm:h-28 mx-auto rounded-3xl bg-indigo-600 text-white flex items-center justify-center text-3xl sm:text-4xl font-extrabold mb-4 shadow-lg shadow-indigo-600/20">
+            <div className="w-24 h-24 sm:w-28 sm:h-28 mx-auto rounded-3xl bg-[#0DA9CF] text-white flex items-center justify-center text-3xl sm:text-4xl font-extrabold mb-4 shadow-lg shadow-[#0DA9CF]/25">
               {username.charAt(0).toUpperCase()}
             </div>
             <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-1 truncate">{username}</h2>
             <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 truncate mb-3">{email || `${username.toLowerCase()}@wabiseminar.com`}</p>
             
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-semibold border border-emerald-200 dark:border-emerald-500/20 mb-6">
-              <ShieldCheck size={14} className="text-emerald-500" />
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#04B84C]/10 text-[#04B84C] text-xs font-semibold border border-[#04B84C]/20 mb-6">
+              <ShieldCheck size={14} className="text-[#04B84C]" />
               <span>Verified Account</span>
             </div>
 
@@ -125,11 +125,11 @@ export default function UserProfile({ onNavigate }) {
             {/* Quick Stats Grid */}
             <div className="grid grid-cols-2 gap-3 text-center">
               <div className="p-3 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5">
-                <p className="text-2xl font-extrabold text-indigo-600 dark:text-indigo-400">{roomCount}</p>
+                <p className="text-2xl font-extrabold text-[#0DA9CF]">{roomCount}</p>
                 <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mt-0.5">Rooms Created</p>
               </div>
               <div className="p-3 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5">
-                <p className="text-2xl font-extrabold text-emerald-600 dark:text-emerald-400">Pro</p>
+                <p className="text-2xl font-extrabold text-[#F67E31]">Pro</p>
                 <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mt-0.5">Tier Plan</p>
               </div>
             </div>
@@ -146,7 +146,7 @@ export default function UserProfile({ onNavigate }) {
           <div className="bg-white dark:bg-[#0A0F24]/80 border border-slate-200 dark:border-white/10 rounded-3xl p-6 sm:p-8 shadow-sm">
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                <User size={20} className="text-indigo-600 dark:text-indigo-400" />
+                <User size={20} className="text-[#0DA9CF]" />
                 <span>Account Information</span>
               </h3>
               <button 
@@ -168,7 +168,7 @@ export default function UserProfile({ onNavigate }) {
                     value={editUsername}
                     onChange={(e) => setEditUsername(e.target.value)}
                     required
-                    className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:bg-white dark:focus:bg-[#0A0F24] focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 outline-none transition-all"
+                    className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:bg-white dark:focus:bg-[#0A0F24] focus:border-[#0DA9CF] focus:ring-2 focus:ring-[#0DA9CF]/20 outline-none transition-all"
                   />
                 </div>
                 <div>
@@ -187,7 +187,7 @@ export default function UserProfile({ onNavigate }) {
                     value={editBio}
                     onChange={(e) => setEditBio(e.target.value)}
                     placeholder="Tell your attendees about yourself..."
-                    className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:bg-white dark:focus:bg-[#0A0F24] focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 outline-none transition-all resize-none"
+                    className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:bg-white dark:focus:bg-[#0A0F24] focus:border-[#0DA9CF] focus:ring-2 focus:ring-[#0DA9CF]/20 outline-none transition-all resize-none"
                   ></textarea>
                 </div>
                 <div className="flex justify-end gap-3 pt-2">
@@ -200,8 +200,10 @@ export default function UserProfile({ onNavigate }) {
                   </button>
                   <button 
                     type="submit"
-                    className="px-6 py-2.5 rounded-xl font-semibold bg-indigo-600 hover:bg-indigo-500 text-white text-sm shadow-md transition-colors cursor-pointer"
+                    className="px-6 py-2.5 rounded-xl font-semibold bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white text-sm shadow-md shadow-[#0DA9CF]/20 transition-all cursor-pointer"
                   >
+                    Save Changes
+                  </button>
                     Save Changes
                   </button>
                 </div>
