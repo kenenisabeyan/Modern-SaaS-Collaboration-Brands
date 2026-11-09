@@ -130,8 +130,8 @@ export default function Pricing({ onNavigate }) {
   return (
     <div className="min-h-screen bg-[#050816] light:bg-[#FAFAFA] text-white light:text-slate-900 font-sans overflow-hidden relative">
       {/* Background Animated Blobs */}
-      <div className="fixed bg-indigo-600/10 blur-[150px] w-[800px] h-[800px] rounded-full top-[-20%] left-[-10%] pointer-events-none"></div>
-      <div className="fixed bg-purple-600/10 blur-[150px] w-[600px] h-[600px] rounded-full bottom-[-10%] right-[-10%] pointer-events-none"></div>
+      <div className="fixed bg-[#0DA9CF]/10 blur-[150px] w-[800px] h-[800px] rounded-full top-[-20%] left-[-10%] pointer-events-none"></div>
+      <div className="fixed bg-[#F67E31]/10 blur-[150px] w-[600px] h-[600px] rounded-full bottom-[-10%] right-[-10%] pointer-events-none"></div>
 
       {/* Navbar handled globally in App.jsx */}
 
@@ -147,7 +147,7 @@ export default function Pricing({ onNavigate }) {
           >
 
             <motion.h1 variants={fadeIn} className="text-3xl sm:text-5xl md:text-7xl font-extrabold mb-4 sm:mb-6 tracking-tight leading-[1.1] text-white light:text-slate-900 break-words">
-              Invest in your <span className="text-indigo-500">masterclasses</span>
+              Invest in your <span className="text-[#0DA9CF]">masterclasses</span>
             </motion.h1>
             <motion.p variants={fadeIn} className="text-base sm:text-lg md:text-xl text-[#94A3B8] light:text-slate-600 leading-relaxed max-w-2xl font-light mb-8 sm:mb-12">
               Start for free, then upgrade as your audience grows. No hidden fees. Cancel anytime.
@@ -158,17 +158,17 @@ export default function Pricing({ onNavigate }) {
                <span className={`text-xs sm:text-sm font-bold pl-3 sm:pl-4 transition-colors ${!isAnnual ? 'text-white light:text-slate-900' : 'text-[#94A3B8] light:text-slate-500'}`}>Monthly</span>
                <button 
                  onClick={() => setIsAnnual(!isAnnual)}
-                 className="w-14 sm:w-16 h-7 sm:h-8 bg-indigo-500/20 light:bg-indigo-100 border border-indigo-500/30 light:border-indigo-200 rounded-full relative transition-colors focus:outline-none flex items-center px-1 cursor-pointer"
+                 className="w-14 sm:w-16 h-7 sm:h-8 bg-white/10 light:bg-slate-200 border border-white/10 light:border-slate-300 rounded-full relative transition-colors focus:outline-none flex items-center px-1 cursor-pointer"
                >
                   <motion.div 
                     animate={{ x: isAnnual ? (typeof window !== 'undefined' && window.innerWidth < 640 ? 26 : 32) : 0 }} 
                     transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                    className="w-5 h-5 sm:w-6 sm:h-6 bg-indigo-400 light:bg-indigo-500 rounded-full shadow-md"
+                    className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full shadow-md ${isAnnual ? 'bg-[#04B84C]' : 'bg-[#0DA9CF]'}`}
                   />
                </button>
                <span className={`text-xs sm:text-sm font-bold pr-3 sm:pr-4 flex items-center space-x-1.5 sm:space-x-2 transition-colors ${isAnnual ? 'text-white light:text-slate-900' : 'text-[#94A3B8] light:text-slate-500'}`}>
                   <span>Annually</span>
-                  <span className="text-[9px] sm:text-[10px] bg-emerald-500/20 light:bg-emerald-100 text-emerald-400 light:text-emerald-600 px-1.5 sm:px-2 py-0.5 rounded-full border border-emerald-500/30 light:border-emerald-200 font-bold">Save 20%</span>
+                  <span className="text-[9px] sm:text-[10px] bg-[#04B84C]/20 light:bg-[#04B84C]/10 text-[#04B84C] px-1.5 sm:px-2 py-0.5 rounded-full border border-[#04B84C]/30 font-bold">Save 20%</span>
                </span>
             </motion.div>
           </motion.div>
@@ -245,7 +245,7 @@ export default function Pricing({ onNavigate }) {
                       {plan.features.map((feature, i) => (
                          <div key={i} className={`flex items-start space-x-3 ${feature.included ? 'text-white light:text-slate-900' : 'text-slate-600 light:text-slate-400'}`}>
                             {feature.included ? (
-                               <Check size={18} className={`text-${plan.colorClass}-400 light:text-${plan.colorClass}-600 shrink-0 mt-0.5 sm:w-5 sm:h-5`} />
+                               <Check size={18} className={`shrink-0 mt-0.5 sm:w-5 sm:h-5 ${plan.name === 'Pro' ? 'text-[#F67E31]' : plan.name === 'Enterprise' ? 'text-[#04B84C]' : 'text-[#0DA9CF]'}`} />
                             ) : (
                                <X size={18} className="shrink-0 mt-0.5 sm:w-5 sm:h-5" />
                             )}
@@ -271,7 +271,7 @@ export default function Pricing({ onNavigate }) {
                        <tr className="border-b border-white/10 light:border-slate-200">
                           <th className="py-4 sm:py-6 px-4 sm:px-6 font-semibold text-[#94A3B8] light:text-slate-500 text-xs sm:text-sm uppercase tracking-wider w-1/3">Feature</th>
                           <th className="py-4 sm:py-6 px-4 sm:px-6 font-bold text-white light:text-slate-900 text-center w-[22%] text-xs sm:text-sm">Free</th>
-                          <th className="py-4 sm:py-6 px-4 sm:px-6 font-bold text-purple-400 light:text-purple-600 text-center w-[22%] bg-purple-500/5 light:bg-purple-50 text-xs sm:text-sm">Pro</th>
+                          <th className="py-4 sm:py-6 px-4 sm:px-6 font-bold text-[#F67E31] text-center w-[22%] bg-[#F67E31]/5 text-xs sm:text-sm">Pro</th>
                           <th className="py-4 sm:py-6 px-4 sm:px-6 font-bold text-white light:text-slate-900 text-center w-[22%] text-xs sm:text-sm">Enterprise</th>
                        </tr>
                     </thead>
@@ -290,13 +290,13 @@ export default function Pricing({ onNavigate }) {
                           <tr key={i} className="hover:bg-white/[0.02] light:hover:bg-slate-50 transition-colors">
                              <td className="py-3.5 sm:py-5 px-4 sm:px-6 text-xs sm:text-sm text-[#94A3B8] light:text-slate-600 font-medium">{row.name}</td>
                              <td className="py-3.5 sm:py-5 px-4 sm:px-6 text-center text-xs sm:text-sm font-medium text-white light:text-slate-900">
-                                {typeof row.free === 'boolean' ? (row.free ? <Check size={18} className="mx-auto text-indigo-400 light:text-indigo-600"/> : <X size={18} className="mx-auto text-slate-700 light:text-slate-300"/>) : row.free}
+                                {typeof row.free === 'boolean' ? (row.free ? <Check size={18} className="mx-auto text-[#0DA9CF]"/> : <X size={18} className="mx-auto text-slate-700 light:text-slate-300"/>) : row.free}
                              </td>
-                             <td className="py-3.5 sm:py-5 px-4 sm:px-6 text-center text-xs sm:text-sm font-bold text-white light:text-slate-900 bg-purple-500/5 light:bg-purple-50">
-                                {typeof row.pro === 'boolean' ? (row.pro ? <Check size={18} className="mx-auto text-purple-400 light:text-purple-600"/> : <X size={18} className="mx-auto text-slate-700 light:text-slate-300"/>) : row.pro}
+                             <td className="py-3.5 sm:py-5 px-4 sm:px-6 text-center text-xs sm:text-sm font-bold text-white light:text-slate-900 bg-[#F67E31]/5">
+                                {typeof row.pro === 'boolean' ? (row.pro ? <Check size={18} className="mx-auto text-[#F67E31]"/> : <X size={18} className="mx-auto text-slate-700 light:text-slate-300"/>) : row.pro}
                              </td>
                              <td className="py-3.5 sm:py-5 px-4 sm:px-6 text-center text-xs sm:text-sm font-medium text-white light:text-slate-900">
-                                {typeof row.ent === 'boolean' ? (row.ent ? <Check size={18} className="mx-auto text-blue-400 light:text-blue-600"/> : <X size={18} className="mx-auto text-slate-700 light:text-slate-300"/>) : row.ent}
+                                {typeof row.ent === 'boolean' ? (row.ent ? <Check size={18} className="mx-auto text-[#04B84C]"/> : <X size={18} className="mx-auto text-slate-700 light:text-slate-300"/>) : row.ent}
                              </td>
                           </tr>
                        ))}
@@ -310,10 +310,10 @@ export default function Pricing({ onNavigate }) {
         <section className="mb-24 sm:mb-40 text-center px-4">
            <p className="text-slate-400 light:text-slate-500 text-xs sm:text-sm font-bold tracking-[0.2em] uppercase mb-6 sm:mb-8">Trusted by educators at</p>
            <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-10 md:gap-20 opacity-60 light:opacity-80">
-              <div className="text-lg sm:text-xl font-bold flex items-center gap-2 text-white light:text-slate-800"><div className="w-5 h-5 sm:w-6 sm:h-6 rounded bg-indigo-500"></div> Harvard</div>
-              <div className="text-lg sm:text-xl font-bold flex items-center gap-2 text-white light:text-slate-800"><div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-indigo-500"></div> Stanford</div>
-              <div className="text-lg sm:text-xl font-bold flex items-center gap-2 text-white light:text-slate-800"><div className="w-5 h-5 sm:w-6 sm:h-6 rounded-tr-xl rounded-bl-xl bg-gradient-to-br from-rose-500 to-orange-500"></div> MIT</div>
-              <div className="text-lg sm:text-xl font-bold flex items-center gap-2 text-white light:text-slate-800 hidden sm:flex"><div className="w-5 h-5 sm:w-6 sm:h-6 rotate-45 bg-gradient-to-br from-blue-500 to-cyan-500"></div> Oxford</div>
+              <div className="text-lg sm:text-xl font-bold flex items-center gap-2 text-white light:text-slate-800"><div className="w-5 h-5 sm:w-6 sm:h-6 rounded bg-[#0DA9CF]"></div> Harvard</div>
+              <div className="text-lg sm:text-xl font-bold flex items-center gap-2 text-white light:text-slate-800"><div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#04B84C]"></div> Stanford</div>
+              <div className="text-lg sm:text-xl font-bold flex items-center gap-2 text-white light:text-slate-800"><div className="w-5 h-5 sm:w-6 sm:h-6 rounded-tr-xl rounded-bl-xl bg-[#F67E31]"></div> MIT</div>
+              <div className="text-lg sm:text-xl font-bold flex items-center gap-2 text-white light:text-slate-800 hidden sm:flex"><div className="w-5 h-5 sm:w-6 sm:h-6 rotate-45 bg-[#0DA9CF]"></div> Oxford</div>
            </div>
         </section>
 
@@ -331,11 +331,14 @@ export default function Pricing({ onNavigate }) {
               ].map((faq, i) => (
                  <div key={i} className="bg-[#0A0F24]/40 light:bg-white border border-white/5 light:border-slate-200 p-5 sm:p-6 rounded-2xl sm:rounded-3xl hover:border-white/10 light:hover:border-slate-300 light:shadow-sm transition-colors">
                     <h4 className="text-base sm:text-lg font-bold text-white light:text-slate-900 mb-2 sm:mb-3 flex items-start gap-2.5 sm:gap-3">
-                       <HelpCircle size={18} className="text-purple-400 light:text-purple-600 shrink-0 mt-0.5 sm:w-5 sm:h-5" />
+                       <HelpCircle size={18} className="text-[#0DA9CF] shrink-0 mt-0.5 sm:w-5 sm:h-5" />
                        {faq.q}
                     </h4>
                     <p className="text-[#94A3B8] light:text-slate-600 text-xs sm:text-sm leading-relaxed pl-7 sm:pl-8">{faq.a}</p>
                  </div>
+              ))}
+           </div>
+        </section>
               ))}
            </div>
         </section>

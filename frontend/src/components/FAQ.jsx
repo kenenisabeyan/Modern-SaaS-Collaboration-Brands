@@ -23,8 +23,7 @@ const staggerContainer = {
 const faqData = [
   {
     category: "Meetings",
-    icon: <Video size={20} className="text-indigo-400" />,
-    colorClass: "indigo",
+    icon: <Video size={20} className="text-[#0DA9CF]" />,
     questions: [
       { q: "How do I create an instant meeting room?", a: "Simply log into your dashboard and click 'Create Instant Room'. A unique, secure link will be generated instantly that you can share with your participants." },
       { q: "Is there a limit on how many people can join?", a: "Our free plan supports up to 10 participants. For larger masterclasses, our Pro and Enterprise plans support 100 to 1,000+ simultaneous participants." },
@@ -33,8 +32,7 @@ const faqData = [
   },
   {
     category: "Security",
-    icon: <Shield size={20} className="text-emerald-400" />,
-    colorClass: "emerald",
+    icon: <Shield size={20} className="text-[#04B84C]" />,
     questions: [
       { q: "Is my meeting data encrypted?", a: "Yes, all audio, video, and text chat streams are protected by industry-standard AES-256 end-to-end encryption." },
       { q: "How can I prevent uninvited guests?", a: "Hosts have access to a robust waiting room feature. You can screen participants before admitting them or lock the room once everyone has arrived." },
@@ -43,8 +41,7 @@ const faqData = [
   },
   {
     category: "Pricing",
-    icon: <DollarSign size={20} className="text-purple-400" />,
-    colorClass: "purple",
+    icon: <DollarSign size={20} className="text-[#F67E31]" />,
     questions: [
       { q: "Is the platform really free?", a: "Yes! Our core platform is 100% free forever for up to 10 participants. You only pay if you need advanced features or larger room capacities." },
       { q: "Can I cancel my paid subscription at any time?", a: "Absolutely. We don't believe in lock-in contracts. You can downgrade or cancel your subscription directly from your billing dashboard." },
@@ -53,8 +50,7 @@ const faqData = [
   },
   {
     category: "Collaboration",
-    icon: <Users size={20} className="text-pink-400" />,
-    colorClass: "pink",
+    icon: <Users size={20} className="text-[#0DA9CF]" />,
     questions: [
       { q: "Can I share my screen?", a: "Yes, you can share your entire desktop, specific application windows, or single browser tabs with zero latency." },
       { q: "Is there a whiteboard feature?", a: "We are actively developing a collaborative whiteboard feature that will be rolled out to all users in the next major update." },
@@ -63,8 +59,7 @@ const faqData = [
   },
   {
     category: "Technical Support",
-    icon: <Wrench size={20} className="text-blue-400" />,
-    colorClass: "blue",
+    icon: <Wrench size={20} className="text-[#F67E31]" />,
     questions: [
       { q: "What browsers are supported?", a: "WabiSeminar works flawlessly on all modern browsers including Chrome, Edge, Safari, and Firefox. No plugins required." },
       { q: "Why is my camera not working?", a: "Ensure that your browser has permission to access your camera and microphone. You can reset these permissions by clicking the lock icon next to the URL bar." },
@@ -80,11 +75,11 @@ const AccordionItem = ({ q, a, isOpen, onClick }) => {
         onClick={onClick}
         className="w-full flex items-center justify-between p-4 sm:p-6 text-left focus:outline-none group"
       >
-        <h4 className="text-base sm:text-lg font-semibold text-white light:text-slate-900 pr-4 sm:pr-8 group-hover:text-indigo-300 light:group-hover:text-indigo-600 transition-colors leading-snug">{q}</h4>
+        <h4 className="text-base sm:text-lg font-semibold text-white light:text-slate-900 pr-4 sm:pr-8 group-hover:text-[#0DA9CF] transition-colors leading-snug">{q}</h4>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
-          className={`shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center transition-colors ${isOpen ? 'bg-indigo-500/20 light:bg-indigo-100 text-indigo-400 light:text-indigo-600 border border-indigo-500/30 light:border-indigo-200' : 'bg-white/5 light:bg-slate-100 text-[#94A3B8] light:text-slate-500 border border-white/5 light:border-slate-200'}`}
+          className={`shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center transition-colors ${isOpen ? 'bg-[#0DA9CF]/20 text-[#0DA9CF] border border-[#0DA9CF]/30' : 'bg-white/5 light:bg-slate-100 text-[#94A3B8] light:text-slate-500 border border-white/5 light:border-slate-200'}`}
         >
           <ChevronDown size={16} className="sm:w-[18px] sm:h-[18px]" />
         </motion.div>
@@ -141,8 +136,8 @@ export default function FAQ({ onNavigate }) {
   return (
     <div className="min-h-screen bg-[#050816] light:bg-[#FAFAFA] text-white light:text-slate-900 font-sans overflow-hidden relative">
       {/* Background Animated Blobs */}
-      <div className="fixed bg-blue-600/10 blur-[150px] w-[800px] h-[800px] rounded-full top-[-10%] right-[-10%] pointer-events-none"></div>
-      <div className="fixed bg-purple-600/10 blur-[150px] w-[600px] h-[600px] rounded-full bottom-[-20%] left-[-10%] pointer-events-none"></div>
+      <div className="fixed bg-[#0DA9CF]/10 blur-[150px] w-[800px] h-[800px] rounded-full top-[-10%] right-[-10%] pointer-events-none"></div>
+      <div className="fixed bg-[#F67E31]/10 blur-[150px] w-[600px] h-[600px] rounded-full bottom-[-20%] left-[-10%] pointer-events-none"></div>
 
       {/* Navbar handled globally in App.jsx */}
 
@@ -158,7 +153,7 @@ export default function FAQ({ onNavigate }) {
           >
 
             <motion.h1 variants={fadeIn} className="text-3xl sm:text-5xl md:text-7xl font-extrabold mb-4 sm:mb-6 tracking-tight leading-[1.1] text-white light:text-slate-900 break-words">
-              How can we <span className="text-indigo-500">help you?</span>
+              How can we <span className="text-[#0DA9CF]">help you?</span>
             </motion.h1>
             <motion.p variants={fadeIn} className="text-base sm:text-lg md:text-xl text-[#94A3B8] light:text-slate-600 leading-relaxed max-w-2xl font-light mb-8 sm:mb-12">
               Browse our most frequently asked questions or search for a specific topic to get the answers you need immediately.
@@ -174,8 +169,8 @@ export default function FAQ({ onNavigate }) {
             transition={{ delay: 0.3 }}
             className="relative max-w-2xl mx-auto group"
           >
-             <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-xl group-hover:opacity-100 transition-opacity opacity-50 z-0"></div>
-             <div className="relative z-10 flex items-center bg-[#0A0F24]/80 light:bg-white backdrop-blur-xl border border-white/10 light:border-slate-200 rounded-full p-1.5 sm:p-2 shadow-2xl light:shadow-md focus-within:border-indigo-500/50 light:focus-within:border-indigo-300 transition-colors">
+             <div className="absolute inset-0 bg-gradient-to-r from-[#0DA9CF]/20 to-[#F67E31]/20 rounded-full blur-xl group-hover:opacity-100 transition-opacity opacity-50 z-0"></div>
+             <div className="relative z-10 flex items-center bg-[#0A0F24]/80 light:bg-white backdrop-blur-xl border border-white/10 light:border-slate-200 rounded-full p-1.5 sm:p-2 shadow-2xl light:shadow-md focus-within:border-[#0DA9CF]/50 light:focus-within:border-[#0DA9CF]/40 transition-colors">
                 <div className="pl-3 sm:pl-4 pr-2 text-[#94A3B8] light:text-slate-400">
                    <Search size={20} className="sm:w-6 sm:h-6" />
                 </div>
@@ -219,7 +214,7 @@ export default function FAQ({ onNavigate }) {
                       viewport={{ once: true, margin: "-100px" }}
                     >
                        <div className="flex items-center space-x-3 sm:space-x-4 mb-6 sm:mb-8 pl-1 sm:pl-2">
-                          <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-${category.colorClass}-500/10 light:bg-${category.colorClass}-100 flex items-center justify-center border border-${category.colorClass}-500/20 light:border-${category.colorClass}-200 shadow-[0_0_15px_rgba(var(--${category.colorClass}-rgb),0.1)] light:shadow-none shrink-0`}>
+                          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/5 light:bg-slate-100 flex items-center justify-center border border-white/10 light:border-slate-200 shrink-0">
                              {category.icon}
                           </div>
                           <h2 className="text-2xl sm:text-3xl font-extrabold text-white light:text-slate-900">{category.category}</h2>
