@@ -38,40 +38,40 @@ export default function HowItWorks({ onNavigate }) {
       icon: <UserPlus size={28} />,
       title: "Create Account",
       desc: "Sign up in seconds. No complex configurations or heavy downloads required.",
-      colorClass: "border-indigo-500/50 text-indigo-400 group-hover:bg-indigo-500/20 group-hover:shadow-[0_0_40px_rgba(99,102,241,0.6)]",
-      cardHoverClass: "group-hover:border-indigo-500/30",
-      textGradientClass: "group-hover:to-indigo-400",
-      lineColor: "bg-indigo-500"
+      colorClass: "border-[#0DA9CF]/50 text-[#0DA9CF] group-hover:bg-[#0DA9CF]/20 group-hover:shadow-[0_0_40px_rgba(13,169,207,0.5)]",
+      cardHoverClass: "group-hover:border-[#0DA9CF]/30",
+      textGradientClass: "group-hover:to-[#0DA9CF]",
+      lineColor: "bg-[#0DA9CF]"
     },
     {
       number: "02",
       icon: <Video size={28} />,
       title: "Start Instant Room",
       desc: "Click to generate a secure, encrypted meeting room instantly from your dashboard.",
-      colorClass: "border-purple-500/50 text-purple-400 group-hover:bg-purple-500/20 group-hover:shadow-[0_0_40px_rgba(168,85,247,0.6)]",
-      cardHoverClass: "group-hover:border-purple-500/30",
-      textGradientClass: "group-hover:to-purple-400",
-      lineColor: "bg-purple-500"
+      colorClass: "border-[#F67E31]/50 text-[#F67E31] group-hover:bg-[#F67E31]/20 group-hover:shadow-[0_0_40px_rgba(246,126,49,0.5)]",
+      cardHoverClass: "group-hover:border-[#F67E31]/30",
+      textGradientClass: "group-hover:to-[#F67E31]",
+      lineColor: "bg-[#F67E31]"
     },
     {
       number: "03",
       icon: <LinkIcon size={28} />,
       title: "Invite Participants",
       desc: "Share your unique meeting link. Guests can join directly from their browser.",
-      colorClass: "border-blue-500/50 text-blue-400 group-hover:bg-blue-500/20 group-hover:shadow-[0_0_40px_rgba(59,130,246,0.6)]",
-      cardHoverClass: "group-hover:border-blue-500/30",
-      textGradientClass: "group-hover:to-blue-400",
-      lineColor: "bg-blue-500"
+      colorClass: "border-[#0DA9CF]/50 text-[#0DA9CF] group-hover:bg-[#0DA9CF]/20 group-hover:shadow-[0_0_40px_rgba(13,169,207,0.5)]",
+      cardHoverClass: "group-hover:border-[#0DA9CF]/30",
+      textGradientClass: "group-hover:to-[#0DA9CF]",
+      lineColor: "bg-[#0DA9CF]"
     },
     {
       number: "04",
       icon: <Monitor size={28} />,
       title: "Collaborate Live",
       desc: "Chat, share screens, and present in crystal clear 1080p HD video quality.",
-      colorClass: "border-emerald-500/50 text-emerald-400 group-hover:bg-emerald-500/20 group-hover:shadow-[0_0_40px_rgba(16,185,129,0.6)]",
-      cardHoverClass: "group-hover:border-emerald-500/30",
-      textGradientClass: "group-hover:to-emerald-400",
-      lineColor: "bg-emerald-500"
+      colorClass: "border-[#04B84C]/50 text-[#04B84C] group-hover:bg-[#04B84C]/20 group-hover:shadow-[0_0_40px_rgba(4,184,76,0.5)]",
+      cardHoverClass: "group-hover:border-[#04B84C]/30",
+      textGradientClass: "group-hover:to-[#04B84C]",
+      lineColor: "bg-[#04B84C]"
     }
   ];
 
@@ -182,23 +182,23 @@ export default function HowItWorks({ onNavigate }) {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="relative h-auto min-h-[500px] py-10 sm:py-12 md:h-[600px] w-full max-w-5xl mx-auto bg-[#0A0F24]/60 light:bg-white backdrop-blur-xl light:backdrop-blur-none rounded-2xl sm:rounded-[3rem] border border-white/10 light:border-slate-200 shadow-[0_30px_60px_-15px_rgba(99,102,241,0.2)] light:shadow-xl overflow-hidden flex flex-col items-center justify-center"
+            className="relative h-auto min-h-[500px] py-10 sm:py-12 md:h-[600px] w-full max-w-5xl mx-auto bg-[#0A0F24]/60 light:bg-white backdrop-blur-xl light:backdrop-blur-none rounded-2xl sm:rounded-[3rem] border border-white/10 light:border-slate-200 shadow-[0_30px_60px_-15px_rgba(13,169,207,0.2)] light:shadow-xl overflow-hidden flex flex-col items-center justify-center"
           >
              <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
              
              <div className="grid grid-cols-1 md:grid-cols-3 w-full h-full p-4 sm:p-8 relative z-10 gap-8">
                 {/* Host Column */}
                 <div className="flex flex-col items-center justify-center space-y-6 relative">
-                   <motion.div animate={{ y: [-5, 5, -5] }} transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }} className="bg-[#160B2A]/90 light:bg-slate-50 backdrop-blur-md light:backdrop-blur-none border border-indigo-500/30 light:border-indigo-200 p-5 rounded-2xl sm:rounded-3xl shadow-[0_0_30px_rgba(99,102,241,0.2)] light:shadow-md w-full max-w-[240px]">
+                   <motion.div animate={{ y: [-5, 5, -5] }} transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }} className="bg-[#160B2A]/90 light:bg-slate-50 backdrop-blur-md light:backdrop-blur-none border border-[#0DA9CF]/30 light:border-[#0DA9CF]/20 p-5 rounded-2xl sm:rounded-3xl shadow-[0_0_30px_rgba(13,169,207,0.2)] light:shadow-md w-full max-w-[240px]">
                       <div className="flex items-center space-x-3 mb-4">
-                        <div className="w-10 h-10 rounded-full bg-indigo-500/20 light:bg-indigo-100 flex items-center justify-center text-indigo-400 light:text-indigo-600"><Monitor size={20}/></div>
+                        <div className="w-10 h-10 rounded-full bg-[#0DA9CF]/20 flex items-center justify-center text-[#0DA9CF]"><Monitor size={20}/></div>
                         <span className="font-bold text-white light:text-slate-900">Host Client</span>
                       </div>
                       <div className="space-y-2">
                         <div className="h-2 w-full bg-gray-800 light:bg-slate-200 rounded-full overflow-hidden">
-                           <motion.div animate={{ x: ["-100%", "100%"] }} transition={{ repeat: Infinity, duration: 1.5 }} className="h-full w-1/2 bg-indigo-500"></motion.div>
+                           <motion.div animate={{ x: ["-100%", "100%"] }} transition={{ repeat: Infinity, duration: 1.5 }} className="h-full w-1/2 bg-[#0DA9CF]"></motion.div>
                         </div>
-                        <div className="text-xs text-indigo-300 light:text-indigo-600 font-mono">1080p Video Stream</div>
+                        <div className="text-xs text-[#0DA9CF] font-mono">1080p Video Stream</div>
                       </div>
                    </motion.div>
                 </div>
@@ -206,36 +206,36 @@ export default function HowItWorks({ onNavigate }) {
                 {/* Center Core */}
                 <div className="flex flex-col items-center justify-center relative">
                    {/* Connections */}
-                   <div className="absolute hidden md:block w-full h-0.5 bg-gradient-to-r from-indigo-500/50 via-purple-500/50 to-emerald-500/50 top-1/2 -translate-y-1/2 -z-10"></div>
+                   <div className="absolute hidden md:block w-full h-0.5 bg-gradient-to-r from-[#0DA9CF]/50 via-[#F67E31]/50 to-[#04B84C]/50 top-1/2 -translate-y-1/2 -z-10"></div>
                    
                    <motion.div 
                      whileHover={{ scale: 1.05 }}
-                     className="relative z-20 w-40 h-40 sm:w-48 sm:h-48 rounded-full bg-[#050816] light:bg-white flex flex-col items-center justify-center shadow-[0_0_60px_rgba(168,85,247,0.4)] light:shadow-xl border border-purple-500/50 light:border-purple-200 group"
+                     className="relative z-20 w-40 h-40 sm:w-48 sm:h-48 rounded-full bg-[#050816] light:bg-white flex flex-col items-center justify-center shadow-[0_0_60px_rgba(246,126,49,0.4)] light:shadow-xl border border-[#F67E31]/50 light:border-[#F67E31]/20 group"
                    >
-                      <Layers size={40} className="text-purple-400 light:text-purple-600 mb-2 group-hover:scale-110 transition-transform sm:w-12 sm:h-12" />
+                      <Layers size={40} className="text-[#F67E31] mb-2 group-hover:scale-110 transition-transform sm:w-12 sm:h-12" />
                       <span className="font-bold text-white light:text-slate-900 text-base sm:text-lg">WabiCore</span>
-                      <span className="text-xs text-purple-400 light:text-purple-600 mt-1 flex items-center gap-1"><Shield size={12}/> E2E Encrypted</span>
+                      <span className="text-xs text-[#F67E31] mt-1 flex items-center gap-1"><Shield size={12}/> E2E Encrypted</span>
                       
                       {/* Expanding pulses */}
-                      <motion.div animate={{ scale: [1, 1.3, 1.6], opacity: [0.5, 0] }} transition={{ repeat: Infinity, duration: 2 }} className="absolute inset-0 border border-purple-400 light:border-purple-300 rounded-full pointer-events-none"></motion.div>
+                      <motion.div animate={{ scale: [1, 1.3, 1.6], opacity: [0.5, 0] }} transition={{ repeat: Infinity, duration: 2 }} className="absolute inset-0 border border-[#F67E31] rounded-full pointer-events-none"></motion.div>
                    </motion.div>
                 </div>
 
                 {/* Participants Column */}
                 <div className="flex flex-col items-center justify-center space-y-6 relative">
-                   <motion.div animate={{ y: [5, -5, 5] }} transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }} className="bg-[#160B2A]/90 light:bg-slate-50 backdrop-blur-md light:backdrop-blur-none border border-emerald-500/30 light:border-emerald-200 p-5 rounded-2xl sm:rounded-3xl shadow-[0_0_30px_rgba(16,185,129,0.2)] light:shadow-md w-full max-w-[240px]">
+                   <motion.div animate={{ y: [5, -5, 5] }} transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }} className="bg-[#160B2A]/90 light:bg-slate-50 backdrop-blur-md light:backdrop-blur-none border border-[#04B84C]/30 light:border-[#04B84C]/20 p-5 rounded-2xl sm:rounded-3xl shadow-[0_0_30px_rgba(4,184,76,0.2)] light:shadow-md w-full max-w-[240px]">
                       <div className="flex items-center space-x-3 mb-4">
-                        <div className="w-10 h-10 rounded-full bg-emerald-500/20 light:bg-emerald-100 flex items-center justify-center text-emerald-400 light:text-emerald-600"><UserPlus size={20}/></div>
+                        <div className="w-10 h-10 rounded-full bg-[#04B84C]/20 flex items-center justify-center text-[#04B84C]"><UserPlus size={20}/></div>
                         <span className="font-bold text-white light:text-slate-900">Participants</span>
                       </div>
                       <div className="flex -space-x-3 mb-3">
                          {[1,2,3,4].map(i => (
                            <div key={i} className="w-8 h-8 rounded-full bg-[#0A0F24] light:bg-white border-2 border-[#160B2A] light:border-white flex items-center justify-center text-xs text-white light:text-slate-900">P{i}</div>
                          ))}
-                         <div className="w-8 h-8 rounded-full bg-emerald-500/20 light:bg-emerald-100 border-2 border-[#160B2A] light:border-white flex items-center justify-center text-xs text-emerald-400 light:text-emerald-600 font-bold">+9</div>
+                         <div className="w-8 h-8 rounded-full bg-[#04B84C]/20 border-2 border-[#160B2A] light:border-white flex items-center justify-center text-xs text-[#04B84C] font-bold">+9</div>
                       </div>
                       <div className="h-1.5 w-full bg-gray-800 light:bg-slate-200 rounded-full overflow-hidden">
-                         <motion.div animate={{ x: ["-100%", "100%"] }} transition={{ repeat: Infinity, duration: 2 }} className="h-full w-full bg-gradient-to-r from-transparent via-emerald-500 to-transparent"></motion.div>
+                         <motion.div animate={{ x: ["-100%", "100%"] }} transition={{ repeat: Infinity, duration: 2 }} className="h-full w-full bg-gradient-to-r from-transparent via-[#04B84C] to-transparent"></motion.div>
                       </div>
                    </motion.div>
                 </div>
@@ -324,7 +324,7 @@ export default function HowItWorks({ onNavigate }) {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => onNavigate('dashboard')} 
-                className="w-full sm:w-auto bg-indigo-500 hover:bg-indigo-600 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-bold text-white light:text-slate-900 shadow-[0_10px_20px_-10px_rgba(99,102,241,0.6)] flex items-center justify-center space-x-2 transition-colors hover:shadow-[0_15px_25px_-10px_rgba(99,102,241,0.8)] group text-sm sm:text-base"
+                className="w-full sm:w-auto bg-[#0DA9CF] hover:bg-[#0C8DB0] px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-bold text-white shadow-[0_10px_20px_-10px_rgba(13,169,207,0.6)] flex items-center justify-center space-x-2 transition-colors hover:shadow-[0_15px_25px_-10px_rgba(13,169,207,0.8)] group text-sm sm:text-base cursor-pointer"
               >
                 <span>Start Now</span>
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />

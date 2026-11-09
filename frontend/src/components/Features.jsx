@@ -216,7 +216,7 @@ export default function Features({ onNavigate }) {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => onNavigate('dashboard')}
-                className="bg-indigo-500 hover:bg-indigo-600 text-white light:text-slate-900 px-8 sm:px-10 py-3.5 sm:py-4 rounded-full font-bold text-base sm:text-lg shadow-[0_10px_20px_-10px_rgba(99,102,241,0.6)] flex items-center justify-center mx-auto space-x-2 transition-colors hover:shadow-[0_15px_25px_-10px_rgba(99,102,241,0.8)] group"
+                className="bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white px-8 sm:px-10 py-3.5 sm:py-4 rounded-full font-bold text-base sm:text-lg shadow-[0_10px_20px_-10px_rgba(13,169,207,0.6)] flex items-center justify-center mx-auto space-x-2 transition-colors hover:shadow-[0_15px_25px_-10px_rgba(13,169,207,0.8)] group cursor-pointer"
               >
                 <span>Start for free</span>
                 <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
