@@ -372,7 +372,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
         </section>
 
         {/* ROLES SECTION */}
-        <section className="py-16 sm:py-24 relative z-10 px-4 sm:px-6 lg:px-8 xl:px-16 bg-[#0A0F24]/30 light:bg-transparent">
+        <section className="py-16 sm:py-24 relative z-10 px-4 sm:px-6 lg:px-8 xl:px-16 bg-[#0A0F24]/30 light:bg-white">
           <div className="max-w-[1400px] mx-auto text-center">
             <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold mb-10 sm:mb-16 tracking-tight text-white light:text-slate-900">
               One Platform <span className="text-[#F67E31]">Every Role Connected</span>
@@ -497,7 +497,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
         </section>
 
         {/* TESTIMONIALS SECTION */}
-        <section id="testimonials" className="py-16 sm:py-24 lg:py-32 relative z-10 bg-gradient-to-b from-transparent to-[#0A0F24] light:to-white px-4 sm:px-6 lg:px-8 xl:px-16">
+        <section id="testimonials" className="py-16 sm:py-24 lg:py-32 relative z-10 bg-gradient-to-b from-transparent to-[#0A0F24] light:bg-white px-4 sm:px-6 lg:px-8 xl:px-16">
           <div className="max-w-[1400px] mx-auto">
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
@@ -571,11 +571,11 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
 
       {/* Info Modal */}
       {showInfoModal && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-[#050816]/90 light:bg-slate-50/90 backdrop-blur-md p-4 animate-in fade-in duration-300">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-[#050816]/90 light:bg-black/50 backdrop-blur-md p-4 animate-in fade-in duration-300">
           <div className="bg-[#0A0F24] light:bg-white border border-white/10 rounded-2xl sm:rounded-[2rem] max-w-lg w-full p-6 sm:p-10 shadow-2xl relative max-h-[90vh] overflow-y-auto">
             <button 
               onClick={() => setShowInfoModal(false)}
-              className="absolute top-4 right-4 sm:top-6 sm:right-6 text-[#94A3B8] light:text-slate-500 hover:text-white light:text-slate-900 transition-colors bg-white/5 light:bg-slate-100 p-2 rounded-full hover:bg-rose-500/20 hover:text-rose-400"
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 text-[#94A3B8] light:text-slate-500 hover:text-white light:text-slate-900 transition-colors bg-white/5 light:bg-white border light:border-slate-200 p-2 rounded-full hover:bg-rose-500/20 hover:text-rose-400 cursor-pointer shadow-sm"
             >
               <X size={20} />
             </button>
