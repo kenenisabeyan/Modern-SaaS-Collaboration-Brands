@@ -5,7 +5,7 @@ import HeroAnimation from './HeroAnimation.jsx';
 import { 
   Video, Users, Loader2, Sparkles, Zap, Shield, Clock, Monitor, 
   ChevronRight, Link, CheckCircle, Star, MessageSquare, GraduationCap, 
-  BookOpen, Heart, ArrowRight, X, Rocket, Award, Lightbulb, Compass
+  BookOpen, Heart, ArrowRight, X, Play, Award
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -90,7 +90,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
         return;
       }
 
-      notify?.('success', 'Meeting created. Opening your room...');
+      notify?.('success', 'Meeting created. Opening the room...');
       onJoinRoom(response.data.roomId);
     } catch (error) {
       console.error('Error creating room:', error);
@@ -134,42 +134,70 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      setShowInfoModal(true);
     }
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-white text-slate-900 font-sans overflow-x-hidden selection:bg-[#ec232b] selection:text-white">
+    <div className="flex flex-col min-h-screen bg-white text-slate-900 font-sans overflow-x-hidden selection:bg-[#0DA9CF] selection:text-white">
       
       <main className="flex-1 flex flex-col pt-24 sm:pt-28 md:pt-32 relative z-10">
         
         {/* ========================================================
-            HERO SECTION (EXACT 1-TO-1 MATCH OF SCREENSHOT 1)
+            HERO SECTION (CLEAN 2-COLUMN WITH 3D ANIMATION)
            ======================================================== */}
         <section className="min-h-[calc(100vh-140px)] flex items-center px-6 sm:px-10 lg:px-16 xl:px-24 bg-white relative">
           <div className="max-w-[1440px] w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center py-8 lg:py-0">
             
-            {/* Left Column: Heading and Pill Button */}
+            {/* Left Column: WabiSeminar Heading and Pill Buttons */}
             <motion.div 
               initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: "easeOut" }}
-              className="lg:col-span-5 flex flex-col justify-center items-start space-y-7 sm:space-y-9"
+              className="lg:col-span-6 flex flex-col justify-center items-start space-y-6 sm:space-y-8"
             >
               <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[76px] xl:text-[88px] font-extrabold tracking-tight leading-[1.04] select-none text-left">
-                <span className="text-[#ec232b] block">Amplifying</span>
-                <span className="text-[#2c2c2e] block">Startups</span>
+                <span className="text-[#0DA9CF] block">Host Engaging</span>
+                <span className="text-[#1E293B] block">Masterclasses</span>
               </h1>
 
-              {/* Exact Pill Button from Screenshot 1 */}
-              <div>
+              <p className="text-slate-600 text-base sm:text-lg lg:text-xl max-w-[540px] leading-relaxed font-normal">
+                Create a free, encrypted meeting room instantly or join an existing session in seconds. Built for innovative educators, creators, and teams who value simplicity and connection.
+              </p>
+
+              {/* Exact Pill Action Buttons */}
+              <div className="flex flex-wrap items-center gap-4 pt-2">
+                <button 
+                  onClick={handleCreateRoom}
+                  disabled={isCreating}
+                  className="bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white font-medium text-base sm:text-lg px-8 sm:px-10 py-3.5 sm:py-4 rounded-full shadow-[0_4px_16px_rgba(13,169,207,0.35)] hover:shadow-[0_6px_22px_rgba(13,169,207,0.45)] transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed flex items-center space-x-2.5"
+                >
+                  {isCreating ? <Loader2 className="animate-spin" size={20} /> : <Video size={20} />}
+                  <span>Host a Session</span>
+                </button>
+
                 <button 
                   onClick={() => scrollToSection('launchpad')}
-                  className="bg-[#ec232b] hover:bg-[#d61b23] text-white font-medium text-base sm:text-lg px-8 sm:px-10 py-3.5 sm:py-4 rounded-full shadow-[0_4px_16px_rgba(236,35,43,0.32)] hover:shadow-[0_6px_22px_rgba(236,35,43,0.45)] transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+                  className="bg-slate-100 hover:bg-slate-200 text-slate-800 font-medium text-base sm:text-lg px-7 sm:px-9 py-3.5 sm:py-4 rounded-full transition-all cursor-pointer flex items-center space-x-2"
                 >
-                  Learn how we do it
+                  <Users size={18} className="text-[#F67E31]" />
+                  <span>Join Session</span>
                 </button>
+              </div>
+
+              {/* Feature check marks */}
+              <div className="flex flex-wrap items-center gap-6 pt-3 text-xs sm:text-sm text-slate-500 font-medium">
+                <div className="flex items-center space-x-2">
+                  <CheckCircle size={16} className="text-[#04B84C]" />
+                  <span>Zero Downloads</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <CheckCircle size={16} className="text-[#0DA9CF]" />
+                  <span>Ultra HD Video</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <CheckCircle size={16} className="text-[#F67E31]" />
+                  <span>End-to-End Secure</span>
+                </div>
               </div>
             </motion.div>
 
@@ -178,9 +206,9 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.15 }}
-              className="lg:col-span-7 flex items-center justify-center relative w-full"
+              className="lg:col-span-6 flex items-center justify-center relative w-full"
             >
-              <div className="w-full max-w-[680px] lg:max-w-[800px] aspect-square flex items-center justify-center">
+              <div className="w-full max-w-[640px] lg:max-w-[720px] aspect-square flex items-center justify-center">
                 <HeroAnimation />
               </div>
             </motion.div>
@@ -205,13 +233,13 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
 
             <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
               <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#0DA9CF]/10 text-[#0DA9CF] border border-[#0DA9CF]/20 mb-4">
-                Virtual Collaboration Hub
+                Instant Collaboration
               </span>
               <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
-                Seamless Video Collaboration for Teams
+                Start or Join a Session Now
               </h2>
               <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
-                Connect startup founders, mentors, and global innovators. Host encrypted real-time meetings or jump into live masterclasses instantly.
+                Seamless real-time meetings with screen sharing, participant controls, and interactive chat.
               </p>
             </div>
 
@@ -226,7 +254,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                   </div>
                   <h3 className="text-2xl font-bold text-slate-900 mb-3">Host a Session</h3>
                   <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-8">
-                    Generate a secure, end-to-end encrypted room instantly and invite your team or students with a single link.
+                    Generate a secure, end-to-end encrypted room instantly and invite your attendees with a single link.
                   </p>
                 </div>
 
@@ -257,7 +285,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                   </div>
                   <h3 className="text-2xl font-bold text-slate-900 mb-3">Join a Session</h3>
                   <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
-                    Enter a room ID or paste an invite link to jump directly into a live masterclass or startup consultation.
+                    Enter a room ID or paste an invite link to jump directly into an existing masterclass or webinar.
                   </p>
                   
                   <div className="relative mb-6">
@@ -299,118 +327,20 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 <div className="text-3xl sm:text-4xl font-extrabold text-[#0DA9CF] mb-1">
                   {platformStats.users.toLocaleString()}
                 </div>
-                <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Innovators Connected</div>
+                <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Happy Users</div>
               </div>
               <div className="bg-white border border-slate-200 rounded-3xl p-6 text-center shadow-sm hover:border-[#F67E31]/40 transition-all">
                 <div className="text-3xl sm:text-4xl font-extrabold text-[#F67E31] mb-1">
                   {platformStats.meetings.toLocaleString()}
                 </div>
-                <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Sessions Hosted</div>
+                <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Meetings Hosted</div>
               </div>
               <div className="bg-white border border-slate-200 rounded-3xl p-6 text-center shadow-sm hover:border-[#04B84C]/40 transition-all">
                 <div className="text-3xl sm:text-4xl font-extrabold text-[#04B84C] mb-1">
                   {platformStats.minutes.toLocaleString()}
                 </div>
-                <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Collaboration Minutes</div>
+                <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider">Minutes Connected</div>
               </div>
-            </div>
-
-          </div>
-        </section>
-
-
-        {/* ========================================================
-            CORE INNOVATION PILLARS (ICEADDIS ECOSYSTEM)
-           ======================================================== */}
-        <section id="programs" className="py-20 sm:py-28 bg-white border-t border-slate-100 px-4 sm:px-8 lg:px-16">
-          <div className="max-w-[1300px] mx-auto">
-            
-            <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
-              <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#ec232b]/10 text-[#ec232b] border border-[#ec232b]/20 mb-4">
-                What We Do
-              </span>
-              <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
-                Empowering the Next Generation of Founders
-              </h2>
-              <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
-                As Ethiopia’s premier innovation hub and tech incubator, we bridge local talent with international opportunities.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              
-              <div className="bg-white border border-slate-200 rounded-3xl p-8 hover:border-[#0DA9CF]/40 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col justify-between">
-                <div>
-                  <div className="w-12 h-12 rounded-2xl bg-[#0DA9CF]/10 border border-[#0DA9CF]/20 flex items-center justify-center text-[#0DA9CF] mb-6">
-                    <Rocket size={24} />
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">Incubation</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed mb-6">
-                    Hands-on support for early-stage tech founders, turning validated prototypes into sustainable, market-ready businesses.
-                  </p>
-                </div>
-                <button 
-                  onClick={() => onNavigate('pricing')}
-                  className="inline-flex items-center text-sm font-semibold text-[#0DA9CF] hover:underline cursor-pointer"
-                >
-                  Explore programs <ChevronRight size={16} className="ml-1" />
-                </button>
-              </div>
-
-              <div className="bg-white border border-slate-200 rounded-3xl p-8 hover:border-[#F67E31]/40 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col justify-between">
-                <div>
-                  <div className="w-12 h-12 rounded-2xl bg-[#F67E31]/10 border border-[#F67E31]/20 flex items-center justify-center text-[#F67E31] mb-6">
-                    <Zap size={24} />
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">ice180 Acceleration</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed mb-6">
-                    High-velocity 180-day growth program preparing growth-stage startups for venture capital, scaling, and market expansion.
-                  </p>
-                </div>
-                <button 
-                  onClick={() => onNavigate('pricing')}
-                  className="inline-flex items-center text-sm font-semibold text-[#F67E31] hover:underline cursor-pointer"
-                >
-                  View criteria <ChevronRight size={16} className="ml-1" />
-                </button>
-              </div>
-
-              <div className="bg-white border border-slate-200 rounded-3xl p-8 hover:border-[#04B84C]/40 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col justify-between">
-                <div>
-                  <div className="w-12 h-12 rounded-2xl bg-[#04B84C]/10 border border-[#04B84C]/20 flex items-center justify-center text-[#04B84C] mb-6">
-                    <Video size={24} />
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">Masterclasses</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed mb-6">
-                    Interactive virtual classrooms where industry leaders train developers, founders, and innovators in cutting-edge skills.
-                  </p>
-                </div>
-                <button 
-                  onClick={() => scrollToSection('launchpad')}
-                  className="inline-flex items-center text-sm font-semibold text-[#04B84C] hover:underline cursor-pointer"
-                >
-                  Host or join <ChevronRight size={16} className="ml-1" />
-                </button>
-              </div>
-
-              <div className="bg-white border border-slate-200 rounded-3xl p-8 hover:border-[#ec232b]/40 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all flex flex-col justify-between">
-                <div>
-                  <div className="w-12 h-12 rounded-2xl bg-[#ec232b]/10 border border-[#ec232b]/20 flex items-center justify-center text-[#ec232b] mb-6">
-                    <Lightbulb size={24} />
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">Ecosystem Policy</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed mb-6">
-                    Advocating for progressive startup policies, cross-border investments, and fostering healthy local entrepreneurship.
-                  </p>
-                </div>
-                <button 
-                  onClick={() => setShowInfoModal(true)}
-                  className="inline-flex items-center text-sm font-semibold text-[#ec232b] hover:underline cursor-pointer"
-                >
-                  Read impact <ChevronRight size={16} className="ml-1" />
-                </button>
-              </div>
-
             </div>
 
           </div>
@@ -425,13 +355,13 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
             
             <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
               <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#0DA9CF]/10 text-[#0DA9CF] border border-[#0DA9CF]/20 mb-4">
-                Built For Performance
+                Core Capabilities
               </span>
               <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
-                Everything You Need for Seamless Collaboration
+                Everything You Need for Perfect Seminars
               </h2>
               <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
-                Crystal-clear audio, low-latency video, and interactive tools built right into your browser with zero installations.
+                WabiSeminar brings together the best tools for video collaboration in one beautiful, frictionless package.
               </p>
             </div>
 
@@ -443,7 +373,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 </div>
                 <h3 className="text-2xl font-bold mb-3 text-slate-900">Ultra HD Video</h3>
                 <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
-                  Adaptive bitrate streaming ensures sharp video and crisp audio regardless of local connection speeds.
+                  Experience crystal-clear video and audio quality powered by advanced WebRTC architecture, ensuring you always look your best.
                 </p>
               </div>
 
@@ -451,9 +381,9 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 <div className="w-14 h-14 bg-[#04B84C]/10 border border-[#04B84C]/20 text-[#04B84C] rounded-2xl flex items-center justify-center mb-6"> 
                   <MessageSquare size={28} /> 
                 </div>
-                <h3 className="text-2xl font-bold mb-3 text-slate-900">Real-time Interaction</h3>
+                <h3 className="text-2xl font-bold mb-3 text-slate-900">Real-time Chat</h3>
                 <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
-                  Keep students and collaborators engaged with integrated chat, interactive Q&A, and live reactions.
+                  Keep your audience engaged with lightning-fast built-in chat. Share links, answer questions, and foster community instantly.
                 </p>
               </div>
 
@@ -461,9 +391,9 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 <div className="w-14 h-14 bg-[#F67E31]/10 border border-[#F67E31]/20 text-[#F67E31] rounded-2xl flex items-center justify-center mb-6"> 
                   <Monitor size={28} /> 
                 </div>
-                <h3 className="text-2xl font-bold mb-3 text-slate-900">Smooth Screen Sharing</h3>
+                <h3 className="text-2xl font-bold mb-3 text-slate-900">Screen Sharing</h3>
                 <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
-                  Present slides, live code, or design prototypes with high framerate screen sharing at 60 FPS.
+                  Present your masterclass seamlessly. Share your entire screen, specific windows, or browser tabs with zero lag.
                 </p>
               </div>
 
@@ -480,7 +410,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
           <div className="max-w-[1300px] mx-auto text-center">
             
             <h2 className="text-3xl sm:text-5xl font-extrabold mb-14 tracking-tight text-slate-900">
-              One Unified Ecosystem for <span className="text-[#F67E31]">Every Role</span>
+              One Platform <span className="text-[#F67E31]">Every Role Connected</span>
             </h2>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -491,7 +421,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">Learners</h3>
                 <p className="text-slate-600 text-sm leading-relaxed">
-                  Gain industry skills through live workshops, interact with mentors, and earn verified certifications.
+                  Learn step-by-step, track your progress, and build skills for your future.
                 </p>
               </div>
 
@@ -501,7 +431,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">Instructors</h3>
                 <p className="text-slate-600 text-sm leading-relaxed">
-                  Teach cohorts worldwide with friction-free rooms, interactive attendance, and session control.
+                  Create impactful courses and guide learners with structured teaching tools.
                 </p>
               </div>
 
@@ -509,9 +439,9 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 <div className="w-14 h-14 rounded-2xl bg-[#04B84C]/10 border border-[#04B84C]/20 flex items-center justify-center text-[#04B84C] mb-6">
                   <Users size={28} />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">Founders</h3>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Parents</h3>
                 <p className="text-slate-600 text-sm leading-relaxed">
-                  Pitch to angel syndicates, hold team standups, and collaborate with product builders globally.
+                  Stay involved with real-time insights into learning progress and performance.
                 </p>
               </div>
 
@@ -521,7 +451,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">Sponsors</h3>
                 <p className="text-slate-600 text-sm leading-relaxed">
-                  Sponsor innovative founders and track educational impact through verifiable community metrics.
+                  Support learners in need and track the real impact of your contribution.
                 </p>
               </div>
 
@@ -539,13 +469,13 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
             
             <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
               <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#0DA9CF]/10 text-[#0DA9CF] border border-[#0DA9CF]/20 mb-4">
-                Community Stories
+                Loved by educators
               </span>
               <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
-                Trusted by Leaders & Innovators
+                What Our Community Says
               </h2>
               <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
-                See what startups and educators say about collaborating through our platform.
+                See why thousands of professionals choose WabiSeminar over legacy conferencing platforms.
               </p>
             </div>
 
@@ -557,14 +487,14 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                     <Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" />
                   </div>
                   <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-6 font-normal">
-                    "Hosting mentorship sessions and cohort check-ins has never been easier. Zero downloads for participants and rock-solid audio quality."
+                    "WabiSeminar completely changed how I host my design masterclasses. The UI is gorgeous, and my students love that they don't have to download any software."
                   </p>
                 </div>
                 <div className="flex items-center gap-3.5">
                   <div className="w-11 h-11 rounded-full bg-[#F67E31] flex items-center justify-center font-bold text-white text-base">K</div>
                   <div>
                     <h4 className="text-slate-900 font-bold text-sm">Kenenisa Beyan</h4>
-                    <p className="text-slate-500 text-xs">Innovation Fellow</p>
+                    <p className="text-slate-500 text-xs">Lead Designer, StudioX</p>
                   </div>
                 </div>
               </div>
@@ -575,14 +505,14 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                     <Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" />
                   </div>
                   <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-6 font-normal">
-                    "The screen sharing clarity and responsive room layout made conducting remote design reviews a breeze. Highly recommended!"
+                    "The waiting room feature is perfect for managing my 1-on-1 coaching sessions. The video quality has been incredibly stable even on lower bandwidths."
                   </p>
                 </div>
                 <div className="flex items-center gap-3.5">
                   <div className="w-11 h-11 rounded-full bg-[#04B84C] flex items-center justify-center font-bold text-white text-base">Y</div>
                   <div>
                     <h4 className="text-slate-900 font-bold text-sm">Yerosan Girma</h4>
-                    <p className="text-slate-500 text-xs">Startup Founder</p>
+                    <p className="text-slate-500 text-xs">Executive Coach</p>
                   </div>
                 </div>
               </div>
@@ -593,14 +523,14 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                     <Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" />
                   </div>
                   <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-6 font-normal">
-                    "We migrated our startup team meetings over to this hub. Instant rooms, privacy by design, and beautiful, modern UI."
+                    "We moved our entire remote engineering team over to WabiSeminar for our daily standups. It's fast, free, and secure. What more could you ask for?"
                   </p>
                 </div>
                 <div className="flex items-center gap-3.5">
                   <div className="w-11 h-11 rounded-full bg-[#0DA9CF] flex items-center justify-center font-bold text-white text-base">D</div>
                   <div>
                     <h4 className="text-slate-900 font-bold text-sm">Dagin A.</h4>
-                    <p className="text-slate-500 text-xs">Software Engineer</p>
+                    <p className="text-slate-500 text-xs">CTO, TechFlow</p>
                   </div>
                 </div>
               </div>
@@ -614,7 +544,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
 
 
       {/* ========================================================
-          "LEARN HOW WE DO IT" INFORMATION MODAL
+          "ABOUT WABISEMINAR" INFORMATION MODAL
          ======================================================== */}
       {showInfoModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200">
@@ -626,37 +556,37 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               <X size={22} />
             </button>
 
-            <div className="w-14 h-14 rounded-2xl bg-[#ec232b]/10 text-[#ec232b] flex items-center justify-center mb-6">
-              <Rocket size={28} />
+            <div className="w-14 h-14 rounded-2xl bg-[#0DA9CF]/10 text-[#0DA9CF] flex items-center justify-center mb-6">
+              <Video size={28} />
             </div>
 
-            <h3 className="text-2xl font-extrabold text-slate-900 mb-3">Amplifying Startups</h3>
+            <h3 className="text-2xl font-extrabold text-slate-900 mb-3">About WabiSeminar</h3>
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
-              At iceaddis, we identify bold ideas and provide founders with the mentorship, technology, and global network needed to build enduring companies.
+              WabiSeminar is a completely free, high-quality video collaboration platform designed for seamless masterclasses, webinars, and team meetings.
             </p>
 
             <div className="space-y-4 mb-8">
               <div className="flex items-start space-x-3">
                 <CheckCircle size={20} className="text-[#04B84C] mt-0.5 shrink-0" />
                 <div>
-                  <h4 className="text-sm font-bold text-slate-800">Seed Incubation</h4>
-                  <p className="text-xs text-slate-500">From concept validation to initial market traction.</p>
+                  <h4 className="text-sm font-bold text-slate-800">Instant Access</h4>
+                  <p className="text-xs text-slate-500">No software downloads or installations needed.</p>
                 </div>
               </div>
 
               <div className="flex items-start space-x-3">
                 <CheckCircle size={20} className="text-[#0DA9CF] mt-0.5 shrink-0" />
                 <div>
-                  <h4 className="text-sm font-bold text-slate-800">ice180 Acceleration</h4>
-                  <p className="text-xs text-slate-500">Intensive preparation for institutional venture investment.</p>
+                  <h4 className="text-sm font-bold text-slate-800">End-to-End Encrypted</h4>
+                  <p className="text-xs text-slate-500">Secure WebRTC streaming keeps your conversations private.</p>
                 </div>
               </div>
 
               <div className="flex items-start space-x-3">
                 <CheckCircle size={20} className="text-[#F67E31] mt-0.5 shrink-0" />
                 <div>
-                  <h4 className="text-sm font-bold text-slate-800">Virtual Collaboration</h4>
-                  <p className="text-xs text-slate-500">Encrypted real-time video rooms for mentoring and masterclasses.</p>
+                  <h4 className="text-sm font-bold text-slate-800">Interactive Classroom Tools</h4>
+                  <p className="text-xs text-slate-500">Real-time chat, smooth screen sharing, and waiting room management.</p>
                 </div>
               </div>
             </div>
@@ -666,7 +596,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 setShowInfoModal(false);
                 scrollToSection('launchpad');
               }}
-              className="w-full bg-[#ec232b] hover:bg-[#d61b23] text-white py-3.5 rounded-full font-bold text-base transition-all shadow-md cursor-pointer"
+              className="w-full bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white py-3.5 rounded-full font-bold text-base transition-all shadow-md cursor-pointer"
             >
               Start Collaborating Now
             </button>

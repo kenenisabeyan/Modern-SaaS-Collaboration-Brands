@@ -9,52 +9,57 @@ export default function Footer({ onNavigate }) {
           {/* Brand Section */}
           <div className="col-span-1 sm:col-span-2 lg:col-span-1">
             <div className="flex items-center space-x-3 mb-5">
-              <img src="/iceaddis-logo.svg" alt="iceaddis" className="h-8 w-auto" />
+              <div className="w-9 h-9 rounded-2xl bg-[#0DA9CF] flex items-center justify-center shadow-md shadow-[#0DA9CF]/25">
+                <Video className="text-white w-4.5 h-4.5" />
+              </div>
+              <span className="font-extrabold text-xl tracking-tight text-slate-900">
+                WabiSeminar
+              </span>
             </div>
             <p className="text-slate-600 text-sm leading-relaxed mb-6 max-w-xs">
-              Ethiopia’s first innovation hub and startup incubator. Amplifying bold founders, technology startups, and digital transformation.
+              The modern platform for hosting engaging masterclasses, secure meetings, and instant webinars without limits.
             </p>
             <div className="flex items-center space-x-3">
-              <a href="https://www.iceaddis.com" target="_blank" rel="noreferrer" className="w-9 h-9 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-600 hover:text-[#ec232b] hover:bg-slate-100 transition-all shadow-sm">
+              <a href="#" className="w-9 h-9 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-600 hover:text-[#0DA9CF] hover:bg-slate-100 transition-all shadow-sm">
                 <Globe size={16} />
               </a>
-              <a href="mailto:contact@iceaddis.com" className="w-9 h-9 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-600 hover:text-[#0DA9CF] hover:bg-slate-100 transition-all shadow-sm">
+              <a href="#" className="w-9 h-9 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-600 hover:text-[#0DA9CF] hover:bg-slate-100 transition-all shadow-sm">
                 <Mail size={16} />
               </a>
-              <a href="#launchpad" className="w-9 h-9 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-600 hover:text-[#04B84C] hover:bg-slate-100 transition-all shadow-sm">
+              <a href="#" className="w-9 h-9 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-600 hover:text-[#0DA9CF] hover:bg-slate-100 transition-all shadow-sm">
                 <MessageCircle size={16} />
               </a>
             </div>
           </div>
           
-          {/* Programs */}
+          {/* Product Section */}
           <div>
-            <h4 className="font-bold text-slate-900 mb-4 sm:mb-6 tracking-wide text-sm uppercase">Programs</h4>
+            <h4 className="font-bold text-slate-900 mb-4 sm:mb-6 tracking-wide text-sm uppercase">Product</h4>
             <ul className="space-y-3 text-sm text-slate-600">
-              <li><button onClick={() => onNavigate('pricing')} className="hover:text-[#ec232b] transition-colors text-left cursor-pointer">Incubation Program</button></li>
-              <li><button onClick={() => onNavigate('pricing')} className="hover:text-[#ec232b] transition-colors text-left cursor-pointer">ice180 Acceleration</button></li>
-              <li><button onClick={() => onNavigate('dashboard')} className="hover:text-[#ec232b] transition-colors text-left cursor-pointer">Virtual Masterclasses</button></li>
-              <li><button onClick={() => onNavigate('features')} className="hover:text-[#ec232b] transition-colors text-left cursor-pointer">Mentorship Network</button></li>
+              <li><button onClick={() => onNavigate('features')} className="hover:text-[#0DA9CF] transition-colors text-left cursor-pointer">Features</button></li>
+              <li><button onClick={() => onNavigate('how-it-works')} className="hover:text-[#0DA9CF] transition-colors text-left cursor-pointer">How It Works</button></li>
+              <li><button onClick={() => onNavigate('pricing')} className="hover:text-[#0DA9CF] transition-colors text-left cursor-pointer">Pricing</button></li>
+              <li><button onClick={() => onNavigate('dashboard')} className="hover:text-[#0DA9CF] transition-colors text-left cursor-pointer">Instant Meetings</button></li>
             </ul>
           </div>
           
-          {/* Resources */}
+          {/* Resources Section */}
           <div>
             <h4 className="font-bold text-slate-900 mb-4 sm:mb-6 tracking-wide text-sm uppercase">Resources</h4>
             <ul className="space-y-3 text-sm text-slate-600">
-              <li><button onClick={() => onNavigate('faq')} className="hover:text-[#0DA9CF] transition-colors text-left cursor-pointer">FAQ & Help Center</button></li>
-              <li><button onClick={() => onNavigate('features')} className="hover:text-[#0DA9CF] transition-colors text-left cursor-pointer">Innovation Hub</button></li>
-              <li><button onClick={() => onNavigate('how-it-works')} className="hover:text-[#0DA9CF] transition-colors text-left cursor-pointer">How Collaboration Works</button></li>
-              <li><button onClick={() => onNavigate('faq')} className="hover:text-[#0DA9CF] transition-colors text-left cursor-pointer">Ecosystem Insights</button></li>
+              <li><button onClick={() => onNavigate('faq')} className="hover:text-[#F67E31] transition-colors text-left cursor-pointer">FAQ & Help Center</button></li>
+              <li><button onClick={() => onNavigate('features')} className="hover:text-[#F67E31] transition-colors text-left cursor-pointer">Masterclass Guide</button></li>
+              <li><button onClick={() => onNavigate('how-it-works')} className="hover:text-[#F67E31] transition-colors text-left cursor-pointer">Community Standards</button></li>
+              <li><button onClick={() => onNavigate('faq')} className="hover:text-[#F67E31] transition-colors text-left cursor-pointer">Security Overview</button></li>
             </ul>
           </div>
           
-          {/* Community */}
+          {/* Company Section */}
           <div>
-            <h4 className="font-bold text-slate-900 mb-4 sm:mb-6 tracking-wide text-sm uppercase">Community</h4>
+            <h4 className="font-bold text-slate-900 mb-4 sm:mb-6 tracking-wide text-sm uppercase">Company</h4>
             <ul className="space-y-3 text-sm text-slate-600">
-              <li><button onClick={() => onNavigate('features')} className="hover:text-[#04B84C] transition-colors text-left cursor-pointer">About iceaddis</button></li>
-              <li><button onClick={() => onNavigate('how-it-works')} className="hover:text-[#04B84C] transition-colors text-left cursor-pointer">Media & Press</button></li>
+              <li><button onClick={() => onNavigate('features')} className="hover:text-[#04B84C] transition-colors text-left cursor-pointer">About WabiSeminar</button></li>
+              <li><button onClick={() => onNavigate('how-it-works')} className="hover:text-[#04B84C] transition-colors text-left cursor-pointer">Careers</button></li>
               <li><button onClick={() => onNavigate('faq')} className="hover:text-[#04B84C] transition-colors text-left cursor-pointer">Contact Us</button></li>
               <li><button onClick={() => onNavigate('faq')} className="hover:text-[#04B84C] transition-colors text-left cursor-pointer">Privacy & Terms</button></li>
             </ul>
@@ -63,11 +68,11 @@ export default function Footer({ onNavigate }) {
         
         {/* Footer Bottom */}
         <div className="border-t border-slate-100 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs sm:text-sm text-slate-500">
-          <p className="text-center sm:text-left">&copy; {new Date().getFullYear()} iceaddis. All rights reserved.</p>
+          <p className="text-center sm:text-left">&copy; {new Date().getFullYear()} WabiSeminar Inc. All rights reserved.</p>
           <div className="flex items-center space-x-6">
             <div className="flex items-center space-x-2">
               <span className="w-2 h-2 rounded-full bg-[#04B84C] animate-pulse"></span>
-              <span className="text-xs sm:text-sm font-medium text-slate-600">Systems Operational</span>
+              <span className="text-xs sm:text-sm font-medium text-slate-600">All systems operational</span>
             </div>
           </div>
         </div>
