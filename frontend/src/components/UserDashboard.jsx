@@ -150,15 +150,15 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
 
         {/* Quick Indicators Bar */}
         <div className="flex flex-wrap items-center gap-3 sm:gap-4 mt-4 pt-1">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-xs font-medium border border-slate-200 dark:border-slate-700">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-xs font-medium border border-slate-200 dark:border-slate-700 shadow-sm">
             <Zap size={13} className="text-[#F67E31]" />
             <span>Sub-50ms Latency</span>
           </div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-xs font-medium border border-slate-200 dark:border-slate-700">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-xs font-medium border border-slate-200 dark:border-slate-700 shadow-sm">
             <ShieldCheck size={13} className="text-[#04B84C]" />
             <span>End-to-End Encrypted</span>
           </div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-xs font-medium border border-slate-200 dark:border-slate-700">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-xs font-medium border border-slate-200 dark:border-slate-700 shadow-sm">
             <Users size={13} className="text-[#0DA9CF]" />
             <span>{myRooms.length} {myRooms.length === 1 ? 'Meeting' : 'Meetings'} Created</span>
           </div>
@@ -218,7 +218,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
                 value={joinId}
                 onChange={(e) => setJoinId(e.target.value)}
                 placeholder="Enter room code or link..."
-                className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl px-4 py-3.5 text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:bg-white dark:focus:bg-[#0A0F24] focus:border-[#F67E31] focus:ring-2 focus:ring-[#F67E31]/20 outline-none transition-all"
+                className="w-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl px-4 py-3.5 text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:bg-white dark:focus:bg-[#0A0F24] focus:border-[#F67E31] focus:ring-2 focus:ring-[#F67E31]/20 outline-none transition-all shadow-sm"
                 onKeyDown={(e) => e.key === 'Enter' && handleJoinRoom()}
               />
             </div>
@@ -245,7 +245,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
           <div className="flex items-center gap-2.5">
             <Clock size={20} className="text-[#0DA9CF]" />
             <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Recent Meetings</h2>
-            <span className="px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-semibold">
+            <span className="px-2.5 py-0.5 rounded-full bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-400 text-xs font-semibold border border-slate-200 dark:border-white/10 shadow-sm">
               {myRooms.length}
             </span>
           </div>
@@ -291,7 +291,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
 
                   <button 
                     onClick={() => handleCopyLink(room.roomId)}
-                    className="p-2 rounded-xl text-slate-600 dark:text-slate-400 hover:text-[#0DA9CF] dark:hover:text-white bg-slate-100 dark:bg-white/5 hover:bg-[#0DA9CF]/10 dark:hover:bg-white/10 border border-slate-200 dark:border-white/10 transition-colors cursor-pointer"
+                    className="p-2 rounded-xl text-slate-600 dark:text-slate-400 hover:text-[#0DA9CF] dark:hover:text-white bg-white dark:bg-white/5 hover:bg-[#0DA9CF]/10 dark:hover:bg-white/10 border border-slate-200 dark:border-white/10 transition-colors cursor-pointer shadow-sm"
                     title="Copy invite link"
                   >
                     {copiedId === room.roomId ? (
@@ -313,8 +313,8 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
             ))}
           </div>
         ) : (
-          <div className="bg-white dark:bg-[#0A0F24]/50 border border-dashed border-slate-300 dark:border-white/10 rounded-3xl p-10 sm:p-14 text-center flex flex-col items-center">
-            <div className="w-14 h-14 rounded-2xl bg-slate-100 dark:bg-white/5 flex items-center justify-center text-slate-400 mb-3">
+          <div className="bg-white dark:bg-[#0A0F24]/50 border border-dashed border-slate-300 dark:border-white/10 rounded-3xl p-10 sm:p-14 text-center flex flex-col items-center shadow-sm">
+            <div className="w-14 h-14 rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-[#0DA9CF] mb-3 shadow-sm">
               <Video size={28} />
             </div>
             <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white mb-1">No meetings yet</h3>
@@ -323,7 +323,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
             </p>
             <button 
               onClick={handleCreateRoom}
-              className="px-5 py-2.5 bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white font-semibold rounded-xl text-xs sm:text-sm shadow-md transition-colors cursor-pointer"
+              className="px-5 py-2.5 bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white font-semibold rounded-xl text-xs sm:text-sm shadow-md shadow-[#0DA9CF]/25 transition-colors cursor-pointer"
             >
               Start First Meeting
             </button>
@@ -337,7 +337,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
           <div className="bg-white dark:bg-[#0A0F24] border border-slate-200 dark:border-white/10 rounded-3xl max-w-sm w-full p-6 shadow-2xl relative">
             <button 
               onClick={() => !isDeleting && setDeleteModalRoomId(null)}
-              className="absolute top-4 right-4 text-slate-400 hover:text-slate-700 dark:hover:text-white p-1.5 rounded-full bg-slate-100 dark:bg-white/5 transition-colors cursor-pointer"
+              className="absolute top-4 right-4 text-slate-400 hover:text-slate-700 dark:hover:text-white p-1.5 rounded-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 transition-colors cursor-pointer"
             >
               <X size={16} />
             </button>
@@ -352,7 +352,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
               <button 
                 onClick={() => setDeleteModalRoomId(null)}
                 disabled={isDeleting}
-                className="flex-1 py-2.5 rounded-xl font-semibold bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 text-slate-700 dark:text-slate-300 transition-colors text-xs sm:text-sm cursor-pointer"
+                className="flex-1 py-2.5 rounded-xl font-semibold bg-white dark:bg-white/5 hover:bg-slate-50 dark:hover:bg-white/10 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 transition-colors text-xs sm:text-sm cursor-pointer shadow-sm"
               >
                 Cancel
               </button>
