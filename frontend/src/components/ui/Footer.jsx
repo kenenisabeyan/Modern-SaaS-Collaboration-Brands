@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 export default function Footer({ onNavigate }) {
   return (
-    <footer className="border-t border-white/5 light:border-slate-200 bg-[#050816] light:bg-[#FAFAFA] pt-12 lg:pt-20 pb-6 lg:pb-10 px-4 sm:px-6 lg:px-8 xl:px-16 relative z-10 text-white light:text-slate-900 font-sans">
+    <footer className="border-t border-white/5 light:border-slate-200 bg-[#050816] light:bg-white pt-12 lg:pt-20 pb-6 lg:pb-10 px-4 sm:px-6 lg:px-8 xl:px-16 relative z-10 text-white light:text-slate-900 font-sans">
       <div className="max-w-[1400px] mx-auto">
         {/* Mobile-optimized grid: 1 column on mobile, 2 on tablet, 4 on desktop */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12 mb-12 sm:mb-16">
@@ -19,13 +19,13 @@ export default function Footer({ onNavigate }) {
               The modern platform for hosting engaging masterclasses, secure meetings, and instant webinars without limits.
             </p>
             <div className="flex items-center space-x-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 light:bg-slate-100 border border-white/10 light:border-slate-200 flex items-center justify-center text-[#94A3B8] light:text-slate-500 hover:text-white light:text-slate-900 light:hover:text-slate-900 hover:bg-white/10 light:hover:bg-slate-200 light:bg-slate-200 light:hover:bg-slate-200 hover:border-white/20 light:hover:border-slate-300 transition-all">
+              <a href="#" className="w-10 h-10 rounded-full bg-white/5 light:bg-white border border-white/10 light:border-slate-200 flex items-center justify-center text-[#94A3B8] light:text-[#0DA9CF] hover:text-[#0DA9CF] hover:bg-white/10 light:hover:bg-[#0DA9CF]/10 transition-all shadow-sm">
                 <Globe size={18} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 light:bg-slate-100 border border-white/10 light:border-slate-200 flex items-center justify-center text-[#94A3B8] light:text-slate-500 hover:text-white light:text-slate-900 light:hover:text-slate-900 hover:bg-white/10 light:hover:bg-slate-200 light:bg-slate-200 light:hover:bg-slate-200 hover:border-white/20 light:hover:border-slate-300 transition-all">
+              <a href="#" className="w-10 h-10 rounded-full bg-white/5 light:bg-white border border-white/10 light:border-slate-200 flex items-center justify-center text-[#94A3B8] light:text-[#0DA9CF] hover:text-[#0DA9CF] hover:bg-white/10 light:hover:bg-[#0DA9CF]/10 transition-all shadow-sm">
                 <Mail size={18} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 light:bg-slate-100 border border-white/10 light:border-slate-200 flex items-center justify-center text-[#94A3B8] light:text-slate-500 hover:text-white light:text-slate-900 light:hover:text-slate-900 hover:bg-white/10 light:hover:bg-slate-200 light:bg-slate-200 light:hover:bg-slate-200 hover:border-white/20 light:hover:border-slate-300 transition-all">
+              <a href="#" className="w-10 h-10 rounded-full bg-white/5 light:bg-white border border-white/10 light:border-slate-200 flex items-center justify-center text-[#94A3B8] light:text-[#0DA9CF] hover:text-[#0DA9CF] hover:bg-white/10 light:hover:bg-[#0DA9CF]/10 transition-all shadow-sm">
                 <MessageCircle size={18} />
               </a>
             </div>

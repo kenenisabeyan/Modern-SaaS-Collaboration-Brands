@@ -80,7 +80,7 @@ export default function Auth({ onNavigate }) {
   }, []);
 
   return (
-    <div className="flex-1 flex items-center justify-center pt-28 sm:pt-36 lg:pt-40 pb-16 sm:pb-20 px-4 sm:px-6 relative overflow-hidden bg-[#050816] light:bg-[#FAFAFA] min-h-[calc(100vh-100px)] font-sans text-white light:text-slate-900">
+    <div className="flex-1 flex items-center justify-center pt-28 sm:pt-36 lg:pt-40 pb-16 sm:pb-20 px-4 sm:px-6 relative overflow-hidden bg-[#050816] light:bg-white min-h-[calc(100vh-100px)] font-sans text-white light:text-slate-900">
       {/* Background Glow Effects */}
       <div className="absolute bg-[#F67E31]/15 blur-[120px] w-[600px] h-[600px] rounded-full top-[-10%] left-[-10%] pointer-events-none"></div>
       <div className="absolute bg-[#0DA9CF]/12 blur-[120px] w-[500px] h-[500px] rounded-full bottom-[-10%] right-[-10%] pointer-events-none"></div>
@@ -88,7 +88,7 @@ export default function Auth({ onNavigate }) {
       <div className="premium-card w-full max-w-md p-6 sm:p-10 flex flex-col items-center space-y-6 sm:space-y-8 z-10 relative">
         
         {/* Floating Accent */}
-        <div className="absolute top-3 right-3 sm:top-4 sm:right-4 w-9 h-9 sm:w-10 sm:h-10 bg-[#050816] light:bg-slate-50 border border-[#F67E31]/50 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(246,126,49,0.35)] z-20">
+        <div className="absolute top-3 right-3 sm:top-4 sm:right-4 w-9 h-9 sm:w-10 sm:h-10 bg-[#050816] light:bg-white border border-[#F67E31]/50 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(246,126,49,0.35)] z-20">
           <Lock size={16} className="text-[#0DA9CF] sm:w-[18px] sm:h-[18px]" />
         </div>
 
