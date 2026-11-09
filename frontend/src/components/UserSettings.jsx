@@ -219,7 +219,7 @@ export default function UserSettings({ onNavigate }) {
               >
                 <div className="bg-white dark:bg-[#0A0F24]/80 border border-slate-200 dark:border-white/10 rounded-3xl p-6 sm:p-8 shadow-sm">
                   <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
-                    <Settings size={20} className="text-indigo-600 dark:text-indigo-400" />
+                    <Settings size={20} className="text-[#0DA9CF]" />
                     <span>General Preferences</span>
                   </h3>
                   
@@ -232,7 +232,7 @@ export default function UserSettings({ onNavigate }) {
                       </div>
                       <button 
                         onClick={toggleTheme} 
-                        className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer ${isLight ? 'bg-indigo-600' : 'bg-slate-700'}`}
+                        className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer ${isLight ? 'bg-[#0DA9CF]' : 'bg-slate-700'}`}
                         aria-label="Toggle theme"
                       >
                         <div className={`absolute top-1 w-4 h-4 bg-white rounded-full transition-transform ${isLight ? 'right-1' : 'left-1'}`}></div>
@@ -247,7 +247,7 @@ export default function UserSettings({ onNavigate }) {
                       </div>
                       <button 
                         onClick={() => setHardwareAcc(!hardwareAcc)} 
-                        className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer ${hardwareAcc ? 'bg-indigo-600' : 'bg-slate-300 dark:bg-slate-700'}`}
+                        className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer ${hardwareAcc ? 'bg-[#04B84C]' : 'bg-slate-300 dark:bg-slate-700'}`}
                       >
                         <div className={`absolute top-1 w-4 h-4 bg-white rounded-full transition-transform ${hardwareAcc ? 'right-1' : 'left-1'}`}></div>
                       </button>
@@ -261,7 +261,7 @@ export default function UserSettings({ onNavigate }) {
                       </div>
                       <button 
                         onClick={() => setAutoCopyLink(!autoCopyLink)} 
-                        className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer ${autoCopyLink ? 'bg-indigo-600' : 'bg-slate-300 dark:bg-slate-700'}`}
+                        className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer ${autoCopyLink ? 'bg-[#04B84C]' : 'bg-slate-300 dark:bg-slate-700'}`}
                       >
                         <div className={`absolute top-1 w-4 h-4 bg-white rounded-full transition-transform ${autoCopyLink ? 'right-1' : 'left-1'}`}></div>
                       </button>
@@ -279,7 +279,7 @@ export default function UserSettings({ onNavigate }) {
                 className="bg-white dark:bg-[#0A0F24]/80 border border-slate-200 dark:border-white/10 rounded-3xl p-6 sm:p-8 shadow-sm"
               >
                 <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
-                  <Video size={20} className="text-indigo-600 dark:text-indigo-400" />
+                  <Video size={20} className="text-[#0DA9CF]" />
                   <span>Meeting Join Defaults</span>
                 </h3>
 
@@ -292,7 +292,7 @@ export default function UserSettings({ onNavigate }) {
                     </div>
                     <button 
                       onClick={() => setMuteMicDefault(!muteMicDefault)} 
-                      className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer ${muteMicDefault ? 'bg-indigo-600' : 'bg-slate-300 dark:bg-slate-700'}`}
+                      className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer ${muteMicDefault ? 'bg-[#04B84C]' : 'bg-slate-300 dark:bg-slate-700'}`}
                     >
                       <div className={`absolute top-1 w-4 h-4 bg-white rounded-full transition-transform ${muteMicDefault ? 'right-1' : 'left-1'}`}></div>
                     </button>
@@ -306,7 +306,7 @@ export default function UserSettings({ onNavigate }) {
                     </div>
                     <button 
                       onClick={() => setMuteCamDefault(!muteCamDefault)} 
-                      className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer ${muteCamDefault ? 'bg-indigo-600' : 'bg-slate-300 dark:bg-slate-700'}`}
+                      className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer ${muteCamDefault ? 'bg-[#04B84C]' : 'bg-slate-300 dark:bg-slate-700'}`}
                     >
                       <div className={`absolute top-1 w-4 h-4 bg-white rounded-full transition-transform ${muteCamDefault ? 'right-1' : 'left-1'}`}></div>
                     </button>
@@ -320,7 +320,7 @@ export default function UserSettings({ onNavigate }) {
                     </div>
                     <button 
                       onClick={() => setMirrorVideo(!mirrorVideo)} 
-                      className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer ${mirrorVideo ? 'bg-indigo-600' : 'bg-slate-300 dark:bg-slate-700'}`}
+                      className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer ${mirrorVideo ? 'bg-[#04B84C]' : 'bg-slate-300 dark:bg-slate-700'}`}
                     >
                       <div className={`absolute top-1 w-4 h-4 bg-white rounded-full transition-transform ${mirrorVideo ? 'right-1' : 'left-1'}`}></div>
                     </button>
@@ -334,7 +334,7 @@ export default function UserSettings({ onNavigate }) {
                     </div>
                     <button 
                       onClick={() => setHdVideo(!hdVideo)} 
-                      className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer ${hdVideo ? 'bg-indigo-600' : 'bg-slate-300 dark:bg-slate-700'}`}
+                      className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer ${hdVideo ? 'bg-[#04B84C]' : 'bg-slate-300 dark:bg-slate-700'}`}
                     >
                       <div className={`absolute top-1 w-4 h-4 bg-white rounded-full transition-transform ${hdVideo ? 'right-1' : 'left-1'}`}></div>
                     </button>
@@ -351,7 +351,7 @@ export default function UserSettings({ onNavigate }) {
                 className="bg-white dark:bg-[#0A0F24]/80 border border-slate-200 dark:border-white/10 rounded-3xl p-6 sm:p-8 shadow-sm"
               >
                 <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
-                  <Volume2 size={20} className="text-indigo-600 dark:text-indigo-400" />
+                  <Volume2 size={20} className="text-[#F67E31]" />
                   <span>Audio & Notification Alerts</span>
                 </h3>
 
@@ -364,7 +364,7 @@ export default function UserSettings({ onNavigate }) {
                     </div>
                     <button 
                       onClick={() => setSoundJoin(!soundJoin)} 
-                      className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer ${soundJoin ? 'bg-indigo-600' : 'bg-slate-300 dark:bg-slate-700'}`}
+                      className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer ${soundJoin ? 'bg-[#04B84C]' : 'bg-slate-300 dark:bg-slate-700'}`}
                     >
                       <div className={`absolute top-1 w-4 h-4 bg-white rounded-full transition-transform ${soundJoin ? 'right-1' : 'left-1'}`}></div>
                     </button>
@@ -378,7 +378,7 @@ export default function UserSettings({ onNavigate }) {
                     </div>
                     <button 
                       onClick={() => setChatSounds(!chatSounds)} 
-                      className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer ${chatSounds ? 'bg-indigo-600' : 'bg-slate-300 dark:bg-slate-700'}`}
+                      className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer ${chatSounds ? 'bg-[#04B84C]' : 'bg-slate-300 dark:bg-slate-700'}`}
                     >
                       <div className={`absolute top-1 w-4 h-4 bg-white rounded-full transition-transform ${chatSounds ? 'right-1' : 'left-1'}`}></div>
                     </button>
@@ -395,13 +395,13 @@ export default function UserSettings({ onNavigate }) {
                 className="bg-white dark:bg-[#0A0F24]/80 border border-slate-200 dark:border-white/10 rounded-3xl p-6 sm:p-8 shadow-sm"
               >
                 <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
-                  <Key size={20} className="text-indigo-600 dark:text-indigo-400" />
+                  <Key size={20} className="text-[#0DA9CF]" />
                   <span>Update Password</span>
                 </h3>
                 
                 {message && (
-                  <div className={`p-4 rounded-2xl mb-6 flex items-start gap-3 border ${message.type === 'error' ? 'bg-rose-50 dark:bg-rose-500/10 border-rose-200 dark:border-rose-500/20 text-rose-600 dark:text-rose-400' : 'bg-emerald-50 dark:bg-emerald-500/10 border-emerald-200 dark:border-emerald-500/20 text-emerald-600 dark:text-emerald-400'}`}>
-                    {message.type === 'error' ? <AlertCircle size={18} className="shrink-0 mt-0.5" /> : <CheckCircle2 size={18} className="shrink-0 mt-0.5" />}
+                  <div className={`p-4 rounded-2xl mb-6 flex items-start gap-3 border ${message.type === 'error' ? 'bg-rose-50 dark:bg-rose-500/10 border-rose-200 dark:border-rose-500/20 text-rose-600 dark:text-rose-400' : 'bg-[#04B84C]/10 border-[#04B84C]/20 text-[#04B84C]'}`}>
+                    {message.type === 'error' ? <AlertCircle size={18} className="shrink-0 mt-0.5" /> : <CheckCircle2 size={18} className="shrink-0 mt-0.5 text-[#04B84C]" />}
                     <p className="text-xs sm:text-sm font-medium">{message.text}</p>
                   </div>
                 )}
@@ -415,7 +415,7 @@ export default function UserSettings({ onNavigate }) {
                       onChange={(e) => setCurrentPassword(e.target.value)}
                       required
                       placeholder="••••••••••••"
-                      className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:bg-white dark:focus:bg-[#0A0F24] focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 outline-none transition-all" 
+                      className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:bg-white dark:focus:bg-[#0A0F24] focus:border-[#0DA9CF] focus:ring-2 focus:ring-[#0DA9CF]/20 outline-none transition-all" 
                     />
                   </div>
                   <div>
@@ -426,7 +426,7 @@ export default function UserSettings({ onNavigate }) {
                       onChange={(e) => setNewPassword(e.target.value)}
                       required
                       placeholder="At least 6 characters"
-                      className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:bg-white dark:focus:bg-[#0A0F24] focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 outline-none transition-all" 
+                      className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:bg-white dark:focus:bg-[#0A0F24] focus:border-[#0DA9CF] focus:ring-2 focus:ring-[#0DA9CF]/20 outline-none transition-all" 
                     />
                   </div>
                   <div>
@@ -437,14 +437,14 @@ export default function UserSettings({ onNavigate }) {
                       onChange={(e) => setConfirmPassword(e.target.value)}
                       required
                       placeholder="Repeat new password"
-                      className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:bg-white dark:focus:bg-[#0A0F24] focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 outline-none transition-all" 
+                      className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:bg-white dark:focus:bg-[#0A0F24] focus:border-[#0DA9CF] focus:ring-2 focus:ring-[#0DA9CF]/20 outline-none transition-all" 
                     />
                   </div>
                   <div className="pt-2">
                     <button 
                       type="submit"
                       disabled={isLoading}
-                      className="w-full sm:w-auto px-7 py-3 rounded-2xl font-semibold bg-indigo-600 hover:bg-indigo-500 text-white transition-all shadow-md shadow-indigo-600/20 disabled:opacity-70 flex items-center justify-center gap-2 text-sm cursor-pointer"
+                      className="w-full sm:w-auto px-7 py-3 rounded-2xl font-semibold bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white transition-all shadow-md shadow-[#0DA9CF]/20 disabled:opacity-70 flex items-center justify-center gap-2 text-sm cursor-pointer"
                     >
                       {isLoading ? <Loader2 size={16} className="animate-spin text-white" /> : null}
                       <span className="text-white">{isLoading ? 'Updating...' : 'Update Password'}</span>

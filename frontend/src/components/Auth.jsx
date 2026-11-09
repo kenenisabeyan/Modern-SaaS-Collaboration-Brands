@@ -132,7 +132,7 @@ export default function Auth({ onNavigate }) {
           <div className="space-y-2 group">
             <label className="text-xs font-semibold text-slate-300 light:text-slate-600 uppercase tracking-wider ml-1">Email</label>
             <div className="relative">
-              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 light:text-slate-400 group-focus-within:text-indigo-400 light:group-focus-within:text-indigo-600 transition-colors" size={18} />
+              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 light:text-slate-400 group-focus-within:text-[#0DA9CF] transition-colors" size={18} />
               <input 
                 type="email" 
                 value={email}
@@ -148,13 +148,13 @@ export default function Auth({ onNavigate }) {
             <div className="flex justify-between items-center ml-1">
               <label className="text-xs font-semibold text-slate-300 light:text-slate-600 uppercase tracking-wider">Password</label>
               {isLogin && (
-                <button type="button" className="text-xs font-medium text-indigo-400 light:text-indigo-600 hover:text-indigo-300 light:hover:text-indigo-500 transition-colors">
+                <button type="button" className="text-xs font-medium text-[#0DA9CF] hover:underline transition-colors">
                   Forgot password?
                 </button>
               )}
             </div>
             <div className="relative">
-              <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 light:text-slate-400 group-focus-within:text-indigo-400 light:group-focus-within:text-indigo-600 transition-colors" size={18} />
+              <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 light:text-slate-400 group-focus-within:text-[#0DA9CF] transition-colors" size={18} />
               <input 
                 type="password" 
                 value={password}
