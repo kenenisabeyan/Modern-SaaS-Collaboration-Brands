@@ -190,7 +190,7 @@ export default function UserSettings({ onNavigate }) {
                 }} 
                 className={`shrink-0 lg:w-full flex items-center gap-3 px-4 py-3 rounded-2xl font-semibold text-left transition-all text-xs sm:text-sm cursor-pointer ${
                   isActive 
-                    ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/20' 
+                    ? 'bg-[#0DA9CF] text-white shadow-md shadow-[#0DA9CF]/20' 
                     : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >

@@ -243,7 +243,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
       >
         <div className="flex items-center justify-between mb-5">
           <div className="flex items-center gap-2.5">
-            <Clock size={20} className="text-indigo-600 dark:text-indigo-400" />
+            <Clock size={20} className="text-[#0DA9CF]" />
             <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Recent Meetings</h2>
             <span className="px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-semibold">
               {myRooms.length}
@@ -253,7 +253,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
 
         {isLoading ? (
           <div className="bg-white dark:bg-[#0A0F24]/60 border border-slate-200 dark:border-white/10 rounded-3xl p-12 flex flex-col items-center justify-center gap-3">
-            <Loader2 className="animate-spin text-indigo-600 dark:text-indigo-400" size={30} />
+            <Loader2 className="animate-spin text-[#0DA9CF]" size={30} />
             <p className="text-xs text-slate-500">Loading your meetings...</p>
           </div>
         ) : myRooms.length > 0 ? (
@@ -261,15 +261,15 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
             {myRooms.map((room) => (
               <div 
                 key={room.id}
-                className="bg-white dark:bg-[#0A0F24]/80 border border-slate-200 dark:border-white/10 rounded-2xl p-5 hover:border-indigo-300 dark:hover:border-indigo-500/30 hover:shadow-md transition-all flex flex-col justify-between gap-4"
+                className="bg-white dark:bg-[#0A0F24]/80 border border-slate-200 dark:border-white/10 rounded-2xl p-5 hover:border-[#0DA9CF]/40 dark:hover:border-[#0DA9CF]/40 hover:shadow-md transition-all flex flex-col justify-between gap-4"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-2.5">
-                    <span className="font-mono text-sm font-bold text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-500/10 px-2.5 py-1 rounded-lg border border-indigo-100 dark:border-indigo-500/20">
+                    <span className="font-mono text-sm font-bold text-[#0DA9CF] bg-[#0DA9CF]/10 px-2.5 py-1 rounded-lg border border-[#0DA9CF]/20">
                       {room.roomId}
                     </span>
-                    <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-medium bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/20">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-medium bg-[#04B84C]/10 text-[#04B84C] border border-[#04B84C]/20">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#04B84C] animate-pulse"></span>
                       Active
                     </span>
                   </div>
@@ -283,7 +283,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
                 <div className="flex items-center gap-2 pt-2 border-t border-slate-100 dark:border-white/5">
                   <button 
                     onClick={() => onJoinRoom(room.roomId)}
-                    className="flex-1 py-2 px-3 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white transition-all flex items-center justify-center gap-1.5 shadow-sm cursor-pointer"
+                    className="flex-1 py-2 px-3 rounded-xl text-xs font-semibold bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white transition-all flex items-center justify-center gap-1.5 shadow-sm cursor-pointer"
                   >
                     <Video size={14} className="text-white" />
                     <span className="text-white">Rejoin</span>
@@ -291,11 +291,11 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
 
                   <button 
                     onClick={() => handleCopyLink(room.roomId)}
-                    className="p-2 rounded-xl text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white bg-slate-100 dark:bg-white/5 hover:bg-indigo-50 dark:hover:bg-white/10 border border-slate-200 dark:border-white/10 transition-colors cursor-pointer"
+                    className="p-2 rounded-xl text-slate-600 dark:text-slate-400 hover:text-[#0DA9CF] dark:hover:text-white bg-slate-100 dark:bg-white/5 hover:bg-[#0DA9CF]/10 dark:hover:bg-white/10 border border-slate-200 dark:border-white/10 transition-colors cursor-pointer"
                     title="Copy invite link"
                   >
                     {copiedId === room.roomId ? (
-                      <Check size={15} className="text-emerald-500" />
+                      <Check size={15} className="text-[#04B84C]" />
                     ) : (
                       <Copy size={15} />
                     )}
@@ -323,7 +323,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
             </p>
             <button 
               onClick={handleCreateRoom}
-              className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl text-xs sm:text-sm shadow-md transition-colors cursor-pointer"
+              className="px-5 py-2.5 bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white font-semibold rounded-xl text-xs sm:text-sm shadow-md transition-colors cursor-pointer"
             >
               Start First Meeting
             </button>
@@ -346,7 +346,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
             </div>
             <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1.5">Delete Meeting?</h3>
             <p className="text-slate-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed mb-6">
-              Are you sure you want to delete room <strong className="font-mono text-indigo-600 dark:text-indigo-400 font-bold">{deleteModalRoomId}</strong>? Participants will no longer be able to join.
+              Are you sure you want to delete room <strong className="font-mono text-[#0DA9CF] font-bold">{deleteModalRoomId}</strong>? Participants will no longer be able to join.
             </p>
             <div className="flex gap-2.5">
               <button 
