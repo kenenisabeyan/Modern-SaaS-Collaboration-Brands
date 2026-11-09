@@ -375,7 +375,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
         <section className="py-16 sm:py-24 relative z-10 px-4 sm:px-6 lg:px-8 xl:px-16 bg-[#0A0F24]/30 light:bg-transparent">
           <div className="max-w-[1400px] mx-auto text-center">
             <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold mb-10 sm:mb-16 tracking-tight text-white light:text-slate-900">
-              One Platform — <span className="text-[#F97316]">Every Role Connected</span>
+              One Platform <span className="text-[#F97316]">Every Role Connected</span>
             </h2>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
