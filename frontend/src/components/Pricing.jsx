@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Check, X, Video, ChevronRight, HelpCircle, ArrowRight, Shield, Zap, Sparkles, Loader2
-} from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Check, X, ChevronRight, Loader2, Sparkles, Shield, Zap } from 'lucide-react';
 import api from '../services/api.js';
 
 const fadeIn = {
@@ -22,15 +20,12 @@ const staggerContainer = {
 
 export default function Pricing({ onNavigate }) {
   const [isAnnual, setIsAnnual] = useState(true);
-  const [isScrolled, setIsScrolled] = useState(false);
   const [currentPlan, setCurrentPlan] = useState('Free');
   const [isLoading, setIsLoading] = useState(false);
   const [actionPlan, setActionPlan] = useState('');
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
 
     const fetchPlan = async () => {
       const token = localStorage.getItem('token');
@@ -42,8 +37,6 @@ export default function Pricing({ onNavigate }) {
       }
     };
     fetchPlan();
-
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const handleSelectPlan = async (planName) => {
@@ -88,7 +81,6 @@ export default function Pricing({ onNavigate }) {
         { name: "Cloud Recording", included: false },
       ],
       cta: "Get Started Free",
-      colorClass: "indigo",
       recommended: false
     },
     {
@@ -105,12 +97,11 @@ export default function Pricing({ onNavigate }) {
         { name: "10GB Cloud Recording", included: true },
       ],
       cta: "Start Pro Trial",
-      colorClass: "purple",
       recommended: true
     },
     {
       name: "Enterprise",
-      desc: "Advanced security and control for large orgs.",
+      desc: "Advanced security and control for large organizations.",
       monthlyPrice: "99",
       annualPrice: "89",
       features: [
@@ -122,60 +113,55 @@ export default function Pricing({ onNavigate }) {
         { name: "Unlimited Cloud Recording", included: true },
       ],
       cta: "Contact Sales",
-      colorClass: "blue",
       recommended: false
     }
   ];
 
   return (
-    <div className="min-h-screen bg-[#050816] light:bg-white text-white light:text-slate-900 font-sans overflow-hidden relative">
-      {/* Background Animated Blobs */}
-      <div className="fixed bg-[#0DA9CF]/10 blur-[150px] w-[800px] h-[800px] rounded-full top-[-20%] left-[-10%] pointer-events-none"></div>
-      <div className="fixed bg-[#F67E31]/10 blur-[150px] w-[600px] h-[600px] rounded-full bottom-[-10%] right-[-10%] pointer-events-none"></div>
-
-      {/* Navbar handled globally in App.jsx */}
-
-      <main className="pt-24 sm:pt-32 lg:pt-40 pb-16 sm:pb-20 relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-16">
+    <div className="min-h-screen bg-white text-slate-900 font-sans overflow-hidden relative">
+      <main className="pt-28 sm:pt-36 lg:pt-40 pb-16 sm:pb-24 relative z-10 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
         
         {/* 1. Hero Section & Toggle */}
-        <section className="text-center mb-16 sm:mb-24">
+        <section className="text-center mb-16 sm:mb-20">
           <motion.div
             initial="hidden"
             animate="visible"
             variants={staggerContainer}
             className="max-w-4xl mx-auto flex flex-col items-center"
           >
-
-            <motion.h1 variants={fadeIn} className="text-3xl sm:text-5xl md:text-7xl font-extrabold mb-4 sm:mb-6 tracking-tight leading-[1.1] text-white light:text-slate-900 break-words">
+            <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#0DA9CF]/10 text-[#0DA9CF] border border-[#0DA9CF]/20 mb-4">
+              Transparent Pricing
+            </span>
+            <motion.h1 variants={fadeIn} className="text-4xl sm:text-6xl md:text-7xl font-extrabold mb-4 sm:mb-6 tracking-tight leading-[1.08] text-slate-900">
               Invest in your <span className="text-[#0DA9CF]">masterclasses</span>
             </motion.h1>
-            <motion.p variants={fadeIn} className="text-base sm:text-lg md:text-xl text-[#94A3B8] light:text-slate-600 leading-relaxed max-w-2xl font-light mb-8 sm:mb-12">
+            <motion.p variants={fadeIn} className="text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl font-normal mb-8 sm:mb-10">
               Start for free, then upgrade as your audience grows. No hidden fees. Cancel anytime.
             </motion.p>
 
             {/* Billing Toggle */}
-            <motion.div variants={fadeIn} className="flex items-center space-x-3 sm:space-x-4 bg-[#0A0F24]/80 light:bg-white p-1.5 sm:p-2 rounded-full border border-white/10 light:border-slate-200 backdrop-blur-md light:backdrop-blur-none shadow-xl light:shadow-md">
-               <span className={`text-xs sm:text-sm font-bold pl-3 sm:pl-4 transition-colors ${!isAnnual ? 'text-white light:text-slate-900' : 'text-[#94A3B8] light:text-slate-500'}`}>Monthly</span>
+            <motion.div variants={fadeIn} className="flex items-center space-x-3 bg-slate-50 p-2 rounded-full border border-slate-200 shadow-sm">
+               <span className={`text-xs sm:text-sm font-bold pl-3 transition-colors ${!isAnnual ? 'text-slate-900' : 'text-slate-500'}`}>Monthly</span>
                <button 
                  onClick={() => setIsAnnual(!isAnnual)}
-                 className="w-14 sm:w-16 h-7 sm:h-8 bg-white/10 light:bg-slate-200 border border-white/10 light:border-slate-300 rounded-full relative transition-colors focus:outline-none flex items-center px-1 cursor-pointer"
+                 className="w-14 h-7 bg-slate-200 border border-slate-300 rounded-full relative transition-colors focus:outline-none flex items-center px-1 cursor-pointer"
                >
                   <motion.div 
-                    animate={{ x: isAnnual ? (typeof window !== 'undefined' && window.innerWidth < 640 ? 26 : 32) : 0 }} 
+                    animate={{ x: isAnnual ? 28 : 0 }} 
                     transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                    className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full shadow-md ${isAnnual ? 'bg-[#04B84C]' : 'bg-[#0DA9CF]'}`}
+                    className={`w-5 h-5 rounded-full shadow-md ${isAnnual ? 'bg-[#04B84C]' : 'bg-[#0DA9CF]'}`}
                   />
                </button>
-               <span className={`text-xs sm:text-sm font-bold pr-3 sm:pr-4 flex items-center space-x-1.5 sm:space-x-2 transition-colors ${isAnnual ? 'text-white light:text-slate-900' : 'text-[#94A3B8] light:text-slate-500'}`}>
+               <span className={`text-xs sm:text-sm font-bold pr-3 flex items-center space-x-2 transition-colors ${isAnnual ? 'text-slate-900' : 'text-slate-500'}`}>
                   <span>Annually</span>
-                  <span className="text-[9px] sm:text-[10px] bg-[#04B84C]/20 light:bg-[#04B84C]/10 text-[#04B84C] px-1.5 sm:px-2 py-0.5 rounded-full border border-[#04B84C]/30 font-bold">Save 20%</span>
+                  <span className="text-[10px] bg-[#04B84C]/15 text-[#04B84C] px-2 py-0.5 rounded-full font-bold">Save 20%</span>
                </span>
             </motion.div>
           </motion.div>
         </section>
 
         {/* 2. Pricing Cards */}
-        <section className="mb-24 sm:mb-40">
+        <section className="mb-20 sm:mb-32">
            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-center max-w-6xl mx-auto">
              {plans.map((plan, index) => (
                 <motion.div 
@@ -184,171 +170,93 @@ export default function Pricing({ onNavigate }) {
                    whileInView={{ opacity: 1, y: 0 }}
                    viewport={{ once: true }}
                    transition={{ delay: index * 0.1, duration: 0.5 }}
-                   className={`relative rounded-2xl sm:rounded-[2rem] p-6 sm:p-8 md:p-10 transition-all duration-300 group ${
+                   className={`relative rounded-3xl p-8 sm:p-10 transition-all duration-300 bg-white border ${
                      plan.recommended 
-                     ? 'bg-gradient-to-b from-[#160B2A] light:from-white to-[#0A0F24] light:to-white border-2 border-[#F67E31] shadow-[0_0_50px_rgba(246,126,49,0.35)] light:shadow-xl scale-100 md:scale-105 z-10 hover:shadow-[0_0_80px_rgba(246,126,49,0.5)]' 
-                     : 'bg-[#0A0F24]/60 light:bg-white backdrop-blur-md light:backdrop-blur-none border border-white/10 light:border-slate-200 light:shadow-md hover:border-white/30 light:hover:border-slate-300 z-0 hover:-translate-y-2'
+                     ? 'border-2 border-[#F67E31] shadow-xl md:scale-105 z-10' 
+                     : 'border-slate-200 shadow-sm hover:border-[#0DA9CF]/40 z-0'
                    }`}
                 >
-                   {/* Animated border for recommended */}
                    {plan.recommended && (
-                      <div className="absolute inset-[-2px] rounded-2xl sm:rounded-[2rem] border-2 border-transparent bg-gradient-to-r from-[#F67E31] via-[#0DA9CF] to-[#F67E31] bg-[length:200%_100%] animate-[gradient_4s_linear_infinite] opacity-50 z-[-1] pointer-events-none mix-blend-screen mask-border"></div>
-                   )}
-
-                   {plan.recommended && (
-                     <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#F67E31] text-white px-3.5 sm:px-4 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-widest shadow-lg">
+                     <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#F67E31] text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest shadow-md">
                         Most Popular
                      </div>
                    )}
                    
-                   <div className="mb-6 sm:mb-8">
-                     <h3 className="text-xl sm:text-2xl font-bold text-white light:text-slate-900 mb-2">{plan.name}</h3>
-                     <p className="text-[#94A3B8] light:text-slate-600 text-sm min-h-[2.5rem]">{plan.desc}</p>
+                   <div className="mb-6">
+                     <h3 className="text-2xl font-bold text-slate-900 mb-2">{plan.name}</h3>
+                     <p className="text-slate-600 text-sm min-h-[2.5rem]">{plan.desc}</p>
                    </div>
                    
-                   <div className="mb-6 sm:mb-8">
-                      <div className="flex items-baseline text-white light:text-slate-900">
+                   <div className="mb-6">
+                      <div className="flex items-baseline text-slate-900">
                          <span className="text-4xl sm:text-5xl font-extrabold tracking-tight">${isAnnual ? plan.annualPrice : plan.monthlyPrice}</span>
-                         <span className="text-[#94A3B8] light:text-slate-500 ml-2 font-medium">/mo</span>
+                         <span className="text-slate-500 ml-2 font-medium">/mo</span>
                       </div>
                       {isAnnual && plan.annualPrice !== "0" && (
-                         <div className="text-xs sm:text-sm text-[#04B84C] font-semibold mt-1.5">Billed annually</div>
+                         <div className="text-xs sm:text-sm text-[#04B84C] font-semibold mt-1">Billed annually</div>
                       )}
                       {(!isAnnual || plan.annualPrice === "0") && (
-                         <div className="text-xs sm:text-sm text-transparent font-medium mt-1.5">&nbsp;</div>
+                         <div className="text-xs sm:text-sm text-transparent font-medium mt-1">&nbsp;</div>
                       )}
                    </div>
 
-                   <motion.button 
-                     whileHover={{ scale: plan.name === currentPlan ? 1 : 1.05 }}
-                     whileTap={{ scale: plan.name === currentPlan ? 1 : 0.95 }}
+                   <button 
                      disabled={isLoading && actionPlan === plan.name}
-                     className={`w-full py-3.5 sm:py-4 rounded-full font-bold mb-8 sm:mb-10 flex items-center justify-center transition-all text-sm sm:text-base ${
+                     className={`w-full py-3.5 rounded-full font-bold mb-8 flex items-center justify-center transition-all text-sm sm:text-base cursor-pointer ${
                         plan.name === currentPlan 
-                        ? 'bg-[#04B84C]/20 light:bg-[#04B84C]/10 text-[#04B84C] border border-[#04B84C]/30 cursor-default'
+                        ? 'bg-[#04B84C]/15 text-[#04B84C] border border-[#04B84C]/30 cursor-default'
                         : plan.recommended 
-                        ? 'bg-[#F67E31] hover:bg-[#CC6A2F] text-white shadow-[0_10px_20px_-10px_rgba(246,126,49,0.6)]' 
-                        : 'bg-white/5 light:bg-white hover:bg-white/10 light:hover:bg-[#0DA9CF]/10 border border-white/10 light:border-[#0DA9CF]/40 text-white light:text-[#0DA9CF] shadow-sm'
+                        ? 'bg-[#F67E31] hover:bg-[#CC6A2F] text-white shadow-lg shadow-[#F67E31]/25 hover:shadow-xl' 
+                        : 'bg-white hover:bg-slate-50 border border-slate-200 hover:border-[#0DA9CF] text-slate-900 shadow-sm'
                      }`}
                      onClick={() => handleSelectPlan(plan.name)}
                    >
                      {isLoading && actionPlan === plan.name ? (
-                       <Loader2 size={20} className="animate-spin" />
+                       <Loader2 size={18} className="animate-spin" />
                      ) : plan.name === currentPlan ? (
                        'Current Plan'
                      ) : (
                        plan.cta
                      )}
-                   </motion.button>
+                   </button>
 
-                    <div className="space-y-3.5 sm:space-y-4">
+                    <div className="space-y-3.5">
                       {plan.features.map((feature, i) => (
-                         <div key={i} className={`flex items-start space-x-3 ${feature.included ? 'text-white light:text-slate-900' : 'text-slate-600 light:text-slate-400'}`}>
+                         <div key={i} className={`flex items-start space-x-3 text-sm ${feature.included ? 'text-slate-800' : 'text-slate-400'}`}>
                             {feature.included ? (
-                               <Check size={18} className={`shrink-0 mt-0.5 sm:w-5 sm:h-5 ${plan.name === 'Pro' ? 'text-[#F67E31]' : plan.name === 'Enterprise' ? 'text-[#04B84C]' : 'text-[#0DA9CF]'}`} />
+                               <Check size={18} className={`shrink-0 mt-0.5 ${plan.name === 'Pro' ? 'text-[#F67E31]' : plan.name === 'Enterprise' ? 'text-[#04B84C]' : 'text-[#0DA9CF]'}`} />
                             ) : (
-                               <X size={18} className="shrink-0 mt-0.5 sm:w-5 sm:h-5" />
+                               <X size={18} className="shrink-0 mt-0.5 text-slate-300" />
                             )}
-                            <span className="text-xs sm:text-sm font-medium">{feature.name}</span>
+                            <span>{feature.name}</span>
                          </div>
                       ))}
-                   </div>
+                    </div>
                 </motion.div>
              ))}
            </div>
         </section>
 
-        {/* 3. Feature Comparison Table */}
-        <section className="mb-24 sm:mb-40">
-           <div className="text-center mb-10 sm:mb-16">
-              <h2 className="text-2xl sm:text-4xl font-extrabold mb-3 sm:mb-4 text-white light:text-slate-900">Compare Features</h2>
-              <p className="text-[#94A3B8] light:text-slate-600 text-base sm:text-lg">Detailed breakdown of what's included.</p>
-           </div>
-           <div className="max-w-5xl mx-auto bg-[#0A0F24]/60 light:bg-white backdrop-blur-md light:backdrop-blur-none rounded-2xl sm:rounded-[2rem] border border-white/10 light:border-slate-200 overflow-hidden shadow-2xl light:shadow-md">
-              <div className="overflow-x-auto">
-                 <table className="w-full text-left border-collapse min-w-[550px]">
-                    <thead>
-                       <tr className="border-b border-white/10 light:border-slate-200">
-                          <th className="py-4 sm:py-6 px-4 sm:px-6 font-semibold text-[#94A3B8] light:text-slate-500 text-xs sm:text-sm uppercase tracking-wider w-1/3">Feature</th>
-                          <th className="py-4 sm:py-6 px-4 sm:px-6 font-bold text-white light:text-slate-900 text-center w-[22%] text-xs sm:text-sm">Free</th>
-                          <th className="py-4 sm:py-6 px-4 sm:px-6 font-bold text-[#F67E31] text-center w-[22%] bg-[#F67E31]/5 text-xs sm:text-sm">Pro</th>
-                          <th className="py-4 sm:py-6 px-4 sm:px-6 font-bold text-white light:text-slate-900 text-center w-[22%] text-xs sm:text-sm">Enterprise</th>
-                       </tr>
-                    </thead>
-                    <tbody className="divide-y divide-white/5 light:divide-slate-200">
-                       {[
-                         { name: "Max Participants", free: "10", pro: "100", ent: "1,000" },
-                         { name: "Time Limit", free: "40 mins", pro: "Unlimited", ent: "Unlimited" },
-                         { name: "Video Quality", free: "720p HD", pro: "1080p Ultra HD", ent: "4K Support" },
-                         { name: "Screen Sharing", free: true, pro: true, ent: true },
-                         { name: "Breakout Rooms", free: false, pro: true, ent: true },
-                         { name: "Cloud Recording", free: false, pro: "10GB", ent: "Unlimited" },
-                         { name: "Custom Branding", free: false, pro: true, ent: true },
-                         { name: "Analytics Dashboard", free: false, pro: true, ent: true },
-                         { name: "Priority Support", free: false, pro: false, ent: true },
-                        ].map((row, i) => (
-                          <tr key={i} className="hover:bg-white/[0.02] light:hover:bg-white transition-colors">
-                             <td className="py-3.5 sm:py-5 px-4 sm:px-6 text-xs sm:text-sm text-[#94A3B8] light:text-slate-600 font-medium">{row.name}</td>
-                             <td className="py-3.5 sm:py-5 px-4 sm:px-6 text-center text-xs sm:text-sm font-medium text-white light:text-slate-900">
-                                {typeof row.free === 'boolean' ? (row.free ? <Check size={18} className="mx-auto text-[#0DA9CF]"/> : <X size={18} className="mx-auto text-slate-700 light:text-slate-300"/>) : row.free}
-                             </td>
-                             <td className="py-3.5 sm:py-5 px-4 sm:px-6 text-center text-xs sm:text-sm font-bold text-white light:text-slate-900 bg-[#F67E31]/5">
-                                {typeof row.pro === 'boolean' ? (row.pro ? <Check size={18} className="mx-auto text-[#F67E31]"/> : <X size={18} className="mx-auto text-slate-700 light:text-slate-300"/>) : row.pro}
-                             </td>
-                             <td className="py-3.5 sm:py-5 px-4 sm:px-6 text-center text-xs sm:text-sm font-medium text-white light:text-slate-900">
-                                {typeof row.ent === 'boolean' ? (row.ent ? <Check size={18} className="mx-auto text-[#04B84C]"/> : <X size={18} className="mx-auto text-slate-700 light:text-slate-300"/>) : row.ent}
-                             </td>
-                          </tr>
-                       ))}
-                    </tbody>
-                 </table>
-              </div>
-           </div>
-        </section>
-
-         {/* 4. Trust Badges */}
-        <section className="mb-24 sm:mb-40 text-center px-4">
-           <p className="text-slate-400 light:text-slate-500 text-xs sm:text-sm font-bold tracking-[0.2em] uppercase mb-6 sm:mb-8">Trusted by educators at</p>
-           <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-10 md:gap-20 opacity-60 light:opacity-80">
-              <div className="text-lg sm:text-xl font-bold flex items-center gap-2 text-white light:text-slate-800"><div className="w-5 h-5 sm:w-6 sm:h-6 rounded bg-[#0DA9CF]"></div> Harvard</div>
-              <div className="text-lg sm:text-xl font-bold flex items-center gap-2 text-white light:text-slate-800"><div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#04B84C]"></div> Stanford</div>
-              <div className="text-lg sm:text-xl font-bold flex items-center gap-2 text-white light:text-slate-800"><div className="w-5 h-5 sm:w-6 sm:h-6 rounded-tr-xl rounded-bl-xl bg-[#F67E31]"></div> MIT</div>
-              <div className="text-lg sm:text-xl font-bold flex items-center gap-2 text-white light:text-slate-800 hidden sm:flex"><div className="w-5 h-5 sm:w-6 sm:h-6 rotate-45 bg-[#0DA9CF]"></div> Oxford</div>
-           </div>
-        </section>
-
-         {/* 5. FAQ Pricing Section */}
-        <section className="mb-16 sm:mb-20 max-w-4xl mx-auto px-4">
-           <div className="text-center mb-10 sm:mb-16">
-              <h2 className="text-2xl sm:text-4xl font-extrabold mb-3 sm:mb-4 text-white light:text-slate-900">Frequently Asked Questions</h2>
-           </div>
-           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-              {[
-                 { q: "Can I change plans anytime?", a: "Yes, you can upgrade, downgrade, or cancel your subscription at any time right from your dashboard." },
-                 { q: "What happens when I hit my participant limit?", a: "We won't drop your call. You'll receive a notification and new participants will be placed in a waiting room until you upgrade." },
-                 { q: "Is there a discount for non-profits?", a: "Absolutely! We offer a 50% discount on Pro and Enterprise plans for registered non-profits and educational institutions." },
-                 { q: "How does the free trial work?", a: "Our Pro plan comes with a 14-day free trial. No credit card required to start. You can cancel before the trial ends and you won't be charged." }
-              ].map((faq, i) => (
-                 <div key={i} className="bg-[#0A0F24]/40 light:bg-white border border-white/5 light:border-slate-200 p-5 sm:p-6 rounded-2xl sm:rounded-3xl hover:border-white/10 light:hover:border-slate-300 light:shadow-sm transition-colors">
-                    <h4 className="text-base sm:text-lg font-bold text-white light:text-slate-900 mb-2 sm:mb-3 flex items-start gap-2.5 sm:gap-3">
-                       <HelpCircle size={18} className="text-[#0DA9CF] shrink-0 mt-0.5 sm:w-5 sm:h-5" />
-                       {faq.q}
-                    </h4>
-                    <p className="text-[#94A3B8] light:text-slate-600 text-xs sm:text-sm leading-relaxed pl-7 sm:pl-8">{faq.a}</p>
-                 </div>
-              ))}
-           </div>
+        {/* 3. Bottom CTA */}
+        <section className="text-center">
+          <div className="bg-white border border-slate-200 rounded-3xl p-10 sm:p-16 shadow-md max-w-4xl mx-auto">
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">
+              Need custom volume or on-premise deployment?
+            </h2>
+            <p className="text-slate-600 text-base sm:text-lg max-w-xl mx-auto mb-8 font-normal">
+              Contact our solutions team for custom dedicated signaling nodes and enterprise SSO integration.
+            </p>
+            <button 
+              onClick={() => onNavigate('faq')}
+              className="bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white px-9 py-4 rounded-full font-bold text-base shadow-lg shadow-[#0DA9CF]/25 hover:shadow-xl inline-flex items-center space-x-2 transition-all cursor-pointer"
+            >
+              <span>Talk to Solutions Team</span>
+              <ChevronRight size={18} />
+            </button>
+          </div>
         </section>
 
       </main>
-      
-      <style>{`
-        @keyframes gradient {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-      `}</style>
     </div>
   );
 }

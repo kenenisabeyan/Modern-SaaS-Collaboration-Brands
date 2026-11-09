@@ -70,18 +70,18 @@ const faqData = [
 
 const AccordionItem = ({ q, a, isOpen, onClick }) => {
   return (
-    <div className="border border-white/5 light:border-slate-200 rounded-2xl sm:rounded-3xl mb-3 sm:mb-4 bg-[#0A0F24]/60 light:bg-white backdrop-blur-md light:backdrop-blur-none overflow-hidden transition-all duration-300 hover:border-[#0DA9CF]/30 light:hover:border-[#0DA9CF]/40 hover:bg-[#0A0F24]/80 light:hover:bg-white hover:shadow-[0_10px_30px_-15px_rgba(13,169,207,0.2)] light:shadow-sm">
+    <div className="border border-slate-200 rounded-2xl sm:rounded-3xl mb-3 sm:mb-4 bg-white shadow-sm overflow-hidden transition-all duration-300 hover:border-[#0DA9CF]/40">
       <button
         onClick={onClick}
-        className="w-full flex items-center justify-between p-4 sm:p-6 text-left focus:outline-none group"
+        className="w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none group cursor-pointer"
       >
-        <h4 className="text-base sm:text-lg font-semibold text-white light:text-slate-900 pr-4 sm:pr-8 group-hover:text-[#0DA9CF] transition-colors leading-snug">{q}</h4>
+        <h4 className="text-base sm:text-lg font-bold text-slate-900 pr-4 group-hover:text-[#0DA9CF] transition-colors leading-snug">{q}</h4>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
-          className={`shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center transition-colors ${isOpen ? 'bg-[#0DA9CF]/20 text-[#0DA9CF] border border-[#0DA9CF]/30' : 'bg-white/5 light:bg-slate-100 text-[#94A3B8] light:text-slate-500 border border-white/5 light:border-slate-200'}`}
+          className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${isOpen ? 'bg-[#0DA9CF]/15 text-[#0DA9CF] border border-[#0DA9CF]/30' : 'bg-slate-100 text-slate-500 border border-slate-200'}`}
         >
-          <ChevronDown size={16} className="sm:w-[18px] sm:h-[18px]" />
+          <ChevronDown size={18} />
         </motion.div>
       </button>
       <AnimatePresence initial={false}>
@@ -92,7 +92,7 @@ const AccordionItem = ({ q, a, isOpen, onClick }) => {
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
-            <div className="p-4 sm:p-6 pt-0 text-sm sm:text-base text-[#94A3B8] light:text-slate-600 leading-relaxed border-t border-white/5 light:border-slate-100 mt-2">
+            <div className="p-5 sm:p-6 pt-0 text-sm sm:text-base text-slate-600 leading-relaxed border-t border-slate-100 mt-1">
               {a}
             </div>
           </motion.div>
@@ -105,15 +105,9 @@ const AccordionItem = ({ q, a, isOpen, onClick }) => {
 export default function FAQ({ onNavigate }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [openItems, setOpenItems] = useState({});
-  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const toggleItem = (categoryIndex, questionIndex) => {
@@ -124,7 +118,6 @@ export default function FAQ({ onNavigate }) {
     }));
   };
 
-  // Filter logic
   const filteredData = faqData.map(category => {
     const filteredQuestions = category.questions.filter(q => 
       q.q.toLowerCase().includes(searchQuery.toLowerCase()) || 
@@ -134,14 +127,8 @@ export default function FAQ({ onNavigate }) {
   }).filter(category => category.questions.length > 0);
 
   return (
-    <div className="min-h-screen bg-[#050816] light:bg-white text-white light:text-slate-900 font-sans overflow-hidden relative">
-      {/* Background Animated Blobs */}
-      <div className="fixed bg-[#0DA9CF]/10 blur-[150px] w-[800px] h-[800px] rounded-full top-[-10%] right-[-10%] pointer-events-none"></div>
-      <div className="fixed bg-[#F67E31]/10 blur-[150px] w-[600px] h-[600px] rounded-full bottom-[-20%] left-[-10%] pointer-events-none"></div>
-
-      {/* Navbar handled globally in App.jsx */}
-
-      <main className="pt-24 sm:pt-32 lg:pt-40 pb-16 sm:pb-20 relative z-10 max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-white text-slate-900 font-sans overflow-hidden relative">
+      <main className="pt-28 sm:pt-36 lg:pt-40 pb-16 sm:pb-24 relative z-10 max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* 1. Hero Section */}
         <section className="text-center mb-10 sm:mb-16">
@@ -151,133 +138,97 @@ export default function FAQ({ onNavigate }) {
             variants={staggerContainer}
             className="flex flex-col items-center"
           >
-
-            <motion.h1 variants={fadeIn} className="text-3xl sm:text-5xl md:text-7xl font-extrabold mb-4 sm:mb-6 tracking-tight leading-[1.1] text-white light:text-slate-900 break-words">
+            <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#0DA9CF]/10 text-[#0DA9CF] border border-[#0DA9CF]/20 mb-4">
+              Help Center & FAQ
+            </span>
+            <motion.h1 variants={fadeIn} className="text-4xl sm:text-6xl md:text-7xl font-extrabold mb-4 sm:mb-6 tracking-tight leading-[1.08] text-slate-900">
               How can we <span className="text-[#0DA9CF]">help you?</span>
             </motion.h1>
-            <motion.p variants={fadeIn} className="text-base sm:text-lg md:text-xl text-[#94A3B8] light:text-slate-600 leading-relaxed max-w-2xl font-light mb-8 sm:mb-12">
-              Browse our most frequently asked questions or search for a specific topic to get the answers you need immediately.
+            <motion.p variants={fadeIn} className="text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl font-normal mb-8">
+              Browse our most frequently asked questions or search for a specific topic to get answers immediately.
             </motion.p>
           </motion.div>
         </section>
 
         {/* 2. Search Bar */}
         <section className="mb-14 sm:mb-20">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="relative max-w-2xl mx-auto group"
-          >
-             <div className="absolute inset-0 bg-gradient-to-r from-[#0DA9CF]/20 to-[#F67E31]/20 rounded-full blur-xl group-hover:opacity-100 transition-opacity opacity-50 z-0"></div>
-             <div className="relative z-10 flex items-center bg-[#0A0F24]/80 light:bg-white backdrop-blur-xl border border-white/10 light:border-slate-200 rounded-full p-1.5 sm:p-2 shadow-2xl light:shadow-md focus-within:border-[#0DA9CF]/50 light:focus-within:border-[#0DA9CF]/40 transition-colors">
-                <div className="pl-3 sm:pl-4 pr-2 text-[#94A3B8] light:text-slate-400">
-                   <Search size={20} className="sm:w-6 sm:h-6" />
+          <div className="relative max-w-2xl mx-auto">
+             <div className="flex items-center bg-slate-50 border border-slate-200 rounded-full p-2 shadow-sm focus-within:border-[#0DA9CF] focus-within:bg-white transition-all">
+                <div className="pl-4 pr-2 text-slate-400">
+                   <Search size={20} />
                 </div>
                 <input 
                    type="text" 
                    value={searchQuery}
                    onChange={(e) => setSearchQuery(e.target.value)}
-                   placeholder="Search for answers..." 
-                   className="w-full bg-transparent border-none outline-none text-white light:text-slate-900 text-base sm:text-lg py-2 sm:py-3 placeholder:text-slate-600 light:placeholder:text-slate-400"
+                   placeholder="Search questions (e.g. encryption, limits, pricing)..." 
+                   className="w-full bg-transparent border-none text-slate-900 text-sm sm:text-base focus:outline-none placeholder-slate-400 py-1.5"
                 />
                 {searchQuery && (
-                   <button 
-                     onClick={() => setSearchQuery('')}
-                     className="pr-3 sm:pr-4 text-xs sm:text-sm text-[#94A3B8] light:text-slate-500 hover:text-white light:text-slate-900 transition-colors font-semibold"
-                   >
-                      Clear
-                   </button>
+                  <button 
+                    onClick={() => setSearchQuery("")}
+                    className="mr-2 text-xs font-semibold text-slate-400 hover:text-slate-600 px-2.5 py-1 rounded-full bg-slate-200"
+                  >
+                    Clear
+                  </button>
                 )}
              </div>
-          </motion.div>
+          </div>
         </section>
 
-        {/* 3. Accordion Categories */}
-        <section className="mb-20 sm:mb-32">
-           {filteredData.length === 0 ? (
-              <motion.div 
-                initial={{ opacity: 0 }} animate={{ opacity: 1 }} 
-                className="text-center py-14 sm:py-20 bg-[#0A0F24]/40 light:bg-white rounded-2xl sm:rounded-[2rem] border border-white/5 light:border-slate-200 light:shadow-md px-4"
+        {/* 3. FAQ Content by Category */}
+        <section className="space-y-12 sm:space-y-16 mb-20 sm:mb-32">
+          {filteredData.length > 0 ? (
+            filteredData.map((category, catIndex) => (
+              <div key={catIndex}>
+                <div className="flex items-center space-x-3 mb-6">
+                  <div className="w-10 h-10 rounded-2xl bg-slate-100 border border-slate-200 flex items-center justify-center">
+                    {category.icon}
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900">{category.category}</h3>
+                </div>
+
+                <div className="space-y-3">
+                  {category.questions.map((item, qIndex) => (
+                    <AccordionItem 
+                      key={qIndex}
+                      q={item.q}
+                      a={item.a}
+                      isOpen={Boolean(openItems[`${catIndex}-${qIndex}`])}
+                      onClick={() => toggleItem(catIndex, qIndex)}
+                    />
+                  ))}
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="text-center py-16 bg-slate-50 border border-slate-200 rounded-3xl">
+              <p className="text-slate-600 text-lg mb-4">No results found for "{searchQuery}"</p>
+              <button 
+                onClick={() => setSearchQuery("")}
+                className="text-sm font-bold text-[#0DA9CF] hover:underline"
               >
-                 <Search size={40} className="mx-auto text-slate-600 light:text-slate-400 mb-4 sm:mb-6 sm:w-12 sm:h-12" />
-                 <h3 className="text-xl sm:text-2xl font-bold text-white light:text-slate-900 mb-2">No results found</h3>
-                 <p className="text-sm sm:text-base text-[#94A3B8] light:text-slate-500">We couldn't find any questions matching "{searchQuery}".</p>
-              </motion.div>
-           ) : (
-              <div className="space-y-10 sm:space-y-16">
-                 {filteredData.map((category, catIdx) => (
-                    <motion.div 
-                      key={category.category}
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, margin: "-100px" }}
-                    >
-                       <div className="flex items-center space-x-3 sm:space-x-4 mb-6 sm:mb-8 pl-1 sm:pl-2">
-                          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/5 light:bg-slate-100 flex items-center justify-center border border-white/10 light:border-slate-200 shrink-0">
-                             {category.icon}
-                          </div>
-                          <h2 className="text-2xl sm:text-3xl font-extrabold text-white light:text-slate-900">{category.category}</h2>
-                       </div>
-                       
-                       <div className="space-y-3 sm:space-y-4">
-                          {category.questions.map((item, qIdx) => (
-                              <AccordionItem 
-                                key={qIdx} 
-                                q={item.q} 
-                                a={item.a} 
-                                isOpen={!!openItems[`${catIdx}-${qIdx}`]}
-                                onClick={() => toggleItem(catIdx, qIdx)}
-                              />
-                          ))}
-                       </div>
-                    </motion.div>
-                 ))}
-              </div>
-           )}
+                Clear search and view all questions
+              </button>
+            </div>
+          )}
         </section>
 
-         {/* 4. Contact Support CTA */}
-        <section className="mb-16 sm:mb-20">
-           <motion.div 
-             initial={{ opacity: 0, scale: 0.95 }}
-             whileInView={{ opacity: 1, scale: 1 }}
-             viewport={{ once: true }}
-             className="bg-gradient-to-br from-[#160B2A] light:from-white to-[#0A0F24] light:to-white border border-[#F67E31]/20 light:border-slate-200 rounded-2xl sm:rounded-[3rem] p-6 sm:p-12 md:p-16 text-center shadow-[0_30px_60px_-15px_rgba(246,126,49,0.2)] light:shadow-xl relative overflow-hidden group"
-           >
-              <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 group-hover:opacity-10 transition-opacity"></div>
-              
-              <div className="relative z-10">
-                 <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#0DA9CF]/20 light:bg-[#0DA9CF]/10 rounded-full flex items-center justify-center mx-auto mb-6 sm:mb-8 border border-[#0DA9CF]/30 light:border-[#0DA9CF]/20 shadow-[0_0_30px_rgba(13,169,207,0.3)] light:shadow-md">
-                    <MessageCircle size={30} className="text-[#0DA9CF] sm:w-9 sm:h-9" />
-                 </div>
-                 <h2 className="text-2xl sm:text-4xl font-extrabold text-white light:text-slate-900 mb-4 sm:mb-6">Still need help?</h2>
-                 <p className="text-[#94A3B8] light:text-slate-600 text-base sm:text-lg max-w-xl mx-auto mb-8 sm:mb-10 leading-relaxed">
-                    Our technical support team is available 24/7. Drop us a message and we'll get back to you within a few hours.
-                 </p>
-                 
-                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-                    <motion.button 
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => window.location.href = 'mailto:support@wabiseminar.com'}
-                      className="w-full sm:w-auto bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white font-bold py-3.5 sm:py-4 px-6 sm:px-8 rounded-full shadow-[0_10px_20px_-10px_rgba(13,169,207,0.6)] flex items-center justify-center space-x-2.5 sm:space-x-3 transition-colors hover:shadow-[0_15px_30px_-10px_rgba(13,169,207,0.8)] text-sm sm:text-base cursor-pointer"
-                    >
-                       <Mail size={18} className="sm:w-5 sm:h-5" />
-                       <span>Contact Support</span>
-                    </motion.button>
-                    <motion.button 
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => onNavigate('dashboard')}
-                      className="w-full sm:w-auto bg-white/5 light:bg-white hover:bg-white/10 light:hover:bg-[#0DA9CF]/10 text-white light:text-[#0DA9CF] font-bold py-3.5 sm:py-4 px-6 sm:px-8 rounded-full border border-white/10 light:border-[#0DA9CF]/40 flex items-center justify-center space-x-2.5 sm:space-x-3 transition-colors group text-sm sm:text-base cursor-pointer shadow-sm"
-                    >
-                       <span>Return to Dashboard</span>
-                       <ArrowRight size={18} className="text-[#94A3B8] light:text-[#0DA9CF] group-hover:translate-x-1 transition-transform sm:w-5 sm:h-5" />
-                    </motion.button>
-                 </div>
-              </div>
-           </motion.div>
+        {/* 4. Support Contact CTA */}
+        <section className="text-center">
+          <div className="bg-white border border-slate-200 rounded-3xl p-10 sm:p-14 shadow-md max-w-3xl mx-auto">
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-2">Still have questions?</h3>
+            <p className="text-slate-600 text-sm sm:text-base max-w-md mx-auto mb-6">
+              Can't find the answer you're looking for? Our friendly engineering team is here to help.
+            </p>
+            <button 
+              onClick={() => onNavigate('dashboard')}
+              className="bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white px-8 py-3.5 rounded-full font-bold text-sm shadow-md shadow-[#0DA9CF]/25 inline-flex items-center space-x-2 transition-all cursor-pointer"
+            >
+              <span>Back to Home</span>
+              <ArrowRight size={16} />
+            </button>
+          </div>
         </section>
 
       </main>
