@@ -15,6 +15,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
   const [showInfoModal, setShowInfoModal] = useState(false);
   const [actionError, setActionError] = useState('');
   const [platformStats, setPlatformStats] = useState({ users: 0, meetings: 0, minutes: 0 });
+  const [isScrolled, setIsScrolled] = useState(false);
   const createInFlightRef = useRef(false);
 
   useEffect(() => {
