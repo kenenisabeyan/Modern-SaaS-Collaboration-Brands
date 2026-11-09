@@ -1028,7 +1028,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
                     <button type="button" onClick={() => handleDeny(user.socketId)} className="p-1.5 sm:p-2 text-rose-400 bg-rose-500/10 hover:bg-rose-500/20 rounded-lg transition-colors border border-rose-500/20" title="Reject">
                       <X size={15} />
                     </button>
-                    <button type="button" onClick={() => handleAdmit(user.socketId)} className="p-1.5 sm:p-2 text-emerald-400 bg-emerald-500/10 hover:bg-emerald-500/20 rounded-lg transition-colors border border-emerald-500/20" title="Admit">
+                    <button type="button" onClick={() => handleAdmit(user.socketId)} className="p-1.5 sm:p-2 text-[#04B84C] bg-[#04B84C]/10 hover:bg-[#04B84C]/20 rounded-lg transition-colors border border-[#04B84C]/30" title="Admit">
                       <Check size={15} />
                     </button>
                   </div>

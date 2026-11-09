@@ -339,9 +339,6 @@ export default function Pricing({ onNavigate }) {
               ))}
            </div>
         </section>
-              ))}
-           </div>
-        </section>
 
       </main>
       

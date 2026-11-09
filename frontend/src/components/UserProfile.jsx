@@ -204,8 +204,6 @@ export default function UserProfile({ onNavigate }) {
                   >
                     Save Changes
                   </button>
-                    Save Changes
-                  </button>
                 </div>
               </form>
             ) : (
