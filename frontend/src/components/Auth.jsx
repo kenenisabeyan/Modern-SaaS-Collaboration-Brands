@@ -82,20 +82,20 @@ export default function Auth({ onNavigate }) {
   return (
     <div className="flex-1 flex items-center justify-center pt-28 sm:pt-36 lg:pt-40 pb-16 sm:pb-20 px-4 sm:px-6 relative overflow-hidden bg-[#050816] light:bg-[#FAFAFA] min-h-[calc(100vh-100px)] font-sans text-white light:text-slate-900">
       {/* Background Glow Effects */}
-      <div className="absolute bg-purple-600/15 blur-[120px] w-[600px] h-[600px] rounded-full top-[-10%] left-[-10%] pointer-events-none"></div>
-      <div className="absolute bg-blue-600/10 blur-[120px] w-[500px] h-[500px] rounded-full bottom-[-10%] right-[-10%] pointer-events-none"></div>
+      <div className="absolute bg-[#F67E31]/15 blur-[120px] w-[600px] h-[600px] rounded-full top-[-10%] left-[-10%] pointer-events-none"></div>
+      <div className="absolute bg-[#0DA9CF]/12 blur-[120px] w-[500px] h-[500px] rounded-full bottom-[-10%] right-[-10%] pointer-events-none"></div>
 
       <div className="premium-card w-full max-w-md p-6 sm:p-10 flex flex-col items-center space-y-6 sm:space-y-8 z-10 relative">
         
         {/* Floating Accent */}
-        <div className="absolute top-3 right-3 sm:top-4 sm:right-4 w-9 h-9 sm:w-10 sm:h-10 bg-[#050816] light:bg-slate-50 border border-purple-500/50 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(147,51,234,0.5)] z-20">
-          <Lock size={16} className="text-indigo-300 sm:w-[18px] sm:h-[18px]" />
+        <div className="absolute top-3 right-3 sm:top-4 sm:right-4 w-9 h-9 sm:w-10 sm:h-10 bg-[#050816] light:bg-slate-50 border border-[#F67E31]/50 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(246,126,49,0.35)] z-20">
+          <Lock size={16} className="text-[#0DA9CF] sm:w-[18px] sm:h-[18px]" />
         </div>
 
         {/* Logo/Icon */}
-        <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-indigo-500 p-[1px] shadow-[0_10px_20px_-10px_rgba(0,174,239,0.6)]">
+        <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-[#0DA9CF] p-[1px] shadow-[0_10px_20px_-10px_rgba(13,169,207,0.6)]">
           <div className="w-full h-full bg-[#0A0F24] light:bg-white rounded-2xl flex items-center justify-center">
-            <Video className="text-indigo-400" size={28} />
+            <Video className="text-[#0DA9CF]" size={28} />
           </div>
         </div>
 
@@ -170,7 +170,7 @@ export default function Auth({ onNavigate }) {
             <button 
               type="submit"
               disabled={isLoading}
-              className="premium-btn premium-btn-brand w-full group disabled:opacity-70 disabled:cursor-not-allowed py-3.5 text-base shadow-[0_0_20px_rgba(37,99,235,0.4)]"
+              className="premium-btn premium-btn-brand w-full group disabled:opacity-70 disabled:cursor-not-allowed py-3.5 text-base shadow-[0_0_20px_rgba(13,169,207,0.4)]"
             >
               {isLoading ? (
                 <>

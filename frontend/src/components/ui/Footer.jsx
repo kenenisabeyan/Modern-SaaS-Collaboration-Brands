@@ -10,8 +10,8 @@ export default function Footer({ onNavigate }) {
           {/* Brand Section - Full width on mobile */}
           <div className="col-span-1 sm:col-span-2 lg:col-span-1">
             <div className="flex items-center space-x-3 mb-4 sm:mb-6">
-              <div className="w-8 h-8 rounded-lg bg-indigo-500 flex items-center justify-center">
-                <Video className="text-white light:text-slate-900 w-4 h-4" />
+              <div className="w-8 h-8 rounded-lg bg-[#0DA9CF] flex items-center justify-center shadow-md shadow-[#0DA9CF]/25">
+                <Video className="text-white w-4 h-4" />
               </div>
               <span className="font-bold text-lg tracking-wide text-white light:text-slate-900">WabiSeminar</span>
             </div>
@@ -73,7 +73,7 @@ export default function Footer({ onNavigate }) {
           <p className="text-center sm:text-left">&copy; {new Date().getFullYear()} WabiSeminar Inc. All rights reserved.</p>
           <div className="flex items-center space-x-6">
             <div className="flex items-center space-x-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span className="w-2 h-2 rounded-full bg-[#04B84C] animate-pulse"></span>
               <span className="text-xs sm:text-sm">All systems operational</span>
             </div>
           </div>

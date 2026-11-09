@@ -140,8 +140,8 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
     <div className="flex flex-col min-h-screen bg-[#050816] light:bg-[#FAFAFA] relative text-white light:text-slate-900 font-sans overflow-x-hidden">
       
       {/* Background Animated Blobs */}
-      <div className="fixed bg-purple-600/15 blur-[120px] w-[600px] h-[600px] rounded-full top-[-10%] left-[-10%] pointer-events-none"></div>
-      <div className="fixed bg-blue-600/10 blur-[120px] w-[500px] h-[500px] rounded-full bottom-[10%] right-[-10%] pointer-events-none"></div>
+      <div className="fixed bg-[#F67E31]/15 blur-[120px] w-[600px] h-[600px] rounded-full top-[-10%] left-[-10%] pointer-events-none"></div>
+      <div className="fixed bg-[#0DA9CF]/12 blur-[120px] w-[500px] h-[500px] rounded-full bottom-[10%] right-[-10%] pointer-events-none"></div>
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col pt-24 sm:pt-32 lg:pt-40 relative z-10">
@@ -183,8 +183,8 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               {/* Features Row (Hero) */}
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-6 pt-2 max-w-[550px]">
                 <div className="flex flex-col space-y-2 sm:space-y-3 group">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#1E113C] light:bg-purple-50 flex items-center justify-center border border-purple-500/20 light:border-purple-200 group-hover:border-purple-500/50 light:group-hover:border-purple-300 transition-all shadow-[0_0_15px_rgba(147,51,234,0.1)] light:shadow-none">
-                    <Zap size={18} className="text-purple-400 light:text-purple-600 sm:w-5 sm:h-5" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#0DA9CF]/10 light:bg-[#0DA9CF]/10 flex items-center justify-center border border-[#0DA9CF]/20 light:border-[#0DA9CF]/30 group-hover:border-[#0DA9CF]/50 transition-all shadow-[0_0_15px_rgba(13,169,207,0.15)] light:shadow-none">
+                    <Zap size={18} className="text-[#0DA9CF] sm:w-5 sm:h-5" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-white light:text-slate-900 text-xs sm:text-sm mb-0.5 sm:mb-1">Instant Setup</h3>
@@ -192,8 +192,8 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                   </div>
                 </div>
                 <div className="flex flex-col space-y-2 sm:space-y-3 group">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#0A241A] light:bg-indigo-50 flex items-center justify-center border border-indigo-500/20 light:border-indigo-200 group-hover:border-indigo-500/50 light:group-hover:border-indigo-300 transition-all shadow-[0_0_15px_rgba(0,174,239,0.1)] light:shadow-none">
-                    <Users size={18} className="text-indigo-400 light:text-indigo-600 sm:w-5 sm:h-5" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#F67E31]/10 light:bg-[#F67E31]/10 flex items-center justify-center border border-[#F67E31]/20 light:border-[#F67E31]/30 group-hover:border-[#F67E31]/50 transition-all shadow-[0_0_15px_rgba(246,126,49,0.15)] light:shadow-none">
+                    <Users size={18} className="text-[#F67E31] sm:w-5 sm:h-5" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-white light:text-slate-900 text-xs sm:text-sm mb-0.5 sm:mb-1">No Limits</h3>
@@ -201,8 +201,8 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                   </div>
                 </div>
                 <div className="flex flex-col space-y-2 sm:space-y-3 group col-span-2 sm:col-span-1">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#331C0D] light:bg-orange-50 flex items-center justify-center border border-purple-500/20 light:border-orange-200 group-hover:border-purple-500/50 light:group-hover:border-orange-300 transition-all shadow-[0_0_15px_rgba(243,112,33,0.1)] light:shadow-none">
-                    <Shield size={18} className="text-purple-400 light:text-orange-500 sm:w-5 sm:h-5" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#04B84C]/10 light:bg-[#04B84C]/10 flex items-center justify-center border border-[#04B84C]/20 light:border-[#04B84C]/30 group-hover:border-[#04B84C]/50 transition-all shadow-[0_0_15px_rgba(4,184,76,0.15)] light:shadow-none">
+                    <Shield size={18} className="text-[#04B84C] sm:w-5 sm:h-5" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-white light:text-slate-900 text-xs sm:text-sm mb-0.5 sm:mb-1">Ultra Secure</h3>
@@ -214,21 +214,21 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               {/* Stats Cards */}
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-4 pt-3 max-w-[550px]">
                 <div className="bg-[#0A0F24]/60 light:bg-white backdrop-blur-sm light:backdrop-blur-none border border-white/5 light:border-slate-200 rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 hover:bg-[#0A0F24]/80 light:hover:bg-slate-50 transition-all shadow-lg light:shadow-sm">
-                  <Users size={18} className="text-blue-500 light:text-blue-600 mb-1.5 sm:mb-2 sm:w-5 sm:h-5" />
+                  <Users size={18} className="text-[#0DA9CF] mb-1.5 sm:mb-2 sm:w-5 sm:h-5" />
                   <div className="text-xl sm:text-3xl font-extrabold text-white light:text-slate-900 mb-0.5 sm:mb-1">
                     {platformStats.users.toLocaleString()}
                   </div>
                   <div className="text-[10px] sm:text-xs font-semibold text-[#94A3B8] light:text-slate-500 uppercase tracking-wider">Happy Users</div>
                 </div>
                 <div className="bg-[#0A0F24]/60 light:bg-white backdrop-blur-sm light:backdrop-blur-none border border-white/5 light:border-slate-200 rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 hover:bg-[#0A0F24]/80 light:hover:bg-slate-50 transition-all shadow-lg light:shadow-sm">
-                  <Video size={18} className="text-orange-500 light:text-orange-600 mb-1.5 sm:mb-2 sm:w-5 sm:h-5" />
+                  <Video size={18} className="text-[#F67E31] mb-1.5 sm:mb-2 sm:w-5 sm:h-5" />
                   <div className="text-xl sm:text-3xl font-extrabold text-white light:text-slate-900 mb-0.5 sm:mb-1">
                     {platformStats.meetings.toLocaleString()}
                   </div>
                   <div className="text-[10px] sm:text-xs font-semibold text-[#94A3B8] light:text-slate-500 uppercase tracking-wider">Meetings</div>
                 </div>
                 <div className="col-span-2 sm:col-span-1 bg-[#0A0F24]/60 light:bg-white backdrop-blur-sm light:backdrop-blur-none border border-white/5 light:border-slate-200 rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 hover:bg-[#0A0F24]/80 light:hover:bg-slate-50 transition-all shadow-lg light:shadow-sm">
-                  <Clock size={18} className="text-orange-500 light:text-orange-600 mb-1.5 sm:mb-2 sm:w-5 sm:h-5" />
+                  <Clock size={18} className="text-[#04B84C] mb-1.5 sm:mb-2 sm:w-5 sm:h-5" />
                   <div className="text-xl sm:text-3xl font-extrabold text-white light:text-slate-900 mb-0.5 sm:mb-1">
                     {platformStats.minutes.toLocaleString()}
                   </div>
@@ -248,14 +248,14 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               <button 
                 onClick={handleCreateRoom}
                 disabled={isCreating}
-                className="absolute -top-3.5 right-2 sm:-top-4 sm:-right-4 h-11 sm:h-12 bg-[#050816] light:bg-slate-50 border border-purple-500/50 rounded-full flex items-center shadow-[0_0_30px_rgba(147,51,234,0.8)] z-20 transition-all duration-300 hover:border-purple-400 group cursor-pointer"
+                className="absolute -top-3.5 right-2 sm:-top-4 sm:-right-4 h-11 sm:h-12 bg-[#050816] light:bg-slate-50 border border-[#F67E31]/50 rounded-full flex items-center shadow-[0_0_30px_rgba(246,126,49,0.5)] z-20 transition-all duration-300 hover:border-[#F67E31] group cursor-pointer"
                 title="Create a new meeting room"
               >
                 <div className="flex items-center w-11 sm:w-12 group-hover:w-[130px] transition-all duration-500 ease-out h-full overflow-hidden">
                   <div className="w-11 sm:w-12 h-full flex items-center justify-center shrink-0">
-                    <Plus size={22} className="text-indigo-300 group-hover:rotate-90 transition-transform duration-500 sm:w-6 sm:h-6" />
+                    <Plus size={22} className="text-[#0DA9CF] group-hover:rotate-90 transition-transform duration-500 sm:w-6 sm:h-6" />
                   </div>
-                  <span className="text-xs sm:text-sm font-bold text-indigo-200 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 -ml-1 pr-4">
+                  <span className="text-xs sm:text-sm font-bold text-[#0DA9CF] whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 -ml-1 pr-4">
                     New Room
                   </span>
                 </div>
@@ -375,14 +375,14 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
         <section className="py-16 sm:py-24 relative z-10 px-4 sm:px-6 lg:px-8 xl:px-16 bg-[#0A0F24]/30 light:bg-transparent">
           <div className="max-w-[1400px] mx-auto text-center">
             <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold mb-10 sm:mb-16 tracking-tight text-white light:text-slate-900">
-              One Platform <span className="text-[#F97316]">Every Role Connected</span>
+              One Platform <span className="text-[#F67E31]">Every Role Connected</span>
             </h2>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               
               {/* Learners */}
-              <div className="bg-[#0A0F24]/60 light:bg-white border border-white/5 light:border-orange-500/20 p-6 sm:p-8 rounded-2xl sm:rounded-[2rem] flex flex-col items-center shadow-lg light:shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform">
-                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-indigo-500/10 light:bg-indigo-50 border border-indigo-500/20 light:border-transparent flex items-center justify-center text-indigo-400 light:text-indigo-600 mb-5 sm:mb-6">
+              <div className="bg-[#0A0F24]/60 light:bg-white border border-white/5 light:border-slate-200 hover:border-[#0DA9CF]/30 p-6 sm:p-8 rounded-2xl sm:rounded-[2rem] flex flex-col items-center shadow-lg light:shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-all">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#0DA9CF]/10 border border-[#0DA9CF]/20 flex items-center justify-center text-[#0DA9CF] mb-5 sm:mb-6">
                   <GraduationCap size={26} className="sm:w-7 sm:h-7" />
                 </div>
                 <h3 className="text-lg sm:text-xl font-bold text-white light:text-slate-900 mb-2 sm:mb-4">Learners</h3>
@@ -392,8 +392,8 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               </div>
 
               {/* Instructors */}
-              <div className="bg-[#0A0F24]/60 light:bg-white border border-white/5 light:border-orange-500/20 p-6 sm:p-8 rounded-2xl sm:rounded-[2rem] flex flex-col items-center shadow-lg light:shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform">
-                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-indigo-500/10 light:bg-indigo-50 border border-indigo-500/20 light:border-transparent flex items-center justify-center text-indigo-400 light:text-indigo-600 mb-5 sm:mb-6">
+              <div className="bg-[#0A0F24]/60 light:bg-white border border-white/5 light:border-slate-200 hover:border-[#F67E31]/30 p-6 sm:p-8 rounded-2xl sm:rounded-[2rem] flex flex-col items-center shadow-lg light:shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-all">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#F67E31]/10 border border-[#F67E31]/20 flex items-center justify-center text-[#F67E31] mb-5 sm:mb-6">
                   <BookOpen size={26} className="sm:w-7 sm:h-7" />
                 </div>
                 <h3 className="text-lg sm:text-xl font-bold text-white light:text-slate-900 mb-2 sm:mb-4">Instructors</h3>
@@ -403,8 +403,8 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               </div>
 
               {/* Parents */}
-              <div className="bg-[#0A0F24]/60 light:bg-white border border-white/5 light:border-slate-200 p-6 sm:p-8 rounded-2xl sm:rounded-[2rem] flex flex-col items-center shadow-lg light:shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform">
-                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-indigo-500/10 light:bg-indigo-50 border border-indigo-500/20 light:border-transparent flex items-center justify-center text-indigo-400 light:text-indigo-600 mb-5 sm:mb-6">
+              <div className="bg-[#0A0F24]/60 light:bg-white border border-white/5 light:border-slate-200 hover:border-[#04B84C]/30 p-6 sm:p-8 rounded-2xl sm:rounded-[2rem] flex flex-col items-center shadow-lg light:shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-all">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#04B84C]/10 border border-[#04B84C]/20 flex items-center justify-center text-[#04B84C] mb-5 sm:mb-6">
                   <Users size={26} className="sm:w-7 sm:h-7" />
                 </div>
                 <h3 className="text-lg sm:text-xl font-bold text-white light:text-slate-900 mb-2 sm:mb-4">Parents</h3>
@@ -414,8 +414,8 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               </div>
 
               {/* Sponsors */}
-              <div className="bg-[#0A0F24]/60 light:bg-white border border-white/5 light:border-slate-200 p-6 sm:p-8 rounded-2xl sm:rounded-[2rem] flex flex-col items-center shadow-lg light:shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-transform">
-                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-indigo-500/10 light:bg-indigo-50 border border-indigo-500/20 light:border-transparent flex items-center justify-center text-indigo-400 light:text-indigo-600 mb-5 sm:mb-6">
+              <div className="bg-[#0A0F24]/60 light:bg-white border border-white/5 light:border-slate-200 hover:border-[#0DA9CF]/30 p-6 sm:p-8 rounded-2xl sm:rounded-[2rem] flex flex-col items-center shadow-lg light:shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:-translate-y-1 transition-all">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#0DA9CF]/10 border border-[#0DA9CF]/20 flex items-center justify-center text-[#0DA9CF] mb-5 sm:mb-6">
                   <Heart size={26} className="sm:w-7 sm:h-7" />
                 </div>
                 <h3 className="text-lg sm:text-xl font-bold text-white light:text-slate-900 mb-2 sm:mb-4">Sponsors</h3>
@@ -467,8 +467,8 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
             >
               {/* Feature 1 */}
-              <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }} className="bg-[#0A0F24]/60 light:bg-white backdrop-blur-lg light:backdrop-blur-none border border-white/5 light:border-slate-200 hover:border-indigo-500/30 light:hover:border-indigo-300 p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2rem] hover:-translate-y-2 transition-all duration-500 shadow-xl light:shadow-md hover:shadow-[0_20px_50px_-15px_rgba(99,102,241,0.2)] light:hover:shadow-lg group">
-                <div className="w-14 h-14 sm:w-16 sm:h-16 bg-indigo-500/10 light:bg-indigo-50 group-hover:bg-indigo-500/20 light:group-hover:bg-indigo-100 transition-colors text-indigo-400 light:text-indigo-600 rounded-full flex items-center justify-center mb-6 sm:mb-8 shadow-inner light:shadow-none border border-indigo-500/20 light:border-indigo-200"> 
+              <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }} className="bg-[#0A0F24]/60 light:bg-white backdrop-blur-lg light:backdrop-blur-none border border-white/5 light:border-slate-200 hover:border-[#0DA9CF]/40 p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2rem] hover:-translate-y-2 transition-all duration-500 shadow-xl light:shadow-md hover:shadow-[0_20px_50px_-15px_rgba(13,169,207,0.25)] light:hover:shadow-lg group">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 bg-[#0DA9CF]/10 border border-[#0DA9CF]/20 group-hover:bg-[#0DA9CF]/20 transition-colors text-[#0DA9CF] rounded-full flex items-center justify-center mb-6 sm:mb-8 shadow-inner light:shadow-none"> 
                   <Video size={28} className="sm:w-8 sm:h-8" /> 
                 </div>
                 <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-white light:text-slate-900">Ultra HD Video</h3>
@@ -476,8 +476,8 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               </motion.div>
 
               {/* Feature 2 */}
-              <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }} className="bg-[#0A0F24]/60 light:bg-white backdrop-blur-lg light:backdrop-blur-none border border-white/5 light:border-slate-200 hover:border-emerald-500/30 light:hover:border-emerald-300 p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2rem] hover:-translate-y-2 transition-all duration-500 shadow-xl light:shadow-md hover:shadow-[0_20px_50px_-15px_rgba(16,185,129,0.2)] light:hover:shadow-lg group">
-                <div className="w-14 h-14 sm:w-16 sm:h-16 bg-emerald-500/10 light:bg-emerald-50 group-hover:bg-emerald-500/20 light:group-hover:bg-emerald-100 transition-colors text-emerald-400 light:text-emerald-600 rounded-full flex items-center justify-center mb-6 sm:mb-8 shadow-inner light:shadow-none border border-emerald-500/20 light:border-emerald-200"> 
+              <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }} className="bg-[#0A0F24]/60 light:bg-white backdrop-blur-lg light:backdrop-blur-none border border-white/5 light:border-slate-200 hover:border-[#04B84C]/40 p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2rem] hover:-translate-y-2 transition-all duration-500 shadow-xl light:shadow-md hover:shadow-[0_20px_50px_-15px_rgba(4,184,76,0.25)] light:hover:shadow-lg group">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 bg-[#04B84C]/10 border border-[#04B84C]/20 group-hover:bg-[#04B84C]/20 transition-colors text-[#04B84C] rounded-full flex items-center justify-center mb-6 sm:mb-8 shadow-inner light:shadow-none"> 
                   <MessageSquare size={28} className="sm:w-8 sm:h-8" /> 
                 </div>
                 <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-white light:text-slate-900">Real-time Chat</h3>
@@ -485,8 +485,8 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               </motion.div>
 
               {/* Feature 3 */}
-              <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }} className="bg-[#0A0F24]/60 light:bg-white backdrop-blur-lg light:backdrop-blur-none border border-white/5 light:border-slate-200 hover:border-purple-500/30 light:hover:border-purple-300 p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2rem] hover:-translate-y-2 transition-all duration-500 shadow-xl light:shadow-md hover:shadow-[0_20px_50px_-15px_rgba(168,85,247,0.2)] light:hover:shadow-lg group">
-                <div className="w-14 h-14 sm:w-16 sm:h-16 bg-purple-500/10 light:bg-purple-50 group-hover:bg-purple-500/20 light:group-hover:bg-purple-100 transition-colors text-purple-400 light:text-purple-600 rounded-full flex items-center justify-center mb-6 sm:mb-8 shadow-inner light:shadow-none border border-purple-500/20 light:border-purple-200"> 
+              <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }} className="bg-[#0A0F24]/60 light:bg-white backdrop-blur-lg light:backdrop-blur-none border border-white/5 light:border-slate-200 hover:border-[#F67E31]/40 p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2rem] hover:-translate-y-2 transition-all duration-500 shadow-xl light:shadow-md hover:shadow-[0_20px_50px_-15px_rgba(246,126,49,0.25)] light:hover:shadow-lg group">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 bg-[#F67E31]/10 border border-[#F67E31]/20 group-hover:bg-[#F67E31]/20 transition-colors text-[#F67E31] rounded-full flex items-center justify-center mb-6 sm:mb-8 shadow-inner light:shadow-none"> 
                   <Monitor size={28} className="sm:w-8 sm:h-8" /> 
                 </div>
                 <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-white light:text-slate-900">Screen Sharing</h3>
@@ -593,7 +593,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
             </div>
             <button 
               onClick={() => setShowInfoModal(false)}
-              className="mt-6 sm:mt-10 w-full bg-indigo-500 hover:from-indigo-400 hover:to-purple-400 text-white light:text-slate-900 py-3.5 sm:py-4 rounded-full font-bold text-base sm:text-lg transition-all hover:shadow-[0_0_20px_rgba(99,102,241,0.4)]"
+              className="mt-6 sm:mt-10 w-full bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white light:text-slate-900 py-3.5 sm:py-4 rounded-full font-bold text-base sm:text-lg transition-all hover:shadow-[0_0_20px_rgba(13,169,207,0.4)] cursor-pointer"
             >
               Let's get started!
             </button>

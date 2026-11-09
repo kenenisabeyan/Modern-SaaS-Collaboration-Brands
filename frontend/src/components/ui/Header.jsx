@@ -79,7 +79,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
           className="flex items-center space-x-2.5 sm:space-x-3 cursor-pointer select-none" 
           onClick={() => handleNavClick('dashboard')}
         >
-          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-indigo-600 flex items-center justify-center shadow-md shadow-indigo-600/30">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-[#0DA9CF] flex items-center justify-center shadow-md shadow-[#0DA9CF]/30">
             <Video className="text-white w-5 h-5" />
           </div>
           <span className="font-extrabold text-lg sm:text-xl tracking-tight text-slate-900 dark:text-white">
@@ -97,7 +97,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
                 onClick={() => handleNavClick(link.id)} 
                 className={`text-xs font-semibold px-4 py-1.5 rounded-full transition-all cursor-pointer ${
                   isActive 
-                    ? 'text-indigo-600 dark:text-white bg-white dark:bg-indigo-600 shadow-sm' 
+                    ? 'text-white bg-[#0DA9CF] shadow-sm' 
                     : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
@@ -114,7 +114,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
             className="flex w-9 h-9 sm:w-10 sm:h-10 rounded-2xl border border-slate-200 dark:border-white/10 items-center justify-center text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors bg-white/80 dark:bg-white/5 hover:bg-slate-100 dark:hover:bg-white/10 cursor-pointer shadow-sm"
             title="Toggle color theme"
           >
-            {isLight ? <Sun size={17} className="text-amber-500" /> : <Moon size={17} />}
+            {isLight ? <Sun size={17} className="text-[#F67E31]" /> : <Moon size={17} />}
           </button>
 
           {isAuthenticated ? (
@@ -123,7 +123,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
                 className="flex items-center space-x-2 text-xs sm:text-sm font-semibold text-slate-800 dark:text-white bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-2xl hover:border-slate-300 dark:hover:border-white/20 transition-all shadow-sm cursor-pointer"
                 onClick={() => setIsProfileOpen(!isProfileOpen)}
               >
-                <div className="w-6 h-6 rounded-full bg-indigo-600 flex items-center justify-center text-xs font-bold text-white shadow-sm">
+                <div className="w-6 h-6 rounded-full bg-[#0DA9CF] flex items-center justify-center text-xs font-bold text-white shadow-sm">
                   {username.charAt(0).toUpperCase()}
                 </div>
                 <span className="hidden sm:inline max-w-[120px] truncate">{username}</span>
@@ -168,7 +168,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
             </div>
           ) : (
             <button 
-              className="flex items-center space-x-1.5 sm:space-x-2 text-xs sm:text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-500 px-4 sm:px-5 py-2 rounded-2xl transition-all shadow-md shadow-indigo-600/20 cursor-pointer"
+              className="flex items-center space-x-1.5 sm:space-x-2 text-xs sm:text-sm font-semibold text-white bg-[#0DA9CF] hover:bg-[#0C8DB0] px-4 sm:px-5 py-2 rounded-2xl transition-all shadow-md shadow-[#0DA9CF]/25 cursor-pointer"
               onClick={() => { setIsMenuOpen(false); handleAuthAction(); }}
             >
               <LogIn size={15} className="text-white" />
@@ -204,7 +204,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
             {isAuthenticated && (
               <div className="p-3.5 mb-2 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl flex items-center justify-between">
                 <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 rounded-2xl bg-indigo-600 flex items-center justify-center font-bold text-white shadow">
+                  <div className="w-10 h-10 rounded-2xl bg-[#0DA9CF] flex items-center justify-center font-bold text-white shadow">
                     {username.charAt(0).toUpperCase()}
                   </div>
                   <div>
@@ -247,7 +247,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
                   onClick={() => handleNavClick(link.id)} 
                   className={`text-left text-sm font-semibold py-2.5 px-3 rounded-xl transition-all ${
                     isActive 
-                      ? 'text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-500/10 font-bold border border-indigo-200/60 dark:border-indigo-500/20' 
+                      ? 'text-[#0DA9CF] bg-[#0DA9CF]/10 font-bold border border-[#0DA9CF]/20' 
                       : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-white/5'
                   }`}
                 >
@@ -260,7 +260,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
               <div className="pt-2">
                 <button
                   onClick={() => { setIsMenuOpen(false); handleAuthAction(); }}
-                  className="w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/20 transition-all"
+                  className="w-full py-3 px-4 bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-[#0DA9CF]/25 transition-all"
                 >
                   <LogIn size={18} />
                   <span>Sign In / Register</span>

@@ -75,7 +75,7 @@ const faqData = [
 
 const AccordionItem = ({ q, a, isOpen, onClick }) => {
   return (
-    <div className="border border-white/5 light:border-slate-200 rounded-2xl sm:rounded-3xl mb-3 sm:mb-4 bg-[#0A0F24]/60 light:bg-white backdrop-blur-md light:backdrop-blur-none overflow-hidden transition-all duration-300 hover:border-indigo-500/30 light:hover:border-indigo-300 hover:bg-[#0A0F24]/80 light:bg-white/90 light:hover:bg-slate-50 hover:shadow-[0_10px_30px_-15px_rgba(99,102,241,0.2)] light:shadow-sm">
+    <div className="border border-white/5 light:border-slate-200 rounded-2xl sm:rounded-3xl mb-3 sm:mb-4 bg-[#0A0F24]/60 light:bg-white backdrop-blur-md light:backdrop-blur-none overflow-hidden transition-all duration-300 hover:border-[#0DA9CF]/30 light:hover:border-[#0DA9CF]/40 hover:bg-[#0A0F24]/80 light:bg-white/90 light:hover:bg-slate-50 hover:shadow-[0_10px_30px_-15px_rgba(13,169,207,0.2)] light:shadow-sm">
       <button
         onClick={onClick}
         className="w-full flex items-center justify-between p-4 sm:p-6 text-left focus:outline-none group"
@@ -248,13 +248,13 @@ export default function FAQ({ onNavigate }) {
              initial={{ opacity: 0, scale: 0.95 }}
              whileInView={{ opacity: 1, scale: 1 }}
              viewport={{ once: true }}
-             className="bg-gradient-to-br from-[#160B2A] light:from-slate-100 to-[#0A0F24] light:to-white border border-purple-500/20 light:border-slate-200 rounded-2xl sm:rounded-[3rem] p-6 sm:p-12 md:p-16 text-center shadow-[0_30px_60px_-15px_rgba(168,85,247,0.2)] light:shadow-xl relative overflow-hidden group"
+             className="bg-gradient-to-br from-[#160B2A] light:from-slate-100 to-[#0A0F24] light:to-white border border-[#F67E31]/20 light:border-slate-200 rounded-2xl sm:rounded-[3rem] p-6 sm:p-12 md:p-16 text-center shadow-[0_30px_60px_-15px_rgba(246,126,49,0.2)] light:shadow-xl relative overflow-hidden group"
            >
               <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 group-hover:opacity-10 transition-opacity"></div>
               
               <div className="relative z-10">
-                 <div className="w-16 h-16 sm:w-20 sm:h-20 bg-indigo-500/20 light:bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-6 sm:mb-8 border border-indigo-500/30 light:border-indigo-200 shadow-[0_0_30px_rgba(99,102,241,0.3)] light:shadow-md">
-                    <MessageCircle size={30} className="text-indigo-400 light:text-indigo-600 sm:w-9 sm:h-9" />
+                 <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#0DA9CF]/20 light:bg-[#0DA9CF]/10 rounded-full flex items-center justify-center mx-auto mb-6 sm:mb-8 border border-[#0DA9CF]/30 light:border-[#0DA9CF]/20 shadow-[0_0_30px_rgba(13,169,207,0.3)] light:shadow-md">
+                    <MessageCircle size={30} className="text-[#0DA9CF] sm:w-9 sm:h-9" />
                  </div>
                  <h2 className="text-2xl sm:text-4xl font-extrabold text-white light:text-slate-900 mb-4 sm:mb-6">Still need help?</h2>
                  <p className="text-[#94A3B8] light:text-slate-600 text-base sm:text-lg max-w-xl mx-auto mb-8 sm:mb-10 leading-relaxed">
@@ -266,7 +266,7 @@ export default function FAQ({ onNavigate }) {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => window.location.href = 'mailto:support@wabiseminar.com'}
-                      className="w-full sm:w-auto bg-indigo-500 hover:bg-indigo-600 text-white light:text-slate-900 font-bold py-3.5 sm:py-4 px-6 sm:px-8 rounded-full shadow-[0_10px_20px_-10px_rgba(99,102,241,0.6)] flex items-center justify-center space-x-2.5 sm:space-x-3 transition-colors hover:shadow-[0_15px_30px_-10px_rgba(99,102,241,0.8)] text-sm sm:text-base"
+                      className="w-full sm:w-auto bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white font-bold py-3.5 sm:py-4 px-6 sm:px-8 rounded-full shadow-[0_10px_20px_-10px_rgba(13,169,207,0.6)] flex items-center justify-center space-x-2.5 sm:space-x-3 transition-colors hover:shadow-[0_15px_30px_-10px_rgba(13,169,207,0.8)] text-sm sm:text-base cursor-pointer"
                     >
                        <Mail size={18} className="sm:w-5 sm:h-5" />
                        <span>Contact Support</span>

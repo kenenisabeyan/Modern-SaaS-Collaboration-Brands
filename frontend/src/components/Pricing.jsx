@@ -186,17 +186,17 @@ export default function Pricing({ onNavigate }) {
                    transition={{ delay: index * 0.1, duration: 0.5 }}
                    className={`relative rounded-2xl sm:rounded-[2rem] p-6 sm:p-8 md:p-10 transition-all duration-300 group ${
                      plan.recommended 
-                     ? 'bg-gradient-to-b from-[#160B2A] light:from-slate-100 to-[#0A0F24] light:to-white border-2 border-purple-500 light:border-purple-400 shadow-[0_0_50px_rgba(168,85,247,0.3)] light:shadow-xl scale-100 md:scale-105 z-10 hover:shadow-[0_0_80px_rgba(168,85,247,0.5)]' 
+                     ? 'bg-gradient-to-b from-[#160B2A] light:from-slate-100 to-[#0A0F24] light:to-white border-2 border-[#F67E31] shadow-[0_0_50px_rgba(246,126,49,0.35)] light:shadow-xl scale-100 md:scale-105 z-10 hover:shadow-[0_0_80px_rgba(246,126,49,0.5)]' 
                      : 'bg-[#0A0F24]/60 light:bg-white backdrop-blur-md light:backdrop-blur-none border border-white/10 light:border-slate-200 light:shadow-md hover:border-white/30 light:hover:border-slate-300 z-0 hover:-translate-y-2'
                    }`}
                 >
                    {/* Animated border for recommended */}
                    {plan.recommended && (
-                      <div className="absolute inset-[-2px] rounded-2xl sm:rounded-[2rem] border-2 border-transparent bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-500 bg-[length:200%_100%] animate-[gradient_4s_linear_infinite] opacity-50 z-[-1] pointer-events-none mix-blend-screen mask-border"></div>
+                      <div className="absolute inset-[-2px] rounded-2xl sm:rounded-[2rem] border-2 border-transparent bg-gradient-to-r from-[#F67E31] via-[#0DA9CF] to-[#F67E31] bg-[length:200%_100%] animate-[gradient_4s_linear_infinite] opacity-50 z-[-1] pointer-events-none mix-blend-screen mask-border"></div>
                    )}
 
                    {plan.recommended && (
-                     <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-purple-500 text-white light:text-slate-900 px-3.5 sm:px-4 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-widest shadow-lg">
+                     <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#F67E31] text-white px-3.5 sm:px-4 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-widest shadow-lg">
                         Most Popular
                      </div>
                    )}
@@ -212,7 +212,7 @@ export default function Pricing({ onNavigate }) {
                          <span className="text-[#94A3B8] light:text-slate-500 ml-2 font-medium">/mo</span>
                       </div>
                       {isAnnual && plan.annualPrice !== "0" && (
-                         <div className="text-xs sm:text-sm text-emerald-400 light:text-emerald-600 font-medium mt-1.5">Billed annually</div>
+                         <div className="text-xs sm:text-sm text-[#04B84C] font-semibold mt-1.5">Billed annually</div>
                       )}
                       {(!isAnnual || plan.annualPrice === "0") && (
                          <div className="text-xs sm:text-sm text-transparent font-medium mt-1.5">&nbsp;</div>
@@ -225,9 +225,9 @@ export default function Pricing({ onNavigate }) {
                      disabled={isLoading && actionPlan === plan.name}
                      className={`w-full py-3.5 sm:py-4 rounded-full font-bold mb-8 sm:mb-10 flex items-center justify-center transition-all text-sm sm:text-base ${
                         plan.name === currentPlan 
-                        ? 'bg-emerald-500/20 light:bg-emerald-100 text-emerald-400 light:text-emerald-600 border border-emerald-500/30 light:border-emerald-200 cursor-default'
+                        ? 'bg-[#04B84C]/20 light:bg-[#04B84C]/10 text-[#04B84C] border border-[#04B84C]/30 cursor-default'
                         : plan.recommended 
-                        ? 'bg-purple-500 hover:bg-purple-600 text-white light:text-slate-900 shadow-[0_10px_20px_-10px_rgba(168,85,247,0.6)]' 
+                        ? 'bg-[#F67E31] hover:bg-[#CC6A2F] text-white shadow-[0_10px_20px_-10px_rgba(246,126,49,0.6)]' 
                         : 'bg-white/5 light:bg-slate-50 hover:bg-white/10 light:hover:bg-slate-200 border border-white/10 light:border-slate-200 text-white light:text-slate-900'
                      }`}
                      onClick={() => handleSelectPlan(plan.name)}
