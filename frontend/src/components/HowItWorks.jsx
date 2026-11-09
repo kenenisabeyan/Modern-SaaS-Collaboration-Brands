@@ -78,8 +78,8 @@ export default function HowItWorks({ onNavigate }) {
   return (
     <div className="min-h-screen bg-[#050816] light:bg-[#FAFAFA] text-white light:text-slate-900 font-sans overflow-hidden relative">
       {/* Background Animated Blobs */}
-      <div className="fixed bg-blue-600/10 blur-[150px] w-[800px] h-[800px] rounded-full top-[-20%] right-[-10%] pointer-events-none"></div>
-      <div className="fixed bg-indigo-600/10 blur-[150px] w-[600px] h-[600px] rounded-full bottom-[-10%] left-[-10%] pointer-events-none"></div>
+      <div className="fixed bg-[#0DA9CF]/10 blur-[150px] w-[800px] h-[800px] rounded-full top-[-20%] right-[-10%] pointer-events-none"></div>
+      <div className="fixed bg-[#F67E31]/10 blur-[150px] w-[600px] h-[600px] rounded-full bottom-[-10%] left-[-10%] pointer-events-none"></div>
 
       {/* Navbar handled globally in App.jsx */}
 
@@ -95,7 +95,7 @@ export default function HowItWorks({ onNavigate }) {
           >
 
             <motion.h1 variants={fadeIn} className="text-3xl sm:text-5xl md:text-7xl font-extrabold mb-4 sm:mb-6 tracking-tight leading-[1.1] text-white light:text-slate-900 break-words">
-              How <span className="text-indigo-500">WabiSeminar</span> Works
+              How <span className="text-[#0DA9CF]">WabiSeminar</span> Works
             </motion.h1>
             <motion.p variants={fadeIn} className="text-base sm:text-lg md:text-xl text-[#94A3B8] light:text-slate-600 leading-relaxed max-w-2xl font-light mb-8 sm:mb-10">
               Get from sign-up to your first masterclass in less than a minute. Our friction-free workflow is designed for immediate collaboration.
@@ -117,7 +117,7 @@ export default function HowItWorks({ onNavigate }) {
                <motion.div 
                  animate={{ x: ["-100%", "400%"] }} 
                  transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
-                 className="h-full w-1/4 bg-gradient-to-r from-transparent via-indigo-500 to-transparent"
+                 className="h-full w-1/4 bg-gradient-to-r from-transparent via-[#0DA9CF] to-transparent"
                />
             </div>
 
@@ -126,7 +126,7 @@ export default function HowItWorks({ onNavigate }) {
                <motion.div 
                  animate={{ y: ["-100%", "400%"] }} 
                  transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
-                 className="w-full h-1/4 bg-gradient-to-b from-transparent via-indigo-500 to-transparent"
+                 className="w-full h-1/4 bg-gradient-to-b from-transparent via-[#0DA9CF] to-transparent"
                />
             </div>
 
@@ -148,7 +148,7 @@ export default function HowItWorks({ onNavigate }) {
                     <motion.div 
                       animate={{ x: [0, 10, 0] }} 
                       transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-                      className="hidden lg:block absolute top-[5.5rem] right-[-24px] text-white/20 group-hover:text-indigo-400 z-20"
+                      className="hidden lg:block absolute top-[5.5rem] right-[-24px] text-white/20 group-hover:text-[#0DA9CF] z-20"
                     >
                       <ChevronRight size={32} />
                     </motion.div>
@@ -156,7 +156,7 @@ export default function HowItWorks({ onNavigate }) {
 
                   {/* Content Card */}
                   <div className={`bg-[#0A0F24]/60 light:bg-white backdrop-blur-md border border-white/5 p-5 sm:p-6 rounded-2xl sm:rounded-3xl transition-colors w-full z-10 shadow-lg group-hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)] ${step.cardHoverClass}`}>
-                    <h3 className={`text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-white light:text-slate-900 group-hover:text-indigo-500 transition-all ${step.textGradientClass}`}>{step.title}</h3>
+                    <h3 className={`text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-white light:text-slate-900 group-hover:text-[#0DA9CF] transition-all ${step.textGradientClass}`}>{step.title}</h3>
                     <p className="text-[#94A3B8] light:text-slate-500 text-sm leading-relaxed">{step.desc}</p>
                   </div>
                 </motion.div>
