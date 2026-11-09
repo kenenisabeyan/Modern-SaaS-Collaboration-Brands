@@ -80,8 +80,8 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
       <header 
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 bg-white ${
           isScrolled 
-            ? 'h-20 sm:h-24 shadow-[0_2px_15px_rgba(0,0,0,0.04)] border-b border-slate-100' 
-            : 'h-20 sm:h-28'
+            ? 'h-16 shadow-[0_2px_15px_rgba(0,0,0,0.04)] border-b border-slate-100' 
+            : 'h-16 sm:h-20'
         }`}
       >
         <div className="max-w-[1400px] h-full mx-auto px-4 sm:px-8 lg:px-12 flex items-center justify-between">

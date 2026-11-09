@@ -140,22 +140,22 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
   return (
     <div className="flex flex-col min-h-screen bg-white text-slate-900 font-sans overflow-x-hidden selection:bg-[#0DA9CF] selection:text-white">
       
-      <main className="flex-1 flex flex-col pt-24 sm:pt-28 md:pt-32 relative z-10">
+      <main className="flex-1 flex flex-col pt-16 sm:pt-20 relative z-10">
         
         {/* ========================================================
-            HERO SECTION: 2 COLUMNS (LEFT: TYPOGRAPHY, RIGHT: COMPACT COLLABORATION & 3D ANIMATION)
+            HERO SECTION: 2 COLUMNS (TIGHT, COMPACT SPACING)
            ======================================================== */}
-        <section className="min-h-[calc(100vh-120px)] flex items-center px-4 sm:px-8 lg:px-12 xl:px-16 bg-white relative py-6 lg:py-0">
-          <div className="max-w-[1440px] w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+        <section className="pt-3 sm:pt-6 pb-10 sm:pb-14 px-4 sm:px-8 lg:px-12 xl:px-16 bg-white relative">
+          <div className="max-w-[1440px] w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
             
             {/* Left Column: Heading and Description */}
             <motion.div 
-              initial={{ opacity: 0, y: 25 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              className="lg:col-span-6 flex flex-col justify-center items-start space-y-6 sm:space-y-7"
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="lg:col-span-6 flex flex-col justify-center items-start space-y-5 sm:space-y-6 pt-2 sm:pt-4"
             >
-              <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[70px] xl:text-[82px] font-extrabold tracking-tight leading-[1.04] select-none text-left">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[64px] xl:text-[76px] font-extrabold tracking-tight leading-[1.05] select-none text-left">
                 <span className="text-[#0DA9CF] block">Host Engaging</span>
                 <span className="text-[#1E293B] block">Masterclasses</span>
               </h1>
@@ -165,11 +165,11 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               </p>
 
               {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-3.5 pt-1">
+              <div className="flex flex-wrap items-center gap-3 pt-1">
                 <button 
                   onClick={handleCreateRoom}
                   disabled={isCreating}
-                  className="bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white font-medium text-sm sm:text-base px-7 sm:px-9 py-3 sm:py-3.5 rounded-full shadow-[0_4px_16px_rgba(13,169,207,0.35)] hover:shadow-[0_6px_22px_rgba(13,169,207,0.45)] transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed flex items-center space-x-2"
+                  className="bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white font-semibold text-sm sm:text-base px-7 sm:px-8 py-3 rounded-full shadow-[0_4px_16px_rgba(13,169,207,0.35)] hover:shadow-[0_6px_22px_rgba(13,169,207,0.45)] transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed flex items-center space-x-2"
                 >
                   {isCreating ? <Loader2 className="animate-spin" size={18} /> : <Video size={18} />}
                   <span>Host a Session</span>
@@ -177,7 +177,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
 
                 <button 
                   onClick={() => scrollToSection('features')}
-                  className="bg-slate-100 hover:bg-slate-200 text-slate-800 font-medium text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-3.5 rounded-full transition-all cursor-pointer flex items-center space-x-2"
+                  className="bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-sm sm:text-base px-6 sm:px-7 py-3 rounded-full transition-all cursor-pointer flex items-center space-x-2"
                 >
                   <Users size={16} className="text-[#F67E31]" />
                   <span>Learn More</span>
@@ -185,7 +185,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               </div>
 
               {/* Feature check marks */}
-              <div className="flex flex-wrap items-center gap-5 pt-2 text-xs text-slate-500 font-medium">
+              <div className="flex flex-wrap items-center gap-5 pt-1 text-xs text-slate-500 font-medium">
                 <div className="flex items-center space-x-1.5">
                   <CheckCircle size={15} className="text-[#04B84C]" />
                   <span>Zero Downloads</span>
@@ -202,34 +202,37 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
             </motion.div>
 
 
-            {/* Right Column: Decreased-Size 3D Graphic + Instant Collaboration Card */}
+            {/* Right Column: Instant Collaboration Card with Integrated 3D Visual */}
             <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.15 }}
-              className="lg:col-span-6 flex flex-col items-center justify-center w-full max-w-[540px] mx-auto lg:ml-auto"
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="lg:col-span-6 flex flex-col items-center justify-center w-full max-w-[530px] mx-auto lg:ml-auto"
             >
               
-              {/* Decreased Size 3D Floating Turbine Platform Graphic */}
-              <div className="w-28 h-28 sm:w-36 sm:h-36 aspect-square flex items-center justify-center -mb-5 z-20 select-none pointer-events-none">
-                <HeroAnimation className="w-full h-full" />
-              </div>
-
-              {/* Instant Collaboration Card (Decreased Sizes) */}
-              <div className="w-full bg-white border border-slate-200 rounded-3xl p-5 sm:p-6 shadow-[0_12px_35px_rgba(0,0,0,0.06)] hover:shadow-[0_16px_45px_rgba(13,169,207,0.12)] transition-all relative z-10">
+              {/* Instant Collaboration Card (Compact & Tight) */}
+              <div className="w-full bg-white border border-slate-200 rounded-3xl p-5 sm:p-6 shadow-[0_10px_35px_rgba(0,0,0,0.05)] hover:shadow-[0_16px_45px_rgba(13,169,207,0.1)] transition-all relative">
                 
-                {/* Header */}
-                <div className="text-center mb-4 sm:mb-5">
-                  <span className="inline-block px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-[#0DA9CF]/10 text-[#0DA9CF] border border-[#0DA9CF]/20 mb-2">
-                    Instant Collaboration
-                  </span>
-                  <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-slate-900 tracking-tight">
-                    Start or Join a Session Now
-                  </h2>
-                  <p className="text-xs sm:text-sm text-slate-500 mt-1 max-w-sm mx-auto leading-relaxed">
-                    Seamless real-time meetings with screen sharing, participant controls, and interactive chat.
-                  </p>
+                {/* Header with Integrated Compact 3D Turbine Graphic */}
+                <div className="flex items-center justify-between gap-3 mb-3">
+                  <div>
+                    <span className="inline-block px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-[#0DA9CF]/10 text-[#0DA9CF] border border-[#0DA9CF]/20 mb-1.5">
+                      Instant Collaboration
+                    </span>
+                    <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                      Start or Join a Session Now
+                    </h2>
+                  </div>
+
+                  {/* Compact 3D Turbine Animation */}
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 aspect-square shrink-0 select-none pointer-events-none -my-2">
+                    <HeroAnimation className="w-full h-full" />
+                  </div>
                 </div>
+
+                <p className="text-xs sm:text-sm text-slate-500 mb-4 leading-relaxed">
+                  Seamless real-time meetings with screen sharing, participant controls, and interactive chat.
+                </p>
 
                 {/* Error Banner */}
                 {actionError && (
@@ -243,7 +246,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
                   
                   {/* Host a Session */}
-                  <div className="bg-slate-50/80 border border-slate-200/90 rounded-2xl p-3.5 sm:p-4 flex flex-col justify-between hover:border-[#0DA9CF]/40 transition-colors">
+                  <div className="bg-slate-50/80 border border-slate-200/90 rounded-2xl p-3.5 flex flex-col justify-between hover:border-[#0DA9CF]/40 transition-colors">
                     <div>
                       <div className="w-8 h-8 rounded-xl bg-[#0DA9CF]/10 text-[#0DA9CF] flex items-center justify-center mb-2">
                         <Video size={16} />
@@ -274,7 +277,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                   </div>
 
                   {/* Join a Session */}
-                  <div className="bg-slate-50/80 border border-slate-200/90 rounded-2xl p-3.5 sm:p-4 flex flex-col justify-between hover:border-[#F67E31]/40 transition-colors">
+                  <div className="bg-slate-50/80 border border-slate-200/90 rounded-2xl p-3.5 flex flex-col justify-between hover:border-[#F67E31]/40 transition-colors">
                     <div>
                       <div className="w-8 h-8 rounded-xl bg-[#F67E31]/10 text-[#F67E31] flex items-center justify-center mb-2">
                         <Users size={16} />
@@ -349,10 +352,10 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
         {/* ========================================================
             FEATURES SECTION
            ======================================================== */}
-        <section id="features" className="py-20 sm:py-28 bg-white border-t border-slate-100 px-4 sm:px-8 lg:px-16">
+        <section id="features" className="py-16 sm:py-24 bg-white border-t border-slate-100 px-4 sm:px-8 lg:px-16">
           <div className="max-w-[1300px] mx-auto">
             
-            <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+            <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-18">
               <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#0DA9CF]/10 text-[#0DA9CF] border border-[#0DA9CF]/20 mb-4">
                 Core Capabilities
               </span>
@@ -405,10 +408,10 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
         {/* ========================================================
             ROLES SECTION
            ======================================================== */}
-        <section className="py-20 sm:py-28 bg-white border-t border-slate-100 px-4 sm:px-8 lg:px-16">
+        <section className="py-16 sm:py-24 bg-white border-t border-slate-100 px-4 sm:px-8 lg:px-16">
           <div className="max-w-[1300px] mx-auto text-center">
             
-            <h2 className="text-3xl sm:text-5xl font-extrabold mb-14 tracking-tight text-slate-900">
+            <h2 className="text-3xl sm:text-5xl font-extrabold mb-12 tracking-tight text-slate-900">
               One Platform <span className="text-[#F67E31]">Every Role Connected</span>
             </h2>
             
@@ -463,10 +466,10 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
         {/* ========================================================
             TESTIMONIALS SECTION
            ======================================================== */}
-        <section className="py-20 sm:py-28 bg-white border-t border-slate-100 px-4 sm:px-8 lg:px-16">
+        <section className="py-16 sm:py-24 bg-white border-t border-slate-100 px-4 sm:px-8 lg:px-16">
           <div className="max-w-[1300px] mx-auto">
             
-            <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+            <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-18">
               <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#0DA9CF]/10 text-[#0DA9CF] border border-[#0DA9CF]/20 mb-4">
                 Loved by educators
               </span>
