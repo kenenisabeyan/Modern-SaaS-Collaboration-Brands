@@ -164,28 +164,8 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 Create a free, encrypted meeting room instantly or join an existing session in seconds. Built for innovative educators, creators, and teams who value simplicity and connection.
               </p>
 
-              {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-3 pt-1">
-                <button 
-                  onClick={handleCreateRoom}
-                  disabled={isCreating}
-                  className="bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white font-semibold text-sm sm:text-base px-7 sm:px-8 py-3 rounded-full shadow-[0_4px_16px_rgba(13,169,207,0.35)] hover:shadow-[0_6px_22px_rgba(13,169,207,0.45)] transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed flex items-center space-x-2"
-                >
-                  {isCreating ? <Loader2 className="animate-spin" size={18} /> : <Video size={18} />}
-                  <span>Host a Session</span>
-                </button>
-
-                <button 
-                  onClick={() => scrollToSection('features')}
-                  className="bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-sm sm:text-base px-6 sm:px-7 py-3 rounded-full transition-all cursor-pointer flex items-center space-x-2"
-                >
-                  <Users size={16} className="text-[#F67E31]" />
-                  <span>Learn More</span>
-                </button>
-              </div>
-
               {/* Feature check marks */}
-              <div className="flex flex-wrap items-center gap-5 pt-1 text-xs text-slate-500 font-medium">
+              <div className="flex flex-wrap items-center gap-5 pt-1 text-xs sm:text-sm text-slate-500 font-medium">
                 <div className="flex items-center space-x-1.5">
                   <CheckCircle size={15} className="text-[#04B84C]" />
                   <span>Zero Downloads</span>
