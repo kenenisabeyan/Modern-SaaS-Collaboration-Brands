@@ -161,7 +161,7 @@ function App() {
             className={`rounded-2xl sm:rounded-full border px-4 py-3 text-xs sm:text-sm font-medium shadow-2xl backdrop-blur-md text-center break-words ${
               toast.type === 'error'
                 ? 'border-red-500/30 bg-red-950/90 text-red-100'
-                : 'border-emerald-500/30 bg-emerald-950/90 text-emerald-100'
+                : 'border-[#04B84C]/40 bg-[#0A0F24]/95 text-[#04B84C] shadow-[#04B84C]/20'
             }`}
           >
             {toast.message}

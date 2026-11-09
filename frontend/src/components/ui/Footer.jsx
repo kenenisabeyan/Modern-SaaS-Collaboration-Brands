@@ -35,11 +35,11 @@ export default function Footer({ onNavigate }) {
           <div>
             <h4 className="font-semibold text-white light:text-slate-900 mb-4 sm:mb-6 tracking-wide text-base">Product</h4>
             <ul className="space-y-3 sm:space-y-4 text-sm text-[#94A3B8] light:text-slate-600">
-              <li><button onClick={() => onNavigate('features')} className="hover:text-indigo-400 transition-colors text-left">Features</button></li>
-              <li><button onClick={() => onNavigate('how-it-works')} className="hover:text-indigo-400 transition-colors text-left">How it Works</button></li>
-              <li><button onClick={() => onNavigate('pricing')} className="hover:text-indigo-400 transition-colors text-left">Pricing</button></li>
-              <li><button onClick={() => onNavigate('features')} className="hover:text-indigo-400 transition-colors text-left">Integrations</button></li>
-              <li><button onClick={() => onNavigate('features')} className="hover:text-indigo-400 transition-colors text-left">Changelog</button></li>
+              <li><button onClick={() => onNavigate('features')} className="hover:text-[#0DA9CF] transition-colors text-left cursor-pointer">Features</button></li>
+              <li><button onClick={() => onNavigate('how-it-works')} className="hover:text-[#0DA9CF] transition-colors text-left cursor-pointer">How it Works</button></li>
+              <li><button onClick={() => onNavigate('pricing')} className="hover:text-[#0DA9CF] transition-colors text-left cursor-pointer">Pricing</button></li>
+              <li><button onClick={() => onNavigate('features')} className="hover:text-[#0DA9CF] transition-colors text-left cursor-pointer">Integrations</button></li>
+              <li><button onClick={() => onNavigate('features')} className="hover:text-[#0DA9CF] transition-colors text-left cursor-pointer">Changelog</button></li>
             </ul>
           </div>
           
@@ -47,11 +47,11 @@ export default function Footer({ onNavigate }) {
           <div>
             <h4 className="font-semibold text-white light:text-slate-900 mb-4 sm:mb-6 tracking-wide text-base">Resources</h4>
             <ul className="space-y-3 sm:space-y-4 text-sm text-[#94A3B8] light:text-slate-600">
-              <li><button onClick={() => onNavigate('faq')} className="hover:text-indigo-400 transition-colors text-left">Documentation</button></li>
-              <li><button onClick={() => onNavigate('faq')} className="hover:text-indigo-400 transition-colors text-left">API Reference</button></li>
-              <li><button onClick={() => onNavigate('faq')} className="hover:text-indigo-400 transition-colors text-left">Community</button></li>
-              <li><button onClick={() => onNavigate('features')} className="hover:text-indigo-400 transition-colors text-left">Blog</button></li>
-              <li><button onClick={() => onNavigate('faq')} className="hover:text-indigo-400 transition-colors text-left">Help Center</button></li>
+              <li><button onClick={() => onNavigate('faq')} className="hover:text-[#0DA9CF] transition-colors text-left cursor-pointer">Documentation</button></li>
+              <li><button onClick={() => onNavigate('faq')} className="hover:text-[#0DA9CF] transition-colors text-left cursor-pointer">API Reference</button></li>
+              <li><button onClick={() => onNavigate('faq')} className="hover:text-[#0DA9CF] transition-colors text-left cursor-pointer">Community</button></li>
+              <li><button onClick={() => onNavigate('features')} className="hover:text-[#0DA9CF] transition-colors text-left cursor-pointer">Blog</button></li>
+              <li><button onClick={() => onNavigate('faq')} className="hover:text-[#0DA9CF] transition-colors text-left cursor-pointer">Help Center</button></li>
             </ul>
           </div>
           
@@ -59,11 +59,11 @@ export default function Footer({ onNavigate }) {
           <div>
             <h4 className="font-semibold text-white light:text-slate-900 mb-4 sm:mb-6 tracking-wide text-base">Company</h4>
             <ul className="space-y-3 sm:space-y-4 text-sm text-[#94A3B8] light:text-slate-600">
-              <li><button onClick={() => onNavigate('features')} className="hover:text-indigo-400 transition-colors text-left">About</button></li>
-              <li><button onClick={() => onNavigate('features')} className="hover:text-indigo-400 transition-colors text-left">Careers</button></li>
-              <li><button onClick={() => onNavigate('faq')} className="hover:text-indigo-400 transition-colors text-left">Legal</button></li>
-              <li><button onClick={() => onNavigate('faq')} className="hover:text-indigo-400 transition-colors text-left">Privacy Policy</button></li>
-              <li><button onClick={() => onNavigate('faq')} className="hover:text-indigo-400 transition-colors text-left">Terms of Service</button></li>
+              <li><button onClick={() => onNavigate('features')} className="hover:text-[#0DA9CF] transition-colors text-left cursor-pointer">About</button></li>
+              <li><button onClick={() => onNavigate('features')} className="hover:text-[#0DA9CF] transition-colors text-left cursor-pointer">Careers</button></li>
+              <li><button onClick={() => onNavigate('faq')} className="hover:text-[#0DA9CF] transition-colors text-left cursor-pointer">Legal</button></li>
+              <li><button onClick={() => onNavigate('faq')} className="hover:text-[#0DA9CF] transition-colors text-left cursor-pointer">Privacy Policy</button></li>
+              <li><button onClick={() => onNavigate('faq')} className="hover:text-[#0DA9CF] transition-colors text-left cursor-pointer">Terms of Service</button></li>
             </ul>
           </div>
         </div>
