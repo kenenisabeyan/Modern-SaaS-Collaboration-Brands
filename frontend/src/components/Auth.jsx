@@ -200,7 +200,7 @@ export default function Auth({ onNavigate }) {
               <button
                 type="button"
                 onClick={handleGoogleLogin}
-                className="w-full flex items-center justify-center space-x-3 bg-[#0A0F24]/60 light:bg-white border border-white/10 light:border-slate-200 hover:bg-white/5 light:hover:bg-slate-100 light:bg-slate-100 light:hover:bg-slate-50 text-white light:text-slate-900 py-3.5 rounded-full font-semibold transition-all shadow-lg light:shadow-sm hover:shadow-xl light:hover:shadow-md backdrop-blur-md light:backdrop-blur-none"
+                className="w-full flex items-center justify-center space-x-3 bg-[#0A0F24]/60 light:bg-white border border-white/10 light:border-slate-200 hover:bg-white/5 light:hover:border-[#0DA9CF]/40 text-white light:text-slate-900 py-3.5 rounded-full font-semibold transition-all shadow-lg light:shadow-sm hover:shadow-xl light:hover:shadow-md backdrop-blur-md light:backdrop-blur-none cursor-pointer"
               >
                 <svg className="w-5 h-5" viewBox="0 0 24 24">
                   <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -214,7 +214,7 @@ export default function Auth({ onNavigate }) {
 
             <button 
               type="button"
-              className="w-full pt-2 text-sm font-medium text-slate-400 light:text-slate-500 hover:text-white light:text-slate-900 light:hover:text-slate-900 transition-colors"
+              className="w-full pt-2 text-sm font-semibold text-[#0DA9CF] hover:underline transition-colors cursor-pointer"
               onClick={() => {
                 setIsLogin(!isLogin);
                 setError('');
