@@ -128,7 +128,7 @@ export default function Pricing({ onNavigate }) {
   ];
 
   return (
-    <div className="min-h-screen bg-[#050816] light:bg-[#FAFAFA] text-white light:text-slate-900 font-sans overflow-hidden relative">
+    <div className="min-h-screen bg-[#050816] light:bg-white text-white light:text-slate-900 font-sans overflow-hidden relative">
       {/* Background Animated Blobs */}
       <div className="fixed bg-[#0DA9CF]/10 blur-[150px] w-[800px] h-[800px] rounded-full top-[-20%] left-[-10%] pointer-events-none"></div>
       <div className="fixed bg-[#F67E31]/10 blur-[150px] w-[600px] h-[600px] rounded-full bottom-[-10%] right-[-10%] pointer-events-none"></div>
@@ -186,7 +186,7 @@ export default function Pricing({ onNavigate }) {
                    transition={{ delay: index * 0.1, duration: 0.5 }}
                    className={`relative rounded-2xl sm:rounded-[2rem] p-6 sm:p-8 md:p-10 transition-all duration-300 group ${
                      plan.recommended 
-                     ? 'bg-gradient-to-b from-[#160B2A] light:from-slate-100 to-[#0A0F24] light:to-white border-2 border-[#F67E31] shadow-[0_0_50px_rgba(246,126,49,0.35)] light:shadow-xl scale-100 md:scale-105 z-10 hover:shadow-[0_0_80px_rgba(246,126,49,0.5)]' 
+                     ? 'bg-gradient-to-b from-[#160B2A] light:from-white to-[#0A0F24] light:to-white border-2 border-[#F67E31] shadow-[0_0_50px_rgba(246,126,49,0.35)] light:shadow-xl scale-100 md:scale-105 z-10 hover:shadow-[0_0_80px_rgba(246,126,49,0.5)]' 
                      : 'bg-[#0A0F24]/60 light:bg-white backdrop-blur-md light:backdrop-blur-none border border-white/10 light:border-slate-200 light:shadow-md hover:border-white/30 light:hover:border-slate-300 z-0 hover:-translate-y-2'
                    }`}
                 >
@@ -228,7 +228,7 @@ export default function Pricing({ onNavigate }) {
                         ? 'bg-[#04B84C]/20 light:bg-[#04B84C]/10 text-[#04B84C] border border-[#04B84C]/30 cursor-default'
                         : plan.recommended 
                         ? 'bg-[#F67E31] hover:bg-[#CC6A2F] text-white shadow-[0_10px_20px_-10px_rgba(246,126,49,0.6)]' 
-                        : 'bg-white/5 light:bg-slate-50 hover:bg-white/10 light:hover:bg-slate-200 border border-white/10 light:border-slate-200 text-white light:text-slate-900'
+                        : 'bg-white/5 light:bg-white hover:bg-white/10 light:hover:bg-[#0DA9CF]/10 border border-white/10 light:border-[#0DA9CF]/40 text-white light:text-[#0DA9CF] shadow-sm'
                      }`}
                      onClick={() => handleSelectPlan(plan.name)}
                    >
@@ -287,7 +287,7 @@ export default function Pricing({ onNavigate }) {
                          { name: "Analytics Dashboard", free: false, pro: true, ent: true },
                          { name: "Priority Support", free: false, pro: false, ent: true },
                         ].map((row, i) => (
-                          <tr key={i} className="hover:bg-white/[0.02] light:hover:bg-slate-50 transition-colors">
+                          <tr key={i} className="hover:bg-white/[0.02] light:hover:bg-white transition-colors">
                              <td className="py-3.5 sm:py-5 px-4 sm:px-6 text-xs sm:text-sm text-[#94A3B8] light:text-slate-600 font-medium">{row.name}</td>
                              <td className="py-3.5 sm:py-5 px-4 sm:px-6 text-center text-xs sm:text-sm font-medium text-white light:text-slate-900">
                                 {typeof row.free === 'boolean' ? (row.free ? <Check size={18} className="mx-auto text-[#0DA9CF]"/> : <X size={18} className="mx-auto text-slate-700 light:text-slate-300"/>) : row.free}

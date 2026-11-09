@@ -225,7 +225,7 @@ export default function UserSettings({ onNavigate }) {
                   
                   <div className="space-y-4">
                     {/* Theme Mode Toggle */}
-                    <div className="flex items-center justify-between p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/5">
+                    <div className="flex items-center justify-between p-4 bg-white dark:bg-white/5 rounded-2xl border border-slate-200 dark:border-white/5 shadow-sm">
                       <div className="pr-4">
                         <h4 className="font-semibold text-sm text-slate-900 dark:text-white">Theme Mode</h4>
                         <p className="text-xs text-slate-500 mt-0.5">Toggle between dark mode and light mode.</p>
@@ -240,7 +240,7 @@ export default function UserSettings({ onNavigate }) {
                     </div>
 
                     {/* Hardware Acceleration */}
-                    <div className="flex items-center justify-between p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/5">
+                    <div className="flex items-center justify-between p-4 bg-white dark:bg-white/5 rounded-2xl border border-slate-200 dark:border-white/5 shadow-sm">
                       <div className="pr-4">
                         <h4 className="font-semibold text-sm text-slate-900 dark:text-white">Hardware Canvas Acceleration</h4>
                         <p className="text-xs text-slate-500 mt-0.5">Optimizes graphics performance during whiteboard drawing sessions.</p>
@@ -254,7 +254,7 @@ export default function UserSettings({ onNavigate }) {
                     </div>
 
                     {/* Auto-copy Room Links */}
-                    <div className="flex items-center justify-between p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/5">
+                    <div className="flex items-center justify-between p-4 bg-white dark:bg-white/5 rounded-2xl border border-slate-200 dark:border-white/5 shadow-sm">
                       <div className="pr-4">
                         <h4 className="font-semibold text-sm text-slate-900 dark:text-white">Auto-copy Invite Links</h4>
                         <p className="text-xs text-slate-500 mt-0.5">Automatically copy the invite URL to your clipboard whenever you create a room.</p>
@@ -285,7 +285,7 @@ export default function UserSettings({ onNavigate }) {
 
                 <div className="space-y-4">
                   {/* Default Mic Off */}
-                  <div className="flex items-center justify-between p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/5">
+                  <div className="flex items-center justify-between p-4 bg-white dark:bg-white/5 rounded-2xl border border-slate-200 dark:border-white/5 shadow-sm">
                     <div className="pr-4">
                       <h4 className="font-semibold text-sm text-slate-900 dark:text-white">Start With Microphone Muted</h4>
                       <p className="text-xs text-slate-500 mt-0.5">Always join rooms with your microphone initially muted.</p>
@@ -299,7 +299,7 @@ export default function UserSettings({ onNavigate }) {
                   </div>
 
                   {/* Default Camera Off */}
-                  <div className="flex items-center justify-between p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/5">
+                  <div className="flex items-center justify-between p-4 bg-white dark:bg-white/5 rounded-2xl border border-slate-200 dark:border-white/5 shadow-sm">
                     <div className="pr-4">
                       <h4 className="font-semibold text-sm text-slate-900 dark:text-white">Start With Camera Turned Off</h4>
                       <p className="text-xs text-slate-500 mt-0.5">Keep your video disabled until you choose to turn it on inside the room.</p>
@@ -313,7 +313,7 @@ export default function UserSettings({ onNavigate }) {
                   </div>
 
                   {/* Mirror Video */}
-                  <div className="flex items-center justify-between p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/5">
+                  <div className="flex items-center justify-between p-4 bg-white dark:bg-white/5 rounded-2xl border border-slate-200 dark:border-white/5 shadow-sm">
                     <div className="pr-4">
                       <h4 className="font-semibold text-sm text-slate-900 dark:text-white">Mirror Self Video</h4>
                       <p className="text-xs text-slate-500 mt-0.5">Mirror your own video preview so it appears like looking in a mirror.</p>
@@ -327,7 +327,7 @@ export default function UserSettings({ onNavigate }) {
                   </div>
 
                   {/* HD Video */}
-                  <div className="flex items-center justify-between p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/5">
+                  <div className="flex items-center justify-between p-4 bg-white dark:bg-white/5 rounded-2xl border border-slate-200 dark:border-white/5 shadow-sm">
                     <div className="pr-4">
                       <h4 className="font-semibold text-sm text-slate-900 dark:text-white">High Definition (HD) Video</h4>
                       <p className="text-xs text-slate-500 mt-0.5">Broadcast video in high-clarity 720p/1080p when bandwidth permits.</p>
@@ -357,7 +357,7 @@ export default function UserSettings({ onNavigate }) {
 
                 <div className="space-y-4">
                   {/* Join Sound */}
-                  <div className="flex items-center justify-between p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/5">
+                  <div className="flex items-center justify-between p-4 bg-white dark:bg-white/5 rounded-2xl border border-slate-200 dark:border-white/5 shadow-sm">
                     <div className="pr-4">
                       <h4 className="font-semibold text-sm text-slate-900 dark:text-white">Play Chime on Participant Join</h4>
                       <p className="text-xs text-slate-500 mt-0.5">Play a subtle sound when new attendees join the meeting room.</p>
@@ -371,7 +371,7 @@ export default function UserSettings({ onNavigate }) {
                   </div>
 
                   {/* Chat Notification Sound */}
-                  <div className="flex items-center justify-between p-4 bg-slate-50 dark:bg-white/5 rounded-2xl border border-slate-100 dark:border-white/5">
+                  <div className="flex items-center justify-between p-4 bg-white dark:bg-white/5 rounded-2xl border border-slate-200 dark:border-white/5 shadow-sm">
                     <div className="pr-4">
                       <h4 className="font-semibold text-sm text-slate-900 dark:text-white">In-Room Chat Sound Alerts</h4>
                       <p className="text-xs text-slate-500 mt-0.5">Play a quiet audio tone when a new chat message arrives during a call.</p>
@@ -415,7 +415,7 @@ export default function UserSettings({ onNavigate }) {
                       onChange={(e) => setCurrentPassword(e.target.value)}
                       required
                       placeholder="••••••••••••"
-                      className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:bg-white dark:focus:bg-[#0A0F24] focus:border-[#0DA9CF] focus:ring-2 focus:ring-[#0DA9CF]/20 outline-none transition-all" 
+                      className="w-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:bg-white dark:focus:bg-[#0A0F24] focus:border-[#0DA9CF] focus:ring-2 focus:ring-[#0DA9CF]/20 outline-none transition-all shadow-sm" 
                     />
                   </div>
                   <div>
@@ -426,7 +426,7 @@ export default function UserSettings({ onNavigate }) {
                       onChange={(e) => setNewPassword(e.target.value)}
                       required
                       placeholder="At least 6 characters"
-                      className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:bg-white dark:focus:bg-[#0A0F24] focus:border-[#0DA9CF] focus:ring-2 focus:ring-[#0DA9CF]/20 outline-none transition-all" 
+                      className="w-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:bg-white dark:focus:bg-[#0A0F24] focus:border-[#0DA9CF] focus:ring-2 focus:ring-[#0DA9CF]/20 outline-none transition-all shadow-sm" 
                     />
                   </div>
                   <div>
@@ -437,7 +437,7 @@ export default function UserSettings({ onNavigate }) {
                       onChange={(e) => setConfirmPassword(e.target.value)}
                       required
                       placeholder="Repeat new password"
-                      className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:bg-white dark:focus:bg-[#0A0F24] focus:border-[#0DA9CF] focus:ring-2 focus:ring-[#0DA9CF]/20 outline-none transition-all" 
+                      className="w-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:bg-white dark:focus:bg-[#0A0F24] focus:border-[#0DA9CF] focus:ring-2 focus:ring-[#0DA9CF]/20 outline-none transition-all shadow-sm" 
                     />
                   </div>
                   <div className="pt-2">

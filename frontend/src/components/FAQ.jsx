@@ -70,7 +70,7 @@ const faqData = [
 
 const AccordionItem = ({ q, a, isOpen, onClick }) => {
   return (
-    <div className="border border-white/5 light:border-slate-200 rounded-2xl sm:rounded-3xl mb-3 sm:mb-4 bg-[#0A0F24]/60 light:bg-white backdrop-blur-md light:backdrop-blur-none overflow-hidden transition-all duration-300 hover:border-[#0DA9CF]/30 light:hover:border-[#0DA9CF]/40 hover:bg-[#0A0F24]/80 light:bg-white/90 light:hover:bg-slate-50 hover:shadow-[0_10px_30px_-15px_rgba(13,169,207,0.2)] light:shadow-sm">
+    <div className="border border-white/5 light:border-slate-200 rounded-2xl sm:rounded-3xl mb-3 sm:mb-4 bg-[#0A0F24]/60 light:bg-white backdrop-blur-md light:backdrop-blur-none overflow-hidden transition-all duration-300 hover:border-[#0DA9CF]/30 light:hover:border-[#0DA9CF]/40 hover:bg-[#0A0F24]/80 light:hover:bg-white hover:shadow-[0_10px_30px_-15px_rgba(13,169,207,0.2)] light:shadow-sm">
       <button
         onClick={onClick}
         className="w-full flex items-center justify-between p-4 sm:p-6 text-left focus:outline-none group"
@@ -134,7 +134,7 @@ export default function FAQ({ onNavigate }) {
   }).filter(category => category.questions.length > 0);
 
   return (
-    <div className="min-h-screen bg-[#050816] light:bg-[#FAFAFA] text-white light:text-slate-900 font-sans overflow-hidden relative">
+    <div className="min-h-screen bg-[#050816] light:bg-white text-white light:text-slate-900 font-sans overflow-hidden relative">
       {/* Background Animated Blobs */}
       <div className="fixed bg-[#0DA9CF]/10 blur-[150px] w-[800px] h-[800px] rounded-full top-[-10%] right-[-10%] pointer-events-none"></div>
       <div className="fixed bg-[#F67E31]/10 blur-[150px] w-[600px] h-[600px] rounded-full bottom-[-20%] left-[-10%] pointer-events-none"></div>
@@ -243,7 +243,7 @@ export default function FAQ({ onNavigate }) {
              initial={{ opacity: 0, scale: 0.95 }}
              whileInView={{ opacity: 1, scale: 1 }}
              viewport={{ once: true }}
-             className="bg-gradient-to-br from-[#160B2A] light:from-slate-100 to-[#0A0F24] light:to-white border border-[#F67E31]/20 light:border-slate-200 rounded-2xl sm:rounded-[3rem] p-6 sm:p-12 md:p-16 text-center shadow-[0_30px_60px_-15px_rgba(246,126,49,0.2)] light:shadow-xl relative overflow-hidden group"
+             className="bg-gradient-to-br from-[#160B2A] light:from-white to-[#0A0F24] light:to-white border border-[#F67E31]/20 light:border-slate-200 rounded-2xl sm:rounded-[3rem] p-6 sm:p-12 md:p-16 text-center shadow-[0_30px_60px_-15px_rgba(246,126,49,0.2)] light:shadow-xl relative overflow-hidden group"
            >
               <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 group-hover:opacity-10 transition-opacity"></div>
               
@@ -270,10 +270,10 @@ export default function FAQ({ onNavigate }) {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => onNavigate('dashboard')}
-                      className="w-full sm:w-auto bg-white/5 light:bg-slate-50 hover:bg-white/10 light:hover:bg-slate-200 text-white light:text-slate-900 font-bold py-3.5 sm:py-4 px-6 sm:px-8 rounded-full border border-white/10 light:border-slate-200 flex items-center justify-center space-x-2.5 sm:space-x-3 transition-colors hover:border-white/20 light:hover:border-slate-300 group text-sm sm:text-base"
+                      className="w-full sm:w-auto bg-white/5 light:bg-white hover:bg-white/10 light:hover:bg-[#0DA9CF]/10 text-white light:text-[#0DA9CF] font-bold py-3.5 sm:py-4 px-6 sm:px-8 rounded-full border border-white/10 light:border-[#0DA9CF]/40 flex items-center justify-center space-x-2.5 sm:space-x-3 transition-colors group text-sm sm:text-base cursor-pointer shadow-sm"
                     >
                        <span>Return to Dashboard</span>
-                       <ArrowRight size={18} className="text-[#94A3B8] light:text-slate-500 group-hover:translate-x-1 transition-transform sm:w-5 sm:h-5" />
+                       <ArrowRight size={18} className="text-[#94A3B8] light:text-[#0DA9CF] group-hover:translate-x-1 transition-transform sm:w-5 sm:h-5" />
                     </motion.button>
                  </div>
               </div>

@@ -33,7 +33,7 @@ export default function Features({ onNavigate }) {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#050816] light:bg-[#FAFAFA] text-white light:text-slate-900 font-sans overflow-hidden relative">
+    <div className="min-h-screen bg-[#050816] light:bg-white text-white light:text-slate-900 font-sans overflow-hidden relative">
       {/* Background Animated Blobs */}
       <div className="fixed bg-[#0DA9CF]/10 blur-[150px] w-[800px] h-[800px] rounded-full top-[-20%] left-[-10%] pointer-events-none"></div>
       <div className="fixed bg-[#F67E31]/10 blur-[150px] w-[600px] h-[600px] rounded-full bottom-[-10%] right-[-10%] pointer-events-none"></div>
@@ -92,7 +92,7 @@ export default function Features({ onNavigate }) {
 
         {/* 3. Interactive Collaboration Section */}
         <section className="px-4 sm:px-6 mb-20 sm:mb-32">
-          <div className="bg-gradient-to-br from-[#0A0F24] light:from-white to-[#160B2A] light:to-slate-100 border border-[#F67E31]/20 rounded-2xl sm:rounded-[3rem] p-6 sm:p-10 md:p-16 lg:p-20 overflow-hidden relative shadow-[0_30px_60px_-15px_rgba(246,126,49,0.2)]">
+          <div className="bg-gradient-to-br from-[#0A0F24] light:from-white to-[#160B2A] light:to-white border border-[#F67E31]/20 rounded-2xl sm:rounded-[3rem] p-6 sm:p-10 md:p-16 lg:p-20 overflow-hidden relative shadow-[0_30px_60px_-15px_rgba(246,126,49,0.2)]">
             <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#F67E31]/10 to-transparent pointer-events-none"></div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center relative z-10">
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
@@ -117,9 +117,9 @@ export default function Features({ onNavigate }) {
                 </ul>
               </motion.div>
               <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="relative">
-                <div className="aspect-[4/3] rounded-2xl sm:rounded-3xl bg-[#050816] light:bg-slate-50 border border-white/10 shadow-2xl overflow-hidden relative group">
+                <div className="aspect-[4/3] rounded-2xl sm:rounded-3xl bg-[#050816] light:bg-white border border-white/10 shadow-2xl overflow-hidden relative group">
                   <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=800')] bg-cover bg-center opacity-60 group-hover:opacity-80 transition-opacity duration-700"></div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#050816] light:from-slate-50 via-transparent to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#050816] light:from-white via-transparent to-transparent"></div>
                   {/* Floating Mock UI */}
                   <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 w-[90%] sm:w-3/4 h-14 sm:h-16 bg-[#0A0F24]/80 light:bg-white/90 backdrop-blur-xl rounded-full border border-white/10 flex items-center justify-between px-4 sm:px-6">
                      <div className="flex space-x-2 sm:space-x-4">
@@ -171,7 +171,7 @@ export default function Features({ onNavigate }) {
 
         {/* 7. Mobile Compatibility */}
         <section className="px-4 sm:px-6 mb-20 sm:mb-32">
-          <div className="bg-[#050816] light:bg-[#FAFAFA] border border-white/10 light:border-slate-200 rounded-2xl sm:rounded-[3rem] p-6 sm:p-10 md:p-16 flex flex-col md:flex-row items-center justify-between relative overflow-hidden group shadow-2xl light:shadow-xl">
+          <div className="bg-[#050816] light:bg-white border border-white/10 light:border-slate-200 rounded-2xl sm:rounded-[3rem] p-6 sm:p-10 md:p-16 flex flex-col md:flex-row items-center justify-between relative overflow-hidden group shadow-2xl light:shadow-xl">
             <div className="absolute inset-0 bg-gradient-to-r from-[#0DA9CF]/5 to-[#04B84C]/5 group-hover:from-[#0DA9CF]/10 group-hover:to-[#04B84C]/10 transition-colors duration-700"></div>
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="md:w-1/2 relative z-10 mb-10 md:mb-0">
               <Smartphone size={36} className="text-[#04B84C] mb-4 sm:mb-6 sm:w-10 sm:h-10" />
@@ -184,7 +184,7 @@ export default function Features({ onNavigate }) {
                {/* Mock Mobile Device */}
                <div className="w-[260px] sm:w-[280px] h-[500px] sm:h-[580px] bg-[#0A0F24] light:bg-white rounded-[2.5rem] sm:rounded-[3rem] border-[6px] sm:border-[8px] border-[#0A0F24] shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden relative">
                   <div className="absolute top-0 w-full h-6 bg-[#0A0F24] light:bg-slate-100 flex justify-center rounded-b-xl"><div className="w-1/3 h-4 bg-[#0A0F24] light:bg-white rounded-b-xl"></div></div>
-                  <div className="w-full h-full bg-[#050816] light:bg-slate-50 pt-8 sm:pt-10 px-3 sm:px-4 flex flex-col">
+                  <div className="w-full h-full bg-[#050816] light:bg-white pt-8 sm:pt-10 px-3 sm:px-4 flex flex-col">
                     <div className="flex-1 bg-[#160B2A] light:bg-slate-100 rounded-2xl border border-white/5 mb-4 relative overflow-hidden">
                        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=400')] bg-cover bg-center opacity-70"></div>
                     </div>

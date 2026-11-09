@@ -213,21 +213,21 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
 
               {/* Stats Cards */}
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-4 pt-3 max-w-[550px]">
-                <div className="bg-[#0A0F24]/60 light:bg-white backdrop-blur-sm light:backdrop-blur-none border border-white/5 light:border-slate-200 rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 hover:bg-[#0A0F24]/80 light:hover:bg-slate-50 transition-all shadow-lg light:shadow-sm">
+                <div className="bg-[#0A0F24]/60 light:bg-white backdrop-blur-sm light:backdrop-blur-none border border-white/5 light:border-slate-200 rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 hover:bg-[#0A0F24]/80 light:hover:border-[#0DA9CF]/40 transition-all shadow-lg light:shadow-sm">
                   <Users size={18} className="text-[#0DA9CF] mb-1.5 sm:mb-2 sm:w-5 sm:h-5" />
                   <div className="text-xl sm:text-3xl font-extrabold text-white light:text-slate-900 mb-0.5 sm:mb-1">
                     {platformStats.users.toLocaleString()}
                   </div>
                   <div className="text-[10px] sm:text-xs font-semibold text-[#94A3B8] light:text-slate-500 uppercase tracking-wider">Happy Users</div>
                 </div>
-                <div className="bg-[#0A0F24]/60 light:bg-white backdrop-blur-sm light:backdrop-blur-none border border-white/5 light:border-slate-200 rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 hover:bg-[#0A0F24]/80 light:hover:bg-slate-50 transition-all shadow-lg light:shadow-sm">
+                <div className="bg-[#0A0F24]/60 light:bg-white backdrop-blur-sm light:backdrop-blur-none border border-white/5 light:border-slate-200 rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 hover:bg-[#0A0F24]/80 light:hover:border-[#F67E31]/40 transition-all shadow-lg light:shadow-sm">
                   <Video size={18} className="text-[#F67E31] mb-1.5 sm:mb-2 sm:w-5 sm:h-5" />
                   <div className="text-xl sm:text-3xl font-extrabold text-white light:text-slate-900 mb-0.5 sm:mb-1">
                     {platformStats.meetings.toLocaleString()}
                   </div>
                   <div className="text-[10px] sm:text-xs font-semibold text-[#94A3B8] light:text-slate-500 uppercase tracking-wider">Meetings</div>
                 </div>
-                <div className="col-span-2 sm:col-span-1 bg-[#0A0F24]/60 light:bg-white backdrop-blur-sm light:backdrop-blur-none border border-white/5 light:border-slate-200 rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 hover:bg-[#0A0F24]/80 light:hover:bg-slate-50 transition-all shadow-lg light:shadow-sm">
+                <div className="col-span-2 sm:col-span-1 bg-[#0A0F24]/60 light:bg-white backdrop-blur-sm light:backdrop-blur-none border border-white/5 light:border-slate-200 rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 hover:bg-[#0A0F24]/80 light:hover:border-[#04B84C]/40 transition-all shadow-lg light:shadow-sm">
                   <Clock size={18} className="text-[#04B84C] mb-1.5 sm:mb-2 sm:w-5 sm:h-5" />
                   <div className="text-xl sm:text-3xl font-extrabold text-white light:text-slate-900 mb-0.5 sm:mb-1">
                     {platformStats.minutes.toLocaleString()}
@@ -593,7 +593,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
             </div>
             <button 
               onClick={() => setShowInfoModal(false)}
-              className="mt-6 sm:mt-10 w-full bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white light:text-slate-900 py-3.5 sm:py-4 rounded-full font-bold text-base sm:text-lg transition-all hover:shadow-[0_0_20px_rgba(13,169,207,0.4)] cursor-pointer"
+              className="mt-6 sm:mt-10 w-full bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white py-3.5 sm:py-4 rounded-full font-bold text-base sm:text-lg transition-all hover:shadow-[0_0_20px_rgba(13,169,207,0.4)] cursor-pointer"
             >
               Let's get started!
             </button>

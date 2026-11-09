@@ -761,7 +761,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
 
   if (joinDenied) {
     return (
-      <div className="flex-1 flex items-center justify-center h-screen bg-[#050816] light:bg-slate-50 text-white light:text-slate-900 relative overflow-hidden font-sans p-4">
+      <div className="flex-1 flex items-center justify-center h-screen bg-[#050816] light:bg-white text-white light:text-slate-900 relative overflow-hidden font-sans p-4">
         <div className="absolute bg-rose-600/10 blur-[120px] w-[500px] h-[500px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
         <div className="text-center space-y-5 sm:space-y-6 z-10 max-w-md w-full mx-auto p-6 sm:p-10 bg-[#0A0F24] light:bg-white shadow-none/80 light:shadow-xl backdrop-blur-2xl border border-white/10 light:border-slate-200 rounded-2xl sm:rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)]">
           <div className="w-16 h-16 sm:w-20 sm:h-20 bg-rose-500/20 rounded-full flex items-center justify-center mx-auto border border-rose-500/30 shadow-[0_0_30px_rgba(244,63,94,0.3)]">
@@ -781,7 +781,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
 
   if (roomNotFound) {
     return (
-      <div className="flex-1 flex items-center justify-center h-screen bg-[#050816] light:bg-slate-50 text-white light:text-slate-900 relative overflow-hidden font-sans p-4">
+      <div className="flex-1 flex items-center justify-center h-screen bg-[#050816] light:bg-white text-white light:text-slate-900 relative overflow-hidden font-sans p-4">
         <div className="absolute bg-rose-600/10 blur-[120px] w-[500px] h-[500px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
         <div className="text-center space-y-5 sm:space-y-6 z-10 max-w-md w-full mx-auto p-6 sm:p-10 bg-[#0A0F24] light:bg-white shadow-none/80 light:shadow-xl backdrop-blur-2xl border border-white/10 light:border-slate-200 rounded-2xl sm:rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)]">
           <div className="w-16 h-16 sm:w-20 sm:h-20 bg-rose-500/20 rounded-full flex items-center justify-center mx-auto border border-rose-500/30 shadow-[0_0_30px_rgba(244,63,94,0.3)]">
@@ -801,7 +801,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
 
   if (isWaiting) {
     return (
-      <div className="flex-1 flex items-center justify-center h-screen bg-[#050816] light:bg-slate-50 text-white light:text-slate-900 relative overflow-hidden font-sans p-4">
+      <div className="flex-1 flex items-center justify-center h-screen bg-[#050816] light:bg-white text-white light:text-slate-900 relative overflow-hidden font-sans p-4">
         <div className="absolute bg-[#0DA9CF]/15 blur-[120px] w-[500px] h-[500px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
         <div className="text-center space-y-5 sm:space-y-6 z-10 max-w-md w-full mx-auto p-6 sm:p-10 bg-[#0A0F24] light:bg-white shadow-none/80 light:shadow-xl backdrop-blur-2xl border border-white/10 light:border-slate-200 rounded-2xl sm:rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)]">
           <div className="relative w-16 h-16 sm:w-20 sm:h-20 mx-auto flex items-center justify-center">
@@ -823,7 +823,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
 
   if (isJoining) {
     return (
-      <div className="flex-1 flex items-center justify-center h-screen bg-[#050816] light:bg-slate-50 text-white light:text-slate-900 relative overflow-hidden font-sans p-4">
+      <div className="flex-1 flex items-center justify-center h-screen bg-[#050816] light:bg-white text-white light:text-slate-900 relative overflow-hidden font-sans p-4">
         <div className="absolute bg-[#0DA9CF]/15 blur-[120px] w-[500px] h-[500px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
         <div className="text-center space-y-5 sm:space-y-6 z-10 max-w-md w-full mx-auto p-6 sm:p-10 bg-[#0A0F24] light:bg-white shadow-none/80 light:shadow-xl backdrop-blur-2xl border border-white/10 light:border-slate-200 rounded-2xl sm:rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)]">
           <div className="relative w-16 h-16 sm:w-20 sm:h-20 mx-auto flex items-center justify-center">
@@ -850,7 +850,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
   };
 
   return (
-    <div className="flex-1 flex h-screen overflow-hidden bg-[#050816] light:bg-slate-50 text-white light:text-slate-900 font-sans relative">
+    <div className="flex-1 flex h-screen overflow-hidden bg-[#050816] light:bg-white text-white light:text-slate-900 font-sans relative">
       {/* Background Blobs for main room */}
       <div className="absolute bg-[#F67E31]/10 blur-[150px] w-[800px] h-[800px] rounded-full top-[-20%] left-[-10%] pointer-events-none"></div>
       <div className="absolute bg-[#0DA9CF]/10 blur-[150px] w-[600px] h-[600px] rounded-full bottom-[-10%] right-[-10%] pointer-events-none"></div>
@@ -859,7 +859,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
       <div className={`flex-1 flex flex-col transition-all duration-300 relative z-10 ${isChatOpen ? 'pr-0 md:pr-80' : 'pr-0'}`}>
         
         {/* Top Bar - Premium Glassmorphism */}
-        <div className="absolute top-0 left-0 right-0 z-30 bg-gradient-to-b from-[#050816] light:from-slate-50 to-transparent">
+        <div className="absolute top-0 left-0 right-0 z-30 bg-gradient-to-b from-[#050816] light:from-white to-transparent">
           <div className="flex items-center justify-between px-3 sm:px-6 md:px-8 py-3 sm:py-5">
             {/* Left: Time & Mobile Copy Link */}
             <div className="flex items-center space-x-2 sm:space-x-3 md:space-x-4">
@@ -955,7 +955,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
                 </div>
               )}
 
-              <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 bg-[#050816]/90 light:bg-slate-50/90 backdrop-blur-xl text-white light:text-slate-900 text-xs sm:text-sm font-semibold px-3 py-1.5 sm:px-4 sm:py-2 rounded-full flex items-center space-x-1.5 sm:space-x-2 border border-white/10 light:border-slate-200 shadow-[0_4px_15px_rgba(0,0,0,0.5)]">
+              <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 bg-[#050816]/90 light:bg-white/95 backdrop-blur-xl text-white light:text-slate-900 text-xs sm:text-sm font-semibold px-3 py-1.5 sm:px-4 sm:py-2 rounded-full flex items-center space-x-1.5 sm:space-x-2 border border-white/10 light:border-slate-200 shadow-[0_4px_15px_rgba(0,0,0,0.5)]">
                 {isMuted && <MicOff size={13} className="text-rose-400 sm:w-3.5 sm:h-3.5" />}
                 <span className="truncate max-w-[80px] sm:max-w-[120px] md:max-w-none">You{isHost ? ' (Host)' : ''}</span>
               </div>
@@ -992,7 +992,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
                     </div>
                   )}
 
-                  <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 bg-[#050816]/90 light:bg-slate-50/90 backdrop-blur-xl text-white light:text-slate-900 text-xs sm:text-sm font-semibold px-3 py-1.5 sm:px-4 sm:py-2 rounded-full flex items-center space-x-1.5 sm:space-x-2 border border-white/10 light:border-slate-200 shadow-[0_4px_15px_rgba(0,0,0,0.5)]">
+                  <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 bg-[#050816]/90 light:bg-white/95 backdrop-blur-xl text-white light:text-slate-900 text-xs sm:text-sm font-semibold px-3 py-1.5 sm:px-4 sm:py-2 rounded-full flex items-center space-x-1.5 sm:space-x-2 border border-white/10 light:border-slate-200 shadow-[0_4px_15px_rgba(0,0,0,0.5)]">
                     {participant.audioEnabled === false && <MicOff size={13} className="text-rose-400 sm:w-3.5 sm:h-3.5" />}
                     <span className="truncate max-w-[80px] sm:max-w-[120px] md:max-w-none">{participant.username || 'User'}{participant.isHost ? ' (Host)' : ''}</span>
                   </div>
@@ -1217,7 +1217,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Type your message..."
-              className="w-full bg-[#050816] light:bg-slate-50 border border-white/10 light:border-slate-200 rounded-full pl-4 sm:pl-5 pr-12 sm:pr-14 py-3 sm:py-4 text-xs sm:text-sm text-white light:text-slate-900 placeholder-slate-500 focus:outline-none focus:border-[#0DA9CF]/50 focus:ring-1 focus:ring-[#0DA9CF]/50 transition-all shadow-inner"
+              className="w-full bg-[#050816] light:bg-white border border-white/10 light:border-slate-200 rounded-full pl-4 sm:pl-5 pr-12 sm:pr-14 py-3 sm:py-4 text-xs sm:text-sm text-white light:text-slate-900 placeholder-slate-500 focus:outline-none focus:border-[#0DA9CF]/50 focus:ring-1 focus:ring-[#0DA9CF]/50 transition-all shadow-inner"
               onKeyDown={(e) => {
                 if (e.key === 'Enter' && message.trim()) handleSendMessage();
               }}

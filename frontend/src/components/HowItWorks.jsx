@@ -76,7 +76,7 @@ export default function HowItWorks({ onNavigate }) {
   ];
 
   return (
-    <div className="min-h-screen bg-[#050816] light:bg-[#FAFAFA] text-white light:text-slate-900 font-sans overflow-hidden relative">
+    <div className="min-h-screen bg-[#050816] light:bg-white text-white light:text-slate-900 font-sans overflow-hidden relative">
       {/* Background Animated Blobs */}
       <div className="fixed bg-[#0DA9CF]/10 blur-[150px] w-[800px] h-[800px] rounded-full top-[-20%] right-[-10%] pointer-events-none"></div>
       <div className="fixed bg-[#F67E31]/10 blur-[150px] w-[600px] h-[600px] rounded-full bottom-[-10%] left-[-10%] pointer-events-none"></div>
@@ -189,7 +189,7 @@ export default function HowItWorks({ onNavigate }) {
              <div className="grid grid-cols-1 md:grid-cols-3 w-full h-full p-4 sm:p-8 relative z-10 gap-8">
                 {/* Host Column */}
                 <div className="flex flex-col items-center justify-center space-y-6 relative">
-                   <motion.div animate={{ y: [-5, 5, -5] }} transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }} className="bg-[#160B2A]/90 light:bg-slate-50 backdrop-blur-md light:backdrop-blur-none border border-[#0DA9CF]/30 light:border-[#0DA9CF]/20 p-5 rounded-2xl sm:rounded-3xl shadow-[0_0_30px_rgba(13,169,207,0.2)] light:shadow-md w-full max-w-[240px]">
+                   <motion.div animate={{ y: [-5, 5, -5] }} transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }} className="bg-[#160B2A]/90 light:bg-white backdrop-blur-md light:backdrop-blur-none border border-[#0DA9CF]/30 light:border-[#0DA9CF]/20 p-5 rounded-2xl sm:rounded-3xl shadow-[0_0_30px_rgba(13,169,207,0.2)] light:shadow-md w-full max-w-[240px]">
                       <div className="flex items-center space-x-3 mb-4">
                         <div className="w-10 h-10 rounded-full bg-[#0DA9CF]/20 flex items-center justify-center text-[#0DA9CF]"><Monitor size={20}/></div>
                         <span className="font-bold text-white light:text-slate-900">Host Client</span>
@@ -223,7 +223,7 @@ export default function HowItWorks({ onNavigate }) {
 
                 {/* Participants Column */}
                 <div className="flex flex-col items-center justify-center space-y-6 relative">
-                   <motion.div animate={{ y: [5, -5, 5] }} transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }} className="bg-[#160B2A]/90 light:bg-slate-50 backdrop-blur-md light:backdrop-blur-none border border-[#04B84C]/30 light:border-[#04B84C]/20 p-5 rounded-2xl sm:rounded-3xl shadow-[0_0_30px_rgba(4,184,76,0.2)] light:shadow-md w-full max-w-[240px]">
+                   <motion.div animate={{ y: [5, -5, 5] }} transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }} className="bg-[#160B2A]/90 light:bg-white backdrop-blur-md light:backdrop-blur-none border border-[#04B84C]/30 light:border-[#04B84C]/20 p-5 rounded-2xl sm:rounded-3xl shadow-[0_0_30px_rgba(4,184,76,0.2)] light:shadow-md w-full max-w-[240px]">
                       <div className="flex items-center space-x-3 mb-4">
                         <div className="w-10 h-10 rounded-full bg-[#04B84C]/20 flex items-center justify-center text-[#04B84C]"><UserPlus size={20}/></div>
                         <span className="font-bold text-white light:text-slate-900">Participants</span>
@@ -245,7 +245,7 @@ export default function HowItWorks({ onNavigate }) {
 
         {/* 4. Demo Preview Section */}
         <section className="mb-24 sm:mb-40">
-          <div className="bg-gradient-to-br from-[#160B2A] light:from-slate-100 to-[#0A0F24] light:to-white border border-[#0DA9CF]/20 light:border-slate-200 rounded-2xl sm:rounded-[3rem] p-6 sm:p-10 md:p-16 overflow-hidden relative shadow-[0_30px_60px_-15px_rgba(13,169,207,0.2)] light:shadow-xl">
+          <div className="bg-gradient-to-br from-[#160B2A] light:from-white to-[#0A0F24] light:to-white border border-[#0DA9CF]/20 light:border-slate-200 rounded-2xl sm:rounded-[3rem] p-6 sm:p-10 md:p-16 overflow-hidden relative shadow-[0_30px_60px_-15px_rgba(13,169,207,0.2)] light:shadow-xl">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
               <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
                 <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold mb-4 sm:mb-6 text-white light:text-slate-900">See it in action.</h2>
@@ -333,7 +333,7 @@ export default function HowItWorks({ onNavigate }) {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => onNavigate('faq')}
-                className="w-full sm:w-auto bg-white/5 light:bg-slate-50 hover:bg-white/10 light:hover:bg-slate-200 border border-white/10 light:border-slate-200 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-bold text-white light:text-slate-900 transition-colors hover:border-white/20 light:hover:border-slate-300 text-sm sm:text-base"
+                className="w-full sm:w-auto bg-white/5 light:bg-white hover:bg-white/10 light:hover:bg-[#0DA9CF]/10 border border-white/10 light:border-[#0DA9CF]/40 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-bold text-white light:text-[#0DA9CF] transition-colors text-sm sm:text-base cursor-pointer shadow-sm"
               >
                 View Documentation
               </motion.button>

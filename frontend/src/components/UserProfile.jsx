@@ -124,11 +124,11 @@ export default function UserProfile({ onNavigate }) {
 
             {/* Quick Stats Grid */}
             <div className="grid grid-cols-2 gap-3 text-center">
-              <div className="p-3 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5">
+              <div className="p-3 rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/5 shadow-sm">
                 <p className="text-2xl font-extrabold text-[#0DA9CF]">{roomCount}</p>
                 <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mt-0.5">Rooms Created</p>
               </div>
-              <div className="p-3 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5">
+              <div className="p-3 rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/5 shadow-sm">
                 <p className="text-2xl font-extrabold text-[#F67E31]">Pro</p>
                 <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mt-0.5">Tier Plan</p>
               </div>
@@ -152,9 +152,9 @@ export default function UserProfile({ onNavigate }) {
               <button 
                 type="button"
                 onClick={() => setIsEditing(!isEditing)}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/15 text-slate-700 dark:text-slate-300 transition-colors cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-white/10 hover:bg-[#0DA9CF]/10 dark:hover:bg-white/15 text-[#0DA9CF] dark:text-slate-300 border border-slate-200 dark:border-white/10 transition-colors cursor-pointer shadow-sm"
               >
-                <Edit3 size={14} />
+                <Edit3 size={14} className="text-[#0DA9CF]" />
                 <span>{isEditing ? 'Cancel' : 'Edit Profile'}</span>
               </button>
             </div>
@@ -168,7 +168,7 @@ export default function UserProfile({ onNavigate }) {
                     value={editUsername}
                     onChange={(e) => setEditUsername(e.target.value)}
                     required
-                    className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:bg-white dark:focus:bg-[#0A0F24] focus:border-[#0DA9CF] focus:ring-2 focus:ring-[#0DA9CF]/20 outline-none transition-all"
+                    className="w-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:bg-white dark:focus:bg-[#0A0F24] focus:border-[#0DA9CF] focus:ring-2 focus:ring-[#0DA9CF]/20 outline-none transition-all shadow-sm"
                   />
                 </div>
                 <div>
@@ -177,7 +177,7 @@ export default function UserProfile({ onNavigate }) {
                     type="email" 
                     value={email || `${username.toLowerCase()}@wabiseminar.com`}
                     disabled
-                    className="w-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl px-4 py-3 text-sm text-slate-500 cursor-not-allowed opacity-80"
+                    className="w-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl px-4 py-3 text-sm text-slate-500 cursor-not-allowed opacity-80 shadow-sm"
                   />
                 </div>
                 <div>
@@ -187,14 +187,14 @@ export default function UserProfile({ onNavigate }) {
                     value={editBio}
                     onChange={(e) => setEditBio(e.target.value)}
                     placeholder="Tell your attendees about yourself..."
-                    className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:bg-white dark:focus:bg-[#0A0F24] focus:border-[#0DA9CF] focus:ring-2 focus:ring-[#0DA9CF]/20 outline-none transition-all resize-none"
+                    className="w-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:bg-white dark:focus:bg-[#0A0F24] focus:border-[#0DA9CF] focus:ring-2 focus:ring-[#0DA9CF]/20 outline-none transition-all resize-none shadow-sm"
                   ></textarea>
                 </div>
                 <div className="flex justify-end gap-3 pt-2">
                   <button 
                     type="button"
                     onClick={() => setIsEditing(false)}
-                    className="px-5 py-2.5 rounded-xl font-semibold bg-slate-100 dark:bg-white/5 hover:bg-slate-200 text-slate-700 dark:text-slate-300 text-sm transition-colors cursor-pointer"
+                    className="px-5 py-2.5 rounded-xl font-semibold bg-white dark:bg-white/5 hover:bg-slate-100 text-slate-700 dark:text-slate-300 text-sm border border-slate-200 dark:border-white/10 transition-colors cursor-pointer shadow-sm"
                   >
                     Cancel
                   </button>
@@ -209,17 +209,17 @@ export default function UserProfile({ onNavigate }) {
             ) : (
               <div className="space-y-5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5">
+                  <div className="p-4 rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/5 shadow-sm">
                     <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Username</p>
                     <p className="text-sm font-bold text-slate-900 dark:text-white">{username}</p>
                   </div>
-                  <div className="p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5">
+                  <div className="p-4 rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/5 shadow-sm">
                     <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Email</p>
                     <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{email || 'Not provided'}</p>
                   </div>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/5">
+                <div className="p-4 rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/5 shadow-sm">
                   <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Bio</p>
                   <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">{bio}</p>
                 </div>

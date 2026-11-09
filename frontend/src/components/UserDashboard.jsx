@@ -313,7 +313,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
             ))}
           </div>
         ) : (
-          <div className="bg-white dark:bg-[#0A0F24]/50 border border-dashed border-slate-300 dark:border-white/10 rounded-3xl p-10 sm:p-14 text-center flex flex-col items-center shadow-sm">
+          <div className="bg-white dark:bg-[#0A0F24]/50 border border-slate-200 dark:border-white/10 rounded-3xl p-10 sm:p-14 text-center flex flex-col items-center shadow-sm">
             <div className="w-14 h-14 rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-[#0DA9CF] mb-3 shadow-sm">
               <Video size={28} />
             </div>
@@ -352,7 +352,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
               <button 
                 onClick={() => setDeleteModalRoomId(null)}
                 disabled={isDeleting}
-                className="flex-1 py-2.5 rounded-xl font-semibold bg-white dark:bg-white/5 hover:bg-slate-50 dark:hover:bg-white/10 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 transition-colors text-xs sm:text-sm cursor-pointer shadow-sm"
+                className="flex-1 py-2.5 rounded-xl font-semibold bg-white dark:bg-white/5 hover:bg-[#0DA9CF]/10 hover:text-[#0DA9CF] hover:border-[#0DA9CF]/30 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 transition-colors text-xs sm:text-sm cursor-pointer shadow-sm"
               >
                 Cancel
               </button>
