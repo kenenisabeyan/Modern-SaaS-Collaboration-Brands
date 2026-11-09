@@ -67,7 +67,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
       <motion.header 
         className={`fixed top-0 w-full flex items-center justify-between px-4 sm:px-6 lg:px-8 xl:px-16 z-50 transition-all duration-300 ${
           isScrolled 
-            ? 'h-16 sm:h-20 bg-white/90 dark:bg-[#050816]/90 backdrop-blur-xl border-b border-slate-200/80 dark:border-white/10 shadow-sm' 
+            ? 'h-16 sm:h-20 bg-white/95 dark:bg-[#050816]/90 backdrop-blur-xl border-b border-slate-200/80 dark:border-white/10 shadow-sm' 
             : 'h-18 sm:h-22 bg-transparent border-b-transparent'
         }`}
         initial={{ y: -80 }}
@@ -88,7 +88,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
         </div>
 
         {/* Desktop Links */}
-        <nav className="hidden lg:flex items-center space-x-1.5 bg-slate-100/70 dark:bg-white/5 p-1 rounded-full border border-slate-200/60 dark:border-white/10">
+        <nav className="hidden lg:flex items-center space-x-1.5 bg-white dark:bg-white/5 p-1 rounded-full border border-slate-200 dark:border-white/10 shadow-sm">
           {navLinks.map((link) => {
             const isActive = currentView === link.id || (currentView === 'user-dashboard' && link.id === 'dashboard');
             return (
@@ -111,7 +111,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
         <div className="flex items-center space-x-2.5 sm:space-x-3">
           <button 
             onClick={toggleTheme}
-            className="flex w-9 h-9 sm:w-10 sm:h-10 rounded-2xl border border-slate-200 dark:border-white/10 items-center justify-center text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors bg-white/80 dark:bg-white/5 hover:bg-slate-100 dark:hover:bg-white/10 cursor-pointer shadow-sm"
+            className="flex w-9 h-9 sm:w-10 sm:h-10 rounded-2xl border border-slate-200 dark:border-white/10 items-center justify-center text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors bg-white dark:bg-white/5 hover:bg-slate-50 dark:hover:bg-white/10 cursor-pointer shadow-sm"
             title="Toggle color theme"
           >
             {isLight ? <Sun size={17} className="text-[#F67E31]" /> : <Moon size={17} />}
@@ -202,7 +202,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
           >
             {/* Authenticated User Snapshot in Mobile Menu */}
             {isAuthenticated && (
-              <div className="p-3.5 mb-2 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl flex items-center justify-between">
+              <div className="p-3.5 mb-2 bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl flex items-center justify-between shadow-sm">
                 <div className="flex items-center space-x-3">
                   <div className="w-10 h-10 rounded-2xl bg-[#0DA9CF] flex items-center justify-center font-bold text-white shadow">
                     {username.charAt(0).toUpperCase()}
