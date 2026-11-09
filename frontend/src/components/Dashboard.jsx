@@ -518,13 +518,13 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8"
             >
               {/* Testimonial 1 */}
-              <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }} className="bg-[#160B2A]/40 light:bg-white backdrop-blur-md light:backdrop-blur-none border border-purple-500/20 light:border-slate-200 p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2rem] relative light:shadow-md">
+              <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }} className="bg-[#160B2A]/40 light:bg-white backdrop-blur-md light:backdrop-blur-none border border-[#F67E31]/30 light:border-[#F67E31]/30 p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2rem] relative light:shadow-md">
                 <div className="flex gap-1 text-yellow-400 mb-5 sm:mb-6">
                   <Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" />
                 </div>
                 <p className="text-white light:text-slate-700 text-sm sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8 font-light">"WabiSeminar completely changed how I host my design masterclasses. The UI is gorgeous, and my students love that they don't have to download any software."</p>
                 <div className="flex items-center gap-3.5 sm:gap-4">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-indigo-500 flex items-center justify-center font-bold text-white light:text-slate-900 text-lg sm:text-xl shadow-lg shrink-0">S</div>
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#F67E31] flex items-center justify-center font-bold text-white text-lg sm:text-xl shadow-lg shrink-0">K</div>
                   <div>
                     <h4 className="text-white light:text-slate-900 font-bold text-sm sm:text-base">kenenisa beyan</h4>
                     <p className="text-[#94A3B8] light:text-slate-500 text-xs sm:text-sm">Lead Designer, StudioX</p>
@@ -533,13 +533,13 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               </motion.div>
 
               {/* Testimonial 2 */}
-              <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }} className="bg-[#0A241A]/40 light:bg-white backdrop-blur-md light:backdrop-blur-none border border-emerald-500/20 light:border-slate-200 p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2rem] relative md:-translate-y-6 light:shadow-md">
+              <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }} className="bg-[#0A241A]/40 light:bg-white backdrop-blur-md light:backdrop-blur-none border border-[#04B84C]/30 light:border-[#04B84C]/30 p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2rem] relative md:-translate-y-6 light:shadow-md">
                 <div className="flex gap-1 text-yellow-400 mb-5 sm:mb-6">
                   <Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" />
                 </div>
                 <p className="text-white light:text-slate-700 text-sm sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8 font-light">"The waiting room feature is perfect for managing my 1-on-1 coaching sessions. The video quality has been incredibly stable even on lower bandwidths."</p>
                 <div className="flex items-center gap-3.5 sm:gap-4">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-indigo-500 flex items-center justify-center font-bold text-white light:text-slate-900 text-lg sm:text-xl shadow-lg shrink-0">M</div>
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#04B84C] flex items-center justify-center font-bold text-white text-lg sm:text-xl shadow-lg shrink-0">Y</div>
                   <div>
                     <h4 className="text-white light:text-slate-900 font-bold text-sm sm:text-base">yerosan girma</h4>
                     <p className="text-[#94A3B8] light:text-slate-500 text-xs sm:text-sm">Executive Coach</p>
@@ -548,13 +548,13 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               </motion.div>
 
               {/* Testimonial 3 */}
-              <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }} className="bg-[#0A0F24]/80 light:bg-white backdrop-blur-md light:backdrop-blur-none border border-blue-500/20 light:border-slate-200 p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2rem] relative light:shadow-md">
+              <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } }} className="bg-[#0A0F24]/80 light:bg-white backdrop-blur-md light:backdrop-blur-none border border-[#0DA9CF]/30 light:border-[#0DA9CF]/30 p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-[2rem] relative light:shadow-md">
                 <div className="flex gap-1 text-yellow-400 mb-5 sm:mb-6">
                   <Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" />
                 </div>
                 <p className="text-white light:text-slate-700 text-sm sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8 font-light">"We moved our entire remote engineering team over to WabiSeminar for our daily standups. It's fast, free, and secure. What more could you ask for?"</p>
                 <div className="flex items-center gap-3.5 sm:gap-4">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-indigo-500 flex items-center justify-center font-bold text-white light:text-slate-900 text-lg sm:text-xl shadow-lg shrink-0">D</div>
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#0DA9CF] flex items-center justify-center font-bold text-white text-lg sm:text-xl shadow-lg shrink-0">D</div>
                   <div>
                     <h4 className="text-white light:text-slate-900 font-bold text-sm sm:text-base">dagin</h4>
                     <p className="text-[#94A3B8] light:text-slate-500 text-xs sm:text-sm">CTO, TechFlow</p>
@@ -579,8 +579,8 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
             >
               <X size={20} />
             </button>
-            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-indigo-500/20 flex items-center justify-center mb-5 sm:mb-6 border border-indigo-500/30">
-              <Video className="text-indigo-400" size={26} />
+            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-[#0DA9CF]/20 flex items-center justify-center mb-5 sm:mb-6 border border-[#0DA9CF]/30">
+              <Video className="text-[#0DA9CF]" size={26} />
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold text-white light:text-slate-900 mb-3 sm:mb-4">About WabiSeminar</h2>
             <div className="space-y-3 sm:space-y-4 text-[#94A3B8] light:text-slate-500 text-sm sm:text-base lg:text-lg leading-relaxed">
