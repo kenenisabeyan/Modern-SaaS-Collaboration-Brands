@@ -51,7 +51,7 @@ export const buttonTap = {
 
 export const cardHover = {
   y: -5,
-  boxShadow: "0 20px 40px -15px rgba(99,102,241,0.2)",
-  borderColor: "rgba(99,102,241,0.4)",
+  boxShadow: "0 20px 40px -15px rgba(13,169,207,0.25)",
+  borderColor: "rgba(13,169,207,0.45)",
   transition: { duration: 0.3, ease: "easeOut" }
 };
