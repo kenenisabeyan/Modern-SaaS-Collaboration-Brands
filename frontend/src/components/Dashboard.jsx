@@ -137,7 +137,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
 
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#050816] light:bg-[#FAFAFA] relative text-white light:text-slate-900 font-sans overflow-x-hidden">
+    <div className="flex flex-col min-h-screen bg-[#050816] light:bg-white relative text-white light:text-slate-900 font-sans overflow-x-hidden">
       
       {/* Background Animated Blobs */}
       <div className="fixed bg-[#F67E31]/15 blur-[120px] w-[600px] h-[600px] rounded-full top-[-10%] left-[-10%] pointer-events-none"></div>
@@ -248,7 +248,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               <button 
                 onClick={handleCreateRoom}
                 disabled={isCreating}
-                className="absolute -top-3.5 right-2 sm:-top-4 sm:-right-4 h-11 sm:h-12 bg-[#050816] light:bg-slate-50 border border-[#F67E31]/50 rounded-full flex items-center shadow-[0_0_30px_rgba(246,126,49,0.5)] z-20 transition-all duration-300 hover:border-[#F67E31] group cursor-pointer"
+                className="absolute -top-3.5 right-2 sm:-top-4 sm:-right-4 h-11 sm:h-12 bg-[#050816] light:bg-white border border-[#F67E31]/50 rounded-full flex items-center shadow-[0_0_30px_rgba(246,126,49,0.5)] z-20 transition-all duration-300 hover:border-[#F67E31] group cursor-pointer"
                 title="Create a new meeting room"
               >
                 <div className="flex items-center w-11 sm:w-12 group-hover:w-[130px] transition-all duration-500 ease-out h-full overflow-hidden">
