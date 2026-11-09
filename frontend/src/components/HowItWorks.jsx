@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { 
-  Video, UserPlus, Link as LinkIcon, Monitor, PlayCircle, 
-  ChevronRight, Sparkles, HelpCircle, ArrowRight, Zap,
-  MessageSquare, Shield, Layers
+  Video, UserPlus, Link as LinkIcon, Monitor, 
+  ChevronRight, ArrowRight, Zap, MessageSquare, Shield
 } from 'lucide-react';
 
 const fadeIn = {
@@ -16,329 +15,166 @@ const staggerContainer = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2
+      staggerChildren: 0.15
     }
   }
 };
-export default function HowItWorks({ onNavigate }) {
-  const [isScrolled, setIsScrolled] = useState(false);
 
+export default function HowItWorks({ onNavigate }) {
   useEffect(() => {
     window.scrollTo(0, 0);
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const steps = [
     {
       number: "01",
-      icon: <UserPlus size={28} />,
-      title: "Create Account",
-      desc: "Sign up in seconds. No complex configurations or heavy downloads required.",
-      colorClass: "border-[#0DA9CF]/50 text-[#0DA9CF] group-hover:bg-[#0DA9CF]/20 group-hover:shadow-[0_0_40px_rgba(13,169,207,0.5)]",
-      cardHoverClass: "group-hover:border-[#0DA9CF]/30",
-      textGradientClass: "group-hover:to-[#0DA9CF]",
-      lineColor: "bg-[#0DA9CF]"
+      icon: <UserPlus size={26} />,
+      title: "Create Free Account",
+      desc: "Sign up in 5 seconds with zero software installations or bulky dependencies required.",
+      color: "text-[#0DA9CF] bg-[#0DA9CF]/10 border-[#0DA9CF]/20",
+      accent: "bg-[#0DA9CF]"
     },
     {
       number: "02",
-      icon: <Video size={28} />,
-      title: "Start Instant Room",
-      desc: "Click to generate a secure, encrypted meeting room instantly from your dashboard.",
-      colorClass: "border-[#F67E31]/50 text-[#F67E31] group-hover:bg-[#F67E31]/20 group-hover:shadow-[0_0_40px_rgba(246,126,49,0.5)]",
-      cardHoverClass: "group-hover:border-[#F67E31]/30",
-      textGradientClass: "group-hover:to-[#F67E31]",
-      lineColor: "bg-[#F67E31]"
+      icon: <Video size={26} />,
+      title: "Generate Room",
+      desc: "Launch an instant encrypted video room with 1 click directly from your dashboard.",
+      color: "text-[#F67E31] bg-[#F67E31]/10 border-[#F67E31]/20",
+      accent: "bg-[#F67E31]"
     },
     {
       number: "03",
-      icon: <LinkIcon size={28} />,
-      title: "Invite Participants",
-      desc: "Share your unique meeting link. Guests can join directly from their browser.",
-      colorClass: "border-[#0DA9CF]/50 text-[#0DA9CF] group-hover:bg-[#0DA9CF]/20 group-hover:shadow-[0_0_40px_rgba(13,169,207,0.5)]",
-      cardHoverClass: "group-hover:border-[#0DA9CF]/30",
-      textGradientClass: "group-hover:to-[#0DA9CF]",
-      lineColor: "bg-[#0DA9CF]"
+      icon: <LinkIcon size={26} />,
+      title: "Invite Audience",
+      desc: "Copy your unique invite link and share it anywhere. Attendees join directly from browser.",
+      color: "text-[#04B84C] bg-[#04B84C]/10 border-[#04B84C]/20",
+      accent: "bg-[#04B84C]"
     },
     {
       number: "04",
-      icon: <Monitor size={28} />,
-      title: "Collaborate Live",
-      desc: "Chat, share screens, and present in crystal clear 1080p HD video quality.",
-      colorClass: "border-[#04B84C]/50 text-[#04B84C] group-hover:bg-[#04B84C]/20 group-hover:shadow-[0_0_40px_rgba(4,184,76,0.5)]",
-      cardHoverClass: "group-hover:border-[#04B84C]/30",
-      textGradientClass: "group-hover:to-[#04B84C]",
-      lineColor: "bg-[#04B84C]"
+      icon: <Monitor size={26} />,
+      title: "Present and Engage",
+      desc: "Share your screen, chat with students in real time, and record key insights smoothly.",
+      color: "text-[#0DA9CF] bg-[#0DA9CF]/10 border-[#0DA9CF]/20",
+      accent: "bg-[#0DA9CF]"
     }
   ];
 
   return (
-    <div className="min-h-screen bg-[#050816] light:bg-white text-white light:text-slate-900 font-sans overflow-hidden relative">
-      {/* Background Animated Blobs */}
-      <div className="fixed bg-[#0DA9CF]/10 blur-[150px] w-[800px] h-[800px] rounded-full top-[-20%] right-[-10%] pointer-events-none"></div>
-      <div className="fixed bg-[#F67E31]/10 blur-[150px] w-[600px] h-[600px] rounded-full bottom-[-10%] left-[-10%] pointer-events-none"></div>
-
-      {/* Navbar handled globally in App.jsx */}
-
-      <main className="pt-24 sm:pt-32 lg:pt-40 pb-16 sm:pb-20 relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-16">
+    <div className="min-h-screen bg-white text-slate-900 font-sans overflow-hidden relative">
+      <main className="pt-28 sm:pt-36 lg:pt-40 pb-16 sm:pb-24 relative z-10 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
         
         {/* 1. Hero Section */}
-        <section className="text-center mb-20 sm:mb-32">
+        <section className="text-center mb-16 sm:mb-24">
           <motion.div
             initial="hidden"
             animate="visible"
             variants={staggerContainer}
             className="max-w-4xl mx-auto flex flex-col items-center"
           >
-
-            <motion.h1 variants={fadeIn} className="text-3xl sm:text-5xl md:text-7xl font-extrabold mb-4 sm:mb-6 tracking-tight leading-[1.1] text-white light:text-slate-900 break-words">
+            <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#0DA9CF]/10 text-[#0DA9CF] border border-[#0DA9CF]/20 mb-4">
+              Simple 4-Step Process
+            </span>
+            <motion.h1 variants={fadeIn} className="text-4xl sm:text-6xl md:text-7xl font-extrabold mb-4 sm:mb-6 tracking-tight leading-[1.08] text-slate-900">
               How <span className="text-[#0DA9CF]">WabiSeminar</span> Works
             </motion.h1>
-            <motion.p variants={fadeIn} className="text-base sm:text-lg md:text-xl text-[#94A3B8] light:text-slate-600 leading-relaxed max-w-2xl font-light mb-8 sm:mb-10">
-              Get from sign-up to your first masterclass in less than a minute. Our friction-free workflow is designed for immediate collaboration.
+            <motion.p variants={fadeIn} className="text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl font-normal mb-8">
+              From creating your account to conducting full HD interactive masterclasses, everything is designed to be frictionless.
             </motion.p>
           </motion.div>
         </section>
 
-        {/* 2. 4-Step Process Section */}
-        <section className="mb-24 sm:mb-40 relative">
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-            className="relative"
-          >
-            {/* Connecting Line (Desktop) */}
-            <div className="hidden lg:block absolute top-24 left-10 right-10 h-1 bg-white/5 light:bg-slate-100 rounded-full overflow-hidden z-0">
-               <motion.div 
-                 animate={{ x: ["-100%", "400%"] }} 
-                 transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
-                 className="h-full w-1/4 bg-gradient-to-r from-transparent via-[#0DA9CF] to-transparent"
-               />
-            </div>
-
-            {/* Connecting Line (Mobile) */}
-            <div className="lg:hidden absolute top-10 bottom-10 left-8 w-1 bg-white/5 light:bg-slate-100 rounded-full overflow-hidden z-0">
-               <motion.div 
-                 animate={{ y: ["-100%", "400%"] }} 
-                 transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
-                 className="w-full h-1/4 bg-gradient-to-b from-transparent via-[#0DA9CF] to-transparent"
-               />
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 sm:gap-12 lg:gap-6 relative z-10">
-              {steps.map((step, i) => (
-                <motion.div key={i} variants={fadeIn} whileHover={{ scale: 1.05, y: -10 }} className="relative flex flex-col items-start lg:items-center text-left lg:text-center group pl-16 sm:pl-20 lg:pl-0 transition-transform duration-300 cursor-default">
-                  {/* Step Number Badge */}
-                  <div className="absolute left-2 lg:left-1/2 lg:-translate-x-1/2 top-4 lg:-top-6 text-[60px] sm:text-[80px] lg:text-[100px] font-black text-white light:text-slate-900/[0.08] pointer-events-none group-hover:text-white light:text-slate-900/[0.15] transition-colors duration-500 z-0">
-                    {step.number}
-                  </div>
-
-                  {/* Icon Node */}
-                  <div className={`w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-[#0A0F24] light:bg-white border-2 flex items-center justify-center transition-all duration-300 relative z-10 mb-5 sm:mb-6 lg:mt-16 ${step.colorClass} light:shadow-sm`}>
-                    {step.icon}
-                  </div>
-
-                  {/* Animated Arrow (Desktop only, between cards) */}
-                  {i < steps.length - 1 && (
-                    <motion.div 
-                      animate={{ x: [0, 10, 0] }} 
-                      transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-                      className="hidden lg:block absolute top-[5.5rem] right-[-24px] text-white/20 group-hover:text-[#0DA9CF] z-20"
-                    >
-                      <ChevronRight size={32} />
-                    </motion.div>
-                  )}
-
-                  {/* Content Card */}
-                  <div className={`bg-[#0A0F24]/60 light:bg-white backdrop-blur-md border border-white/5 p-5 sm:p-6 rounded-2xl sm:rounded-3xl transition-colors w-full z-10 shadow-lg group-hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)] ${step.cardHoverClass}`}>
-                    <h3 className={`text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-white light:text-slate-900 group-hover:text-[#0DA9CF] transition-all ${step.textGradientClass}`}>{step.title}</h3>
-                    <p className="text-[#94A3B8] light:text-slate-500 text-sm leading-relaxed">{step.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </section>
-
-        {/* 3. Interactive Workflow Visualization */}
-        <section className="mb-24 sm:mb-40">
+        {/* 2. Step by Step Grid */}
+        <section className="mb-20 sm:mb-32">
           <motion.div 
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="text-center mb-10 sm:mb-16"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative"
           >
-            <motion.h2 variants={fadeIn} className="text-2xl sm:text-4xl md:text-5xl font-extrabold mb-4 sm:mb-6 text-white light:text-slate-900">Frictionless Workflow</motion.h2>
-            <motion.p variants={fadeIn} className="text-[#94A3B8] light:text-slate-600 text-base sm:text-lg max-w-2xl mx-auto">Visualize how your data moves securely in real-time, empowering instant collaboration across the globe.</motion.p>
-          </motion.div>
-
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="relative h-auto min-h-[500px] py-10 sm:py-12 md:h-[600px] w-full max-w-5xl mx-auto bg-[#0A0F24]/60 light:bg-white backdrop-blur-xl light:backdrop-blur-none rounded-2xl sm:rounded-[3rem] border border-white/10 light:border-slate-200 shadow-[0_30px_60px_-15px_rgba(13,169,207,0.2)] light:shadow-xl overflow-hidden flex flex-col items-center justify-center"
-          >
-             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
-             
-             <div className="grid grid-cols-1 md:grid-cols-3 w-full h-full p-4 sm:p-8 relative z-10 gap-8">
-                {/* Host Column */}
-                <div className="flex flex-col items-center justify-center space-y-6 relative">
-                   <motion.div animate={{ y: [-5, 5, -5] }} transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }} className="bg-[#160B2A]/90 light:bg-white backdrop-blur-md light:backdrop-blur-none border border-[#0DA9CF]/30 light:border-[#0DA9CF]/20 p-5 rounded-2xl sm:rounded-3xl shadow-[0_0_30px_rgba(13,169,207,0.2)] light:shadow-md w-full max-w-[240px]">
-                      <div className="flex items-center space-x-3 mb-4">
-                        <div className="w-10 h-10 rounded-full bg-[#0DA9CF]/20 flex items-center justify-center text-[#0DA9CF]"><Monitor size={20}/></div>
-                        <span className="font-bold text-white light:text-slate-900">Host Client</span>
-                      </div>
-                      <div className="space-y-2">
-                        <div className="h-2 w-full bg-gray-800 light:bg-slate-200 rounded-full overflow-hidden">
-                           <motion.div animate={{ x: ["-100%", "100%"] }} transition={{ repeat: Infinity, duration: 1.5 }} className="h-full w-1/2 bg-[#0DA9CF]"></motion.div>
-                        </div>
-                        <div className="text-xs text-[#0DA9CF] font-mono">1080p Video Stream</div>
-                      </div>
-                   </motion.div>
+            {steps.map((step, idx) => (
+              <motion.div 
+                key={idx} 
+                variants={fadeIn}
+                whileHover={{ y: -5 }}
+                className="bg-white border border-slate-200 p-8 rounded-3xl shadow-sm hover:shadow-lg transition-all flex flex-col justify-between relative group"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="text-3xl font-black text-slate-200 group-hover:text-slate-400 transition-colors font-mono">
+                      {step.number}
+                    </span>
+                    <div className={`w-12 h-12 rounded-2xl flex items-center justify-center border ${step.color}`}>
+                      {step.icon}
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">{step.title}</h3>
+                  <p className="text-slate-600 text-sm leading-relaxed mb-6">{step.desc}</p>
                 </div>
-
-                {/* Center Core */}
-                <div className="flex flex-col items-center justify-center relative">
-                   {/* Connections */}
-                   <div className="absolute hidden md:block w-full h-0.5 bg-gradient-to-r from-[#0DA9CF]/50 via-[#F67E31]/50 to-[#04B84C]/50 top-1/2 -translate-y-1/2 -z-10"></div>
-                   
-                   <motion.div 
-                     whileHover={{ scale: 1.05 }}
-                     className="relative z-20 w-40 h-40 sm:w-48 sm:h-48 rounded-full bg-[#050816] light:bg-white flex flex-col items-center justify-center shadow-[0_0_60px_rgba(246,126,49,0.4)] light:shadow-xl border border-[#F67E31]/50 light:border-[#F67E31]/20 group"
-                   >
-                      <Layers size={40} className="text-[#F67E31] mb-2 group-hover:scale-110 transition-transform sm:w-12 sm:h-12" />
-                      <span className="font-bold text-white light:text-slate-900 text-base sm:text-lg">WabiCore</span>
-                      <span className="text-xs text-[#F67E31] mt-1 flex items-center gap-1"><Shield size={12}/> E2E Encrypted</span>
-                      
-                      {/* Expanding pulses */}
-                      <motion.div animate={{ scale: [1, 1.3, 1.6], opacity: [0.5, 0] }} transition={{ repeat: Infinity, duration: 2 }} className="absolute inset-0 border border-[#F67E31] rounded-full pointer-events-none"></motion.div>
-                   </motion.div>
-                </div>
-
-                {/* Participants Column */}
-                <div className="flex flex-col items-center justify-center space-y-6 relative">
-                   <motion.div animate={{ y: [5, -5, 5] }} transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }} className="bg-[#160B2A]/90 light:bg-white backdrop-blur-md light:backdrop-blur-none border border-[#04B84C]/30 light:border-[#04B84C]/20 p-5 rounded-2xl sm:rounded-3xl shadow-[0_0_30px_rgba(4,184,76,0.2)] light:shadow-md w-full max-w-[240px]">
-                      <div className="flex items-center space-x-3 mb-4">
-                        <div className="w-10 h-10 rounded-full bg-[#04B84C]/20 flex items-center justify-center text-[#04B84C]"><UserPlus size={20}/></div>
-                        <span className="font-bold text-white light:text-slate-900">Participants</span>
-                      </div>
-                      <div className="flex -space-x-3 mb-3">
-                         {[1,2,3,4].map(i => (
-                           <div key={i} className="w-8 h-8 rounded-full bg-[#0A0F24] light:bg-white border-2 border-[#160B2A] light:border-white flex items-center justify-center text-xs text-white light:text-slate-900">P{i}</div>
-                         ))}
-                         <div className="w-8 h-8 rounded-full bg-[#04B84C]/20 border-2 border-[#160B2A] light:border-white flex items-center justify-center text-xs text-[#04B84C] font-bold">+9</div>
-                      </div>
-                      <div className="h-1.5 w-full bg-gray-800 light:bg-slate-200 rounded-full overflow-hidden">
-                         <motion.div animate={{ x: ["-100%", "100%"] }} transition={{ repeat: Infinity, duration: 2 }} className="h-full w-full bg-gradient-to-r from-transparent via-[#04B84C] to-transparent"></motion.div>
-                      </div>
-                   </motion.div>
-                </div>
-             </div>
+                <div className={`h-1.5 w-12 rounded-full ${step.accent}`}></div>
+              </motion.div>
+            ))}
           </motion.div>
         </section>
 
-        {/* 4. Demo Preview Section */}
-        <section className="mb-24 sm:mb-40">
-          <div className="bg-gradient-to-br from-[#160B2A] light:from-white to-[#0A0F24] light:to-white border border-[#0DA9CF]/20 light:border-slate-200 rounded-2xl sm:rounded-[3rem] p-6 sm:p-10 md:p-16 overflow-hidden relative shadow-[0_30px_60px_-15px_rgba(13,169,207,0.2)] light:shadow-xl">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-              <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-                <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold mb-4 sm:mb-6 text-white light:text-slate-900">See it in action.</h2>
-                <p className="text-[#94A3B8] light:text-slate-600 text-base sm:text-lg mb-6 sm:mb-8 leading-relaxed">
-                  Experience the frictionless workflow firsthand. Our platform is designed to get out of your way so you can focus entirely on delivering an incredible masterclass.
-                </p>
-                <ul className="space-y-3 sm:space-y-4 mb-8 sm:mb-10">
-                  <li className="flex items-center space-x-3 text-sm sm:text-base text-white light:text-slate-700">
-                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#F67E31]/20 light:bg-[#F67E31]/10 flex items-center justify-center flex-shrink-0"><Zap size={16} className="text-[#F67E31]"/></div>
-                    <span className="font-medium">One-click room generation</span>
-                  </li>
-                  <li className="flex items-center space-x-3 text-sm sm:text-base text-white light:text-slate-700">
-                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#0DA9CF]/20 light:bg-[#0DA9CF]/10 flex items-center justify-center flex-shrink-0"><LinkIcon size={16} className="text-[#0DA9CF]"/></div>
-                    <span className="font-medium">Shareable URL links</span>
-                  </li>
-                  <li className="flex items-center space-x-3 text-sm sm:text-base text-white light:text-slate-700">
-                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#04B84C]/20 light:bg-[#04B84C]/10 flex items-center justify-center flex-shrink-0"><Video size={16} className="text-[#04B84C]"/></div>
-                    <span className="font-medium">Instant camera and mic detection</span>
-                  </li>
-                </ul>
-                <motion.button 
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => onNavigate('dashboard')}
-                  className="bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white px-6 sm:px-8 py-3 sm:py-3.5 rounded-full font-bold flex items-center space-x-3 shadow-lg group hover:shadow-[0_0_20px_rgba(13,169,207,0.4)] text-sm sm:text-base cursor-pointer"
-                >
-                  <PlayCircle size={20} className="text-white group-hover:scale-110 transition-transform"/>
-                  <span>Try it yourself</span>
-                </motion.button>
-              </motion.div>
-              <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="relative">
-                {/* Abstract UI representation */}
-                <div className="aspect-square max-w-md mx-auto relative group">
-                  <div className="absolute inset-0 bg-[#0DA9CF]/20 light:bg-[#0DA9CF]/10 rounded-full blur-[80px] group-hover:bg-[#0DA9CF]/30 transition-colors duration-500"></div>
-                  
-                  {/* Center Hub */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 sm:w-32 sm:h-32 bg-[#0A0F24] light:bg-white border border-[#0DA9CF]/50 light:border-[#0DA9CF]/30 rounded-2xl sm:rounded-[2rem] flex flex-col items-center justify-center shadow-[0_0_30px_rgba(13,169,207,0.4)] light:shadow-xl z-20 group-hover:scale-110 transition-transform duration-500">
-                    <Video size={28} className="text-[#0DA9CF] mb-2 sm:w-8 sm:h-8" />
-                    <span className="text-xs font-bold text-white light:text-slate-900">Room Active</span>
-                  </div>
+        {/* 3. Deep Dive Architecture */}
+        <section className="mb-20 sm:mb-32">
+          <div className="bg-slate-50 border border-slate-200 rounded-3xl p-8 sm:p-12 md:p-16">
+            <div className="max-w-3xl mx-auto text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">
+                Cutting-Edge WebRTC Infrastructure
+              </h2>
+              <p className="text-slate-600 text-base leading-relaxed">
+                We combine peer-to-peer WebRTC media streaming with WebSocket signaling to ensure minimal latency and top tier security.
+              </p>
+            </div>
 
-                  {/* Orbiting Elements */}
-                  <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 20, ease: "linear" }} className="absolute inset-4 rounded-full border border-white/5 light:border-slate-200 z-10">
-                    <div className="absolute -top-5 sm:-top-6 left-1/2 -translate-x-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-[#160B2A] light:bg-white border border-[#04B84C]/30 light:border-[#04B84C]/30 rounded-full flex items-center justify-center shadow-lg" style={{ transform: "rotate(-0deg)" }}>
-                       <Monitor size={16} className="text-[#04B84C] sm:w-[18px] sm:h-[18px]"/>
-                    </div>
-                  </motion.div>
-
-                  <motion.div animate={{ rotate: -360 }} transition={{ repeat: Infinity, duration: 25, ease: "linear" }} className="absolute inset-12 sm:inset-16 rounded-full border border-white/10 light:border-slate-200 z-10">
-                     <div className="absolute top-1/2 -left-5 sm:-left-6 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-[#160B2A] light:bg-white border border-[#F67E31]/30 light:border-[#F67E31]/30 rounded-full flex items-center justify-center shadow-lg" style={{ transform: "rotate(0deg)" }}>
-                       <MessageSquare size={16} className="text-[#F67E31] sm:w-[18px] sm:h-[18px]"/>
-                    </div>
-                  </motion.div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm text-center">
+                <div className="w-12 h-12 rounded-2xl bg-[#0DA9CF]/10 text-[#0DA9CF] flex items-center justify-center mx-auto mb-4">
+                  <Zap size={24} />
                 </div>
-              </motion.div>
+                <h4 className="font-bold text-slate-900 mb-2">Direct P2P Routing</h4>
+                <p className="text-slate-600 text-xs sm:text-sm">Video feeds stream directly between peers for maximum clarity.</p>
+              </div>
+
+              <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm text-center">
+                <div className="w-12 h-12 rounded-2xl bg-[#F67E31]/10 text-[#F67E31] flex items-center justify-center mx-auto mb-4">
+                  <MessageSquare size={24} />
+                </div>
+                <h4 className="font-bold text-slate-900 mb-2">Socket.IO Signaling</h4>
+                <p className="text-slate-600 text-xs sm:text-sm">Instant handshake and state synchronization with zero delay.</p>
+              </div>
+
+              <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm text-center">
+                <div className="w-12 h-12 rounded-2xl bg-[#04B84C]/10 text-[#04B84C] flex items-center justify-center mx-auto mb-4">
+                  <Shield size={24} />
+                </div>
+                <h4 className="font-bold text-slate-900 mb-2">DTLS-SRTP Security</h4>
+                <p className="text-slate-600 text-xs sm:text-sm">Every packet is cryptographically encrypted at the transport level.</p>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* 5. FAQ Preview CTA */}
-        <section className="mb-16 sm:mb-20">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="bg-[#0A0F24]/80 light:bg-white backdrop-blur-xl light:backdrop-blur-none border border-white/10 light:border-slate-200 rounded-2xl sm:rounded-[3rem] p-6 sm:p-12 md:p-16 text-center shadow-[0_20px_50px_-10px_rgba(0,0,0,0.5)] light:shadow-xl relative overflow-hidden group"
-          >
-            <div className="absolute inset-0 bg-gradient-to-b from-[#0DA9CF]/5 light:from-[#0DA9CF]/10 to-transparent pointer-events-none group-hover:from-[#0DA9CF]/10 transition-colors duration-500"></div>
-            <HelpCircle size={40} className="text-[#0DA9CF] mx-auto mb-4 sm:mb-6 group-hover:scale-110 transition-transform sm:w-12 sm:h-12" />
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-extrabold mb-4 sm:mb-6 text-white light:text-slate-900">Still have questions?</h2>
-            <p className="text-[#94A3B8] light:text-slate-600 text-base sm:text-lg max-w-xl mx-auto mb-8 sm:mb-10 leading-relaxed">
-              Check out our detailed documentation or reach out to our support team. We're here to help you host the perfect masterclass.
+        {/* 4. Bottom CTA */}
+        <section className="text-center">
+          <div className="bg-white border border-slate-200 rounded-3xl p-10 sm:p-16 shadow-md max-w-4xl mx-auto">
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">
+              Ready to experience effortless seminars?
+            </h2>
+            <p className="text-slate-600 text-base sm:text-lg max-w-xl mx-auto mb-8 font-normal">
+              No credit card required. Launch your free room in seconds.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4 relative z-10">
-              <motion.button 
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => onNavigate('dashboard')} 
-                className="w-full sm:w-auto bg-[#0DA9CF] hover:bg-[#0C8DB0] px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-bold text-white shadow-[0_10px_20px_-10px_rgba(13,169,207,0.6)] flex items-center justify-center space-x-2 transition-colors hover:shadow-[0_15px_25px_-10px_rgba(13,169,207,0.8)] group text-sm sm:text-base cursor-pointer"
-              >
-                <span>Start Now</span>
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </motion.button>
-              <motion.button 
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => onNavigate('faq')}
-                className="w-full sm:w-auto bg-white/5 light:bg-white hover:bg-white/10 light:hover:bg-[#0DA9CF]/10 border border-white/10 light:border-[#0DA9CF]/40 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full font-bold text-white light:text-[#0DA9CF] transition-colors text-sm sm:text-base cursor-pointer shadow-sm"
-              >
-                View Documentation
-              </motion.button>
-            </div>
-          </motion.div>
+            <button 
+              onClick={() => onNavigate('dashboard')}
+              className="bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white px-9 py-4 rounded-full font-bold text-base shadow-lg shadow-[#0DA9CF]/25 hover:shadow-xl hover:shadow-[#0DA9CF]/35 inline-flex items-center space-x-2 transition-all cursor-pointer"
+            >
+              <span>Get Started Free</span>
+              <ChevronRight size={18} />
+            </button>
+          </div>
         </section>
 
       </main>
