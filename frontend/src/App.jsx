@@ -126,7 +126,7 @@ function App() {
       )}
 
       <AnimatePresence mode="wait">
-        <PageTransition currentKey={currentView}>
+        <PageTransition key={currentView} currentKey={currentView}>
           {currentView === 'auth' && <Auth onNavigate={handleAuthSuccess} />}
           
           {currentView === 'dashboard' && isAuthenticated && (
