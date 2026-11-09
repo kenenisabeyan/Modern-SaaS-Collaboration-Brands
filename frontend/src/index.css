@@ -126,7 +126,7 @@
   }
   
   .light {
-    background-color: #FAFAFA;
+    background-color: #FFFFFF !important;
     color: #0F172A;
   }
 }
@@ -138,7 +138,7 @@
   }
   
   .light .premium-card {
-    @apply bg-white backdrop-blur-none border-slate-200 shadow-xl hover:border-slate-300 hover:shadow-2xl hover:bg-slate-50/50;
+    @apply bg-white backdrop-blur-none border-slate-200 shadow-xl hover:border-[#0DA9CF]/40 hover:shadow-2xl hover:bg-white;
   }
   
   .premium-card::before {
@@ -158,7 +158,7 @@
   }
   
   .light .premium-input {
-    @apply bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400 focus:bg-white backdrop-blur-none shadow-sm;
+    @apply bg-white border-slate-200 text-slate-900 placeholder-slate-400 focus:bg-white focus:border-[#0DA9CF] backdrop-blur-none shadow-sm;
   }
   
   .premium-input:-webkit-autofill,
@@ -174,7 +174,7 @@
   .light .premium-input:-webkit-autofill:hover, 
   .light .premium-input:-webkit-autofill:focus, 
   .light .premium-input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px #f8fafc inset !important;
+    -webkit-box-shadow: 0 0 0 30px #ffffff inset !important;
     -webkit-text-fill-color: #0f172a !important;
   }
   
@@ -184,11 +184,11 @@
   }
   
   .premium-btn-primary {
-    @apply bg-white text-[#050816] hover:bg-gray-100 shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)];
+    @apply bg-[#0DA9CF] text-white hover:bg-[#0C8DB0] shadow-[0_0_20px_rgba(13,169,207,0.35)] hover:shadow-[0_0_30px_rgba(13,169,207,0.55)];
   }
   
   .light .premium-btn-primary {
-    @apply bg-slate-900 text-white hover:bg-slate-800 shadow-md hover:shadow-lg;
+    @apply bg-[#0DA9CF] text-white hover:bg-[#0C8DB0] shadow-md hover:shadow-lg shadow-[#0DA9CF]/25;
   }
   
   /* Brand Button 1: Cyan #0DA9CF */
@@ -219,11 +219,11 @@
   }
   
   .premium-btn-secondary {
-    @apply bg-white/[0.03] border border-white/10 text-white hover:bg-white/[0.08] hover:border-white/20 backdrop-blur-sm;
+    @apply bg-white/[0.03] border border-[#0DA9CF]/30 text-[#0DA9CF] hover:bg-[#0DA9CF]/10 backdrop-blur-sm;
   }
   
   .light .premium-btn-secondary {
-    @apply bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-300 shadow-sm;
+    @apply bg-white border border-[#0DA9CF]/30 text-[#0DA9CF] hover:bg-[#0DA9CF]/10 shadow-sm;
   }
 
   /* Custom Scrollbar */
