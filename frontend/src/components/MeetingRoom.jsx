@@ -890,7 +890,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
                 </button>
               )}
               <div className="flex items-center space-x-1.5 sm:space-x-2 bg-[#0A0F24]/80 light:bg-white/90 backdrop-blur-xl px-2.5 sm:px-4 py-1 sm:py-2 rounded-full border border-white/10 light:border-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
-                <Users size={14} className="text-indigo-400 sm:w-4 sm:h-4" />
+                <Users size={14} className="text-[#0DA9CF] sm:w-4 sm:h-4" />
                 <span className="text-xs sm:text-sm font-semibold text-white light:text-slate-900">{allParticipantsCount}</span>
               </div>
             </div>
@@ -910,8 +910,8 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
               {isInitializing && (
                 <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-[#0A0F24]/80 light:bg-white/90 backdrop-blur-sm">
                   <div className="flex flex-col items-center justify-center space-y-4">
-                    <div className="animate-spin rounded-full h-8 w-8 sm:h-10 sm:w-10 border-b-2 border-indigo-400" />
-                    <span className="text-indigo-300 text-xs sm:text-sm font-medium">Initializing camera...</span>
+                    <div className="animate-spin rounded-full h-8 w-8 sm:h-10 sm:w-10 border-b-2 border-[#0DA9CF]" />
+                    <span className="text-[#0DA9CF] text-xs sm:text-sm font-medium">Initializing camera...</span>
                   </div>
                 </div>
               )}
@@ -922,7 +922,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
                     <VideoOff size={24} className="text-rose-400 sm:w-8 sm:h-8" />
                   </div>
                   <span className="text-rose-300 text-xs sm:text-sm text-center font-medium max-w-[200px]">{mediaError}</span>
-                  <button type="button" onClick={handleRetryCamera} className="px-4 py-2 sm:px-5 sm:py-2.5 bg-indigo-50 dark:bg-indigo-500/20 hover:bg-indigo-500/30 text-indigo-600 dark:text-indigo-300 border border-indigo-500/50 rounded-full text-xs sm:text-sm font-semibold transition-all">
+                  <button type="button" onClick={handleRetryCamera} className="px-4 py-2 sm:px-5 sm:py-2.5 bg-[#0DA9CF]/10 hover:bg-[#0DA9CF]/20 text-[#0DA9CF] border border-[#0DA9CF]/30 rounded-full text-xs sm:text-sm font-semibold transition-all">
                     Retry
                   </button>
                 </div>
@@ -1045,13 +1045,13 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
             {isHost && (
               <div className="hidden sm:flex items-center space-x-3 sm:space-x-4 pr-3 sm:pr-4 border-r border-white/10 light:border-slate-200">
                 <div>
-                  <p className="text-[10px] text-indigo-400 font-semibold uppercase tracking-wider mb-0.5">Meeting Code</p>
+                  <p className="text-[10px] text-[#0DA9CF] font-semibold uppercase tracking-wider mb-0.5">Meeting Code</p>
                   <p className="text-xs font-mono font-bold text-white light:text-slate-900">{roomId}</p>
                 </div>
                 <button 
                   type="button" 
                   onClick={handleCopyLink} 
-                  className="px-3 sm:px-4 py-2 sm:py-2.5 bg-indigo-500/20 hover:bg-indigo-500/30 border border-indigo-500/30 rounded-full text-indigo-300 text-xs sm:text-sm font-semibold transition-all hover:scale-105 flex items-center space-x-2"
+                  className="px-3 sm:px-4 py-2 sm:py-2.5 bg-[#0DA9CF]/20 hover:bg-[#0DA9CF]/30 border border-[#0DA9CF]/30 rounded-full text-[#0DA9CF] text-xs sm:text-sm font-semibold transition-all hover:scale-105 flex items-center space-x-2"
                 >
                   {copied ? (
                     <>
@@ -1176,7 +1176,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
         </div>
 
         {/* Chat Info Banner */}
-        <div className="bg-indigo-500/10 p-3 sm:p-4 text-xs sm:text-[13px] text-indigo-200 border-b border-indigo-500/20 leading-relaxed font-medium">
+        <div className="bg-[#0DA9CF]/10 p-3 sm:p-4 text-xs sm:text-[13px] text-[#0DA9CF] border-b border-[#0DA9CF]/20 leading-relaxed font-medium">
           Messages can only be seen by people in the call and are deleted when the call ends.
         </div>
 
@@ -1184,7 +1184,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
         <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 sm:space-y-6 custom-scrollbar">
           {messages.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-center space-y-4 opacity-60">
-              <MessageSquare size={40} className="text-indigo-400 sm:w-12 sm:h-12" />
+              <MessageSquare size={40} className="text-[#0DA9CF] sm:w-12 sm:h-12" />
               <p className="text-slate-300 light:text-slate-600 text-sm font-medium">No messages yet.<br/>Start the conversation!</p>
             </div>
           ) : (
