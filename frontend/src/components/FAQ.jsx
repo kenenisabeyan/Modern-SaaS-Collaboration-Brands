@@ -23,7 +23,7 @@ const staggerContainer = {
 const faqData = [
   {
     category: "Meetings",
-    icon: <Video size={20} className="text-[#0DA9CF]" />,
+    icon: <Video size={20} className="text-[#1E2761]" />,
     questions: [
       { q: "How do I create an instant meeting room?", a: "Simply log into your dashboard and click 'Create Instant Room'. A unique, secure link will be generated instantly that you can share with your participants." },
       { q: "Is there a limit on how many people can join?", a: "Our free plan supports up to 10 participants. For larger masterclasses, our Pro and Enterprise plans support 100 to 1,000+ simultaneous participants." },
@@ -32,7 +32,7 @@ const faqData = [
   },
   {
     category: "Security",
-    icon: <Shield size={20} className="text-[#04B84C]" />,
+    icon: <Shield size={20} className="text-[#FF5A36]" />,
     questions: [
       { q: "Is my meeting data encrypted?", a: "Yes, all audio, video, and text chat streams are protected by industry-standard AES-256 end-to-end encryption." },
       { q: "How can I prevent uninvited guests?", a: "Hosts have access to a robust waiting room feature. You can screen participants before admitting them or lock the room once everyone has arrived." },
@@ -41,7 +41,7 @@ const faqData = [
   },
   {
     category: "Pricing",
-    icon: <DollarSign size={20} className="text-[#F67E31]" />,
+    icon: <DollarSign size={20} className="text-[#FF5A36]" />,
     questions: [
       { q: "Is the platform really free?", a: "Yes! Our core platform is 100% free forever for up to 10 participants. You only pay if you need advanced features or larger room capacities." },
       { q: "Can I cancel my paid subscription at any time?", a: "Absolutely. We don't believe in lock-in contracts. You can downgrade or cancel your subscription directly from your billing dashboard." },
@@ -50,7 +50,7 @@ const faqData = [
   },
   {
     category: "Collaboration",
-    icon: <Users size={20} className="text-[#0DA9CF]" />,
+    icon: <Users size={20} className="text-[#1E2761]" />,
     questions: [
       { q: "Can I share my screen?", a: "Yes, you can share your entire desktop, specific application windows, or single browser tabs with zero latency." },
       { q: "Is there a whiteboard feature?", a: "We are actively developing a collaborative whiteboard feature that will be rolled out to all users in the next major update." },
@@ -59,7 +59,7 @@ const faqData = [
   },
   {
     category: "Technical Support",
-    icon: <Wrench size={20} className="text-[#F67E31]" />,
+    icon: <Wrench size={20} className="text-[#FF5A36]" />,
     questions: [
       { q: "What browsers are supported?", a: "WabiSeminar works flawlessly on all modern browsers including Chrome, Edge, Safari, and Firefox. No plugins required." },
       { q: "Why is my camera not working?", a: "Ensure that your browser has permission to access your camera and microphone. You can reset these permissions by clicking the lock icon next to the URL bar." },
@@ -70,16 +70,16 @@ const faqData = [
 
 const AccordionItem = ({ q, a, isOpen, onClick }) => {
   return (
-    <div className="border border-slate-200 rounded-2xl sm:rounded-3xl mb-3 sm:mb-4 bg-white shadow-sm overflow-hidden transition-all duration-300 hover:border-[#0DA9CF]/40">
+    <div className="border border-[#E4E8EE] rounded-2xl sm:rounded-3xl mb-3 sm:mb-4 bg-white shadow-sm overflow-hidden transition-all duration-300 hover:border-[#1E2761]/40">
       <button
         onClick={onClick}
         className="w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none group cursor-pointer"
       >
-        <h4 className="text-base sm:text-lg font-bold text-slate-900 pr-4 group-hover:text-[#0DA9CF] transition-colors leading-snug">{q}</h4>
+        <h4 className="text-base sm:text-lg font-bold text-[#1E2761] pr-4 group-hover:text-[#FF5A36] transition-colors leading-snug">{q}</h4>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
-          className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${isOpen ? 'bg-[#0DA9CF]/15 text-[#0DA9CF] border border-[#0DA9CF]/30' : 'bg-slate-100 text-slate-500 border border-slate-200'}`}
+          className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${isOpen ? 'bg-[#FF5A36]/15 text-[#FF5A36] border border-[#FF5A36]/30' : 'bg-[#F5F7FA] text-slate-500 border border-[#E4E8EE]'}`}
         >
           <ChevronDown size={18} />
         </motion.div>
@@ -92,7 +92,7 @@ const AccordionItem = ({ q, a, isOpen, onClick }) => {
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
-            <div className="p-5 sm:p-6 pt-0 text-sm sm:text-base text-slate-600 leading-relaxed border-t border-slate-100 mt-1">
+            <div className="p-5 sm:p-6 pt-0 text-sm sm:text-base text-slate-600 leading-relaxed border-t border-[#E4E8EE] mt-1">
               {a}
             </div>
           </motion.div>
@@ -127,7 +127,7 @@ export default function FAQ({ onNavigate }) {
   }).filter(category => category.questions.length > 0);
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 font-sans overflow-hidden relative">
+    <div className="min-h-screen bg-white text-[#1E2761] font-sans overflow-hidden relative">
       <main className="pt-20 sm:pt-24 lg:pt-28 pb-16 sm:pb-24 relative z-10 max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* 1. Hero Section */}
@@ -138,11 +138,11 @@ export default function FAQ({ onNavigate }) {
             variants={staggerContainer}
             className="flex flex-col items-center"
           >
-            <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#0DA9CF]/10 text-[#0DA9CF] border border-[#0DA9CF]/20 mb-4">
+            <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#1E2761]/10 text-[#1E2761] border border-[#1E2761]/20 mb-4">
               Help Center & FAQ
             </span>
-            <motion.h1 variants={fadeIn} className="text-4xl sm:text-6xl md:text-7xl font-extrabold mb-4 sm:mb-6 tracking-tight leading-[1.08] text-slate-900">
-              How can we <span className="text-[#0DA9CF]">help you?</span>
+            <motion.h1 variants={fadeIn} className="text-4xl sm:text-6xl md:text-7xl font-extrabold mb-4 sm:mb-6 tracking-tight leading-[1.08] text-[#1E2761]">
+              How can we <span className="text-[#FF5A36]">help you?</span>
             </motion.h1>
             <motion.p variants={fadeIn} className="text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl font-normal mb-8">
               Browse our most frequently asked questions or search for a specific topic to get answers immediately.
@@ -153,7 +153,7 @@ export default function FAQ({ onNavigate }) {
         {/* 2. Search Bar */}
         <section className="mb-14 sm:mb-20">
           <div className="relative max-w-2xl mx-auto">
-             <div className="flex items-center bg-slate-50 border border-slate-200 rounded-full p-2 shadow-sm focus-within:border-[#0DA9CF] focus-within:bg-white transition-all">
+             <div className="flex items-center bg-[#F5F7FA] border border-[#E4E8EE] rounded-full p-2 shadow-sm focus-within:border-[#1E2761] focus-within:bg-white transition-all">
                 <div className="pl-4 pr-2 text-slate-400">
                    <Search size={20} />
                 </div>
@@ -162,7 +162,7 @@ export default function FAQ({ onNavigate }) {
                    value={searchQuery}
                    onChange={(e) => setSearchQuery(e.target.value)}
                    placeholder="Search questions (e.g. encryption, limits, pricing)..." 
-                   className="w-full bg-transparent border-none text-slate-900 text-sm sm:text-base focus:outline-none placeholder-slate-400 py-1.5"
+                   className="w-full bg-transparent border-none text-[#1E2761] text-sm sm:text-base focus:outline-none placeholder-slate-400 py-1.5"
                 />
                 {searchQuery && (
                   <button 
@@ -182,10 +182,10 @@ export default function FAQ({ onNavigate }) {
             filteredData.map((category, catIndex) => (
               <div key={catIndex}>
                 <div className="flex items-center space-x-3 mb-6">
-                  <div className="w-10 h-10 rounded-2xl bg-slate-100 border border-slate-200 flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-2xl bg-[#F5F7FA] border border-[#E4E8EE] flex items-center justify-center">
                     {category.icon}
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900">{category.category}</h3>
+                  <h3 className="text-xl sm:text-2xl font-extrabold text-[#1E2761]">{category.category}</h3>
                 </div>
 
                 <div className="space-y-3">
@@ -202,11 +202,11 @@ export default function FAQ({ onNavigate }) {
               </div>
             ))
           ) : (
-            <div className="text-center py-16 bg-slate-50 border border-slate-200 rounded-3xl">
+            <div className="text-center py-16 bg-[#F5F7FA] border border-[#E4E8EE] rounded-3xl">
               <p className="text-slate-600 text-lg mb-4">No results found for "{searchQuery}"</p>
               <button 
                 onClick={() => setSearchQuery("")}
-                className="text-sm font-bold text-[#0DA9CF] hover:underline"
+                className="text-sm font-bold text-[#FF5A36] hover:underline"
               >
                 Clear search and view all questions
               </button>
@@ -216,14 +216,14 @@ export default function FAQ({ onNavigate }) {
 
         {/* 4. Support Contact CTA */}
         <section className="text-center">
-          <div className="bg-white border border-slate-200 rounded-3xl p-10 sm:p-14 shadow-md max-w-3xl mx-auto">
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-2">Still have questions?</h3>
+          <div className="bg-white border border-[#E4E8EE] rounded-3xl p-10 sm:p-14 shadow-md max-w-3xl mx-auto">
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-[#1E2761] mb-2">Still have questions?</h3>
             <p className="text-slate-600 text-sm sm:text-base max-w-md mx-auto mb-6">
               Can't find the answer you're looking for? Our friendly engineering team is here to help.
             </p>
             <button 
               onClick={() => onNavigate('dashboard')}
-              className="bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white px-8 py-3.5 rounded-full font-bold text-sm shadow-md shadow-[#0DA9CF]/25 inline-flex items-center space-x-2 transition-all cursor-pointer"
+              className="bg-[#FF5A36] hover:bg-[#E04826] text-white px-8 py-3.5 rounded-full font-bold text-sm shadow-md shadow-[#FF5A36]/25 inline-flex items-center space-x-2 transition-all cursor-pointer"
             >
               <span>Back to Home</span>
               <ArrowRight size={16} />

@@ -224,7 +224,7 @@ export default function Pricing({ onNavigate }) {
                       {plan.features.map((feature, i) => (
                          <div key={i} className={`flex items-start space-x-3 text-sm ${feature.included ? 'text-slate-800' : 'text-slate-400'}`}>
                             {feature.included ? (
-                               <Check size={18} className={`shrink-0 mt-0.5 ${plan.name === 'Pro' ? 'text-[#F67E31]' : plan.name === 'Enterprise' ? 'text-[#04B84C]' : 'text-[#0DA9CF]'}`} />
+                               <Check size={18} className={`shrink-0 mt-0.5 ${plan.name === 'Pro' ? 'text-[#FF5A36]' : 'text-[#1E2761]'}`} />
                             ) : (
                                <X size={18} className="shrink-0 mt-0.5 text-slate-300" />
                             )}
@@ -239,8 +239,8 @@ export default function Pricing({ onNavigate }) {
 
         {/* 3. Bottom CTA */}
         <section className="text-center">
-          <div className="bg-white border border-slate-200 rounded-3xl p-10 sm:p-16 shadow-md max-w-4xl mx-auto">
-            <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">
+          <div className="bg-white border border-[#E4E8EE] rounded-3xl p-10 sm:p-16 shadow-md max-w-4xl mx-auto">
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1E2761] mb-4 tracking-tight">
               Need custom volume or on-premise deployment?
             </h2>
             <p className="text-slate-600 text-base sm:text-lg max-w-xl mx-auto mb-8 font-normal">
@@ -248,7 +248,7 @@ export default function Pricing({ onNavigate }) {
             </p>
             <button 
               onClick={() => onNavigate('faq')}
-              className="bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white px-9 py-4 rounded-full font-bold text-base shadow-lg shadow-[#0DA9CF]/25 hover:shadow-xl inline-flex items-center space-x-2 transition-all cursor-pointer"
+              className="bg-[#1E2761] hover:bg-[#151A44] text-white px-9 py-4 rounded-full font-bold text-base shadow-lg shadow-[#1E2761]/25 hover:shadow-xl inline-flex items-center space-x-2 transition-all cursor-pointer"
             >
               <span>Talk to Solutions Team</span>
               <ChevronRight size={18} />
