@@ -334,25 +334,25 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
       {/* Delete Confirmation Modal */}
       {deleteModalRoomId && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200">
-          <div className="bg-white dark:bg-[#0A0F24] border border-slate-200 dark:border-white/10 rounded-3xl max-w-sm w-full p-6 shadow-2xl relative">
+          <div className="bg-white border border-[#E4E8EE] rounded-3xl max-w-sm w-full p-6 shadow-2xl relative">
             <button 
               onClick={() => !isDeleting && setDeleteModalRoomId(null)}
-              className="absolute top-4 right-4 text-slate-400 hover:text-slate-700 dark:hover:text-white p-1.5 rounded-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 transition-colors cursor-pointer"
+              className="absolute top-4 right-4 text-slate-400 hover:text-[#1E2761] p-1.5 rounded-full bg-slate-50 hover:bg-slate-100 border border-[#E4E8EE] transition-colors cursor-pointer"
             >
               <X size={16} />
             </button>
-            <div className="w-12 h-12 rounded-2xl bg-rose-50 dark:bg-rose-500/10 text-rose-600 dark:text-rose-400 flex items-center justify-center mb-4 border border-rose-200 dark:border-rose-500/20">
+            <div className="w-12 h-12 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center mb-4 border border-rose-200">
               <Trash2 size={22} />
             </div>
-            <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1.5">Delete Meeting?</h3>
-            <p className="text-slate-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed mb-6">
-              Are you sure you want to delete room <strong className="font-mono text-[#0DA9CF] font-bold">{deleteModalRoomId}</strong>? Participants will no longer be able to join.
+            <h3 className="text-lg font-bold text-[#1E2761] mb-1.5">Delete Meeting?</h3>
+            <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6">
+              Are you sure you want to delete room <strong className="font-mono text-[#FF5A36] font-bold">{deleteModalRoomId}</strong>? Participants will no longer be able to join.
             </p>
             <div className="flex gap-2.5">
               <button 
                 onClick={() => setDeleteModalRoomId(null)}
                 disabled={isDeleting}
-                className="flex-1 py-2.5 rounded-xl font-semibold bg-white dark:bg-white/5 hover:bg-[#0DA9CF]/10 hover:text-[#0DA9CF] hover:border-[#0DA9CF]/30 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 transition-colors text-xs sm:text-sm cursor-pointer shadow-sm"
+                className="flex-1 py-2.5 rounded-xl font-semibold bg-white hover:bg-slate-50 text-slate-700 border border-[#E4E8EE] transition-colors text-xs sm:text-sm cursor-pointer shadow-sm"
               >
                 Cancel
               </button>

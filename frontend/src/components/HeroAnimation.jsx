@@ -12,7 +12,7 @@ export default function HeroAnimation({ className = "w-full max-w-[650px] aspect
   if (!isLoaded) {
     return (
       <div className={`${className} flex items-center justify-center`}>
-        <div className="w-10 h-10 rounded-full border-3 border-[#0DA9CF]/20 border-t-[#0DA9CF] animate-spin"></div>
+        <div className="w-10 h-10 rounded-full border-3 border-[#FF5A36]/20 border-t-[#FF5A36] animate-spin"></div>
       </div>
     );
   }

@@ -149,10 +149,13 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
             - 30% Structural Weight: Deep Midnight Blue (#1E2761)
             - 10% Action Weight: Electric Coral (#FF5A36)
            ======================================================== */}
-        <section className="pt-4 sm:pt-8 md:pt-10 pb-12 sm:pb-16 px-4 sm:px-8 lg:px-12 xl:px-16 bg-white relative">
+        <section className="pt-4 sm:pt-6 md:pt-8 pb-10 sm:pb-14 px-4 sm:px-8 lg:px-12 xl:px-16 bg-white relative overflow-hidden">
+          {/* Subtle atmospheric radial glow behind the hero (exact match to Kenenisa-OS) */}
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[380px] bg-gradient-to-tr from-[#FF5A36]/8 via-sky-400/8 to-[#1E2761]/5 blur-3xl pointer-events-none -z-10" />
+
           <div className="max-w-[1440px] w-full mx-auto">
             
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
               
               {/* Left Column: Heading, Subtitle, 2 Essential Buttons & Trust Badges */}
               <motion.div 
@@ -167,10 +170,10 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                   <span>Instant Collaboration</span>
                 </div>
 
-                {/* Main Headline (iceaddis two-tone: Coral + Midnight Blue) */}
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[62px] xl:text-[70px] font-extrabold tracking-tight leading-[1.08] text-[#1E2761] mb-4 sm:mb-5 select-none">
-                  <span className="text-[#FF5A36] block">Host Engaging</span>
-                  <span className="text-[#1E2761] block">Masterclasses</span>
+                {/* Main Headline (Kenenisa-OS / iceaddis styling: Deep Midnight + Coral Gradient) */}
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[62px] xl:text-[68px] font-extrabold tracking-tight leading-[1.08] text-[#1E2761] mb-4 sm:mb-5 select-none">
+                  <span className="text-[#1E2761] block">Host Engaging</span>
+                  <span className="bg-gradient-to-r from-[#0284C7] via-[#FF5A36] to-[#FF5A36] bg-clip-text text-transparent block">Masterclasses</span>
                 </h1>
 
                 {/* Subtitle Description */}
@@ -254,7 +257,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 </div>
 
                 {/* Feature check marks */}
-                <div className="flex flex-wrap items-center gap-4 sm:gap-6 pt-6 sm:pt-8 text-xs sm:text-sm text-slate-600 font-semibold select-none">
+                <div className="flex flex-wrap items-center gap-4 sm:gap-6 pt-5 sm:pt-7 text-xs sm:text-sm text-slate-600 font-semibold select-none">
                   <div className="flex items-center space-x-1.5">
                     <CheckCircle size={16} className="text-[#FF5A36]" />
                     <span>Zero Downloads</span>
@@ -272,7 +275,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               </motion.div>
 
 
-              {/* Right Column: Grand 3D Turbine Animation (Centerpiece like iceaddis Image 1) */}
+              {/* Right Column: Sleek 3D Turbine Animation (Optimized Size to avoid excessive spacing) */}
               <motion.div 
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -282,7 +285,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 {/* Soft diffused radial ambient glow behind 3D turbine */}
                 <div className="absolute inset-4 rounded-full bg-gradient-to-tr from-[#1E2761]/10 via-[#FF5A36]/10 to-transparent blur-3xl pointer-events-none -z-10" />
 
-                <div className="w-full max-w-[460px] sm:max-w-[520px] lg:max-w-[580px] aspect-square flex items-center justify-center">
+                <div className="w-full max-w-[340px] sm:max-w-[390px] lg:max-w-[440px] aspect-square flex items-center justify-center">
                   <HeroAnimation className="w-full h-full" />
                 </div>
               </motion.div>
@@ -291,16 +294,17 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
 
 
             {/* ========================================================
-                3 METRIC / STAT CARDS (EXACT MATCH TO KENENISA-OS IMAGE 5)
+                3 METRIC / STAT CARDS (EXACT MATCH TO KENENISA-OS IMAGE)
                ======================================================== */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-12 sm:pt-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-10 sm:pt-14">
               
-              {/* Card 1: Midnight Glow (36+ Happy Users) */}
-              <div className="bg-gradient-to-b from-[#1E2761]/10 via-white to-white border border-[#E4E8EE] rounded-3xl p-6 sm:p-8 text-center hover:border-[#1E2761] shadow-sm hover:shadow-xl transition-all group">
+              {/* Card 1: Top Cyan Gradient Glow (36+ Happy Users) */}
+              <div className="relative overflow-hidden bg-gradient-to-b from-sky-400/15 via-white to-white border border-sky-100 rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center hover:border-sky-300 shadow-md hover:shadow-xl transition-all group">
+                <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-sky-400 to-cyan-500"></div>
                 <div className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#1E2761] mb-2 transition-transform duration-300 group-hover:scale-105">
                   {platformStats.users}+
                 </div>
-                <div className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-[#1E2761] mb-1">
+                <div className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-800 mb-1">
                   HAPPY USERS
                 </div>
                 <div className="text-xs text-slate-500 font-medium">
@@ -308,12 +312,13 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 </div>
               </div>
 
-              {/* Card 2: Electric Coral Glow (5+ Meetings Hosted) */}
-              <div className="bg-gradient-to-b from-[#FF5A36]/12 via-white to-white border border-[#E4E8EE] rounded-3xl p-6 sm:p-8 text-center hover:border-[#FF5A36] shadow-sm hover:shadow-xl transition-all group">
+              {/* Card 2: Top Electric Coral Glow (5+ Meetings Hosted) */}
+              <div className="relative overflow-hidden bg-gradient-to-b from-[#FF5A36]/15 via-white to-white border border-orange-100 rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center hover:border-[#FF5A36] shadow-md hover:shadow-xl transition-all group">
+                <div className="absolute top-0 inset-x-0 h-1.5 bg-[#FF5A36]"></div>
                 <div className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#FF5A36] mb-2 transition-transform duration-300 group-hover:scale-105">
                   {platformStats.meetings}+
                 </div>
-                <div className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-[#1E2761] mb-1">
+                <div className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-800 mb-1">
                   MEETINGS HOSTED
                 </div>
                 <div className="text-xs text-slate-500 font-medium">
@@ -321,12 +326,13 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 </div>
               </div>
 
-              {/* Card 3: Midnight Glow (225+ Minutes Connected) */}
-              <div className="bg-gradient-to-b from-[#1E2761]/10 via-white to-white border border-[#E4E8EE] rounded-3xl p-6 sm:p-8 text-center hover:border-[#1E2761] shadow-sm hover:shadow-xl transition-all group">
+              {/* Card 3: Top Cyan Gradient Glow (225+ Minutes Connected) */}
+              <div className="relative overflow-hidden bg-gradient-to-b from-sky-400/15 via-white to-white border border-sky-100 rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center hover:border-sky-300 shadow-md hover:shadow-xl transition-all group">
+                <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-sky-400 to-cyan-500"></div>
                 <div className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#1E2761] mb-2 transition-transform duration-300 group-hover:scale-105">
                   {platformStats.minutes}+
                 </div>
-                <div className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-[#1E2761] mb-1">
+                <div className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-800 mb-1">
                   MINUTES CONNECTED
                 </div>
                 <div className="text-xs text-slate-500 font-medium">
@@ -335,6 +341,9 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               </div>
 
             </div>
+
+          </div>
+        </section>
 
           </div>
         </section>
