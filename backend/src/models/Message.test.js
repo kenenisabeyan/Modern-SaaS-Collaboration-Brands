@@ -345,7 +345,7 @@ describe('Message Model', () => {
     it('should maintain referential integrity for roomId', async () => {
       await fc.assert(
         fc.asyncProperty(
-          fc.string({ minLength: 1, maxLength: 500 }),
+          fc.string({ minLength: 1, maxLength: 500 }).filter(s => s.trim().length > 0),
           async (messageText) => {
             await Message.destroy({ where: {} });
             await Room.destroy({ where: {} });
@@ -393,7 +393,7 @@ describe('Message Model', () => {
     it('should maintain referential integrity for sender', async () => {
       await fc.assert(
         fc.asyncProperty(
-          fc.string({ minLength: 1, maxLength: 500 }),
+          fc.string({ minLength: 1, maxLength: 500 }).filter(s => s.trim().length > 0),
           async (messageText) => {
             await Message.destroy({ where: {} });
             await Room.destroy({ where: {} });

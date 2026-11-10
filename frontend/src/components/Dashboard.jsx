@@ -345,9 +345,6 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
           </div>
         </section>
 
-          </div>
-        </section>
-
 
         {/* ========================================================
             FEATURES SECTION
