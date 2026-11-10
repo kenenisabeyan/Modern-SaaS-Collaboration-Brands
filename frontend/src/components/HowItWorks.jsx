@@ -62,7 +62,7 @@ export default function HowItWorks({ onNavigate }) {
 
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans overflow-hidden relative">
-      <main className="pt-28 sm:pt-36 lg:pt-40 pb-16 sm:pb-24 relative z-10 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
+      <main className="pt-20 sm:pt-24 lg:pt-28 pb-16 sm:pb-24 relative z-10 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
         
         {/* 1. Hero Section */}
         <section className="text-center mb-16 sm:mb-24">
