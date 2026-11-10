@@ -51,3 +51,4 @@ const WorkspaceTheme = sequelize.define(
 );
 
 export default WorkspaceTheme;
+
