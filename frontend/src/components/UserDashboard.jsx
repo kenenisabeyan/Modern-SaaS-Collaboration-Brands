@@ -133,7 +133,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
   };
 
   return (
-    <main className="flex-1 pt-24 sm:pt-28 lg:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 w-full max-w-6xl mx-auto text-slate-900 dark:text-white">
+    <main className="flex-1 pt-20 sm:pt-24 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 w-full max-w-6xl mx-auto text-slate-900">
       
       {/* Friendly Welcome Header */}
       <div className="mb-8 sm:mb-10">
@@ -141,24 +141,24 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
           <Sparkles size={13} className="text-[#0DA9CF]" />
           <span>Real-time Video & Collaboration</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-2">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-2">
           Welcome back, <span className="text-[#0DA9CF]">{username}</span> 👋
         </h1>
-        <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base max-w-2xl">
+        <p className="text-slate-600 text-sm sm:text-base max-w-2xl">
           Start an instant collaborative meeting, join with an invite code, or manage your recent rooms.
         </p>
 
         {/* Quick Indicators Bar */}
         <div className="flex flex-wrap items-center gap-3 sm:gap-4 mt-4 pt-1">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-xs font-medium border border-slate-200 dark:border-slate-700 shadow-sm">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-slate-700 text-xs font-medium border border-slate-200 shadow-sm">
             <Zap size={13} className="text-[#F67E31]" />
             <span>Sub-50ms Latency</span>
           </div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-xs font-medium border border-slate-200 dark:border-slate-700 shadow-sm">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-slate-700 text-xs font-medium border border-slate-200 shadow-sm">
             <ShieldCheck size={13} className="text-[#04B84C]" />
             <span>End-to-End Encrypted</span>
           </div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 text-xs font-medium border border-slate-200 dark:border-slate-700 shadow-sm">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-slate-700 text-xs font-medium border border-slate-200 shadow-sm">
             <Users size={13} className="text-[#0DA9CF]" />
             <span>{myRooms.length} {myRooms.length === 1 ? 'Meeting' : 'Meetings'} Created</span>
           </div>
@@ -172,24 +172,24 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
         <motion.div 
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white dark:bg-[#0A0F24]/80 border border-slate-200 dark:border-white/10 hover:border-[#0DA9CF]/40 rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-md dark:shadow-none transition-all flex flex-col justify-between relative overflow-hidden group"
+          className="bg-white border border-slate-200 hover:border-[#0DA9CF]/40 rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all flex flex-col justify-between relative overflow-hidden group"
         >
           <div className="absolute top-0 right-0 w-32 h-32 bg-[#0DA9CF]/10 rounded-full blur-2xl pointer-events-none transition-opacity group-hover:opacity-100 opacity-60"></div>
           <div>
             <div className="w-12 h-12 sm:w-14 sm:h-14 bg-[#0DA9CF]/10 text-[#0DA9CF] rounded-2xl flex items-center justify-center mb-5 border border-[#0DA9CF]/20 shadow-sm">
               <Video size={26} />
             </div>
-            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-2">Host a Meeting</h2>
-            <p className="text-slate-600 dark:text-slate-400 text-sm mb-6 leading-relaxed">
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-2">Host a Meeting</h2>
+            <p className="text-slate-600 text-sm mb-6 leading-relaxed">
               Create an instant seminar room with live video, collaborative drawing canvas, and real-time chat.
             </p>
           </div>
           <button 
             onClick={handleCreateRoom}
             disabled={isCreating}
-            className="w-full py-3.5 sm:py-4 px-6 rounded-2xl font-semibold bg-[#0DA9CF] hover:bg-[#0C8DB0] active:scale-[0.99] text-white transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#0DA9CF]/25 disabled:opacity-70 disabled:cursor-not-allowed text-sm sm:text-base cursor-pointer"
+            className="w-full py-3.5 sm:py-4 px-6 rounded-xl font-bold bg-[#0DA9CF] hover:bg-[#0C8DB0] active:scale-[0.99] text-white transition-all flex items-center justify-center gap-2 shadow-md shadow-[#0DA9CF]/20 disabled:opacity-70 disabled:cursor-not-allowed text-xs sm:text-sm uppercase tracking-wider cursor-pointer"
           >
-            {isCreating ? <Loader2 className="animate-spin text-white" size={19} /> : <Plus size={19} className="text-white" />}
+            {isCreating ? <Loader2 className="animate-spin text-white" size={17} /> : <Plus size={17} className="text-white" />}
             <span className="text-white">{isCreating ? 'Creating Room...' : 'Start Instant Meeting'}</span>
           </button>
         </motion.div>
@@ -199,15 +199,15 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.08 }}
-          className="bg-white dark:bg-[#0A0F24]/80 border border-slate-200 dark:border-white/10 hover:border-[#F67E31]/40 rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-md dark:shadow-none transition-all flex flex-col justify-between relative overflow-hidden group"
+          className="bg-white border border-slate-200 hover:border-[#F67E31]/40 rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all flex flex-col justify-between relative overflow-hidden group"
         >
           <div className="absolute top-0 right-0 w-32 h-32 bg-[#F67E31]/10 rounded-full blur-2xl pointer-events-none transition-opacity group-hover:opacity-100 opacity-60"></div>
           <div>
             <div className="w-12 h-12 sm:w-14 sm:h-14 bg-[#F67E31]/10 text-[#F67E31] rounded-2xl flex items-center justify-center mb-5 border border-[#F67E31]/20 shadow-sm">
               <LinkIcon size={24} />
             </div>
-            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-2">Join a Meeting</h2>
-            <p className="text-slate-600 dark:text-slate-400 text-sm mb-6 leading-relaxed">
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-2">Join a Meeting</h2>
+            <p className="text-slate-600 text-sm mb-6 leading-relaxed">
               Enter an invite code or paste the full meeting link to jump straight into an active session.
             </p>
           </div>
@@ -218,16 +218,16 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
                 value={joinId}
                 onChange={(e) => setJoinId(e.target.value)}
                 placeholder="Enter room code or link..."
-                className="w-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl px-4 py-3.5 text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:bg-white dark:focus:bg-[#0A0F24] focus:border-[#F67E31] focus:ring-2 focus:ring-[#F67E31]/20 outline-none transition-all shadow-sm"
+                className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3.5 text-sm text-slate-900 placeholder-slate-400 focus:bg-white focus:border-[#F67E31] focus:ring-2 focus:ring-[#F67E31]/20 outline-none transition-all shadow-sm"
                 onKeyDown={(e) => e.key === 'Enter' && handleJoinRoom()}
               />
             </div>
             <button 
               onClick={handleJoinRoom}
               disabled={isJoining || !joinId.trim()}
-              className="py-3.5 px-6 rounded-2xl font-semibold bg-[#F67E31] hover:bg-[#CC6A2F] active:scale-[0.99] text-white transition-all flex items-center justify-center gap-2 shadow-md shadow-[#F67E31]/25 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base shrink-0 cursor-pointer"
+              className="py-3.5 px-6 rounded-xl font-bold bg-[#F67E31] hover:bg-[#e06920] active:scale-[0.99] text-white transition-all flex items-center justify-center gap-2 shadow-md shadow-[#F67E31]/20 disabled:opacity-50 disabled:cursor-not-allowed text-xs sm:text-sm uppercase tracking-wider shrink-0 cursor-pointer"
             >
-              {isJoining ? <Loader2 className="animate-spin text-white" size={18} /> : <ArrowRight size={18} className="text-white" />}
+              {isJoining ? <Loader2 className="animate-spin text-white" size={17} /> : <ArrowRight size={17} className="text-white" />}
               <span className="text-white">{isJoining ? 'Joining...' : 'Join'}</span>
             </button>
           </div>

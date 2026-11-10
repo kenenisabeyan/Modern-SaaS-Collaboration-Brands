@@ -8,12 +8,18 @@ export default function Footer({ onNavigate }) {
           
           {/* Brand Section */}
           <div className="col-span-1 sm:col-span-2 lg:col-span-1">
-            <div className="flex items-center space-x-3 mb-5">
-              <div className="w-9 h-9 rounded-2xl bg-[#0DA9CF] flex items-center justify-center shadow-md shadow-[#0DA9CF]/25">
-                <Video className="text-white w-4.5 h-4.5" />
+            <div 
+              onClick={() => { onNavigate('dashboard'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              className="flex items-center space-x-3 mb-5 cursor-pointer select-none group"
+            >
+              <div className="relative">
+                <div className="w-9 h-9 rounded-full bg-slate-900 border border-slate-200 flex items-center justify-center text-white font-bold text-sm overflow-hidden shadow-sm transition-transform duration-200 group-hover:scale-105">
+                  <Video className="w-4.5 h-4.5 text-white" />
+                </div>
+                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-[#04B84C] border-2 border-white rounded-full"></span>
               </div>
-              <span className="font-extrabold text-xl tracking-tight text-slate-900">
-                WabiSeminar
+              <span className="font-extrabold text-base sm:text-lg tracking-wider text-slate-900 uppercase">
+                WABISEMINAR
               </span>
             </div>
             <p className="text-slate-600 text-sm leading-relaxed mb-6 max-w-xs">
