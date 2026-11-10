@@ -133,16 +133,16 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
   };
 
   return (
-    <main className="flex-1 pt-20 sm:pt-24 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 w-full max-w-6xl mx-auto text-slate-900">
+    <main className="flex-1 pt-20 sm:pt-24 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 w-full max-w-6xl mx-auto text-[#1E2761]">
       
       {/* Friendly Welcome Header */}
       <div className="mb-8 sm:mb-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0DA9CF]/10 border border-[#0DA9CF]/20 text-[#0DA9CF] text-xs font-semibold mb-3">
-          <Sparkles size={13} className="text-[#0DA9CF]" />
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1E2761]/8 border border-[#1E2761]/15 text-[#1E2761] text-xs font-semibold mb-3">
+          <Sparkles size={13} className="text-[#FF5A36]" />
           <span>Real-time Video & Collaboration</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-2">
-          Welcome back, <span className="text-[#0DA9CF]">{username}</span> 👋
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#1E2761] mb-2">
+          Welcome back, <span className="text-[#FF5A36]">{username}</span> 👋
         </h1>
         <p className="text-slate-600 text-sm sm:text-base max-w-2xl">
           Start an instant collaborative meeting, join with an invite code, or manage your recent rooms.
@@ -150,16 +150,16 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
 
         {/* Quick Indicators Bar */}
         <div className="flex flex-wrap items-center gap-3 sm:gap-4 mt-4 pt-1">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-slate-700 text-xs font-medium border border-slate-200 shadow-sm">
-            <Zap size={13} className="text-[#F67E31]" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-[#1E2761] text-xs font-medium border border-[#E4E8EE] shadow-sm">
+            <Zap size={13} className="text-[#FF5A36]" />
             <span>Sub-50ms Latency</span>
           </div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-slate-700 text-xs font-medium border border-slate-200 shadow-sm">
-            <ShieldCheck size={13} className="text-[#04B84C]" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-[#1E2761] text-xs font-medium border border-[#E4E8EE] shadow-sm">
+            <ShieldCheck size={13} className="text-[#1E2761]" />
             <span>End-to-End Encrypted</span>
           </div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-slate-700 text-xs font-medium border border-slate-200 shadow-sm">
-            <Users size={13} className="text-[#0DA9CF]" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-[#1E2761] text-xs font-medium border border-[#E4E8EE] shadow-sm">
+            <Users size={13} className="text-[#1E2761]" />
             <span>{myRooms.length} {myRooms.length === 1 ? 'Meeting' : 'Meetings'} Created</span>
           </div>
         </div>
@@ -168,18 +168,18 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
       {/* 2-Column Action Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 mb-12 sm:mb-16">
         
-        {/* Card 1: Start Meeting */}
+        {/* Card 1: Start Meeting (10% High Priority Action: Electric Coral #FF5A36) */}
         <motion.div 
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white border border-slate-200 hover:border-[#0DA9CF]/40 rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all flex flex-col justify-between relative overflow-hidden group"
+          className="bg-white border border-[#E4E8EE] hover:border-[#FF5A36]/40 rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all flex flex-col justify-between relative overflow-hidden group"
         >
-          <div className="absolute top-0 right-0 w-32 h-32 bg-[#0DA9CF]/10 rounded-full blur-2xl pointer-events-none transition-opacity group-hover:opacity-100 opacity-60"></div>
+          <div className="absolute top-0 right-0 w-32 h-32 bg-[#FF5A36]/10 rounded-full blur-2xl pointer-events-none transition-opacity group-hover:opacity-100 opacity-60"></div>
           <div>
-            <div className="w-12 h-12 sm:w-14 sm:h-14 bg-[#0DA9CF]/10 text-[#0DA9CF] rounded-2xl flex items-center justify-center mb-5 border border-[#0DA9CF]/20 shadow-sm">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 bg-[#FF5A36]/10 text-[#FF5A36] rounded-2xl flex items-center justify-center mb-5 border border-[#FF5A36]/20 shadow-sm">
               <Video size={26} />
             </div>
-            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-2">Host a Meeting</h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-[#1E2761] mb-2">Host a Meeting</h2>
             <p className="text-slate-600 text-sm mb-6 leading-relaxed">
               Create an instant seminar room with live video, collaborative drawing canvas, and real-time chat.
             </p>
@@ -187,26 +187,26 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
           <button 
             onClick={handleCreateRoom}
             disabled={isCreating}
-            className="w-full py-3.5 sm:py-4 px-6 rounded-xl font-bold bg-[#0DA9CF] hover:bg-[#0C8DB0] active:scale-[0.99] text-white transition-all flex items-center justify-center gap-2 shadow-md shadow-[#0DA9CF]/20 disabled:opacity-70 disabled:cursor-not-allowed text-xs sm:text-sm uppercase tracking-wider cursor-pointer"
+            className="w-full py-3.5 sm:py-4 px-6 rounded-xl font-bold bg-[#FF5A36] hover:bg-[#E04826] active:scale-[0.99] text-white transition-all flex items-center justify-center gap-2 shadow-md shadow-[#FF5A36]/20 disabled:opacity-70 disabled:cursor-not-allowed text-xs sm:text-sm uppercase tracking-wider cursor-pointer"
           >
             {isCreating ? <Loader2 className="animate-spin text-white" size={17} /> : <Plus size={17} className="text-white" />}
             <span className="text-white">{isCreating ? 'Creating Room...' : 'Start Instant Meeting'}</span>
           </button>
         </motion.div>
 
-        {/* Card 2: Join Meeting */}
+        {/* Card 2: Join Meeting (30% Structural: Deep Midnight Blue #1E2761) */}
         <motion.div 
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.08 }}
-          className="bg-white border border-slate-200 hover:border-[#F67E31]/40 rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all flex flex-col justify-between relative overflow-hidden group"
+          className="bg-white border border-[#E4E8EE] hover:border-[#1E2761]/30 rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all flex flex-col justify-between relative overflow-hidden group"
         >
-          <div className="absolute top-0 right-0 w-32 h-32 bg-[#F67E31]/10 rounded-full blur-2xl pointer-events-none transition-opacity group-hover:opacity-100 opacity-60"></div>
+          <div className="absolute top-0 right-0 w-32 h-32 bg-[#1E2761]/8 rounded-full blur-2xl pointer-events-none transition-opacity group-hover:opacity-100 opacity-60"></div>
           <div>
-            <div className="w-12 h-12 sm:w-14 sm:h-14 bg-[#F67E31]/10 text-[#F67E31] rounded-2xl flex items-center justify-center mb-5 border border-[#F67E31]/20 shadow-sm">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 bg-[#1E2761]/10 text-[#1E2761] rounded-2xl flex items-center justify-center mb-5 border border-[#1E2761]/20 shadow-sm">
               <LinkIcon size={24} />
             </div>
-            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-2">Join a Meeting</h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-[#1E2761] mb-2">Join a Meeting</h2>
             <p className="text-slate-600 text-sm mb-6 leading-relaxed">
               Enter an invite code or paste the full meeting link to jump straight into an active session.
             </p>
@@ -218,14 +218,14 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
                 value={joinId}
                 onChange={(e) => setJoinId(e.target.value)}
                 placeholder="Enter room code or link..."
-                className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3.5 text-sm text-slate-900 placeholder-slate-400 focus:bg-white focus:border-[#F67E31] focus:ring-2 focus:ring-[#F67E31]/20 outline-none transition-all shadow-sm"
+                className="w-full bg-white border border-[#E4E8EE] rounded-xl px-4 py-3.5 text-sm text-[#1E2761] placeholder-slate-400 focus:bg-white focus:border-[#1E2761] focus:ring-2 focus:ring-[#1E2761]/15 outline-none transition-all shadow-sm"
                 onKeyDown={(e) => e.key === 'Enter' && handleJoinRoom()}
               />
             </div>
             <button 
               onClick={handleJoinRoom}
               disabled={isJoining || !joinId.trim()}
-              className="py-3.5 px-6 rounded-xl font-bold bg-[#F67E31] hover:bg-[#e06920] active:scale-[0.99] text-white transition-all flex items-center justify-center gap-2 shadow-md shadow-[#F67E31]/20 disabled:opacity-50 disabled:cursor-not-allowed text-xs sm:text-sm uppercase tracking-wider shrink-0 cursor-pointer"
+              className="py-3.5 px-6 rounded-xl font-bold bg-[#1E2761] hover:bg-[#151A44] active:scale-[0.99] text-white transition-all flex items-center justify-center gap-2 shadow-md shadow-[#1E2761]/20 disabled:opacity-50 disabled:cursor-not-allowed text-xs sm:text-sm uppercase tracking-wider shrink-0 cursor-pointer"
             >
               {isJoining ? <Loader2 className="animate-spin text-white" size={17} /> : <ArrowRight size={17} className="text-white" />}
               <span className="text-white">{isJoining ? 'Joining...' : 'Join'}</span>
@@ -243,17 +243,17 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
       >
         <div className="flex items-center justify-between mb-5">
           <div className="flex items-center gap-2.5">
-            <Clock size={20} className="text-[#0DA9CF]" />
-            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Recent Meetings</h2>
-            <span className="px-2.5 py-0.5 rounded-full bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-400 text-xs font-semibold border border-slate-200 dark:border-white/10 shadow-sm">
+            <Clock size={20} className="text-[#1E2761]" />
+            <h2 className="text-xl sm:text-2xl font-bold text-[#1E2761]">Recent Meetings</h2>
+            <span className="px-2.5 py-0.5 rounded-full bg-white text-[#1E2761] text-xs font-semibold border border-[#E4E8EE] shadow-sm">
               {myRooms.length}
             </span>
           </div>
         </div>
 
         {isLoading ? (
-          <div className="bg-white dark:bg-[#0A0F24]/60 border border-slate-200 dark:border-white/10 rounded-3xl p-12 flex flex-col items-center justify-center gap-3">
-            <Loader2 className="animate-spin text-[#0DA9CF]" size={30} />
+          <div className="bg-white border border-[#E4E8EE] rounded-3xl p-12 flex flex-col items-center justify-center gap-3">
+            <Loader2 className="animate-spin text-[#FF5A36]" size={30} />
             <p className="text-xs text-slate-500">Loading your meetings...</p>
           </div>
         ) : myRooms.length > 0 ? (
@@ -261,29 +261,29 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
             {myRooms.map((room) => (
               <div 
                 key={room.id}
-                className="bg-white dark:bg-[#0A0F24]/80 border border-slate-200 dark:border-white/10 rounded-2xl p-5 hover:border-[#0DA9CF]/40 dark:hover:border-[#0DA9CF]/40 hover:shadow-md transition-all flex flex-col justify-between gap-4"
+                className="bg-white border border-[#E4E8EE] rounded-2xl p-5 hover:border-[#1E2761]/40 hover:shadow-md transition-all flex flex-col justify-between gap-4"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-2.5">
-                    <span className="font-mono text-sm font-bold text-[#0DA9CF] bg-[#0DA9CF]/10 px-2.5 py-1 rounded-lg border border-[#0DA9CF]/20">
+                    <span className="font-mono text-sm font-bold text-[#1E2761] bg-[#1E2761]/8 px-2.5 py-1 rounded-lg border border-[#1E2761]/15">
                       {room.roomId}
                     </span>
-                    <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-medium bg-[#04B84C]/10 text-[#04B84C] border border-[#04B84C]/20">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#04B84C] animate-pulse"></span>
+                    <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-medium bg-[#FF5A36]/10 text-[#FF5A36] border border-[#FF5A36]/20">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A36] animate-pulse"></span>
                       Active
                     </span>
                   </div>
                   
-                  <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
+                  <div className="flex items-center gap-1.5 text-xs text-slate-500">
                     <Calendar size={13} />
                     <span>Created {new Date(room.createdAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 pt-2 border-t border-slate-100 dark:border-white/5">
+                <div className="flex items-center gap-2 pt-2 border-t border-[#E4E8EE]">
                   <button 
                     onClick={() => onJoinRoom(room.roomId)}
-                    className="flex-1 py-2 px-3 rounded-xl text-xs font-semibold bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white transition-all flex items-center justify-center gap-1.5 shadow-sm cursor-pointer"
+                    className="flex-1 py-2 px-3 rounded-xl text-xs font-semibold bg-[#FF5A36] hover:bg-[#E04826] text-white transition-all flex items-center justify-center gap-1.5 shadow-sm cursor-pointer"
                   >
                     <Video size={14} className="text-white" />
                     <span className="text-white">Rejoin</span>
@@ -291,11 +291,11 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
 
                   <button 
                     onClick={() => handleCopyLink(room.roomId)}
-                    className="p-2 rounded-xl text-slate-600 dark:text-slate-400 hover:text-[#0DA9CF] dark:hover:text-white bg-white dark:bg-white/5 hover:bg-[#0DA9CF]/10 dark:hover:bg-white/10 border border-slate-200 dark:border-white/10 transition-colors cursor-pointer shadow-sm"
+                    className="p-2 rounded-xl text-[#1E2761] hover:text-[#FF5A36] bg-white hover:bg-slate-50 border border-[#E4E8EE] transition-colors cursor-pointer shadow-sm"
                     title="Copy invite link"
                   >
                     {copiedId === room.roomId ? (
-                      <Check size={15} className="text-[#04B84C]" />
+                      <Check size={15} className="text-[#FF5A36]" />
                     ) : (
                       <Copy size={15} />
                     )}
@@ -303,7 +303,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
 
                   <button 
                     onClick={() => setDeleteModalRoomId(room.roomId)}
-                    className="p-2 rounded-xl text-rose-500 hover:text-rose-600 bg-rose-50 dark:bg-rose-500/10 hover:bg-rose-100 dark:hover:bg-rose-500/20 border border-rose-200 dark:border-rose-500/20 transition-colors cursor-pointer"
+                    className="p-2 rounded-xl text-rose-500 hover:text-rose-600 bg-rose-50 hover:bg-rose-100 border border-rose-200 transition-colors cursor-pointer"
                     title="Delete meeting"
                   >
                     <Trash2 size={15} />
@@ -313,17 +313,17 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
             ))}
           </div>
         ) : (
-          <div className="bg-white dark:bg-[#0A0F24]/50 border border-slate-200 dark:border-white/10 rounded-3xl p-10 sm:p-14 text-center flex flex-col items-center shadow-sm">
-            <div className="w-14 h-14 rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-[#0DA9CF] mb-3 shadow-sm">
+          <div className="bg-white border border-[#E4E8EE] rounded-3xl p-10 sm:p-14 text-center flex flex-col items-center shadow-sm">
+            <div className="w-14 h-14 rounded-2xl bg-slate-50 border border-[#E4E8EE] flex items-center justify-center text-[#1E2761] mb-3 shadow-sm">
               <Video size={28} />
             </div>
-            <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white mb-1">No meetings yet</h3>
-            <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm max-w-sm mb-5 leading-relaxed">
+            <h3 className="text-base sm:text-lg font-bold text-[#1E2761] mb-1">No meetings yet</h3>
+            <p className="text-slate-500 text-xs sm:text-sm max-w-sm mb-5 leading-relaxed">
               You haven't created any sessions yet. Click "Start Instant Meeting" above to host your first room.
             </p>
             <button 
               onClick={handleCreateRoom}
-              className="px-5 py-2.5 bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white font-semibold rounded-xl text-xs sm:text-sm shadow-md shadow-[#0DA9CF]/25 transition-colors cursor-pointer"
+              className="px-5 py-2.5 bg-[#FF5A36] hover:bg-[#E04826] text-white font-semibold rounded-xl text-xs sm:text-sm shadow-md shadow-[#FF5A36]/25 transition-colors cursor-pointer"
             >
               Start First Meeting
             </button>

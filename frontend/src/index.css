@@ -39,7 +39,7 @@
     text-rendering: optimizeLegibility;
   }
   body {
-    background-color: #F5F7FA;
+    background-color: #ffffff;
     color: #1E2761;
     font-family: var(--font-sans);
     overflow-x: hidden;
@@ -48,7 +48,7 @@
   }
   
   .light {
-    background-color: #F5F7FA !important;
+    background-color: #ffffff !important;
     color: #1E2761;
   }
 }

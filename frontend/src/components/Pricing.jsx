@@ -118,7 +118,7 @@ export default function Pricing({ onNavigate }) {
   ];
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 font-sans overflow-hidden relative">
+    <div className="min-h-screen bg-white text-[#1E2761] font-sans overflow-hidden relative">
       <main className="pt-20 sm:pt-24 lg:pt-28 pb-16 sm:pb-24 relative z-10 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
         
         {/* 1. Hero Section & Toggle */}
@@ -129,19 +129,19 @@ export default function Pricing({ onNavigate }) {
             variants={staggerContainer}
             className="max-w-4xl mx-auto flex flex-col items-center"
           >
-            <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#0DA9CF]/10 text-[#0DA9CF] border border-[#0DA9CF]/20 mb-4">
+            <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#1E2761]/10 text-[#1E2761] border border-[#1E2761]/20 mb-4">
               Transparent Pricing
             </span>
-            <motion.h1 variants={fadeIn} className="text-4xl sm:text-6xl md:text-7xl font-extrabold mb-4 sm:mb-6 tracking-tight leading-[1.08] text-slate-900">
-              Invest in your <span className="text-[#0DA9CF]">masterclasses</span>
+            <motion.h1 variants={fadeIn} className="text-4xl sm:text-6xl md:text-7xl font-extrabold mb-4 sm:mb-6 tracking-tight leading-[1.08] text-[#1E2761]">
+              Invest in your <span className="text-[#FF5A36]">masterclasses</span>
             </motion.h1>
             <motion.p variants={fadeIn} className="text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl font-normal mb-8 sm:mb-10">
               Start for free, then upgrade as your audience grows. No hidden fees. Cancel anytime.
             </motion.p>
 
             {/* Billing Toggle */}
-            <motion.div variants={fadeIn} className="flex items-center space-x-3 bg-slate-50 p-2 rounded-full border border-slate-200 shadow-sm">
-               <span className={`text-xs sm:text-sm font-bold pl-3 transition-colors ${!isAnnual ? 'text-slate-900' : 'text-slate-500'}`}>Monthly</span>
+            <motion.div variants={fadeIn} className="flex items-center space-x-3 bg-[#F5F7FA] p-2 rounded-full border border-[#E4E8EE] shadow-sm">
+               <span className={`text-xs sm:text-sm font-bold pl-3 transition-colors ${!isAnnual ? 'text-[#1E2761]' : 'text-slate-500'}`}>Monthly</span>
                <button 
                  onClick={() => setIsAnnual(!isAnnual)}
                  className="w-14 h-7 bg-slate-200 border border-slate-300 rounded-full relative transition-colors focus:outline-none flex items-center px-1 cursor-pointer"
@@ -149,12 +149,12 @@ export default function Pricing({ onNavigate }) {
                   <motion.div 
                     animate={{ x: isAnnual ? 28 : 0 }} 
                     transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                    className={`w-5 h-5 rounded-full shadow-md ${isAnnual ? 'bg-[#04B84C]' : 'bg-[#0DA9CF]'}`}
+                    className={`w-5 h-5 rounded-full shadow-md ${isAnnual ? 'bg-[#FF5A36]' : 'bg-[#1E2761]'}`}
                   />
                </button>
-               <span className={`text-xs sm:text-sm font-bold pr-3 flex items-center space-x-2 transition-colors ${isAnnual ? 'text-slate-900' : 'text-slate-500'}`}>
+               <span className={`text-xs sm:text-sm font-bold pr-3 flex items-center space-x-2 transition-colors ${isAnnual ? 'text-[#1E2761]' : 'text-slate-500'}`}>
                   <span>Annually</span>
-                  <span className="text-[10px] bg-[#04B84C]/15 text-[#04B84C] px-2 py-0.5 rounded-full font-bold">Save 20%</span>
+                  <span className="text-[10px] bg-[#FF5A36]/15 text-[#FF5A36] px-2 py-0.5 rounded-full font-bold">Save 20%</span>
                </span>
             </motion.div>
           </motion.div>
@@ -172,28 +172,28 @@ export default function Pricing({ onNavigate }) {
                    transition={{ delay: index * 0.1, duration: 0.5 }}
                    className={`relative rounded-3xl p-8 sm:p-10 transition-all duration-300 bg-white border ${
                      plan.recommended 
-                     ? 'border-2 border-[#F67E31] shadow-xl md:scale-105 z-10' 
-                     : 'border-slate-200 shadow-sm hover:border-[#0DA9CF]/40 z-0'
+                     ? 'border-2 border-[#FF5A36] shadow-xl md:scale-105 z-10' 
+                     : 'border-[#E4E8EE] shadow-sm hover:border-[#1E2761]/40 z-0'
                    }`}
                 >
                    {plan.recommended && (
-                     <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#F67E31] text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest shadow-md">
+                     <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#FF5A36] text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest shadow-md">
                         Most Popular
                      </div>
                    )}
                    
                    <div className="mb-6">
-                     <h3 className="text-2xl font-bold text-slate-900 mb-2">{plan.name}</h3>
+                     <h3 className="text-2xl font-bold text-[#1E2761] mb-2">{plan.name}</h3>
                      <p className="text-slate-600 text-sm min-h-[2.5rem]">{plan.desc}</p>
                    </div>
                    
                    <div className="mb-6">
-                      <div className="flex items-baseline text-slate-900">
+                      <div className="flex items-baseline text-[#1E2761]">
                          <span className="text-4xl sm:text-5xl font-extrabold tracking-tight">${isAnnual ? plan.annualPrice : plan.monthlyPrice}</span>
                          <span className="text-slate-500 ml-2 font-medium">/mo</span>
                       </div>
                       {isAnnual && plan.annualPrice !== "0" && (
-                         <div className="text-xs sm:text-sm text-[#04B84C] font-semibold mt-1">Billed annually</div>
+                         <div className="text-xs sm:text-sm text-[#FF5A36] font-semibold mt-1">Billed annually</div>
                       )}
                       {(!isAnnual || plan.annualPrice === "0") && (
                          <div className="text-xs sm:text-sm text-transparent font-medium mt-1">&nbsp;</div>
@@ -204,10 +204,10 @@ export default function Pricing({ onNavigate }) {
                      disabled={isLoading && actionPlan === plan.name}
                      className={`w-full py-3.5 rounded-full font-bold mb-8 flex items-center justify-center transition-all text-sm sm:text-base cursor-pointer ${
                         plan.name === currentPlan 
-                        ? 'bg-[#04B84C]/15 text-[#04B84C] border border-[#04B84C]/30 cursor-default'
+                        ? 'bg-[#1E2761]/15 text-[#1E2761] border border-[#1E2761]/30 cursor-default'
                         : plan.recommended 
-                        ? 'bg-[#F67E31] hover:bg-[#CC6A2F] text-white shadow-lg shadow-[#F67E31]/25 hover:shadow-xl' 
-                        : 'bg-white hover:bg-slate-50 border border-slate-200 hover:border-[#0DA9CF] text-slate-900 shadow-sm'
+                        ? 'bg-[#FF5A36] hover:bg-[#E04826] text-white shadow-lg shadow-[#FF5A36]/25 hover:shadow-xl' 
+                        : 'bg-white hover:bg-[#F5F7FA] border border-[#E4E8EE] hover:border-[#1E2761] text-[#1E2761] shadow-sm'
                      }`}
                      onClick={() => handleSelectPlan(plan.name)}
                    >

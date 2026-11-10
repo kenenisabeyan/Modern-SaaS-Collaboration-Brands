@@ -103,12 +103,12 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
 
   return (
     <>
-      {/* Top Sticky Header (60-30-10 Architecture: Canvas #F5F7FA, Midnight #1E2761, Coral #FF5A36) */}
+      {/* Top Sticky Header (Pure White Canvas, Deep Midnight #1E2761, Electric Coral #FF5A36) */}
       <header 
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isScrolled 
-            ? 'h-16 shadow-[0_2px_15px_rgba(30,39,97,0.06)] bg-[#F5F7FA]/95 backdrop-blur-md border-b border-[#E4E8EE]' 
-            : 'h-16 bg-[#F5F7FA] border-b border-[#E4E8EE]'
+            ? 'h-16 shadow-[0_2px_15px_rgba(30,39,97,0.06)] bg-white/95 backdrop-blur-md border-b border-[#E4E8EE]' 
+            : 'h-16 bg-white border-b border-[#E4E8EE]'
         }`}
       >
         <div className="max-w-[1400px] h-full mx-auto px-4 sm:px-8 lg:px-12 flex items-center justify-between">
@@ -122,7 +122,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
               <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#1E2761] border border-[#151A44] flex items-center justify-center text-white font-bold text-sm overflow-hidden shadow-sm transition-transform duration-200 group-hover:scale-105">
                 <Video className="w-5 h-5 text-white" />
               </div>
-              <span className="absolute bottom-0 right-0 w-3 h-3 bg-[#FF5A36] border-2 border-[#F5F7FA] rounded-full animate-pulse"></span>
+              <span className="absolute bottom-0 right-0 w-3 h-3 bg-[#FF5A36] border-2 border-white rounded-full animate-pulse"></span>
             </div>
             <span className="font-extrabold text-base sm:text-lg tracking-wider text-[#1E2761] uppercase">
               WABISEMINAR

@@ -13,6 +13,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
   const [joinId, setJoinId] = useState('');
   const [isCreating, setIsCreating] = useState(false);
   const [isJoining, setIsJoining] = useState(false);
+  const [showJoinInline, setShowJoinInline] = useState(false);
   const [showInfoModal, setShowInfoModal] = useState(false);
   const [actionError, setActionError] = useState('');
   const [platformStats, setPlatformStats] = useState({ users: 36, meetings: 5, minutes: 225 });
@@ -138,213 +139,204 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#F5F7FA] text-[#1E2761] font-sans overflow-x-hidden selection:bg-[#FF5A36] selection:text-white">
+    <div className="flex flex-col min-h-screen bg-white text-[#1E2761] font-sans overflow-x-hidden selection:bg-[#FF5A36] selection:text-white">
       
-      <main className="flex-1 flex flex-col pt-16 relative z-10">
+      <main className="flex-1 flex flex-col pt-16 sm:pt-20 relative z-10">
         
         {/* ========================================================
-            HERO SECTION: 60-30-10 DESIGN ARCHITECTURE
-            - 60% Canvas: Soft Slate Gray / Off-White (#F5F7FA)
-            - 30% Structure: Deep Midnight Blue (#1E2761)
-            - 10% Action: Electric Coral / Orange-Red (#FF5A36)
+            HERO SECTION: 2-COLUMN ICEADDIS + KENENISA-OS ARCHITECTURE
+            - 60% Canvas: Pure White (#FFFFFF)
+            - 30% Structural Weight: Deep Midnight Blue (#1E2761)
+            - 10% Action Weight: Electric Coral (#FF5A36)
            ======================================================== */}
-        <section className="pt-6 sm:pt-10 pb-14 sm:pb-18 px-4 sm:px-8 max-w-[1360px] mx-auto w-full text-center relative overflow-hidden">
-          
-          {/* Subtle Ambient Radial Glow */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] sm:w-[900px] h-[350px] bg-gradient-to-r from-[#1E2761]/10 via-[#1E2761]/5 to-[#FF5A36]/15 blur-[95px] rounded-full pointer-events-none -z-10" />
-
-          {/* Compact 3D Turbine Brand Emblem */}
-          <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-3 select-none pointer-events-none">
-            <HeroAnimation className="w-full h-full" />
-          </div>
-
-          {/* Centered High-Impact Typography */}
-          <motion.div 
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="max-w-4xl mx-auto"
-          >
-            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[76px] font-black text-[#1E2761] tracking-tight leading-[1.08] select-none">
-              WabiSeminar.
-            </h1>
-            <div className="text-3xl sm:text-5xl md:text-6xl lg:text-[66px] font-extrabold tracking-tight leading-[1.1] select-none bg-gradient-to-r from-[#1E2761] via-[#1E2761] to-[#FF5A36] bg-clip-text text-transparent mt-1.5">
-              Engineering Real-Time Collaboration
-            </div>
-          </motion.div>
-
-          {/* Subtitle Description */}
-          <motion.p 
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="mt-5 text-slate-600 text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-normal"
-          >
-            Create a free, encrypted meeting room instantly or join an existing session in seconds. Built for innovative educators, creators, and teams who value simplicity and connection.
-          </motion.p>
-
-          {/* 3 Signature Action Buttons (60-30-10 Hierarchy) */}
-          <motion.div 
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-8 select-none"
-          >
-            {/* Button 1: 10% High-Priority Action CTA in Electric Coral (#FF5A36) */}
-            <button
-              onClick={handleCreateRoom}
-              disabled={isCreating}
-              className="bg-[#FF5A36] hover:bg-[#E04826] text-white font-bold text-xs sm:text-sm px-6 py-3.5 rounded-lg shadow-md hover:shadow-lg hover:shadow-[#FF5A36]/25 uppercase tracking-wider flex items-center justify-center space-x-2 transition-all cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed"
-            >
-              {isCreating ? (
-                <>
-                  <Loader2 className="animate-spin" size={15} />
-                  <span>CREATING...</span>
-                </>
-              ) : (
-                <>
-                  <Video size={15} />
-                  <span>HOST A SESSION ▾</span>
-                </>
-              )}
-            </button>
-
-            {/* Button 2: 30% Structural Outline in Thin Border (#E4E8EE) */}
-            <button
-              onClick={() => scrollToSection('features')}
-              className="border border-[#E4E8EE] bg-white text-[#1E2761] hover:bg-[#E4E8EE]/40 font-bold text-xs sm:text-sm px-6 py-3.5 rounded-lg shadow-sm uppercase tracking-wider flex items-center justify-center space-x-1.5 transition-all cursor-pointer"
-            >
-              <span>SYSTEM TOUR ▸</span>
-            </button>
-
-            {/* Button 3: 30% Structural Deep Midnight Blue (#1E2761) */}
-            <button
-              onClick={() => {
-                const input = document.getElementById('room-join-input');
-                input?.focus();
-                input?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-              }}
-              className="bg-[#1E2761] hover:bg-[#151A44] text-white font-bold text-xs sm:text-sm px-6 py-3.5 rounded-lg shadow-md hover:shadow-lg hover:shadow-[#1E2761]/20 uppercase tracking-wider flex items-center justify-center space-x-1.5 transition-all cursor-pointer"
-            >
-              <span>JOIN ROOM →</span>
-            </button>
-          </motion.div>
-
-          {/* Interactive Instant Room Join Bar (Directly below buttons) */}
-          <div className="max-w-md mx-auto mt-6 w-full">
-            <div className="flex items-center bg-white border border-[#E4E8EE] rounded-xl p-1.5 shadow-sm focus-within:border-[#1E2761] focus-within:ring-2 focus-within:ring-[#1E2761]/15 transition-all">
-              <input 
-                id="room-join-input"
-                type="text" 
-                value={joinId}
-                onChange={(e) => setJoinId(e.target.value)}
-                placeholder="Enter Room ID (e.g. abc-defg-hij)" 
-                className="flex-1 px-3.5 py-2 text-xs sm:text-sm bg-transparent outline-none text-[#1E2761] placeholder-slate-400"
-                onKeyDown={(e) => e.key === 'Enter' && handleJoinRoom()}
-              />
-              <button
-                onClick={handleJoinRoom}
-                disabled={!joinId.trim() || isJoining}
-                className="bg-[#1E2761] hover:bg-[#151A44] disabled:opacity-50 text-white font-bold text-xs px-4 py-2 rounded-lg transition-all flex items-center space-x-1.5 cursor-pointer shadow-sm"
-              >
-                {isJoining ? (
-                  <>
-                    <Loader2 size={13} className="animate-spin" />
-                    <span>Joining</span>
-                  </>
-                ) : (
-                  <>
-                    <Link size={13} />
-                    <span>Join</span>
-                  </>
-                )}
-              </button>
-            </div>
-
-            {/* Error Message */}
-            {actionError && (
-              <div className="mt-2.5 p-2 rounded-xl border border-rose-200 bg-rose-50 text-rose-700 text-xs flex items-center justify-center">
-                <Shield className="mr-1.5 text-rose-500 shrink-0" size={14} />
-                <span>{actionError}</span>
-              </div>
-            )}
-          </div>
-
-          {/* Feature Badges */}
-          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 mt-6 text-xs font-semibold text-slate-600">
-            <div className="flex items-center space-x-1.5">
-              <CheckCircle size={15} className="text-[#FF5A36]" />
-              <span>Zero Downloads</span>
-            </div>
-            <div className="flex items-center space-x-1.5">
-              <CheckCircle size={15} className="text-[#1E2761]" />
-              <span>Ultra HD Video</span>
-            </div>
-            <div className="flex items-center space-x-1.5">
-              <CheckCircle size={15} className="text-[#FF5A36]" />
-              <span>End-to-End Secure</span>
-            </div>
-          </div>
-
-          {/* 3 Glass Stat Cards (60-30-10 Design Hierarchy) */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6 mt-12 max-w-4xl mx-auto w-full">
+        <section className="pt-4 sm:pt-8 md:pt-10 pb-12 sm:pb-16 px-4 sm:px-8 lg:px-12 xl:px-16 bg-white relative">
+          <div className="max-w-[1440px] w-full mx-auto">
             
-            {/* Card 1: 36 Happy Users (Deep Midnight Blue Header) */}
-            <div className="bg-white border border-[#E4E8EE] rounded-2xl shadow-sm hover:shadow-md hover:border-[#1E2761]/30 transition-all overflow-hidden flex flex-col">
-              <div className="h-16 sm:h-20 bg-gradient-to-b from-[#1E2761]/12 via-[#1E2761]/5 to-transparent flex items-center justify-center border-b border-[#E4E8EE]">
-                <Users className="text-[#1E2761] w-6 h-6" />
-              </div>
-              <div className="p-6 pt-4 text-center">
-                <div className="text-4xl sm:text-5xl md:text-6xl font-black text-[#1E2761] tracking-tight">
-                  {platformStats.users.toLocaleString()}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              
+              {/* Left Column: Heading, Subtitle, 2 Essential Buttons & Trust Badges */}
+              <motion.div 
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+                className="lg:col-span-6 flex flex-col justify-center items-start text-left"
+              >
+                {/* Instant Collaboration Tag */}
+                <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#FF5A36]/10 text-[#FF5A36] border border-[#FF5A36]/20 mb-4 sm:mb-5">
+                  <span className="w-2 h-2 rounded-full bg-[#FF5A36] animate-pulse"></span>
+                  <span>Instant Collaboration</span>
                 </div>
-                <div className="text-xs font-bold text-[#1E2761] uppercase tracking-widest mt-2">
+
+                {/* Main Headline (iceaddis two-tone: Coral + Midnight Blue) */}
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[62px] xl:text-[70px] font-extrabold tracking-tight leading-[1.08] text-[#1E2761] mb-4 sm:mb-5 select-none">
+                  <span className="text-[#FF5A36] block">Host Engaging</span>
+                  <span className="text-[#1E2761] block">Masterclasses</span>
+                </h1>
+
+                {/* Subtitle Description */}
+                <p className="text-slate-600 text-sm sm:text-base lg:text-lg leading-relaxed max-w-[520px] mb-6 sm:mb-8 font-normal">
+                  Create a free, encrypted meeting room instantly or join an existing session in seconds. Built for innovative educators, creators, and teams who value simplicity and connection.
+                </p>
+
+                {/* Error Banner */}
+                {actionError && (
+                  <div className="w-full max-w-[500px] mb-4 p-3 rounded-xl border border-rose-200 bg-rose-50 text-rose-700 text-xs flex items-center">
+                    <Shield className="mr-2 text-rose-500 shrink-0" size={16} />
+                    <span>{actionError}</span>
+                  </div>
+                )}
+
+                {/* ONLY TWO ESSENTIAL ACTION BUTTONS */}
+                <div className="flex flex-wrap items-center gap-3 sm:gap-4 w-full sm:w-auto">
+                  
+                  {/* Button 1: Solid Electric Coral (#FF5A36) - Host a Session / Create Instant Room */}
+                  <button
+                    onClick={handleCreateRoom}
+                    disabled={isCreating}
+                    className="w-full sm:w-auto px-7 py-3.5 sm:py-4 rounded-xl sm:rounded-full bg-[#FF5A36] hover:bg-[#E04826] text-white font-bold text-sm sm:text-base shadow-lg shadow-[#FF5A36]/25 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center space-x-2.5 cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed"
+                  >
+                    {isCreating ? (
+                      <>
+                        <Loader2 className="animate-spin" size={18} />
+                        <span>Creating Room...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Video size={18} />
+                        <span>Create Instant Room</span>
+                        <ChevronRight size={16} className="opacity-75" />
+                      </>
+                    )}
+                  </button>
+
+                  {/* Button 2: White with Midnight Blue (#1E2761) & Border - Join a Session */}
+                  <button
+                    onClick={() => setShowJoinInline(prev => !prev)}
+                    className="w-full sm:w-auto px-7 py-3.5 sm:py-4 rounded-xl sm:rounded-full bg-white hover:bg-[#F5F7FA] text-[#1E2761] border-2 border-[#E4E8EE] hover:border-[#1E2761]/40 font-bold text-sm sm:text-base shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center space-x-2 cursor-pointer"
+                  >
+                    <Users size={18} />
+                    <span>Join a Session ▸</span>
+                  </button>
+
+                </div>
+
+                {/* Smooth Expandable Join Input (Friction-Free Room ID entry) */}
+                <div className="w-full max-w-[500px] mt-4">
+                  {(showJoinInline || joinId) && (
+                    <motion.div 
+                      initial={{ opacity: 0, height: 0, y: -5 }}
+                      animate={{ opacity: 1, height: 'auto', y: 0 }}
+                      exit={{ opacity: 0, height: 0, y: -5 }}
+                      transition={{ duration: 0.25 }}
+                      className="p-3 rounded-2xl bg-[#F5F7FA] border border-[#E4E8EE]"
+                    >
+                      <div className="flex items-center gap-2">
+                        <input 
+                          id="room-join-input"
+                          type="text" 
+                          value={joinId}
+                          onChange={(e) => setJoinId(e.target.value)}
+                          placeholder="e.g. abc-defg-hij" 
+                          autoFocus
+                          className="flex-1 px-4 py-2.5 bg-white border border-[#E4E8EE] rounded-xl sm:rounded-full text-[#1E2761] placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1E2761]/20 focus:border-[#1E2761] text-xs sm:text-sm font-medium transition-all"
+                          onKeyDown={(e) => e.key === 'Enter' && handleJoinRoom()}
+                        />
+                        <button
+                          onClick={handleJoinRoom}
+                          disabled={!joinId.trim() || isJoining}
+                          className="px-5 py-2.5 bg-[#1E2761] hover:bg-[#151A44] text-white rounded-xl sm:rounded-full font-bold text-xs sm:text-sm transition-all shadow-md shadow-[#1E2761]/20 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-1.5"
+                        >
+                          {isJoining ? <Loader2 size={15} className="animate-spin" /> : <span>Join</span>}
+                        </button>
+                      </div>
+                    </motion.div>
+                  )}
+                </div>
+
+                {/* Feature check marks */}
+                <div className="flex flex-wrap items-center gap-4 sm:gap-6 pt-6 sm:pt-8 text-xs sm:text-sm text-slate-600 font-semibold select-none">
+                  <div className="flex items-center space-x-1.5">
+                    <CheckCircle size={16} className="text-[#FF5A36]" />
+                    <span>Zero Downloads</span>
+                  </div>
+                  <div className="flex items-center space-x-1.5">
+                    <CheckCircle size={16} className="text-[#1E2761]" />
+                    <span>Ultra HD Video</span>
+                  </div>
+                  <div className="flex items-center space-x-1.5">
+                    <CheckCircle size={16} className="text-[#FF5A36]" />
+                    <span>End-to-End Secure</span>
+                  </div>
+                </div>
+
+              </motion.div>
+
+
+              {/* Right Column: Grand 3D Turbine Animation (Centerpiece like iceaddis Image 1) */}
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.7, delay: 0.1 }}
+                className="lg:col-span-6 flex items-center justify-center relative w-full"
+              >
+                {/* Soft diffused radial ambient glow behind 3D turbine */}
+                <div className="absolute inset-4 rounded-full bg-gradient-to-tr from-[#1E2761]/10 via-[#FF5A36]/10 to-transparent blur-3xl pointer-events-none -z-10" />
+
+                <div className="w-full max-w-[460px] sm:max-w-[520px] lg:max-w-[580px] aspect-square flex items-center justify-center">
+                  <HeroAnimation className="w-full h-full" />
+                </div>
+              </motion.div>
+
+            </div>
+
+
+            {/* ========================================================
+                3 METRIC / STAT CARDS (EXACT MATCH TO KENENISA-OS IMAGE 5)
+               ======================================================== */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-12 sm:pt-16">
+              
+              {/* Card 1: Midnight Glow (36+ Happy Users) */}
+              <div className="bg-gradient-to-b from-[#1E2761]/10 via-white to-white border border-[#E4E8EE] rounded-3xl p-6 sm:p-8 text-center hover:border-[#1E2761] shadow-sm hover:shadow-xl transition-all group">
+                <div className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#1E2761] mb-2 transition-transform duration-300 group-hover:scale-105">
+                  {platformStats.users}+
+                </div>
+                <div className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-[#1E2761] mb-1">
                   HAPPY USERS
                 </div>
-                <div className="text-xs text-slate-500 mt-1">
-                  Educators & Active Students
+                <div className="text-xs text-slate-500 font-medium">
+                  Active Learners & Teams
                 </div>
               </div>
-            </div>
 
-            {/* Card 2: 5 Meetings Hosted (Electric Coral Header) */}
-            <div className="bg-white border border-[#E4E8EE] rounded-2xl shadow-sm hover:shadow-md hover:border-[#FF5A36]/40 transition-all overflow-hidden flex flex-col">
-              <div className="h-16 sm:h-20 bg-gradient-to-b from-[#FF5A36]/15 via-[#FF5A36]/5 to-transparent flex items-center justify-center border-b border-[#E4E8EE]">
-                <Video className="text-[#FF5A36] w-6 h-6" />
-              </div>
-              <div className="p-6 pt-4 text-center">
-                <div className="text-4xl sm:text-5xl md:text-6xl font-black text-[#FF5A36] tracking-tight">
-                  {platformStats.meetings.toLocaleString()}
+              {/* Card 2: Electric Coral Glow (5+ Meetings Hosted) */}
+              <div className="bg-gradient-to-b from-[#FF5A36]/12 via-white to-white border border-[#E4E8EE] rounded-3xl p-6 sm:p-8 text-center hover:border-[#FF5A36] shadow-sm hover:shadow-xl transition-all group">
+                <div className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#FF5A36] mb-2 transition-transform duration-300 group-hover:scale-105">
+                  {platformStats.meetings}+
                 </div>
-                <div className="text-xs font-bold text-[#1E2761] uppercase tracking-widest mt-2">
+                <div className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-[#1E2761] mb-1">
                   MEETINGS HOSTED
                 </div>
-                <div className="text-xs text-slate-500 mt-1">
-                  Live Collaborative Sessions
+                <div className="text-xs text-slate-500 font-medium">
+                  Masterclasses & Webinars
                 </div>
               </div>
-            </div>
 
-            {/* Card 3: 225 Minutes Connected (Deep Midnight Blue Header) */}
-            <div className="bg-white border border-[#E4E8EE] rounded-2xl shadow-sm hover:shadow-md hover:border-[#1E2761]/30 transition-all overflow-hidden flex flex-col">
-              <div className="h-16 sm:h-20 bg-gradient-to-b from-[#1E2761]/12 via-[#1E2761]/5 to-transparent flex items-center justify-center border-b border-[#E4E8EE]">
-                <Zap className="text-[#1E2761] w-6 h-6" />
-              </div>
-              <div className="p-6 pt-4 text-center">
-                <div className="text-4xl sm:text-5xl md:text-6xl font-black text-[#1E2761] tracking-tight">
-                  {platformStats.minutes.toLocaleString()}
+              {/* Card 3: Midnight Glow (225+ Minutes Connected) */}
+              <div className="bg-gradient-to-b from-[#1E2761]/10 via-white to-white border border-[#E4E8EE] rounded-3xl p-6 sm:p-8 text-center hover:border-[#1E2761] shadow-sm hover:shadow-xl transition-all group">
+                <div className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#1E2761] mb-2 transition-transform duration-300 group-hover:scale-105">
+                  {platformStats.minutes}+
                 </div>
-                <div className="text-xs font-bold text-[#1E2761] uppercase tracking-widest mt-2">
+                <div className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-[#1E2761] mb-1">
                   MINUTES CONNECTED
                 </div>
-                <div className="text-xs text-slate-500 mt-1">
-                  High Definition WebRTC
+                <div className="text-xs text-slate-500 font-medium">
+                  Verified HD WebRTC Sessions
                 </div>
               </div>
+
             </div>
 
           </div>
-
         </section>
 
 
@@ -549,44 +541,44 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
          ======================================================== */}
       {showInfoModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200">
-          <div className="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto border border-slate-200">
+          <div className="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto border border-[#E4E8EE]">
             <button 
               onClick={() => setShowInfoModal(false)}
-              className="absolute top-5 right-5 text-slate-400 hover:text-slate-700 p-2 rounded-full hover:bg-slate-100 transition-colors cursor-pointer"
+              className="absolute top-5 right-5 text-slate-400 hover:text-[#1E2761] p-2 rounded-full hover:bg-[#F5F7FA] transition-colors cursor-pointer"
             >
               <X size={22} />
             </button>
 
-            <div className="w-14 h-14 rounded-2xl bg-[#0DA9CF]/10 text-[#0DA9CF] flex items-center justify-center mb-6">
+            <div className="w-14 h-14 rounded-2xl bg-[#FF5A36]/10 text-[#FF5A36] border border-[#FF5A36]/20 flex items-center justify-center mb-6">
               <Video size={28} />
             </div>
 
-            <h3 className="text-2xl font-extrabold text-slate-900 mb-3">About WabiSeminar</h3>
+            <h3 className="text-2xl font-extrabold text-[#1E2761] mb-3">About WabiSeminar</h3>
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
               WabiSeminar is a completely free, high-quality video collaboration platform designed for seamless masterclasses, webinars, and team meetings.
             </p>
 
             <div className="space-y-4 mb-8">
               <div className="flex items-start space-x-3">
-                <CheckCircle size={20} className="text-[#04B84C] mt-0.5 shrink-0" />
+                <CheckCircle size={20} className="text-[#FF5A36] mt-0.5 shrink-0" />
                 <div>
-                  <h4 className="text-sm font-bold text-slate-800">Instant Access</h4>
+                  <h4 className="text-sm font-bold text-[#1E2761]">Instant Access</h4>
                   <p className="text-xs text-slate-500">No software downloads or installations needed.</p>
                 </div>
               </div>
 
               <div className="flex items-start space-x-3">
-                <CheckCircle size={20} className="text-[#0DA9CF] mt-0.5 shrink-0" />
+                <CheckCircle size={20} className="text-[#1E2761] mt-0.5 shrink-0" />
                 <div>
-                  <h4 className="text-sm font-bold text-slate-800">End-to-End Encrypted</h4>
+                  <h4 className="text-sm font-bold text-[#1E2761]">End-to-End Encrypted</h4>
                   <p className="text-xs text-slate-500">Secure WebRTC streaming keeps your conversations private.</p>
                 </div>
               </div>
 
               <div className="flex items-start space-x-3">
-                <CheckCircle size={20} className="text-[#F67E31] mt-0.5 shrink-0" />
+                <CheckCircle size={20} className="text-[#FF5A36] mt-0.5 shrink-0" />
                 <div>
-                  <h4 className="text-sm font-bold text-slate-800">Interactive Classroom Tools</h4>
+                  <h4 className="text-sm font-bold text-[#1E2761]">Interactive Classroom Tools</h4>
                   <p className="text-xs text-slate-500">Real-time chat, smooth screen sharing, and waiting room management.</p>
                 </div>
               </div>
@@ -597,7 +589,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 setShowInfoModal(false);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="w-full bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white py-3.5 rounded-full font-bold text-base transition-all shadow-md cursor-pointer"
+              className="w-full bg-[#FF5A36] hover:bg-[#E04826] text-white py-3.5 rounded-full font-bold text-base transition-all shadow-md shadow-[#FF5A36]/25 cursor-pointer"
             >
               Start Collaborating Now
             </button>

@@ -80,20 +80,20 @@ export default function Auth({ onNavigate }) {
   }, []);
 
   return (
-    <div className="flex-1 flex items-center justify-center pt-20 sm:pt-24 pb-16 px-4 sm:px-6 relative overflow-hidden bg-white min-h-[calc(100vh-80px)] font-sans text-slate-900">
+    <div className="flex-1 flex items-center justify-center pt-20 sm:pt-24 pb-16 px-4 sm:px-6 relative overflow-hidden bg-[#F5F7FA] min-h-[calc(100vh-80px)] font-sans text-[#1E2761]">
       
-      <div className="w-full max-w-md p-6 sm:p-10 bg-white rounded-3xl border border-slate-200 shadow-[0_10px_35px_rgba(0,0,0,0.05)] flex flex-col items-center space-y-6 sm:space-y-7 z-10 relative">
+      <div className="w-full max-w-md p-6 sm:p-10 bg-white rounded-3xl border border-[#E4E8EE] shadow-[0_10px_35px_rgba(30,39,97,0.05)] flex flex-col items-center space-y-6 sm:space-y-7 z-10 relative">
         
         {/* Top Icon */}
         <div className="relative">
-          <div className="w-12 h-12 rounded-full bg-slate-900 border border-slate-200 flex items-center justify-center text-white font-bold text-sm overflow-hidden shadow-sm">
+          <div className="w-12 h-12 rounded-full bg-[#1E2761] border border-[#151A44] flex items-center justify-center text-white font-bold text-sm overflow-hidden shadow-sm">
             <Video size={22} className="text-white" />
           </div>
-          <span className="absolute bottom-0 right-0 w-3 h-3 bg-[#04B84C] border-2 border-white rounded-full"></span>
+          <span className="absolute bottom-0 right-0 w-3 h-3 bg-[#FF5A36] border-2 border-white rounded-full animate-pulse"></span>
         </div>
 
         <div className="text-center space-y-1.5">
-          <h1 className="text-xl sm:text-2xl font-extrabold tracking-wider text-slate-900 uppercase">
+          <h1 className="text-xl sm:text-2xl font-extrabold tracking-wider text-[#1E2761] uppercase">
             WABISEMINAR
           </h1>
           <p className="text-xs sm:text-sm text-slate-500">
@@ -110,20 +110,20 @@ export default function Auth({ onNavigate }) {
 
           {!isLogin && (
             <div className="space-y-1.5">
-              <label className="text-xs font-bold text-slate-700 uppercase tracking-wider ml-1">Username</label>
+              <label className="text-xs font-bold text-[#1E2761] uppercase tracking-wider ml-1">Username</label>
               <input 
                 type="text" 
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="johndoe" 
-                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-full text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0DA9CF]/30 focus:border-[#0DA9CF] text-sm transition-all" 
+                className="w-full px-4 py-3 bg-slate-50 border border-[#E4E8EE] rounded-full text-[#1E2761] placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1E2761]/15 focus:border-[#1E2761] text-sm transition-all" 
                 required={!isLogin}
               />
             </div>
           )}
 
           <div className="space-y-1.5">
-            <label className="text-xs font-bold text-slate-700 uppercase tracking-wider ml-1">Email</label>
+            <label className="text-xs font-bold text-[#1E2761] uppercase tracking-wider ml-1">Email</label>
             <div className="relative">
               <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
               <input 
@@ -131,7 +131,7 @@ export default function Auth({ onNavigate }) {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="name@example.com" 
-                className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-full text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0DA9CF]/30 focus:border-[#0DA9CF] text-sm transition-all" 
+                className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-[#E4E8EE] rounded-full text-[#1E2761] placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1E2761]/15 focus:border-[#1E2761] text-sm transition-all" 
                 required
               />
             </div>
@@ -139,9 +139,9 @@ export default function Auth({ onNavigate }) {
           
           <div className="space-y-1.5">
             <div className="flex justify-between items-center ml-1">
-              <label className="text-xs font-bold text-slate-700 uppercase tracking-wider">Password</label>
+              <label className="text-xs font-bold text-[#1E2761] uppercase tracking-wider">Password</label>
               {isLogin && (
-                <button type="button" className="text-xs font-semibold text-[#0DA9CF] hover:underline transition-colors">
+                <button type="button" className="text-xs font-semibold text-[#FF5A36] hover:underline transition-colors">
                   Forgot password?
                 </button>
               )}
@@ -153,17 +153,18 @@ export default function Auth({ onNavigate }) {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••" 
-                className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-full text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#0DA9CF]/30 focus:border-[#0DA9CF] text-sm transition-all" 
+                className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-[#E4E8EE] rounded-full text-[#1E2761] placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1E2761]/15 focus:border-[#1E2761] text-sm transition-all" 
                 required
               />
             </div>
           </div>
 
           <div className="w-full pt-3 space-y-3.5">
+            {/* 10% High Priority Action Button (Electric Coral #FF5A36) */}
             <button 
               type="submit"
               disabled={isLoading}
-              className="w-full py-3.5 px-6 rounded-full font-bold text-white bg-[#0DA9CF] hover:bg-[#0C8DB0] active:scale-[0.99] transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#0DA9CF]/25 hover:shadow-xl hover:shadow-[#0DA9CF]/35 cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed text-base"
+              className="w-full py-3.5 px-6 rounded-full font-bold text-white bg-[#FF5A36] hover:bg-[#E04826] active:scale-[0.99] transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#FF5A36]/25 hover:shadow-xl hover:shadow-[#FF5A36]/35 cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed text-base"
             >
               {isLoading ? (
                 <>
@@ -181,7 +182,7 @@ export default function Auth({ onNavigate }) {
             {isLogin && (
               <div className="relative py-1">
                 <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-slate-200"></div>
+                  <div className="w-full border-t border-[#E4E8EE]"></div>
                 </div>
                 <div className="relative flex justify-center text-xs">
                   <span className="px-3 bg-white text-slate-400 font-semibold uppercase tracking-wider">Or continue with</span>
@@ -193,7 +194,7 @@ export default function Auth({ onNavigate }) {
               <button
                 type="button"
                 onClick={handleGoogleLogin}
-                className="w-full flex items-center justify-center space-x-3 bg-white border border-slate-200 hover:border-[#0DA9CF]/50 hover:bg-slate-50 text-slate-800 py-3 rounded-full font-semibold transition-all shadow-sm cursor-pointer text-sm"
+                className="w-full flex items-center justify-center space-x-3 bg-white border border-[#E4E8EE] hover:border-[#1E2761]/40 hover:bg-slate-50 text-[#1E2761] py-3 rounded-full font-semibold transition-all shadow-sm cursor-pointer text-sm"
               >
                 <svg className="w-4.5 h-4.5" viewBox="0 0 24 24">
                   <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -207,7 +208,7 @@ export default function Auth({ onNavigate }) {
 
             <button 
               type="button"
-              className="w-full pt-1 text-sm font-semibold text-[#0DA9CF] hover:text-[#0C8DB0] hover:underline transition-colors cursor-pointer"
+              className="w-full pt-1 text-sm font-semibold text-[#1E2761] hover:text-[#FF5A36] hover:underline transition-colors cursor-pointer"
               onClick={() => {
                 setIsLogin(!isLogin);
                 setError('');
@@ -219,11 +220,12 @@ export default function Auth({ onNavigate }) {
         </form>
 
         <div className="flex items-center space-x-2 text-xs text-slate-400 pt-1">
-          <ShieldCheck size={14} className="text-[#04B84C]" />
+          <ShieldCheck size={14} className="text-[#FF5A36]" />
           <span>Protected with 256-bit SSL encryption</span>
         </div>
 
       </div>
     </div>
+  );
   );
 }
