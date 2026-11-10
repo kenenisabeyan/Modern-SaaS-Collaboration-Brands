@@ -162,10 +162,10 @@ function App() {
       {toast && (
         <div className="fixed top-4 left-1/2 z-[100] w-[min(calc(100vw-1.5rem),28rem)] -translate-x-1/2 px-2 sm:px-0">
           <div
-            className={`rounded-2xl sm:rounded-full border px-4 py-3 text-xs sm:text-sm font-medium shadow-2xl backdrop-blur-md text-center break-words ${
+            className={`rounded-2xl sm:rounded-full border px-4 py-3 text-xs sm:text-sm font-semibold shadow-xl backdrop-blur-md text-center break-words ${
               toast.type === 'error'
-                ? 'border-red-500/30 bg-red-950/90 text-red-100'
-                : 'border-[#04B84C]/40 bg-[#0A0F24]/95 text-[#04B84C] shadow-[#04B84C]/20'
+                ? 'border-rose-300 bg-rose-600 text-white shadow-rose-500/20'
+                : 'border-[#1E2761] bg-[#1E2761] text-white shadow-[#1E2761]/25'
             }`}
           >
             {toast.message}

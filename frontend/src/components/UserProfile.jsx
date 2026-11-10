@@ -72,7 +72,7 @@ export default function UserProfile({ onNavigate }) {
       <div className="flex items-center justify-between mb-6 sm:mb-8">
         <button 
           onClick={() => onNavigate('dashboard')}
-          className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-400 hover:text-[#0DA9CF] dark:hover:text-[#0DA9CF] transition-colors cursor-pointer"
+          className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-600 hover:text-[#FF5A36] transition-colors cursor-pointer"
         >
           <ArrowLeft size={16} />
           <span>Back to Dashboard</span>
@@ -82,7 +82,7 @@ export default function UserProfile({ onNavigate }) {
           <motion.div 
             initial={{ opacity: 0, y: -10 }} 
             animate={{ opacity: 1, y: 0 }} 
-            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#04B84C]/10 text-[#04B84C] border border-[#04B84C]/20 text-xs font-semibold"
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FF5A36]/10 text-[#FF5A36] border border-[#FF5A36]/20 text-xs font-semibold"
           >
             <Check size={13} />
             <span>Profile Updated!</span>
@@ -92,10 +92,10 @@ export default function UserProfile({ onNavigate }) {
 
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-1.5">
+        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#1E2761] mb-1.5">
           User Profile
         </h1>
-        <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base">
+        <p className="text-slate-600 text-sm sm:text-base">
           Manage your personal information, presence, and session statistics.
         </p>
       </div>
@@ -108,28 +108,28 @@ export default function UserProfile({ onNavigate }) {
           animate={{ opacity: 1, y: 0 }}
           className="lg:col-span-1"
         >
-          <div className="bg-white dark:bg-[#0A0F24]/80 border border-slate-200 dark:border-white/10 rounded-3xl p-6 sm:p-8 text-center shadow-sm relative">
-            <div className="w-24 h-24 sm:w-28 sm:h-28 mx-auto rounded-3xl bg-[#0DA9CF] text-white flex items-center justify-center text-3xl sm:text-4xl font-extrabold mb-4 shadow-lg shadow-[#0DA9CF]/25">
+          <div className="bg-white border border-[#E4E8EE] rounded-3xl p-6 sm:p-8 text-center shadow-sm relative">
+            <div className="w-24 h-24 sm:w-28 sm:h-28 mx-auto rounded-3xl bg-[#1E2761] text-white flex items-center justify-center text-3xl sm:text-4xl font-extrabold mb-4 shadow-lg shadow-[#1E2761]/20">
               {username.charAt(0).toUpperCase()}
             </div>
-            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-1 truncate">{username}</h2>
-            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 truncate mb-3">{email || `${username.toLowerCase()}@wabiseminar.com`}</p>
+            <h2 className="text-xl sm:text-2xl font-bold text-[#1E2761] mb-1 truncate">{username}</h2>
+            <p className="text-xs sm:text-sm text-slate-500 truncate mb-3">{email || `${username.toLowerCase()}@wabiseminar.com`}</p>
             
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#04B84C]/10 text-[#04B84C] text-xs font-semibold border border-[#04B84C]/20 mb-6">
-              <ShieldCheck size={14} className="text-[#04B84C]" />
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FF5A36]/10 text-[#FF5A36] text-xs font-semibold border border-[#FF5A36]/20 mb-6">
+              <ShieldCheck size={14} className="text-[#FF5A36]" />
               <span>Verified Account</span>
             </div>
 
-            <div className="w-full h-px bg-slate-100 dark:bg-white/10 mb-6"></div>
+            <div className="w-full h-px bg-[#E4E8EE] mb-6"></div>
 
             {/* Quick Stats Grid */}
             <div className="grid grid-cols-2 gap-3 text-center">
-              <div className="p-3 rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/5 shadow-sm">
-                <p className="text-2xl font-extrabold text-[#0DA9CF]">{roomCount}</p>
+              <div className="p-3 rounded-2xl bg-[#F5F7FA] border border-[#E4E8EE] shadow-sm">
+                <p className="text-2xl font-extrabold text-[#1E2761]">{roomCount}</p>
                 <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mt-0.5">Rooms Created</p>
               </div>
-              <div className="p-3 rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/5 shadow-sm">
-                <p className="text-2xl font-extrabold text-[#F67E31]">Pro</p>
+              <div className="p-3 rounded-2xl bg-[#F5F7FA] border border-[#E4E8EE] shadow-sm">
+                <p className="text-2xl font-extrabold text-[#FF5A36]">Pro</p>
                 <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mt-0.5">Tier Plan</p>
               </div>
             </div>
@@ -143,18 +143,18 @@ export default function UserProfile({ onNavigate }) {
           transition={{ delay: 0.08 }}
           className="lg:col-span-2"
         >
-          <div className="bg-white dark:bg-[#0A0F24]/80 border border-slate-200 dark:border-white/10 rounded-3xl p-6 sm:p-8 shadow-sm">
+          <div className="bg-white border border-[#E4E8EE] rounded-3xl p-6 sm:p-8 shadow-sm">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                <User size={20} className="text-[#0DA9CF]" />
+              <h3 className="text-lg sm:text-xl font-bold text-[#1E2761] flex items-center gap-2">
+                <User size={20} className="text-[#FF5A36]" />
                 <span>Account Information</span>
               </h3>
               <button 
                 type="button"
                 onClick={() => setIsEditing(!isEditing)}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-white/10 hover:bg-[#0DA9CF]/10 dark:hover:bg-white/15 text-[#0DA9CF] dark:text-slate-300 border border-slate-200 dark:border-white/10 transition-colors cursor-pointer shadow-sm"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-[#F5F7FA] hover:bg-[#E4E8EE] text-[#1E2761] border border-[#E4E8EE] transition-colors cursor-pointer shadow-sm"
               >
-                <Edit3 size={14} className="text-[#0DA9CF]" />
+                <Edit3 size={14} className="text-[#1E2761]" />
                 <span>{isEditing ? 'Cancel' : 'Edit Profile'}</span>
               </button>
             </div>
@@ -168,7 +168,7 @@ export default function UserProfile({ onNavigate }) {
                     value={editUsername}
                     onChange={(e) => setEditUsername(e.target.value)}
                     required
-                    className="w-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:bg-white dark:focus:bg-[#0A0F24] focus:border-[#0DA9CF] focus:ring-2 focus:ring-[#0DA9CF]/20 outline-none transition-all shadow-sm"
+                    className="w-full bg-[#F5F7FA] border border-[#E4E8EE] rounded-2xl px-4 py-3 text-sm text-[#1E2761] focus:bg-white focus:border-[#1E2761] focus:ring-2 focus:ring-[#1E2761]/15 outline-none transition-all shadow-sm"
                   />
                 </div>
                 <div>
@@ -177,7 +177,7 @@ export default function UserProfile({ onNavigate }) {
                     type="email" 
                     value={email || `${username.toLowerCase()}@wabiseminar.com`}
                     disabled
-                    className="w-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl px-4 py-3 text-sm text-slate-500 cursor-not-allowed opacity-80 shadow-sm"
+                    className="w-full bg-[#F5F7FA] border border-[#E4E8EE] rounded-2xl px-4 py-3 text-sm text-slate-500 cursor-not-allowed opacity-80 shadow-sm"
                   />
                 </div>
                 <div>
@@ -187,20 +187,20 @@ export default function UserProfile({ onNavigate }) {
                     value={editBio}
                     onChange={(e) => setEditBio(e.target.value)}
                     placeholder="Tell your attendees about yourself..."
-                    className="w-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-2xl px-4 py-3 text-sm text-slate-900 dark:text-white focus:bg-white dark:focus:bg-[#0A0F24] focus:border-[#0DA9CF] focus:ring-2 focus:ring-[#0DA9CF]/20 outline-none transition-all resize-none shadow-sm"
+                    className="w-full bg-[#F5F7FA] border border-[#E4E8EE] rounded-2xl px-4 py-3 text-sm text-[#1E2761] focus:bg-white focus:border-[#1E2761] focus:ring-2 focus:ring-[#1E2761]/15 outline-none transition-all resize-none shadow-sm"
                   ></textarea>
                 </div>
                 <div className="flex justify-end gap-3 pt-2">
                   <button 
                     type="button"
                     onClick={() => setIsEditing(false)}
-                    className="px-5 py-2.5 rounded-xl font-semibold bg-white dark:bg-white/5 hover:bg-slate-100 text-slate-700 dark:text-slate-300 text-sm border border-slate-200 dark:border-white/10 transition-colors cursor-pointer shadow-sm"
+                    className="px-5 py-2.5 rounded-xl font-semibold bg-white hover:bg-[#F5F7FA] text-slate-700 text-sm border border-[#E4E8EE] transition-colors cursor-pointer shadow-sm"
                   >
                     Cancel
                   </button>
                   <button 
                     type="submit"
-                    className="px-6 py-2.5 rounded-xl font-semibold bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white text-sm shadow-md shadow-[#0DA9CF]/20 transition-all cursor-pointer"
+                    className="px-6 py-2.5 rounded-xl font-semibold bg-[#FF5A36] hover:bg-[#E04826] text-white text-sm shadow-md shadow-[#FF5A36]/20 transition-all cursor-pointer"
                   >
                     Save Changes
                   </button>
@@ -209,19 +209,19 @@ export default function UserProfile({ onNavigate }) {
             ) : (
               <div className="space-y-5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="p-4 rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/5 shadow-sm">
+                  <div className="p-4 rounded-2xl bg-[#F5F7FA] border border-[#E4E8EE] shadow-sm">
                     <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Username</p>
-                    <p className="text-sm font-bold text-slate-900 dark:text-white">{username}</p>
+                    <p className="text-sm font-bold text-[#1E2761]">{username}</p>
                   </div>
-                  <div className="p-4 rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/5 shadow-sm">
+                  <div className="p-4 rounded-2xl bg-[#F5F7FA] border border-[#E4E8EE] shadow-sm">
                     <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Email</p>
-                    <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{email || 'Not provided'}</p>
+                    <p className="text-sm font-bold text-[#1E2761] truncate">{email || 'Not provided'}</p>
                   </div>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/5 shadow-sm">
+                <div className="p-4 rounded-2xl bg-[#F5F7FA] border border-[#E4E8EE] shadow-sm">
                   <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Bio</p>
-                  <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">{bio}</p>
+                  <p className="text-sm text-slate-700 leading-relaxed">{bio}</p>
                 </div>
 
                 {createdAt && (

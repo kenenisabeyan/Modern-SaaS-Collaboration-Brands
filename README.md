@@ -28,6 +28,30 @@
 
 ---
 
+## 🎨 Brand Identity & 60-30-10 Design Architecture
+
+WabiSeminar strictly follows the **60-30-10 Design Rule** combined with visual architecture patterns from **iceaddis.com** and **kenenisa-os.vercel.app**:
+
+| Hierarchy Role | Weight | Palette Hex | Target UI Application |
+|---|---|---|---|
+| **Secondary (Canvas Canvas)** | **60%** | `#FFFFFF` / `#F5F7FA` | Pure white background, soft slate layout canvas, `#E4E8EE` subtle panel dividers |
+| **Primary (Structural Weight)** | **30%** | `#1E2761` (Hover: `#151A44`) | Sticky navigation headers, brand typography, panel containers, primary structural buttons |
+| **Accent / Tertiary (Action Weight)** | **10%** | `#FF5A36` (Hover: `#E04826`) | High-priority interactive CTAs (`Create Instant Room`, `Host a Session`), live indicators, active tabs |
+
+### 🌟 Signature UI Components
+1. **Compact Pure White Sticky Header**:
+   - Left: Deep Midnight Blue (`#1E2761`) avatar emblem with an active Electric Coral (`#FF5A36`) live status indicator and bold `WABISEMINAR` logo text.
+   - Right: Signature boxed square hamburger button `[ ≡ ]` alongside the high-priority Electric Coral `Sign In` / `Dashboard` action button.
+2. **Slide-Out Right Drawer (iceaddis style)**:
+   - Deep Midnight Blue (`#1E2761`) slide-out drawer with a backdrop overlay, top-right `✕` close control, and clean accordion navigation (`About`, `Masterclasses (+)`, `Features`, `How It Works`, `Pricing`, `FAQ`, `Contact Us`).
+3. **2-Column Hero Section**:
+   - **Left**: Two-tone headline (**"Host Engaging"** in Electric Coral `#FF5A36` + **"Masterclasses"** in Deep Midnight Blue `#1E2761`), subtitle, the two essential action buttons, and inline Room ID entry bar.
+   - **Right**: Floating **Grand 3D Turbine Animation** (`HeroAnimation.jsx`) with ambient radial glow on pure white background.
+4. **3 Metric Stat Cards (kenenisa-os style)**:
+   - 3 glass stat cards displaying Happy Users (`#1E2761` top glow), Meetings Hosted (`#FF5A36` top glow), and Minutes Connected (`#1E2761` top glow).
+
+---
+
 ## 🚀 Core Features
 
 ### 🎨 Real-Time Collaborative Canvas
