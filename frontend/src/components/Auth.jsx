@@ -227,5 +227,4 @@ export default function Auth({ onNavigate }) {
       </div>
     </div>
   );
-  );
 }
