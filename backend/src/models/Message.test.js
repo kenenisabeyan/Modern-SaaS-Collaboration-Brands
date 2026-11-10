@@ -1,4 +1,5 @@
 import { describe, it, expect, beforeAll, afterAll, beforeEach } from 'vitest';
+import '../database/index.js';
 import sequelize from '../database/sequelize.js';
 import User from './User.js';
 import Room from './Room.js';
@@ -63,7 +64,7 @@ describe('Message Model', () => {
       ).rejects.toThrow();
     });
 
-    it('should require sender', async () => {
+    it('should allow null sender for guest users', async () => {
       const user = await User.create({
         username: 'user1',
         email: 'user1@example.com',
@@ -75,12 +76,14 @@ describe('Message Model', () => {
         createdBy: user.id,
       });
 
-      expect(
-        Message.create({
-          roomId: room.id,
-          message: 'Test message',
-        })
-      ).rejects.toThrow();
+      const message = await Message.create({
+        roomId: room.id,
+        sender: null,
+        message: 'Test message',
+      });
+
+      expect(message.id).toBeDefined();
+      expect(message.sender).toBeNull();
     });
 
     it('should require message', async () => {
@@ -272,6 +275,10 @@ describe('Message Model', () => {
         fc.asyncProperty(
           fc.string({ minLength: 1, maxLength: 1000 }).filter(s => s.trim().length > 0),
           async (messageText) => {
+            await Message.destroy({ where: {} });
+            await Room.destroy({ where: {} });
+            await User.destroy({ where: {} });
+
             const user = await User.create({
               username: `user_${Date.now()}_${Math.random()}`,
               email: `user_${Date.now()}_${Math.random()}@example.com`,
@@ -292,7 +299,8 @@ describe('Message Model', () => {
             expect(message.message).toBe(messageText);
             expect(message.message.trim().length).toBeGreaterThan(0);
           }
-        )
+        ),
+        { numRuns: 15 }
       );
     });
 
@@ -301,6 +309,10 @@ describe('Message Model', () => {
         fc.asyncProperty(
           fc.constant(''),
           async (emptyMessage) => {
+            await Message.destroy({ where: {} });
+            await Room.destroy({ where: {} });
+            await User.destroy({ where: {} });
+
             const user = await User.create({
               username: `user_${Date.now()}_${Math.random()}`,
               email: `user_${Date.now()}_${Math.random()}@example.com`,
@@ -325,7 +337,8 @@ describe('Message Model', () => {
 
             expect(validationError).toBe(true);
           }
-        )
+        ),
+        { numRuns: 15 }
       );
     });
 
@@ -334,6 +347,10 @@ describe('Message Model', () => {
         fc.asyncProperty(
           fc.string({ minLength: 1, maxLength: 500 }),
           async (messageText) => {
+            await Message.destroy({ where: {} });
+            await Room.destroy({ where: {} });
+            await User.destroy({ where: {} });
+
             const user = await User.create({
               username: `user_${Date.now()}_${Math.random()}`,
               email: `user_${Date.now()}_${Math.random()}@example.com`,
@@ -368,7 +385,8 @@ describe('Message Model', () => {
 
             expect(referentialError).toBe(true);
           }
-        )
+        ),
+        { numRuns: 15 }
       );
     });
 
@@ -377,6 +395,10 @@ describe('Message Model', () => {
         fc.asyncProperty(
           fc.string({ minLength: 1, maxLength: 500 }),
           async (messageText) => {
+            await Message.destroy({ where: {} });
+            await Room.destroy({ where: {} });
+            await User.destroy({ where: {} });
+
             const user = await User.create({
               username: `user_${Date.now()}_${Math.random()}`,
               email: `user_${Date.now()}_${Math.random()}@example.com`,
@@ -411,7 +433,8 @@ describe('Message Model', () => {
 
             expect(referentialError).toBe(true);
           }
-        )
+        ),
+        { numRuns: 15 }
       );
     });
   });

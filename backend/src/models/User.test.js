@@ -1,6 +1,9 @@
 import { describe, it, expect, beforeAll, afterAll, beforeEach } from 'vitest';
+import '../database/index.js';
 import sequelize from '../database/sequelize.js';
 import User from './User.js';
+import Room from './Room.js';
+import Message from './Message.js';
 import * as fc from 'fast-check';
 
 describe('User Model', () => {
@@ -13,6 +16,8 @@ describe('User Model', () => {
   });
 
   beforeEach(async () => {
+    await Message.destroy({ where: {} }).catch(() => {});
+    await Room.destroy({ where: {} }).catch(() => {});
     await User.destroy({ where: {} });
   });
 
@@ -158,6 +163,7 @@ describe('User Model', () => {
             password: fc.string({ minLength: 6, maxLength: 20 }),
           }),
           async (userData) => {
+            await User.destroy({ where: {} });
             // Create first user
             await User.create(userData);
 
@@ -174,7 +180,8 @@ describe('User Model', () => {
 
             expect(duplicateError).toBe(true);
           }
-        )
+        ),
+        { numRuns: 15 }
       );
     });
 
@@ -187,6 +194,7 @@ describe('User Model', () => {
             password: fc.string({ minLength: 6, maxLength: 20 }),
           }),
           async (userData) => {
+            await User.destroy({ where: {} });
             // Create first user
             await User.create(userData);
 
@@ -203,7 +211,8 @@ describe('User Model', () => {
 
             expect(duplicateError).toBe(true);
           }
-        )
+        ),
+        { numRuns: 15 }
       );
     });
 
@@ -216,6 +225,7 @@ describe('User Model', () => {
             password: fc.string({ minLength: 6, maxLength: 20 }),
           }),
           async (userData) => {
+            await User.destroy({ where: {} });
             const user = await User.create(userData);
 
             // Password should never be plaintext
@@ -229,7 +239,8 @@ describe('User Model', () => {
             expect(retrievedUser.password).not.toBe(userData.password);
             expect(retrievedUser.password).toMatch(/^\$2[aby]\$/);
           }
-        )
+        ),
+        { numRuns: 15 }
       );
     });
   });

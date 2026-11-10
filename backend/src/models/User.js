@@ -31,6 +31,11 @@ const User = sequelize.define(
       type: DataTypes.STRING,
       allowNull: true, // Optional for OAuth users
       validate: {
+        requirePasswordForLocal(value) {
+          if (!this.googleId && !value) {
+            throw new Error('Password is required for local users');
+          }
+        },
         len: [6, 255],
       },
     },

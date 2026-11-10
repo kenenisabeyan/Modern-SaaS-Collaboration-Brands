@@ -1,6 +1,7 @@
 import User from '../models/User.js';
 import Room from '../models/Room.js';
 import Message from '../models/Message.js';
+import WorkspaceTheme from '../models/WorkspaceTheme.js';
 
 // Setup associations
 const setupAssociations = () => {
@@ -48,6 +49,7 @@ export const models = {
   User,
   Room,
   Message,
+  WorkspaceTheme,
 };
 
 export default models;

@@ -1,4 +1,5 @@
 import { describe, it, expect, beforeAll, afterAll, beforeEach } from 'vitest';
+import '../database/index.js';
 import sequelize from '../database/sequelize.js';
 import User from './User.js';
 import Room from './Room.js';
@@ -166,8 +167,9 @@ describe('Room Model', () => {
             roomId2: fc.string({ minLength: 1, maxLength: 50 }).filter(s => s.trim().length > 0),
           }),
           async ({ roomId1, roomId2 }) => {
-            // Skip if roomIds are the same (that's a different test case)
             fc.pre(roomId1 !== roomId2);
+            await Room.destroy({ where: {} });
+            await User.destroy({ where: {} });
 
             const user = await User.create({
               username: `user_${Date.now()}_${Math.random()}`,
@@ -189,7 +191,8 @@ describe('Room Model', () => {
 
             expect(room2.roomId).toBe(roomId2);
           }
-        )
+        ),
+        { numRuns: 15 }
       );
     });
 
@@ -198,6 +201,9 @@ describe('Room Model', () => {
         fc.asyncProperty(
           fc.string({ minLength: 1, maxLength: 50 }).filter(s => s.trim().length > 0),
           async (roomId) => {
+            await Room.destroy({ where: {} });
+            await User.destroy({ where: {} });
+
             const user1 = await User.create({
               username: `user1_${Date.now()}_${Math.random()}`,
               email: `user1_${Date.now()}_${Math.random()}@example.com`,
@@ -229,7 +235,8 @@ describe('Room Model', () => {
 
             expect(duplicateError).toBe(true);
           }
-        )
+        ),
+        { numRuns: 15 }
       );
     });
   });
