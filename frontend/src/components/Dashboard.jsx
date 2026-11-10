@@ -138,18 +138,20 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-white text-slate-900 font-sans overflow-x-hidden selection:bg-[#0DA9CF] selection:text-white">
+    <div className="flex flex-col min-h-screen bg-[#F5F7FA] text-[#1E2761] font-sans overflow-x-hidden selection:bg-[#FF5A36] selection:text-white">
       
       <main className="flex-1 flex flex-col pt-16 relative z-10">
         
         {/* ========================================================
-            HERO SECTION: CENTERED HIGH-IMPACT VISUAL ARCHITECTURE
-            (Matching Kenenisa OS & Iceaddis Reference Designs)
+            HERO SECTION: 60-30-10 DESIGN ARCHITECTURE
+            - 60% Canvas: Soft Slate Gray / Off-White (#F5F7FA)
+            - 30% Structure: Deep Midnight Blue (#1E2761)
+            - 10% Action: Electric Coral / Orange-Red (#FF5A36)
            ======================================================== */}
         <section className="pt-6 sm:pt-10 pb-14 sm:pb-18 px-4 sm:px-8 max-w-[1360px] mx-auto w-full text-center relative overflow-hidden">
           
           {/* Subtle Ambient Radial Glow */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] sm:w-[900px] h-[350px] bg-gradient-to-r from-[#0DA9CF]/15 via-[#0DA9CF]/8 to-[#F67E31]/18 blur-[95px] rounded-full pointer-events-none -z-10" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] sm:w-[900px] h-[350px] bg-gradient-to-r from-[#1E2761]/10 via-[#1E2761]/5 to-[#FF5A36]/15 blur-[95px] rounded-full pointer-events-none -z-10" />
 
           {/* Compact 3D Turbine Brand Emblem */}
           <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-3 select-none pointer-events-none">
@@ -163,10 +165,10 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
             transition={{ duration: 0.5 }}
             className="max-w-4xl mx-auto"
           >
-            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[76px] font-black text-slate-900 tracking-tight leading-[1.08] select-none">
+            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[76px] font-black text-[#1E2761] tracking-tight leading-[1.08] select-none">
               WabiSeminar.
             </h1>
-            <div className="text-3xl sm:text-5xl md:text-6xl lg:text-[66px] font-extrabold tracking-tight leading-[1.1] select-none bg-gradient-to-r from-[#0DA9CF] via-[#0DA9CF] to-[#F67E31] bg-clip-text text-transparent mt-1.5">
+            <div className="text-3xl sm:text-5xl md:text-6xl lg:text-[66px] font-extrabold tracking-tight leading-[1.1] select-none bg-gradient-to-r from-[#1E2761] via-[#1E2761] to-[#FF5A36] bg-clip-text text-transparent mt-1.5">
               Engineering Real-Time Collaboration
             </div>
           </motion.div>
@@ -181,18 +183,18 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
             Create a free, encrypted meeting room instantly or join an existing session in seconds. Built for innovative educators, creators, and teams who value simplicity and connection.
           </motion.p>
 
-          {/* 3 Signature Action Buttons (Centered, Kenenisa OS Style) */}
+          {/* 3 Signature Action Buttons (60-30-10 Hierarchy) */}
           <motion.div 
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-8 select-none"
           >
-            {/* Button 1: Solid Orange */}
+            {/* Button 1: 10% High-Priority Action CTA in Electric Coral (#FF5A36) */}
             <button
               onClick={handleCreateRoom}
               disabled={isCreating}
-              className="bg-[#F67E31] hover:bg-[#e06920] text-white font-bold text-xs sm:text-sm px-6 py-3.5 rounded-lg shadow-md hover:shadow-lg hover:shadow-[#F67E31]/25 uppercase tracking-wider flex items-center justify-center space-x-2 transition-all cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed"
+              className="bg-[#FF5A36] hover:bg-[#E04826] text-white font-bold text-xs sm:text-sm px-6 py-3.5 rounded-lg shadow-md hover:shadow-lg hover:shadow-[#FF5A36]/25 uppercase tracking-wider flex items-center justify-center space-x-2 transition-all cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed"
             >
               {isCreating ? (
                 <>
@@ -207,22 +209,22 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               )}
             </button>
 
-            {/* Button 2: White with Cyan Outline */}
+            {/* Button 2: 30% Structural Outline in Thin Border (#E4E8EE) */}
             <button
               onClick={() => scrollToSection('features')}
-              className="border-2 border-[#0DA9CF] bg-white text-[#0DA9CF] hover:bg-[#0DA9CF]/5 font-bold text-xs sm:text-sm px-6 py-3.5 rounded-lg shadow-sm uppercase tracking-wider flex items-center justify-center space-x-1.5 transition-all cursor-pointer"
+              className="border border-[#E4E8EE] bg-white text-[#1E2761] hover:bg-[#E4E8EE]/40 font-bold text-xs sm:text-sm px-6 py-3.5 rounded-lg shadow-sm uppercase tracking-wider flex items-center justify-center space-x-1.5 transition-all cursor-pointer"
             >
               <span>SYSTEM TOUR ▸</span>
             </button>
 
-            {/* Button 3: Solid Cyan */}
+            {/* Button 3: 30% Structural Deep Midnight Blue (#1E2761) */}
             <button
               onClick={() => {
                 const input = document.getElementById('room-join-input');
                 input?.focus();
                 input?.scrollIntoView({ behavior: 'smooth', block: 'center' });
               }}
-              className="bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white font-bold text-xs sm:text-sm px-6 py-3.5 rounded-lg shadow-md hover:shadow-lg hover:shadow-[#0DA9CF]/25 uppercase tracking-wider flex items-center justify-center space-x-1.5 transition-all cursor-pointer"
+              className="bg-[#1E2761] hover:bg-[#151A44] text-white font-bold text-xs sm:text-sm px-6 py-3.5 rounded-lg shadow-md hover:shadow-lg hover:shadow-[#1E2761]/20 uppercase tracking-wider flex items-center justify-center space-x-1.5 transition-all cursor-pointer"
             >
               <span>JOIN ROOM →</span>
             </button>
@@ -230,20 +232,20 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
 
           {/* Interactive Instant Room Join Bar (Directly below buttons) */}
           <div className="max-w-md mx-auto mt-6 w-full">
-            <div className="flex items-center bg-white border border-slate-200/90 rounded-xl p-1.5 shadow-sm focus-within:border-[#0DA9CF] focus-within:ring-2 focus-within:ring-[#0DA9CF]/20 transition-all">
+            <div className="flex items-center bg-white border border-[#E4E8EE] rounded-xl p-1.5 shadow-sm focus-within:border-[#1E2761] focus-within:ring-2 focus-within:ring-[#1E2761]/15 transition-all">
               <input 
                 id="room-join-input"
                 type="text" 
                 value={joinId}
                 onChange={(e) => setJoinId(e.target.value)}
                 placeholder="Enter Room ID (e.g. abc-defg-hij)" 
-                className="flex-1 px-3.5 py-2 text-xs sm:text-sm bg-transparent outline-none text-slate-800 placeholder-slate-400"
+                className="flex-1 px-3.5 py-2 text-xs sm:text-sm bg-transparent outline-none text-[#1E2761] placeholder-slate-400"
                 onKeyDown={(e) => e.key === 'Enter' && handleJoinRoom()}
               />
               <button
                 onClick={handleJoinRoom}
                 disabled={!joinId.trim() || isJoining}
-                className="bg-[#0DA9CF] hover:bg-[#0C8DB0] disabled:opacity-50 text-white font-bold text-xs px-4 py-2 rounded-lg transition-all flex items-center space-x-1.5 cursor-pointer shadow-sm"
+                className="bg-[#1E2761] hover:bg-[#151A44] disabled:opacity-50 text-white font-bold text-xs px-4 py-2 rounded-lg transition-all flex items-center space-x-1.5 cursor-pointer shadow-sm"
               >
                 {isJoining ? (
                   <>
@@ -269,73 +271,73 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
           </div>
 
           {/* Feature Badges */}
-          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 mt-6 text-xs font-semibold text-slate-500">
+          <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 mt-6 text-xs font-semibold text-slate-600">
             <div className="flex items-center space-x-1.5">
-              <CheckCircle size={15} className="text-[#04B84C]" />
+              <CheckCircle size={15} className="text-[#FF5A36]" />
               <span>Zero Downloads</span>
             </div>
             <div className="flex items-center space-x-1.5">
-              <CheckCircle size={15} className="text-[#0DA9CF]" />
+              <CheckCircle size={15} className="text-[#1E2761]" />
               <span>Ultra HD Video</span>
             </div>
             <div className="flex items-center space-x-1.5">
-              <CheckCircle size={15} className="text-[#F67E31]" />
+              <CheckCircle size={15} className="text-[#FF5A36]" />
               <span>End-to-End Secure</span>
             </div>
           </div>
 
-          {/* 3 Glass Stat Cards (Matching Kenenisa OS Image 5 Bottom Cards) */}
+          {/* 3 Glass Stat Cards (60-30-10 Design Hierarchy) */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6 mt-12 max-w-4xl mx-auto w-full">
             
-            {/* Card 1: 36 Happy Users (Cyan Glow Top) */}
-            <div className="bg-white border border-slate-200/90 rounded-2xl shadow-sm hover:shadow-md hover:border-[#0DA9CF]/40 transition-all overflow-hidden flex flex-col">
-              <div className="h-16 sm:h-20 bg-gradient-to-b from-[#0DA9CF]/25 via-[#0DA9CF]/5 to-transparent flex items-center justify-center border-b border-[#0DA9CF]/10">
-                <Users className="text-[#0DA9CF] w-6 h-6" />
+            {/* Card 1: 36 Happy Users (Deep Midnight Blue Header) */}
+            <div className="bg-white border border-[#E4E8EE] rounded-2xl shadow-sm hover:shadow-md hover:border-[#1E2761]/30 transition-all overflow-hidden flex flex-col">
+              <div className="h-16 sm:h-20 bg-gradient-to-b from-[#1E2761]/12 via-[#1E2761]/5 to-transparent flex items-center justify-center border-b border-[#E4E8EE]">
+                <Users className="text-[#1E2761] w-6 h-6" />
               </div>
               <div className="p-6 pt-4 text-center">
-                <div className="text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 tracking-tight">
+                <div className="text-4xl sm:text-5xl md:text-6xl font-black text-[#1E2761] tracking-tight">
                   {platformStats.users.toLocaleString()}
                 </div>
-                <div className="text-xs font-bold text-slate-700 uppercase tracking-widest mt-2">
+                <div className="text-xs font-bold text-[#1E2761] uppercase tracking-widest mt-2">
                   HAPPY USERS
                 </div>
-                <div className="text-xs text-slate-400 mt-1">
+                <div className="text-xs text-slate-500 mt-1">
                   Educators & Active Students
                 </div>
               </div>
             </div>
 
-            {/* Card 2: 5 Meetings Hosted (Orange Glow Top) */}
-            <div className="bg-white border border-slate-200/90 rounded-2xl shadow-sm hover:shadow-md hover:border-[#F67E31]/40 transition-all overflow-hidden flex flex-col">
-              <div className="h-16 sm:h-20 bg-gradient-to-b from-[#F67E31]/25 via-[#F67E31]/5 to-transparent flex items-center justify-center border-b border-[#F67E31]/10">
-                <Video className="text-[#F67E31] w-6 h-6" />
+            {/* Card 2: 5 Meetings Hosted (Electric Coral Header) */}
+            <div className="bg-white border border-[#E4E8EE] rounded-2xl shadow-sm hover:shadow-md hover:border-[#FF5A36]/40 transition-all overflow-hidden flex flex-col">
+              <div className="h-16 sm:h-20 bg-gradient-to-b from-[#FF5A36]/15 via-[#FF5A36]/5 to-transparent flex items-center justify-center border-b border-[#E4E8EE]">
+                <Video className="text-[#FF5A36] w-6 h-6" />
               </div>
               <div className="p-6 pt-4 text-center">
-                <div className="text-4xl sm:text-5xl md:text-6xl font-black text-[#F67E31] tracking-tight">
+                <div className="text-4xl sm:text-5xl md:text-6xl font-black text-[#FF5A36] tracking-tight">
                   {platformStats.meetings.toLocaleString()}
                 </div>
-                <div className="text-xs font-bold text-slate-700 uppercase tracking-widest mt-2">
+                <div className="text-xs font-bold text-[#1E2761] uppercase tracking-widest mt-2">
                   MEETINGS HOSTED
                 </div>
-                <div className="text-xs text-slate-400 mt-1">
+                <div className="text-xs text-slate-500 mt-1">
                   Live Collaborative Sessions
                 </div>
               </div>
             </div>
 
-            {/* Card 3: 225 Minutes Connected (Cyan Glow Top) */}
-            <div className="bg-white border border-slate-200/90 rounded-2xl shadow-sm hover:shadow-md hover:border-[#0DA9CF]/40 transition-all overflow-hidden flex flex-col">
-              <div className="h-16 sm:h-20 bg-gradient-to-b from-[#0DA9CF]/25 via-[#0DA9CF]/5 to-transparent flex items-center justify-center border-b border-[#0DA9CF]/10">
-                <Zap className="text-[#0DA9CF] w-6 h-6" />
+            {/* Card 3: 225 Minutes Connected (Deep Midnight Blue Header) */}
+            <div className="bg-white border border-[#E4E8EE] rounded-2xl shadow-sm hover:shadow-md hover:border-[#1E2761]/30 transition-all overflow-hidden flex flex-col">
+              <div className="h-16 sm:h-20 bg-gradient-to-b from-[#1E2761]/12 via-[#1E2761]/5 to-transparent flex items-center justify-center border-b border-[#E4E8EE]">
+                <Zap className="text-[#1E2761] w-6 h-6" />
               </div>
               <div className="p-6 pt-4 text-center">
-                <div className="text-4xl sm:text-5xl md:text-6xl font-black text-[#0DA9CF] tracking-tight">
+                <div className="text-4xl sm:text-5xl md:text-6xl font-black text-[#1E2761] tracking-tight">
                   {platformStats.minutes.toLocaleString()}
                 </div>
-                <div className="text-xs font-bold text-slate-700 uppercase tracking-widest mt-2">
+                <div className="text-xs font-bold text-[#1E2761] uppercase tracking-widest mt-2">
                   MINUTES CONNECTED
                 </div>
-                <div className="text-xs text-slate-400 mt-1">
+                <div className="text-xs text-slate-500 mt-1">
                   High Definition WebRTC
                 </div>
               </div>
@@ -349,14 +351,14 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
         {/* ========================================================
             FEATURES SECTION
            ======================================================== */}
-        <section id="features" className="py-16 sm:py-24 bg-white border-t border-slate-100 px-4 sm:px-8 lg:px-16">
+        <section id="features" className="py-16 sm:py-24 bg-white border-t border-[#E4E8EE] px-4 sm:px-8 lg:px-16">
           <div className="max-w-[1300px] mx-auto">
             
             <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-18">
-              <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#0DA9CF]/10 text-[#0DA9CF] border border-[#0DA9CF]/20 mb-4">
+              <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#1E2761]/8 text-[#1E2761] border border-[#1E2761]/15 mb-4">
                 Core Capabilities
               </span>
-              <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
+              <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#1E2761] mb-4">
                 Everything You Need for Perfect Seminars
               </h2>
               <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
@@ -366,31 +368,31 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               
-              <div className="bg-white border border-slate-200 rounded-3xl p-8 sm:p-10 hover:border-[#0DA9CF]/40 shadow-sm hover:shadow-lg transition-all">
-                <div className="w-14 h-14 bg-[#0DA9CF]/10 border border-[#0DA9CF]/20 text-[#0DA9CF] rounded-2xl flex items-center justify-center mb-6"> 
+              <div className="bg-[#F5F7FA] border border-[#E4E8EE] rounded-3xl p-8 sm:p-10 hover:border-[#1E2761]/30 shadow-sm hover:shadow-md transition-all">
+                <div className="w-14 h-14 bg-[#1E2761]/10 border border-[#1E2761]/20 text-[#1E2761] rounded-2xl flex items-center justify-center mb-6"> 
                   <Video size={28} /> 
                 </div>
-                <h3 className="text-2xl font-bold mb-3 text-slate-900">Ultra HD Video</h3>
+                <h3 className="text-2xl font-bold mb-3 text-[#1E2761]">Ultra HD Video</h3>
                 <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
                   Experience crystal-clear video and audio quality powered by advanced WebRTC architecture, ensuring you always look your best.
                 </p>
               </div>
 
-              <div className="bg-white border border-slate-200 rounded-3xl p-8 sm:p-10 hover:border-[#04B84C]/40 shadow-sm hover:shadow-lg transition-all">
-                <div className="w-14 h-14 bg-[#04B84C]/10 border border-[#04B84C]/20 text-[#04B84C] rounded-2xl flex items-center justify-center mb-6"> 
+              <div className="bg-[#F5F7FA] border border-[#E4E8EE] rounded-3xl p-8 sm:p-10 hover:border-[#FF5A36]/40 shadow-sm hover:shadow-md transition-all">
+                <div className="w-14 h-14 bg-[#FF5A36]/10 border border-[#FF5A36]/20 text-[#FF5A36] rounded-2xl flex items-center justify-center mb-6"> 
                   <MessageSquare size={28} /> 
                 </div>
-                <h3 className="text-2xl font-bold mb-3 text-slate-900">Real-time Chat</h3>
+                <h3 className="text-2xl font-bold mb-3 text-[#1E2761]">Real-time Chat</h3>
                 <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
                   Keep your audience engaged with lightning-fast built-in chat. Share links, answer questions, and foster community instantly.
                 </p>
               </div>
 
-              <div className="bg-white border border-slate-200 rounded-3xl p-8 sm:p-10 hover:border-[#F67E31]/40 shadow-sm hover:shadow-lg transition-all">
-                <div className="w-14 h-14 bg-[#F67E31]/10 border border-[#F67E31]/20 text-[#F67E31] rounded-2xl flex items-center justify-center mb-6"> 
+              <div className="bg-[#F5F7FA] border border-[#E4E8EE] rounded-3xl p-8 sm:p-10 hover:border-[#1E2761]/30 shadow-sm hover:shadow-md transition-all">
+                <div className="w-14 h-14 bg-[#1E2761]/10 border border-[#1E2761]/20 text-[#1E2761] rounded-2xl flex items-center justify-center mb-6"> 
                   <Monitor size={28} /> 
                 </div>
-                <h3 className="text-2xl font-bold mb-3 text-slate-900">Screen Sharing</h3>
+                <h3 className="text-2xl font-bold mb-3 text-[#1E2761]">Screen Sharing</h3>
                 <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
                   Present your masterclass seamlessly. Share your entire screen, specific windows, or browser tabs with zero lag.
                 </p>
@@ -405,50 +407,50 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
         {/* ========================================================
             ROLES SECTION
            ======================================================== */}
-        <section className="py-16 sm:py-24 bg-white border-t border-slate-100 px-4 sm:px-8 lg:px-16">
+        <section className="py-16 sm:py-24 bg-[#F5F7FA] border-t border-[#E4E8EE] px-4 sm:px-8 lg:px-16">
           <div className="max-w-[1300px] mx-auto text-center">
             
-            <h2 className="text-3xl sm:text-5xl font-extrabold mb-12 tracking-tight text-slate-900">
-              One Platform <span className="text-[#F67E31]">Every Role Connected</span>
+            <h2 className="text-3xl sm:text-5xl font-extrabold mb-12 tracking-tight text-[#1E2761]">
+              One Platform <span className="text-[#FF5A36]">Every Role Connected</span>
             </h2>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               
-              <div className="bg-white border border-slate-200 hover:border-[#0DA9CF]/40 p-8 rounded-3xl flex flex-col items-center shadow-sm hover:-translate-y-1 transition-all">
-                <div className="w-14 h-14 rounded-2xl bg-[#0DA9CF]/10 border border-[#0DA9CF]/20 flex items-center justify-center text-[#0DA9CF] mb-6">
+              <div className="bg-white border border-[#E4E8EE] hover:border-[#1E2761]/30 p-8 rounded-3xl flex flex-col items-center shadow-sm hover:-translate-y-1 transition-all">
+                <div className="w-14 h-14 rounded-2xl bg-[#1E2761]/10 border border-[#1E2761]/20 flex items-center justify-center text-[#1E2761] mb-6">
                   <GraduationCap size={28} />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">Learners</h3>
+                <h3 className="text-xl font-bold text-[#1E2761] mb-2">Learners</h3>
                 <p className="text-slate-600 text-sm leading-relaxed">
                   Learn step-by-step, track your progress, and build skills for your future.
                 </p>
               </div>
 
-              <div className="bg-white border border-slate-200 hover:border-[#F67E31]/40 p-8 rounded-3xl flex flex-col items-center shadow-sm hover:-translate-y-1 transition-all">
-                <div className="w-14 h-14 rounded-2xl bg-[#F67E31]/10 border border-[#F67E31]/20 flex items-center justify-center text-[#F67E31] mb-6">
+              <div className="bg-white border border-[#E4E8EE] hover:border-[#FF5A36]/40 p-8 rounded-3xl flex flex-col items-center shadow-sm hover:-translate-y-1 transition-all">
+                <div className="w-14 h-14 rounded-2xl bg-[#FF5A36]/10 border border-[#FF5A36]/20 flex items-center justify-center text-[#FF5A36] mb-6">
                   <BookOpen size={28} />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">Instructors</h3>
+                <h3 className="text-xl font-bold text-[#1E2761] mb-2">Instructors</h3>
                 <p className="text-slate-600 text-sm leading-relaxed">
                   Create impactful courses and guide learners with structured teaching tools.
                 </p>
               </div>
 
-              <div className="bg-white border border-slate-200 hover:border-[#04B84C]/40 p-8 rounded-3xl flex flex-col items-center shadow-sm hover:-translate-y-1 transition-all">
-                <div className="w-14 h-14 rounded-2xl bg-[#04B84C]/10 border border-[#04B84C]/20 flex items-center justify-center text-[#04B84C] mb-6">
+              <div className="bg-white border border-[#E4E8EE] hover:border-[#1E2761]/30 p-8 rounded-3xl flex flex-col items-center shadow-sm hover:-translate-y-1 transition-all">
+                <div className="w-14 h-14 rounded-2xl bg-[#1E2761]/10 border border-[#1E2761]/20 flex items-center justify-center text-[#1E2761] mb-6">
                   <Users size={28} />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">Parents</h3>
+                <h3 className="text-xl font-bold text-[#1E2761] mb-2">Parents</h3>
                 <p className="text-slate-600 text-sm leading-relaxed">
                   Stay involved with real-time insights into learning progress and performance.
                 </p>
               </div>
 
-              <div className="bg-white border border-slate-200 hover:border-[#0DA9CF]/40 p-8 rounded-3xl flex flex-col items-center shadow-sm hover:-translate-y-1 transition-all">
-                <div className="w-14 h-14 rounded-2xl bg-[#0DA9CF]/10 border border-[#0DA9CF]/20 flex items-center justify-center text-[#0DA9CF] mb-6">
+              <div className="bg-white border border-[#E4E8EE] hover:border-[#FF5A36]/40 p-8 rounded-3xl flex flex-col items-center shadow-sm hover:-translate-y-1 transition-all">
+                <div className="w-14 h-14 rounded-2xl bg-[#FF5A36]/10 border border-[#FF5A36]/20 flex items-center justify-center text-[#FF5A36] mb-6">
                   <Heart size={28} />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-2">Sponsors</h3>
+                <h3 className="text-xl font-bold text-[#1E2761] mb-2">Sponsors</h3>
                 <p className="text-slate-600 text-sm leading-relaxed">
                   Support learners in need and track the real impact of your contribution.
                 </p>
@@ -463,14 +465,14 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
         {/* ========================================================
             TESTIMONIALS SECTION
            ======================================================== */}
-        <section className="py-16 sm:py-24 bg-white border-t border-slate-100 px-4 sm:px-8 lg:px-16">
+        <section className="py-16 sm:py-24 bg-white border-t border-[#E4E8EE] px-4 sm:px-8 lg:px-16">
           <div className="max-w-[1300px] mx-auto">
             
             <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-18">
-              <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#0DA9CF]/10 text-[#0DA9CF] border border-[#0DA9CF]/20 mb-4">
+              <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#1E2761]/8 text-[#1E2761] border border-[#1E2761]/15 mb-4">
                 Loved by educators
               </span>
-              <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
+              <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#1E2761] mb-4">
                 What Our Community Says
               </h2>
               <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
@@ -480,9 +482,9 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               
-              <div className="bg-white border border-slate-200 p-8 rounded-3xl shadow-sm hover:border-[#F67E31]/40 transition-all flex flex-col justify-between">
+              <div className="bg-[#F5F7FA] border border-[#E4E8EE] p-8 rounded-3xl shadow-sm hover:border-[#FF5A36]/40 transition-all flex flex-col justify-between">
                 <div>
-                  <div className="flex gap-1 text-amber-400 mb-5">
+                  <div className="flex gap-1 text-[#FF5A36] mb-5">
                     <Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" />
                   </div>
                   <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-6 font-normal">
@@ -490,17 +492,17 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                   </p>
                 </div>
                 <div className="flex items-center gap-3.5">
-                  <div className="w-11 h-11 rounded-full bg-[#F67E31] flex items-center justify-center font-bold text-white text-base">K</div>
+                  <div className="w-11 h-11 rounded-full bg-[#FF5A36] flex items-center justify-center font-bold text-white text-base">K</div>
                   <div>
-                    <h4 className="text-slate-900 font-bold text-sm">Kenenisa Beyan</h4>
+                    <h4 className="text-[#1E2761] font-bold text-sm">Kenenisa Beyan</h4>
                     <p className="text-slate-500 text-xs">Lead Designer, StudioX</p>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white border border-slate-200 p-8 rounded-3xl shadow-sm hover:border-[#04B84C]/40 transition-all flex flex-col justify-between">
+              <div className="bg-[#F5F7FA] border border-[#E4E8EE] p-8 rounded-3xl shadow-sm hover:border-[#1E2761]/30 transition-all flex flex-col justify-between">
                 <div>
-                  <div className="flex gap-1 text-amber-400 mb-5">
+                  <div className="flex gap-1 text-[#FF5A36] mb-5">
                     <Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" />
                   </div>
                   <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-6 font-normal">
@@ -508,17 +510,17 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                   </p>
                 </div>
                 <div className="flex items-center gap-3.5">
-                  <div className="w-11 h-11 rounded-full bg-[#04B84C] flex items-center justify-center font-bold text-white text-base">Y</div>
+                  <div className="w-11 h-11 rounded-full bg-[#1E2761] flex items-center justify-center font-bold text-white text-base">Y</div>
                   <div>
-                    <h4 className="text-slate-900 font-bold text-sm">Yerosan Girma</h4>
+                    <h4 className="text-[#1E2761] font-bold text-sm">Yerosan Girma</h4>
                     <p className="text-slate-500 text-xs">Executive Coach</p>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-white border border-slate-200 p-8 rounded-3xl shadow-sm hover:border-[#0DA9CF]/40 transition-all flex flex-col justify-between">
+              <div className="bg-[#F5F7FA] border border-[#E4E8EE] p-8 rounded-3xl shadow-sm hover:border-[#1E2761]/30 transition-all flex flex-col justify-between">
                 <div>
-                  <div className="flex gap-1 text-amber-400 mb-5">
+                  <div className="flex gap-1 text-[#FF5A36] mb-5">
                     <Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" />
                   </div>
                   <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-6 font-normal">
@@ -526,9 +528,9 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                   </p>
                 </div>
                 <div className="flex items-center gap-3.5">
-                  <div className="w-11 h-11 rounded-full bg-[#0DA9CF] flex items-center justify-center font-bold text-white text-base">D</div>
+                  <div className="w-11 h-11 rounded-full bg-[#1E2761] flex items-center justify-center font-bold text-white text-base">D</div>
                   <div>
-                    <h4 className="text-slate-900 font-bold text-sm">Dagin A.</h4>
+                    <h4 className="text-[#1E2761] font-bold text-sm">Dagin A.</h4>
                     <p className="text-slate-500 text-xs">CTO, TechFlow</p>
                   </div>
                 </div>

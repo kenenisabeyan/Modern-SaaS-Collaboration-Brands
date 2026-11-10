@@ -7,10 +7,23 @@ export default {
   theme: {
     extend: {
       colors: {
+        'brand-primary': '#1E2761',
+        'brand-primary-hover': '#151A44',
+        'brand-secondary': '#F5F7FA',
+        'brand-border': '#E4E8EE',
+        'brand-accent': '#FF5A36',
+        'brand-accent-hover': '#E04826',
         brand: {
-          cyan: '#0DA9CF',
-          orange: '#F67E31',
-          green: '#04B84C',
+          primary: '#1E2761',
+          'primary-hover': '#151A44',
+          secondary: '#F5F7FA',
+          border: '#E4E8EE',
+          accent: '#FF5A36',
+          'accent-hover': '#E04826',
+          // legacy aliases for seamless compatibility
+          cyan: '#1E2761',
+          orange: '#FF5A36',
+          green: '#FF5A36',
         },
         indigo: {
           50: '#ECF8FB',

@@ -1,111 +1,33 @@
 @import "tailwindcss";
 
+:root {
+  --color-primary: #1E2761;
+  --color-primary-hover: #151A44;
+  --color-secondary: #F5F7FA;
+  --color-border: #E4E8EE;
+  --color-accent: #FF5A36;
+  --color-accent-hover: #E04826;
+}
+
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   
-  /* Brand specific colors requested by user: #0DA9CF, #F67E31, #04B84C */
-  --color-brand-cyan: #0DA9CF;
-  --color-brand-orange: #F67E31;
-  --color-brand-green: #04B84C;
+  /* 60-30-10 Brand Identity */
+  --color-brand-primary: #1E2761;
+  --color-brand-primary-hover: #151A44;
+  --color-brand-secondary: #F5F7FA;
+  --color-brand-border: #E4E8EE;
+  --color-brand-accent: #FF5A36;
+  --color-brand-accent-hover: #E04826;
 
-  /* Brand Cyan (#0DA9CF) overrides for Indigo, Blue, Cyan */
-  --color-indigo-50: #ECF8FB;
-  --color-indigo-100: #D3F0F6;
-  --color-indigo-200: #AAE1EE;
-  --color-indigo-300: #7AD0E5;
-  --color-indigo-400: #42BCDA;
-  --color-indigo-500: #0DA9CF;
-  --color-indigo-600: #0C8DB0;
-  --color-indigo-700: #0C7393;
-  --color-indigo-800: #0B5976;
-  --color-indigo-900: #0B405B;
-  --color-indigo-950: #0B2B43;
+  --color-primary: #1E2761;
+  --color-secondary: #F5F7FA;
+  --color-accent: #FF5A36;
 
-  --color-blue-50: #ECF8FB;
-  --color-blue-100: #D3F0F6;
-  --color-blue-200: #AAE1EE;
-  --color-blue-300: #7AD0E5;
-  --color-blue-400: #42BCDA;
-  --color-blue-500: #0DA9CF;
-  --color-blue-600: #0C8DB0;
-  --color-blue-700: #0C7393;
-  --color-blue-800: #0B5976;
-  --color-blue-900: #0B405B;
-  --color-blue-950: #0B2B43;
-
-  --color-cyan-50: #ECF8FB;
-  --color-cyan-100: #D3F0F6;
-  --color-cyan-200: #AAE1EE;
-  --color-cyan-300: #7AD0E5;
-  --color-cyan-400: #42BCDA;
-  --color-cyan-500: #0DA9CF;
-  --color-cyan-600: #0C8DB0;
-  --color-cyan-700: #0C7393;
-  --color-cyan-800: #0B5976;
-  --color-cyan-900: #0B405B;
-  --color-cyan-950: #0B2B43;
-
-  /* Brand Orange (#F67E31) overrides for Purple, Orange */
-  --color-purple-50: #FEF5EF;
-  --color-purple-100: #FDE8DA;
-  --color-purple-200: #FCD2B7;
-  --color-purple-300: #FAB88E;
-  --color-purple-400: #F89A5E;
-  --color-purple-500: #F67E31;
-  --color-purple-600: #CC6A2F;
-  --color-purple-700: #A3572C;
-  --color-purple-800: #7B442A;
-  --color-purple-900: #563328;
-  --color-purple-950: #342326;
-
-  --color-orange-50: #FEF5EF;
-  --color-orange-100: #FDE8DA;
-  --color-orange-200: #FCD2B7;
-  --color-orange-300: #FAB88E;
-  --color-orange-400: #F89A5E;
-  --color-orange-500: #F67E31;
-  --color-orange-600: #CC6A2F;
-  --color-orange-700: #A3572C;
-  --color-orange-800: #7B442A;
-  --color-orange-900: #563328;
-  --color-orange-950: #342326;
-
-  /* Brand Green (#04B84C) overrides for Emerald, Green, Teal */
-  --color-emerald-50: #EBF9F1;
-  --color-emerald-100: #D2F2DF;
-  --color-emerald-200: #A7E6C0;
-  --color-emerald-300: #75D89D;
-  --color-emerald-400: #3BC873;
-  --color-emerald-500: #04B84C;
-  --color-emerald-600: #059A45;
-  --color-emerald-700: #067D3E;
-  --color-emerald-800: #076037;
-  --color-emerald-900: #084531;
-  --color-emerald-950: #092D2B;
-
-  --color-green-50: #EBF9F1;
-  --color-green-100: #D2F2DF;
-  --color-green-200: #A7E6C0;
-  --color-green-300: #75D89D;
-  --color-green-400: #3BC873;
-  --color-green-500: #04B84C;
-  --color-green-600: #059A45;
-  --color-green-700: #067D3E;
-  --color-green-800: #076037;
-  --color-green-900: #084531;
-  --color-green-950: #092D2B;
-
-  --color-teal-50: #EBF9F1;
-  --color-teal-100: #D2F2DF;
-  --color-teal-200: #A7E6C0;
-  --color-teal-300: #75D89D;
-  --color-teal-400: #3BC873;
-  --color-teal-500: #04B84C;
-  --color-teal-600: #059A45;
-  --color-teal-700: #067D3E;
-  --color-teal-800: #076037;
-  --color-teal-900: #084531;
-  --color-teal-950: #092D2B;
+  /* Legacy brand token aliases mapped to the new palette */
+  --color-brand-cyan: #1E2761;
+  --color-brand-orange: #FF5A36;
+  --color-brand-green: #FF5A36;
 }
 
 @custom-variant light (&:where(.light, .light *));
@@ -117,8 +39,8 @@
     text-rendering: optimizeLegibility;
   }
   body {
-    background-color: #FFFFFF;
-    color: #0F172A;
+    background-color: #F5F7FA;
+    color: #1E2761;
     font-family: var(--font-sans);
     overflow-x: hidden;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
@@ -126,12 +48,34 @@
   }
   
   .light {
-    background-color: #FFFFFF !important;
-    color: #0F172A;
+    background-color: #F5F7FA !important;
+    color: #1E2761;
   }
 }
 
 @layer components {
+  /* 60-30-10 Button UI Kit */
+  .btn-primary {
+    @apply bg-[#1E2761] hover:bg-[#151A44] text-white font-semibold py-3 px-6 rounded-xl transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer;
+  }
+
+  .btn-accent {
+    @apply bg-[#FF5A36] hover:bg-[#E04826] text-white font-bold py-3.5 px-6 rounded-xl transition-all shadow-md shadow-[#FF5A36]/20 flex items-center justify-center gap-2 cursor-pointer;
+  }
+
+  .btn-outline {
+    @apply border border-[#E4E8EE] bg-white text-[#1E2761] hover:bg-[#F5F7FA] font-semibold py-3 px-6 rounded-xl transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer;
+  }
+
+  /* 60-30-10 Card & Panel Surfaces */
+  .video-card, .panel-card {
+    @apply bg-white border border-[#E4E8EE] rounded-2xl shadow-sm hover:shadow-md transition-all;
+  }
+
+  /* Live & Recording Indicator Lights */
+  .live-indicator {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#FF5A36]/10 text-[#FF5A36] border border-[#FF5A36]/20;
+  }
   /* Premium SaaS Card */
   .premium-card {
     @apply bg-white/[0.02] backdrop-blur-2xl border border-white/[0.08] shadow-[0_8px_30px_rgb(0,0,0,0.4)] rounded-2xl sm:rounded-3xl relative overflow-hidden transition-all duration-500 hover:border-white/[0.15] hover:bg-white/[0.04];
