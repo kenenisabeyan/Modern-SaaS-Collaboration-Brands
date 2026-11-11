@@ -31,6 +31,25 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleMenuItemClick = (item) => {
+    setIsDrawerOpen(false);
+    if (item.action) {
+      item.action();
+    } else if (item.id === 'about') {
+      if (currentView === 'dashboard') {
+        const el = document.getElementById('features');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+        else handleNavClick('features');
+      } else {
+        handleNavClick('features');
+      }
+    } else if (item.id === 'masterclasses') {
+      handleNavClick('dashboard');
+    } else {
+      handleNavClick(item.view || 'dashboard');
+    }
+  };
+
   const menuItems = [
     {
       id: 'about',
@@ -128,6 +147,36 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
               WABISEMINAR
             </span>
           </div>
+
+          {/* Center Navigation Links (Revealed smoothly on scroll) */}
+          <AnimatePresence>
+            {isScrolled && (
+              <motion.nav 
+                initial={{ opacity: 0, y: -10, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -10, scale: 0.98 }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
+                className="hidden lg:flex items-center space-x-1 xl:space-x-1.5 p-1 rounded-full bg-[#F5F7FA]/80 border border-[#E4E8EE] backdrop-blur-md shadow-xs"
+              >
+                {menuItems.map((item) => {
+                  const isActive = currentView === item.view || (item.id === 'masterclasses' && currentView === 'dashboard');
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => handleMenuItemClick(item)}
+                      className={`px-3 xl:px-4 py-1.5 rounded-full text-xs xl:text-sm font-semibold transition-all cursor-pointer ${
+                        isActive
+                          ? 'bg-[#1E2761] text-white shadow-xs font-bold'
+                          : 'text-[#1E2761] hover:text-[#FF5A36] hover:bg-white/80'
+                      }`}
+                    >
+                      {item.label}
+                    </button>
+                  );
+                })}
+              </motion.nav>
+            )}
+          </AnimatePresence>
 
           {/* Right Side: Boxed Square Hamburger Button [ ≡ ] + Electric Coral Sign In Button */}
           <div className="flex items-center space-x-2.5 sm:space-x-3">
