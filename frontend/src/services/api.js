@@ -202,6 +202,30 @@ export const api = {
     });
     return response.json();
   },
+
+  async getWorkspaceTheme() {
+    try {
+      const response = await fetch(`${API_BASE_URL}/theme`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      return await response.json();
+    } catch {
+      return {
+        success: true,
+        data: {
+          colorPrimary: '#1E2761',
+          colorPrimaryHover: '#151A44',
+          colorSecondary: '#F5F7FA',
+          colorBorder: '#E4E8EE',
+          colorAccent: '#FF5A36',
+          colorAccentHover: '#E04826',
+        },
+      };
+    }
+  },
 };
 
 export default api;

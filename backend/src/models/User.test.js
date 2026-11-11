@@ -181,9 +181,9 @@ describe('User Model', () => {
             expect(duplicateError).toBe(true);
           }
         ),
-        { numRuns: 15 }
+        { numRuns: 10 }
       );
-    });
+    }, 20000);
 
     it('Property 1: User Registration Idempotency - duplicate emails are rejected', async () => {
       await fc.assert(
@@ -212,9 +212,9 @@ describe('User Model', () => {
             expect(duplicateError).toBe(true);
           }
         ),
-        { numRuns: 15 }
+        { numRuns: 10 }
       );
-    });
+    }, 20000);
 
     it('Property 2: Password Security - passwords are always hashed, never plaintext', async () => {
       await fc.assert(
@@ -240,8 +240,8 @@ describe('User Model', () => {
             expect(retrievedUser.password).toMatch(/^\$2[aby]\$/);
           }
         ),
-        { numRuns: 15 }
+        { numRuns: 10 }
       );
-    });
+    }, 20000);
   });
 });

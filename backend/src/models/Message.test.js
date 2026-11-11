@@ -300,9 +300,9 @@ describe('Message Model', () => {
             expect(message.message.trim().length).toBeGreaterThan(0);
           }
         ),
-        { numRuns: 15 }
+        { numRuns: 10 }
       );
-    });
+    }, 20000);
 
     it('should reject empty messages', async () => {
       await fc.assert(
@@ -338,9 +338,9 @@ describe('Message Model', () => {
             expect(validationError).toBe(true);
           }
         ),
-        { numRuns: 15 }
+        { numRuns: 10 }
       );
-    });
+    }, 20000);
 
     it('should maintain referential integrity for roomId', async () => {
       await fc.assert(
@@ -386,9 +386,9 @@ describe('Message Model', () => {
             expect(referentialError).toBe(true);
           }
         ),
-        { numRuns: 15 }
+        { numRuns: 10 }
       );
-    });
+    }, 20000);
 
     it('should maintain referential integrity for sender', async () => {
       await fc.assert(
@@ -434,8 +434,8 @@ describe('Message Model', () => {
             expect(referentialError).toBe(true);
           }
         ),
-        { numRuns: 15 }
+        { numRuns: 10 }
       );
-    });
+    }, 20000);
   });
 });

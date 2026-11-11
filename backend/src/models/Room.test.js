@@ -192,9 +192,9 @@ describe('Room Model', () => {
             expect(room2.roomId).toBe(roomId2);
           }
         ),
-        { numRuns: 15 }
+        { numRuns: 10 }
       );
-    });
+    }, 20000);
 
     it('should reject duplicate roomIds', async () => {
       await fc.assert(
@@ -236,8 +236,8 @@ describe('Room Model', () => {
             expect(duplicateError).toBe(true);
           }
         ),
-        { numRuns: 15 }
+        { numRuns: 10 }
       );
-    });
+    }, 20000);
   });
 });

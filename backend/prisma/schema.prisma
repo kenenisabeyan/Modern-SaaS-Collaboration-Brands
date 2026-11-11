@@ -1,0 +1,26 @@
+// Prisma Schema for Video Collaboration Platform Theme & Workspaces
+// Brand Color Scheme: 60% Canvas (#F5F7FA), 30% Structural (#1E2761), 10% Action (#FF5A36)
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model WorkspaceTheme {
+  id                 String   @id @default(uuid())
+  workspaceId        String   @default("default")
+  colorPrimary       String   @default("#1E2761") // 30% Structural Weight (Deep Midnight Blue)
+  colorPrimaryHover  String   @default("#151A44")
+  colorSecondary     String   @default("#F5F7FA") // 60% Background Canvas Weight (Soft Slate / Off-White)
+  colorBorder        String   @default("#E4E8EE") // Thin dividers and structural borders
+  colorAccent        String   @default("#FF5A36") // 10% Action Weight (Electric Coral / Orange-Red)
+  colorAccentHover   String   @default("#E04826")
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  @@map("WorkspaceThemes")
+}
