@@ -2,6 +2,9 @@
   "name": "wabiseminar-root",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "start": "cd backend && npm start",
     "dev:backend": "cd backend && npm run dev",
