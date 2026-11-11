@@ -21,6 +21,6 @@ services:
       - key: JWT_EXPIRY
         value: 24h
       - key: PUBLIC_APP_URL
-        value: https://*.vercel.app
+        value: https://covideo.vercel.app
       - key: CORS_ORIGIN
-        value: https://*.vercel.app,https://*.onrender.com
+        value: https://covideo.vercel.app,https://*.vercel.app,https://*.onrender.com
