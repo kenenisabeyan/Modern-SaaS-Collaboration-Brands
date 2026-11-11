@@ -167,14 +167,16 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                   <span>Instant Collaboration</span>
                 </div>
 
-                {/* Main Headline (Solid, bold, crisp 60-30-10 typography) */}
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[62px] xl:text-[68px] font-extrabold tracking-tight leading-[1.08] text-[#1E2761] mb-4 sm:mb-5 select-none">
-                  <span className="text-[#1E2761] block">Host Engaging</span>
-                  <span className="text-[#FF5A36] block">Masterclasses</span>
+                {/* Main Headline (kenenisa-os.vercel.app aesthetic: bold dark top line + vivid gradient second line) */}
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[62px] xl:text-[68px] font-black tracking-tight leading-[1.08] text-[#1E2761] mb-4 sm:mb-5 select-none">
+                  <span className="text-[#1E2761] block">Host Engaging.</span>
+                  <span className="block bg-gradient-to-r from-[#00A3C4] via-[#2563EB] to-[#FF5A36] bg-clip-text text-transparent">
+                    Masterclasses & Collaboration
+                  </span>
                 </h1>
 
                 {/* Subtitle Description */}
-                <p className="text-slate-600 text-sm sm:text-base lg:text-lg leading-relaxed max-w-[520px] mb-6 sm:mb-8 font-normal">
+                <p className="text-slate-600 text-sm sm:text-base lg:text-lg leading-relaxed max-w-[540px] mb-6 sm:mb-8 font-normal">
                   Create a free, encrypted meeting room instantly or join an existing session in seconds. Built for innovative educators, creators, and teams who value simplicity and connection.
                 </p>
 
@@ -186,14 +188,14 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                   </div>
                 )}
 
-                {/* ONLY TWO ESSENTIAL ACTION BUTTONS */}
+                {/* ONLY TWO ESSENTIAL ACTION BUTTONS (Matching kenenisa-os.vercel.app button styling) */}
                 <div className="flex flex-wrap items-center gap-3 sm:gap-4 w-full sm:w-auto">
                   
                   {/* Button 1: Solid Electric Coral (#FF5A36) - Host a Session / Create Instant Room */}
                   <button
                     onClick={handleCreateRoom}
                     disabled={isCreating}
-                    className="w-full sm:w-auto px-7 py-3.5 sm:py-4 rounded-xl sm:rounded-full bg-[#FF5A36] hover:bg-[#E04826] text-white font-bold text-sm sm:text-base shadow-lg shadow-[#FF5A36]/25 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center space-x-2.5 cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed"
+                    className="w-full sm:w-auto px-7 py-3.5 sm:py-4 rounded-xl bg-[#FF5A36] hover:bg-[#E04826] text-white font-bold text-sm sm:text-base shadow-lg shadow-[#FF5A36]/25 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center space-x-2.5 cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed"
                   >
                     {isCreating ? (
                       <>
@@ -209,12 +211,12 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                     )}
                   </button>
 
-                  {/* Button 2: White with Midnight Blue (#1E2761) & Border - Join a Session */}
+                  {/* Button 2: White with Cyan/Slate Border & Accent Text - Join a Session */}
                   <button
                     onClick={() => setShowJoinInline(prev => !prev)}
-                    className="w-full sm:w-auto px-7 py-3.5 sm:py-4 rounded-xl sm:rounded-full bg-white hover:bg-[#F5F7FA] text-[#1E2761] border-2 border-[#E4E8EE] hover:border-[#1E2761]/40 font-bold text-sm sm:text-base shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center space-x-2 cursor-pointer"
+                    className="w-full sm:w-auto px-7 py-3.5 sm:py-4 rounded-xl bg-white hover:bg-slate-50 text-[#00A3C4] hover:text-[#008ba3] border-2 border-[#00A3C4]/60 hover:border-[#00A3C4] font-bold text-sm sm:text-base shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center space-x-2 cursor-pointer"
                   >
-                    <Users size={18} />
+                    <Users size={18} className="text-[#00A3C4]" />
                     <span>Join a Session ▸</span>
                   </button>
 
@@ -238,15 +240,15 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                           onChange={(e) => setJoinId(e.target.value)}
                           placeholder="e.g. abc-defg-hij" 
                           autoFocus
-                          className="flex-1 px-4 py-2.5 bg-white border border-[#E4E8EE] rounded-xl sm:rounded-full text-[#1E2761] placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1E2761]/20 focus:border-[#1E2761] text-xs sm:text-sm font-medium transition-all"
+                          className="flex-1 px-4 py-2.5 bg-white border border-[#E4E8EE] rounded-xl text-[#1E2761] placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1E2761]/20 focus:border-[#1E2761] text-xs sm:text-sm font-medium transition-all"
                           onKeyDown={(e) => e.key === 'Enter' && handleJoinRoom()}
                         />
                         <button
                           onClick={handleJoinRoom}
                           disabled={!joinId.trim() || isJoining}
-                          className="px-5 py-2.5 bg-[#1E2761] hover:bg-[#151A44] text-white rounded-xl sm:rounded-full font-bold text-xs sm:text-sm transition-all shadow-md shadow-[#1E2761]/20 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-1.5"
+                          className="px-5 py-2.5 bg-[#1E2761] hover:bg-[#151A44] text-white rounded-xl font-bold text-xs sm:text-sm transition-all shadow-md shadow-[#1E2761]/20 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-1.5"
                         >
-                          {isJoining ? <Loader2 size={15} className="animate-spin" /> : <span>Join</span>}
+                          {isJoining ? <Loader2 size={15} className="animate-spin" /> : <span>Join Room</span>}
                         </button>
                       </div>
                     </motion.div>
@@ -260,7 +262,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                     <span>Zero Downloads</span>
                   </div>
                   <div className="flex items-center space-x-1.5">
-                    <CheckCircle size={16} className="text-[#1E2761]" />
+                    <CheckCircle size={16} className="text-[#00A3C4]" />
                     <span>Ultra HD Video</span>
                   </div>
                   <div className="flex items-center space-x-1.5">
@@ -288,53 +290,65 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
 
 
             {/* ========================================================
-                3 METRIC / STAT CARDS (Crisp, solid SaaS panels)
+                3 METRIC / STAT CARDS (EXACT kenenisa-os.vercel.app AESTHETIC)
+                - Rounded-3xl containers with colored top gradient glow
+                - Large bold numbers with dark structural weight
+                - All-caps category label & refined subtitle
                ======================================================== */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-10 sm:pt-14">
               
-              {/* Card 1: 36+ Happy Users */}
-              <div className="bg-white border-2 border-[#E4E8EE] hover:border-[#1E2761] rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center shadow-sm hover:shadow-lg transition-all group">
-                <div className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#1E2761] mb-2 transition-transform duration-300 group-hover:scale-105">
-                  {platformStats.users}+
-                </div>
-                <div className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-800 mb-1">
-                  HAPPY USERS
-                </div>
-                <div className="text-xs text-slate-500 font-medium">
-                  Active Learners & Teams
-                </div>
-              </div>
-
-              {/* Card 2: 5+ Meetings Hosted */}
-              <div className="bg-white border-2 border-[#FF5A36]/30 hover:border-[#FF5A36] rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center shadow-sm hover:shadow-lg transition-all group">
-                <div className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#FF5A36] mb-2 transition-transform duration-300 group-hover:scale-105">
-                  {platformStats.meetings}+
-                </div>
-                <div className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-800 mb-1">
-                  MEETINGS HOSTED
-                </div>
-                <div className="text-xs text-slate-500 font-medium">
-                  Masterclasses & Webinars
+              {/* Card 1: 36 Happy Users (Cyan Top Glow Header) */}
+              <div className="relative overflow-hidden bg-white border border-[#A5F3FC]/70 hover:border-[#00A3C4] rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center shadow-[0_4px_20px_rgba(0,163,196,0.06)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                <div className="absolute top-0 left-0 right-0 h-28 bg-gradient-to-b from-[#A5F3FC]/45 via-[#CFFAFE]/20 to-transparent pointer-events-none rounded-t-2xl sm:rounded-t-3xl"></div>
+                
+                <div className="relative z-10">
+                  <div className="text-5xl sm:text-6xl font-black text-[#0F172A] tracking-tight mb-2 transition-transform duration-300 group-hover:scale-105">
+                    {platformStats.users}+
+                  </div>
+                  <div className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-900 mb-1">
+                    HAPPY USERS
+                  </div>
+                  <div className="text-xs text-slate-500 font-medium">
+                    Innovative Educators & Active Learners
+                  </div>
                 </div>
               </div>
 
-              {/* Card 3: 225+ Minutes Connected */}
-              <div className="bg-white border-2 border-[#E4E8EE] hover:border-[#1E2761] rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center shadow-sm hover:shadow-lg transition-all group">
-                <div className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#1E2761] mb-2 transition-transform duration-300 group-hover:scale-105">
-                  {platformStats.minutes}+
+              {/* Card 2: 5 Meetings Hosted (Coral / Orange Top Glow Header) */}
+              <div className="relative overflow-hidden bg-white border border-[#FED7AA]/80 hover:border-[#FF5A36] rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center shadow-[0_4px_20px_rgba(255,90,54,0.08)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                <div className="absolute top-0 left-0 right-0 h-28 bg-gradient-to-b from-[#FED7AA]/50 via-[#FFEDD5]/25 to-transparent pointer-events-none rounded-t-2xl sm:rounded-t-3xl"></div>
+                
+                <div className="relative z-10">
+                  <div className="text-5xl sm:text-6xl font-black text-[#FF5A36] tracking-tight mb-2 transition-transform duration-300 group-hover:scale-105">
+                    {platformStats.meetings}+
+                  </div>
+                  <div className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-900 mb-1">
+                    MEETINGS HOSTED
+                  </div>
+                  <div className="text-xs text-slate-500 font-medium">
+                    Interactive Live Masterclasses & Webinars
+                  </div>
                 </div>
-                <div className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-800 mb-1">
-                  MINUTES CONNECTED
-                </div>
-                <div className="text-xs text-slate-500 font-medium">
-                  Verified HD WebRTC Sessions
+              </div>
+
+              {/* Card 3: 225 Minutes Connected (Cyan Top Glow Header) */}
+              <div className="relative overflow-hidden bg-white border border-[#A5F3FC]/70 hover:border-[#00A3C4] rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center shadow-[0_4px_20px_rgba(0,163,196,0.06)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                <div className="absolute top-0 left-0 right-0 h-28 bg-gradient-to-b from-[#A5F3FC]/45 via-[#CFFAFE]/20 to-transparent pointer-events-none rounded-t-2xl sm:rounded-t-3xl"></div>
+                
+                <div className="relative z-10">
+                  <div className="text-5xl sm:text-6xl font-black text-[#0F172A] tracking-tight mb-2 transition-transform duration-300 group-hover:scale-105">
+                    {platformStats.minutes}+
+                  </div>
+                  <div className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-900 mb-1">
+                    MINUTES CONNECTED
+                  </div>
+                  <div className="text-xs text-slate-500 font-medium">
+                    Deterministic Ultra HD & End-to-End Secure
+                  </div>
                 </div>
               </div>
 
             </div>
-
-          </div>
-        </section>
 
           </div>
         </section>
