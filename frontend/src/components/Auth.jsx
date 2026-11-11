@@ -47,7 +47,7 @@ export default function Auth({ onNavigate }) {
         const userUsername = response.data.user?.username || response.data.username || username;
         localStorage.setItem('username', userUsername);
         setIsLoading(false);
-        onNavigate('dashboard');
+        onNavigate('user-dashboard');
       } else {
         setError(response.message || 'Authentication failed. Please check your credentials.');
         setIsLoading(false);
@@ -75,9 +75,10 @@ export default function Auth({ onNavigate }) {
     const token = urlParams.get('token');
     if (token) {
       localStorage.setItem('token', token);
-      window.location.href = window.location.pathname;
+      window.history.replaceState({}, document.title, window.location.pathname);
+      onNavigate('user-dashboard');
     }
-  }, []);
+  }, [onNavigate]);
 
   return (
     <div className="flex-1 flex items-center justify-center pt-20 sm:pt-24 pb-16 px-4 sm:px-6 relative overflow-hidden bg-[#F5F7FA] min-h-[calc(100vh-80px)] font-sans text-[#1E2761]">

@@ -17,6 +17,31 @@ import UserProfile from './components/UserProfile';
 import UserSettings from './components/UserSettings';
 
 function readRouteSnapshot() {
+  if (typeof window !== 'undefined') {
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlToken = urlParams.get('token');
+    const urlUsername = urlParams.get('username');
+    if (urlToken) {
+      localStorage.setItem('token', urlToken);
+      if (urlUsername) {
+        localStorage.setItem('username', urlUsername);
+      }
+      window.history.replaceState({}, document.title, window.location.pathname);
+
+      const roomId = roomIdFromPathname(window.location.pathname);
+      if (roomId) {
+        return {
+          currentRoomId: roomId,
+          currentView: 'meeting',
+        };
+      }
+      return {
+        currentRoomId: '',
+        currentView: 'user-dashboard',
+      };
+    }
+  }
+
   const roomId = roomIdFromPathname(window.location.pathname);
   const token = localStorage.getItem('token');
   const username = localStorage.getItem('username');
@@ -85,13 +110,17 @@ function App() {
     window.history.pushState({}, '', '/');
   };
 
-  const handleAuthSuccess = () => {
+  const handleAuthSuccess = (targetView) => {
+    setIsAuthenticated(true);
     const roomId = roomIdFromPathname(window.location.pathname) || currentRoomId;
     if (roomId) {
       setRouteState({ currentRoomId: roomId, currentView: 'meeting' });
       window.history.pushState({}, '', `/meeting/${roomId}`);
     } else {
-      setRouteState({ currentRoomId: '', currentView: 'dashboard' });
+      const nextView = typeof targetView === 'string' && targetView && targetView !== 'dashboard' 
+        ? targetView 
+        : 'user-dashboard';
+      setRouteState({ currentRoomId: '', currentView: nextView });
     }
   };
 
