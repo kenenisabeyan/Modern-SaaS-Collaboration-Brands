@@ -1,6 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
-import { Video, Plus, Link as LinkIcon, Calendar, Clock, Loader2, ArrowRight, ShieldCheck, Zap, Users, Copy, Check, Trash2, X, Sparkles } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { 
+  Video, VideoOff, Mic, MicOff, Plus, Link as LinkIcon, Calendar, Clock, 
+  Loader2, ArrowRight, ShieldCheck, Zap, Users, Copy, Check, Trash2, X, 
+  Sparkles, Search, Play, Camera, Sliders
+} from 'lucide-react';
 import api from '../services/api.js';
 import { roomIdFromPathname } from '../routeUtils.js';
 
@@ -8,13 +12,21 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
   const [myRooms, setMyRooms] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [joinId, setJoinId] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
   const [isCreating, setIsCreating] = useState(false);
   const [isJoining, setIsJoining] = useState(false);
   const [username, setUsername] = useState('User');
   const [deleteModalRoomId, setDeleteModalRoomId] = useState(null);
   const [isDeleting, setIsDeleting] = useState(false);
   const [copiedId, setCopiedId] = useState(null);
+  const [activeTab, setActiveTab] = useState('overview'); // 'overview' | 'preview'
   
+  // Hardware test states for Loom / Frame.io style video preview
+  const [isPreviewActive, setIsPreviewActive] = useState(false);
+  const [previewStream, setPreviewStream] = useState(null);
+  const [previewMicActive, setPreviewMicActive] = useState(true);
+  const [previewCamActive, setPreviewCamActive] = useState(true);
+  const videoPreviewRef = useRef(null);
   const createInFlightRef = useRef(false);
 
   useEffect(() => {
@@ -28,19 +40,73 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
           if (response.success && response.data) {
             setMyRooms(response.data);
           } else {
-            notify('error', response.message || 'Failed to load your meetings history.');
+            notify?.('error', response.message || 'Failed to load your meetings history.');
           }
         }
       } catch (error) {
         console.error('Dashboard loadRooms error:', error);
-        notify('error', 'Connection error. The backend server might be down.');
+        notify?.('error', 'Connection error. The backend server might be down.');
       } finally {
         setIsLoading(false);
       }
     };
     loadRooms();
     window.scrollTo(0, 0);
+
+    return () => {
+      if (previewStream) {
+        previewStream.getTracks().forEach(t => t.stop());
+      }
+    };
   }, []);
+
+  const toggleHardwarePreview = async () => {
+    if (isPreviewActive) {
+      if (previewStream) {
+        previewStream.getTracks().forEach(t => t.stop());
+        setPreviewStream(null);
+      }
+      setIsPreviewActive(false);
+    } else {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+        setPreviewStream(stream);
+        setIsPreviewActive(true);
+        if (videoPreviewRef.current) {
+          videoPreviewRef.current.srcObject = stream;
+        }
+      } catch (err) {
+        console.warn('Camera preview not permitted or unavailable:', err);
+        notify?.('info', 'Camera or microphone preview not accessible.');
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (videoPreviewRef.current && previewStream) {
+      videoPreviewRef.current.srcObject = previewStream;
+    }
+  }, [previewStream, isPreviewActive]);
+
+  const togglePreviewCam = () => {
+    if (previewStream) {
+      const videoTrack = previewStream.getVideoTracks()[0];
+      if (videoTrack) {
+        videoTrack.enabled = !videoTrack.enabled;
+        setPreviewCamActive(videoTrack.enabled);
+      }
+    }
+  };
+
+  const togglePreviewMic = () => {
+    if (previewStream) {
+      const audioTrack = previewStream.getAudioTracks()[0];
+      if (audioTrack) {
+        audioTrack.enabled = !audioTrack.enabled;
+        setPreviewMicActive(audioTrack.enabled);
+      }
+    }
+  };
 
   const extractRoomId = (value) => {
     const raw = value.trim();
@@ -50,7 +116,8 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
       if (url) return roomIdFromPathname(url.pathname) || '';
     } catch { /* empty */ }
     if (raw.includes('/')) {
-      const fromPath = roomIdFromPathname(raw.startsWith('/') ? raw : `/${raw}`);
+      const path = raw.startsWith('/') ? raw : `/${raw}`;
+      const fromPath = roomIdFromPathname(path);
       if (fromPath) return fromPath;
     }
     return raw.split('?')[0].replace(/[^a-zA-Z0-9-]/g, '').toLowerCase();
@@ -66,15 +133,15 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
       const response = await api.createRoom(token);
       
       if (!response.success || !response.data?.roomId) {
-        notify('error', response.message || 'Failed to create room.');
+        notify?.('error', response.message || 'Failed to create room.');
         return;
       }
 
-      notify('success', 'Meeting created successfully!');
+      notify?.('success', 'Meeting created successfully!');
       onJoinRoom(response.data.roomId);
     } catch (error) {
       console.error('Dashboard handleCreateRoom error:', error);
-      notify('error', 'Connection error. Please check your internet or if the server is running.');
+      notify?.('error', 'Connection error. Please check your internet or if the server is running.');
     } finally {
       setIsCreating(false);
       createInFlightRef.current = false;
@@ -89,13 +156,13 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
       const token = localStorage.getItem('token');
       const response = await api.getRoom(token, id);
       if (!response.success) {
-        notify('error', response.status === 404 ? 'Room not found. Please check the code.' : response.message || 'Unable to join.');
+        notify?.('error', response.status === 404 ? 'Room not found. Please check the code.' : response.message || 'Unable to join.');
         return;
       }
-      notify('success', 'Joining meeting...');
+      notify?.('success', 'Joining meeting...');
       onJoinRoom(id);
     } catch (error) {
-      notify('error', 'Connection error. Unable to reach the server.');
+      notify?.('error', 'Connection error. Unable to reach the server.');
     } finally {
       setIsJoining(false);
     }
@@ -105,7 +172,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
     const link = `${window.location.origin}/meeting/${roomId}`;
     navigator.clipboard.writeText(link);
     setCopiedId(roomId);
-    notify('success', 'Invite link copied to clipboard!');
+    notify?.('success', 'Invite link copied to clipboard!');
     setTimeout(() => setCopiedId(null), 2500);
   };
 
@@ -118,52 +185,195 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
       const response = await api.deleteRoom(token, deleteModalRoomId);
       
       if (!response.success) {
-        notify('error', response.message || 'Failed to delete room.');
+        notify?.('error', response.message || 'Failed to delete room.');
         return;
       }
       
-      notify('success', 'Meeting room deleted.');
+      notify?.('success', 'Meeting room deleted.');
       setMyRooms(prev => prev.filter(r => r.roomId !== deleteModalRoomId));
     } catch (error) {
-      notify('error', 'Network error while deleting.');
+      notify?.('error', 'Network error while deleting.');
     } finally {
       setIsDeleting(false);
       setDeleteModalRoomId(null);
     }
   };
 
+  const filteredRooms = myRooms.filter(r => 
+    !searchQuery.trim() || r.roomId.toLowerCase().includes(searchQuery.toLowerCase().trim())
+  );
+
   return (
-    <main className="flex-1 pt-20 sm:pt-24 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 w-full max-w-6xl mx-auto text-[#1E2761]">
+    <main className="flex-1 pt-20 sm:pt-24 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 w-full max-w-6xl mx-auto text-[#1E2761] font-sans selection:bg-[#FF5A36] selection:text-white">
       
       {/* Friendly Welcome Header */}
       <div className="mb-8 sm:mb-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1E2761]/8 border border-[#1E2761]/15 text-[#1E2761] text-xs font-semibold mb-3">
-          <Sparkles size={13} className="text-[#FF5A36]" />
-          <span>Real-time Video & Collaboration</span>
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1E2761]/8 border border-[#1E2761]/15 text-[#1E2761] text-xs font-semibold mb-3">
+              <Sparkles size={13} className="text-[#FF5A36]" />
+              <span>Real-time Video & Collaboration</span>
+            </div>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#1E2761] mb-2">
+              Welcome back, <span className="text-[#FF5A36]">{username}</span> 👋
+            </h1>
+            <p className="text-slate-600 text-sm sm:text-base max-w-2xl">
+              Start an instant collaborative meeting, join with an invite code, or manage your recent rooms.
+            </p>
+          </div>
+
+          {/* Quick Sub-navigation tabs */}
+          <div className="inline-flex items-center p-1.5 bg-[#F5F7FA] border border-[#E4E8EE] rounded-2xl shadow-sm self-start sm:self-center">
+            <button
+              onClick={() => setActiveTab('overview')}
+              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                activeTab === 'overview' 
+                  ? 'bg-[#1E2761] text-white shadow-sm' 
+                  : 'text-slate-600 hover:text-[#1E2761]'
+              }`}
+            >
+              Overview
+            </button>
+            <button
+              onClick={() => setActiveTab('preview')}
+              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
+                activeTab === 'preview' 
+                  ? 'bg-[#FF5A36] text-white shadow-sm shadow-[#FF5A36]/25' 
+                  : 'text-slate-600 hover:text-[#FF5A36]'
+              }`}
+            >
+              <Camera size={14} />
+              <span>Camera Setup</span>
+            </button>
+          </div>
         </div>
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#1E2761] mb-2">
-          Welcome back, <span className="text-[#FF5A36]">{username}</span> 👋
-        </h1>
-        <p className="text-slate-600 text-sm sm:text-base max-w-2xl">
-          Start an instant collaborative meeting, join with an invite code, or manage your recent rooms.
-        </p>
 
         {/* Quick Indicators Bar */}
-        <div className="flex flex-wrap items-center gap-3 sm:gap-4 mt-4 pt-1">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-[#1E2761] text-xs font-medium border border-[#E4E8EE] shadow-sm">
+        <div className="flex flex-wrap items-center gap-3 sm:gap-4 mt-5 pt-1">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white text-[#1E2761] text-xs font-semibold border border-[#E4E8EE] shadow-sm">
             <Zap size={13} className="text-[#FF5A36]" />
             <span>Sub-50ms Latency</span>
           </div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-[#1E2761] text-xs font-medium border border-[#E4E8EE] shadow-sm">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white text-[#1E2761] text-xs font-semibold border border-[#E4E8EE] shadow-sm">
             <ShieldCheck size={13} className="text-[#1E2761]" />
             <span>End-to-End Encrypted</span>
           </div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-[#1E2761] text-xs font-medium border border-[#E4E8EE] shadow-sm">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white text-[#1E2761] text-xs font-semibold border border-[#E4E8EE] shadow-sm">
             <Users size={13} className="text-[#1E2761]" />
             <span>{myRooms.length} {myRooms.length === 1 ? 'Meeting' : 'Meetings'} Created</span>
           </div>
         </div>
       </div>
+
+      {/* Loom / Frame.io Style Video Preview & Hardware Check (When Preview tab is active or toggle clicked) */}
+      <AnimatePresence>
+        {activeTab === 'preview' && (
+          <motion.div
+            initial={{ opacity: 0, height: 0, y: -10 }}
+            animate={{ opacity: 1, height: 'auto', y: 0 }}
+            exit={{ opacity: 0, height: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
+            className="mb-8 p-6 sm:p-8 bg-white border border-[#E4E8EE] rounded-3xl shadow-sm overflow-hidden"
+          >
+            <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-center">
+              {/* Video Preview Canvas */}
+              <div className="w-full md:w-1/2 aspect-video bg-[#1E2761] rounded-2xl relative overflow-hidden flex items-center justify-center border border-[#151A44] shadow-md">
+                {isPreviewActive && previewStream ? (
+                  <>
+                    <video 
+                      ref={videoPreviewRef} 
+                      autoPlay 
+                      playsInline 
+                      muted 
+                      className={`w-full h-full object-cover ${!previewCamActive ? 'opacity-0' : ''}`}
+                      style={{ transform: 'scaleX(-1)' }}
+                    />
+                    {!previewCamActive && (
+                      <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#1E2761] text-white">
+                        <VideoOff size={36} className="text-slate-400 mb-2" />
+                        <span className="text-xs text-slate-300 font-medium">Camera is disabled</span>
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <div className="flex flex-col items-center justify-center p-6 text-center text-white">
+                    <Camera size={40} className="text-[#FF5A36] mb-3 opacity-90 animate-pulse" />
+                    <h4 className="font-bold text-sm sm:text-base text-white mb-1">Video & Audio Mirror Check</h4>
+                    <p className="text-xs text-slate-300 max-w-xs mb-4">
+                      Test your camera resolution and microphone input before going live in a masterclass.
+                    </p>
+                    <button
+                      onClick={toggleHardwarePreview}
+                      className="px-5 py-2.5 rounded-full bg-[#FF5A36] hover:bg-[#E04826] text-white text-xs font-bold transition-all shadow-md shadow-[#FF5A36]/30 cursor-pointer flex items-center gap-2"
+                    >
+                      <Play size={14} className="fill-current" />
+                      <span>Start Camera Preview</span>
+                    </button>
+                  </div>
+                )}
+
+                {/* Floating Preview Controls */}
+                {isPreviewActive && (
+                  <div className="absolute bottom-3 inset-x-0 flex items-center justify-center gap-3">
+                    <button
+                      onClick={togglePreviewCam}
+                      className={`p-2.5 rounded-full border shadow-md transition-all cursor-pointer ${
+                        previewCamActive 
+                          ? 'bg-white/90 text-[#1E2761] border-white/80 hover:bg-white' 
+                          : 'bg-rose-600 text-white border-rose-500'
+                      }`}
+                      title={previewCamActive ? "Turn off camera" : "Turn on camera"}
+                    >
+                      {previewCamActive ? <Video size={16} /> : <VideoOff size={16} />}
+                    </button>
+                    <button
+                      onClick={togglePreviewMic}
+                      className={`p-2.5 rounded-full border shadow-md transition-all cursor-pointer ${
+                        previewMicActive 
+                          ? 'bg-white/90 text-[#1E2761] border-white/80 hover:bg-white' 
+                          : 'bg-rose-600 text-white border-rose-500'
+                      }`}
+                      title={previewMicActive ? "Mute mic" : "Unmute mic"}
+                    >
+                      {previewMicActive ? <Mic size={16} /> : <MicOff size={16} />}
+                    </button>
+                    <button
+                      onClick={toggleHardwarePreview}
+                      className="px-3.5 py-2 rounded-full bg-white/90 hover:bg-white text-slate-700 text-xs font-bold border border-white/80 shadow-md cursor-pointer"
+                    >
+                      Stop
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              {/* Status and Recommendation */}
+              <div className="w-full md:w-1/2 space-y-4">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1E2761]/8 text-[#1E2761] text-xs font-bold uppercase tracking-wider">
+                  <span>Hardware Readiness</span>
+                </div>
+                <h3 className="text-xl font-bold text-[#1E2761]">
+                  Loom-Grade Audio & Video Studio
+                </h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  Your browser connects directly through WebRTC with sub-50ms glass-to-glass latency. All sessions support 1080p Ultra HD streaming, screen share capture, and end-to-end security.
+                </p>
+
+                <div className="grid grid-cols-2 gap-3 pt-2">
+                  <div className="p-3.5 rounded-2xl bg-[#F5F7FA] border border-[#E4E8EE]">
+                    <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-0.5">Video Quality</span>
+                    <span className="text-sm font-extrabold text-[#1E2761]">1080p 60fps Ready</span>
+                  </div>
+                  <div className="p-3.5 rounded-2xl bg-[#F5F7FA] border border-[#E4E8EE]">
+                    <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-0.5">Audio Engine</span>
+                    <span className="text-sm font-extrabold text-[#FF5A36]">Opus Spatial Clean</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* 2-Column Action Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 mb-12 sm:mb-16">
@@ -241,7 +451,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.16 }}
       >
-        <div className="flex items-center justify-between mb-5">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
           <div className="flex items-center gap-2.5">
             <Clock size={20} className="text-[#1E2761]" />
             <h2 className="text-xl sm:text-2xl font-bold text-[#1E2761]">Recent Meetings</h2>
@@ -249,19 +459,33 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
               {myRooms.length}
             </span>
           </div>
+
+          {/* Search box if rooms exist */}
+          {myRooms.length > 0 && (
+            <div className="relative w-full sm:w-64">
+              <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search meetings..."
+                className="w-full pl-9 pr-3.5 py-2 text-xs sm:text-sm bg-white border border-[#E4E8EE] rounded-xl text-[#1E2761] placeholder-slate-400 focus:outline-none focus:border-[#1E2761] focus:ring-1 focus:ring-[#1E2761]/20 transition-all shadow-sm"
+              />
+            </div>
+          )}
         </div>
 
         {isLoading ? (
           <div className="bg-white border border-[#E4E8EE] rounded-3xl p-12 flex flex-col items-center justify-center gap-3">
             <Loader2 className="animate-spin text-[#FF5A36]" size={30} />
-            <p className="text-xs text-slate-500">Loading your meetings...</p>
+            <p className="text-xs text-slate-500 font-medium">Loading your meetings...</p>
           </div>
-        ) : myRooms.length > 0 ? (
+        ) : filteredRooms.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {myRooms.map((room) => (
+            {filteredRooms.map((room) => (
               <div 
                 key={room.id}
-                className="bg-white border border-[#E4E8EE] rounded-2xl p-5 hover:border-[#1E2761]/40 hover:shadow-md transition-all flex flex-col justify-between gap-4"
+                className="bg-white border border-[#E4E8EE] rounded-2xl p-5 hover:border-[#1E2761]/40 hover:shadow-md transition-all flex flex-col justify-between gap-4 group"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-2.5">
@@ -317,16 +541,29 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
             <div className="w-14 h-14 rounded-2xl bg-slate-50 border border-[#E4E8EE] flex items-center justify-center text-[#1E2761] mb-3 shadow-sm">
               <Video size={28} />
             </div>
-            <h3 className="text-base sm:text-lg font-bold text-[#1E2761] mb-1">No meetings yet</h3>
+            <h3 className="text-base sm:text-lg font-bold text-[#1E2761] mb-1">
+              {searchQuery.trim() ? 'No matching meetings found' : 'No meetings yet'}
+            </h3>
             <p className="text-slate-500 text-xs sm:text-sm max-w-sm mb-5 leading-relaxed">
-              You haven't created any sessions yet. Click "Start Instant Meeting" above to host your first room.
+              {searchQuery.trim() 
+                ? 'Try searching with another room code or clear the search query.' 
+                : 'You haven\'t created any sessions yet. Click "Start Instant Meeting" above to host your first room.'}
             </p>
-            <button 
-              onClick={handleCreateRoom}
-              className="px-5 py-2.5 bg-[#FF5A36] hover:bg-[#E04826] text-white font-semibold rounded-xl text-xs sm:text-sm shadow-md shadow-[#FF5A36]/25 transition-colors cursor-pointer"
-            >
-              Start First Meeting
-            </button>
+            {searchQuery.trim() ? (
+              <button 
+                onClick={() => setSearchQuery('')}
+                className="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-[#1E2761] font-semibold rounded-xl text-xs sm:text-sm transition-colors cursor-pointer"
+              >
+                Clear Search
+              </button>
+            ) : (
+              <button 
+                onClick={handleCreateRoom}
+                className="px-5 py-2.5 bg-[#FF5A36] hover:bg-[#E04826] text-white font-semibold rounded-xl text-xs sm:text-sm shadow-md shadow-[#FF5A36]/25 transition-colors cursor-pointer"
+              >
+                Start First Meeting
+              </button>
+            )}
           </div>
         )}
       </motion.div>

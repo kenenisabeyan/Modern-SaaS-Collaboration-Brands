@@ -118,7 +118,7 @@ export default function Features({ onNavigate }) {
                 </div>
                 <div className="h-44 sm:h-52 bg-slate-900 rounded-2xl flex items-center justify-center text-white relative overflow-hidden">
                   <div className="text-center p-4">
-                    <div className="w-12 h-12 rounded-full bg-[#0DA9CF]/20 border border-[#0DA9CF]/40 text-[#0DA9CF] flex items-center justify-center mx-auto mb-2">
+                    <div className="w-12 h-12 rounded-full bg-[#FF5A36]/20 border border-[#FF5A36]/40 text-[#FF5A36] flex items-center justify-center mx-auto mb-2">
                       <Video size={22} />
                     </div>
                     <p className="text-sm font-bold text-white">Interactive Video Stream</p>
@@ -127,10 +127,10 @@ export default function Features({ onNavigate }) {
                 </div>
                 <div className="flex items-center justify-between pt-1">
                   <div className="flex items-center space-x-2">
-                    <span className="w-2 h-2 rounded-full bg-[#04B84C] animate-pulse"></span>
+                    <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
                     <span className="text-xs font-semibold text-slate-600">Connected Encrypted</span>
                   </div>
-                  <span className="text-xs font-bold text-[#0DA9CF]">Active</span>
+                  <span className="text-xs font-bold text-[#FF5A36]">Active</span>
                 </div>
               </div>
             </div>
@@ -141,31 +141,31 @@ export default function Features({ onNavigate }) {
         <section className="mb-20 sm:mb-32">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             
-            <div className="bg-white border border-slate-200 p-8 rounded-3xl shadow-sm hover:border-[#0DA9CF]/50 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 rounded-2xl bg-[#0DA9CF]/10 text-[#0DA9CF] flex items-center justify-center mb-6">
+            <div className="bg-white border border-[#E4E8EE] p-8 rounded-3xl shadow-sm hover:border-[#1E2761]/40 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 rounded-2xl bg-[#1E2761]/10 text-[#1E2761] border border-[#1E2761]/20 flex items-center justify-center mb-6">
                 <Layout size={26} />
               </div>
-              <h3 className="text-xl font-bold mb-3 text-slate-900">Adaptive Streaming</h3>
+              <h3 className="text-xl font-bold mb-3 text-[#1E2761]">Adaptive Streaming</h3>
               <p className="text-slate-600 text-sm leading-relaxed">
                 Our smart WebRTC engine dynamically adjusts video quality based on each participant's network connection, preventing lag and disconnects.
               </p>
             </div>
 
-            <div className="bg-white border border-slate-200 p-8 rounded-3xl shadow-sm hover:border-[#04B84C]/50 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 rounded-2xl bg-[#04B84C]/10 text-[#04B84C] flex items-center justify-center mb-6">
+            <div className="bg-white border border-[#E4E8EE] p-8 rounded-3xl shadow-sm hover:border-[#FF5A36]/40 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 rounded-2xl bg-[#FF5A36]/10 text-[#FF5A36] border border-[#FF5A36]/20 flex items-center justify-center mb-6">
                 <Shield size={26} />
               </div>
-              <h3 className="text-xl font-bold mb-3 text-slate-900">Privacy by Design</h3>
+              <h3 className="text-xl font-bold mb-3 text-[#1E2761]">Privacy by Design</h3>
               <p className="text-slate-600 text-sm leading-relaxed">
                 Every stream is encrypted end-to-end. Hosts have complete control over who enters the room with mandatory admission approvals.
               </p>
             </div>
 
-            <div className="bg-white border border-slate-200 p-8 rounded-3xl shadow-sm hover:border-[#F67E31]/50 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 rounded-2xl bg-[#F67E31]/10 text-[#F67E31] flex items-center justify-center mb-6">
+            <div className="bg-white border border-[#E4E8EE] p-8 rounded-3xl shadow-sm hover:border-[#1E2761]/40 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 rounded-2xl bg-[#1E2761]/10 text-[#1E2761] border border-[#1E2761]/20 flex items-center justify-center mb-6">
                 <Activity size={26} />
               </div>
-              <h3 className="text-xl font-bold mb-3 text-slate-900">Zero Lag Sync</h3>
+              <h3 className="text-xl font-bold mb-3 text-[#1E2761]">Zero Lag Sync</h3>
               <p className="text-slate-600 text-sm leading-relaxed">
                 Sub-50ms peer-to-peer audio and screen sharing ensures questions, presentations, and code walk-throughs remain perfectly synchronized.
               </p>
@@ -176,8 +176,8 @@ export default function Features({ onNavigate }) {
 
         {/* 5. CTA Section */}
         <section className="text-center">
-          <div className="bg-white border border-slate-200 rounded-3xl p-10 sm:p-16 shadow-md max-w-4xl mx-auto">
-            <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">
+          <div className="bg-white border border-[#E4E8EE] rounded-3xl p-10 sm:p-16 shadow-md max-w-4xl mx-auto">
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1E2761] mb-4 tracking-tight">
               Ready to host your next masterclass?
             </h2>
             <p className="text-slate-600 text-base sm:text-lg max-w-xl mx-auto mb-8 font-normal">
@@ -185,7 +185,7 @@ export default function Features({ onNavigate }) {
             </p>
             <button 
               onClick={() => onNavigate('dashboard')}
-              className="bg-[#0DA9CF] hover:bg-[#0C8DB0] text-white px-9 py-4 rounded-full font-bold text-base shadow-lg shadow-[#0DA9CF]/25 hover:shadow-xl hover:shadow-[#0DA9CF]/35 inline-flex items-center space-x-2 transition-all cursor-pointer"
+              className="bg-[#FF5A36] hover:bg-[#E04826] text-white px-9 py-4 rounded-full font-bold text-base shadow-lg shadow-[#FF5A36]/25 hover:shadow-xl hover:shadow-[#FF5A36]/35 inline-flex items-center space-x-2 transition-all cursor-pointer"
             >
               <span>Host a Free Room</span>
               <ChevronRight size={18} />
