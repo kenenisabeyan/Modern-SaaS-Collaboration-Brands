@@ -9,7 +9,10 @@ export default function Footer({ onNavigate }) {
           {/* Brand Section */}
           <div className="col-span-1 sm:col-span-2 lg:col-span-1">
             <div 
-              onClick={() => { onNavigate('dashboard'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              onClick={() => { 
+                onNavigate(localStorage.getItem('token') ? 'user-dashboard' : 'dashboard'); 
+                window.scrollTo({ top: 0, behavior: 'smooth' }); 
+              }}
               className="flex items-center space-x-3 mb-5 cursor-pointer select-none group"
             >
               <div className="relative">
@@ -45,7 +48,7 @@ export default function Footer({ onNavigate }) {
               <li><button onClick={() => onNavigate('features')} className="hover:text-[#FF5A36] transition-colors text-left cursor-pointer">Features</button></li>
               <li><button onClick={() => onNavigate('how-it-works')} className="hover:text-[#FF5A36] transition-colors text-left cursor-pointer">How It Works</button></li>
               <li><button onClick={() => onNavigate('pricing')} className="hover:text-[#FF5A36] transition-colors text-left cursor-pointer">Pricing</button></li>
-              <li><button onClick={() => onNavigate('dashboard')} className="hover:text-[#FF5A36] transition-colors text-left cursor-pointer">Instant Meetings</button></li>
+              <li><button onClick={() => onNavigate(localStorage.getItem('token') ? 'user-dashboard' : 'dashboard')} className="hover:text-[#FF5A36] transition-colors text-left cursor-pointer">Instant Meetings</button></li>
             </ul>
           </div>
           

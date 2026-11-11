@@ -44,7 +44,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
         handleNavClick('features');
       }
     } else if (item.id === 'masterclasses') {
-      handleNavClick('dashboard');
+      handleNavClick(isAuthenticated ? 'user-dashboard' : 'dashboard');
     } else {
       handleNavClick(item.view || 'dashboard');
     }
@@ -134,7 +134,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
           
           {/* Logo on Left: Deep Midnight Blue Avatar with Electric Coral Live Indicator */}
           <div 
-            onClick={() => handleNavClick('dashboard')}
+            onClick={() => handleNavClick(isAuthenticated ? 'user-dashboard' : 'dashboard')}
             className="flex items-center space-x-3 cursor-pointer select-none group"
           >
             <div className="relative">
