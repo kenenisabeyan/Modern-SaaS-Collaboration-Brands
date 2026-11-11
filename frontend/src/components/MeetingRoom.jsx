@@ -882,15 +882,16 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
            ======================================================== */}
         <header className="absolute top-0 left-0 right-0 z-30 pointer-events-none p-3 sm:p-5 flex items-center justify-between">
           
-          {/* Top-Left: Time, Room Code & Copy */}
+          {/* Top-Left: Brand Badge & Meeting Code (mobile fallback) */}
           <div className="pointer-events-auto flex items-center space-x-2.5 bg-white/95 backdrop-blur-xl border border-[#E4E8EE] px-4 py-2 rounded-full text-[#1E2761] shadow-sm">
-            <span className="text-xs sm:text-sm font-extrabold tracking-wide text-[#1E2761]">{currentTime}</span>
+            <span className="w-2 h-2 rounded-full bg-[#FF5A36] shrink-0"></span>
+            <span className="font-extrabold text-xs tracking-wider uppercase text-[#1E2761]">WABISEMINAR</span>
             <span className="w-1 h-1 rounded-full bg-[#E4E8EE]"></span>
             <span className="font-mono text-xs text-slate-500 font-bold">{roomId}</span>
             <button 
               type="button" 
               onClick={handleCopyLink} 
-              className="text-[#FF5A36] hover:text-[#E04826] transition-colors cursor-pointer p-0.5"
+              className="text-[#FF5A36] hover:text-[#E04826] transition-colors cursor-pointer p-0.5 ml-0.5"
               title="Copy meeting link"
             >
               {copied ? <Check size={14} className="text-[#FF5A36]" /> : <Copy size={14} />}
@@ -973,10 +974,13 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
                     onError={() => setMediaError('Camera stream interrupted.')}
                   />
                   {isVideoOff && (
-                    <div className="absolute inset-0 flex items-center justify-center bg-[#1E2761]">
-                      <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white/10 text-white flex items-center justify-center border border-white/15 shadow-xl">
-                        <User size={38} className="text-white" />
+                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#1E2761]">
+                      <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#FF5A36] text-white flex items-center justify-center border-4 border-[#151A44]/60 shadow-xl">
+                        <span className="text-3xl sm:text-4xl font-extrabold text-white">
+                          {(localStorage.getItem('username') || 'You')[0]?.toUpperCase()}
+                        </span>
                       </div>
+                      <span className="mt-3 text-slate-300 text-xs font-semibold tracking-wide">Camera is off</span>
                     </div>
                   )}
                 </>
@@ -991,7 +995,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
               )}
 
               {/* Name Pill in Bottom-Left */}
-              <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-md text-[#1E2761] text-xs sm:text-sm font-bold px-3.5 py-1.5 rounded-full flex items-center space-x-2 border border-[#E4E8EE] shadow-sm z-10">
+              <div className="absolute bottom-4 left-4 bg-[#1E2761]/85 backdrop-blur-md text-white text-xs sm:text-sm font-bold px-3.5 py-1.5 rounded-full flex items-center space-x-2 border border-white/15 shadow-md z-10">
                 {isMuted && <MicOff size={13} className="text-[#FF5A36]" />}
                 <span>You{isHost ? ' (Host)' : ''}</span>
               </div>
@@ -1012,12 +1016,13 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
                     {remoteStream && participant.videoEnabled !== false ? (
                       <RemoteVideoPlayer stream={remoteStream} className="w-full h-full object-cover" />
                     ) : (
-                      <div className="absolute inset-0 flex items-center justify-center bg-[#1E2761]">
-                        <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-[#FF5A36] text-white flex items-center justify-center border border-[#E04826] shadow-xl">
+                      <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#1E2761]">
+                        <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#FF5A36] text-white flex items-center justify-center border-4 border-[#151A44]/60 shadow-xl">
                           <span className="text-3xl sm:text-4xl text-white font-extrabold">
                             {participant.username?.[0]?.toUpperCase() || 'U'}
                           </span>
                         </div>
+                        <span className="mt-3 text-slate-300 text-xs font-semibold tracking-wide">{participant.username || 'Participant'}</span>
                       </div>
                     )}
                     
@@ -1028,7 +1033,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
                       </div>
                     )}
 
-                    <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-md text-[#1E2761] text-xs sm:text-sm font-bold px-3.5 py-1.5 rounded-full flex items-center space-x-2 border border-[#E4E8EE] shadow-sm z-10">
+                    <div className="absolute bottom-4 left-4 bg-[#1E2761]/85 backdrop-blur-md text-white text-xs sm:text-sm font-bold px-3.5 py-1.5 rounded-full flex items-center space-x-2 border border-white/15 shadow-md z-10">
                       {participant.audioEnabled === false && <MicOff size={13} className="text-[#FF5A36]" />}
                       <span>{participant.username || 'User'}{participant.isHost ? ' (Host)' : ''}</span>
                     </div>
@@ -1083,18 +1088,17 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
            ======================================================== */}
         
         {/* Bottom-Left: Meeting Info Pill */}
-        <div className="fixed bottom-4 sm:bottom-6 left-4 sm:left-6 z-30 hidden lg:flex items-center space-x-2 bg-white/95 backdrop-blur-xl border border-[#E4E8EE] px-4 py-2.5 rounded-2xl text-[#1E2761] shadow-md">
-          <div>
-            <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">Meeting ID</span>
-            <span className="font-mono text-xs font-bold text-[#1E2761]">{roomId}</span>
-          </div>
+        <div className="fixed bottom-4 sm:bottom-6 left-4 sm:left-6 z-30 hidden lg:flex items-center space-x-2.5 bg-white/95 backdrop-blur-xl border border-[#E4E8EE] px-4 py-2.5 rounded-full text-[#1E2761] shadow-md">
+          <span className="text-xs sm:text-sm font-extrabold tracking-wide text-[#1E2761]">{currentTime}</span>
+          <span className="w-1 h-1 rounded-full bg-slate-300"></span>
+          <span className="font-mono text-xs font-bold text-slate-600">{roomId}</span>
           <button
             type="button"
             onClick={handleCopyLink}
-            className="p-2 rounded-xl bg-[#F5F7FA] hover:bg-[#FF5A36] text-[#1E2761] hover:text-white transition-all cursor-pointer ml-1 border border-[#E4E8EE]"
+            className="p-1.5 rounded-lg text-[#FF5A36] hover:bg-[#FF5A36]/10 transition-colors cursor-pointer"
             title="Copy invite link"
           >
-            {copied ? <Check size={14} className="text-[#FF5A36] group-hover:text-white" /> : <Copy size={14} />}
+            {copied ? <Check size={14} className="text-[#FF5A36]" /> : <Copy size={14} />}
           </button>
         </div>
 
@@ -1190,14 +1194,14 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
         </div>
 
         {/* Bottom-Right: Quick Tray (Chat & Participants) */}
-        <div className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-30 hidden sm:flex items-center space-x-2.5 bg-white/95 backdrop-blur-xl border border-[#E4E8EE] px-3 py-2 rounded-2xl text-[#1E2761] shadow-md">
+        <div className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-30 hidden sm:flex items-center space-x-2 bg-white/95 backdrop-blur-xl border border-[#E4E8EE] px-3 py-2 rounded-full text-[#1E2761] shadow-md">
           
           {/* Chat Toggle with Notification Dot */}
           <button 
             type="button" 
             onClick={() => setIsChatOpen(!isChatOpen)}
-            className={`p-2.5 rounded-xl transition-all cursor-pointer relative ${
-              isChatOpen ? 'bg-[#1E2761] text-white' : 'hover:bg-[#F5F7FA] text-[#1E2761]'
+            className={`p-2.5 rounded-full transition-all cursor-pointer relative ${
+              isChatOpen ? 'bg-[#FF5A36] text-white' : 'hover:bg-[#F5F7FA] text-[#1E2761]'
             }`}
             title="Meeting Chat (C)"
           >
@@ -1210,7 +1214,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
           </button>
 
           {/* Participant Count */}
-          <div className="flex items-center space-x-1.5 px-2.5 py-1 text-xs font-bold text-[#1E2761] bg-[#F5F7FA] rounded-xl border border-[#E4E8EE]">
+          <div className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-bold text-[#1E2761] bg-[#F5F7FA] rounded-full border border-[#E4E8EE]">
             <Users size={14} className="text-[#FF5A36]" />
             <span>{allParticipantsCount}</span>
           </div>
