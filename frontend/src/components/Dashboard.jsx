@@ -149,8 +149,8 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
             - 30% Structural Weight: Deep Midnight Blue (#1E2761)
             - 10% Action Weight: Electric Coral (#FF5A36)
            ======================================================== */}
-        <section className="pt-4 sm:pt-6 md:pt-8 pb-10 sm:pb-14 px-4 sm:px-8 lg:px-12 xl:px-16 bg-white relative">
-          <div className="max-w-[1440px] w-full mx-auto">
+        <section className="pt-4 sm:pt-6 md:pt-8 pb-10 sm:pb-14 px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 bg-white relative">
+          <div className="max-w-[1720px] w-full mx-auto">
             
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
               
@@ -355,8 +355,8 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
         {/* ========================================================
             FEATURES SECTION
            ======================================================== */}
-        <section id="features" className="py-16 sm:py-24 bg-white border-t border-[#E4E8EE] px-4 sm:px-8 lg:px-16">
-          <div className="max-w-[1300px] mx-auto">
+        <section id="features" className="py-16 sm:py-24 bg-white border-t border-[#E4E8EE] px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-20">
+          <div className="max-w-[1720px] mx-auto">
             
             <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-18">
               <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#1E2761]/8 text-[#1E2761] border border-[#1E2761]/15 mb-4">

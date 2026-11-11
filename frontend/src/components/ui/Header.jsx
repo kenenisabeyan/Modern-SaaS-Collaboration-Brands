@@ -107,11 +107,11 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
       <header 
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isScrolled 
-            ? 'h-16 shadow-[0_2px_15px_rgba(30,39,97,0.06)] bg-white/95 backdrop-blur-md' 
-            : 'h-16 bg-white'
+            ? 'h-16 sm:h-20 shadow-[0_2px_15px_rgba(30,39,97,0.06)] bg-white/95 backdrop-blur-md' 
+            : 'h-16 sm:h-20 bg-white'
         }`}
       >
-        <div className="max-w-[1400px] h-full mx-auto px-4 sm:px-8 lg:px-12 flex items-center justify-between">
+        <div className="w-full max-w-[1800px] h-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-24 flex items-center justify-between">
           
           {/* Logo on Left: Deep Midnight Blue Avatar with Electric Coral Live Indicator */}
           <div 
