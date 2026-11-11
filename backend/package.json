@@ -5,6 +5,7 @@
   "main": "src/server.js",
   "type": "module",
   "scripts": {
+    "build": "echo 'Backend build step complete'",
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
     "test": "vitest",
