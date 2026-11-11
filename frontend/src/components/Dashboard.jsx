@@ -167,12 +167,10 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                   <span>Instant Collaboration</span>
                 </div>
 
-                {/* Main Headline (kenenisa-os.vercel.app aesthetic: bold dark top line + vivid gradient second line) */}
+                {/* Main Headline (Strict 60-30-10: Deep Midnight Blue #1E2761 + Electric Coral #FF5A36) */}
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[62px] xl:text-[68px] font-black tracking-tight leading-[1.08] text-[#1E2761] mb-4 sm:mb-5 select-none">
-                  <span className="text-[#1E2761] block">Host Engaging.</span>
-                  <span className="block bg-gradient-to-r from-[#00A3C4] via-[#2563EB] to-[#FF5A36] bg-clip-text text-transparent">
-                    Masterclasses & Collaboration
-                  </span>
+                  <span className="text-[#1E2761] block">Host Engaging</span>
+                  <span className="text-[#FF5A36] block">Masterclasses</span>
                 </h1>
 
                 {/* Subtitle Description */}
@@ -188,7 +186,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                   </div>
                 )}
 
-                {/* ONLY TWO ESSENTIAL ACTION BUTTONS (Matching kenenisa-os.vercel.app button styling) */}
+                {/* ONLY TWO ESSENTIAL ACTION BUTTONS (Strict 60-30-10 Palette) */}
                 <div className="flex flex-wrap items-center gap-3 sm:gap-4 w-full sm:w-auto">
                   
                   {/* Button 1: Solid Electric Coral (#FF5A36) - Host a Session / Create Instant Room */}
@@ -211,12 +209,12 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                     )}
                   </button>
 
-                  {/* Button 2: White with Cyan/Slate Border & Accent Text - Join a Session */}
+                  {/* Button 2: Pure White with Midnight Blue (#1E2761) & Border - Join a Session */}
                   <button
                     onClick={() => setShowJoinInline(prev => !prev)}
-                    className="w-full sm:w-auto px-7 py-3.5 sm:py-4 rounded-xl bg-white hover:bg-slate-50 text-[#00A3C4] hover:text-[#008ba3] border-2 border-[#00A3C4]/60 hover:border-[#00A3C4] font-bold text-sm sm:text-base shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center space-x-2 cursor-pointer"
+                    className="w-full sm:w-auto px-7 py-3.5 sm:py-4 rounded-xl bg-white hover:bg-[#F5F7FA] text-[#1E2761] hover:text-[#151A44] border-2 border-[#E4E8EE] hover:border-[#1E2761]/40 font-bold text-sm sm:text-base shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center space-x-2 cursor-pointer"
                   >
-                    <Users size={18} className="text-[#00A3C4]" />
+                    <Users size={18} className="text-[#1E2761]" />
                     <span>Join a Session ▸</span>
                   </button>
 
@@ -262,7 +260,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                     <span>Zero Downloads</span>
                   </div>
                   <div className="flex items-center space-x-1.5">
-                    <CheckCircle size={16} className="text-[#00A3C4]" />
+                    <CheckCircle size={16} className="text-[#1E2761]" />
                     <span>Ultra HD Video</span>
                   </div>
                   <div className="flex items-center space-x-1.5">
@@ -290,22 +288,22 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
 
 
             {/* ========================================================
-                3 METRIC / STAT CARDS (EXACT kenenisa-os.vercel.app AESTHETIC)
-                - Rounded-3xl containers with colored top gradient glow
-                - Large bold numbers with dark structural weight
-                - All-caps category label & refined subtitle
+                3 METRIC / STAT CARDS (STRICT 60-30-10 BRAND PALETTE)
+                - 60% Canvas: Pure White (#FFFFFF) & Soft Off-White (#F5F7FA)
+                - 30% Structural Weight: Deep Midnight Blue (#1E2761)
+                - 10% Action Weight: Electric Coral (#FF5A36)
                ======================================================== */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-10 sm:pt-14">
               
-              {/* Card 1: 36 Happy Users (Cyan Top Glow Header) */}
-              <div className="relative overflow-hidden bg-white border border-[#A5F3FC]/70 hover:border-[#00A3C4] rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center shadow-[0_4px_20px_rgba(0,163,196,0.06)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                <div className="absolute top-0 left-0 right-0 h-28 bg-gradient-to-b from-[#A5F3FC]/45 via-[#CFFAFE]/20 to-transparent pointer-events-none rounded-t-2xl sm:rounded-t-3xl"></div>
+              {/* Card 1: 36 Happy Users (Deep Midnight Blue Structural Card) */}
+              <div className="relative overflow-hidden bg-white border-2 border-[#E4E8EE] hover:border-[#1E2761] rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#1E2761]/[0.06] via-[#1E2761]/[0.02] to-transparent pointer-events-none rounded-t-2xl sm:rounded-t-3xl"></div>
                 
                 <div className="relative z-10">
-                  <div className="text-5xl sm:text-6xl font-black text-[#0F172A] tracking-tight mb-2 transition-transform duration-300 group-hover:scale-105">
+                  <div className="text-5xl sm:text-6xl font-black text-[#1E2761] tracking-tight mb-2 transition-transform duration-300 group-hover:scale-105">
                     {platformStats.users}+
                   </div>
-                  <div className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-900 mb-1">
+                  <div className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-[#1E2761] mb-1">
                     HAPPY USERS
                   </div>
                   <div className="text-xs text-slate-500 font-medium">
@@ -314,15 +312,15 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 </div>
               </div>
 
-              {/* Card 2: 5 Meetings Hosted (Coral / Orange Top Glow Header) */}
-              <div className="relative overflow-hidden bg-white border border-[#FED7AA]/80 hover:border-[#FF5A36] rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center shadow-[0_4px_20px_rgba(255,90,54,0.08)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                <div className="absolute top-0 left-0 right-0 h-28 bg-gradient-to-b from-[#FED7AA]/50 via-[#FFEDD5]/25 to-transparent pointer-events-none rounded-t-2xl sm:rounded-t-3xl"></div>
+              {/* Card 2: 5 Meetings Hosted (Electric Coral #FF5A36 Accent Hero Card) */}
+              <div className="relative overflow-hidden bg-white border-2 border-[#FF5A36]/30 hover:border-[#FF5A36] rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center shadow-[0_4px_20px_rgba(255,90,54,0.08)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#FF5A36]/10 via-[#FF5A36]/[0.03] to-transparent pointer-events-none rounded-t-2xl sm:rounded-t-3xl"></div>
                 
                 <div className="relative z-10">
                   <div className="text-5xl sm:text-6xl font-black text-[#FF5A36] tracking-tight mb-2 transition-transform duration-300 group-hover:scale-105">
                     {platformStats.meetings}+
                   </div>
-                  <div className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-900 mb-1">
+                  <div className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-[#1E2761] mb-1">
                     MEETINGS HOSTED
                   </div>
                   <div className="text-xs text-slate-500 font-medium">
@@ -331,15 +329,15 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 </div>
               </div>
 
-              {/* Card 3: 225 Minutes Connected (Cyan Top Glow Header) */}
-              <div className="relative overflow-hidden bg-white border border-[#A5F3FC]/70 hover:border-[#00A3C4] rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center shadow-[0_4px_20px_rgba(0,163,196,0.06)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                <div className="absolute top-0 left-0 right-0 h-28 bg-gradient-to-b from-[#A5F3FC]/45 via-[#CFFAFE]/20 to-transparent pointer-events-none rounded-t-2xl sm:rounded-t-3xl"></div>
+              {/* Card 3: 225 Minutes Connected (Deep Midnight Blue Structural Card) */}
+              <div className="relative overflow-hidden bg-white border-2 border-[#E4E8EE] hover:border-[#1E2761] rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#1E2761]/[0.06] via-[#1E2761]/[0.02] to-transparent pointer-events-none rounded-t-2xl sm:rounded-t-3xl"></div>
                 
                 <div className="relative z-10">
-                  <div className="text-5xl sm:text-6xl font-black text-[#0F172A] tracking-tight mb-2 transition-transform duration-300 group-hover:scale-105">
+                  <div className="text-5xl sm:text-6xl font-black text-[#1E2761] tracking-tight mb-2 transition-transform duration-300 group-hover:scale-105">
                     {platformStats.minutes}+
                   </div>
-                  <div className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-900 mb-1">
+                  <div className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-[#1E2761] mb-1">
                     MINUTES CONNECTED
                   </div>
                   <div className="text-xs text-slate-500 font-medium">
