@@ -193,7 +193,7 @@ function App() {
           <div
             className={`rounded-2xl sm:rounded-full border px-4 py-3 text-xs sm:text-sm font-semibold shadow-xl backdrop-blur-md text-center break-words ${
               toast.type === 'error'
-                ? 'border-rose-300 bg-rose-600 text-white shadow-rose-500/20'
+                ? 'border-[#FF5A36] bg-[#FF5A36] text-white shadow-[#FF5A36]/30'
                 : 'border-[#1E2761] bg-[#1E2761] text-white shadow-[#1E2761]/25'
             }`}
           >

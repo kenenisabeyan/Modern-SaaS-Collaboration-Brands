@@ -365,7 +365,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
 
                     <button 
                       onClick={() => { setIsDrawerOpen(false); handleAuthAction(); }}
-                      className="w-full border border-white/15 hover:border-rose-400/50 hover:bg-rose-500/10 text-slate-300 hover:text-rose-300 py-2.5 rounded-xl font-medium text-xs flex items-center justify-center space-x-2 transition-all cursor-pointer"
+                      className="w-full border border-white/15 hover:border-[#FF5A36]/40 hover:bg-[#FF5A36]/10 text-slate-300 hover:text-[#FF5A36] py-2.5 rounded-xl font-medium text-xs flex items-center justify-center space-x-2 transition-all cursor-pointer"
                     >
                       <LogOut size={14} />
                       <span>Sign Out</span>

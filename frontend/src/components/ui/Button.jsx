@@ -10,7 +10,7 @@ const variants = {
   green: 'bg-[#1E2761] text-white hover:bg-[#151A44]',
   secondary: 'bg-white text-[#1E2761] border border-[#E4E8EE] hover:bg-[#F5F7FA] shadow-sm',
   ghost: 'bg-transparent text-[#1E2761] hover:bg-[#F5F7FA]',
-  danger: 'bg-rose-500/10 text-rose-600 hover:bg-rose-500/20 border border-rose-200'
+  danger: 'bg-[#FF5A36]/10 text-[#FF5A36] hover:bg-[#FF5A36]/20 border border-[#FF5A36]/25'
 };
 
 const sizes = {

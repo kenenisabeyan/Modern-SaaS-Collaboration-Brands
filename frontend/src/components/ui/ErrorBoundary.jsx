@@ -40,7 +40,7 @@ export default class ErrorBoundary extends React.Component {
               An unexpected error occurred while loading this view. You can reload or reset your local session.
             </p>
             {this.state.error && (
-              <div className="bg-[#F5F7FA] border border-[#E4E8EE] rounded-xl p-3 mb-6 text-left overflow-x-auto text-xs font-mono text-rose-600">
+              <div className="bg-[#F5F7FA] border border-[#E4E8EE] rounded-xl p-3 mb-6 text-left overflow-x-auto text-xs font-mono text-[#FF5A36]">
                 {this.state.error.message || String(this.state.error)}
               </div>
             )}

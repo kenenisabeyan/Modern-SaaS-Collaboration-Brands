@@ -400,7 +400,7 @@ export default function UserSettings({ onNavigate }) {
                 </h3>
                 
                 {message && (
-                  <div className={`p-4 rounded-2xl mb-6 flex items-start gap-3 border ${message.type === 'error' ? 'bg-rose-50 border-rose-200 text-rose-600' : 'bg-[#FF5A36]/10 border-[#FF5A36]/20 text-[#FF5A36]'}`}>
+                  <div className={`p-4 rounded-2xl mb-6 flex items-start gap-3 border ${message.type === 'error' ? 'bg-[#FF5A36]/10 border-[#FF5A36]/25 text-[#FF5A36]' : 'bg-[#FF5A36]/10 border-[#FF5A36]/20 text-[#FF5A36]'}`}>
                     {message.type === 'error' ? <AlertCircle size={18} className="shrink-0 mt-0.5" /> : <CheckCircle2 size={18} className="shrink-0 mt-0.5 text-[#FF5A36]" />}
                     <p className="text-xs sm:text-sm font-medium">{message.text}</p>
                   </div>
