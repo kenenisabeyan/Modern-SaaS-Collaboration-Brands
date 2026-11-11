@@ -184,7 +184,7 @@ export default function Features({ onNavigate }) {
               Join thousands of educators and creators who have upgraded their meeting experience with WabiSeminar.
             </p>
             <button 
-              onClick={() => onNavigate('dashboard')}
+              onClick={() => onNavigate(localStorage.getItem('token') ? 'user-dashboard' : 'dashboard')}
               className="bg-[#FF5A36] hover:bg-[#E04826] text-white px-9 py-4 rounded-full font-bold text-base shadow-lg shadow-[#FF5A36]/25 hover:shadow-xl hover:shadow-[#FF5A36]/35 inline-flex items-center space-x-2 transition-all cursor-pointer"
             >
               <span>Host a Free Room</span>
