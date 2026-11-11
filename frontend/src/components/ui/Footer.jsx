@@ -3,7 +3,7 @@ import { Video, Globe, Mail, MessageCircle } from 'lucide-react';
 export default function Footer({ onNavigate }) {
   return (
     <footer className="border-t border-[#E4E8EE] bg-[#F5F7FA] pt-14 lg:pt-20 pb-8 lg:pb-12 px-6 sm:px-10 lg:px-16 xl:px-24 relative z-10 text-[#1E2761] font-sans">
-      <div className="max-w-[1400px] mx-auto">
+      <div className="max-w-[1800px] mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 mb-12 sm:mb-16">
           
           {/* Brand Section */}

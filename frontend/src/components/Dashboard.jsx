@@ -411,8 +411,8 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
         {/* ========================================================
             ROLES SECTION
            ======================================================== */}
-        <section className="py-16 sm:py-24 bg-[#F5F7FA] border-t border-[#E4E8EE] px-4 sm:px-8 lg:px-16">
-          <div className="max-w-[1300px] mx-auto text-center">
+        <section className="py-16 sm:py-24 bg-[#F5F7FA] border-t border-[#E4E8EE] px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-20">
+          <div className="max-w-[1720px] mx-auto text-center">
             
             <h2 className="text-3xl sm:text-5xl font-extrabold mb-12 tracking-tight text-[#1E2761]">
               One Platform <span className="text-[#FF5A36]">Every Role Connected</span>
@@ -469,8 +469,8 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
         {/* ========================================================
             TESTIMONIALS SECTION
            ======================================================== */}
-        <section className="py-16 sm:py-24 bg-white border-t border-[#E4E8EE] px-4 sm:px-8 lg:px-16">
-          <div className="max-w-[1300px] mx-auto">
+        <section className="py-16 sm:py-24 bg-white border-t border-[#E4E8EE] px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-20">
+          <div className="max-w-[1720px] mx-auto">
             
             <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-18">
               <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#1E2761]/8 text-[#1E2761] border border-[#1E2761]/15 mb-4">
