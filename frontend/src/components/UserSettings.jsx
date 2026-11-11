@@ -152,7 +152,7 @@ export default function UserSettings({ onNavigate }) {
       {/* Top Back Navigation */}
       <div className="mb-6">
         <button 
-          onClick={() => onNavigate('dashboard')}
+          onClick={() => onNavigate('user-dashboard')}
           className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-600 hover:text-[#FF5A36] transition-colors cursor-pointer"
         >
           <ArrowLeft size={16} />
