@@ -4,9 +4,12 @@ export function resolveApiBase() {
   let resolved;
   
   if (typeof v === 'string' && v.startsWith('http')) {
-    resolved = v;
+    const clean = v.replace(/\/+$/, '');
+    resolved = clean.endsWith('/api') ? clean : `${clean}/api`;
   } else if (typeof v === 'string' && v.startsWith('/') && typeof window !== 'undefined') {
-    resolved = `${window.location.origin}${v}`;
+    const clean = v.replace(/\/+$/, '');
+    const path = clean.endsWith('/api') ? clean : `${clean}/api`;
+    resolved = `${window.location.origin}${path}`;
   } else if (import.meta.env.DEV) {
     resolved = 'http://localhost:5000/api';
   } else if (typeof window !== 'undefined') {
@@ -30,7 +33,7 @@ export function resolveSocketOrigin() {
   let resolved;
   
   if (typeof v === 'string' && v.startsWith('http')) {
-    resolved = v.replace(/\/?api\/?$/, '') || v;
+    resolved = v.replace(/\/+$/, '').replace(/\/api$/, '');
   } else if (typeof v === 'string' && v.startsWith('/') && typeof window !== 'undefined') {
     resolved = window.location.origin;
   } else if (import.meta.env.DEV) {

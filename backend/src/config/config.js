@@ -33,7 +33,7 @@ function parseCorsOrigins() {
     if (matchesWildcard) return callback(null, true);
 
     // Automatically allow any Vercel domain (*.vercel.app) or Render domain (*.onrender.com)
-    if (/^https:\/\/([a-zA-Z0-9-]+\.)?vercel\.app$/.test(origin) || /^https:\/\/([a-zA-Z0-9-]+\.)?onrender\.com$/.test(origin)) {
+    if (/^https?:\/\/([a-zA-Z0-9._-]+\.)?vercel\.app$/.test(origin) || /^https?:\/\/([a-zA-Z0-9._-]+\.)?onrender\.com$/.test(origin)) {
       return callback(null, true);
     }
 

@@ -6,7 +6,9 @@
     "start": "cd backend && npm start",
     "dev:backend": "cd backend && npm run dev",
     "dev:frontend": "cd frontend && npm run dev",
-    "build": "cd backend && npm install && cd ../frontend && npm install && VITE_API_URL=/api npm run build"
+    "build": "cd backend && npm install && cd ../frontend && npm install && VITE_API_URL=/api npm run build",
+    "build:backend": "cd backend && npm install",
+    "build:frontend": "cd frontend && npm install && npm run build"
   },
   "dependencies": {
     "socket.io-client": "^4.8.3"
