@@ -59,3 +59,4 @@ describe('WorkspaceTheme Model', () => {
     expect(retrieved.id).toBe(theme.id);
   });
 });
+
