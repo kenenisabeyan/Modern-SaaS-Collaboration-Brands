@@ -780,17 +780,17 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
 
   if (joinDenied) {
     return (
-      <div className="flex-1 flex items-center justify-center h-screen bg-[#0D1230] text-white relative overflow-hidden font-sans p-4">
-        <div className="absolute bg-rose-600/10 blur-[120px] w-[500px] h-[500px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
-        <div className="text-center space-y-5 sm:space-y-6 z-10 max-w-md w-full mx-auto p-6 sm:p-10 bg-[#1E2761]/90 backdrop-blur-2xl border border-white/15 rounded-3xl shadow-2xl">
-          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-rose-500/20 rounded-full flex items-center justify-center mx-auto border border-rose-500/30 shadow-[0_0_30px_rgba(244,63,94,0.3)]">
-            <X size={32} className="text-rose-400 sm:w-10 sm:h-10" />
+      <div className="flex-1 flex items-center justify-center h-screen bg-[#F5F7FA] text-[#1E2761] relative overflow-hidden font-sans p-4">
+        <div className="absolute bg-[#FF5A36]/5 blur-[120px] w-[500px] h-[500px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+        <div className="text-center space-y-5 sm:space-y-6 z-10 max-w-md w-full mx-auto p-6 sm:p-10 bg-white border border-[#E4E8EE] rounded-3xl shadow-xl">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#FF5A36]/10 text-[#FF5A36] rounded-full flex items-center justify-center mx-auto border border-[#FF5A36]/20 shadow-sm">
+            <X size={32} className="text-[#FF5A36] sm:w-10 sm:h-10" />
           </div>
           <div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2 tracking-tight">Entry Denied</h2>
-            <p className="text-sm sm:text-base text-slate-300">The host declined your request to join.</p>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1E2761] mb-2 tracking-tight">Entry Denied</h2>
+            <p className="text-sm sm:text-base text-slate-500">The host declined your request to join.</p>
           </div>
-          <button type="button" onClick={onLeave} className="w-full py-3.5 sm:py-4 px-5 sm:px-6 rounded-2xl font-bold text-sm sm:text-base text-white bg-white/10 hover:bg-white/20 border border-white/15 transition-all hover:scale-[1.02] cursor-pointer">
+          <button type="button" onClick={onLeave} className="w-full py-3.5 sm:py-4 px-5 sm:px-6 rounded-2xl font-bold text-sm sm:text-base text-white bg-[#1E2761] hover:bg-[#151A44] transition-all shadow-md cursor-pointer">
             Return to Dashboard
           </button>
         </div>
@@ -800,17 +800,17 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
 
   if (roomNotFound) {
     return (
-      <div className="flex-1 flex items-center justify-center h-screen bg-[#0D1230] text-white relative overflow-hidden font-sans p-4">
-        <div className="absolute bg-rose-600/10 blur-[120px] w-[500px] h-[500px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
-        <div className="text-center space-y-5 sm:space-y-6 z-10 max-w-md w-full mx-auto p-6 sm:p-10 bg-[#1E2761]/90 backdrop-blur-2xl border border-white/15 rounded-3xl shadow-2xl">
-          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-rose-500/20 rounded-full flex items-center justify-center mx-auto border border-rose-500/30 shadow-[0_0_30px_rgba(244,63,94,0.3)]">
-            <X size={32} className="text-rose-400 sm:w-10 sm:h-10" />
+      <div className="flex-1 flex items-center justify-center h-screen bg-[#F5F7FA] text-[#1E2761] relative overflow-hidden font-sans p-4">
+        <div className="absolute bg-[#FF5A36]/5 blur-[120px] w-[500px] h-[500px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+        <div className="text-center space-y-5 sm:space-y-6 z-10 max-w-md w-full mx-auto p-6 sm:p-10 bg-white border border-[#E4E8EE] rounded-3xl shadow-xl">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#FF5A36]/10 text-[#FF5A36] rounded-full flex items-center justify-center mx-auto border border-[#FF5A36]/20 shadow-sm">
+            <X size={32} className="text-[#FF5A36] sm:w-10 sm:h-10" />
           </div>
           <div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2 tracking-tight">Room Not Found</h2>
-            <p className="text-sm sm:text-base text-slate-300">This meeting link is invalid or the meeting has ended.</p>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1E2761] mb-2 tracking-tight">Room Not Found</h2>
+            <p className="text-sm sm:text-base text-slate-500">This meeting link is invalid or the meeting has ended.</p>
           </div>
-          <button type="button" onClick={onLeave} className="w-full py-3.5 sm:py-4 px-5 sm:px-6 rounded-2xl font-bold text-sm sm:text-base text-white bg-white/10 hover:bg-white/20 border border-white/15 transition-all hover:scale-[1.02] cursor-pointer">
+          <button type="button" onClick={onLeave} className="w-full py-3.5 sm:py-4 px-5 sm:px-6 rounded-2xl font-bold text-sm sm:text-base text-white bg-[#1E2761] hover:bg-[#151A44] transition-all shadow-md cursor-pointer">
             Return to Dashboard
           </button>
         </div>
@@ -820,19 +820,19 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
 
   if (isWaiting) {
     return (
-      <div className="flex-1 flex items-center justify-center h-screen bg-[#0D1230] text-white relative overflow-hidden font-sans p-4">
-        <div className="absolute bg-[#FF5A36]/10 blur-[140px] w-[600px] h-[600px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
-        <div className="text-center space-y-5 sm:space-y-6 z-10 max-w-md w-full mx-auto p-6 sm:p-10 bg-[#1E2761]/90 backdrop-blur-2xl border border-white/15 rounded-3xl shadow-2xl">
+      <div className="flex-1 flex items-center justify-center h-screen bg-[#F5F7FA] text-[#1E2761] relative overflow-hidden font-sans p-4">
+        <div className="absolute bg-[#FF5A36]/5 blur-[140px] w-[600px] h-[600px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+        <div className="text-center space-y-5 sm:space-y-6 z-10 max-w-md w-full mx-auto p-6 sm:p-10 bg-white border border-[#E4E8EE] rounded-3xl shadow-xl">
           <div className="relative w-16 h-16 sm:w-20 sm:h-20 mx-auto flex items-center justify-center">
-            <div className="absolute inset-0 border-t-2 border-white rounded-full animate-spin"></div>
+            <div className="absolute inset-0 border-t-2 border-[#1E2761] rounded-full animate-spin"></div>
             <div className="absolute inset-2 border-r-2 border-[#FF5A36] rounded-full animate-[spin_1.5s_linear_infinite_reverse]"></div>
             <Users size={28} className="text-[#FF5A36] sm:w-8 sm:h-8" />
           </div>
           <div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2 tracking-tight">Waiting for Host</h2>
-            <p className="text-sm sm:text-base text-slate-300">Please wait, the host will admit you shortly.</p>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1E2761] mb-2 tracking-tight">Waiting for Host</h2>
+            <p className="text-sm sm:text-base text-slate-500">Please wait, the host will admit you shortly.</p>
           </div>
-          <button type="button" onClick={onLeave} className="text-[#FF5A36] hover:text-white mt-2 block mx-auto text-xs sm:text-sm font-semibold transition-colors cursor-pointer">
+          <button type="button" onClick={onLeave} className="text-[#FF5A36] hover:underline mt-2 block mx-auto text-xs sm:text-sm font-bold transition-colors cursor-pointer">
             Cancel & Return
           </button>
         </div>
@@ -842,17 +842,17 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
 
   if (isJoining) {
     return (
-      <div className="flex-1 flex items-center justify-center h-screen bg-[#0D1230] text-white relative overflow-hidden font-sans p-4">
-        <div className="absolute bg-[#FF5A36]/10 blur-[140px] w-[600px] h-[600px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
-        <div className="text-center space-y-5 sm:space-y-6 z-10 max-w-md w-full mx-auto p-6 sm:p-10 bg-[#1E2761]/90 backdrop-blur-2xl border border-white/15 rounded-3xl shadow-2xl">
+      <div className="flex-1 flex items-center justify-center h-screen bg-[#F5F7FA] text-[#1E2761] relative overflow-hidden font-sans p-4">
+        <div className="absolute bg-[#FF5A36]/5 blur-[140px] w-[600px] h-[600px] rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+        <div className="text-center space-y-5 sm:space-y-6 z-10 max-w-md w-full mx-auto p-6 sm:p-10 bg-white border border-[#E4E8EE] rounded-3xl shadow-xl">
           <div className="relative w-16 h-16 sm:w-20 sm:h-20 mx-auto flex items-center justify-center">
-            <div className="absolute inset-0 border-t-2 border-white rounded-full animate-spin"></div>
+            <div className="absolute inset-0 border-t-2 border-[#1E2761] rounded-full animate-spin"></div>
             <div className="absolute inset-2 border-l-2 border-[#FF5A36] rounded-full animate-[spin_1s_linear_infinite_reverse]"></div>
             <Video size={28} className="text-[#FF5A36] sm:w-8 sm:h-8" />
           </div>
           <div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2 tracking-tight">Connecting to Room</h2>
-            <p className="text-sm sm:text-base text-slate-300">Establishing peer-to-peer encrypted WebRTC stream...</p>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1E2761] mb-2 tracking-tight">Connecting to Room</h2>
+            <p className="text-sm sm:text-base text-slate-500">Establishing peer-to-peer encrypted WebRTC stream...</p>
           </div>
         </div>
       </div>
@@ -869,53 +869,53 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
   };
 
   return (
-    <div className="flex-1 flex h-screen overflow-hidden bg-[#0D1230] text-white font-sans relative selection:bg-[#FF5A36] selection:text-white">
-      {/* Subtle Cinematic Ambient Glow */}
-      <div className="absolute bg-[#FF5A36]/8 blur-[180px] w-[800px] h-[800px] rounded-full top-[-10%] left-[-10%] pointer-events-none"></div>
-      <div className="absolute bg-[#1E2761]/30 blur-[180px] w-[700px] h-[700px] rounded-full bottom-[-10%] right-[-10%] pointer-events-none"></div>
+    <div className="flex-1 flex h-screen overflow-hidden bg-[#F5F7FA] text-[#1E2761] font-sans relative selection:bg-[#FF5A36] selection:text-white">
+      {/* Subtle Brand Ambiance */}
+      <div className="absolute bg-[#FF5A36]/5 blur-[180px] w-[800px] h-[800px] rounded-full top-[-10%] left-[-10%] pointer-events-none"></div>
+      <div className="absolute bg-[#1E2761]/5 blur-[180px] w-[700px] h-[700px] rounded-full bottom-[-10%] right-[-10%] pointer-events-none"></div>
 
       {/* Main Content Area */}
       <div className={`flex-1 flex flex-col transition-all duration-300 relative z-10 ${isChatOpen ? 'pr-0 md:pr-96' : 'pr-0'}`}>
         
         {/* ========================================================
-            TOP BAR: Minimalist Floating HUD
+            TOP BAR: Floating Brand HUD
            ======================================================== */}
         <header className="absolute top-0 left-0 right-0 z-30 pointer-events-none p-3 sm:p-5 flex items-center justify-between">
           
           {/* Top-Left: Time, Room Code & Copy */}
-          <div className="pointer-events-auto flex items-center space-x-2.5 bg-[#1E2761]/80 backdrop-blur-xl border border-white/15 px-4 py-2 rounded-full text-white shadow-lg">
-            <span className="text-xs sm:text-sm font-bold tracking-wide">{currentTime}</span>
-            <span className="w-1 h-1 rounded-full bg-white/40"></span>
-            <span className="font-mono text-xs text-slate-300 font-semibold">{roomId}</span>
+          <div className="pointer-events-auto flex items-center space-x-2.5 bg-white/95 backdrop-blur-xl border border-[#E4E8EE] px-4 py-2 rounded-full text-[#1E2761] shadow-sm">
+            <span className="text-xs sm:text-sm font-extrabold tracking-wide text-[#1E2761]">{currentTime}</span>
+            <span className="w-1 h-1 rounded-full bg-[#E4E8EE]"></span>
+            <span className="font-mono text-xs text-slate-500 font-bold">{roomId}</span>
             <button 
               type="button" 
               onClick={handleCopyLink} 
-              className="text-[#FF5A36] hover:text-white transition-colors cursor-pointer p-0.5"
+              className="text-[#FF5A36] hover:text-[#E04826] transition-colors cursor-pointer p-0.5"
               title="Copy meeting link"
             >
               {copied ? <Check size={14} className="text-[#FF5A36]" /> : <Copy size={14} />}
             </button>
           </div>
 
-          {/* Top-Center / Right: Host Controls & Security Badge */}
+          {/* Top-Right: Host Controls & Security Badge */}
           <div className="pointer-events-auto flex items-center space-x-2 sm:space-x-3">
             {isHost && participants.length > 0 && (
               <button
                 type="button"
                 onClick={handleMuteAll}
-                className="flex items-center space-x-1.5 bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 border border-rose-500/30 px-3 py-1.5 rounded-full transition-all font-bold text-xs cursor-pointer shadow-sm"
+                className="flex items-center space-x-1.5 bg-[#FF5A36]/10 hover:bg-[#FF5A36]/20 text-[#FF5A36] border border-[#FF5A36]/25 px-3.5 py-1.5 rounded-full transition-all font-bold text-xs cursor-pointer shadow-xs"
               >
                 <MicOff size={13} />
                 <span>Mute All</span>
               </button>
             )}
 
-            <div className="hidden sm:flex items-center space-x-1.5 bg-[#1E2761]/80 backdrop-blur-xl px-3.5 py-1.5 rounded-full border border-white/15 text-xs font-semibold text-slate-300 shadow-md">
+            <div className="hidden sm:flex items-center space-x-1.5 bg-white/95 backdrop-blur-xl px-3.5 py-1.5 rounded-full border border-[#E4E8EE] text-xs font-bold text-[#1E2761] shadow-sm">
               <span className="w-2 h-2 rounded-full bg-[#FF5A36] animate-pulse"></span>
               <span>Encrypted P2P</span>
             </div>
 
-            <div className="flex sm:hidden items-center space-x-1.5 bg-[#1E2761]/80 backdrop-blur-xl px-3 py-1.5 rounded-full border border-white/15 text-xs font-bold text-white shadow-md">
+            <div className="flex sm:hidden items-center space-x-1.5 bg-white/95 backdrop-blur-xl px-3 py-1.5 rounded-full border border-[#E4E8EE] text-xs font-bold text-[#1E2761] shadow-sm">
               <Users size={13} className="text-[#FF5A36]" />
               <span>{allParticipantsCount}</span>
             </div>
@@ -924,7 +924,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
         </header>
 
         {/* ========================================================
-            VIDEO STAGE: Edge-to-Edge Adaptive Viewport (Full cinematic stage)
+            VIDEO STAGE: Full Viewport Cinema Grid
            ======================================================== */}
         <main className="flex-1 p-2 sm:p-4 md:p-5 pt-16 sm:pt-20 pb-24 sm:pb-28 overflow-hidden w-full h-full flex items-center justify-center">
           <div className={`${getGridClass()} gap-3 sm:gap-4 w-full h-full max-w-[1780px] mx-auto`}>
@@ -934,14 +934,14 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3 }}
-              className={`bg-[#151A44] rounded-2xl sm:rounded-3xl relative overflow-hidden flex items-center justify-center border border-white/10 shadow-2xl group w-full h-full ${
+              className={`bg-[#1E2761] rounded-2xl sm:rounded-3xl relative overflow-hidden flex items-center justify-center border border-[#151A44] shadow-md group w-full h-full ${
                 allParticipantsCount === 1 
                   ? 'max-w-[1720px] max-h-[calc(100vh-130px)] aspect-video mx-auto' 
                   : 'aspect-video'
               }`}
             >
               {isInitializing && (
-                <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-[#151A44]/95 backdrop-blur-md">
+                <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-[#1E2761]/95 backdrop-blur-md">
                   <div className="flex flex-col items-center justify-center space-y-3">
                     <div className="animate-spin rounded-full h-9 w-9 border-b-2 border-[#FF5A36]" />
                     <span className="text-[#FF5A36] text-xs font-bold uppercase tracking-wider">Starting camera...</span>
@@ -950,11 +950,11 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
               )}
 
               {!isInitializing && mediaError && (
-                <div className="absolute inset-0 z-20 flex flex-col items-center justify-center space-y-3 p-6 bg-[#151A44]/95 backdrop-blur-md">
-                  <div className="w-14 h-14 rounded-full bg-rose-500/20 flex items-center justify-center border border-rose-500/30">
-                    <VideoOff size={26} className="text-rose-400" />
+                <div className="absolute inset-0 z-20 flex flex-col items-center justify-center space-y-3 p-6 bg-[#1E2761]/95 backdrop-blur-md text-center">
+                  <div className="w-14 h-14 rounded-full bg-[#FF5A36]/15 flex items-center justify-center border border-[#FF5A36]/30">
+                    <VideoOff size={26} className="text-[#FF5A36]" />
                   </div>
-                  <span className="text-rose-300 text-xs text-center font-medium max-w-xs">{mediaError}</span>
+                  <span className="text-white text-xs font-medium max-w-xs">{mediaError}</span>
                   <button type="button" onClick={handleRetryCamera} className="px-5 py-2 bg-[#FF5A36] hover:bg-[#E04826] text-white rounded-full text-xs font-bold transition-all shadow-md cursor-pointer">
                     Retry Camera
                   </button>
@@ -973,8 +973,8 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
                     onError={() => setMediaError('Camera stream interrupted.')}
                   />
                   {isVideoOff && (
-                    <div className="absolute inset-0 flex items-center justify-center bg-[#151A44]">
-                      <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-[#1E2761] text-white flex items-center justify-center border border-white/15 shadow-xl">
+                    <div className="absolute inset-0 flex items-center justify-center bg-[#1E2761]">
+                      <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white/10 text-white flex items-center justify-center border border-white/15 shadow-xl">
                         <User size={38} className="text-white" />
                       </div>
                     </div>
@@ -990,8 +990,8 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
                 </div>
               )}
 
-              {/* Translucent Participant Name Pill */}
-              <div className="absolute bottom-4 left-4 bg-[#1E2761]/80 backdrop-blur-md text-white text-xs sm:text-sm font-semibold px-3.5 py-1.5 rounded-full flex items-center space-x-2 border border-white/15 shadow-md z-10">
+              {/* Name Pill in Bottom-Left */}
+              <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-md text-[#1E2761] text-xs sm:text-sm font-bold px-3.5 py-1.5 rounded-full flex items-center space-x-2 border border-[#E4E8EE] shadow-sm z-10">
                 {isMuted && <MicOff size={13} className="text-[#FF5A36]" />}
                 <span>You{isHost ? ' (Host)' : ''}</span>
               </div>
@@ -1007,12 +1007,12 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.2 } }}
-                    className="bg-[#151A44] rounded-2xl sm:rounded-3xl relative overflow-hidden flex items-center justify-center group border border-white/10 shadow-2xl aspect-video w-full h-full"
+                    className="bg-[#1E2761] rounded-2xl sm:rounded-3xl relative overflow-hidden flex items-center justify-center group border border-[#151A44] shadow-md aspect-video w-full h-full"
                   >
                     {remoteStream && participant.videoEnabled !== false ? (
                       <RemoteVideoPlayer stream={remoteStream} className="w-full h-full object-cover" />
                     ) : (
-                      <div className="absolute inset-0 flex items-center justify-center bg-[#151A44]">
+                      <div className="absolute inset-0 flex items-center justify-center bg-[#1E2761]">
                         <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-[#FF5A36] text-white flex items-center justify-center border border-[#E04826] shadow-xl">
                           <span className="text-3xl sm:text-4xl text-white font-extrabold">
                             {participant.username?.[0]?.toUpperCase() || 'U'}
@@ -1028,7 +1028,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
                       </div>
                     )}
 
-                    <div className="absolute bottom-4 left-4 bg-[#1E2761]/80 backdrop-blur-md text-white text-xs sm:text-sm font-semibold px-3.5 py-1.5 rounded-full flex items-center space-x-2 border border-white/15 shadow-md z-10">
+                    <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-md text-[#1E2761] text-xs sm:text-sm font-bold px-3.5 py-1.5 rounded-full flex items-center space-x-2 border border-[#E4E8EE] shadow-sm z-10">
                       {participant.audioEnabled === false && <MicOff size={13} className="text-[#FF5A36]" />}
                       <span>{participant.username || 'User'}{participant.isHost ? ' (Host)' : ''}</span>
                     </div>
@@ -1037,7 +1037,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
                       <button
                         type="button"
                         onClick={() => handleKickUser(participant.socketId)}
-                        className="absolute top-4 right-4 bg-rose-600/90 hover:bg-rose-600 text-white p-2 rounded-xl backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all border border-rose-400/40 shadow-lg cursor-pointer"
+                        className="absolute top-4 right-4 bg-[#FF5A36] hover:bg-[#E04826] text-white p-2 rounded-xl backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all border border-[#FF5A36] shadow-sm cursor-pointer"
                         title="Remove participant"
                       >
                         <ShieldBan size={16} />
@@ -1055,20 +1055,20 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
             WAITING ROOM PANEL (Host Only)
            ======================================================== */}
         {isHost && waitingUsers.length > 0 && (
-          <div className="absolute top-16 sm:top-20 right-4 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-80 bg-[#1E2761]/95 shadow-2xl backdrop-blur-2xl border border-white/15 rounded-3xl p-5">
-            <h3 className="text-white font-bold mb-3 flex items-center text-sm tracking-wide">
+          <div className="absolute top-16 sm:top-20 right-4 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-80 bg-white shadow-xl backdrop-blur-2xl border border-[#E4E8EE] rounded-3xl p-5 text-[#1E2761]">
+            <h3 className="text-[#1E2761] font-bold mb-3 flex items-center text-sm tracking-wide">
               <span className="bg-[#FF5A36] text-white text-xs px-2 py-0.5 rounded-full mr-2 font-bold">{waitingUsers.length}</span>
               Waiting to Join
             </h3>
             <div className="space-y-2.5 max-h-52 overflow-y-auto pr-1 custom-scrollbar">
               {waitingUsers.map((user) => (
-                <div key={user.socketId} className="flex items-center justify-between bg-white/10 border border-white/10 p-3 rounded-2xl">
-                  <span className="text-xs sm:text-sm font-bold text-white truncate pr-2">{user.username}</span>
+                <div key={user.socketId} className="flex items-center justify-between bg-[#F5F7FA] border border-[#E4E8EE] p-3 rounded-2xl">
+                  <span className="text-xs sm:text-sm font-bold text-[#1E2761] truncate pr-2">{user.username}</span>
                   <div className="flex space-x-1.5">
-                    <button type="button" onClick={() => handleDeny(user.socketId)} className="p-2 text-rose-300 bg-rose-500/20 hover:bg-rose-500/30 rounded-xl transition-colors cursor-pointer" title="Decline">
+                    <button type="button" onClick={() => handleDeny(user.socketId)} className="p-2 text-[#FF5A36] bg-[#FF5A36]/10 hover:bg-[#FF5A36]/20 border border-[#FF5A36]/25 rounded-xl transition-colors cursor-pointer" title="Decline">
                       <X size={15} />
                     </button>
-                    <button type="button" onClick={() => handleAdmit(user.socketId)} className="p-2 text-white bg-[#FF5A36] hover:bg-[#E04826] rounded-xl transition-colors cursor-pointer" title="Admit">
+                    <button type="button" onClick={() => handleAdmit(user.socketId)} className="p-2 text-white bg-[#1E2761] hover:bg-[#151A44] rounded-xl transition-colors cursor-pointer" title="Admit">
                       <Check size={15} />
                     </button>
                   </div>
@@ -1079,28 +1079,28 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
         )}
 
         {/* ========================================================
-            BOTTOM FLOATING CONTROLS DOCK (The Studio Command Bar)
+            BOTTOM FLOATING CONTROLS DOCK (Strict 60-30-10 Brand Identity)
            ======================================================== */}
         
         {/* Bottom-Left: Meeting Info Pill */}
-        <div className="fixed bottom-4 sm:bottom-6 left-4 sm:left-6 z-30 hidden lg:flex items-center space-x-2 bg-[#1E2761]/85 backdrop-blur-2xl border border-white/15 px-4 py-2.5 rounded-2xl text-white shadow-2xl">
+        <div className="fixed bottom-4 sm:bottom-6 left-4 sm:left-6 z-30 hidden lg:flex items-center space-x-2 bg-white/95 backdrop-blur-xl border border-[#E4E8EE] px-4 py-2.5 rounded-2xl text-[#1E2761] shadow-md">
           <div>
             <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">Meeting ID</span>
-            <span className="font-mono text-xs font-bold text-white">{roomId}</span>
+            <span className="font-mono text-xs font-bold text-[#1E2761]">{roomId}</span>
           </div>
           <button
             type="button"
             onClick={handleCopyLink}
-            className="p-2 rounded-xl bg-white/10 hover:bg-[#FF5A36] text-white transition-all cursor-pointer ml-1"
+            className="p-2 rounded-xl bg-[#F5F7FA] hover:bg-[#FF5A36] text-[#1E2761] hover:text-white transition-all cursor-pointer ml-1 border border-[#E4E8EE]"
             title="Copy invite link"
           >
-            {copied ? <Check size={14} className="text-white" /> : <Copy size={14} />}
+            {copied ? <Check size={14} className="text-[#FF5A36] group-hover:text-white" /> : <Copy size={14} />}
           </button>
         </div>
 
         {/* Center: Media Control Dock */}
         <div className="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-30 max-w-[calc(100vw-1rem)]">
-          <div className="bg-[#1E2761]/90 backdrop-blur-2xl px-3.5 sm:px-6 py-2.5 sm:py-3.5 rounded-full flex items-center space-x-2.5 sm:space-x-3.5 shadow-2xl border border-white/15">
+          <div className="bg-[#1E2761] text-white px-3.5 sm:px-6 py-2.5 sm:py-3.5 rounded-full flex items-center space-x-2.5 sm:space-x-3.5 shadow-xl shadow-[#1E2761]/25 border border-[#151A44]">
             
             {/* Microphone Toggle */}
             <button 
@@ -1158,10 +1158,10 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
               <Hand size={19} className={isHandRaised ? 'fill-current' : ''} />
             </button>
 
-            {/* End Call / Leave */}
+            {/* End Call / Leave - Solid Electric Coral #FF5A36 */}
             <button 
               type="button" 
-              className="px-5 sm:px-6 h-11 sm:h-12 rounded-full bg-rose-600 hover:bg-rose-700 text-white font-bold transition-all flex items-center justify-center space-x-2 shadow-lg shadow-rose-600/30 hover:scale-105 active:scale-95 cursor-pointer" 
+              className="px-5 sm:px-6 h-11 sm:h-12 rounded-full bg-[#FF5A36] hover:bg-[#E04826] text-white font-bold transition-all flex items-center justify-center space-x-2 shadow-md shadow-[#FF5A36]/30 hover:scale-105 active:scale-95 cursor-pointer" 
               onClick={onLeave}
               title="Leave call"
             >
@@ -1190,27 +1190,27 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
         </div>
 
         {/* Bottom-Right: Quick Tray (Chat & Participants) */}
-        <div className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-30 hidden sm:flex items-center space-x-2.5 bg-[#1E2761]/85 backdrop-blur-2xl border border-white/15 px-3 py-2 rounded-2xl text-white shadow-2xl">
+        <div className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-30 hidden sm:flex items-center space-x-2.5 bg-white/95 backdrop-blur-xl border border-[#E4E8EE] px-3 py-2 rounded-2xl text-[#1E2761] shadow-md">
           
           {/* Chat Toggle with Notification Dot */}
           <button 
             type="button" 
             onClick={() => setIsChatOpen(!isChatOpen)}
             className={`p-2.5 rounded-xl transition-all cursor-pointer relative ${
-              isChatOpen ? 'bg-[#FF5A36] text-white' : 'bg-white/10 hover:bg-white/20 text-white'
+              isChatOpen ? 'bg-[#1E2761] text-white' : 'hover:bg-[#F5F7FA] text-[#1E2761]'
             }`}
             title="Meeting Chat (C)"
           >
             <MessageSquare size={17} />
             {messages.length > 0 && !isChatOpen && (
-              <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#FF5A36] text-white rounded-full text-[10px] font-bold flex items-center justify-center border border-[#1E2761]">
+              <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#FF5A36] text-white rounded-full text-[10px] font-bold flex items-center justify-center border border-white">
                 {messages.length > 9 ? '9+' : messages.length}
               </span>
             )}
           </button>
 
           {/* Participant Count */}
-          <div className="flex items-center space-x-1.5 px-2.5 py-1 text-xs font-bold text-white bg-white/5 rounded-xl border border-white/10">
+          <div className="flex items-center space-x-1.5 px-2.5 py-1 text-xs font-bold text-[#1E2761] bg-[#F5F7FA] rounded-xl border border-[#E4E8EE]">
             <Users size={14} className="text-[#FF5A36]" />
             <span>{allParticipantsCount}</span>
           </div>
@@ -1220,23 +1220,23 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
       </div>
 
       {/* ========================================================
-          CHAT SIDEBAR: Deep Midnight Glass Slide-Out Drawer
+          CHAT SIDEBAR: Pure White Surface with Brand Accents
          ======================================================== */}
       <div
         className={`
-        fixed right-0 top-0 bottom-0 w-full sm:w-96 bg-[#151A44]/95 backdrop-blur-3xl border-l border-white/15 flex flex-col z-40 transition-transform duration-300 shadow-2xl
+        fixed right-0 top-0 bottom-0 w-full sm:w-96 bg-white border-l border-[#E4E8EE] flex flex-col z-40 transition-transform duration-300 shadow-2xl text-[#1E2761]
         ${isChatOpen ? 'translate-x-0' : 'translate-x-full'}
       `}
       >
         {/* Chat Header */}
-        <div className="h-16 sm:h-20 flex items-center justify-between px-6 border-b border-white/10 bg-transparent">
+        <div className="h-16 sm:h-20 flex items-center justify-between px-6 border-b border-[#E4E8EE] bg-transparent">
           <div className="flex items-center space-x-2">
             <MessageSquare size={18} className="text-[#FF5A36]" />
-            <span className="text-base font-bold text-white tracking-wide">In-Call Chat</span>
+            <span className="text-base font-bold text-[#1E2761] tracking-wide">In-Call Chat</span>
           </div>
           <button 
             type="button" 
-            className="text-slate-400 hover:text-white transition-colors p-2 rounded-xl hover:bg-white/10 cursor-pointer" 
+            className="text-slate-400 hover:text-[#1E2761] transition-colors p-2 rounded-xl hover:bg-[#F5F7FA] cursor-pointer" 
             onClick={() => setIsChatOpen(false)}
           >
             <X size={18} />
@@ -1253,24 +1253,24 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
         <div className="flex-1 overflow-y-auto p-6 space-y-4 custom-scrollbar">
           {messages.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-center space-y-3 opacity-60">
-              <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-[#FF5A36] border border-white/10">
+              <div className="w-12 h-12 rounded-2xl bg-[#F5F7FA] flex items-center justify-center text-[#FF5A36] border border-[#E4E8EE]">
                 <MessageSquare size={24} />
               </div>
-              <p className="text-slate-400 text-xs font-medium">No messages yet.<br/>Say hello to the room!</p>
+              <p className="text-slate-500 text-xs font-medium">No messages yet.<br/>Say hello to the room!</p>
             </div>
           ) : (
             messages.map((msg, index) => (
               <div key={`${msg.timestamp}-${index}`} className={`flex flex-col space-y-1 w-full ${msg.isOwn ? 'items-end' : 'items-start'}`}>
                 <div className="flex items-baseline space-x-2 px-1">
-                  <span className="text-xs font-bold text-white">{msg.username}</span>
+                  <span className="text-xs font-bold text-[#1E2761]">{msg.username}</span>
                   <span className="text-[10px] text-slate-400">
                     {new Date(msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                   </span>
                 </div>
-                <div className={`text-xs sm:text-sm p-3.5 shadow-md max-w-[85%] break-words leading-relaxed ${
+                <div className={`text-xs sm:text-sm p-3.5 shadow-sm max-w-[85%] break-words leading-relaxed ${
                   msg.isOwn 
-                    ? 'bg-[#FF5A36] text-white rounded-2xl rounded-tr-sm font-medium' 
-                    : 'bg-white/10 border border-white/15 text-white rounded-2xl rounded-tl-sm'
+                    ? 'bg-[#1E2761] text-white rounded-2xl rounded-tr-sm font-medium' 
+                    : 'bg-[#F5F7FA] border border-[#E4E8EE] text-[#1E2761] rounded-2xl rounded-tl-sm'
                 }`}>
                   {msg.message}
                 </div>
@@ -1281,14 +1281,14 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
         </div>
 
         {/* Message Input Box */}
-        <div className="p-4 border-t border-white/10 bg-transparent">
+        <div className="p-4 border-t border-[#E4E8EE] bg-transparent">
           <div className="relative flex items-center">
             <input
               type="text"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Send message to room..."
-              className="w-full bg-white/10 border border-white/15 rounded-2xl pl-4 pr-12 py-3 text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-none focus:border-[#FF5A36] focus:ring-1 focus:ring-[#FF5A36] transition-all font-medium"
+              className="w-full bg-[#F5F7FA] border border-[#E4E8EE] rounded-2xl pl-4 pr-12 py-3 text-xs sm:text-sm text-[#1E2761] placeholder-slate-400 focus:outline-none focus:bg-white focus:border-[#1E2761] focus:ring-1 focus:ring-[#1E2761]/20 transition-all font-medium"
               onKeyDown={(e) => {
                 if (e.key === 'Enter' && message.trim()) handleSendMessage();
               }}
@@ -1298,7 +1298,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
               className={`absolute right-1.5 p-2 rounded-xl transition-all cursor-pointer ${
                 message.length > 0 
                   ? 'bg-[#FF5A36] text-white shadow-md shadow-[#FF5A36]/30 hover:bg-[#E04826]' 
-                  : 'text-slate-500 cursor-not-allowed bg-transparent'
+                  : 'text-slate-400 cursor-not-allowed bg-transparent'
               }`} 
               onClick={handleSendMessage} 
               disabled={message.length === 0}
