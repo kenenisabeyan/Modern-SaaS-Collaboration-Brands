@@ -17,6 +17,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
   const [showInfoModal, setShowInfoModal] = useState(false);
   const [actionError, setActionError] = useState('');
   const [platformStats, setPlatformStats] = useState({ users: 36, meetings: 5, minutes: 225 });
+  const [isScrolled, setIsScrolled] = useState(false);
   const createInFlightRef = useRef(false);
 
   useEffect(() => {
@@ -30,8 +31,15 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
       }
     }).catch(console.error);
 
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 15);
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
     document.documentElement.style.scrollBehavior = 'smooth';
     return () => {
+      window.removeEventListener('scroll', handleScroll);
       document.documentElement.style.scrollBehavior = 'auto';
     };
   }, []);
@@ -149,7 +157,11 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
             - 30% Structural Weight: Deep Midnight Blue (#1E2761)
             - 10% Action Weight: Electric Coral (#FF5A36)
            ======================================================== */}
-        <section className="pt-4 sm:pt-6 md:pt-8 pb-10 sm:pb-14 px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 bg-white relative">
+        <section className={`pt-4 sm:pt-6 md:pt-8 pb-10 sm:pb-14 px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 bg-white relative transition-all duration-500 z-10 ${
+          isScrolled 
+            ? 'shadow-[0_20px_45px_-15px_rgba(30,39,97,0.06)]' 
+            : 'shadow-none'
+        }`}>
           <div className="max-w-[1720px] w-full mx-auto">
             
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
@@ -279,7 +291,11 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 transition={{ duration: 0.7, delay: 0.1 }}
                 className="lg:col-span-6 flex items-center justify-center relative w-full"
               >
-                <div className="w-full max-w-[340px] sm:max-w-[390px] lg:max-w-[440px] aspect-square flex items-center justify-center">
+                <div className={`w-full max-w-[340px] sm:max-w-[390px] lg:max-w-[440px] aspect-square flex items-center justify-center rounded-3xl transition-all duration-500 ${
+                  isScrolled 
+                    ? 'shadow-[0_25px_60px_-15px_rgba(30,39,97,0.1)] bg-[#F5F7FA]/30' 
+                    : 'shadow-sm'
+                }`}>
                   <HeroAnimation className="w-full h-full" />
                 </div>
               </motion.div>
@@ -296,7 +312,9 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-10 sm:pt-14">
               
               {/* Card 1: 36 Happy Users (Deep Midnight Blue Structural Card) */}
-              <div className="relative overflow-hidden bg-white border-2 border-[#E4E8EE] hover:border-[#1E2761] rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+              <div className={`relative overflow-hidden bg-white border-2 border-[#E4E8EE] hover:border-[#1E2761] rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center hover:-translate-y-1 transition-all duration-300 group ${
+                isScrolled ? 'shadow-[0_12px_35px_-8px_rgba(30,39,97,0.09)] hover:shadow-xl' : 'shadow-sm hover:shadow-md'
+              }`}>
                 <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#1E2761]/[0.06] via-[#1E2761]/[0.02] to-transparent pointer-events-none rounded-t-2xl sm:rounded-t-3xl"></div>
                 
                 <div className="relative z-10">
@@ -313,7 +331,9 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               </div>
 
               {/* Card 2: 5 Meetings Hosted (Electric Coral #FF5A36 Accent Hero Card) */}
-              <div className="relative overflow-hidden bg-white border-2 border-[#FF5A36]/30 hover:border-[#FF5A36] rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center shadow-[0_4px_20px_rgba(255,90,54,0.08)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+              <div className={`relative overflow-hidden bg-white border-2 border-[#FF5A36]/30 hover:border-[#FF5A36] rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center hover:-translate-y-1 transition-all duration-300 group ${
+                isScrolled ? 'shadow-[0_16px_40px_-5px_rgba(255,90,54,0.18)] hover:shadow-2xl' : 'shadow-[0_4px_20px_rgba(255,90,54,0.08)] hover:shadow-lg'
+              }`}>
                 <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#FF5A36]/10 via-[#FF5A36]/[0.03] to-transparent pointer-events-none rounded-t-2xl sm:rounded-t-3xl"></div>
                 
                 <div className="relative z-10">
@@ -330,7 +350,9 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               </div>
 
               {/* Card 3: 225 Minutes Connected (Deep Midnight Blue Structural Card) */}
-              <div className="relative overflow-hidden bg-white border-2 border-[#E4E8EE] hover:border-[#1E2761] rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+              <div className={`relative overflow-hidden bg-white border-2 border-[#E4E8EE] hover:border-[#1E2761] rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center hover:-translate-y-1 transition-all duration-300 group ${
+                isScrolled ? 'shadow-[0_12px_35px_-8px_rgba(30,39,97,0.09)] hover:shadow-xl' : 'shadow-sm hover:shadow-md'
+              }`}>
                 <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#1E2761]/[0.06] via-[#1E2761]/[0.02] to-transparent pointer-events-none rounded-t-2xl sm:rounded-t-3xl"></div>
                 
                 <div className="relative z-10">
