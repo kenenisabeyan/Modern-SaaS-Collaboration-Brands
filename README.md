@@ -395,19 +395,41 @@ The Socket.IO engine synchronizes collaboration rooms via the following events:
 
 ## 🌐 Production Deployment
 
-### Backend (Render / Railway / AWS)
-1. Deploy `backend` as a **Node.js Web Service**.
-2. Set Build Command: `npm install`
-3. Set Start Command: `npm start`
-4. Set required Environment Variables (`DB_*`, `JWT_SECRET`, `CORS_ORIGIN`, `PUBLIC_APP_URL`).
-5. Health Check Path: `/api/health`
+### 1. Backend on Render (WebRTC Signaling, WebSockets & API)
+Render supports persistent Socket.IO WebSockets required for real-time room signaling and in-call chat.
 
-### Frontend (Vercel / Render Static)
-1. Deploy `frontend` as a **Static Site**.
-2. Set Root Directory: `frontend`
-3. Build Command: `npm run build`
-4. Output Directory: `dist`
-5. Ensure SPA rewrites are enabled (configured out-of-the-box in [vercel.json](file:///c:/Users/kenenisa/Wabiskills-Seminar/vercel.json) and [frontend/public/_redirects](file:///c:/Users/kenenisa/Wabiskills-Seminar/frontend/public/_redirects)).
+#### Quick 1-Click Blueprint Deploy:
+1. Go to [dashboard.render.com](https://dashboard.render.com) > **New +** > **Blueprint**.
+2. Select repository `Modern-SaaS-Collaboration-Brands`.
+3. Render automatically loads [`render.yaml`](./render.yaml) (`rootDir: backend`, `npm install`, `npm start`, `/health`).
+4. Click **Apply**.
+5. Once deployed, copy your backend URL (e.g. `https://wabiskills-seminar.onrender.com`).
+
+#### Required Render Environment Variables:
+```env
+NODE_ENV=production
+PORT=5000
+USE_SQLITE=true
+DATABASE_URL=sqlite://./database.sqlite
+JWT_SECRET=your-random-production-secret-key
+JWT_EXPIRY=24h
+PUBLIC_APP_URL=https://your-app.vercel.app
+CORS_ORIGIN=https://*.vercel.app,https://*.onrender.com
+```
+
+---
+
+### 2. Frontend on Vercel (Edge-Cached Vite SPA)
+1. Go to [vercel.com](https://vercel.com) > **Add New...** > **Project**.
+2. Import `Modern-SaaS-Collaboration-Brands`.
+3. Set **Framework Preset** to `Vite`.
+4. Set **Root Directory** to `frontend` (or leave default `.`; both work via [`vercel.json`](./vercel.json) and [`frontend/vercel.json`](./frontend/vercel.json)).
+5. Under **Environment Variables**, add:
+   ```env
+   VITE_API_URL=https://<your-render-backend-name>.onrender.com/api
+   ```
+6. Click **Deploy**.
+7. Once live, update `PUBLIC_APP_URL` in your Render Dashboard to your Vercel URL.
 
 ---
 
