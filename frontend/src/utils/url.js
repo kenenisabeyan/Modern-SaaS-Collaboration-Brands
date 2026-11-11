@@ -15,7 +15,7 @@ export function resolveApiBase() {
   } else if (typeof window !== 'undefined') {
     // If on Vercel and no VITE_API_URL set, default to production Render backend
     if (window.location.hostname.endsWith('vercel.app')) {
-      resolved = 'https://wabiskills-seminar.onrender.com/api';
+      resolved = 'https://covideo.onrender.com/api';
     } else {
       resolved = `${window.location.origin}/api`;
     }
@@ -41,7 +41,7 @@ export function resolveSocketOrigin() {
   } else if (typeof window !== 'undefined') {
     // If on Vercel and no VITE_API_URL set, default to production Render backend
     if (window.location.hostname.endsWith('vercel.app')) {
-      resolved = 'https://wabiskills-seminar.onrender.com';
+      resolved = 'https://covideo.onrender.com';
     } else {
       resolved = window.location.origin;
     }

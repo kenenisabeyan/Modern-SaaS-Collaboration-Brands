@@ -3,7 +3,7 @@
   "buildCommand": "cd frontend && npm run build",
   "outputDirectory": "frontend/dist",
   "env": {
-    "VITE_API_URL": "https://wabiskills-seminar.onrender.com/api"
+    "VITE_API_URL": "https://covideo.onrender.com/api"
   },
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
