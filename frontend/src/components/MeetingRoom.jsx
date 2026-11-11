@@ -702,6 +702,25 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
     notify?.('success', 'Muted all guests.');
   };
 
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName)) return;
+      const key = e.key.toLowerCase();
+      if (key === 'm') {
+        toggleMute();
+      } else if (key === 'v') {
+        toggleVideo();
+      } else if (key === 'h') {
+        toggleHand();
+      } else if (key === 'c') {
+        setIsChatOpen((prev) => !prev);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isMuted, isVideoOff, isHandRaised, localStream]);
+
   const handleKickUser = (socketId) => {
     getSocket().emit('kick-user', { roomId, targetSocketId: socketId });
     notify?.('success', 'Participant removed.');
@@ -1077,7 +1096,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
                   : 'bg-[#F5F7FA] text-[#1E2761] border-[#E4E8EE] hover:bg-[#E4E8EE]'
               }`} 
               onClick={toggleMute}
-              title={isMuted ? 'Unmute' : 'Mute'}
+              title={isMuted ? 'Unmute (M)' : 'Mute (M)'}
             >
               {isMuted ? <MicOff size={18} className="sm:w-5 sm:h-5" /> : <Mic size={18} className="sm:w-5 sm:h-5" />}
             </button>
@@ -1091,7 +1110,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
                   : 'bg-[#F5F7FA] text-[#1E2761] border-[#E4E8EE] hover:bg-[#E4E8EE]'
               }`} 
               onClick={toggleVideo}
-              title={isVideoOff ? 'Turn on camera' : 'Turn off camera'}
+              title={isVideoOff ? 'Turn on camera (V)' : 'Turn off camera (V)'}
             >
               {isVideoOff ? <VideoOff size={18} className="sm:w-5 sm:h-5" /> : <Video size={18} className="sm:w-5 sm:h-5" />}
             </button>
@@ -1119,7 +1138,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
                   : 'bg-[#F5F7FA] text-[#1E2761] border-[#E4E8EE] hover:bg-[#E4E8EE]'
               }`} 
               onClick={toggleHand}
-              title={isHandRaised ? 'Lower hand' : 'Raise hand'}
+              title={isHandRaised ? 'Lower hand (H)' : 'Raise hand (H)'}
             >
               <Hand size={18} className={`sm:w-5 sm:h-5 ${isHandRaised ? 'fill-current' : ''}`} />
             </button>
@@ -1143,7 +1162,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
                   : 'bg-[#F5F7FA] text-[#1E2761] border-[#E4E8EE] hover:bg-[#E4E8EE]'
               }`} 
               onClick={() => setIsChatOpen(!isChatOpen)}
-              title="Toggle chat"
+              title="Toggle chat (C)"
             >
               <MessageSquare size={18} className="sm:w-5 sm:h-5" />
               {messages.length > 0 && !isChatOpen && (

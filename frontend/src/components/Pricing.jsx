@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Check, X, ChevronRight, Loader2, Sparkles, Shield, Zap } from 'lucide-react';
+import { Check, X, ChevronRight, ChevronDown, Loader2, Sparkles, Shield, Zap } from 'lucide-react';
 import api from '../services/api.js';
 
 const fadeIn = {
@@ -23,6 +23,7 @@ export default function Pricing({ onNavigate }) {
   const [currentPlan, setCurrentPlan] = useState('Free');
   const [isLoading, setIsLoading] = useState(false);
   const [actionPlan, setActionPlan] = useState('');
+  const [showMatrix, setShowMatrix] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -235,6 +236,80 @@ export default function Pricing({ onNavigate }) {
                 </motion.div>
              ))}
            </div>
+        </section>
+
+        {/* Feature Comparison Matrix Toggle */}
+        <section className="mb-20 sm:mb-28 max-w-5xl mx-auto">
+          <div className="text-center mb-6">
+            <button
+              onClick={() => setShowMatrix(prev => !prev)}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white hover:bg-[#F5F7FA] text-[#1E2761] border border-[#E4E8EE] font-bold text-sm shadow-sm transition-all cursor-pointer hover:border-[#1E2761]/40"
+            >
+              <span>{showMatrix ? 'Hide Full Feature Matrix' : 'Compare All Plan Features'}</span>
+              <ChevronDown size={16} className={`transition-transform duration-300 ${showMatrix ? 'rotate-180 text-[#FF5A36]' : ''}`} />
+            </button>
+          </div>
+
+          {showMatrix && (
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+              className="bg-white border border-[#E4E8EE] rounded-3xl overflow-hidden shadow-sm"
+            >
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse text-xs sm:text-sm">
+                  <thead>
+                    <tr className="border-b border-[#E4E8EE] bg-[#F5F7FA]">
+                      <th className="py-4 px-6 font-extrabold text-[#1E2761]">Feature</th>
+                      <th className="py-4 px-6 font-extrabold text-[#1E2761] text-center">Free</th>
+                      <th className="py-4 px-6 font-extrabold text-[#FF5A36] text-center">Pro</th>
+                      <th className="py-4 px-6 font-extrabold text-[#1E2761] text-center">Enterprise</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-[#E4E8EE]">
+                    {[
+                      { name: 'Max Participants', free: '10', pro: '100', ent: '1,000+' },
+                      { name: 'Session Duration', free: '40 Minutes', pro: 'Unlimited', ent: 'Unlimited' },
+                      { name: 'Video Clarity', free: '720p HD', pro: '1080p Ultra HD', ent: '4K Ultra HD' },
+                      { name: 'Low-latency Screen Share', free: true, pro: true, ent: true },
+                      { name: 'Waiting Room Gatekeeper', free: true, pro: true, ent: true },
+                      { name: 'Encrypted Chat & Hand Raise', free: true, pro: true, ent: true },
+                      { name: 'Cloud Session Recording', free: false, pro: '10 GB Vault', ent: 'Unlimited Vault' },
+                      { name: 'Custom Workspace Theme', free: false, pro: true, ent: true },
+                      { name: 'Dedicated Signaling Node', free: false, pro: false, ent: true },
+                      { name: 'Enterprise SLA Support', free: false, pro: false, ent: true },
+                    ].map((row, i) => (
+                      <tr key={i} className="hover:bg-[#F5F7FA]/60 transition-colors">
+                        <td className="py-3.5 px-6 font-semibold text-[#1E2761]">{row.name}</td>
+                        <td className="py-3.5 px-6 text-center text-slate-600">
+                          {typeof row.free === 'boolean' ? (
+                            row.free ? <Check size={16} className="mx-auto text-[#1E2761]" /> : <X size={16} className="mx-auto text-slate-300" />
+                          ) : (
+                            <span className="font-medium">{row.free}</span>
+                          )}
+                        </td>
+                        <td className="py-3.5 px-6 text-center text-[#1E2761] font-semibold bg-[#FF5A36]/[0.02]">
+                          {typeof row.pro === 'boolean' ? (
+                            row.pro ? <Check size={16} className="mx-auto text-[#FF5A36]" /> : <X size={16} className="mx-auto text-slate-300" />
+                          ) : (
+                            <span className="text-[#FF5A36] font-bold">{row.pro}</span>
+                          )}
+                        </td>
+                        <td className="py-3.5 px-6 text-center text-slate-600">
+                          {typeof row.ent === 'boolean' ? (
+                            row.ent ? <Check size={16} className="mx-auto text-[#1E2761]" /> : <X size={16} className="mx-auto text-slate-300" />
+                          ) : (
+                            <span className="font-medium text-[#1E2761]">{row.ent}</span>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </motion.div>
+          )}
         </section>
 
         {/* 3. Bottom CTA */}

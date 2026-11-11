@@ -26,8 +26,12 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
   const [previewStream, setPreviewStream] = useState(null);
   const [previewMicActive, setPreviewMicActive] = useState(true);
   const [previewCamActive, setPreviewCamActive] = useState(true);
+  const [audioLevel, setAudioLevel] = useState(0);
   const videoPreviewRef = useRef(null);
   const createInFlightRef = useRef(false);
+  const audioContextRef = useRef(null);
+  const analyserRef = useRef(null);
+  const animFrameRef = useRef(null);
 
   useEffect(() => {
     setUsername(localStorage.getItem('username') || 'User');
@@ -87,6 +91,54 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
       videoPreviewRef.current.srcObject = previewStream;
     }
   }, [previewStream, isPreviewActive]);
+
+  useEffect(() => {
+    if (previewStream && isPreviewActive && previewMicActive) {
+      const audioTracks = previewStream.getAudioTracks();
+      if (audioTracks.length > 0) {
+        try {
+          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          if (AudioContextClass) {
+            const audioCtx = new AudioContextClass();
+            audioContextRef.current = audioCtx;
+            const analyser = audioCtx.createAnalyser();
+            analyser.fftSize = 64;
+            analyserRef.current = analyser;
+            const source = audioCtx.createMediaStreamSource(previewStream);
+            source.connect(analyser);
+
+            const dataArray = new Uint8Array(analyser.frequencyBinCount);
+            const updateLevel = () => {
+              analyser.getByteFrequencyData(dataArray);
+              let sum = 0;
+              for (let i = 0; i < dataArray.length; i++) {
+                sum += dataArray[i];
+              }
+              const average = sum / dataArray.length;
+              setAudioLevel(Math.min(100, Math.round((average / 128) * 100)));
+              animFrameRef.current = requestAnimationFrame(updateLevel);
+            };
+            updateLevel();
+          }
+        } catch (e) {
+          console.warn('Audio metering unavailable:', e);
+        }
+      }
+    } else {
+      setAudioLevel(0);
+      if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
+      if (audioContextRef.current && audioContextRef.current.state !== 'closed') {
+        audioContextRef.current.close().catch(() => {});
+      }
+    }
+
+    return () => {
+      if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
+      if (audioContextRef.current && audioContextRef.current.state !== 'closed') {
+        audioContextRef.current.close().catch(() => {});
+      }
+    };
+  }, [previewStream, isPreviewActive, previewMicActive]);
 
   const togglePreviewCam = () => {
     if (previewStream) {
@@ -292,6 +344,19 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
                       <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#1E2761] text-white">
                         <VideoOff size={36} className="text-slate-400 mb-2" />
                         <span className="text-xs text-slate-300 font-medium">Camera is disabled</span>
+                      </div>
+                    )}
+
+                    {/* Real-time Mic Input Visualizer Meter */}
+                    {previewMicActive && (
+                      <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full flex items-center space-x-2 border border-[#E4E8EE] shadow-sm z-20">
+                        <Mic size={13} className="text-[#FF5A36]" />
+                        <div className="w-16 h-1.5 bg-[#E4E8EE] rounded-full overflow-hidden flex items-center">
+                          <div 
+                            className="h-full bg-[#FF5A36] rounded-full transition-all duration-75"
+                            style={{ width: `${Math.max(8, audioLevel)}%` }}
+                          />
+                        </div>
                       </div>
                     )}
                   </>
