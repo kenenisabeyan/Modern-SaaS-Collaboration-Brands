@@ -192,8 +192,8 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
 
                 {/* Error Banner */}
                 {actionError && (
-                  <div className="w-full max-w-[500px] mb-4 p-3 rounded-xl border border-rose-200 bg-rose-50 text-rose-700 text-xs flex items-center">
-                    <Shield className="mr-2 text-rose-500 shrink-0" size={16} />
+                  <div className="w-full max-w-[500px] mb-4 p-3 rounded-xl border border-[#FF5A36]/25 bg-[#FF5A36]/10 text-[#FF5A36] text-xs flex items-center font-medium">
+                    <Shield className="mr-2 text-[#FF5A36] shrink-0" size={16} />
                     <span>{actionError}</span>
                   </div>
                 )}

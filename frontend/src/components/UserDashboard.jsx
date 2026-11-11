@@ -509,7 +509,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
 
                     <button 
                       onClick={() => setDeleteModalRoomId(room.roomId)}
-                      className="p-2 rounded-xl text-rose-500 hover:text-rose-600 bg-white hover:bg-rose-50 border border-[#E4E8EE] hover:border-rose-200 transition-colors cursor-pointer shadow-xs"
+                      className="p-2 rounded-xl text-slate-400 hover:text-[#FF5A36] bg-white hover:bg-[#FF5A36]/10 border border-[#E4E8EE] hover:border-[#FF5A36]/30 transition-colors cursor-pointer shadow-xs"
                       title="Delete room"
                     >
                       <Trash2 size={14} />
@@ -547,7 +547,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
             >
               <X size={16} />
             </button>
-            <div className="w-10 h-10 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center mb-3 border border-rose-200">
+            <div className="w-10 h-10 rounded-xl bg-[#FF5A36]/10 text-[#FF5A36] flex items-center justify-center mb-3 border border-[#FF5A36]/25">
               <Trash2 size={20} />
             </div>
             <h3 className="text-base font-bold text-[#1E2761] mb-1">Delete Meeting?</h3>
@@ -565,7 +565,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
               <button 
                 onClick={handleDeleteRoom}
                 disabled={isDeleting}
-                className="flex-1 py-2.5 rounded-xl font-bold bg-rose-600 hover:bg-rose-500 text-white transition-colors flex justify-center items-center gap-1.5 text-xs shadow-xs cursor-pointer"
+                className="flex-1 py-2.5 rounded-xl font-bold bg-[#FF5A36] hover:bg-[#E04826] text-white transition-colors flex justify-center items-center gap-1.5 text-xs shadow-xs cursor-pointer"
               >
                 {isDeleting ? <Loader2 size={13} className="animate-spin text-white" /> : null}
                 <span className="text-white">{isDeleting ? 'Deleting...' : 'Delete'}</span>

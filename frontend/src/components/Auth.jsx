@@ -104,7 +104,7 @@ export default function Auth({ onNavigate }) {
         
         <form onSubmit={handleSubmit} className="w-full space-y-4 sm:space-y-5">
           {error && (
-            <div className="bg-rose-50 border border-rose-200 text-rose-600 text-xs sm:text-sm p-3 rounded-2xl text-center">
+            <div className="bg-[#FF5A36]/10 border border-[#FF5A36]/25 text-[#FF5A36] text-xs sm:text-sm p-3 rounded-2xl text-center font-medium">
               {error}
             </div>
           )}
