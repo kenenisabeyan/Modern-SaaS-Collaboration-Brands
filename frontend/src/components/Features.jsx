@@ -110,24 +110,24 @@ export default function Features({ onNavigate }) {
               <div className="bg-[#F5F7FA] border border-[#E4E8EE] rounded-3xl p-6 sm:p-8 flex flex-col justify-center space-y-4 shadow-sm">
                 <div className="flex items-center justify-between border-b border-slate-200 pb-4">
                   <div className="flex items-center space-x-2">
-                    <span className="w-3 h-3 rounded-full bg-rose-500"></span>
-                    <span className="w-3 h-3 rounded-full bg-amber-400"></span>
-                    <span className="w-3 h-3 rounded-full bg-emerald-500"></span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#1E2761]/40"></span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#1E2761]/20"></span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#FF5A36]"></span>
                   </div>
                   <span className="text-xs font-bold text-slate-500 font-mono">Live Masterclass Room</span>
                 </div>
-                <div className="h-44 sm:h-52 bg-slate-900 rounded-2xl flex items-center justify-center text-white relative overflow-hidden">
+                <div className="h-44 sm:h-52 bg-[#1E2761] rounded-2xl flex items-center justify-center text-white relative overflow-hidden">
                   <div className="text-center p-4">
                     <div className="w-12 h-12 rounded-full bg-[#FF5A36]/20 border border-[#FF5A36]/40 text-[#FF5A36] flex items-center justify-center mx-auto mb-2">
                       <Video size={22} />
                     </div>
                     <p className="text-sm font-bold text-white">Interactive Video Stream</p>
-                    <p className="text-xs text-slate-400">60 FPS 1080p WebRTC Session</p>
+                    <p className="text-xs text-slate-300">60 FPS 1080p WebRTC Session</p>
                   </div>
                 </div>
                 <div className="flex items-center justify-between pt-1">
                   <div className="flex items-center space-x-2">
-                    <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
+                    <span className="w-2 h-2 rounded-full bg-[#FF5A36] animate-pulse"></span>
                     <span className="text-xs font-semibold text-slate-600">Connected Encrypted</span>
                   </div>
                   <span className="text-xs font-bold text-[#FF5A36]">Active</span>
