@@ -18,6 +18,11 @@ router.post('/change-password', authenticate, changePassword);
 
 // Google OAuth — store invite path so callback can return to /room/:id instead of /
 router.get('/google', (req, res, next) => {
+  if (!config.google?.clientId || !config.google?.clientSecret) {
+    const base = getPublicAppOrigin();
+    return res.redirect(`${base}/?error=${encodeURIComponent('Google authentication is not configured on this server. Please use email and password.')}`);
+  }
+
   const raw = req.query.returnTo;
   if (typeof raw === 'string' && ROOM_PATH.test(raw.split('?')[0])) {
     const returnPath = raw.split('?')[0];
@@ -35,7 +40,13 @@ router.get('/google', (req, res, next) => {
 
 router.get(
   '/google/callback',
-  passport.authenticate('google', { session: false }),
+  (req, res, next) => {
+    if (!config.google?.clientId || !config.google?.clientSecret) {
+      const base = getPublicAppOrigin();
+      return res.redirect(`${base}/?error=${encodeURIComponent('Google authentication is not configured on this server.')}`);
+    }
+    passport.authenticate('google', { session: false })(req, res, next);
+  },
   (req, res) => {
     const token = jwt.sign(
       { userId: req.user.id, email: req.user.email },

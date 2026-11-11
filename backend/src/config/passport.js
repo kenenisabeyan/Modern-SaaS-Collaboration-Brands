@@ -55,61 +55,65 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
-passport.use(
-  new GoogleStrategy(
-    {
-      clientID: config.google.clientId,
-      clientSecret: config.google.clientSecret,
-      callbackURL: config.google.callbackUrl ? config.google.callbackUrl : '/api/auth/google/callback',
-      proxy: true,
-    },
-    async (accessToken, refreshToken, profile, done) => {
-      try {
-        const email = profile.emails[0].value;
-        const rawUsername = profile.displayName || email.split('@')[0];
-        const googleId = profile.id;
+if (config.google?.clientId && config.google?.clientSecret) {
+  passport.use(
+    new GoogleStrategy(
+      {
+        clientID: config.google.clientId,
+        clientSecret: config.google.clientSecret,
+        callbackURL: config.google.callbackUrl ? config.google.callbackUrl : '/api/auth/google/callback',
+        proxy: true,
+      },
+      async (accessToken, refreshToken, profile, done) => {
+        try {
+          const email = profile.emails[0].value;
+          const rawUsername = profile.displayName || email.split('@')[0];
+          const googleId = profile.id;
 
-        let user = await User.findOne({ where: { email } });
-        const avatar = profile.photos && profile.photos[0] ? profile.photos[0].value : null;
+          let user = await User.findOne({ where: { email } });
+          const avatar = profile.photos && profile.photos[0] ? profile.photos[0].value : null;
 
-        if (user) {
-          // Sync username and googleId for existing users
-          const updates = {};
-          if (!user.googleId) updates.googleId = googleId;
-          if (avatar && user.avatar !== avatar) updates.avatar = avatar;
-          
-          // Update username to Google name if it's different
-          if (rawUsername && user.username !== rawUsername) {
-            const uniqueUsername = await generateUniqueUsername(rawUsername, user.id);
-            if (uniqueUsername && uniqueUsername !== user.username) {
-              updates.username = uniqueUsername;
+          if (user) {
+            // Sync username and googleId for existing users
+            const updates = {};
+            if (!user.googleId) updates.googleId = googleId;
+            if (avatar && user.avatar !== avatar) updates.avatar = avatar;
+            
+            // Update username to Google name if it's different
+            if (rawUsername && user.username !== rawUsername) {
+              const uniqueUsername = await generateUniqueUsername(rawUsername, user.id);
+              if (uniqueUsername && uniqueUsername !== user.username) {
+                updates.username = uniqueUsername;
+              }
             }
+
+            if (Object.keys(updates).length > 0) {
+              await user.update(updates);
+            }
+            return done(null, user);
           }
 
-          if (Object.keys(updates).length > 0) {
-            await user.update(updates);
-          }
-          return done(null, user);
+          const username = await generateUniqueUsername(rawUsername);
+
+          user = await User.create({
+            username,
+            email,
+            googleId,
+            avatar,
+            password: Math.random().toString(36).slice(-8), // Random password for OAuth users
+          });
+
+          console.log(`Google OAuth user created: ${username} (${email}) with Google ID: ${googleId}`);
+          done(null, user);
+        } catch (error) {
+          console.error('Google OAuth error:', error);
+          done(error, null);
         }
-
-        const username = await generateUniqueUsername(rawUsername);
-
-        user = await User.create({
-          username,
-          email,
-          googleId,
-          avatar,
-          password: Math.random().toString(36).slice(-8), // Random password for OAuth users
-        });
-
-        console.log(`Google OAuth user created: ${username} (${email}) with Google ID: ${googleId}`);
-        done(null, user);
-      } catch (error) {
-        console.error('Google OAuth error:', error);
-        done(error, null);
       }
-    }
-  )
-);
+    )
+  );
+} else {
+  console.log('[Auth] Google OAuth credentials (GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET) not set. Standard email/password authentication is active.');
+}
 
 export default passport;
