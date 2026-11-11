@@ -113,7 +113,7 @@ function App() {
   const showHeaderFooter = currentView !== 'meeting';
 
   return (
-    <div className="min-h-screen flex flex-col font-sans relative overflow-x-hidden bg-white text-slate-900">
+    <div className="min-h-screen flex flex-col font-sans relative overflow-x-hidden bg-white text-[#1E2761]">
       <ParticleBackground />
       
       {showHeaderFooter && (

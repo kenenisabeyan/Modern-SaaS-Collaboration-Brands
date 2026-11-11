@@ -3,13 +3,14 @@ import { Loader2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const variants = {
-  primary: 'bg-[#0DA9CF] text-white hover:bg-[#0C8DB0] shadow-[0_0_20px_rgba(13,169,207,0.35)] hover:shadow-[0_0_30px_rgba(13,169,207,0.5)]',
-  brand: 'bg-[#0DA9CF] text-white hover:bg-[#0C8DB0] shadow-[0_0_20px_rgba(13,169,207,0.35)] hover:shadow-[0_0_30px_rgba(13,169,207,0.5)] border border-white/10',
-  orange: 'bg-[#F67E31] text-white hover:bg-[#CC6A2F] shadow-[0_0_20px_rgba(246,126,49,0.35)] hover:shadow-[0_0_30px_rgba(246,126,49,0.5)] border border-white/10',
-  green: 'bg-[#04B84C] text-white hover:bg-[#059A45] shadow-[0_0_20px_rgba(4,184,76,0.35)] hover:shadow-[0_0_30px_rgba(4,184,76,0.5)] border border-white/10',
-  secondary: 'bg-white text-[#0DA9CF] border border-[#0DA9CF]/40 hover:bg-[#0DA9CF]/10 shadow-sm',
-  ghost: 'bg-transparent text-[#0DA9CF] hover:bg-[#0DA9CF]/10',
-  danger: 'bg-rose-500/10 text-rose-500 hover:bg-rose-500/20 border border-rose-500/20 hover:border-rose-500/40'
+  primary: 'bg-[#1E2761] text-white hover:bg-[#151A44] shadow-md shadow-[#1E2761]/20',
+  accent: 'bg-[#FF5A36] text-white hover:bg-[#E04826] shadow-md shadow-[#FF5A36]/25',
+  brand: 'bg-[#FF5A36] text-white hover:bg-[#E04826] shadow-md shadow-[#FF5A36]/25',
+  orange: 'bg-[#FF5A36] text-white hover:bg-[#E04826] shadow-md shadow-[#FF5A36]/25',
+  green: 'bg-[#1E2761] text-white hover:bg-[#151A44]',
+  secondary: 'bg-white text-[#1E2761] border border-[#E4E8EE] hover:bg-[#F5F7FA] shadow-sm',
+  ghost: 'bg-transparent text-[#1E2761] hover:bg-[#F5F7FA]',
+  danger: 'bg-rose-500/10 text-rose-600 hover:bg-rose-500/20 border border-rose-200'
 };
 
 const sizes = {

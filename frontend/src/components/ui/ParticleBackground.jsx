@@ -18,9 +18,9 @@ export default function ParticleBackground() {
     resize();
 
     const brandColors = [
-      '13, 169, 207',  // #0DA9CF Cyan
-      '246, 126, 49',  // #F67E31 Orange
-      '4, 184, 76'     // #04B84C Green
+      '30, 39, 97',    // #1E2761 Deep Midnight Blue (Primary)
+      '255, 90, 54',   // #FF5A36 Electric Coral (Accent)
+      '228, 232, 238'  // #E4E8EE Slate Border (Canvas Accent)
     ];
 
     class Particle {
@@ -63,7 +63,7 @@ export default function ParticleBackground() {
           
           if (dist < 100) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(13, 169, 207, ${0.12 * (1 - dist/100)})`;
+            ctx.strokeStyle = `rgba(30, 39, 97, ${0.08 * (1 - dist/100)})`;
             ctx.lineWidth = 0.5;
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);

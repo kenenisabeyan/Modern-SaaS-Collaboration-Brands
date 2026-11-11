@@ -5,18 +5,15 @@ export function Card({ children, className = '', hover = true, glow = false, ...
     <motion.div
       whileHover={hover ? { y: -4 } : {}}
       className={`
-        bg-white/[0.02] backdrop-blur-2xl border border-white/[0.08] 
-        shadow-[0_8px_30px_rgb(0,0,0,0.4)] rounded-2xl sm:rounded-3xl relative overflow-hidden 
-        transition-all duration-500 
-        ${hover ? 'hover:border-white/[0.15] hover:bg-white/[0.04]' : ''}
-        ${glow ? 'shadow-[0_0_30px_rgba(13,169,207,0.18)] hover:shadow-[0_0_50px_rgba(13,169,207,0.3)]' : ''}
+        bg-white border border-[#E4E8EE] 
+        shadow-sm rounded-2xl sm:rounded-3xl relative overflow-hidden 
+        transition-all duration-300 
+        ${hover ? 'hover:border-[#1E2761]/30 hover:shadow-md' : ''}
+        ${glow ? 'border-[#FF5A36]/40 shadow-[0_4px_25px_rgba(255,90,54,0.12)]' : ''}
         ${className}
       `}
       {...props}
     >
-      {hover && (
-        <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent opacity-0 transition-opacity duration-500 z-0 pointer-events-none hover:opacity-100" />
-      )}
       <div className="relative z-10 w-full h-full">
         {children}
       </div>
