@@ -15,9 +15,9 @@ services:
       - key: PORT
         value: 5000
       - key: USE_SQLITE
-        value: "true"
+        value: "false"
       - key: DATABASE_URL
-        value: sqlite://./database.sqlite
+        value: mysql://4Qe8CQZuyB1e2jm.root:KI5AsN7Edys2nXJx@gateway01.us-west-2.prod.aws.tidbcloud.com:4000/seminar
       - key: JWT_SECRET
         generateValue: true
       - key: JWT_EXPIRY

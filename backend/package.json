@@ -8,7 +8,7 @@
     "node": "20.x"
   },
   "scripts": {
-    "build": "npm rebuild sqlite3 || echo 'Backend ready'",
+    "build": "npm rebuild sqlite3 --build-from-source || echo 'Backend ready'",
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
     "test": "vitest",
