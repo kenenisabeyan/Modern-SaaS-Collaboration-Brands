@@ -56,7 +56,7 @@ export default function HeroVideos({ className = '' }) {
         <button
           type="button"
           onClick={toggleMuteAll}
-          className="p-1.5 rounded-full text-slate-400 hover:text-[#1E2761] hover:bg-[#F5F7FA] transition-colors cursor-pointer"
+          className="p-1.5 rounded-full text-slate-400 hover:text-[#1E2761] hover:bg-[#F5F7FA] transition-colors cursor-pointer flex items-center justify-center"
           title={isMuted ? 'Unmute preview' : 'Mute preview'}
         >
           {isMuted ? <VolumeX size={14} /> : <Volume2 size={14} className="text-[#FF5A36]" />}
@@ -95,7 +95,7 @@ export default function HeroVideos({ className = '' }) {
           )}
 
           {/* Top Live Pill */}
-          <div className="absolute top-2.5 left-2.5 z-10 px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#1E2761]/85 backdrop-blur-md text-white border border-white/15 flex items-center space-x-1.5 shadow-sm">
+          <div className="absolute top-2.5 left-2.5 z-10 px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#1E2761]/85 backdrop-blur-md text-white border border-white/15 flex items-center justify-center space-x-1.5 shadow-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A36] animate-pulse"></span>
             <span>Masterclass</span>
           </div>
@@ -105,12 +105,12 @@ export default function HeroVideos({ className = '' }) {
             isPlaying1 ? 'opacity-0 group-hover:opacity-100 bg-black/20' : 'opacity-100 bg-black/40'
           }`}>
             <div className="w-10 h-10 rounded-full bg-white/95 text-[#1E2761] shadow-lg flex items-center justify-center transform group-hover:scale-110 transition-transform">
-              {isPlaying1 ? <Pause size={16} /> : <Play size={16} className="ml-0.5 text-[#FF5A36] fill-current" />}
+              {isPlaying1 ? <Pause size={16} /> : <Play size={16} className="text-[#FF5A36] fill-current" />}
             </div>
           </div>
 
           {/* Bottom Duration Badge */}
-          <div className="absolute bottom-2.5 right-2.5 z-10 px-2 py-0.5 rounded-md text-[9px] font-mono font-bold bg-[#1E2761]/85 text-white backdrop-blur-md border border-white/10">
+          <div className="absolute bottom-2.5 right-2.5 z-10 px-2 py-0.5 rounded-md text-[9px] font-mono font-bold bg-[#1E2761]/85 text-white backdrop-blur-md border border-white/10 flex items-center justify-center">
             0:10
           </div>
         </div>
@@ -144,7 +144,7 @@ export default function HeroVideos({ className = '' }) {
           )}
 
           {/* Top Live Pill */}
-          <div className="absolute top-2.5 left-2.5 z-10 px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#1E2761]/85 backdrop-blur-md text-white border border-white/15 flex items-center space-x-1.5 shadow-sm">
+          <div className="absolute top-2.5 left-2.5 z-10 px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#1E2761]/85 backdrop-blur-md text-white border border-white/15 flex items-center justify-center space-x-1.5 shadow-sm">
             <Sparkles size={11} className="text-[#FF5A36]" />
             <span>Studio</span>
           </div>
@@ -154,12 +154,12 @@ export default function HeroVideos({ className = '' }) {
             isPlaying2 ? 'opacity-0 group-hover:opacity-100 bg-black/20' : 'opacity-100 bg-black/40'
           }`}>
             <div className="w-10 h-10 rounded-full bg-white/95 text-[#1E2761] shadow-lg flex items-center justify-center transform group-hover:scale-110 transition-transform">
-              {isPlaying2 ? <Pause size={16} /> : <Play size={16} className="ml-0.5 text-[#FF5A36] fill-current" />}
+              {isPlaying2 ? <Pause size={16} /> : <Play size={16} className="text-[#FF5A36] fill-current" />}
             </div>
           </div>
 
           {/* Bottom Duration Badge */}
-          <div className="absolute bottom-2.5 right-2.5 z-10 px-2 py-0.5 rounded-md text-[9px] font-mono font-bold bg-[#1E2761]/85 text-white backdrop-blur-md border border-white/10">
+          <div className="absolute bottom-2.5 right-2.5 z-10 px-2 py-0.5 rounded-md text-[9px] font-mono font-bold bg-[#1E2761]/85 text-white backdrop-blur-md border border-white/10 flex items-center justify-center">
             0:15
           </div>
         </div>
@@ -176,3 +176,4 @@ export default function HeroVideos({ className = '' }) {
     </div>
   );
 }
+

@@ -394,7 +394,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
                     <div className="absolute bottom-3 inset-x-0 flex items-center justify-center gap-2 z-20">
                       <button
                         onClick={togglePreviewCam}
-                        className={`p-2 rounded-xl border shadow-sm transition-all cursor-pointer ${
+                        className={`p-2 rounded-xl border shadow-sm transition-all cursor-pointer flex items-center justify-center ${
                           previewCamActive 
                             ? 'bg-white/90 text-[#1E2761] border-white hover:bg-white' 
                             : 'bg-[#FF5A36] text-white border-[#FF5A36]'
@@ -406,7 +406,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
                       
                       <button
                         onClick={togglePreviewMic}
-                        className={`p-2 rounded-xl border shadow-sm transition-all cursor-pointer ${
+                        className={`p-2 rounded-xl border shadow-sm transition-all cursor-pointer flex items-center justify-center ${
                           previewMicActive 
                             ? 'bg-white/90 text-[#1E2761] border-white hover:bg-white' 
                             : 'bg-[#FF5A36] text-white border-[#FF5A36]'
@@ -418,7 +418,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
 
                       <button
                         onClick={toggleHardwarePreview}
-                        className="px-3 py-1.5 rounded-xl bg-white/90 hover:bg-white text-[#1E2761] text-xs font-bold border border-white shadow-sm cursor-pointer"
+                        className="px-3 py-1.5 rounded-xl bg-white/90 hover:bg-white text-[#1E2761] text-xs font-bold border border-white shadow-sm cursor-pointer flex items-center justify-center"
                       >
                         Turn Off
                       </button>
@@ -497,7 +497,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
 
                     <button 
                       onClick={() => handleCopyLink(room.roomId)}
-                      className="p-2 rounded-xl text-[#1E2761] hover:text-[#FF5A36] bg-white hover:bg-slate-100 border border-[#E4E8EE] transition-colors cursor-pointer shadow-xs"
+                      className="p-2 rounded-xl text-[#1E2761] hover:text-[#FF5A36] bg-white hover:bg-slate-100 border border-[#E4E8EE] transition-colors cursor-pointer shadow-xs flex items-center justify-center"
                       title="Copy invite link"
                     >
                       {copiedId === room.roomId ? (
@@ -509,7 +509,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
 
                     <button 
                       onClick={() => setDeleteModalRoomId(room.roomId)}
-                      className="p-2 rounded-xl text-slate-400 hover:text-[#FF5A36] bg-white hover:bg-[#FF5A36]/10 border border-[#E4E8EE] hover:border-[#FF5A36]/30 transition-colors cursor-pointer shadow-xs"
+                      className="p-2 rounded-xl text-slate-400 hover:text-[#FF5A36] bg-white hover:bg-[#FF5A36]/10 border border-[#E4E8EE] hover:border-[#FF5A36]/30 transition-colors cursor-pointer shadow-xs flex items-center justify-center"
                       title="Delete room"
                     >
                       <Trash2 size={14} />
@@ -520,8 +520,8 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
               ))}
             </div>
           ) : (
-            <div className="py-10 text-center flex flex-col items-center">
-              <div className="w-12 h-12 rounded-2xl bg-[#F5F7FA] border border-[#E4E8EE] flex items-center justify-center text-[#1E2761] mb-2.5">
+            <div className="py-10 text-center flex flex-col items-center justify-center">
+              <div className="w-12 h-12 rounded-2xl bg-[#F5F7FA] border border-[#E4E8EE] flex items-center justify-center text-[#1E2761] mb-2.5 mx-auto">
                 <Video size={22} className="text-slate-400" />
               </div>
               <h3 className="text-sm sm:text-base font-bold text-[#1E2761] mb-1">
@@ -543,7 +543,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
           <div className="bg-white border border-[#E4E8EE] rounded-3xl max-w-sm w-full p-6 shadow-2xl relative">
             <button 
               onClick={() => !isDeleting && setDeleteModalRoomId(null)}
-              className="absolute top-4 right-4 text-slate-400 hover:text-[#1E2761] p-1.5 rounded-full bg-slate-50 hover:bg-slate-100 border border-[#E4E8EE] transition-colors cursor-pointer"
+              className="absolute top-4 right-4 text-slate-400 hover:text-[#1E2761] p-1.5 rounded-full bg-slate-50 hover:bg-slate-100 border border-[#E4E8EE] transition-colors cursor-pointer flex items-center justify-center"
             >
               <X size={16} />
             </button>

@@ -255,7 +255,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
                 {/* Close Button X */}
                 <button 
                   onClick={() => setIsDrawerOpen(false)}
-                  className="p-2 rounded-full text-slate-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                  className="p-2 rounded-full text-slate-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer flex items-center justify-center"
                   aria-label="Close menu"
                 >
                   <X size={24} />
@@ -340,14 +340,14 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
                       <div className="flex items-center space-x-1">
                         <button 
                           onClick={() => handleNavClick('profile')}
-                          className="p-1.5 text-slate-300 hover:text-white rounded-lg hover:bg-white/10 transition-colors"
+                          className="p-1.5 text-slate-300 hover:text-white rounded-lg hover:bg-white/10 transition-colors flex items-center justify-center cursor-pointer"
                           title="Profile"
                         >
                           <User size={16} />
                         </button>
                         <button 
                           onClick={() => handleNavClick('settings')}
-                          className="p-1.5 text-slate-300 hover:text-white rounded-lg hover:bg-white/10 transition-colors"
+                          className="p-1.5 text-slate-300 hover:text-white rounded-lg hover:bg-white/10 transition-colors flex items-center justify-center cursor-pointer"
                           title="Settings"
                         >
                           <Settings size={16} />

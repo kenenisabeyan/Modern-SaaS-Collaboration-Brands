@@ -891,7 +891,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
             <button 
               type="button" 
               onClick={handleCopyLink} 
-              className="text-[#FF5A36] hover:text-[#E04826] transition-colors cursor-pointer p-0.5 ml-0.5"
+              className="text-[#FF5A36] hover:text-[#E04826] transition-colors cursor-pointer p-0.5 ml-0.5 flex items-center justify-center"
               title="Copy meeting link"
             >
               {copied ? <Check size={14} className="text-[#FF5A36]" /> : <Copy size={14} />}
@@ -1042,7 +1042,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
                       <button
                         type="button"
                         onClick={() => handleKickUser(participant.socketId)}
-                        className="absolute top-4 right-4 bg-[#FF5A36] hover:bg-[#E04826] text-white p-2 rounded-xl backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all border border-[#FF5A36] shadow-sm cursor-pointer"
+                        className="absolute top-4 right-4 bg-[#FF5A36] hover:bg-[#E04826] text-white p-2 rounded-xl backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all border border-[#FF5A36] shadow-sm cursor-pointer flex items-center justify-center"
                         title="Remove participant"
                       >
                         <ShieldBan size={16} />
@@ -1070,10 +1070,10 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
                 <div key={user.socketId} className="flex items-center justify-between bg-[#F5F7FA] border border-[#E4E8EE] p-3 rounded-2xl">
                   <span className="text-xs sm:text-sm font-bold text-[#1E2761] truncate pr-2">{user.username}</span>
                   <div className="flex space-x-1.5">
-                    <button type="button" onClick={() => handleDeny(user.socketId)} className="p-2 text-[#FF5A36] bg-[#FF5A36]/10 hover:bg-[#FF5A36]/20 border border-[#FF5A36]/25 rounded-xl transition-colors cursor-pointer" title="Decline">
+                    <button type="button" onClick={() => handleDeny(user.socketId)} className="p-2 text-[#FF5A36] bg-[#FF5A36]/10 hover:bg-[#FF5A36]/20 border border-[#FF5A36]/25 rounded-xl transition-colors cursor-pointer flex items-center justify-center" title="Decline">
                       <X size={15} />
                     </button>
-                    <button type="button" onClick={() => handleAdmit(user.socketId)} className="p-2 text-white bg-[#1E2761] hover:bg-[#151A44] rounded-xl transition-colors cursor-pointer" title="Admit">
+                    <button type="button" onClick={() => handleAdmit(user.socketId)} className="p-2 text-white bg-[#1E2761] hover:bg-[#151A44] rounded-xl transition-colors cursor-pointer flex items-center justify-center" title="Admit">
                       <Check size={15} />
                     </button>
                   </div>
@@ -1095,7 +1095,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
           <button
             type="button"
             onClick={handleCopyLink}
-            className="p-1.5 rounded-lg text-[#FF5A36] hover:bg-[#FF5A36]/10 transition-colors cursor-pointer"
+            className="p-1.5 rounded-lg text-[#FF5A36] hover:bg-[#FF5A36]/10 transition-colors cursor-pointer flex items-center justify-center"
             title="Copy invite link"
           >
             {copied ? <Check size={14} className="text-[#FF5A36]" /> : <Copy size={14} />}
@@ -1200,7 +1200,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
           <button 
             type="button" 
             onClick={() => setIsChatOpen(!isChatOpen)}
-            className={`p-2.5 rounded-full transition-all cursor-pointer relative ${
+            className={`p-2.5 rounded-full transition-all cursor-pointer relative flex items-center justify-center ${
               isChatOpen ? 'bg-[#FF5A36] text-white' : 'hover:bg-[#F5F7FA] text-[#1E2761]'
             }`}
             title="Meeting Chat (C)"
@@ -1240,7 +1240,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
           </div>
           <button 
             type="button" 
-            className="text-slate-400 hover:text-[#1E2761] transition-colors p-2 rounded-xl hover:bg-[#F5F7FA] cursor-pointer" 
+            className="text-slate-400 hover:text-[#1E2761] transition-colors p-2 rounded-xl hover:bg-[#F5F7FA] cursor-pointer flex items-center justify-center" 
             onClick={() => setIsChatOpen(false)}
           >
             <X size={18} />
@@ -1299,7 +1299,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
             />
             <button 
               type="button" 
-              className={`absolute right-1.5 p-2 rounded-xl transition-all cursor-pointer ${
+              className={`absolute right-1.5 p-2 rounded-xl transition-all cursor-pointer flex items-center justify-center ${
                 message.length > 0 
                   ? 'bg-[#FF5A36] text-white shadow-md shadow-[#FF5A36]/30 hover:bg-[#E04826]' 
                   : 'text-slate-400 cursor-not-allowed bg-transparent'

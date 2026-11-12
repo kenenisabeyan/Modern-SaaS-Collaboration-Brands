@@ -579,7 +579,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
           <div className="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto border border-[#E4E8EE]">
             <button 
               onClick={() => setShowInfoModal(false)}
-              className="absolute top-5 right-5 text-slate-400 hover:text-[#1E2761] p-2 rounded-full hover:bg-[#F5F7FA] transition-colors cursor-pointer"
+              className="absolute top-5 right-5 text-slate-400 hover:text-[#1E2761] p-2 rounded-full hover:bg-[#F5F7FA] transition-colors cursor-pointer flex items-center justify-center"
             >
               <X size={22} />
             </button>
