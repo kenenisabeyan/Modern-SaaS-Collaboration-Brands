@@ -584,7 +584,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               <X size={22} />
             </button>
 
-            <div className="w-14 h-14 rounded-2xl bg-[#FF5A36]/10 text-[#FF5A36] border border-[#FF5A36]/20 flex items-center justify-center mb-6">
+            <div className="w-14 h-14 rounded-2xl bg-[#FF5A36]/10 text-[#FF5A36] border border-[#FF5A36]/20 flex items-center justify-center mb-6 mx-auto">
               <Video size={28} />
             </div>
 

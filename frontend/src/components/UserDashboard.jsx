@@ -426,7 +426,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
                   </>
                 ) : (
                   <div className="flex flex-col items-center justify-center p-6 text-center text-white">
-                    <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-white mb-2.5 border border-white/15">
+                    <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-white mb-2.5 mx-auto border border-white/15">
                       <Camera size={24} className="text-[#FF5A36]" />
                     </div>
                     <p className="text-xs text-slate-300 max-w-xs mb-3 font-normal">
@@ -540,14 +540,14 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
       {/* Delete Confirmation Modal */}
       {deleteModalRoomId && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 animate-in fade-in duration-150">
-          <div className="bg-white border border-[#E4E8EE] rounded-3xl max-w-sm w-full p-6 shadow-2xl relative">
+          <div className="bg-white border border-[#E4E8EE] rounded-3xl max-w-sm w-full p-6 shadow-2xl relative text-center flex flex-col items-center">
             <button 
               onClick={() => !isDeleting && setDeleteModalRoomId(null)}
               className="absolute top-4 right-4 text-slate-400 hover:text-[#1E2761] p-1.5 rounded-full bg-slate-50 hover:bg-slate-100 border border-[#E4E8EE] transition-colors cursor-pointer flex items-center justify-center"
             >
               <X size={16} />
             </button>
-            <div className="w-10 h-10 rounded-xl bg-[#FF5A36]/10 text-[#FF5A36] flex items-center justify-center mb-3 border border-[#FF5A36]/25">
+            <div className="w-10 h-10 rounded-xl bg-[#FF5A36]/10 text-[#FF5A36] flex items-center justify-center mb-3 mx-auto border border-[#FF5A36]/25">
               <Trash2 size={20} />
             </div>
             <h3 className="text-base font-bold text-[#1E2761] mb-1">Delete Meeting?</h3>

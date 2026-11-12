@@ -1257,7 +1257,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
         <div className="flex-1 overflow-y-auto p-6 space-y-4 custom-scrollbar">
           {messages.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-center space-y-3 opacity-60">
-              <div className="w-12 h-12 rounded-2xl bg-[#F5F7FA] flex items-center justify-center text-[#FF5A36] border border-[#E4E8EE]">
+              <div className="w-12 h-12 rounded-2xl bg-[#F5F7FA] flex items-center justify-center text-[#FF5A36] border border-[#E4E8EE] mx-auto">
                 <MessageSquare size={24} />
               </div>
               <p className="text-slate-500 text-xs font-medium">No messages yet.<br/>Say hello to the room!</p>
