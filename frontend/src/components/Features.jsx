@@ -68,8 +68,8 @@ export default function Features({ onNavigate }) {
               { icon: <Globe size={24}/>, title: "Zero Downloads", desc: "Browser-based access means your attendees join instantly without friction.", color: "text-[#1E2761] bg-[#1E2761]/10 border-[#1E2761]/20", hover: "hover:border-[#1E2761]/50 hover:shadow-lg" },
               { icon: <MessageSquare size={24}/>, title: "Real-time Chat", desc: "Synchronized chat and audio for seamless audience interaction.", color: "text-[#FF5A36] bg-[#FF5A36]/10 border-[#FF5A36]/20", hover: "hover:border-[#FF5A36]/50 hover:shadow-lg" }
             ].map((f, i) => (
-              <motion.div key={i} variants={fadeIn} whileHover={{ y: -4 }} className={`bg-white border border-[#E4E8EE] p-7 rounded-3xl transition-all duration-300 group shadow-sm ${f.hover}`}>
-                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-5 border group-hover:scale-105 transition-transform ${f.color}`}>
+              <motion.div key={i} variants={fadeIn} whileHover={{ y: -4 }} className={`bg-white border border-[#E4E8EE] p-7 rounded-3xl transition-all duration-300 group shadow-sm flex flex-col items-center text-center ${f.hover}`}>
+                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-5 mx-auto border group-hover:scale-105 transition-transform ${f.color}`}>
                   {f.icon}
                 </div>
                 <h3 className="text-lg font-bold mb-2 text-[#1E2761]">{f.title}</h3>
@@ -141,8 +141,8 @@ export default function Features({ onNavigate }) {
         <section className="mb-20 sm:mb-32">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             
-            <div className="bg-white border border-[#E4E8EE] p-8 rounded-3xl shadow-sm hover:border-[#1E2761]/40 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 rounded-2xl bg-[#1E2761]/10 text-[#1E2761] border border-[#1E2761]/20 flex items-center justify-center mb-6">
+            <div className="bg-white border border-[#E4E8EE] p-8 rounded-3xl shadow-sm hover:border-[#1E2761]/40 hover:shadow-lg transition-all flex flex-col items-center text-center">
+              <div className="w-12 h-12 rounded-2xl bg-[#1E2761]/10 text-[#1E2761] border border-[#1E2761]/20 flex items-center justify-center mb-6 mx-auto">
                 <Layout size={26} />
               </div>
               <h3 className="text-xl font-bold mb-3 text-[#1E2761]">Adaptive Streaming</h3>
@@ -151,8 +151,8 @@ export default function Features({ onNavigate }) {
               </p>
             </div>
 
-            <div className="bg-white border border-[#E4E8EE] p-8 rounded-3xl shadow-sm hover:border-[#FF5A36]/40 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 rounded-2xl bg-[#FF5A36]/10 text-[#FF5A36] border border-[#FF5A36]/20 flex items-center justify-center mb-6">
+            <div className="bg-white border border-[#E4E8EE] p-8 rounded-3xl shadow-sm hover:border-[#FF5A36]/40 hover:shadow-lg transition-all flex flex-col items-center text-center">
+              <div className="w-12 h-12 rounded-2xl bg-[#FF5A36]/10 text-[#FF5A36] border border-[#FF5A36]/20 flex items-center justify-center mb-6 mx-auto">
                 <Shield size={26} />
               </div>
               <h3 className="text-xl font-bold mb-3 text-[#1E2761]">Privacy by Design</h3>
@@ -161,8 +161,8 @@ export default function Features({ onNavigate }) {
               </p>
             </div>
 
-            <div className="bg-white border border-[#E4E8EE] p-8 rounded-3xl shadow-sm hover:border-[#1E2761]/40 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 rounded-2xl bg-[#1E2761]/10 text-[#1E2761] border border-[#1E2761]/20 flex items-center justify-center mb-6">
+            <div className="bg-white border border-[#E4E8EE] p-8 rounded-3xl shadow-sm hover:border-[#1E2761]/40 hover:shadow-lg transition-all flex flex-col items-center text-center">
+              <div className="w-12 h-12 rounded-2xl bg-[#1E2761]/10 text-[#1E2761] border border-[#1E2761]/20 flex items-center justify-center mb-6 mx-auto">
                 <Activity size={26} />
               </div>
               <h3 className="text-xl font-bold mb-3 text-[#1E2761]">Zero Lag Sync</h3>

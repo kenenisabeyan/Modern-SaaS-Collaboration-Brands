@@ -395,8 +395,8 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               
-              <div className="bg-[#F5F7FA] border border-[#E4E8EE] rounded-3xl p-8 sm:p-10 hover:border-[#1E2761]/30 shadow-sm hover:shadow-md transition-all">
-                <div className="w-14 h-14 bg-[#1E2761]/10 border border-[#1E2761]/20 text-[#1E2761] rounded-2xl flex items-center justify-center mb-6"> 
+              <div className="bg-[#F5F7FA] border border-[#E4E8EE] rounded-3xl p-8 sm:p-10 hover:border-[#1E2761]/30 shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center">
+                <div className="w-14 h-14 bg-[#1E2761]/10 border border-[#1E2761]/20 text-[#1E2761] rounded-2xl flex items-center justify-center mb-6 mx-auto"> 
                   <Video size={28} /> 
                 </div>
                 <h3 className="text-2xl font-bold mb-3 text-[#1E2761]">Ultra HD Video</h3>
@@ -405,8 +405,8 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 </p>
               </div>
 
-              <div className="bg-[#F5F7FA] border border-[#E4E8EE] rounded-3xl p-8 sm:p-10 hover:border-[#FF5A36]/40 shadow-sm hover:shadow-md transition-all">
-                <div className="w-14 h-14 bg-[#FF5A36]/10 border border-[#FF5A36]/20 text-[#FF5A36] rounded-2xl flex items-center justify-center mb-6"> 
+              <div className="bg-[#F5F7FA] border border-[#E4E8EE] rounded-3xl p-8 sm:p-10 hover:border-[#FF5A36]/40 shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center">
+                <div className="w-14 h-14 bg-[#FF5A36]/10 border border-[#FF5A36]/20 text-[#FF5A36] rounded-2xl flex items-center justify-center mb-6 mx-auto"> 
                   <MessageSquare size={28} /> 
                 </div>
                 <h3 className="text-2xl font-bold mb-3 text-[#1E2761]">Real-time Chat</h3>
@@ -415,8 +415,8 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 </p>
               </div>
 
-              <div className="bg-[#F5F7FA] border border-[#E4E8EE] rounded-3xl p-8 sm:p-10 hover:border-[#1E2761]/30 shadow-sm hover:shadow-md transition-all">
-                <div className="w-14 h-14 bg-[#1E2761]/10 border border-[#1E2761]/20 text-[#1E2761] rounded-2xl flex items-center justify-center mb-6"> 
+              <div className="bg-[#F5F7FA] border border-[#E4E8EE] rounded-3xl p-8 sm:p-10 hover:border-[#1E2761]/30 shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center">
+                <div className="w-14 h-14 bg-[#1E2761]/10 border border-[#1E2761]/20 text-[#1E2761] rounded-2xl flex items-center justify-center mb-6 mx-auto"> 
                   <Monitor size={28} /> 
                 </div>
                 <h3 className="text-2xl font-bold mb-3 text-[#1E2761]">Screen Sharing</h3>
@@ -443,8 +443,8 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               
-              <div className="bg-white border border-[#E4E8EE] hover:border-[#1E2761]/30 p-8 rounded-3xl flex flex-col items-center shadow-sm hover:-translate-y-1 transition-all">
-                <div className="w-14 h-14 rounded-2xl bg-[#1E2761]/10 border border-[#1E2761]/20 flex items-center justify-center text-[#1E2761] mb-6">
+              <div className="bg-white border border-[#E4E8EE] hover:border-[#1E2761]/30 p-8 rounded-3xl flex flex-col items-center text-center shadow-sm hover:-translate-y-1 transition-all">
+                <div className="w-14 h-14 rounded-2xl bg-[#1E2761]/10 border border-[#1E2761]/20 flex items-center justify-center text-[#1E2761] mb-6 mx-auto">
                   <GraduationCap size={28} />
                 </div>
                 <h3 className="text-xl font-bold text-[#1E2761] mb-2">Learners</h3>
@@ -453,8 +453,8 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 </p>
               </div>
 
-              <div className="bg-white border border-[#E4E8EE] hover:border-[#FF5A36]/40 p-8 rounded-3xl flex flex-col items-center shadow-sm hover:-translate-y-1 transition-all">
-                <div className="w-14 h-14 rounded-2xl bg-[#FF5A36]/10 border border-[#FF5A36]/20 flex items-center justify-center text-[#FF5A36] mb-6">
+              <div className="bg-white border border-[#E4E8EE] hover:border-[#FF5A36]/40 p-8 rounded-3xl flex flex-col items-center text-center shadow-sm hover:-translate-y-1 transition-all">
+                <div className="w-14 h-14 rounded-2xl bg-[#FF5A36]/10 border border-[#FF5A36]/20 flex items-center justify-center text-[#FF5A36] mb-6 mx-auto">
                   <BookOpen size={28} />
                 </div>
                 <h3 className="text-xl font-bold text-[#1E2761] mb-2">Instructors</h3>
@@ -463,8 +463,8 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 </p>
               </div>
 
-              <div className="bg-white border border-[#E4E8EE] hover:border-[#1E2761]/30 p-8 rounded-3xl flex flex-col items-center shadow-sm hover:-translate-y-1 transition-all">
-                <div className="w-14 h-14 rounded-2xl bg-[#1E2761]/10 border border-[#1E2761]/20 flex items-center justify-center text-[#1E2761] mb-6">
+              <div className="bg-white border border-[#E4E8EE] hover:border-[#1E2761]/30 p-8 rounded-3xl flex flex-col items-center text-center shadow-sm hover:-translate-y-1 transition-all">
+                <div className="w-14 h-14 rounded-2xl bg-[#1E2761]/10 border border-[#1E2761]/20 flex items-center justify-center text-[#1E2761] mb-6 mx-auto">
                   <Users size={28} />
                 </div>
                 <h3 className="text-xl font-bold text-[#1E2761] mb-2">Parents</h3>
@@ -473,8 +473,8 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 </p>
               </div>
 
-              <div className="bg-white border border-[#E4E8EE] hover:border-[#FF5A36]/40 p-8 rounded-3xl flex flex-col items-center shadow-sm hover:-translate-y-1 transition-all">
-                <div className="w-14 h-14 rounded-2xl bg-[#FF5A36]/10 border border-[#FF5A36]/20 flex items-center justify-center text-[#FF5A36] mb-6">
+              <div className="bg-white border border-[#E4E8EE] hover:border-[#FF5A36]/40 p-8 rounded-3xl flex flex-col items-center text-center shadow-sm hover:-translate-y-1 transition-all">
+                <div className="w-14 h-14 rounded-2xl bg-[#FF5A36]/10 border border-[#FF5A36]/20 flex items-center justify-center text-[#FF5A36] mb-6 mx-auto">
                   <Heart size={28} />
                 </div>
                 <h3 className="text-xl font-bold text-[#1E2761] mb-2">Sponsors</h3>
