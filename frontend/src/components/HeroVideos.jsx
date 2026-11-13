@@ -123,7 +123,7 @@ export default function HeroVideos({ className = '' }) {
           }`}
           title={isPlaying ? 'Click to pause' : 'Click to resume'}
         >
-          <div className="w-13 h-13 sm:w-16 sm:h-16 rounded-full bg-white/95 text-[#1E2761] shadow-xl flex items-center justify-center transform group-hover:scale-110 active:scale-95 transition-all">
+          <div className="w-13 h-13 sm:w-16 sm:h-16 rounded-full bg-[#FEFEFE]/95 text-[#1E2761] shadow-xl flex items-center justify-center transform group-hover:scale-110 active:scale-95 transition-all">
             {isPlaying ? (
               <Pause size={20} className="text-[#1E2761]" />
             ) : (
@@ -142,7 +142,7 @@ export default function HeroVideos({ className = '' }) {
           <button
             type="button"
             onClick={togglePlay}
-            className="group/btn inline-flex items-center justify-center space-x-2 px-3.5 sm:px-4 py-2 rounded-full bg-white hover:bg-[#F5F7FA] text-[#1E2761] hover:text-[#FF5A36] border border-[#E4E8EE] hover:border-[#FF5A36]/40 shadow-xs hover:shadow-md transition-all duration-200 cursor-pointer text-xs sm:text-sm font-bold tracking-tight active:scale-[0.98]"
+            className="group/btn inline-flex items-center justify-center space-x-2 px-3.5 sm:px-4 py-2 rounded-full bg-[#FEFEFE] hover:bg-[#F5F7FA] text-[#1E2761] hover:text-[#FF5A36] border border-[#E4E8EE] hover:border-[#FF5A36]/40 shadow-xs hover:shadow-md transition-all duration-200 cursor-pointer text-xs sm:text-sm font-bold tracking-tight active:scale-[0.98]"
             title={isPlaying ? "Live Masterclass stream active (click to pause)" : "Click to resume live stream"}
           >
             <span className="relative flex h-2.5 w-2.5 items-center justify-center">
@@ -157,7 +157,7 @@ export default function HeroVideos({ className = '' }) {
 
           {/* 2. 1080p Ultra HD Modern Pill Button */}
           <div 
-            className="group/hd inline-flex items-center justify-center space-x-2 px-3.5 sm:px-4 py-2 rounded-full bg-white text-[#1E2761] border border-[#E4E8EE] shadow-xs hover:shadow-md transition-all duration-200 select-none text-xs sm:text-sm font-bold"
+            className="group/hd inline-flex items-center justify-center space-x-2 px-3.5 sm:px-4 py-2 rounded-full bg-[#FEFEFE] text-[#1E2761] border border-[#E4E8EE] shadow-xs hover:shadow-md transition-all duration-200 select-none text-xs sm:text-sm font-bold"
             title="Streamed in 1080p Ultra HD 60FPS WebRTC"
           >
             <Sparkles size={14} className="text-[#FF5A36] transition-transform duration-300 group-hover/hd:rotate-12 group-hover/hd:scale-110 shrink-0" />
@@ -174,7 +174,7 @@ export default function HeroVideos({ className = '' }) {
           <button
             type="button"
             onClick={togglePlay}
-            className="inline-flex items-center justify-center space-x-1.5 px-3 sm:px-3.5 py-2 rounded-full bg-white hover:bg-[#F5F7FA] text-[#1E2761] hover:text-[#FF5A36] border border-[#E4E8EE] hover:border-[#FF5A36]/30 shadow-xs hover:shadow-md transition-all duration-200 cursor-pointer text-xs sm:text-sm font-bold active:scale-[0.98]"
+            className="inline-flex items-center justify-center space-x-1.5 px-3 sm:px-3.5 py-2 rounded-full bg-[#FEFEFE] hover:bg-[#F5F7FA] text-[#1E2761] hover:text-[#FF5A36] border border-[#E4E8EE] hover:border-[#FF5A36]/30 shadow-xs hover:shadow-md transition-all duration-200 cursor-pointer text-xs sm:text-sm font-bold active:scale-[0.98]"
             title={isPlaying ? "Pause video" : "Play video"}
           >
             {isPlaying ? (
@@ -194,7 +194,7 @@ export default function HeroVideos({ className = '' }) {
           <button
             type="button"
             onClick={toggleMute}
-            className="inline-flex items-center justify-center space-x-1.5 px-3 sm:px-3.5 py-2 rounded-full bg-white hover:bg-[#F5F7FA] text-[#1E2761] hover:text-[#FF5A36] border border-[#E4E8EE] hover:border-[#FF5A36]/30 shadow-xs hover:shadow-md transition-all duration-200 cursor-pointer text-xs sm:text-sm font-bold active:scale-[0.98]"
+            className="inline-flex items-center justify-center space-x-1.5 px-3 sm:px-3.5 py-2 rounded-full bg-[#FEFEFE] hover:bg-[#F5F7FA] text-[#1E2761] hover:text-[#FF5A36] border border-[#E4E8EE] hover:border-[#FF5A36]/30 shadow-xs hover:shadow-md transition-all duration-200 cursor-pointer text-xs sm:text-sm font-bold active:scale-[0.98]"
             title={isMuted ? "Unmute video audio" : "Mute video audio"}
           >
             {isMuted ? (
