@@ -1,7 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 import api from '../services/api.js';
 import { roomIdFromPathname } from '../routeUtils.js';
-import HeroAnimation from './HeroAnimation.jsx';
 import HeroVideos from './HeroVideos.jsx';
 import { 
   Video, Users, Loader2, Sparkles, Zap, Shield, Clock, Monitor, 
@@ -285,20 +284,14 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               </motion.div>
 
 
-              {/* Right Column: Two Videos in One Row */}
+              {/* Right Column: Hero Video Showcase */}
               <motion.div 
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.7, delay: 0.1 }}
                 className="lg:col-span-6 flex items-center justify-center relative w-full"
               >
-                <div className={`w-full max-w-[460px] sm:max-w-[500px] lg:max-w-[540px] p-4 sm:p-5 rounded-3xl bg-white border-2 border-[#E4E8EE] transition-all duration-500 ${
-                  isScrolled 
-                    ? 'shadow-[0_25px_60px_-15px_rgba(30,39,97,0.12)]' 
-                    : 'shadow-md shadow-[#1E2761]/5'
-                }`}>
-                  <HeroVideos />
-                </div>
+                <HeroVideos />
               </motion.div>
 
             </div>
