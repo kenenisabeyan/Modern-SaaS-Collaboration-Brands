@@ -184,6 +184,32 @@
   .light ::-webkit-scrollbar-thumb {
     @apply bg-slate-300 hover:bg-slate-400;
   }
+
+  /* Professional Ultra-Slim Modern Scrollbar for Hero Controls & Horizontal Sliders */
+  .modern-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 90, 54, 0.45) rgba(228, 232, 238, 0.4);
+  }
+
+  .modern-scrollbar::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .modern-scrollbar::-webkit-scrollbar-track {
+    background: rgba(228, 232, 238, 0.45);
+    border-radius: 9999px;
+    margin: 0 4px;
+  }
+
+  .modern-scrollbar::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #1E2761 0%, #FF5A36 100%);
+    border-radius: 9999px;
+    transition: background 0.25s ease;
+  }
+
+  .modern-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #FF5A36;
+  }
 }
 
 /* Background animated glow */

@@ -95,8 +95,8 @@ export default function HeroVideos({ className = '' }) {
         )}
       </div>
 
-      {/* Modern Professional Control & Indicator Bar Below the Video - Single Clean Row */}
-      <div className="mt-3.5 sm:mt-4 flex flex-nowrap items-center justify-between gap-2 sm:gap-3 w-full px-1 overflow-x-auto">
+      {/* Modern Professional Control & Indicator Bar Below the Video - Single Clean Row with Sleek Scroll Indicator */}
+      <div className="mt-3.5 sm:mt-4 flex flex-nowrap items-center justify-between gap-2.5 sm:gap-3.5 w-full px-1 pb-2 sm:pb-2.5 overflow-x-auto modern-scrollbar">
         {/* Left: Modern Live Masterclass & 1080p Ultra HD Buttons */}
         <div className="flex items-center flex-nowrap shrink-0 gap-2 sm:gap-3">
           {/* 1. Live Masterclass Interactive Modern Button */}
