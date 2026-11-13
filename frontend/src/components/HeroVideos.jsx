@@ -75,7 +75,7 @@ export default function HeroVideos({ className = '' }) {
   };
 
   return (
-    <div className={`relative w-full max-w-none group select-none ${className}`}>
+    <div className={`relative w-full max-w-none select-none ${className}`}>
 
       {/* Video Container: Completely borderless, seamless edge transition, full 1886x1080 resolution visibility */}
       <div 
@@ -99,7 +99,7 @@ export default function HeroVideos({ className = '' }) {
               e.target.currentTime = 0;
               e.target.play().catch(() => {});
             }}
-            className="w-full h-full object-cover border-0 outline-none block"
+            className="w-full h-full object-cover border-0 outline-none block pointer-events-none"
           />
         ) : (
           <div className="w-full h-full flex flex-col items-center justify-center p-8 bg-[#1E2761] text-white text-center">
@@ -108,24 +108,6 @@ export default function HeroVideos({ className = '' }) {
             <p className="text-xs text-slate-300 mt-1">Connecting participants in Ultra HD...</p>
           </div>
         )}
-
-        {/* Center: Seamless Click-to-Play/Pause Overlay */}
-        <div 
-          onClick={togglePlay}
-          className={`absolute inset-0 z-10 flex items-center justify-center transition-all duration-300 cursor-pointer ${
-            isPlaying ? 'opacity-0 group-hover:opacity-100 bg-black/15' : 'opacity-100 bg-black/30 backdrop-blur-[1px]'
-          }`}
-          title={isPlaying ? 'Click to pause' : 'Click to resume'}
-        >
-          <div className="w-13 h-13 sm:w-16 sm:h-16 rounded-full bg-[#FEFEFE]/95 text-[#1E2761] shadow-xl flex items-center justify-center transform group-hover:scale-110 active:scale-95 transition-all">
-            {isPlaying ? (
-              <Pause size={20} className="text-[#1E2761]" />
-            ) : (
-              <Play size={20} className="text-[#FF5A36] fill-current" />
-            )}
-          </div>
-        </div>
-
       </div>
 
       {/* Modern Professional Control & Indicator Bar Below the Video */}
