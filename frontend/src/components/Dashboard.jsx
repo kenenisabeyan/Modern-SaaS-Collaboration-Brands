@@ -173,12 +173,6 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 transition={{ duration: 0.5, ease: "easeOut" }}
                 className="lg:col-span-5 flex flex-col justify-center items-start text-left"
               >
-                {/* Instant Collaboration Tag */}
-                <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider bg-[#FF5A36]/10 text-[#FF5A36] border border-[#FF5A36]/20 mb-3 sm:mb-4">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A36] animate-pulse"></span>
-                  <span>Instant Collaboration</span>
-                </div>
-
                 {/* Main Headline (Strict 60-30-10: Deep Midnight Blue #1E2761 + Electric Coral #FF5A36) */}
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[44px] xl:text-[48px] font-black tracking-tight leading-[1.12] text-[#1E2761] mb-3 sm:mb-4 select-none">
                   <span className="text-[#1E2761] block">Host Engaging</span>
