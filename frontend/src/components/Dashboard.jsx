@@ -193,25 +193,25 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                   </div>
                 )}
 
-                {/* ONLY TWO ESSENTIAL ACTION BUTTONS (Strict 60-30-10 Palette) */}
-                <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
+                {/* ONLY TWO ESSENTIAL ACTION BUTTONS (Strict 60-30-10 Palette) - Locked on 1 Row on All Devices Including Mobile */}
+                <div className="flex flex-row flex-nowrap items-center gap-2 sm:gap-3 w-full max-w-[460px] sm:w-auto">
                   
                   {/* Button 1: Solid Electric Coral (#FF5A36) - Host a Session / Create Instant Room */}
                   <button
                     onClick={handleCreateRoom}
                     disabled={isCreating}
-                    className="w-full sm:w-auto px-6 py-3 sm:py-3.5 rounded-xl bg-[#FF5A36] hover:bg-[#E04826] text-white font-bold text-xs sm:text-sm shadow-md shadow-[#FF5A36]/20 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center space-x-2 cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed"
+                    className="flex-1 sm:flex-initial px-2.5 min-[360px]:px-3.5 sm:px-6 py-2.5 sm:py-3.5 rounded-xl bg-[#FF5A36] hover:bg-[#E04826] text-white font-bold text-[11px] min-[360px]:text-xs sm:text-sm shadow-md shadow-[#FF5A36]/20 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center space-x-1 min-[360px]:space-x-1.5 sm:space-x-2 cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed whitespace-nowrap shrink-0"
                   >
                     {isCreating ? (
                       <>
-                        <Loader2 className="animate-spin" size={16} />
+                        <Loader2 className="animate-spin shrink-0" size={15} />
                         <span>Creating Room...</span>
                       </>
                     ) : (
                       <>
-                        <Video size={16} />
+                        <Video size={15} className="shrink-0" />
                         <span>Create Instant Room</span>
-                        <ChevronRight size={15} className="opacity-75" />
+                        <ChevronRight size={14} className="opacity-75 hidden md:inline-block shrink-0" />
                       </>
                     )}
                   </button>
@@ -219,9 +219,9 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                   {/* Button 2: Pure Canvas with Midnight Blue (#1E2761) & Border - Join a Session */}
                   <button
                     onClick={() => setShowJoinInline(prev => !prev)}
-                    className="w-full sm:w-auto px-5 py-3 sm:py-3.5 rounded-xl bg-[#FEFEFE] hover:bg-[#F5F7FA] text-[#1E2761] hover:text-[#151A44] border border-[#E4E8EE] hover:border-[#1E2761]/40 font-bold text-xs sm:text-sm shadow-xs hover:shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center space-x-1.5 cursor-pointer"
+                    className="flex-1 sm:flex-initial px-2.5 min-[360px]:px-3.5 sm:px-5 py-2.5 sm:py-3.5 rounded-xl bg-[#FEFEFE] hover:bg-[#F5F7FA] text-[#1E2761] hover:text-[#151A44] border border-[#E4E8EE] hover:border-[#1E2761]/40 font-bold text-[11px] min-[360px]:text-xs sm:text-sm shadow-xs hover:shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center space-x-1 min-[360px]:space-x-1.5 cursor-pointer whitespace-nowrap shrink-0"
                   >
-                    <Users size={16} className="text-[#1E2761]" />
+                    <Users size={15} className="text-[#1E2761] shrink-0" />
                     <span>Join Session ▸</span>
                   </button>
 
