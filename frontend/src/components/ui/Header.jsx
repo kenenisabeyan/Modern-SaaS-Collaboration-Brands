@@ -122,12 +122,12 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
 
   return (
     <>
-      {/* Top Sticky Header (Pure #FEFEFE Canvas, Deep Midnight #1E2761, Electric Coral #FF5A36) */}
+      {/* Top Sticky Header (Pure White #FFFFFF Canvas, Deep Midnight #1E2761, Electric Coral #FF5A36) */}
       <header 
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isScrolled 
-            ? 'h-16 sm:h-20 bg-[#FEFEFE]/95 backdrop-blur-md shadow-[0_12px_30px_-6px_rgba(30,39,97,0.08)]' 
-            : 'h-16 sm:h-20 bg-[#FEFEFE] shadow-none'
+            ? 'h-16 sm:h-20 bg-white/95 backdrop-blur-md shadow-[0_12px_30px_-6px_rgba(30,39,97,0.08)]' 
+            : 'h-16 sm:h-20 bg-white shadow-none'
         }`}
       >
         <div className="w-full max-w-[1800px] h-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-24 flex items-center justify-between">
@@ -141,7 +141,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
               <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#1E2761] border border-[#151A44] flex items-center justify-center text-white font-bold text-sm overflow-hidden shadow-sm transition-transform duration-200 group-hover:scale-105">
                 <Video className="w-5 h-5 text-white" />
               </div>
-              <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-[#FF5A36] border-2 border-[#FEFEFE] rounded-full animate-pulse"></span>
+              <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-[#FF5A36] border-2 border-white rounded-full animate-pulse"></span>
             </div>
             <span className="font-extrabold text-base sm:text-lg tracking-wider text-[#1E2761] uppercase">
               WABISEMINAR
@@ -184,7 +184,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
             {/* Boxed Square Hamburger Button [ ≡ ] */}
             <button
               onClick={() => setIsDrawerOpen(true)}
-              className="w-10 h-10 rounded-lg border border-[#E4E8EE] bg-[#FEFEFE] hover:bg-[#E4E8EE]/40 flex flex-col items-center justify-center space-y-1 transition-all cursor-pointer shadow-sm focus:outline-none"
+              className="w-10 h-10 rounded-lg border border-[#E4E8EE] bg-white hover:bg-[#E4E8EE]/40 flex flex-col items-center justify-center space-y-1 transition-all cursor-pointer shadow-sm focus:outline-none"
               aria-label="Toggle navigation menu"
               title="Open Navigation Menu"
             >
