@@ -75,17 +75,17 @@ export default function HeroVideos({ className = '' }) {
   };
 
   return (
-    <div className={`relative w-full max-w-[660px] mx-auto group select-none ${className}`}>
+    <div className={`relative w-full max-w-none group select-none ${className}`}>
       
       {/* Ambient Atmospheric Diffusion: seamless soft glow blending video into background with zero harsh lines */}
       <div 
         aria-hidden="true" 
-        className="absolute -inset-3 sm:-inset-4 bg-gradient-to-tr from-[#1E2761]/15 via-[#FF5A36]/10 to-[#1E2761]/5 rounded-3xl blur-2xl sm:blur-3xl -z-10 pointer-events-none opacity-70 group-hover:opacity-90 transition-opacity duration-700"
+        className="absolute -inset-4 sm:-inset-6 bg-gradient-to-tr from-[#1E2761]/15 via-[#FF5A36]/10 to-[#1E2761]/5 rounded-3xl blur-2xl sm:blur-3xl -z-10 pointer-events-none opacity-80 group-hover:opacity-100 transition-opacity duration-700"
       />
 
-      {/* Video Container: Completely borderless, seamless edge transition */}
+      {/* Video Container: Completely borderless, seamless edge transition, full 1886x1080 resolution visibility */}
       <div 
-        className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(30,39,97,0.12)] bg-[#1E2761] aspect-[1886/1080] sm:aspect-[16/9] w-full flex items-center justify-center border-0 outline-none"
+        className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_25px_60px_-15px_rgba(30,39,97,0.14)] bg-[#1E2761] aspect-[1886/1080] w-full flex items-center justify-center border-0 outline-none"
       >
         {!hasError ? (
           <video

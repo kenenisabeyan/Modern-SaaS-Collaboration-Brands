@@ -164,59 +164,59 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
         }`}>
           <div className="max-w-[1720px] w-full mx-auto">
             
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
               
               {/* Left Column: Heading, Subtitle, 2 Essential Buttons & Trust Badges */}
               <motion.div 
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
-                className="lg:col-span-6 flex flex-col justify-center items-start text-left"
+                className="lg:col-span-5 flex flex-col justify-center items-start text-left"
               >
                 {/* Instant Collaboration Tag */}
-                <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#FF5A36]/10 text-[#FF5A36] border border-[#FF5A36]/20 mb-4 sm:mb-5">
-                  <span className="w-2 h-2 rounded-full bg-[#FF5A36] animate-pulse"></span>
+                <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider bg-[#FF5A36]/10 text-[#FF5A36] border border-[#FF5A36]/20 mb-3 sm:mb-4">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A36] animate-pulse"></span>
                   <span>Instant Collaboration</span>
                 </div>
 
                 {/* Main Headline (Strict 60-30-10: Deep Midnight Blue #1E2761 + Electric Coral #FF5A36) */}
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[62px] xl:text-[68px] font-black tracking-tight leading-[1.08] text-[#1E2761] mb-4 sm:mb-5 select-none">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[44px] xl:text-[48px] font-black tracking-tight leading-[1.12] text-[#1E2761] mb-3 sm:mb-4 select-none">
                   <span className="text-[#1E2761] block">Host Engaging</span>
                   <span className="text-[#FF5A36] block">Masterclasses</span>
                 </h1>
 
                 {/* Subtitle Description */}
-                <p className="text-slate-600 text-sm sm:text-base lg:text-lg leading-relaxed max-w-[540px] mb-6 sm:mb-8 font-normal">
-                  Create a free, encrypted meeting room instantly or join an existing session in seconds. Built for innovative educators, creators, and teams who value simplicity and connection.
+                <p className="text-slate-600 text-xs sm:text-sm lg:text-[15px] leading-relaxed max-w-[430px] mb-5 sm:mb-6 font-normal">
+                  Create a free, encrypted meeting room instantly or join an existing session in seconds. Built for innovative educators and creators who value simplicity and connection.
                 </p>
 
                 {/* Error Banner */}
                 {actionError && (
-                  <div className="w-full max-w-[500px] mb-4 p-3 rounded-xl border border-[#FF5A36]/25 bg-[#FF5A36]/10 text-[#FF5A36] text-xs flex items-center font-medium">
-                    <Shield className="mr-2 text-[#FF5A36] shrink-0" size={16} />
+                  <div className="w-full max-w-[460px] mb-4 p-2.5 rounded-xl border border-[#FF5A36]/25 bg-[#FF5A36]/10 text-[#FF5A36] text-xs flex items-center font-medium">
+                    <Shield className="mr-2 text-[#FF5A36] shrink-0" size={15} />
                     <span>{actionError}</span>
                   </div>
                 )}
 
                 {/* ONLY TWO ESSENTIAL ACTION BUTTONS (Strict 60-30-10 Palette) */}
-                <div className="flex flex-wrap items-center gap-3 sm:gap-4 w-full sm:w-auto">
+                <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
                   
                   {/* Button 1: Solid Electric Coral (#FF5A36) - Host a Session / Create Instant Room */}
                   <button
                     onClick={handleCreateRoom}
                     disabled={isCreating}
-                    className="w-full sm:w-auto px-7 py-3.5 sm:py-4 rounded-xl bg-[#FF5A36] hover:bg-[#E04826] text-white font-bold text-sm sm:text-base shadow-lg shadow-[#FF5A36]/25 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center space-x-2.5 cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed"
+                    className="w-full sm:w-auto px-6 py-3 sm:py-3.5 rounded-xl bg-[#FF5A36] hover:bg-[#E04826] text-white font-bold text-xs sm:text-sm shadow-md shadow-[#FF5A36]/20 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center space-x-2 cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed"
                   >
                     {isCreating ? (
                       <>
-                        <Loader2 className="animate-spin" size={18} />
+                        <Loader2 className="animate-spin" size={16} />
                         <span>Creating Room...</span>
                       </>
                     ) : (
                       <>
-                        <Video size={18} />
+                        <Video size={16} />
                         <span>Create Instant Room</span>
-                        <ChevronRight size={16} className="opacity-75" />
+                        <ChevronRight size={15} className="opacity-75" />
                       </>
                     )}
                   </button>
@@ -224,23 +224,23 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                   {/* Button 2: Pure White with Midnight Blue (#1E2761) & Border - Join a Session */}
                   <button
                     onClick={() => setShowJoinInline(prev => !prev)}
-                    className="w-full sm:w-auto px-7 py-3.5 sm:py-4 rounded-xl bg-white hover:bg-[#F5F7FA] text-[#1E2761] hover:text-[#151A44] border-2 border-[#E4E8EE] hover:border-[#1E2761]/40 font-bold text-sm sm:text-base shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center space-x-2 cursor-pointer"
+                    className="w-full sm:w-auto px-5 py-3 sm:py-3.5 rounded-xl bg-white hover:bg-[#F5F7FA] text-[#1E2761] hover:text-[#151A44] border border-[#E4E8EE] hover:border-[#1E2761]/40 font-bold text-xs sm:text-sm shadow-xs hover:shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center space-x-1.5 cursor-pointer"
                   >
-                    <Users size={18} className="text-[#1E2761]" />
-                    <span>Join a Session ▸</span>
+                    <Users size={16} className="text-[#1E2761]" />
+                    <span>Join Session ▸</span>
                   </button>
 
                 </div>
 
                 {/* Smooth Expandable Join Input (Friction-Free Room ID entry) */}
-                <div className="w-full max-w-[500px] mt-4">
+                <div className="w-full max-w-[460px] mt-3.5">
                   {(showJoinInline || joinId) && (
                     <motion.div 
                       initial={{ opacity: 0, height: 0, y: -5 }}
                       animate={{ opacity: 1, height: 'auto', y: 0 }}
                       exit={{ opacity: 0, height: 0, y: -5 }}
                       transition={{ duration: 0.25 }}
-                      className="p-3 rounded-2xl bg-[#F5F7FA] border border-[#E4E8EE]"
+                      className="p-2.5 rounded-2xl bg-[#F5F7FA] border border-[#E4E8EE]"
                     >
                       <div className="flex items-center gap-2">
                         <input 
@@ -250,15 +250,15 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                           onChange={(e) => setJoinId(e.target.value)}
                           placeholder="e.g. abc-defg-hij" 
                           autoFocus
-                          className="flex-1 px-4 py-2.5 bg-white border border-[#E4E8EE] rounded-xl text-[#1E2761] placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1E2761]/20 focus:border-[#1E2761] text-xs sm:text-sm font-medium transition-all"
+                          className="flex-1 px-3.5 py-2 bg-white border border-[#E4E8EE] rounded-xl text-[#1E2761] placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1E2761]/20 focus:border-[#1E2761] text-xs sm:text-sm font-medium transition-all"
                           onKeyDown={(e) => e.key === 'Enter' && handleJoinRoom()}
                         />
                         <button
                           onClick={handleJoinRoom}
                           disabled={!joinId.trim() || isJoining}
-                          className="px-5 py-2.5 bg-[#1E2761] hover:bg-[#151A44] text-white rounded-xl font-bold text-xs sm:text-sm transition-all shadow-md shadow-[#1E2761]/20 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-1.5"
+                          className="px-4 py-2 bg-[#1E2761] hover:bg-[#151A44] text-white rounded-xl font-bold text-xs sm:text-sm transition-all shadow-sm shadow-[#1E2761]/20 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-1.5"
                         >
-                          {isJoining ? <Loader2 size={15} className="animate-spin" /> : <span>Join Room</span>}
+                          {isJoining ? <Loader2 size={14} className="animate-spin" /> : <span>Join</span>}
                         </button>
                       </div>
                     </motion.div>
@@ -266,17 +266,17 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 </div>
 
                 {/* Feature check marks */}
-                <div className="flex flex-wrap items-center gap-4 sm:gap-6 pt-5 sm:pt-7 text-xs sm:text-sm text-slate-600 font-semibold select-none">
+                <div className="flex flex-wrap items-center gap-3.5 sm:gap-5 pt-4 sm:pt-5 text-xs text-slate-500 font-semibold select-none">
                   <div className="flex items-center space-x-1.5">
-                    <CheckCircle size={16} className="text-[#FF5A36]" />
+                    <CheckCircle size={14} className="text-[#FF5A36]" />
                     <span>Zero Downloads</span>
                   </div>
                   <div className="flex items-center space-x-1.5">
-                    <CheckCircle size={16} className="text-[#1E2761]" />
+                    <CheckCircle size={14} className="text-[#1E2761]" />
                     <span>Ultra HD Video</span>
                   </div>
                   <div className="flex items-center space-x-1.5">
-                    <CheckCircle size={16} className="text-[#FF5A36]" />
+                    <CheckCircle size={14} className="text-[#FF5A36]" />
                     <span>End-to-End Secure</span>
                   </div>
                 </div>
@@ -284,12 +284,12 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               </motion.div>
 
 
-              {/* Right Column: Hero Video Showcase */}
+              {/* Right Column: Hero Video Showcase (Increased Size, Fully Visible) */}
               <motion.div 
-                initial={{ opacity: 0, scale: 0.95 }}
+                initial={{ opacity: 0, scale: 0.96 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.7, delay: 0.1 }}
-                className="lg:col-span-6 flex items-center justify-center relative w-full"
+                transition={{ duration: 0.7, delay: 0.05 }}
+                className="lg:col-span-7 flex items-center justify-center relative w-full"
               >
                 <HeroVideos />
               </motion.div>
