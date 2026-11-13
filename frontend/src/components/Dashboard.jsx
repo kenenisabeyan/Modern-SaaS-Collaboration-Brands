@@ -173,8 +173,8 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 transition={{ duration: 0.5, ease: "easeOut" }}
                 className="lg:col-span-5 flex flex-col justify-center items-start text-left"
               >
-                {/* Main Headline (Strict 60-30-10: Deep Midnight Blue #1E2761 + Electric Coral #FF5A36) - 3 Lines */}
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[44px] xl:text-[48px] font-black tracking-tight leading-[1.1] text-[#1E2761] mb-3 sm:mb-4 select-none">
+                {/* Main Headline (Strict 60-30-10: Deep Midnight Blue #1E2761 + Electric Coral #FF5A36) - 3 Lines, Fully Selectable & Copyable */}
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[44px] xl:text-[48px] font-black tracking-tight leading-[1.1] text-[#1E2761] mb-3 sm:mb-4 select-text">
                   <span className="text-[#1E2761] block">Host</span>
                   <span className="text-[#1E2761] block">Engaging</span>
                   <span className="text-[#FF5A36] block">Masterclasses</span>

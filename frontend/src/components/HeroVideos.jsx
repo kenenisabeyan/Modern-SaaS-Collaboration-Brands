@@ -60,7 +60,7 @@ export default function HeroVideos({ className = '' }) {
   };
 
   return (
-    <div className={`relative w-full max-w-none select-none ${className}`}>
+    <div className={`relative w-full max-w-none ${className}`}>
 
       {/* Video Container: Completely borderless, seamless edge transition, full 1886x1080 resolution visibility */}
       <div 
@@ -118,7 +118,7 @@ export default function HeroVideos({ className = '' }) {
 
           {/* 2. 1080p Ultra HD Modern Pill Button */}
           <div 
-            className="group/hd inline-flex items-center justify-center space-x-1.5 sm:space-x-2 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-[#FEFEFE] text-[#1E2761] border border-[#E4E8EE] shadow-xs hover:shadow-md transition-all duration-200 select-none text-xs sm:text-sm font-bold shrink-0 whitespace-nowrap"
+            className="group/hd inline-flex items-center justify-center space-x-1.5 sm:space-x-2 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-[#FEFEFE] text-[#1E2761] border border-[#E4E8EE] shadow-xs hover:shadow-md transition-all duration-200 text-xs sm:text-sm font-bold shrink-0 whitespace-nowrap"
             title="Streamed in 1080p Ultra HD 60FPS WebRTC"
           >
             <Sparkles size={14} className="text-[#FF5A36] transition-transform duration-300 group-hover/hd:rotate-12 group-hover/hd:scale-110 shrink-0" />
@@ -130,7 +130,7 @@ export default function HeroVideos({ className = '' }) {
         </div>
 
         {/* Right: Remaining feature check marks on the same row */}
-        <div className="flex items-center flex-nowrap shrink-0 gap-3 sm:gap-4.5 text-xs text-slate-500 font-semibold select-none">
+        <div className="flex items-center flex-nowrap shrink-0 gap-3 sm:gap-4.5 text-xs text-slate-500 font-semibold">
           <div className="flex items-center space-x-1.5 shrink-0 whitespace-nowrap">
             <CheckCircle size={14} className="text-[#FF5A36] shrink-0" />
             <span>Zero Downloads</span>
