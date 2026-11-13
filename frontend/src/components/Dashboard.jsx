@@ -265,22 +265,6 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                   )}
                 </div>
 
-                {/* Feature check marks */}
-                <div className="flex flex-wrap items-center gap-3.5 sm:gap-5 pt-4 sm:pt-5 text-xs text-slate-500 font-semibold select-none">
-                  <div className="flex items-center space-x-1.5">
-                    <CheckCircle size={14} className="text-[#FF5A36]" />
-                    <span>Zero Downloads</span>
-                  </div>
-                  <div className="flex items-center space-x-1.5">
-                    <CheckCircle size={14} className="text-[#1E2761]" />
-                    <span>Ultra HD Video</span>
-                  </div>
-                  <div className="flex items-center space-x-1.5">
-                    <CheckCircle size={14} className="text-[#FF5A36]" />
-                    <span>End-to-End Secure</span>
-                  </div>
-                </div>
-
               </motion.div>
 
 

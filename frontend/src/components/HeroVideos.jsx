@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
-import { Play, Pause, Volume2, VolumeX, Sparkles } from 'lucide-react';
+import { Sparkles, CheckCircle } from 'lucide-react';
 
 export default function HeroVideos({ className = '' }) {
   const [isPlaying, setIsPlaying] = useState(true);
-  const [isMuted, setIsMuted] = useState(true);
+  const isMuted = true;
   const [hasError, setHasError] = useState(false);
   const videoRef = useRef(null);
 
@@ -13,7 +13,7 @@ export default function HeroVideos({ className = '' }) {
     if (!video) return;
 
     // Modern browsers require muted for unprompted autoplay
-    video.muted = isMuted;
+    video.muted = true;
 
     const startPlay = () => {
       const playPromise = video.play();
@@ -26,7 +26,6 @@ export default function HeroVideos({ className = '' }) {
             // Autoplay policy: ensure muted and retry seamlessly
             console.warn('[HeroVideos] Autoplay retry with muted audio:', err);
             video.muted = true;
-            setIsMuted(true);
             video.play().catch(() => {});
           });
       }
@@ -45,7 +44,7 @@ export default function HeroVideos({ className = '' }) {
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
-  }, [isMuted]);
+  }, []);
 
   const togglePlay = (e) => {
     e.stopPropagation();
@@ -57,20 +56,6 @@ export default function HeroVideos({ className = '' }) {
     } else {
       video.pause();
       setIsPlaying(false);
-    }
-  };
-
-  const toggleMute = (e) => {
-    e.stopPropagation();
-    const video = videoRef.current;
-    const nextMuted = !isMuted;
-    setIsMuted(nextMuted);
-    if (video) {
-      video.muted = nextMuted;
-      if (video.paused) {
-        video.play().catch(() => {});
-        setIsPlaying(true);
-      }
     }
   };
 
@@ -144,47 +129,20 @@ export default function HeroVideos({ className = '' }) {
           </div>
         </div>
 
-        {/* Right: Media Playback & Audio Controls */}
-        <div className="flex items-center space-x-2">
-          {/* Play / Pause Toggle Button */}
-          <button
-            type="button"
-            onClick={togglePlay}
-            className="inline-flex items-center justify-center space-x-1.5 px-3 sm:px-3.5 py-2 rounded-full bg-[#FEFEFE] hover:bg-[#F5F7FA] text-[#1E2761] hover:text-[#FF5A36] border border-[#E4E8EE] hover:border-[#FF5A36]/30 shadow-xs hover:shadow-md transition-all duration-200 cursor-pointer text-xs sm:text-sm font-bold active:scale-[0.98]"
-            title={isPlaying ? "Pause video" : "Play video"}
-          >
-            {isPlaying ? (
-              <>
-                <Pause size={14} className="text-[#1E2761] shrink-0" />
-                <span className="hidden sm:inline">Pause</span>
-              </>
-            ) : (
-              <>
-                <Play size={14} className="text-[#FF5A36] fill-current shrink-0" />
-                <span className="hidden sm:inline">Play</span>
-              </>
-            )}
-          </button>
-
-          {/* Sound Toggle Button */}
-          <button
-            type="button"
-            onClick={toggleMute}
-            className="inline-flex items-center justify-center space-x-1.5 px-3 sm:px-3.5 py-2 rounded-full bg-[#FEFEFE] hover:bg-[#F5F7FA] text-[#1E2761] hover:text-[#FF5A36] border border-[#E4E8EE] hover:border-[#FF5A36]/30 shadow-xs hover:shadow-md transition-all duration-200 cursor-pointer text-xs sm:text-sm font-bold active:scale-[0.98]"
-            title={isMuted ? "Unmute video audio" : "Mute video audio"}
-          >
-            {isMuted ? (
-              <>
-                <VolumeX size={14} className="text-slate-400 shrink-0" />
-                <span className="text-slate-500 hidden sm:inline">Sound Off</span>
-              </>
-            ) : (
-              <>
-                <Volume2 size={14} className="text-[#FF5A36] shrink-0" />
-                <span className="text-[#FF5A36] hidden sm:inline">Sound On</span>
-              </>
-            )}
-          </button>
+        {/* Right: Feature check marks moved under video */}
+        <div className="flex flex-wrap items-center gap-3.5 sm:gap-4.5 text-xs text-slate-500 font-semibold select-none">
+          <div className="flex items-center space-x-1.5">
+            <CheckCircle size={14} className="text-[#FF5A36] shrink-0" />
+            <span>Zero Downloads</span>
+          </div>
+          <div className="flex items-center space-x-1.5">
+            <CheckCircle size={14} className="text-[#1E2761] shrink-0" />
+            <span>Ultra HD Video</span>
+          </div>
+          <div className="flex items-center space-x-1.5">
+            <CheckCircle size={14} className="text-[#FF5A36] shrink-0" />
+            <span>End-to-End Secure</span>
+          </div>
         </div>
       </div>
 
