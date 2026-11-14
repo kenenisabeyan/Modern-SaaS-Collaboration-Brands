@@ -138,9 +138,6 @@ export default function FAQ({ onNavigate }) {
             variants={staggerContainer}
             className="flex flex-col items-center"
           >
-            <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#1E2761]/10 text-[#1E2761] border border-[#1E2761]/20 mb-4">
-              Help Center & FAQ
-            </span>
             <motion.h1 variants={fadeIn} className="text-4xl sm:text-6xl md:text-7xl font-extrabold mb-4 sm:mb-6 tracking-tight leading-[1.08] text-[#1E2761]">
               How can we <span className="text-[#FF5A36]">help you?</span>
             </motion.h1>

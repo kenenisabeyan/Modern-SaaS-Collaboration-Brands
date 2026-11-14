@@ -130,9 +130,6 @@ export default function Pricing({ onNavigate }) {
             variants={staggerContainer}
             className="max-w-4xl mx-auto flex flex-col items-center"
           >
-            <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#1E2761]/10 text-[#1E2761] border border-[#1E2761]/20 mb-4">
-              Transparent Pricing
-            </span>
             <motion.h1 variants={fadeIn} className="text-4xl sm:text-6xl md:text-7xl font-extrabold mb-4 sm:mb-6 tracking-tight leading-[1.08] text-[#1E2761]">
               Invest in your <span className="text-[#FF5A36]">masterclasses</span>
             </motion.h1>
