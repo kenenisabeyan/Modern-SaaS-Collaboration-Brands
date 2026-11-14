@@ -171,14 +171,14 @@ export default function Pricing({ onNavigate }) {
                    whileInView={{ opacity: 1, y: 0 }}
                    viewport={{ once: true }}
                    transition={{ delay: index * 0.1, duration: 0.5 }}
-                   className={`relative rounded-none p-8 sm:p-10 transition-all duration-300 bg-white border ${
+                   className={`relative rounded-3xl p-8 sm:p-10 transition-all duration-300 bg-white border ${
                      plan.recommended 
                      ? 'border-2 border-[#FF5A36] shadow-xl md:scale-105 z-10' 
                      : 'border-[#E4E8EE] shadow-sm hover:border-[#1E2761]/40 z-0'
                    }`}
                 >
                    {plan.recommended && (
-                     <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#FF5A36] text-white px-4 py-1 rounded-none text-xs font-bold uppercase tracking-widest shadow-md">
+                     <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#FF5A36] text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest shadow-md">
                         Most Popular
                      </div>
                    )}
