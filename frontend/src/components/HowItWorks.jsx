@@ -151,7 +151,7 @@ export default function HowItWorks({ onNavigate }) {
         </section>
 
         {/* 3. Deep Dive Architecture - Full-Bleed 100% Horizontal Canvas #F5F7FA (Zero Horizontal Side Borders) */}
-        <section className="w-full bg-[#F5F7FA] py-16 sm:py-24 mb-20 sm:mb-32 border-0 shadow-none">
+        <section className="w-full bg-[#F5F7FA] py-16 sm:py-24 border-0 shadow-none">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
             <div className="max-w-3xl mx-auto text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1E2761] mb-4">
@@ -190,9 +190,9 @@ export default function HowItWorks({ onNavigate }) {
           </div>
         </section>
 
-        {/* 4. Bottom CTA */}
-        <section className="text-center max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
-          <div className="bg-white border border-[#E4E8EE] rounded-3xl p-10 sm:p-16 shadow-md max-w-4xl mx-auto">
+        {/* 4. Bottom CTA - Full-Bleed Edge-to-Edge (Zero Horizontal Borders) */}
+        <section className="w-full bg-white py-16 sm:py-24 border-0 shadow-none text-center">
+          <div className="max-w-4xl mx-auto px-4 sm:px-8 lg:px-12">
             <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1E2761] mb-4 tracking-tight">
               Ready to experience effortless seminars?
             </h2>
