@@ -26,7 +26,7 @@ export default function Features({ onNavigate }) {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#F5F7FA] text-[#1E2761] font-sans overflow-hidden relative">
+    <div className="min-h-screen bg-[#FEFEFE] text-[#1E2761] font-sans overflow-hidden relative">
       <main className="pt-20 sm:pt-24 lg:pt-28 pb-16 sm:pb-24 relative z-10 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
         
         {/* 1. Hero Section */}
@@ -96,12 +96,12 @@ export default function Features({ onNavigate }) {
           </motion.div>
         </section>
 
-        {/* 3. Interactive Collaboration Section */}
+        {/* 3. Interactive Collaboration Section - Borderless, Pure Canvas #FEFEFE */}
         <section className="mb-20 sm:mb-32">
-          <div className="bg-white border border-[#E4E8EE] rounded-3xl p-8 sm:p-12 md:p-16 shadow-[0_10px_35px_rgba(30,39,97,0.04)]">
+          <div className="bg-[#FEFEFE] border-0 shadow-none rounded-none p-4 sm:p-8 md:p-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
-                <span className="inline-block px-3.5 py-1 rounded-full border border-[#FF5A36]/30 bg-[#FF5A36]/10 text-[#FF5A36] text-xs font-bold mb-4">
+                <span className="inline-block px-3.5 py-1 rounded-full bg-[#FF5A36]/10 text-[#FF5A36] text-xs font-bold mb-4">
                   Interactive Engagement
                 </span>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4 text-[#1E2761]">
