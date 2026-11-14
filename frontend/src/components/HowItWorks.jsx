@@ -82,10 +82,10 @@ export default function HowItWorks({ onNavigate }) {
 
   return (
     <div className="min-h-screen bg-white text-[#1E2761] font-sans overflow-hidden relative">
-      <main className="pt-20 sm:pt-24 lg:pt-28 pb-16 sm:pb-24 relative z-10 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
+      <main className="pt-20 sm:pt-24 lg:pt-28 pb-16 sm:pb-24 relative z-10 w-full">
         
         {/* 1. Hero Section */}
-        <section className="text-center mb-16 sm:mb-24">
+        <section className="text-center mb-16 sm:mb-24 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
           <motion.div
             initial="hidden"
             animate="visible"
@@ -105,7 +105,7 @@ export default function HowItWorks({ onNavigate }) {
         </section>
 
         {/* 2. Step by Step Grid */}
-        <section className="mb-20 sm:mb-32">
+        <section className="mb-20 sm:mb-32 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
           <motion.div 
             initial="hidden"
             whileInView="visible"
@@ -150,9 +150,9 @@ export default function HowItWorks({ onNavigate }) {
           </motion.div>
         </section>
 
-        {/* 3. Deep Dive Architecture */}
-        <section className="mb-20 sm:mb-32">
-          <div className="bg-[#F5F7FA] border border-[#E4E8EE] rounded-3xl p-8 sm:p-12 md:p-16">
+        {/* 3. Deep Dive Architecture - Full-Bleed 100% Horizontal Canvas #F5F7FA (Zero Horizontal Side Borders) */}
+        <section className="w-full bg-[#F5F7FA] py-16 sm:py-24 mb-20 sm:mb-32 border-0 shadow-none">
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
             <div className="max-w-3xl mx-auto text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1E2761] mb-4">
                 Cutting-Edge WebRTC Infrastructure
@@ -163,24 +163,24 @@ export default function HowItWorks({ onNavigate }) {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              <div className="bg-white p-6 rounded-2xl border border-[#E4E8EE] shadow-sm text-center">
-                <div className="w-12 h-12 rounded-2xl bg-[#1E2761]/10 text-[#1E2761] flex items-center justify-center mx-auto mb-4">
+              <div className="bg-white p-6 rounded-none border border-[#E4E8EE] shadow-sm text-center">
+                <div className="w-12 h-12 rounded-none bg-[#1E2761]/10 text-[#1E2761] flex items-center justify-center mx-auto mb-4">
                   <Zap size={24} />
                 </div>
                 <h4 className="font-bold text-[#1E2761] mb-2">Direct P2P Routing</h4>
                 <p className="text-slate-600 text-xs sm:text-sm">Video feeds stream directly between peers for maximum clarity.</p>
               </div>
 
-              <div className="bg-white p-6 rounded-2xl border border-[#E4E8EE] shadow-sm text-center">
-                <div className="w-12 h-12 rounded-2xl bg-[#FF5A36]/10 text-[#FF5A36] flex items-center justify-center mx-auto mb-4">
+              <div className="bg-white p-6 rounded-none border border-[#E4E8EE] shadow-sm text-center">
+                <div className="w-12 h-12 rounded-none bg-[#FF5A36]/10 text-[#FF5A36] flex items-center justify-center mx-auto mb-4">
                   <MessageSquare size={24} />
                 </div>
                 <h4 className="font-bold text-[#1E2761] mb-2">Socket.IO Signaling</h4>
                 <p className="text-slate-600 text-xs sm:text-sm">Instant handshake and state synchronization with zero delay.</p>
               </div>
 
-              <div className="bg-white p-6 rounded-2xl border border-[#E4E8EE] shadow-sm text-center">
-                <div className="w-12 h-12 rounded-2xl bg-[#1E2761]/10 text-[#1E2761] flex items-center justify-center mx-auto mb-4">
+              <div className="bg-white p-6 rounded-none border border-[#E4E8EE] shadow-sm text-center">
+                <div className="w-12 h-12 rounded-none bg-[#1E2761]/10 text-[#1E2761] flex items-center justify-center mx-auto mb-4">
                   <Shield size={24} />
                 </div>
                 <h4 className="font-bold text-[#1E2761] mb-2">DTLS-SRTP Security</h4>
@@ -191,7 +191,7 @@ export default function HowItWorks({ onNavigate }) {
         </section>
 
         {/* 4. Bottom CTA */}
-        <section className="text-center">
+        <section className="text-center max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
           <div className="bg-white border border-[#E4E8EE] rounded-3xl p-10 sm:p-16 shadow-md max-w-4xl mx-auto">
             <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1E2761] mb-4 tracking-tight">
               Ready to experience effortless seminars?
