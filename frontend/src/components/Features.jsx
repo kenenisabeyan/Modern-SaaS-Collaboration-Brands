@@ -59,26 +59,106 @@ export default function Features({ onNavigate }) {
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
           >
             {[
-              { icon: <Zap size={24}/>, title: "Instant Meeting Rooms", desc: "Generate secure meeting links in one click. No scheduling or setup required.", color: "text-[#FF5A36] bg-[#FF5A36]/10 border-[#FF5A36]/20" },
-              { icon: <Video size={24}/>, title: "HD Video Calls", desc: "Crystal clear 1080p video architecture optimized for low bandwidth.", color: "text-[#1E2761] bg-[#1E2761]/10 border-[#1E2761]/20" },
-              { icon: <Monitor size={24}/>, title: "Screen Sharing", desc: "Share your entire screen or specific windows with zero latency.", color: "text-[#FF5A36] bg-[#FF5A36]/10 border-[#FF5A36]/20" },
-              { icon: <Layers size={24}/>, title: "Live Collaboration", desc: "Interactive tools for real-time whiteboarding and document sharing.", color: "text-[#1E2761] bg-[#1E2761]/10 border-[#1E2761]/20" },
-              { icon: <Shield size={24}/>, title: "Secure Encrypted", desc: "End-to-end encryption ensures your masterclasses remain private and secure.", color: "text-[#1E2761] bg-[#1E2761]/10 border-[#1E2761]/20" },
-              { icon: <Smartphone size={24}/>, title: "Responsive Access", desc: "Flawless experience across desktops, tablets, and smartphones.", color: "text-[#FF5A36] bg-[#FF5A36]/10 border-[#FF5A36]/20" },
-              { icon: <Globe size={24}/>, title: "Zero Downloads", desc: "Browser-based access means your attendees join instantly without friction.", color: "text-[#1E2761] bg-[#1E2761]/10 border-[#1E2761]/20" },
-              { icon: <MessageSquare size={24}/>, title: "Real-time Chat", desc: "Synchronized chat and audio for seamless audience interaction.", color: "text-[#FF5A36] bg-[#FF5A36]/10 border-[#FF5A36]/20" }
+              { 
+                icon: <Zap size={24}/>, 
+                title: "Instant Meeting Rooms", 
+                desc: "Generate secure meeting links in one click. No scheduling or setup required.", 
+                color: "text-[#FF5A36] bg-[#FF5A36]/10 border-[#FF5A36]/20",
+                beamColor: "#FF5A36",
+                beamGlow: "rgba(255, 90, 54, 0.7)",
+                beamFade: "rgba(255, 90, 54, 0.2)",
+                shadowColor: "hover:shadow-[#FF5A36]/15",
+                hoverTextColor: "group-hover:text-[#FF5A36]"
+              },
+              { 
+                icon: <Video size={24}/>, 
+                title: "HD Video Calls", 
+                desc: "Crystal clear 1080p video architecture optimized for low bandwidth.", 
+                color: "text-[#1E2761] bg-[#1E2761]/10 border-[#1E2761]/20",
+                beamColor: "#1E2761",
+                beamGlow: "rgba(30, 39, 97, 0.7)",
+                beamFade: "rgba(30, 39, 97, 0.2)",
+                shadowColor: "hover:shadow-[#1E2761]/15",
+                hoverTextColor: "group-hover:text-[#1E2761]"
+              },
+              { 
+                icon: <Monitor size={24}/>, 
+                title: "Screen Sharing", 
+                desc: "Share your entire screen or specific windows with zero latency.", 
+                color: "text-[#FF5A36] bg-[#FF5A36]/10 border-[#FF5A36]/20",
+                beamColor: "#FF5A36",
+                beamGlow: "rgba(255, 90, 54, 0.7)",
+                beamFade: "rgba(255, 90, 54, 0.2)",
+                shadowColor: "hover:shadow-[#FF5A36]/15",
+                hoverTextColor: "group-hover:text-[#FF5A36]"
+              },
+              { 
+                icon: <Layers size={24}/>, 
+                title: "Live Collaboration", 
+                desc: "Interactive tools for real-time whiteboarding and document sharing.", 
+                color: "text-[#1E2761] bg-[#1E2761]/10 border-[#1E2761]/20",
+                beamColor: "#1E2761",
+                beamGlow: "rgba(30, 39, 97, 0.7)",
+                beamFade: "rgba(30, 39, 97, 0.2)",
+                shadowColor: "hover:shadow-[#1E2761]/15",
+                hoverTextColor: "group-hover:text-[#1E2761]"
+              },
+              { 
+                icon: <Shield size={24}/>, 
+                title: "Secure Encrypted", 
+                desc: "End-to-end encryption ensures your masterclasses remain private and secure.", 
+                color: "text-[#1E2761] bg-[#1E2761]/10 border-[#1E2761]/20",
+                beamColor: "#1E2761",
+                beamGlow: "rgba(30, 39, 97, 0.7)",
+                beamFade: "rgba(30, 39, 97, 0.2)",
+                shadowColor: "hover:shadow-[#1E2761]/15",
+                hoverTextColor: "group-hover:text-[#1E2761]"
+              },
+              { 
+                icon: <Smartphone size={24}/>, 
+                title: "Responsive Access", 
+                desc: "Flawless experience across desktops, tablets, and smartphones.", 
+                color: "text-[#FF5A36] bg-[#FF5A36]/10 border-[#FF5A36]/20",
+                beamColor: "#FF5A36",
+                beamGlow: "rgba(255, 90, 54, 0.7)",
+                beamFade: "rgba(255, 90, 54, 0.2)",
+                shadowColor: "hover:shadow-[#FF5A36]/15",
+                hoverTextColor: "group-hover:text-[#FF5A36]"
+              },
+              { 
+                icon: <Globe size={24}/>, 
+                title: "Zero Downloads", 
+                desc: "Browser-based access means your attendees join instantly without friction.", 
+                color: "text-[#1E2761] bg-[#1E2761]/10 border-[#1E2761]/20",
+                beamColor: "#1E2761",
+                beamGlow: "rgba(30, 39, 97, 0.7)",
+                beamFade: "rgba(30, 39, 97, 0.2)",
+                shadowColor: "hover:shadow-[#1E2761]/15",
+                hoverTextColor: "group-hover:text-[#1E2761]"
+              },
+              { 
+                icon: <MessageSquare size={24}/>, 
+                title: "Real-time Chat", 
+                desc: "Synchronized chat and audio for seamless audience interaction.", 
+                color: "text-[#FF5A36] bg-[#FF5A36]/10 border-[#FF5A36]/20",
+                beamColor: "#FF5A36",
+                beamGlow: "rgba(255, 90, 54, 0.7)",
+                beamFade: "rgba(255, 90, 54, 0.2)",
+                shadowColor: "hover:shadow-[#FF5A36]/15",
+                hoverTextColor: "group-hover:text-[#FF5A36]"
+              }
             ].map((f, i) => (
               <motion.div 
                 key={i} 
                 variants={fadeIn} 
                 whileHover={{ y: -4 }} 
-                className="relative p-[2px] overflow-hidden rounded-none shadow-sm hover:shadow-xl hover:shadow-[#FF5A36]/15 transition-all group flex flex-col bg-[#E4E8EE]"
+                className={`relative p-[2px] overflow-hidden rounded-none shadow-sm hover:shadow-xl ${f.shadowColor} transition-all group flex flex-col bg-[#E4E8EE]`}
               >
-                {/* Continuous Rotating Electric Coral (#FF5A36) Border Beam (90° Rectangle Border Radius) */}
+                {/* Continuous Rotating Border Beam Matching Container Color */}
                 <div 
                   className="absolute inset-[-250%] animate-spin-beam pointer-events-none"
                   style={{
-                    background: 'conic-gradient(from 0deg, #E4E8EE 0deg, #E4E8EE 220deg, rgba(255, 90, 54, 0.2) 260deg, rgba(255, 90, 54, 0.7) 310deg, #FF5A36 360deg)',
+                    background: `conic-gradient(from 0deg, #E4E8EE 0deg, #E4E8EE 220deg, ${f.beamFade} 260deg, ${f.beamGlow} 310deg, ${f.beamColor} 360deg)`,
                     animationDelay: `${-(i * 0.44)}s`
                   }}
                 />
@@ -88,7 +168,7 @@ export default function Features({ onNavigate }) {
                   <div className={`w-12 h-12 rounded-none flex items-center justify-center mb-5 mx-auto border group-hover:scale-105 transition-transform ${f.color}`}>
                     {f.icon}
                   </div>
-                  <h3 className="text-lg font-bold mb-2 text-[#1E2761] group-hover:text-[#FF5A36] transition-colors">{f.title}</h3>
+                  <h3 className={`text-lg font-bold mb-2 text-[#1E2761] ${f.hoverTextColor} transition-colors`}>{f.title}</h3>
                   <p className="text-slate-600 leading-relaxed text-sm">{f.desc}</p>
                 </div>
               </motion.div>
