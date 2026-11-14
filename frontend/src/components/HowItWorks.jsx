@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Video, UserPlus, Link as LinkIcon, Monitor, 
-  ChevronRight, ArrowRight, Zap, MessageSquare, Shield
+  ArrowRight, Zap, MessageSquare, Shield
 } from 'lucide-react';
 
 const fadeIn = {
@@ -201,10 +201,10 @@ export default function HowItWorks({ onNavigate }) {
             </p>
             <button 
               onClick={() => onNavigate(localStorage.getItem('token') ? 'user-dashboard' : 'dashboard')}
-              className="bg-[#FF5A36] hover:bg-[#E04826] text-white px-9 py-4 rounded-full font-bold text-base shadow-lg shadow-[#FF5A36]/25 hover:shadow-xl hover:shadow-[#FF5A36]/35 inline-flex items-center space-x-2 transition-all cursor-pointer"
+              className="bg-[#FF5A36] hover:bg-[#E04826] text-white px-9 py-4 rounded-full font-bold text-base shadow-lg shadow-[#FF5A36]/25 hover:shadow-xl hover:shadow-[#FF5A36]/35 inline-flex items-center space-x-2 transition-all cursor-pointer group"
             >
               <span>Get Started Free</span>
-              <ChevronRight size={18} />
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
         </section>

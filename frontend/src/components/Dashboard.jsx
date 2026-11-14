@@ -4,7 +4,7 @@ import { roomIdFromPathname } from '../routeUtils.js';
 import HeroVideos from './HeroVideos.jsx';
 import { 
   Video, Users, Loader2, Sparkles, Zap, Shield, Clock, Monitor, 
-  ChevronRight, Link, CheckCircle, Star, MessageSquare, GraduationCap, 
+  Link, CheckCircle, Star, MessageSquare, GraduationCap, 
   BookOpen, Heart, ArrowRight, X
 } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -211,7 +211,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                       <>
                         <Video size={15} className="shrink-0" />
                         <span>Create Instant Room</span>
-                        <ChevronRight size={14} className="opacity-75 hidden md:inline-block shrink-0" />
+                        <ArrowRight size={14} className="opacity-75 hidden md:inline-block shrink-0" />
                       </>
                     )}
                   </button>

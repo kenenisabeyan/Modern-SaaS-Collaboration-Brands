@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Check, X, ChevronRight, ChevronDown, Loader2, Sparkles, Shield, Zap } from 'lucide-react';
+import { Check, X, ArrowRight, ChevronDown, Loader2, Sparkles, Shield, Zap } from 'lucide-react';
 import api from '../services/api.js';
 
 const fadeIn = {
@@ -323,10 +323,10 @@ export default function Pricing({ onNavigate }) {
             </p>
             <button 
               onClick={() => onNavigate('faq')}
-              className="bg-[#1E2761] hover:bg-[#151A44] text-white px-9 py-4 rounded-full font-bold text-base shadow-lg shadow-[#1E2761]/25 hover:shadow-xl inline-flex items-center space-x-2 transition-all cursor-pointer"
+              className="bg-[#1E2761] hover:bg-[#151A44] text-white px-9 py-4 rounded-full font-bold text-base shadow-lg shadow-[#1E2761]/25 hover:shadow-xl inline-flex items-center space-x-2 transition-all cursor-pointer group"
             >
               <span>Talk to Solutions Team</span>
-              <ChevronRight size={18} />
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
         </section>
