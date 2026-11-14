@@ -37,9 +37,6 @@ export default function Features({ onNavigate }) {
             variants={staggerContainer}
             className="max-w-4xl mx-auto flex flex-col items-center"
           >
-            <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#1E2761]/8 text-[#1E2761] border border-[#1E2761]/15 mb-4">
-              Platform Features
-            </span>
             <motion.h1 variants={fadeIn} className="text-4xl sm:text-6xl md:text-7xl font-extrabold mb-4 sm:mb-6 tracking-tight leading-[1.08] text-[#1E2761]">
               Built for <span className="text-[#FF5A36]">flawless</span> masterclasses.
             </motion.h1>
@@ -181,9 +178,6 @@ export default function Features({ onNavigate }) {
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
-                <span className="inline-block px-3.5 py-1 rounded-full bg-[#FF5A36]/10 text-[#FF5A36] text-xs font-bold mb-4">
-                  Interactive Engagement
-                </span>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4 text-[#1E2761]">
                   Designed for lively masterclasses.
                 </h2>

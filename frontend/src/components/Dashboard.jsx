@@ -366,9 +366,6 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
           <div className="max-w-[1720px] mx-auto">
             
             <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-18">
-              <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#1E2761]/8 text-[#1E2761] border border-[#1E2761]/15 mb-4">
-                Core Capabilities
-              </span>
               <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#1E2761] mb-4">
                 Everything You Need for Perfect Seminars
               </h2>
@@ -519,9 +516,6 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
           <div className="max-w-[1720px] mx-auto">
             
             <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-18">
-              <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#1E2761]/8 text-[#1E2761] border border-[#1E2761]/15 mb-4">
-                Loved by educators
-              </span>
               <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#1E2761] mb-4">
                 What Our Community Says
               </h2>
