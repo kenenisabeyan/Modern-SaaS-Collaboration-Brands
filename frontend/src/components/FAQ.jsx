@@ -128,10 +128,10 @@ export default function FAQ({ onNavigate }) {
 
   return (
     <div className="min-h-screen bg-white text-[#1E2761] font-sans overflow-hidden relative">
-      <main className="pt-20 sm:pt-24 lg:pt-28 pb-16 sm:pb-24 relative z-10 max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-8">
+      <main className="pt-20 sm:pt-24 lg:pt-28 pb-16 sm:pb-24 relative z-10 w-full">
         
         {/* 1. Hero Section */}
-        <section className="text-center mb-10 sm:mb-16">
+        <section className="text-center mb-10 sm:mb-16 max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial="hidden"
             animate="visible"
@@ -151,7 +151,7 @@ export default function FAQ({ onNavigate }) {
         </section>
 
         {/* 2. Search Bar */}
-        <section className="mb-14 sm:mb-20">
+        <section className="mb-14 sm:mb-20 max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative max-w-2xl mx-auto">
              <div className="flex items-center bg-[#F5F7FA] border border-[#E4E8EE] rounded-full p-2 shadow-sm focus-within:border-[#1E2761] focus-within:bg-white transition-all">
                 <div className="pl-4 pr-2 text-slate-400">
@@ -177,7 +177,7 @@ export default function FAQ({ onNavigate }) {
         </section>
 
         {/* 3. FAQ Content by Category */}
-        <section className="space-y-12 sm:space-y-16 mb-20 sm:mb-32">
+        <section className="space-y-12 sm:space-y-16 mb-20 sm:mb-32 max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-8">
           {filteredData.length > 0 ? (
             filteredData.map((category, catIndex) => (
               <div key={catIndex}>
@@ -214,9 +214,9 @@ export default function FAQ({ onNavigate }) {
           )}
         </section>
 
-        {/* 4. Support Contact CTA */}
-        <section className="text-center">
-          <div className="bg-white border border-[#E4E8EE] rounded-3xl p-10 sm:p-14 shadow-md max-w-3xl mx-auto">
+        {/* 4. Support Contact CTA - Full-Bleed Edge-to-Edge (Zero Horizontal Borders) */}
+        <section className="w-full bg-white py-16 sm:py-24 border-0 shadow-none text-center">
+          <div className="max-w-3xl mx-auto px-4 sm:px-8 lg:px-12">
             <h3 className="text-2xl sm:text-3xl font-extrabold text-[#1E2761] mb-2">Still have questions?</h3>
             <p className="text-slate-600 text-sm sm:text-base max-w-md mx-auto mb-6">
               Can't find the answer you're looking for? Our friendly engineering team is here to help.

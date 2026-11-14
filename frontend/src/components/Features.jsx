@@ -191,9 +191,9 @@ export default function Features({ onNavigate }) {
           </div>
         </section>
 
-        {/* 5. CTA Section */}
-        <section className="text-center max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
-          <div className="bg-white border border-[#E4E8EE] rounded-3xl p-10 sm:p-16 shadow-md max-w-4xl mx-auto">
+        {/* 5. CTA Section - Full-Bleed Edge-to-Edge (Zero Horizontal Borders) */}
+        <section className="w-full bg-white py-16 sm:py-24 border-0 shadow-none text-center">
+          <div className="max-w-4xl mx-auto px-4 sm:px-8 lg:px-12">
             <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1E2761] mb-4 tracking-tight">
               Ready to host your next masterclass?
             </h2>
