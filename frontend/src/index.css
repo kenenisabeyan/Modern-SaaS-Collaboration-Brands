@@ -258,3 +258,17 @@
     --border-angle: 1turn;
   }
 }
+
+/* Continuous Rotating Electric Coral (#FF5A36) Border Beam */
+@keyframes spin-beam {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-beam {
+  animation: spin-beam 3.5s linear infinite;
+}
