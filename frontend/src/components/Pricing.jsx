@@ -120,10 +120,10 @@ export default function Pricing({ onNavigate }) {
 
   return (
     <div className="min-h-screen bg-white text-[#1E2761] font-sans overflow-hidden relative">
-      <main className="pt-20 sm:pt-24 lg:pt-28 pb-16 sm:pb-24 relative z-10 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
+      <main className="pt-20 sm:pt-24 lg:pt-28 pb-16 sm:pb-24 relative z-10 w-full">
         
         {/* 1. Hero Section & Toggle */}
-        <section className="text-center mb-16 sm:mb-20">
+        <section className="text-center mb-16 sm:mb-20 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
           <motion.div
             initial="hidden"
             animate="visible"
@@ -162,7 +162,7 @@ export default function Pricing({ onNavigate }) {
         </section>
 
         {/* 2. Pricing Cards */}
-        <section className="mb-20 sm:mb-32">
+        <section className="mb-20 sm:mb-32 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-center max-w-6xl mx-auto">
              {plans.map((plan, index) => (
                 <motion.div 
@@ -239,7 +239,7 @@ export default function Pricing({ onNavigate }) {
         </section>
 
         {/* Feature Comparison Matrix Toggle */}
-        <section className="mb-20 sm:mb-28 max-w-5xl mx-auto">
+        <section className="mb-20 sm:mb-28 max-w-5xl mx-auto px-4 sm:px-8 lg:px-12">
           <div className="text-center mb-6">
             <button
               onClick={() => setShowMatrix(prev => !prev)}
@@ -312,9 +312,9 @@ export default function Pricing({ onNavigate }) {
           )}
         </section>
 
-        {/* 3. Bottom CTA */}
-        <section className="text-center">
-          <div className="bg-white border border-[#E4E8EE] rounded-3xl p-10 sm:p-16 shadow-md max-w-4xl mx-auto">
+        {/* 3. Bottom CTA - Full-Bleed Edge-to-Edge (Zero Horizontal Borders) */}
+        <section className="w-full bg-white py-16 sm:py-24 border-0 shadow-none text-center">
+          <div className="max-w-4xl mx-auto px-4 sm:px-8 lg:px-12">
             <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1E2761] mb-4 tracking-tight">
               Need custom volume or on-premise deployment?
             </h2>
