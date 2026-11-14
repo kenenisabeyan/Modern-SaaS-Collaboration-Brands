@@ -26,7 +26,7 @@ export default function Features({ onNavigate }) {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#FEFEFE] text-[#1E2761] font-sans overflow-hidden relative">
+    <div className="min-h-screen bg-[#F5F7FA] text-[#1E2761] font-sans overflow-hidden relative">
       <main className="pt-20 sm:pt-24 lg:pt-28 pb-16 sm:pb-24 relative z-10 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
         
         {/* 1. Hero Section */}
