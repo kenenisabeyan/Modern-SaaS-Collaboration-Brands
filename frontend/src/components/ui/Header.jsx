@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Video, X, Plus, Minus, Users, LogIn, LogOut, 
-  User, Settings, ChevronRight, Sparkles, Shield, ArrowRight 
+  User, Settings, Sparkles, Shield, ArrowRight 
 } from 'lucide-react';
 
 export default function Header({ currentView, onNavigate, isAuthenticated, handleAuthAction }) {
