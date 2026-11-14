@@ -27,10 +27,10 @@ export default function Features({ onNavigate }) {
 
   return (
     <div className="min-h-screen bg-[#F5F7FA] text-[#1E2761] font-sans overflow-hidden relative">
-      <main className="pt-20 sm:pt-24 lg:pt-28 pb-16 sm:pb-24 relative z-10 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
+      <main className="pt-20 sm:pt-24 lg:pt-28 pb-16 sm:pb-24 relative z-10 w-full">
         
         {/* 1. Hero Section */}
-        <section className="text-center mb-16 sm:mb-24">
+        <section className="text-center mb-16 sm:mb-24 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
           <motion.div
             initial="hidden"
             animate="visible"
@@ -50,7 +50,7 @@ export default function Features({ onNavigate }) {
         </section>
 
         {/* 2. Main Feature Grid */}
-        <section className="mb-20 sm:mb-32">
+        <section className="mb-20 sm:mb-32 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
           <motion.div 
             initial="hidden"
             whileInView="visible"
@@ -96,9 +96,9 @@ export default function Features({ onNavigate }) {
           </motion.div>
         </section>
 
-        {/* 3. Interactive Collaboration Section - Borderless, Pure Canvas #FEFEFE */}
-        <section className="mb-20 sm:mb-32">
-          <div className="bg-[#FEFEFE] border-0 shadow-none rounded-none p-4 sm:p-8 md:p-12">
+        {/* 3. Interactive Collaboration Section - Full-Bleed 100% Horizontal Canvas #FEFEFE (Zero Horizontal Borders) */}
+        <section className="w-full bg-[#FEFEFE] py-16 sm:py-24 mb-20 sm:mb-32 border-0 shadow-none">
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
                 <span className="inline-block px-3.5 py-1 rounded-full bg-[#FF5A36]/10 text-[#FF5A36] text-xs font-bold mb-4">
@@ -155,7 +155,7 @@ export default function Features({ onNavigate }) {
         </section>
 
         {/* 4. Three Core Architectural Pillars */}
-        <section className="mb-20 sm:mb-32">
+        <section className="mb-20 sm:mb-32 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             
             <div className="bg-white border border-[#E4E8EE] p-8 rounded-3xl shadow-sm hover:border-[#1E2761]/40 hover:shadow-lg transition-all flex flex-col items-center text-center">
@@ -192,7 +192,7 @@ export default function Features({ onNavigate }) {
         </section>
 
         {/* 5. CTA Section */}
-        <section className="text-center">
+        <section className="text-center max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
           <div className="bg-white border border-[#E4E8EE] rounded-3xl p-10 sm:p-16 shadow-md max-w-4xl mx-auto">
             <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1E2761] mb-4 tracking-tight">
               Ready to host your next masterclass?
