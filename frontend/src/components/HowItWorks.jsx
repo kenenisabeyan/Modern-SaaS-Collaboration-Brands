@@ -32,7 +32,12 @@ export default function HowItWorks({ onNavigate }) {
       title: "Create Free Account",
       desc: "Sign up in 5 seconds with zero software installations or bulky dependencies required.",
       color: "text-[#1E2761] bg-[#1E2761]/10 border-[#1E2761]/20",
-      accent: "bg-[#1E2761]"
+      accent: "bg-[#1E2761]",
+      beamColor: "#1E2761",
+      beamGlow: "rgba(30, 39, 97, 0.7)",
+      beamFade: "rgba(30, 39, 97, 0.2)",
+      shadowColor: "hover:shadow-[#1E2761]/15",
+      hoverTextColor: "group-hover:text-[#1E2761]"
     },
     {
       number: "02",
@@ -40,7 +45,12 @@ export default function HowItWorks({ onNavigate }) {
       title: "Generate Room",
       desc: "Launch an instant encrypted video room with 1 click directly from your dashboard.",
       color: "text-[#FF5A36] bg-[#FF5A36]/10 border-[#FF5A36]/20",
-      accent: "bg-[#FF5A36]"
+      accent: "bg-[#FF5A36]",
+      beamColor: "#FF5A36",
+      beamGlow: "rgba(255, 90, 54, 0.7)",
+      beamFade: "rgba(255, 90, 54, 0.2)",
+      shadowColor: "hover:shadow-[#FF5A36]/15",
+      hoverTextColor: "group-hover:text-[#FF5A36]"
     },
     {
       number: "03",
@@ -48,7 +58,12 @@ export default function HowItWorks({ onNavigate }) {
       title: "Invite Audience",
       desc: "Copy your unique invite link and share it anywhere. Attendees join directly from browser.",
       color: "text-[#1E2761] bg-[#1E2761]/10 border-[#1E2761]/20",
-      accent: "bg-[#1E2761]"
+      accent: "bg-[#1E2761]",
+      beamColor: "#1E2761",
+      beamGlow: "rgba(30, 39, 97, 0.7)",
+      beamFade: "rgba(30, 39, 97, 0.2)",
+      shadowColor: "hover:shadow-[#1E2761]/15",
+      hoverTextColor: "group-hover:text-[#1E2761]"
     },
     {
       number: "04",
@@ -56,7 +71,12 @@ export default function HowItWorks({ onNavigate }) {
       title: "Present and Engage",
       desc: "Share your screen, chat with students in real time, and record key insights smoothly.",
       color: "text-[#FF5A36] bg-[#FF5A36]/10 border-[#FF5A36]/20",
-      accent: "bg-[#FF5A36]"
+      accent: "bg-[#FF5A36]",
+      beamColor: "#FF5A36",
+      beamGlow: "rgba(255, 90, 54, 0.7)",
+      beamFade: "rgba(255, 90, 54, 0.2)",
+      shadowColor: "hover:shadow-[#FF5A36]/15",
+      hoverTextColor: "group-hover:text-[#FF5A36]"
     }
   ];
 
@@ -98,21 +118,33 @@ export default function HowItWorks({ onNavigate }) {
                 key={idx} 
                 variants={fadeIn}
                 whileHover={{ y: -5 }}
-                className="bg-white border border-[#E4E8EE] p-8 rounded-3xl shadow-sm hover:shadow-lg transition-all flex flex-col justify-between relative group"
+                className={`relative p-[2px] overflow-hidden rounded-none shadow-sm hover:shadow-xl ${step.shadowColor} transition-all flex flex-col justify-between bg-[#E4E8EE] group`}
               >
-                <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="text-3xl font-black text-slate-200 group-hover:text-slate-400 transition-colors font-mono">
-                      {step.number}
-                    </span>
-                    <div className={`w-12 h-12 rounded-2xl flex items-center justify-center border ${step.color}`}>
-                      {step.icon}
+                {/* Continuous Rotating Border Beam with Card's Specific Container Color (90° Rectangle Border Radius) */}
+                <div 
+                  className="absolute inset-[-250%] animate-spin-beam pointer-events-none"
+                  style={{
+                    background: `conic-gradient(from 0deg, #E4E8EE 0deg, #E4E8EE 220deg, ${step.beamFade} 260deg, ${step.beamGlow} 310deg, ${step.beamColor} 360deg)`,
+                    animationDelay: `${-(idx * 0.88)}s`
+                  }}
+                />
+
+                {/* Inner Card Content Surface */}
+                <div className="relative w-full h-full bg-white group-hover:bg-[#FFFFFF] p-8 rounded-none flex flex-col justify-between transition-colors duration-300">
+                  <div>
+                    <div className="flex items-center justify-between mb-6">
+                      <span className="text-3xl font-black text-slate-200 group-hover:text-slate-400 transition-colors font-mono">
+                        {step.number}
+                      </span>
+                      <div className={`w-12 h-12 rounded-none flex items-center justify-center border ${step.color}`}>
+                        {step.icon}
+                      </div>
                     </div>
+                    <h3 className={`text-xl font-bold text-[#1E2761] ${step.hoverTextColor} transition-colors mb-3`}>{step.title}</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed mb-6">{step.desc}</p>
                   </div>
-                  <h3 className="text-xl font-bold text-[#1E2761] mb-3">{step.title}</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed mb-6">{step.desc}</p>
+                  <div className={`h-1.5 w-12 rounded-none ${step.accent}`}></div>
                 </div>
-                <div className={`h-1.5 w-12 rounded-full ${step.accent}`}></div>
               </motion.div>
             ))}
           </motion.div>
