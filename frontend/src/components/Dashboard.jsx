@@ -379,34 +379,73 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               
-              <div className="bg-[#F5F7FA] border border-[#E4E8EE] rounded-3xl p-8 sm:p-10 hover:border-[#1E2761]/30 shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center">
-                <div className="w-14 h-14 bg-[#1E2761]/10 border border-[#1E2761]/20 text-[#1E2761] rounded-2xl flex items-center justify-center mb-6 mx-auto"> 
-                  <Video size={28} /> 
+              {/* Card 1: Ultra HD Video with Continuous Animated #FF5A36 Border Beam (90° Rectangle Border Radius) */}
+              <div className="relative p-[2px] overflow-hidden rounded-none shadow-sm hover:shadow-xl hover:shadow-[#FF5A36]/15 transition-all group flex flex-col bg-[#E4E8EE]">
+                {/* Continuous Rotating Electric Coral (#FF5A36) Border Beam */}
+                <div 
+                  className="absolute inset-[-250%] animate-spin-beam pointer-events-none"
+                  style={{
+                    background: 'conic-gradient(from 0deg, #E4E8EE 0deg, #E4E8EE 220deg, rgba(255, 90, 54, 0.2) 260deg, rgba(255, 90, 54, 0.7) 310deg, #FF5A36 360deg)',
+                    animationDelay: '0s'
+                  }}
+                />
+
+                {/* Inner Card Content Surface */}
+                <div className="relative w-full h-full bg-[#F5F7FA] group-hover:bg-[#FFFFFF] p-8 sm:p-10 rounded-none flex flex-col items-center text-center transition-colors duration-300">
+                  <div className="w-14 h-14 bg-[#1E2761]/10 border border-[#1E2761]/20 text-[#1E2761] rounded-none flex items-center justify-center mb-6 mx-auto group-hover:bg-[#FF5A36]/10 group-hover:border-[#FF5A36]/30 group-hover:text-[#FF5A36] transition-all"> 
+                    <Video size={28} /> 
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3 text-[#1E2761]">Ultra HD Video</h3>
+                  <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
+                    Experience crystal-clear video and audio quality powered by advanced WebRTC architecture, ensuring you always look your best.
+                  </p>
                 </div>
-                <h3 className="text-2xl font-bold mb-3 text-[#1E2761]">Ultra HD Video</h3>
-                <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
-                  Experience crystal-clear video and audio quality powered by advanced WebRTC architecture, ensuring you always look your best.
-                </p>
               </div>
 
-              <div className="bg-[#F5F7FA] border border-[#E4E8EE] rounded-3xl p-8 sm:p-10 hover:border-[#FF5A36]/40 shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center">
-                <div className="w-14 h-14 bg-[#FF5A36]/10 border border-[#FF5A36]/20 text-[#FF5A36] rounded-2xl flex items-center justify-center mb-6 mx-auto"> 
-                  <MessageSquare size={28} /> 
+              {/* Card 2: Real-time Chat with Continuous Animated #FF5A36 Border Beam (90° Rectangle Border Radius) */}
+              <div className="relative p-[2px] overflow-hidden rounded-none shadow-sm hover:shadow-xl hover:shadow-[#FF5A36]/15 transition-all group flex flex-col bg-[#E4E8EE]">
+                {/* Continuous Rotating Electric Coral (#FF5A36) Border Beam */}
+                <div 
+                  className="absolute inset-[-250%] animate-spin-beam pointer-events-none"
+                  style={{
+                    background: 'conic-gradient(from 0deg, #E4E8EE 0deg, #E4E8EE 220deg, rgba(255, 90, 54, 0.2) 260deg, rgba(255, 90, 54, 0.7) 310deg, #FF5A36 360deg)',
+                    animationDelay: '-1.17s'
+                  }}
+                />
+
+                {/* Inner Card Content Surface */}
+                <div className="relative w-full h-full bg-[#F5F7FA] group-hover:bg-[#FFFFFF] p-8 sm:p-10 rounded-none flex flex-col items-center text-center transition-colors duration-300">
+                  <div className="w-14 h-14 bg-[#FF5A36]/10 border border-[#FF5A36]/20 text-[#FF5A36] rounded-none flex items-center justify-center mb-6 mx-auto group-hover:scale-105 transition-all"> 
+                    <MessageSquare size={28} /> 
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3 text-[#1E2761]">Real-time Chat</h3>
+                  <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
+                    Keep your audience engaged with lightning-fast built-in chat. Share links, answer questions, and foster community instantly.
+                  </p>
                 </div>
-                <h3 className="text-2xl font-bold mb-3 text-[#1E2761]">Real-time Chat</h3>
-                <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
-                  Keep your audience engaged with lightning-fast built-in chat. Share links, answer questions, and foster community instantly.
-                </p>
               </div>
 
-              <div className="bg-[#F5F7FA] border border-[#E4E8EE] rounded-3xl p-8 sm:p-10 hover:border-[#1E2761]/30 shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center">
-                <div className="w-14 h-14 bg-[#1E2761]/10 border border-[#1E2761]/20 text-[#1E2761] rounded-2xl flex items-center justify-center mb-6 mx-auto"> 
-                  <Monitor size={28} /> 
+              {/* Card 3: Screen Sharing with Continuous Animated #FF5A36 Border Beam (90° Rectangle Border Radius) */}
+              <div className="relative p-[2px] overflow-hidden rounded-none shadow-sm hover:shadow-xl hover:shadow-[#FF5A36]/15 transition-all group flex flex-col bg-[#E4E8EE]">
+                {/* Continuous Rotating Electric Coral (#FF5A36) Border Beam */}
+                <div 
+                  className="absolute inset-[-250%] animate-spin-beam pointer-events-none"
+                  style={{
+                    background: 'conic-gradient(from 0deg, #E4E8EE 0deg, #E4E8EE 220deg, rgba(255, 90, 54, 0.2) 260deg, rgba(255, 90, 54, 0.7) 310deg, #FF5A36 360deg)',
+                    animationDelay: '-2.33s'
+                  }}
+                />
+
+                {/* Inner Card Content Surface */}
+                <div className="relative w-full h-full bg-[#F5F7FA] group-hover:bg-[#FFFFFF] p-8 sm:p-10 rounded-none flex flex-col items-center text-center transition-colors duration-300">
+                  <div className="w-14 h-14 bg-[#1E2761]/10 border border-[#1E2761]/20 text-[#1E2761] rounded-none flex items-center justify-center mb-6 mx-auto group-hover:bg-[#FF5A36]/10 group-hover:border-[#FF5A36]/30 group-hover:text-[#FF5A36] transition-all"> 
+                    <Monitor size={28} /> 
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3 text-[#1E2761]">Screen Sharing</h3>
+                  <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
+                    Present your masterclass seamlessly. Share your entire screen, specific windows, or browser tabs with zero lag.
+                  </p>
                 </div>
-                <h3 className="text-2xl font-bold mb-3 text-[#1E2761]">Screen Sharing</h3>
-                <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
-                  Present your masterclass seamlessly. Share your entire screen, specific windows, or browser tabs with zero lag.
-                </p>
               </div>
 
             </div>
