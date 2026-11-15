@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { getSocket } from '../socket.js';
-import { Mic, MicOff, Video, VideoOff, PhoneOff, MessageSquare, Send, User, Users, X, Copy, Check, MonitorUp, ShieldBan, Hand } from 'lucide-react';
+import { Mic, MicOff, Video, VideoOff, PhoneOff, MessageSquare, Send, User, Users, X, Copy, Check, MonitorUp, ShieldBan, Hand, Smile, Sparkles, Layout, Grid } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const ICE_SERVERS = [

@@ -196,11 +196,11 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 {/* ONLY TWO ESSENTIAL ACTION BUTTONS (Strict 60-30-10 Palette) - Locked on 1 Row on All Devices Including Mobile */}
                 <div className="flex flex-row flex-nowrap items-stretch gap-2 sm:gap-3 w-full max-w-[460px] sm:w-auto">
                   
-                  {/* Button 1: Solid Electric Coral (#FF5A36) - Host a Session / Create Instant Room (90° Rectangle Border Radius) */}
+                  {/* Button 1: Solid Electric Coral (#FF5A36) - Host a Session / Create Instant Room */}
                   <button
                     onClick={handleCreateRoom}
                     disabled={isCreating}
-                    className="flex-1 sm:flex-initial px-2.5 min-[360px]:px-3.5 sm:px-6 py-2.5 sm:py-3.5 rounded-none bg-[#FF5A36] hover:bg-[#E04826] text-white font-bold text-[11px] min-[360px]:text-xs sm:text-sm shadow-md shadow-[#FF5A36]/20 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center space-x-1 min-[360px]:space-x-1.5 sm:space-x-2 cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed whitespace-nowrap shrink-0 border-[2px] border-transparent"
+                    className="flex-1 sm:flex-initial px-2.5 min-[360px]:px-3.5 sm:px-6 py-2.5 sm:py-3.5 rounded-full bg-[#FF5A36] hover:bg-[#E04826] text-white font-bold text-[11px] min-[360px]:text-xs sm:text-sm shadow-md shadow-[#FF5A36]/20 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center space-x-1 min-[360px]:space-x-1.5 sm:space-x-2 cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed whitespace-nowrap shrink-0 border-[2px] border-transparent"
                   >
                     {isCreating ? (
                       <>
@@ -216,11 +216,11 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                     )}
                   </button>
 
-                  {/* Button 2: Pure Canvas with Midnight Blue (#1E2761) & Continuous Animated #FF5A36 Border Beam (90° Rectangle Border Radius) */}
+                  {/* Button 2: Pure Canvas with Midnight Blue (#1E2761) & Continuous Animated #FF5A36 Border Beam */}
                   <button
                     type="button"
                     onClick={() => setShowJoinInline(prev => !prev)}
-                    className="relative p-[2px] overflow-hidden rounded-none flex-1 sm:flex-initial group cursor-pointer hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xs hover:shadow-md hover:shadow-[#FF5A36]/20 shrink-0 bg-[#E4E8EE] flex flex-col justify-stretch"
+                    className="relative p-[2px] overflow-hidden rounded-full flex-1 sm:flex-initial group cursor-pointer hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xs hover:shadow-md hover:shadow-[#FF5A36]/20 shrink-0 bg-[#E4E8EE] flex flex-col justify-stretch"
                   >
                     {/* Continuous Rotating Electric Coral (#FF5A36) Border Beam Movement */}
                     <div 
@@ -231,9 +231,10 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                     />
 
                     {/* Inner Button Content Surface */}
-                    <span className="relative w-full h-full px-2.5 min-[360px]:px-3.5 sm:px-5 py-2.5 sm:py-3.5 rounded-none bg-[#FEFEFE] group-hover:bg-[#F5F7FA] text-[#1E2761] group-hover:text-[#FF5A36] font-bold text-[11px] min-[360px]:text-xs sm:text-sm flex items-center justify-center space-x-1 min-[360px]:space-x-1.5 whitespace-nowrap transition-colors">
+                    <span className="relative w-full h-full px-2.5 min-[360px]:px-3.5 sm:px-5 py-2.5 sm:py-3.5 rounded-full bg-[#FEFEFE] group-hover:bg-[#F5F7FA] text-[#1E2761] group-hover:text-[#FF5A36] font-bold text-[11px] min-[360px]:text-xs sm:text-sm flex items-center justify-center space-x-1 min-[360px]:space-x-1.5 whitespace-nowrap transition-colors">
                       <Users size={15} className="text-[#1E2761] group-hover:text-[#FF5A36] transition-colors shrink-0" />
-                      <span>Join Session ▸</span>
+                      <span>Join Session</span>
+                      <ArrowRight size={13} className="text-[#1E2761] group-hover:text-[#FF5A36] transition-transform group-hover:translate-x-0.5 shrink-0" />
                     </span>
                   </button>
 
