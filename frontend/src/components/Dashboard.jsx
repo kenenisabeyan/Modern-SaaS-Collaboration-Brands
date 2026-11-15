@@ -5,7 +5,7 @@ import HeroVideos from './HeroVideos.jsx';
 import { 
   Video, Users, Loader2, Sparkles, Zap, Shield, Clock, Monitor, 
   Link, CheckCircle, Star, MessageSquare, GraduationCap, 
-  BookOpen, Heart, ArrowRight, X
+  BookOpen, Heart, ArrowRight, X, Briefcase, Globe
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -452,14 +452,17 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
 
 
         {/* ========================================================
-            ROLES SECTION
+            UNIVERSAL PLATFORM / BEYOND STANDARD MEETINGS
            ======================================================== */}
         <section className="py-16 sm:py-24 bg-[#F5F7FA] border-t border-[#E4E8EE] px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-20">
           <div className="max-w-[1720px] mx-auto text-center">
             
-            <h2 className="text-3xl sm:text-5xl font-extrabold mb-12 tracking-tight text-[#1E2761]">
-              One Platform <span className="text-[#FF5A36]">Every Role Connected</span>
+            <h2 className="text-3xl sm:text-5xl font-extrabold mb-4 tracking-tight text-[#1E2761]">
+              Built for Everyone <span className="text-[#FF5A36]">Beyond Standard Meetings</span>
             </h2>
+            <p className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto mb-12 font-normal leading-relaxed">
+              From interactive cohort workshops to high-stakes team syncs, WabiSeminar delivers the masterclass tools, ultra-low latency, and frictionless access that generic meeting tools lack.
+            </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               
@@ -467,39 +470,39 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 <div className="w-14 h-14 rounded-2xl bg-[#1E2761]/10 border border-[#1E2761]/20 flex items-center justify-center text-[#1E2761] mb-6 mx-auto">
                   <GraduationCap size={28} />
                 </div>
-                <h3 className="text-xl font-bold text-[#1E2761] mb-2">Learners</h3>
+                <h3 className="text-xl font-bold text-[#1E2761] mb-2">Educators & Trainers</h3>
                 <p className="text-slate-600 text-sm leading-relaxed">
-                  Learn step-by-step, track your progress, and build skills for your future.
+                  Host live cohorts, workshops, and code walkthroughs with stage spotlight controls and zero attendee downloads.
                 </p>
               </div>
 
               <div className="bg-white border border-[#E4E8EE] hover:border-[#FF5A36]/40 p-8 rounded-3xl flex flex-col items-center text-center shadow-sm hover:-translate-y-1 transition-all">
                 <div className="w-14 h-14 rounded-2xl bg-[#FF5A36]/10 border border-[#FF5A36]/20 flex items-center justify-center text-[#FF5A36] mb-6 mx-auto">
-                  <BookOpen size={28} />
+                  <Briefcase size={28} />
                 </div>
-                <h3 className="text-xl font-bold text-[#1E2761] mb-2">Instructors</h3>
+                <h3 className="text-xl font-bold text-[#1E2761] mb-2">Teams & Businesses</h3>
                 <p className="text-slate-600 text-sm leading-relaxed">
-                  Create impactful courses and guide learners with structured teaching tools.
+                  Run sprint reviews, all-hands, and client presentations with crystal-clear audio and zero Google account lock-in.
                 </p>
               </div>
 
               <div className="bg-white border border-[#E4E8EE] hover:border-[#1E2761]/30 p-8 rounded-3xl flex flex-col items-center text-center shadow-sm hover:-translate-y-1 transition-all">
                 <div className="w-14 h-14 rounded-2xl bg-[#1E2761]/10 border border-[#1E2761]/20 flex items-center justify-center text-[#1E2761] mb-6 mx-auto">
-                  <Users size={28} />
+                  <Sparkles size={28} />
                 </div>
-                <h3 className="text-xl font-bold text-[#1E2761] mb-2">Parents</h3>
+                <h3 className="text-xl font-bold text-[#1E2761] mb-2">Creators & Hosts</h3>
                 <p className="text-slate-600 text-sm leading-relaxed">
-                  Stay involved with real-time insights into learning progress and performance.
+                  Broadcast live masterclasses and Q&As with synchronized chat, audience hand-raising, and interactive engagement.
                 </p>
               </div>
 
               <div className="bg-white border border-[#E4E8EE] hover:border-[#FF5A36]/40 p-8 rounded-3xl flex flex-col items-center text-center shadow-sm hover:-translate-y-1 transition-all">
                 <div className="w-14 h-14 rounded-2xl bg-[#FF5A36]/10 border border-[#FF5A36]/20 flex items-center justify-center text-[#FF5A36] mb-6 mx-auto">
-                  <Heart size={28} />
+                  <Globe size={28} />
                 </div>
-                <h3 className="text-xl font-bold text-[#1E2761] mb-2">Sponsors</h3>
+                <h3 className="text-xl font-bold text-[#1E2761] mb-2">Global Enterprises</h3>
                 <p className="text-slate-600 text-sm leading-relaxed">
-                  Support learners in need and track the real impact of your contribution.
+                  Scale customer seminars and secure summits with transport-level DTLS-SRTP encryption and private room gatekeepers.
                 </p>
               </div>
 
