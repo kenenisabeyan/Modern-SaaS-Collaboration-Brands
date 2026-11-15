@@ -115,9 +115,9 @@ export default function HowItWorks({ onNavigate }) {
                 key={idx} 
                 variants={fadeIn}
                 whileHover={{ y: -5 }}
-                className={`relative p-[2px] overflow-hidden rounded-none shadow-sm hover:shadow-xl ${step.shadowColor} transition-all flex flex-col justify-between bg-[#E4E8EE] group`}
+                className={`relative p-[2px] overflow-hidden rounded-3xl shadow-sm hover:shadow-xl ${step.shadowColor} transition-all flex flex-col justify-between bg-[#E4E8EE] group`}
               >
-                {/* Continuous Rotating Border Beam with Card's Specific Container Color (90° Rectangle Border Radius) */}
+                {/* Continuous Rotating Border Beam with Card's Specific Container Color */}
                 <div 
                   className="absolute inset-[-250%] animate-spin-beam pointer-events-none"
                   style={{
@@ -127,20 +127,20 @@ export default function HowItWorks({ onNavigate }) {
                 />
 
                 {/* Inner Card Content Surface */}
-                <div className="relative w-full h-full bg-white group-hover:bg-[#FFFFFF] p-8 rounded-none flex flex-col justify-between transition-colors duration-300">
+                <div className="relative w-full h-full bg-white group-hover:bg-[#FFFFFF] p-8 rounded-[22px] flex flex-col justify-between transition-colors duration-300">
                   <div>
                     <div className="flex items-center justify-between mb-6">
                       <span className="text-3xl font-black text-slate-200 group-hover:text-slate-400 transition-colors font-mono">
                         {step.number}
                       </span>
-                      <div className={`w-12 h-12 rounded-none flex items-center justify-center border ${step.color}`}>
+                      <div className={`w-12 h-12 rounded-2xl flex items-center justify-center border ${step.color}`}>
                         {step.icon}
                       </div>
                     </div>
                     <h3 className={`text-xl font-bold text-[#1E2761] ${step.hoverTextColor} transition-colors mb-3`}>{step.title}</h3>
                     <p className="text-slate-600 text-sm leading-relaxed mb-6">{step.desc}</p>
                   </div>
-                  <div className={`h-1.5 w-12 rounded-none ${step.accent}`}></div>
+                  <div className={`h-1.5 w-12 rounded-full ${step.accent}`}></div>
                 </div>
               </motion.div>
             ))}
