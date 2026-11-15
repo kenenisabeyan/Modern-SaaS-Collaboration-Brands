@@ -67,9 +67,9 @@ export default function Footer({ onNavigate }) {
           <div>
             <h4 className="font-bold text-[#1E2761] mb-4 sm:mb-6 tracking-wide text-sm uppercase">Company</h4>
             <ul className="space-y-3 text-sm text-slate-600">
-              <li><button onClick={() => onNavigate('features')} className="hover:text-[#FF5A36] transition-colors text-left cursor-pointer">About WabiSeminar</button></li>
-              <li><button onClick={() => onNavigate('how-it-works')} className="hover:text-[#FF5A36] transition-colors text-left cursor-pointer">Careers</button></li>
-              <li><button onClick={() => onNavigate('faq')} className="hover:text-[#FF5A36] transition-colors text-left cursor-pointer">Contact Us</button></li>
+              <li><button onClick={() => onNavigate('about')} className="hover:text-[#FF5A36] transition-colors text-left cursor-pointer">About WabiSeminar</button></li>
+              <li><button onClick={() => onNavigate('features')} className="hover:text-[#FF5A36] transition-colors text-left cursor-pointer">Careers</button></li>
+              <li><button onClick={() => onNavigate('contact')} className="hover:text-[#FF5A36] transition-colors text-left cursor-pointer">Contact Us</button></li>
               <li><button onClick={() => onNavigate('faq')} className="hover:text-[#FF5A36] transition-colors text-left cursor-pointer">Privacy & Terms</button></li>
             </ul>
           </div>

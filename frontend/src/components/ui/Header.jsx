@@ -35,16 +35,6 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
     setIsDrawerOpen(false);
     if (item.action) {
       item.action();
-    } else if (item.id === 'about') {
-      if (currentView === 'dashboard') {
-        const el = document.getElementById('features');
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-        else handleNavClick('features');
-      } else {
-        handleNavClick('features');
-      }
-    } else if (item.id === 'masterclasses') {
-      handleNavClick(isAuthenticated ? 'user-dashboard' : 'dashboard');
     } else {
       handleNavClick(item.view || 'dashboard');
     }
@@ -52,71 +42,78 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
 
   const menuItems = [
     {
-      id: 'about',
-      label: 'About',
-      hasSubmenu: false,
-      view: 'features'
-    },
-    {
-      id: 'masterclasses',
-      label: 'Masterclasses',
+      id: 'features',
+      label: 'Features',
       hasSubmenu: true,
+      view: 'features',
       subItems: [
         { 
-          label: 'Host a Session', 
-          action: () => handleNavClick('dashboard') 
-        },
-        { 
-          label: 'Join Existing Room', 
+          label: 'Platform Capabilities', 
           action: () => {
-            handleNavClick('dashboard');
+            handleNavClick('features');
             setTimeout(() => {
-              const el = document.getElementById('room-join-input');
-              el?.focus();
-              el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 300);
-          } 
+              document.getElementById('features-list')?.scrollIntoView({ behavior: 'smooth' });
+            }, 150);
+          }
         },
         { 
-          label: 'My Sessions & History', 
-          view: 'user-dashboard' 
+          label: 'How It Works (4-Step Process)', 
+          action: () => {
+            handleNavClick('features');
+            setTimeout(() => {
+              document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' });
+            }, 150);
+          }
+        },
+        { 
+          label: 'WebRTC Infrastructure', 
+          action: () => {
+            handleNavClick('features');
+            setTimeout(() => {
+              document.getElementById('architecture')?.scrollIntoView({ behavior: 'smooth' });
+            }, 150);
+          }
+        },
+        { 
+          label: 'About WabiSeminar', 
+          action: () => {
+            handleNavClick('features');
+            setTimeout(() => {
+              document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+            }, 150);
+          }
         }
       ]
     },
     {
-      id: 'features',
-      label: 'Features',
-      hasSubmenu: false,
-      view: 'features'
-    },
-    {
-      id: 'how-it-works',
-      label: 'How It Works',
-      hasSubmenu: false,
-      view: 'how-it-works'
-    },
-    {
       id: 'pricing',
       label: 'Pricing',
-      hasSubmenu: false,
-      view: 'pricing'
-    },
-    {
-      id: 'faq',
-      label: 'FAQ',
-      hasSubmenu: false,
-      view: 'faq'
-    },
-    {
-      id: 'contact',
-      label: 'Contact Us',
-      hasSubmenu: false,
-      action: () => {
-        setIsDrawerOpen(false);
-        setTimeout(() => {
-          window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-        }, 200);
-      }
+      hasSubmenu: true,
+      view: 'pricing',
+      subItems: [
+        { 
+          label: 'Plans & Comparison', 
+          action: () => handleNavClick('pricing') 
+        },
+        { 
+          label: 'Frequently Asked Questions (FAQ)', 
+          action: () => {
+            handleNavClick('pricing');
+            setTimeout(() => {
+              document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' });
+            }, 150);
+          }
+        },
+        { 
+          label: 'Talk to Solutions Team', 
+          action: () => {
+            handleNavClick('pricing');
+            setTimeout(() => {
+              document.getElementById('contact-solutions')?.scrollIntoView({ behavior: 'smooth' });
+            }, 150);
+          }
+        }
+      ]
     }
   ];
 
@@ -148,7 +145,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
             </span>
           </div>
 
-          {/* Center Navigation Links (Reduced sleek compact typography and spacing, all contents retained) */}
+          {/* Center Navigation Links (Streamlined core navigation: Features & Pricing) */}
           <AnimatePresence>
             {(isScrolled || currentView !== 'dashboard') && (
               <motion.nav 
@@ -156,18 +153,18 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -6 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
-                className="hidden lg:flex items-center space-x-3 lg:space-x-4 xl:space-x-5"
+                className="hidden lg:flex items-center space-x-6 xl:space-x-8"
               >
                 {menuItems.map((item) => {
-                  const isActive = currentView === item.view || (item.id === 'masterclasses' && currentView === 'dashboard');
+                  const isActive = currentView === item.view;
                   return (
                     <button
                       key={item.id}
                       onClick={() => handleMenuItemClick(item)}
-                      className={`text-[11.5px] lg:text-[12px] xl:text-[13px] transition-colors cursor-pointer select-none bg-transparent border-0 px-1.5 py-0.5 ${
+                      className={`text-xs xl:text-sm font-semibold transition-colors cursor-pointer select-none bg-transparent border-0 px-2 py-1 ${
                         isActive
-                          ? 'text-[#FF5A36] font-semibold'
-                          : 'text-[#1E2761]/85 hover:text-[#FF5A36] font-medium'
+                          ? 'text-[#FF5A36] font-bold'
+                          : 'text-[#1E2761]/90 hover:text-[#FF5A36]'
                       }`}
                     >
                       {item.label}

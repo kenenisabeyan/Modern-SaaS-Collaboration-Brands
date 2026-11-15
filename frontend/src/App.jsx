@@ -179,9 +179,11 @@ function App() {
           )}
           
           {currentView === 'features' && <Features onNavigate={setCurrentView} />}
-          {currentView === 'how-it-works' && <HowItWorks onNavigate={setCurrentView} />}
+          {currentView === 'how-it-works' && <Features onNavigate={setCurrentView} initialSection="how-it-works" />}
+          {currentView === 'about' && <Features onNavigate={setCurrentView} initialSection="about" />}
           {currentView === 'pricing' && <Pricing onNavigate={setCurrentView} />}
-          {currentView === 'faq' && <FAQ onNavigate={setCurrentView} />}
+          {currentView === 'faq' && <Pricing onNavigate={setCurrentView} initialSection="faq" />}
+          {currentView === 'contact' && <Pricing onNavigate={setCurrentView} initialSection="contact-solutions" />}
           {currentView === 'meeting' && <MeetingRoom onLeave={leaveRoom} roomId={currentRoomId} notify={notify} />}
         </PageTransition>
       </AnimatePresence>
