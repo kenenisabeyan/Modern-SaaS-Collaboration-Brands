@@ -75,6 +75,9 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
   const [waitingUsers, setWaitingUsers] = useState([]);
   const [joinDenied, setJoinDenied] = useState(false);
   const [roomNotFound, setRoomNotFound] = useState(false);
+  const [floatingReactions, setFloatingReactions] = useState([]);
+  const [showReactionsMenu, setShowReactionsMenu] = useState(false);
+  const [isStageMode, setIsStageMode] = useState(false);
 
   const localVideoRef = useRef(null);
   const screenTrackRef = useRef(null);
