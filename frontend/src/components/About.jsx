@@ -123,17 +123,11 @@ export default function About({ onNavigate }) {
             variants={staggerContainer}
             className="max-w-4xl mx-auto flex flex-col items-center"
           >
-            <motion.div variants={fadeIn} className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#1E2761]/5 border border-[#1E2761]/10 text-xs font-bold text-[#1E2761] mb-6">
-              <Sparkles size={14} className="text-[#FF5A36]" />
-              <span>THE WABISEMINAR STORY & VISION</span>
-            </motion.div>
-
-            <motion.h1 variants={fadeIn} className="text-4xl sm:text-6xl md:text-7xl font-extrabold mb-4 sm:mb-6 tracking-tight leading-[1.08] text-[#1E2761]">
-              Built for <span className="text-[#FF5A36]">connection.</span><br />
-              Engineered for <span className="text-[#1E2761]">clarity.</span>
+            <motion.h1 variants={fadeIn} className="text-3xl sm:text-5xl font-extrabold mb-4 tracking-tight text-[#1E2761]">
+              Built for connection <span className="text-[#FF5A36]">Engineered for clarity</span>
             </motion.h1>
 
-            <motion.p variants={fadeIn} className="text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl font-normal mb-8">
+            <motion.p variants={fadeIn} className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto mb-12 font-normal leading-relaxed">
               We founded WabiSeminar on a straightforward belief: video meetings should be as instantaneous, frictionless, and respectful as real-life conversations.
             </motion.p>
           </motion.div>
