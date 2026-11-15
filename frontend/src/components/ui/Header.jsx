@@ -148,15 +148,15 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
             </span>
           </div>
 
-          {/* Center Navigation Links (Clean text links without borders or background containers) */}
+          {/* Center Navigation Links (Reduced sleek compact typography and spacing, all contents retained) */}
           <AnimatePresence>
-            {isScrolled && (
+            {(isScrolled || currentView !== 'dashboard') && (
               <motion.nav 
                 initial={{ opacity: 0, y: -6 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -6 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
-                className="hidden lg:flex items-center space-x-6 xl:space-x-8"
+                className="hidden lg:flex items-center space-x-3 lg:space-x-4 xl:space-x-5"
               >
                 {menuItems.map((item) => {
                   const isActive = currentView === item.view || (item.id === 'masterclasses' && currentView === 'dashboard');
@@ -164,10 +164,10 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
                     <button
                       key={item.id}
                       onClick={() => handleMenuItemClick(item)}
-                      className={`text-xs xl:text-sm font-semibold transition-colors cursor-pointer select-none bg-transparent border-0 p-0 ${
+                      className={`text-[11.5px] lg:text-[12px] xl:text-[13px] transition-colors cursor-pointer select-none bg-transparent border-0 px-1.5 py-0.5 ${
                         isActive
-                          ? 'text-[#FF5A36] font-bold'
-                          : 'text-[#1E2761] hover:text-[#FF5A36]'
+                          ? 'text-[#FF5A36] font-semibold'
+                          : 'text-[#1E2761]/85 hover:text-[#FF5A36] font-medium'
                       }`}
                     >
                       {item.label}
