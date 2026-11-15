@@ -194,27 +194,37 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
             </span>
           </div>
 
-          {/* Center Navigation Links (Core navigation: Home, About, Features, Pricing) */}
-          <nav className="hidden lg:flex items-center space-x-3 xl:space-x-5">
-            {menuItems.map((item) => {
-              const isActive = item.id === 'home'
-                ? (currentView === 'dashboard' || currentView === 'user-dashboard')
-                : currentView === item.view;
-              return (
-                <button
-                  key={item.id}
-                  onClick={() => handleMenuItemClick(item)}
-                  className={`text-xs xl:text-sm font-semibold transition-colors cursor-pointer select-none bg-transparent border-0 px-3 py-1 rounded-full ${
-                    isActive
-                      ? 'text-[#FF5A36] font-bold bg-[#FF5A36]/10'
-                      : 'text-[#1E2761]/85 hover:text-[#FF5A36] hover:bg-[#1E2761]/5'
-                  }`}
-                >
-                  {item.label}
-                </button>
-              );
-            })}
-          </nav>
+          {/* Center Navigation Links (Revealed smoothly only when scrolling starts) */}
+          <AnimatePresence>
+            {isScrolled && (
+              <motion.nav 
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
+                className="hidden lg:flex items-center space-x-3 xl:space-x-5"
+              >
+                {menuItems.map((item) => {
+                  const isActive = item.id === 'home'
+                    ? (currentView === 'dashboard' || currentView === 'user-dashboard')
+                    : currentView === item.view;
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => handleMenuItemClick(item)}
+                      className={`text-xs xl:text-sm font-semibold transition-colors cursor-pointer select-none bg-transparent border-0 px-3 py-1 rounded-full ${
+                        isActive
+                          ? 'text-[#FF5A36] font-bold bg-[#FF5A36]/10'
+                          : 'text-[#1E2761]/85 hover:text-[#FF5A36] hover:bg-[#1E2761]/5'
+                      }`}
+                    >
+                      {item.label}
+                    </button>
+                  );
+                })}
+              </motion.nav>
+            )}
+          </AnimatePresence>
 
           {/* Right Side: Boxed Square Hamburger Button [ ≡ ] + Electric Coral Sign In Button */}
           <div className="flex items-center space-x-2.5 sm:space-x-3">
