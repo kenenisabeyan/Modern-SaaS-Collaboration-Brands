@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
   Video, Monitor, Shield, Zap, Globe, MessageSquare, Layers,
-  ArrowRight, Smartphone, Activity, CheckCircle, Layout, Sparkles, Check, X
+  ArrowRight, Smartphone, Activity, CheckCircle, Layout
 } from 'lucide-react';
 
 const fadeIn = {
@@ -149,7 +149,7 @@ export default function Features({ onNavigate }) {
                 key={i} 
                 variants={fadeIn} 
                 whileHover={{ y: -4 }} 
-                className={`relative p-[2px] overflow-hidden rounded-3xl shadow-sm hover:shadow-xl ${f.shadowColor} transition-all group flex flex-col bg-[#E4E8EE]`}
+                className={`relative p-[2px] overflow-hidden rounded-none shadow-sm hover:shadow-xl ${f.shadowColor} transition-all group flex flex-col bg-[#E4E8EE]`}
               >
                 {/* Continuous Rotating Border Beam Matching Container Color */}
                 <div 
@@ -161,8 +161,8 @@ export default function Features({ onNavigate }) {
                 />
 
                 {/* Inner Card Content Surface */}
-                <div className="relative w-full h-full bg-white group-hover:bg-[#FFFFFF] p-7 rounded-[22px] flex flex-col items-center text-center transition-colors duration-300">
-                  <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-5 mx-auto border group-hover:scale-105 transition-transform ${f.color}`}>
+                <div className="relative w-full h-full bg-white group-hover:bg-[#FFFFFF] p-7 rounded-none flex flex-col items-center text-center transition-colors duration-300">
+                  <div className={`w-12 h-12 rounded-none flex items-center justify-center mb-5 mx-auto border group-hover:scale-105 transition-transform ${f.color}`}>
                     {f.icon}
                   </div>
                   <h3 className={`text-lg font-bold mb-2 text-[#1E2761] ${f.hoverTextColor} transition-colors`}>{f.title}</h3>
@@ -228,88 +228,7 @@ export default function Features({ onNavigate }) {
           </div>
         </section>
 
-        {/* 4. WabiSeminar vs Google Meet Comparison Matrix */}
-        <section className="mb-20 sm:mb-32 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
-          <div className="max-w-4xl mx-auto text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1E2761] mb-4 tracking-tight">
-              Why Upgrade to <span className="text-[#FF5A36]">WabiSeminar</span> Beyond Google Meet
-            </h2>
-            <p className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto font-normal">
-              Eliminate corporate account lock-in, restrictive paywalls, and generic meeting grids. Built from the ground up for seamless interactive seminars.
-            </p>
-          </div>
-
-          <div className="max-w-5xl mx-auto bg-white border border-[#E4E8EE] rounded-3xl overflow-hidden shadow-sm">
-            <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse text-xs sm:text-sm">
-                <thead>
-                  <tr className="border-b border-[#E4E8EE] bg-[#F5F7FA]">
-                    <th className="py-4 px-6 font-extrabold text-[#1E2761]">Capability</th>
-                    <th className="py-4 px-6 font-extrabold text-[#FF5A36] text-center bg-[#FF5A36]/5">
-                      <div className="flex items-center justify-center space-x-1.5">
-                        <Sparkles size={16} className="text-[#FF5A36]" />
-                        <span>WabiSeminar</span>
-                      </div>
-                    </th>
-                    <th className="py-4 px-6 font-extrabold text-slate-500 text-center">Google Meet</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-[#E4E8EE]">
-                  {[
-                    {
-                      name: "Zero-Account Instant Guest Joining",
-                      wabi: "1-Click browser join — no Google account or downloads required",
-                      other: "Requires Google/Gmail login or domain workspace approval"
-                    },
-                    {
-                      name: "Seminar Stage Spotlight Mode",
-                      wabi: "Dedicated masterclass theater stage + docked attendee strip",
-                      other: "Generic flat participant grid only"
-                    },
-                    {
-                      name: "Live Floating Emoji Reactions",
-                      wabi: "Included Free (👏, 🔥, ❤️, 💡, 🎉) for all attendees",
-                      other: "Restricted behind paid Google Workspace business plans"
-                    },
-                    {
-                      name: "Direct P2P WebRTC Latency",
-                      wabi: "Sub-50ms peer-to-peer streaming with DTLS-SRTP encryption",
-                      other: "Multi-hop cloud relay with variable buffer latency"
-                    },
-                    {
-                      name: "Waiting Room Gatekeeper",
-                      wabi: "Full screening queue, 1-click admit/deny, host mute-all",
-                      other: "Host admission controls restricted on free personal tier"
-                    },
-                    {
-                      name: "100% Brand Freedom & Zero Watermarks",
-                      wabi: "Custom workspace themes, clean HUD, zero corporate logos",
-                      other: "Google branded interface and mandatory corporate identity"
-                    }
-                  ].map((row, i) => (
-                    <tr key={i} className="hover:bg-[#F5F7FA]/60 transition-colors">
-                      <td className="py-4 px-6 font-bold text-[#1E2761]">{row.name}</td>
-                      <td className="py-4 px-6 text-center text-[#1E2761] font-semibold bg-[#FF5A36]/[0.02]">
-                        <div className="flex items-center justify-center space-x-2">
-                          <Check size={16} className="text-[#FF5A36] shrink-0" />
-                          <span className="text-[#FF5A36] font-bold text-xs sm:text-sm">{row.wabi}</span>
-                        </div>
-                      </td>
-                      <td className="py-4 px-6 text-center text-slate-500">
-                        <div className="flex items-center justify-center space-x-2">
-                          <X size={16} className="text-slate-400 shrink-0" />
-                          <span className="text-xs sm:text-sm">{row.other}</span>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>
-
-        {/* 5. Three Core Architectural Pillars */}
+        {/* 4. Three Core Architectural Pillars */}
         <section className="mb-20 sm:mb-32 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             

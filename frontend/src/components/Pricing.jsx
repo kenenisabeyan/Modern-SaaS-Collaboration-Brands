@@ -252,7 +252,7 @@ export default function Pricing({ onNavigate }) {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
-              className="bg-white border border-[#E4E8EE] rounded-3xl overflow-hidden shadow-sm"
+              className="bg-white border border-[#E4E8EE] rounded-none overflow-hidden shadow-sm"
             >
               <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse text-xs sm:text-sm">
