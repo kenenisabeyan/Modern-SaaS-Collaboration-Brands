@@ -120,7 +120,7 @@ export default function Pricing({ onNavigate }) {
 
   return (
     <div className="min-h-screen bg-white text-[#1E2761] font-sans overflow-hidden relative">
-      <main className="pt-20 sm:pt-24 lg:pt-28 pb-16 sm:pb-24 relative z-10 w-full">
+      <main className="pt-16 sm:pt-20 lg:pt-24 pb-16 sm:pb-24 relative z-10 w-full">
         
         {/* 1. Hero Section & Toggle */}
         <section className="text-center mb-16 sm:mb-20 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
