@@ -270,7 +270,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
   };
 
   return (
-    <div className="min-h-screen bg-[#F5F7FA] text-[#1E2761] font-sans selection:bg-[#FF5A36] selection:text-white pt-16 sm:pt-20 pb-20 px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-24">
+    <div className="min-h-screen bg-[#F5F7FA] text-[#1E2761] font-sans selection:bg-[#FF5A36] selection:text-white pt-20 sm:pt-24 pb-20 px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-24">
       <div className="max-w-[1440px] w-full mx-auto">
         
         {/* ========================================================

@@ -149,7 +149,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
   return (
     <div className="flex flex-col min-h-screen bg-[#FEFEFE] text-[#1E2761] font-sans overflow-x-hidden selection:bg-[#FF5A36] selection:text-white">
       
-      <main className="flex-1 flex flex-col pt-14 sm:pt-16 relative z-10">
+      <main className="flex-1 flex flex-col pt-16 sm:pt-20 relative z-10">
         
         {/* ========================================================
             HERO SECTION: 2-COLUMN ICEADDIS + KENENISA-OS ARCHITECTURE

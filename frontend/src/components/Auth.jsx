@@ -81,7 +81,7 @@ export default function Auth({ onNavigate }) {
   }, [onNavigate]);
 
   return (
-    <div className="flex-1 flex items-center justify-center pt-16 sm:pt-20 pb-16 px-4 sm:px-6 relative overflow-hidden bg-[#F5F7FA] min-h-[calc(100vh-64px)] font-sans text-[#1E2761]">
+    <div className="flex-1 flex items-center justify-center pt-20 sm:pt-24 pb-16 px-4 sm:px-6 relative overflow-hidden bg-[#F5F7FA] min-h-[calc(100vh-80px)] font-sans text-[#1E2761]">
       
       <div className="w-full max-w-md p-6 sm:p-10 bg-white rounded-3xl border border-[#E4E8EE] shadow-[0_10px_35px_rgba(30,39,97,0.05)] flex flex-col items-center space-y-6 sm:space-y-7 z-10 relative">
         
