@@ -173,16 +173,16 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 transition={{ duration: 0.5, ease: "easeOut" }}
                 className="lg:col-span-5 flex flex-col justify-center items-start text-left"
               >
-                {/* Main Headline (Strict 60-30-10: Deep Midnight Blue #1E2761 + Electric Coral #FF5A36) - 3 Lines, Fully Selectable & Copyable */}
+                {/* Main Headline (Strict 60-30-10: Deep Midnight Blue #1E2761 + Electric Coral #FF5A36) */}
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[44px] xl:text-[48px] font-black tracking-tight leading-[1.1] text-[#1E2761] mb-3 sm:mb-4 select-text">
-                  <span className="text-[#1E2761] block">Host</span>
-                  <span className="text-[#1E2761] block">Engaging</span>
+                  <span className="text-[#1E2761] block">Next-Gen</span>
+                  <span className="text-[#1E2761] block">Video Meetings &</span>
                   <span className="text-[#FF5A36] block">Masterclasses</span>
                 </h1>
 
                 {/* Subtitle Description */}
                 <p className="text-slate-600 text-xs sm:text-sm lg:text-[15px] leading-relaxed max-w-[430px] mb-5 sm:mb-6 font-normal">
-                  Create a free, encrypted meeting room instantly or join an existing session in seconds. Built for innovative educators and creators who value simplicity and connection.
+                  Launch instant, encrypted video rooms with ultra-low latency, 1080p clarity, and interactive tools built for modern teams, educators, and creators worldwide. Zero downloads. Zero limits.
                 </p>
 
                 {/* Error Banner */}

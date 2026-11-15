@@ -220,10 +220,10 @@ export default function Pricing({ onNavigate, initialSection }) {
             className="max-w-4xl mx-auto flex flex-col items-center"
           >
             <motion.h1 variants={fadeIn} className="text-4xl sm:text-6xl md:text-7xl font-extrabold mb-4 sm:mb-6 tracking-tight leading-[1.08] text-[#1E2761]">
-              Invest in your <span className="text-[#FF5A36]">masterclasses</span>
+              Invest in your <span className="text-[#FF5A36]">meetings & masterclasses</span>
             </motion.h1>
             <motion.p variants={fadeIn} className="text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl font-normal mb-8 sm:mb-10">
-              Start for free, then upgrade as your audience grows. No hidden fees. Cancel anytime.
+              Start for free, then upgrade as your team or audience grows. No hidden fees. Cancel anytime.
             </motion.p>
 
             {/* Billing Toggle */}

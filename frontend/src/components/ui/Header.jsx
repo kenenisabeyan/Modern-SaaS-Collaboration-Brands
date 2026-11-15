@@ -146,34 +146,24 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
           </div>
 
           {/* Center Navigation Links (Streamlined core navigation: Features & Pricing) */}
-          <AnimatePresence>
-            {(isScrolled || currentView !== 'dashboard') && (
-              <motion.nav 
-                initial={{ opacity: 0, y: -6 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -6 }}
-                transition={{ duration: 0.2, ease: "easeOut" }}
-                className="hidden lg:flex items-center space-x-6 xl:space-x-8"
-              >
-                {menuItems.map((item) => {
-                  const isActive = currentView === item.view;
-                  return (
-                    <button
-                      key={item.id}
-                      onClick={() => handleMenuItemClick(item)}
-                      className={`text-xs xl:text-sm font-semibold transition-colors cursor-pointer select-none bg-transparent border-0 px-2 py-1 ${
-                        isActive
-                          ? 'text-[#FF5A36] font-bold'
-                          : 'text-[#1E2761]/90 hover:text-[#FF5A36]'
-                      }`}
-                    >
-                      {item.label}
-                    </button>
-                  );
-                })}
-              </motion.nav>
-            )}
-          </AnimatePresence>
+          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+            {menuItems.map((item) => {
+              const isActive = currentView === item.view;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => handleMenuItemClick(item)}
+                  className={`text-xs xl:text-sm font-semibold transition-colors cursor-pointer select-none bg-transparent border-0 px-2.5 py-1 rounded-full ${
+                    isActive
+                      ? 'text-[#FF5A36] font-bold bg-[#FF5A36]/10'
+                      : 'text-[#1E2761]/85 hover:text-[#FF5A36] hover:bg-[#1E2761]/5'
+                  }`}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
+          </nav>
 
           {/* Right Side: Boxed Square Hamburger Button [ ≡ ] + Electric Coral Sign In Button */}
           <div className="flex items-center space-x-2.5 sm:space-x-3">
