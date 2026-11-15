@@ -147,7 +147,7 @@ export default function UserSettings({ onNavigate }) {
   ];
 
   return (
-    <main className="flex-1 pt-20 sm:pt-24 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 w-full max-w-5xl mx-auto text-[#1E2761]">
+    <main className="flex-1 pt-16 sm:pt-20 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 w-full max-w-5xl mx-auto text-[#1E2761]">
       
       {/* Top Back Navigation */}
       <div className="mb-6">
