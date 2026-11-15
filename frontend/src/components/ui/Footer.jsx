@@ -45,6 +45,7 @@ export default function Footer({ onNavigate }) {
           <div>
             <h4 className="font-bold text-[#1E2761] mb-4 sm:mb-6 tracking-wide text-sm uppercase">Product</h4>
             <ul className="space-y-3 text-sm text-slate-600">
+              <li><button onClick={() => { onNavigate('dashboard'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-[#FF5A36] transition-colors text-left cursor-pointer">Home</button></li>
               <li><button onClick={() => onNavigate('features')} className="hover:text-[#FF5A36] transition-colors text-left cursor-pointer">Features</button></li>
               <li><button onClick={() => onNavigate('how-it-works')} className="hover:text-[#FF5A36] transition-colors text-left cursor-pointer">How It Works</button></li>
               <li><button onClick={() => onNavigate('pricing')} className="hover:text-[#FF5A36] transition-colors text-left cursor-pointer">Pricing</button></li>

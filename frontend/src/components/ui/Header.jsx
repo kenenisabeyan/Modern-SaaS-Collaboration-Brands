@@ -42,6 +42,34 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
 
   const menuItems = [
     {
+      id: 'home',
+      label: 'Home',
+      hasSubmenu: true,
+      view: 'dashboard',
+      action: () => handleNavClick('dashboard'),
+      subItems: [
+        { 
+          label: 'Instant Room Creator', 
+          action: () => handleNavClick('dashboard') 
+        },
+        { 
+          label: 'Join Meeting Session', 
+          action: () => {
+            handleNavClick('dashboard');
+            setTimeout(() => {
+              const el = document.getElementById('room-join-input');
+              el?.focus();
+              el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 300);
+          } 
+        },
+        ...(isAuthenticated ? [{
+          label: 'My Meeting Dashboard',
+          action: () => handleNavClick('user-dashboard')
+        }] : [])
+      ]
+    },
+    {
       id: 'features',
       label: 'Features',
       hasSubmenu: true,
@@ -145,15 +173,17 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
             </span>
           </div>
 
-          {/* Center Navigation Links (Streamlined core navigation: Features & Pricing) */}
-          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+          {/* Center Navigation Links (Core navigation: Home, Features, Pricing) */}
+          <nav className="hidden lg:flex items-center space-x-4 xl:space-x-6">
             {menuItems.map((item) => {
-              const isActive = currentView === item.view;
+              const isActive = item.id === 'home'
+                ? (currentView === 'dashboard' || currentView === 'user-dashboard')
+                : currentView === item.view;
               return (
                 <button
                   key={item.id}
                   onClick={() => handleMenuItemClick(item)}
-                  className={`text-xs xl:text-sm font-semibold transition-colors cursor-pointer select-none bg-transparent border-0 px-2.5 py-1 rounded-full ${
+                  className={`text-xs xl:text-sm font-semibold transition-colors cursor-pointer select-none bg-transparent border-0 px-3 py-1 rounded-full ${
                     isActive
                       ? 'text-[#FF5A36] font-bold bg-[#FF5A36]/10'
                       : 'text-[#1E2761]/85 hover:text-[#FF5A36] hover:bg-[#1E2761]/5'
