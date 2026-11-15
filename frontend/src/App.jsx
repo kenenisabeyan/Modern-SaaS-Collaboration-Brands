@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
+import About from './components/About';
 import Auth from './components/Auth';
 import Dashboard from './components/Dashboard';
 import MeetingRoom from './components/MeetingRoom';
@@ -178,9 +179,9 @@ function App() {
             <UserSettings onNavigate={setCurrentView} />
           )}
           
+          {currentView === 'about' && <About onNavigate={setCurrentView} />}
           {currentView === 'features' && <Features onNavigate={setCurrentView} />}
           {currentView === 'how-it-works' && <Features onNavigate={setCurrentView} initialSection="how-it-works" />}
-          {currentView === 'about' && <Features onNavigate={setCurrentView} initialSection="about" />}
           {currentView === 'pricing' && <Pricing onNavigate={setCurrentView} />}
           {currentView === 'faq' && <Pricing onNavigate={setCurrentView} initialSection="faq" />}
           {currentView === 'contact' && <Pricing onNavigate={setCurrentView} initialSection="contact-solutions" />}

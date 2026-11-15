@@ -70,6 +70,27 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
       ]
     },
     {
+      id: 'about',
+      label: 'About',
+      hasSubmenu: true,
+      view: 'about',
+      action: () => handleNavClick('about'),
+      subItems: [
+        {
+          label: 'The WabiSeminar Story',
+          action: () => handleNavClick('about')
+        },
+        {
+          label: 'Our Core Pillars',
+          action: () => handleNavClick('about')
+        },
+        {
+          label: 'Technical Architecture',
+          action: () => handleNavClick('about')
+        }
+      ]
+    },
+    {
       id: 'features',
       label: 'Features',
       hasSubmenu: true,
@@ -173,8 +194,8 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
             </span>
           </div>
 
-          {/* Center Navigation Links (Core navigation: Home, Features, Pricing) */}
-          <nav className="hidden lg:flex items-center space-x-4 xl:space-x-6">
+          {/* Center Navigation Links (Core navigation: Home, About, Features, Pricing) */}
+          <nav className="hidden lg:flex items-center space-x-3 xl:space-x-5">
             {menuItems.map((item) => {
               const isActive = item.id === 'home'
                 ? (currentView === 'dashboard' || currentView === 'user-dashboard')
