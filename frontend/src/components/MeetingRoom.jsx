@@ -515,6 +515,15 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
       }
     };
 
+    const onRoomReaction = ({ socketId, reaction, username }) => {
+      const id = Date.now() + Math.random();
+      const x = Math.floor(Math.random() * 60) + 20;
+      setFloatingReactions((prev) => [...prev.slice(-15), { id, reaction, username, x }]);
+      setTimeout(() => {
+        setFloatingReactions((prev) => prev.filter((r) => r.id !== id));
+      }, 2500);
+    };
+
     socket.on('connect', requestJoin);
     socket.on('user-joined', onUserJoined);
     socket.on('user-left', onUserLeft);
@@ -534,6 +543,8 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
     socket.on('waiting-users-list', onWaitingUsersList);
     socket.on('room-error', onRoomError);
     socket.on('admission-error', onRoomError);
+    socket.on('force-mute', onForceMute);
+    socket.on('room-reaction', onRoomReaction);
 
     requestJoin();
 
@@ -560,6 +571,8 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
       socket.off('waiting-users-list', onWaitingUsersList);
       socket.off('room-error', onRoomError);
       socket.off('admission-error', onRoomError);
+      socket.off('force-mute', onForceMute);
+      socket.off('room-reaction', onRoomReaction);
 
       stopLocalMedia();
       closeAllPeers();
@@ -771,6 +784,11 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
     setMessage('');
   };
 
+  const sendReaction = (emoji) => {
+    getSocket().emit('room-reaction', { roomId, reaction: emoji });
+    setShowReactionsMenu(false);
+  };
+
   const handleAdmit = (socketId) => {
     getSocket().emit('admit-user', { roomId, targetSocketId: socketId });
     setWaitingUsers((prev) => prev.filter((user) => user.socketId !== socketId));
@@ -930,7 +948,37 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
         {/* ========================================================
             VIDEO STAGE: Full Viewport Cinema Grid
            ======================================================== */}
-        <main className="flex-1 p-2 sm:p-4 md:p-5 pt-16 sm:pt-20 pb-24 sm:pb-28 overflow-hidden w-full h-full flex items-center justify-center">
+        <main className="flex-1 p-2 sm:p-4 md:p-5 pt-16 sm:pt-20 pb-24 sm:pb-28 overflow-hidden w-full h-full flex items-center justify-center relative">
+          
+          {/* Floating Live Reactions (Exclusive Seminar Feature) */}
+          <div className="absolute inset-0 pointer-events-none overflow-hidden z-30">
+            <AnimatePresence>
+              {floatingReactions.map((item) => (
+                <motion.div
+                  key={item.id}
+                  initial={{ opacity: 0, y: 0, scale: 0.5 }}
+                  animate={{
+                    opacity: [0, 1, 1, 0],
+                    y: -320,
+                    scale: [0.5, 1.4, 1.2, 0.9],
+                    x: [0, (item.id % 2 === 0 ? 15 : -15), (item.id % 2 === 0 ? -10 : 10)]
+                  }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 2.3, ease: 'easeOut' }}
+                  style={{ left: `${item.x}%`, bottom: '110px' }}
+                  className="absolute flex flex-col items-center select-none"
+                >
+                  <span className="text-4xl drop-shadow-lg">{item.reaction}</span>
+                  {item.username && (
+                    <span className="text-[10px] bg-[#1E2761]/90 backdrop-blur-sm text-white px-2 py-0.5 rounded-full font-bold mt-1 shadow-sm border border-white/20">
+                      {item.username}
+                    </span>
+                  )}
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
+
           <div className={`${getGridClass()} gap-3 sm:gap-4 w-full h-full max-w-[1780px] mx-auto`}>
             
             {/* Local Video Tile */}
@@ -1164,6 +1212,47 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
             >
               <Hand size={19} className={isHandRaised ? 'fill-current' : ''} />
             </button>
+
+            {/* Live Emoji Reactions Menu Trigger */}
+            <div className="relative">
+              <button 
+                type="button" 
+                className={`w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all cursor-pointer ${
+                  showReactionsMenu 
+                    ? 'bg-[#FF5A36] text-white shadow-md shadow-[#FF5A36]/30' 
+                    : 'bg-white/10 hover:bg-white/20 text-white border border-white/10'
+                }`} 
+                onClick={() => setShowReactionsMenu(!showReactionsMenu)}
+                title="Send Live Reaction"
+              >
+                <Smile size={19} />
+              </button>
+
+              {/* Popup Floating Reaction Bar */}
+              <AnimatePresence>
+                {showReactionsMenu && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10, scale: 0.9 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 10, scale: 0.9 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute bottom-16 left-1/2 -translate-x-1/2 bg-[#1E2761]/95 backdrop-blur-xl border border-white/15 px-3 py-1.5 rounded-full shadow-2xl flex items-center space-x-1 sm:space-x-2 z-50 whitespace-nowrap"
+                  >
+                    {['👏', '🔥', '❤️', '💡', '🎉', '🚀'].map((emoji) => (
+                      <button
+                        key={emoji}
+                        type="button"
+                        onClick={() => sendReaction(emoji)}
+                        className="text-xl sm:text-2xl p-1 sm:p-1.5 hover:scale-130 active:scale-95 transition-transform cursor-pointer"
+                        title={`React ${emoji}`}
+                      >
+                        {emoji}
+                      </button>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
 
             {/* End Call / Leave - Solid Electric Coral #FF5A36 */}
             <button 
