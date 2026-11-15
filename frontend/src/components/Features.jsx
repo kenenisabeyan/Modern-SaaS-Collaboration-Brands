@@ -100,10 +100,10 @@ export default function Features({ onNavigate, initialSection }) {
             variants={staggerContainer}
             className="max-w-4xl mx-auto flex flex-col items-center"
           >
-            <motion.h1 variants={fadeIn} className="text-4xl sm:text-6xl md:text-7xl font-extrabold mb-4 sm:mb-6 tracking-tight leading-[1.08] text-[#1E2761]">
-              Built for <span className="text-[#FF5A36]">flawless</span> meetings & masterclasses.
+            <motion.h1 variants={fadeIn} className="text-3xl sm:text-5xl font-extrabold mb-4 tracking-tight text-[#1E2761]">
+              Built for flawless <span className="text-[#FF5A36]">meetings & masterclasses</span>
             </motion.h1>
-            <motion.p variants={fadeIn} className="text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl font-normal mb-8">
+            <motion.p variants={fadeIn} className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto mb-12 font-normal leading-relaxed">
               Everything you need to host professional, engaging, and secure meetings without the complexity of legacy platforms. Zero downloads. Zero limits. Instant connection.
             </motion.p>
           </motion.div>
