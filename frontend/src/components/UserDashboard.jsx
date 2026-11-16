@@ -569,11 +569,11 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
         </motion.section>
 
         {/* ========================================================
-            ADVANCED METRICS STRIP: Live System & Account Health
+            ADVANCED METRICS STRIP: Live System & Account Health (Zero Borders)
            ======================================================== */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
           
-          <div className="bg-white border border-[#E4E8EE] rounded-3xl p-5 shadow-xs flex items-center space-x-3.5">
+          <div className="bg-white rounded-3xl p-5 shadow-xs flex items-center space-x-3.5 border-0">
             <div className="w-11 h-11 rounded-2xl bg-[#1E2761]/8 text-[#1E2761] flex items-center justify-center shrink-0">
               <Video size={20} className="text-[#FF5A36]" />
             </div>
@@ -583,7 +583,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
             </div>
           </div>
 
-          <div className="bg-white border border-[#E4E8EE] rounded-3xl p-5 shadow-xs flex items-center space-x-3.5">
+          <div className="bg-white rounded-3xl p-5 shadow-xs flex items-center space-x-3.5 border-0">
             <div className="w-11 h-11 rounded-2xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center shrink-0">
               <ShieldCheck size={20} className="text-emerald-600" />
             </div>
@@ -593,7 +593,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
             </div>
           </div>
 
-          <div className="bg-white border border-[#E4E8EE] rounded-3xl p-5 shadow-xs flex items-center space-x-3.5">
+          <div className="bg-white rounded-3xl p-5 shadow-xs flex items-center space-x-3.5 border-0">
             <div className="w-11 h-11 rounded-2xl bg-[#FF5A36]/10 text-[#FF5A36] flex items-center justify-center shrink-0">
               <Zap size={20} className="text-[#FF5A36]" />
             </div>
@@ -603,7 +603,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
             </div>
           </div>
 
-          <div className="bg-white border border-[#E4E8EE] rounded-3xl p-5 shadow-xs flex items-center space-x-3.5">
+          <div className="bg-white rounded-3xl p-5 shadow-xs flex items-center space-x-3.5 border-0">
             <div className="w-11 h-11 rounded-2xl bg-indigo-500/10 text-indigo-600 flex items-center justify-center shrink-0">
               <Activity size={20} className="text-indigo-600" />
             </div>
@@ -619,17 +619,17 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
         </div>
 
         {/* ========================================================
-            RECENT MEETINGS SECTION: Clean, Scannable History
+            RECENT MEETINGS SECTION: Clean, Scannable History (Zero Borders)
            ======================================================== */}
         <motion.section 
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
           variants={scrollSection}
-          className="bg-white border border-[#E4E8EE] rounded-3xl p-6 sm:p-8 shadow-sm"
+          className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border-0"
         >
           
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 mb-5 border-b border-[#E4E8EE] gap-3">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 mb-5 gap-3">
             <div className="flex items-center space-x-2.5">
               <Clock size={18} className="text-[#1E2761]" />
               <h2 className="text-lg sm:text-xl font-black text-[#1E2761]">
@@ -640,58 +640,51 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
               </span>
             </div>
 
-            {/* Time Filter Chips */}
-            <div className="flex items-center space-x-1.5 bg-[#F5F7FA] p-1 rounded-2xl border border-[#E4E8EE]">
-              <button
-                onClick={() => setTimeFilter('all')}
-                className={`px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                  timeFilter === 'all' ? 'bg-[#1E2761] text-white shadow-xs' : 'text-slate-600 hover:text-[#1E2761]'
-                }`}
-              >
-                All
-              </button>
-              <button
-                onClick={() => setTimeFilter('today')}
-                className={`px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                  timeFilter === 'today' ? 'bg-[#1E2761] text-white shadow-xs' : 'text-slate-600 hover:text-[#1E2761]'
-                }`}
-              >
-                Today
-              </button>
-              <button
-                onClick={() => setTimeFilter('month')}
-                className={`px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                  timeFilter === 'month' ? 'bg-[#1E2761] text-white shadow-xs' : 'text-slate-600 hover:text-[#1E2761]'
-                }`}
-              >
-                This Month
-              </button>
-            </div>
-            <div className="flex items-center space-x-2.5">
-              <Clock size={18} className="text-[#1E2761]" />
-              <h2 className="text-lg sm:text-xl font-black text-[#1E2761]">
-                Your Recent Meetings
-              </h2>
-              <span className="px-2 py-0.5 rounded-full bg-[#1E2761]/8 text-[#1E2761] text-xs font-bold">
-                {displayedRooms.length}
-              </span>
-            </div>
-
-            {searchQuery && (
-              <div className="flex items-center space-x-2 bg-[#1E2761]/5 border border-[#1E2761]/10 px-3 py-1 rounded-full text-xs font-semibold text-[#1E2761]">
-                <span>Filtering: "{searchQuery}"</span>
-                <button 
-                  onClick={() => {
-                    setSearchQuery('');
-                    window.dispatchEvent(new CustomEvent('covideo-search', { detail: '' }));
-                  }} 
-                  className="text-slate-400 hover:text-[#FF5A36] cursor-pointer"
-                  title="Clear filter"
+            <div className="flex items-center gap-3">
+              {/* Time Filter Chips */}
+              <div className="flex items-center space-x-1.5 bg-[#F5F7FA] p-1 rounded-2xl border-0 shadow-2xs">
+                <button
+                  onClick={() => setTimeFilter('all')}
+                  className={`px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer border-0 ${
+                    timeFilter === 'all' ? 'bg-[#1E2761] text-white shadow-xs' : 'text-slate-600 hover:text-[#1E2761]'
+                  }`}
                 >
-                  <X size={12} />
+                  All
+                </button>
+                <button
+                  onClick={() => setTimeFilter('today')}
+                  className={`px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer border-0 ${
+                    timeFilter === 'today' ? 'bg-[#1E2761] text-white shadow-xs' : 'text-slate-600 hover:text-[#1E2761]'
+                  }`}
+                >
+                  Today
+                </button>
+                <button
+                  onClick={() => setTimeFilter('month')}
+                  className={`px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer border-0 ${
+                    timeFilter === 'month' ? 'bg-[#1E2761] text-white shadow-xs' : 'text-slate-600 hover:text-[#1E2761]'
+                  }`}
+                >
+                  This Month
                 </button>
               </div>
-            )}
+
+              {searchQuery && (
+                <div className="flex items-center space-x-2 bg-[#1E2761]/5 px-3 py-1 rounded-full text-xs font-semibold text-[#1E2761] border-0">
+                  <span>Filtering: "{searchQuery}"</span>
+                  <button 
+                    onClick={() => {
+                      setSearchQuery('');
+                      window.dispatchEvent(new CustomEvent('covideo-search', { detail: '' }));
+                    }} 
+                    className="text-slate-400 hover:text-[#FF5A36] cursor-pointer"
+                    title="Clear filter"
+                  >
+                    <X size={12} />
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
 
           {isLoading ? (
@@ -705,10 +698,10 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
                 <motion.div 
                   key={room.id || room.roomId}
                   variants={scrollItem}
-                  className="bg-[#F5F7FA] border border-[#E4E8EE] hover:border-[#1E2761]/30 rounded-2xl p-4 transition-all flex flex-col justify-between gap-3 group"
+                  className="bg-[#F5F7FA] hover:bg-slate-100/80 rounded-2xl p-4 transition-all flex flex-col justify-between gap-3 group border-0 shadow-2xs"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-xs sm:text-sm font-bold text-[#1E2761] bg-white px-2.5 py-1 rounded-lg border border-[#E4E8EE]">
+                    <span className="font-mono text-xs sm:text-sm font-bold text-[#1E2761] bg-white px-2.5 py-1 rounded-lg border-0 shadow-2xs">
                       {room.roomId}
                     </span>
                     <span className="text-[11px] text-slate-400 font-medium">
@@ -719,7 +712,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
                   <div className="flex items-center gap-2 pt-1">
                     <button 
                       onClick={() => onJoinRoom(room.roomId)}
-                      className="flex-1 py-2 px-3 rounded-xl text-xs font-bold bg-[#FF5A36] hover:bg-[#E04826] text-white transition-all flex items-center justify-center space-x-1.5 shadow-xs cursor-pointer"
+                      className="flex-1 py-2 px-3 rounded-xl text-xs font-bold bg-[#FF5A36] hover:bg-[#E04826] text-white transition-all flex items-center justify-center space-x-1.5 shadow-xs cursor-pointer border-0"
                     >
                       <Video size={13} className="text-white" />
                       <span className="text-white">Rejoin</span>
@@ -727,7 +720,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
 
                     <button 
                       onClick={() => handleCopyLink(room.roomId)}
-                      className="p-2 rounded-xl text-[#1E2761] hover:text-[#FF5A36] bg-white hover:bg-slate-100 border border-[#E4E8EE] transition-colors cursor-pointer shadow-xs flex items-center justify-center"
+                      className="p-2 rounded-xl text-[#1E2761] hover:text-[#FF5A36] bg-white hover:bg-slate-100 transition-colors cursor-pointer shadow-xs flex items-center justify-center border-0"
                       title="Copy invite link"
                     >
                       {copiedId === room.roomId ? (
@@ -739,7 +732,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
 
                     <button 
                       onClick={() => setDeleteModalRoomId(room.roomId)}
-                      className="p-2 rounded-xl text-slate-400 hover:text-[#FF5A36] bg-white hover:bg-[#FF5A36]/10 border border-[#E4E8EE] hover:border-[#FF5A36]/30 transition-colors cursor-pointer shadow-xs flex items-center justify-center"
+                      className="p-2 rounded-xl text-slate-400 hover:text-[#FF5A36] bg-white hover:bg-[#FF5A36]/10 transition-colors cursor-pointer shadow-xs flex items-center justify-center border-0"
                       title="Delete room"
                     >
                       <Trash2 size={14} />
@@ -750,7 +743,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
               ))}
             </motion.div>
           ) : searchQuery ? (
-            <div className="py-12 bg-[#F5F7FA] rounded-2xl border border-dashed border-[#E4E8EE] text-center p-6 flex flex-col items-center">
+            <div className="py-12 bg-[#F5F7FA] rounded-2xl text-center p-6 flex flex-col items-center border-0">
               <Search className="text-slate-400 mb-2" size={28} />
               <h3 className="text-sm font-bold text-[#1E2761]">No meetings found matching "{searchQuery}"</h3>
               <p className="text-xs text-slate-500 mt-1 max-w-xs">
@@ -759,7 +752,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
             </div>
           ) : (
             <div className="py-10 text-center flex flex-col items-center justify-center">
-              <div className="w-12 h-12 rounded-2xl bg-[#F5F7FA] border border-[#E4E8EE] flex items-center justify-center text-[#1E2761] mb-2.5 mx-auto">
+              <div className="w-12 h-12 rounded-2xl bg-[#F5F7FA] flex items-center justify-center text-[#1E2761] mb-2.5 mx-auto border-0">
                 <Video size={22} className="text-slate-400" />
               </div>
               <h3 className="text-sm sm:text-base font-bold text-[#1E2761] mb-1">
@@ -775,35 +768,35 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
 
       </div>
 
-      {/* Delete Confirmation Modal */}
+      {/* Delete Confirmation Modal (Zero Borders) */}
       {deleteModalRoomId && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 animate-in fade-in duration-150">
-          <div className="bg-white border border-[#E4E8EE] rounded-3xl max-w-sm w-full p-6 shadow-2xl relative text-center flex flex-col items-center">
+          <div className="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl relative text-center flex flex-col items-center border-0">
             <button 
               onClick={() => !isDeleting && setDeleteModalRoomId(null)}
-              className="absolute top-4 right-4 text-slate-400 hover:text-[#1E2761] p-1.5 rounded-full bg-slate-50 hover:bg-slate-100 border border-[#E4E8EE] transition-colors cursor-pointer flex items-center justify-center"
+              className="absolute top-4 right-4 text-slate-400 hover:text-[#1E2761] p-1.5 rounded-full bg-slate-50 hover:bg-slate-100 transition-colors cursor-pointer flex items-center justify-center border-0"
             >
               <X size={16} />
             </button>
-            <div className="w-10 h-10 rounded-xl bg-[#FF5A36]/10 text-[#FF5A36] flex items-center justify-center mb-3 mx-auto border border-[#FF5A36]/25">
+            <div className="w-10 h-10 rounded-xl bg-[#FF5A36]/10 text-[#FF5A36] flex items-center justify-center mb-3 mx-auto border-0">
               <Trash2 size={20} />
             </div>
             <h3 className="text-base font-bold text-[#1E2761] mb-1">Delete Meeting?</h3>
             <p className="text-slate-600 text-xs leading-relaxed mb-5">
               Are you sure you want to delete room <strong className="font-mono text-[#FF5A36]">{deleteModalRoomId}</strong>?
             </p>
-            <div className="flex gap-2">
+            <div className="flex gap-2 w-full">
               <button 
                 onClick={() => setDeleteModalRoomId(null)}
                 disabled={isDeleting}
-                className="flex-1 py-2.5 rounded-xl font-bold bg-white hover:bg-slate-50 text-slate-700 border border-[#E4E8EE] transition-colors text-xs cursor-pointer shadow-xs"
+                className="flex-1 py-2.5 rounded-xl font-bold bg-[#F5F7FA] hover:bg-slate-200/70 text-slate-700 transition-colors text-xs cursor-pointer shadow-xs border-0"
               >
                 Cancel
               </button>
               <button 
                 onClick={handleDeleteRoom}
                 disabled={isDeleting}
-                className="flex-1 py-2.5 rounded-xl font-bold bg-[#FF5A36] hover:bg-[#E04826] text-white transition-colors flex justify-center items-center gap-1.5 text-xs shadow-xs cursor-pointer"
+                className="flex-1 py-2.5 rounded-xl font-bold bg-[#FF5A36] hover:bg-[#E04826] text-white transition-colors flex justify-center items-center gap-1.5 text-xs shadow-xs cursor-pointer border-0"
               >
                 {isDeleting ? <Loader2 size={13} className="animate-spin text-white" /> : null}
                 <span className="text-white">{isDeleting ? 'Deleting...' : 'Delete'}</span>
@@ -813,18 +806,18 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
         </div>
       )}
 
-      {/* Custom Room Creator Modal */}
+      {/* Custom Room Creator Modal (Zero Borders) */}
       {showCustomRoomModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200">
-          <div className="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative border border-[#E4E8EE]">
+          <div className="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative border-0">
             <button 
               onClick={() => setShowCustomRoomModal(false)}
-              className="absolute top-5 right-5 text-slate-400 hover:text-[#1E2761] p-2 rounded-full hover:bg-[#F5F7FA] transition-colors cursor-pointer"
+              className="absolute top-5 right-5 text-slate-400 hover:text-[#1E2761] p-2 rounded-full hover:bg-[#F5F7FA] transition-colors cursor-pointer border-0"
             >
               <X size={20} />
             </button>
 
-            <div className="w-12 h-12 rounded-2xl bg-[#FF5A36]/10 text-[#FF5A36] flex items-center justify-center mb-4">
+            <div className="w-12 h-12 rounded-2xl bg-[#FF5A36]/10 text-[#FF5A36] flex items-center justify-center mb-4 border-0">
               <Sparkles size={24} />
             </div>
 
@@ -838,7 +831,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
                 <label className="text-xs font-bold text-slate-700 uppercase tracking-wider block mb-1.5">
                   Room Name or Code
                 </label>
-                <div className="flex items-center bg-[#F5F7FA] border border-[#E4E8EE] focus-within:border-[#1E2761] rounded-2xl px-3.5 py-2.5">
+                <div className="flex items-center bg-[#F5F7FA] rounded-2xl px-3.5 py-2.5 border-0">
                   <span className="text-xs font-mono text-slate-400 mr-1.5">/meeting/</span>
                   <input
                     type="text"
@@ -855,14 +848,14 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
                 <button
                   type="button"
                   onClick={() => setShowCustomRoomModal(false)}
-                  className="px-4 py-2.5 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-100 transition-colors cursor-pointer"
+                  className="px-4 py-2.5 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-100 transition-colors cursor-pointer border-0"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={!customRoomName.trim()}
-                  className="px-5 py-2.5 rounded-xl text-xs font-bold bg-[#FF5A36] hover:bg-[#E04826] text-white shadow-md shadow-[#FF5A36]/20 disabled:opacity-50 transition-all cursor-pointer"
+                  className="px-5 py-2.5 rounded-xl text-xs font-bold bg-[#FF5A36] hover:bg-[#E04826] text-white shadow-md shadow-[#FF5A36]/20 disabled:opacity-50 transition-all cursor-pointer border-0"
                 >
                   Create & Launch
                 </button>
