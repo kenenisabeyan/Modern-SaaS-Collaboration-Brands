@@ -249,7 +249,13 @@ export default function Pricing({ onNavigate, initialSection }) {
         </section>
 
         {/* 2. Three Pricing Plan Cards (Rounded-3xl) */}
-        <section className="mb-20 sm:mb-28 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
+        <motion.section 
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+          variants={scrollSection}
+          className="mb-20 sm:mb-28 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12"
+        >
           <motion.div 
             initial="hidden"
             whileInView="visible"
@@ -331,10 +337,16 @@ export default function Pricing({ onNavigate, initialSection }) {
               );
             })}
           </motion.div>
-        </section>
+        </motion.section>
 
         {/* 3. Feature Comparison Matrix */}
-        <section className="mb-20 sm:mb-28 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
+        <motion.section 
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+          variants={scrollSection}
+          className="mb-20 sm:mb-28 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12"
+        >
           <div className="text-center mb-6">
             <button
               onClick={() => setShowMatrix(prev => !prev)}
@@ -405,10 +417,17 @@ export default function Pricing({ onNavigate, initialSection }) {
               </div>
             </motion.div>
           )}
-        </section>
+        </motion.section>
 
         {/* 4. Integrated FAQ Section */}
-        <section id="faq" className="w-full bg-[#F5F7FA] py-16 sm:py-24 mb-20 sm:mb-28 border-0 shadow-none">
+        <motion.section 
+          id="faq" 
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+          variants={scrollSection}
+          className="w-full bg-[#F5F7FA] py-16 sm:py-24 mb-20 sm:mb-28 border-0 shadow-none"
+        >
           <div className="max-w-[1100px] mx-auto px-4 sm:px-8 lg:px-12">
             
             <div className="text-center mb-10 sm:mb-14">
@@ -512,10 +531,17 @@ export default function Pricing({ onNavigate, initialSection }) {
             </div>
 
           </div>
-        </section>
+        </motion.section>
 
         {/* 5. Enterprise & Custom Solutions CTA */}
-        <section id="contact-solutions" className="w-full bg-white py-16 sm:py-24 border-0 shadow-none text-center">
+        <motion.section 
+          id="contact-solutions" 
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+          variants={scrollSection}
+          className="w-full bg-white py-16 sm:py-24 border-0 shadow-none text-center"
+        >
           <div className="max-w-4xl mx-auto px-4 sm:px-8 lg:px-12">
             <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1E2761] mb-4 tracking-tight">
               Need custom volume or on-premise deployment?
@@ -542,7 +568,7 @@ export default function Pricing({ onNavigate, initialSection }) {
               </button>
             </div>
           </div>
-        </section>
+        </motion.section>
 
       </main>
     </div>
