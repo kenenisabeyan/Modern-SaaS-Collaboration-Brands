@@ -22,7 +22,7 @@ export default function Footer({ onNavigate }) {
                 <span className="absolute bottom-0 right-0 w-2 h-2 bg-[#FF5A36] border-2 border-[#1E2761] rounded-full animate-pulse"></span>
               </div>
               <span className="font-extrabold text-base tracking-wider text-white uppercase">
-                WABISEMINAR
+                COVIDEO
               </span>
             </div>
             <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4 max-w-xs font-normal">
@@ -32,7 +32,7 @@ export default function Footer({ onNavigate }) {
               <a href="#" className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 flex items-center justify-center text-slate-200 hover:text-[#FF5A36] transition-all shadow-xs" title="Website">
                 <Globe size={14} />
               </a>
-              <a href="mailto:solutions@wabiseminar.com" className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 flex items-center justify-center text-slate-200 hover:text-[#FF5A36] transition-all shadow-xs" title="Email Us">
+              <a href="mailto:solutions@covideo.com" className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 flex items-center justify-center text-slate-200 hover:text-[#FF5A36] transition-all shadow-xs" title="Email Us">
                 <Mail size={14} />
               </a>
               <a href="#" className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 flex items-center justify-center text-slate-200 hover:text-[#FF5A36] transition-all shadow-xs" title="Community">
