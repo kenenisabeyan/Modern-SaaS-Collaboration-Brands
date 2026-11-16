@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Video, X, Plus, Minus, Users, LogIn, LogOut, 
   User, Settings, Sparkles, Shield, ArrowRight,
-  Search, Bell, Globe, ChevronDown, Check, Camera,
+  Search, Bell, ChevronDown, Check, Camera,
   Link as LinkIcon, Radio, Layers, Activity, HelpCircle
 } from 'lucide-react';
 
@@ -19,23 +19,6 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
   const [showNotifications, setShowNotifications] = useState(false);
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
   const [showWorkspaceModal, setShowWorkspaceModal] = useState(false);
-  const [selectedLang, setSelectedLang] = useState(() => localStorage.getItem('app_lang') || 'EN');
-  const [showLangDropdown, setShowLangDropdown] = useState(false);
-
-  const languages = [
-    { code: 'EN', label: 'English', native: 'English' },
-    { code: 'AM', label: 'Amharic', native: 'አማርኛ' },
-    { code: 'OM', label: 'Afaan Oromoo', native: 'Afaan Oromoo' },
-    { code: 'FR', label: 'French', native: 'Français' },
-    { code: 'ES', label: 'Spanish', native: 'Español' },
-    { code: 'AR', label: 'Arabic', native: 'العربية' },
-  ];
-
-  const handleSelectLanguage = (langCode) => {
-    setSelectedLang(langCode);
-    localStorage.setItem('app_lang', langCode);
-    setShowLangDropdown(false);
-  };
   
   // These upgraded header elements are ONLY visible inside dashboards after sign-in
   const isDashboardMode = isAuthenticated && ['user-dashboard', 'profile', 'settings'].includes(currentView);
@@ -123,7 +106,6 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
         setIsSearchFocused(false);
         setShowNotifications(false);
         setShowProfileDropdown(false);
-        setShowLangDropdown(false);
         setShowWorkspaceModal(false);
       }
     };
@@ -143,7 +125,6 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
         setIsSearchFocused(false);
         setShowNotifications(false);
         setShowProfileDropdown(false);
-        setShowLangDropdown(false);
         setShowWorkspaceModal(false);
         setShowMobileSearch(false);
       }
@@ -175,7 +156,6 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
     setShowMobileSearch(false);
     setShowNotifications(false);
     setShowProfileDropdown(false);
-    setShowLangDropdown(false);
     setShowWorkspaceModal(false);
     onNavigate(id);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -395,7 +375,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
               </AnimatePresence>
             </div>
 
-            {/* RIGHT CLUSTER: Workspace Pill, Bell, Language, Profile Pill */}
+            {/* RIGHT CLUSTER: Workspace Pill, Bell, Profile Pill, Menu */}
             <div className="flex items-center space-x-2 sm:space-x-3 shrink-0">
               
               {/* Mobile Search Trigger Button */}
@@ -538,79 +518,12 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
                 </AnimatePresence>
               </div>
 
-              {/* Language Selector Pill Button [ 🌐 EN ⌄ ] (Inspired by Reference) */}
-              <div className="relative">
-                <button
-                  onClick={() => {
-                    setShowLangDropdown(!showLangDropdown);
-                    setShowNotifications(false);
-                    setShowProfileDropdown(false);
-                    setShowWorkspaceModal(false);
-                  }}
-                  className="bg-[#1E2761] hover:bg-[#151A44] text-white px-3 sm:px-3.5 py-1.5 rounded-full flex items-center space-x-1.5 text-xs font-bold transition-all shadow-none cursor-pointer select-none border-0"
-                  title="Select Language"
-                  aria-label="Select Language"
-                >
-                  <Globe size={14} className="text-white" />
-                  <span className="font-bold tracking-wide">{selectedLang}</span>
-                  <ChevronDown 
-                    size={13} 
-                    className={`text-white transition-transform duration-200 ${showLangDropdown ? 'rotate-180' : ''}`} 
-                  />
-                </button>
-
-                <AnimatePresence>
-                  {showLangDropdown && (
-                    <motion.div 
-                      initial={{ opacity: 0, y: 6 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 4 }}
-                      transition={{ duration: 0.18 }}
-                      className="absolute right-0 top-12 mt-1 w-48 bg-white rounded-2xl border border-slate-200 shadow-xl overflow-hidden z-50 p-1.5 text-left"
-                    >
-                      <div className="px-3 py-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider border-b border-slate-100 mb-1">
-                        Select Language
-                      </div>
-                      <div className="space-y-0.5 max-h-60 overflow-y-auto">
-                        {languages.map((lang) => {
-                          const isSelected = selectedLang === lang.code;
-                          return (
-                            <button
-                              key={lang.code}
-                              onClick={() => handleSelectLanguage(lang.code)}
-                              className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-colors cursor-pointer ${
-                                isSelected 
-                                  ? 'bg-[#1E2761] text-white' 
-                                  : 'text-[#1E2761] hover:bg-slate-100'
-                              }`}
-                            >
-                              <div className="flex items-center space-x-2">
-                                <span className={`text-[10px] font-mono px-1.5 py-0.5 rounded ${isSelected ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'}`}>
-                                  {lang.code}
-                                </span>
-                                <span>{lang.label}</span>
-                              </div>
-                              {isSelected ? (
-                                <Check size={14} className="text-white" />
-                              ) : (
-                                <span className="text-[10px] text-slate-400 font-normal">{lang.native}</span>
-                              )}
-                            </button>
-                          );
-                        })}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-
               {/* User Profile / Administration Pill Card */}
               <div className="relative">
                 <button
                   onClick={() => {
                     setShowProfileDropdown(!showProfileDropdown);
                     setShowNotifications(false);
-                    setShowLangDropdown(false);
                   }}
                   className="bg-[#F5F7FA] hover:bg-[#EEF2F6] rounded-full pl-3 sm:pl-3.5 pr-1.5 py-1 flex items-center space-x-2.5 transition-all cursor-pointer shadow-none select-none border-0"
                   title="Administration & Account"
