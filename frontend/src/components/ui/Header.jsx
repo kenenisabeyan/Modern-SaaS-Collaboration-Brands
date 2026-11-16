@@ -12,7 +12,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [openAccordions, setOpenAccordions] = useState({});
   
-  // Dashboard Header Interactive States
+  // Dashboard Header Interactive States (Strictly for User Dashboard after sign-in)
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [showMobileSearch, setShowMobileSearch] = useState(false);
@@ -22,8 +22,9 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
   const [showWorkspaceModal, setShowWorkspaceModal] = useState(false);
   const [selectedLang, setSelectedLang] = useState(() => localStorage.getItem('wabi_lang') || 'EN');
   
-  const isUserDashboard = currentView === 'user-dashboard';
-  
+  // These upgraded header elements are ONLY visible inside dashboards after sign-in
+  const isDashboardMode = isAuthenticated && ['user-dashboard', 'profile', 'settings'].includes(currentView);
+
   // Notification items matching WabiSeminar ecosystem
   const [notifications, setNotifications] = useState([
     {
@@ -277,421 +278,403 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
 
   return (
     <>
-      {/* ========================================================
-          UPGRADED DASHBOARD HEADER BAR
-          Strict 60-30-10 Branding:
-          - Canvas (#FEFEFE / #FFFFFF)
-          - Structural Weight (#1E2761 Deep Midnight Blue)
-          - Action Accent (#FF5A36 Electric Coral)
-         ======================================================== */}
       <header 
         ref={headerRef}
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 border-b border-[#E4E8EE] ${
-          isScrolled 
-            ? 'h-16 sm:h-20 bg-white/95 backdrop-blur-md shadow-[0_10px_30px_-10px_rgba(30,39,97,0.08)]' 
-            : 'h-16 sm:h-20 bg-[#FEFEFE] shadow-none'
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 border-b ${
+          isDashboardMode 
+            ? 'border-[#E4E8EE] h-16 sm:h-20 bg-white/95 backdrop-blur-md shadow-[0_10px_30px_-10px_rgba(30,39,97,0.08)]' 
+            : isScrolled
+              ? 'border-[#E4E8EE]/60 h-16 sm:h-20 bg-[#FEFEFE]/95 backdrop-blur-md shadow-[0_12px_30px_-6px_rgba(30,39,97,0.08)]'
+              : 'border-transparent h-16 sm:h-20 bg-[#FEFEFE] shadow-none'
         }`}
       >
-        <div className="w-full max-w-[1920px] h-full mx-auto px-3 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-between gap-3 sm:gap-6">
-          
-          {/* ========================================================
-              LEFT: Circular Brand Logo Badge & Name
-             ======================================================== */}
-          <div className="flex items-center space-x-2 sm:space-x-3 shrink-0">
-            <div 
-              onClick={() => handleNavClick(isAuthenticated ? 'user-dashboard' : 'dashboard')}
-              className="flex items-center space-x-2.5 sm:space-x-3 cursor-pointer select-none group"
-            >
-              {/* Circular Logo Badge with Coral Live Dot */}
-              <div className="relative">
-                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#1E2761] border border-[#151A44] flex items-center justify-center text-white font-bold text-sm overflow-hidden shadow-sm transition-transform duration-200 group-hover:scale-105">
-                  <Video className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF5A36]" />
-                </div>
-                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-[#FF5A36] border-2 border-[#FEFEFE] rounded-full animate-pulse"></span>
-              </div>
-              <span className="font-black text-sm sm:text-base lg:text-lg tracking-wider text-[#1E2761] uppercase hidden xs:inline-block">
-                WABISEMINAR
-              </span>
-            </div>
-
-            {/* Subtle Divider Bar */}
-            <div className="hidden lg:block h-6 w-px bg-slate-200/80 mx-1 xl:mx-2" />
-          </div>
-
-          {/* ========================================================
-              CENTER-LEFT: Pill Search Bar ("Search courses, trainees, instructors...")
-             ======================================================== */}
-          <div className="relative flex-1 max-w-sm sm:max-w-md lg:max-w-lg hidden md:block">
-            <div 
-              className={`w-full flex items-center bg-[#F5F7FA] hover:bg-[#EEF2F6] focus-within:bg-white border rounded-full px-4 py-2 transition-all shadow-xs ${
-                isSearchFocused 
-                  ? 'border-[#1E2761] ring-2 ring-[#1E2761]/10 bg-white' 
-                  : 'border-[#E4E8EE]'
-              }`}
-            >
-              <Search size={16} className="text-slate-400 shrink-0 mr-2.5" />
-              <input 
-                ref={searchInputRef}
-                type="text"
-                value={searchQuery}
-                onChange={(e) => handleSearchChange(e.target.value)}
-                onFocus={() => setIsSearchFocused(true)}
-                placeholder="Search seminars, rooms, participants, recordings..."
-                className="w-full bg-transparent text-xs sm:text-sm text-[#1E2761] placeholder-slate-400 outline-none font-medium min-w-0"
-              />
-              {searchQuery ? (
-                <button 
-                  onClick={() => handleSearchChange('')}
-                  className="p-1 text-slate-400 hover:text-slate-600 rounded-full hover:bg-slate-200 transition-colors ml-1 cursor-pointer"
-                  title="Clear search"
-                >
-                  <X size={14} />
-                </button>
-              ) : (
-                <span className="hidden xl:inline-block px-1.5 py-0.5 text-[10px] font-mono text-slate-400 bg-white border border-slate-200 rounded-md shrink-0 ml-2 shadow-2xs">
-                  ⌘K
-                </span>
-              )}
-            </div>
-
-            {/* Search Palette Floating Dropdown */}
-            <AnimatePresence>
-              {isSearchFocused && (
-                <motion.div 
-                  initial={{ opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 4 }}
-                  transition={{ duration: 0.18 }}
-                  className="absolute left-0 right-0 top-12 mt-1 bg-white rounded-2xl border border-slate-200 shadow-xl overflow-hidden z-50 p-2 text-left"
-                >
-                  <div className="max-h-80 overflow-y-auto space-y-3 p-1">
-                    {filteredSearchItems.length > 0 ? (
-                      filteredSearchItems.map((group, gIdx) => (
-                        <div key={gIdx} className="space-y-1">
-                          <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider px-3 py-1">
-                            {group.category}
-                          </p>
-                          {group.items.map((item, iIdx) => {
-                            const ItemIcon = item.icon;
-                            return (
-                              <button
-                                key={iIdx}
-                                onClick={() => item.action()}
-                                className="w-full flex items-center space-x-3 px-3 py-2 rounded-xl text-left text-xs sm:text-sm text-[#1E2761] hover:bg-[#1E2761]/5 hover:text-[#FF5A36] transition-colors cursor-pointer group"
-                              >
-                                <div className="w-7 h-7 rounded-lg bg-[#1E2761]/8 group-hover:bg-[#FF5A36]/10 text-[#1E2761] group-hover:text-[#FF5A36] flex items-center justify-center shrink-0 transition-colors">
-                                  <ItemIcon size={14} />
-                                </div>
-                                <span className="font-semibold flex-1 truncate">{item.label}</span>
-                                <ArrowRight size={12} className="opacity-0 group-hover:opacity-100 text-[#FF5A36] transition-opacity" />
-                              </button>
-                            );
-                          })}
-                        </div>
-                      ))
-                    ) : (
-                      <div className="py-6 text-center text-slate-500 text-xs">
-                        No matches found for <span className="font-bold text-[#1E2761]">"{searchQuery}"</span>
-                      </div>
-                    )}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-
-          {/* ========================================================
-              RIGHT CLUSTER: Workspace Pill, Bell, Language, Profile Pill, Drawer
-             ======================================================== */}
-          <div className="flex items-center space-x-2 sm:space-x-3 shrink-0">
+        {/* =========================================================================
+            MODE 1: DASHBOARD HEADER (Visible strictly inside dashboard after sign-in)
+           ========================================================================= */}
+        {isDashboardMode ? (
+          <div className="w-full max-w-[1920px] h-full mx-auto px-3 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-between gap-3 sm:gap-6">
             
-            {/* 1. Mobile Search Trigger Button (Visible on Small Screens) */}
-            <button
-              onClick={() => setShowMobileSearch(!showMobileSearch)}
-              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[#E4E8EE] bg-white hover:bg-slate-50 flex md:hidden items-center justify-center text-slate-700 hover:text-[#1E2761] transition-all cursor-pointer shadow-xs"
-              title="Search"
-            >
-              <Search size={16} />
-            </button>
-
-            {/* 2. Workspace / Organization Pill Badge ("WABISEMINAR MASTERCLASS SUITE") */}
-            <div className="relative">
-              <button 
-                onClick={() => setShowWorkspaceModal(!showWorkspaceModal)}
-                className="hidden 2xl:flex items-center space-x-2 border border-[#FF5A36]/30 bg-[#FF5A36]/5 hover:bg-[#FF5A36]/10 text-[#FF5A36] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-xs select-none"
-                title="WabiSeminar Masterclass Architecture"
+            {/* LEFT: Circular Brand Logo Badge & Name */}
+            <div className="flex items-center space-x-2 sm:space-x-3 shrink-0">
+              <div 
+                onClick={() => handleNavClick('user-dashboard')}
+                className="flex items-center space-x-2.5 sm:space-x-3 cursor-pointer select-none group"
               >
-                <span className="w-2 h-2 rounded-full bg-[#FF5A36] animate-pulse"></span>
-                <span>WABISEMINAR MASTERCLASS SUITE</span>
-              </button>
+                <div className="relative">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#1E2761] border border-[#151A44] flex items-center justify-center text-white font-bold text-sm overflow-hidden shadow-sm transition-transform duration-200 group-hover:scale-105">
+                    <Video className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF5A36]" />
+                  </div>
+                  <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-[#FF5A36] border-2 border-[#FEFEFE] rounded-full animate-pulse"></span>
+                </div>
+                <span className="font-black text-sm sm:text-base lg:text-lg tracking-wider text-[#1E2761] uppercase hidden xs:inline-block">
+                  WABISEMINAR
+                </span>
+              </div>
 
-              {/* Workspace Popover Card */}
-              <AnimatePresence>
-                {showWorkspaceModal && (
-                  <motion.div 
-                    initial={{ opacity: 0, y: 6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 4 }}
-                    className="absolute right-0 top-12 w-80 bg-white rounded-2xl border border-slate-200 shadow-xl p-4 z-50 text-left"
-                  >
-                    <div className="flex items-center justify-between border-b border-slate-100 pb-3 mb-3">
-                      <div className="flex items-center space-x-2">
-                        <Sparkles size={16} className="text-[#FF5A36]" />
-                        <h4 className="text-xs font-bold text-[#1E2761] uppercase tracking-wider">Suite Details</h4>
-                      </div>
-                      <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">
-                        Live 1080p 60fps
-                      </span>
-                    </div>
-                    <div className="space-y-2 text-xs text-slate-600">
-                      <div className="flex justify-between py-1 border-b border-slate-50">
-                        <span className="text-slate-400">Infrastructure</span>
-                        <span className="font-semibold text-[#1E2761]">WebRTC Mesh + Socket.IO</span>
-                      </div>
-                      <div className="flex justify-between py-1 border-b border-slate-50">
-                        <span className="text-slate-400">Security</span>
-                        <span className="font-semibold text-[#1E2761]">DTLS-SRTP 256-Bit</span>
-                      </div>
-                      <div className="flex justify-between py-1">
-                        <span className="text-slate-400">Latency Target</span>
-                        <span className="font-semibold text-emerald-600">&lt; 50ms Peer Sync</span>
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              <div className="hidden lg:block h-6 w-px bg-slate-200/80 mx-1 xl:mx-2" />
             </div>
 
-            {/* 3. Notification Bell Icon Button with Badge Counter */}
-            <div className="relative">
-              <button
-                onClick={() => {
-                  setShowNotifications(!showNotifications);
-                  setShowLangDropdown(false);
-                  setShowProfileDropdown(false);
-                }}
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[#E4E8EE] bg-white hover:bg-slate-50 flex items-center justify-center text-slate-700 hover:text-[#1E2761] transition-all relative cursor-pointer shadow-xs"
-                title="Notifications"
-                aria-label="View notifications"
+            {/* CENTER-LEFT: Pill Search Bar */}
+            <div className="relative flex-1 max-w-sm sm:max-w-md lg:max-w-lg hidden md:block">
+              <div 
+                className={`w-full flex items-center bg-[#F5F7FA] hover:bg-[#EEF2F6] focus-within:bg-white border rounded-full px-4 py-2 transition-all shadow-xs ${
+                  isSearchFocused 
+                    ? 'border-[#1E2761] ring-2 ring-[#1E2761]/10 bg-white' 
+                    : 'border-[#E4E8EE]'
+                }`}
               >
-                <Bell size={18} />
-                {unreadCount > 0 && (
-                  <span className="absolute -top-1 -right-1 min-w-[18px] sm:min-w-[20px] h-4 sm:h-5 px-1 bg-[#FF5A36] text-white text-[10px] font-extrabold rounded-full flex items-center justify-center shadow-xs">
-                    {unreadCount}
+                <Search size={16} className="text-slate-400 shrink-0 mr-2.5" />
+                <input 
+                  ref={searchInputRef}
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => handleSearchChange(e.target.value)}
+                  onFocus={() => setIsSearchFocused(true)}
+                  placeholder="Search seminars, rooms, participants, recordings..."
+                  className="w-full bg-transparent text-xs sm:text-sm text-[#1E2761] placeholder-slate-400 outline-none font-medium min-w-0"
+                />
+                {searchQuery ? (
+                  <button 
+                    onClick={() => handleSearchChange('')}
+                    className="p-1 text-slate-400 hover:text-slate-600 rounded-full hover:bg-slate-200 transition-colors ml-1 cursor-pointer"
+                    title="Clear search"
+                  >
+                    <X size={14} />
+                  </button>
+                ) : (
+                  <span className="hidden xl:inline-block px-1.5 py-0.5 text-[10px] font-mono text-slate-400 bg-white border border-slate-200 rounded-md shrink-0 ml-2 shadow-2xs">
+                    ⌘K
                   </span>
                 )}
-              </button>
+              </div>
 
-              {/* Notification Popover Dropdown */}
+              {/* Search Palette Floating Dropdown */}
               <AnimatePresence>
-                {showNotifications && (
+                {isSearchFocused && (
                   <motion.div 
                     initial={{ opacity: 0, y: 6 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 4 }}
                     transition={{ duration: 0.18 }}
-                    className="absolute right-0 top-12 mt-1 w-80 sm:w-96 bg-white rounded-2xl border border-slate-200 shadow-2xl overflow-hidden z-50 text-left"
+                    className="absolute left-0 right-0 top-12 mt-1 bg-white rounded-2xl border border-slate-200 shadow-xl overflow-hidden z-50 p-2 text-left"
                   >
-                    <div className="p-3.5 border-b border-slate-100 flex items-center justify-between bg-slate-50/60">
-                      <div className="flex items-center space-x-2">
-                        <h4 className="text-xs sm:text-sm font-bold text-[#1E2761]">Notifications</h4>
-                        {unreadCount > 0 && (
-                          <span className="px-2 py-0.5 rounded-full bg-[#FF5A36]/10 text-[#FF5A36] text-[10px] font-bold">
-                            {unreadCount} new
-                          </span>
-                        )}
-                      </div>
-                      {unreadCount > 0 && (
-                        <button
-                          onClick={markAllNotificationsAsRead}
-                          className="text-[11px] font-semibold text-[#FF5A36] hover:underline cursor-pointer"
-                        >
-                          Mark all read
-                        </button>
+                    <div className="max-h-80 overflow-y-auto space-y-3 p-1">
+                      {filteredSearchItems.length > 0 ? (
+                        filteredSearchItems.map((group, gIdx) => (
+                          <div key={gIdx} className="space-y-1">
+                            <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider px-3 py-1">
+                              {group.category}
+                            </p>
+                            {group.items.map((item, iIdx) => {
+                              const ItemIcon = item.icon;
+                              return (
+                                <button
+                                  key={iIdx}
+                                  onClick={() => item.action()}
+                                  className="w-full flex items-center space-x-3 px-3 py-2 rounded-xl text-left text-xs sm:text-sm text-[#1E2761] hover:bg-[#1E2761]/5 hover:text-[#FF5A36] transition-colors cursor-pointer group"
+                                >
+                                  <div className="w-7 h-7 rounded-lg bg-[#1E2761]/8 group-hover:bg-[#FF5A36]/10 text-[#1E2761] group-hover:text-[#FF5A36] flex items-center justify-center shrink-0 transition-colors">
+                                    <ItemIcon size={14} />
+                                  </div>
+                                  <span className="font-semibold flex-1 truncate">{item.label}</span>
+                                  <ArrowRight size={12} className="opacity-0 group-hover:opacity-100 text-[#FF5A36] transition-opacity" />
+                                </button>
+                              );
+                            })}
+                          </div>
+                        ))
+                      ) : (
+                        <div className="py-6 text-center text-slate-500 text-xs">
+                          No matches found for <span className="font-bold text-[#1E2761]">"{searchQuery}"</span>
+                        </div>
                       )}
                     </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
 
-                    <div className="max-h-80 overflow-y-auto divide-y divide-slate-100">
-                      {notifications.map((item) => (
-                        <div 
-                          key={item.id}
-                          className={`p-3 sm:p-3.5 hover:bg-slate-50 transition-colors flex items-start space-x-3 ${
-                            item.unread ? 'bg-amber-50/30' : ''
+            {/* RIGHT CLUSTER: Workspace Pill, Bell, Language, Profile Pill */}
+            <div className="flex items-center space-x-2 sm:space-x-3 shrink-0">
+              
+              {/* Mobile Search Trigger Button */}
+              <button
+                onClick={() => setShowMobileSearch(!showMobileSearch)}
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[#E4E8EE] bg-white hover:bg-slate-50 flex md:hidden items-center justify-center text-slate-700 hover:text-[#1E2761] transition-all cursor-pointer shadow-xs"
+                title="Search"
+              >
+                <Search size={16} />
+              </button>
+
+              {/* Workspace Pill Badge */}
+              <div className="relative">
+                <button 
+                  onClick={() => setShowWorkspaceModal(!showWorkspaceModal)}
+                  className="hidden 2xl:flex items-center space-x-2 border border-[#FF5A36]/30 bg-[#FF5A36]/5 hover:bg-[#FF5A36]/10 text-[#FF5A36] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-xs select-none"
+                  title="WabiSeminar Masterclass Architecture"
+                >
+                  <span className="w-2 h-2 rounded-full bg-[#FF5A36] animate-pulse"></span>
+                  <span>WABISEMINAR MASTERCLASS SUITE</span>
+                </button>
+
+                <AnimatePresence>
+                  {showWorkspaceModal && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: 6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 4 }}
+                      className="absolute right-0 top-12 w-80 bg-white rounded-2xl border border-slate-200 shadow-xl p-4 z-50 text-left"
+                    >
+                      <div className="flex items-center justify-between border-b border-slate-100 pb-3 mb-3">
+                        <div className="flex items-center space-x-2">
+                          <Sparkles size={16} className="text-[#FF5A36]" />
+                          <h4 className="text-xs font-bold text-[#1E2761] uppercase tracking-wider">Suite Details</h4>
+                        </div>
+                        <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">
+                          Live 1080p 60fps
+                        </span>
+                      </div>
+                      <div className="space-y-2 text-xs text-slate-600">
+                        <div className="flex justify-between py-1 border-b border-slate-50">
+                          <span className="text-slate-400">Infrastructure</span>
+                          <span className="font-semibold text-[#1E2761]">WebRTC Mesh + Socket.IO</span>
+                        </div>
+                        <div className="flex justify-between py-1 border-b border-slate-50">
+                          <span className="text-slate-400">Security</span>
+                          <span className="font-semibold text-[#1E2761]">DTLS-SRTP 256-Bit</span>
+                        </div>
+                        <div className="flex justify-between py-1">
+                          <span className="text-slate-400">Latency Target</span>
+                          <span className="font-semibold text-emerald-600">&lt; 50ms Peer Sync</span>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              {/* Notification Bell Icon Button with Badge Counter */}
+              <div className="relative">
+                <button
+                  onClick={() => {
+                    setShowNotifications(!showNotifications);
+                    setShowLangDropdown(false);
+                    setShowProfileDropdown(false);
+                  }}
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[#E4E8EE] bg-white hover:bg-slate-50 flex items-center justify-center text-slate-700 hover:text-[#1E2761] transition-all relative cursor-pointer shadow-xs"
+                  title="Notifications"
+                  aria-label="View notifications"
+                >
+                  <Bell size={18} />
+                  {unreadCount > 0 && (
+                    <span className="absolute -top-1 -right-1 min-w-[18px] sm:min-w-[20px] h-4 sm:h-5 px-1 bg-[#FF5A36] text-white text-[10px] font-extrabold rounded-full flex items-center justify-center shadow-xs">
+                      {unreadCount}
+                    </span>
+                  )}
+                </button>
+
+                <AnimatePresence>
+                  {showNotifications && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: 6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 4 }}
+                      transition={{ duration: 0.18 }}
+                      className="absolute right-0 top-12 mt-1 w-80 sm:w-96 bg-white rounded-2xl border border-slate-200 shadow-2xl overflow-hidden z-50 text-left"
+                    >
+                      <div className="p-3.5 border-b border-slate-100 flex items-center justify-between bg-slate-50/60">
+                        <div className="flex items-center space-x-2">
+                          <h4 className="text-xs sm:text-sm font-bold text-[#1E2761]">Notifications</h4>
+                          {unreadCount > 0 && (
+                            <span className="px-2 py-0.5 rounded-full bg-[#FF5A36]/10 text-[#FF5A36] text-[10px] font-bold">
+                              {unreadCount} new
+                            </span>
+                          )}
+                        </div>
+                        {unreadCount > 0 && (
+                          <button
+                            onClick={markAllNotificationsAsRead}
+                            className="text-[11px] font-semibold text-[#FF5A36] hover:underline cursor-pointer"
+                          >
+                            Mark all read
+                          </button>
+                        )}
+                      </div>
+
+                      <div className="max-h-80 overflow-y-auto divide-y divide-slate-100">
+                        {notifications.map((item) => (
+                          <div 
+                            key={item.id}
+                            className={`p-3 sm:p-3.5 hover:bg-slate-50 transition-colors flex items-start space-x-3 ${
+                              item.unread ? 'bg-amber-50/30' : ''
+                            }`}
+                          >
+                            <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 text-xs font-bold ${
+                              item.unread 
+                                ? 'bg-[#FF5A36]/15 text-[#FF5A36]' 
+                                : 'bg-slate-100 text-slate-500'
+                            }`}>
+                              <Activity size={14} />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center justify-between">
+                                <p className="text-xs font-bold text-[#1E2761] truncate">{item.title}</p>
+                                <span className="text-[10px] text-slate-400 shrink-0 ml-2">{item.time}</span>
+                              </div>
+                              <p className="text-[11px] text-slate-600 line-clamp-2 mt-0.5 leading-snug">{item.desc}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="p-2.5 bg-slate-50/80 border-t border-slate-100 text-center">
+                        <span className="text-[11px] font-semibold text-slate-500 inline-flex items-center gap-1.5">
+                          <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                          All WebRTC systems operational
+                        </span>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              {/* Language Selector Pill Button */}
+              <div className="relative">
+                <button
+                  onClick={() => {
+                    setShowLangDropdown(!showLangDropdown);
+                    setShowNotifications(false);
+                    setShowProfileDropdown(false);
+                  }}
+                  className="bg-[#1E2761] hover:bg-[#151A44] text-white px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full text-xs font-bold flex items-center space-x-1.5 shadow-sm transition-all cursor-pointer select-none"
+                  title="Select language"
+                >
+                  <Globe size={14} className="text-white shrink-0" />
+                  <span className="tracking-wide">{selectedLang}</span>
+                  <ChevronDown size={13} className={`text-white/80 shrink-0 transition-transform ${showLangDropdown ? 'rotate-180' : ''}`} />
+                </button>
+
+                <AnimatePresence>
+                  {showLangDropdown && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: 6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 4 }}
+                      transition={{ duration: 0.18 }}
+                      className="absolute right-0 top-12 mt-1 w-44 bg-white rounded-2xl border border-slate-200 shadow-xl overflow-hidden z-50 p-1.5 text-left"
+                    >
+                      <div className="px-3 py-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                        Select Language
+                      </div>
+                      {languages.map((lang) => (
+                        <button
+                          key={lang.code}
+                          onClick={() => handleSelectLang(lang)}
+                          className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-colors cursor-pointer ${
+                            selectedLang === lang.code 
+                              ? 'bg-[#1E2761]/8 text-[#1E2761] font-bold' 
+                              : 'text-slate-700 hover:bg-slate-100 hover:text-[#1E2761]'
                           }`}
                         >
-                          <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 text-xs font-bold ${
-                            item.unread 
-                              ? 'bg-[#FF5A36]/15 text-[#FF5A36]' 
-                              : 'bg-slate-100 text-slate-500'
-                          }`}>
-                            <Activity size={14} />
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <div className="flex items-center justify-between">
-                              <p className="text-xs font-bold text-[#1E2761] truncate">{item.title}</p>
-                              <span className="text-[10px] text-slate-400 shrink-0 ml-2">{item.time}</span>
-                            </div>
-                            <p className="text-[11px] text-slate-600 line-clamp-2 mt-0.5 leading-snug">{item.desc}</p>
-                          </div>
-                        </div>
+                          <span className="flex items-center space-x-2">
+                            <span>{lang.flag}</span>
+                            <span>{lang.name}</span>
+                          </span>
+                          {selectedLang === lang.code && (
+                            <Check size={14} className="text-[#FF5A36]" />
+                          )}
+                        </button>
                       ))}
-                    </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
 
-                    <div className="p-2.5 bg-slate-50/80 border-t border-slate-100 text-center">
-                      <span className="text-[11px] font-semibold text-slate-500 inline-flex items-center gap-1.5">
-                        <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-                        All WebRTC systems operational
-                      </span>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+              {/* User Profile / Administration Pill Card */}
+              <div className="relative">
+                <button
+                  onClick={() => {
+                    setShowProfileDropdown(!showProfileDropdown);
+                    setShowNotifications(false);
+                    setShowLangDropdown(false);
+                  }}
+                  className="border border-slate-200/90 hover:border-[#1E2761]/30 bg-white hover:bg-slate-50/80 rounded-full pl-3 sm:pl-3.5 pr-1.5 py-1 flex items-center space-x-2.5 transition-all cursor-pointer shadow-xs select-none"
+                  title="Account & Profile"
+                >
+                  <div className="text-left hidden sm:block">
+                    <p className="text-xs font-bold text-[#1E2761] leading-tight truncate max-w-[120px]">
+                      {username}
+                    </p>
+                    <p className="text-[10px] text-slate-500 font-medium leading-tight">
+                      Admin
+                    </p>
+                  </div>
 
-            {/* 4. Language / Locale Selector Pill Button ("EN" with Globe Icon) */}
-            <div className="relative">
-              <button
-                onClick={() => {
-                  setShowLangDropdown(!showLangDropdown);
-                  setShowNotifications(false);
-                  setShowProfileDropdown(false);
-                }}
-                className="bg-[#1E2761] hover:bg-[#151A44] text-white px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full text-xs font-bold flex items-center space-x-1.5 shadow-sm transition-all cursor-pointer select-none"
-                title="Select language"
-              >
-                <Globe size={14} className="text-white shrink-0" />
-                <span className="tracking-wide">{selectedLang}</span>
-                <ChevronDown size={13} className={`text-white/80 shrink-0 transition-transform ${showLangDropdown ? 'rotate-180' : ''}`} />
-              </button>
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#1E2761]/10 text-[#1E2761] border border-[#1E2761]/20 font-bold text-xs flex items-center justify-center shrink-0">
+                    {userInitial}
+                  </div>
+                </button>
 
-              {/* Language Selector Dropdown */}
-              <AnimatePresence>
-                {showLangDropdown && (
-                  <motion.div 
-                    initial={{ opacity: 0, y: 6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 4 }}
-                    transition={{ duration: 0.18 }}
-                    className="absolute right-0 top-12 mt-1 w-44 bg-white rounded-2xl border border-slate-200 shadow-xl overflow-hidden z-50 p-1.5 text-left"
-                  >
-                    <div className="px-3 py-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-                      Select Language
-                    </div>
-                    {languages.map((lang) => (
-                      <button
-                        key={lang.code}
-                        onClick={() => handleSelectLang(lang)}
-                        className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-colors cursor-pointer ${
-                          selectedLang === lang.code 
-                            ? 'bg-[#1E2761]/8 text-[#1E2761] font-bold' 
-                            : 'text-slate-700 hover:bg-slate-100 hover:text-[#1E2761]'
-                        }`}
-                      >
-                        <span className="flex items-center space-x-2">
-                          <span>{lang.flag}</span>
-                          <span>{lang.name}</span>
-                        </span>
-                        {selectedLang === lang.code && (
-                          <Check size={14} className="text-[#FF5A36]" />
-                        )}
-                      </button>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
-            {/* 5. User Profile / Administration Pill Card ("Administration Admin (A)") */}
-            <div className="relative">
-              <button
-                onClick={() => {
-                  setShowProfileDropdown(!showProfileDropdown);
-                  setShowNotifications(false);
-                  setShowLangDropdown(false);
-                }}
-                className="border border-slate-200/90 hover:border-[#1E2761]/30 bg-white hover:bg-slate-50/80 rounded-full pl-3 sm:pl-3.5 pr-1.5 py-1 flex items-center space-x-2.5 transition-all cursor-pointer shadow-xs select-none"
-                title="Account & Profile"
-              >
-                {/* Text Block: Username / Role */}
-                <div className="text-left hidden sm:block">
-                  <p className="text-xs font-bold text-[#1E2761] leading-tight truncate max-w-[120px]">
-                    {username}
-                  </p>
-                  <p className="text-[10px] text-slate-500 font-medium leading-tight">
-                    {isAuthenticated ? 'Admin' : 'Host & Guest'}
-                  </p>
-                </div>
-
-                {/* Circular Avatar */}
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#1E2761]/10 text-[#1E2761] border border-[#1E2761]/20 font-bold text-xs flex items-center justify-center shrink-0">
-                  {userInitial}
-                </div>
-              </button>
-
-              {/* Profile Dropdown Popover */}
-              <AnimatePresence>
-                {showProfileDropdown && (
-                  <motion.div 
-                    initial={{ opacity: 0, y: 6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 4 }}
-                    transition={{ duration: 0.18 }}
-                    className="absolute right-0 top-12 mt-1 w-64 bg-white rounded-2xl border border-slate-200 shadow-2xl overflow-hidden z-50 p-2 text-left"
-                  >
-                    {/* User Preview */}
-                    <div className="p-3 bg-[#F5F7FA] rounded-xl mb-2 flex items-center space-x-3">
-                      <div className="w-10 h-10 rounded-full bg-[#1E2761] text-white font-bold text-sm flex items-center justify-center shrink-0">
-                        {userInitial}
-                      </div>
-                      <div className="min-w-0 flex-1">
-                        <p className="text-xs font-bold text-[#1E2761] truncate">{username}</p>
-                        <p className="text-[10px] text-slate-500 font-medium truncate">
-                          {isAuthenticated ? 'Masterclass Host' : 'Guest Mode'}
-                        </p>
-                        <div className="flex items-center space-x-1.5 mt-0.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                          <span className="text-[10px] font-semibold text-emerald-600">Online Active</span>
+                <AnimatePresence>
+                  {showProfileDropdown && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: 6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 4 }}
+                      transition={{ duration: 0.18 }}
+                      className="absolute right-0 top-12 mt-1 w-64 bg-white rounded-2xl border border-slate-200 shadow-2xl overflow-hidden z-50 p-2 text-left"
+                    >
+                      <div className="p-3 bg-[#F5F7FA] rounded-xl mb-2 flex items-center space-x-3">
+                        <div className="w-10 h-10 rounded-full bg-[#1E2761] text-white font-bold text-sm flex items-center justify-center shrink-0">
+                          {userInitial}
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <p className="text-xs font-bold text-[#1E2761] truncate">{username}</p>
+                          <p className="text-[10px] text-slate-500 font-medium truncate">
+                            Host Administrator
+                          </p>
+                          <div className="flex items-center space-x-1.5 mt-0.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                            <span className="text-[10px] font-semibold text-emerald-600">Online Active</span>
+                          </div>
                         </div>
                       </div>
-                    </div>
 
-                    {/* Nav Actions */}
-                    <div className="space-y-0.5">
-                      <button
-                        onClick={() => handleNavClick(isAuthenticated ? 'user-dashboard' : 'dashboard')}
-                        className="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-semibold text-slate-700 hover:text-[#1E2761] hover:bg-slate-100 transition-colors cursor-pointer"
-                      >
-                        <Video size={14} className="text-[#FF5A36]" />
-                        <span>Meeting Dashboard</span>
-                      </button>
+                      <div className="space-y-0.5">
+                        <button
+                          onClick={() => handleNavClick('user-dashboard')}
+                          className="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-semibold text-slate-700 hover:text-[#1E2761] hover:bg-slate-100 transition-colors cursor-pointer"
+                        >
+                          <Video size={14} className="text-[#FF5A36]" />
+                          <span>Meeting Dashboard</span>
+                        </button>
 
-                      <button
-                        onClick={() => handleNavClick('profile')}
-                        className="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-semibold text-slate-700 hover:text-[#1E2761] hover:bg-slate-100 transition-colors cursor-pointer"
-                      >
-                        <User size={14} className="text-slate-500" />
-                        <span>Host Profile & Bio</span>
-                      </button>
+                        <button
+                          onClick={() => handleNavClick('profile')}
+                          className="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-semibold text-slate-700 hover:text-[#1E2761] hover:bg-slate-100 transition-colors cursor-pointer"
+                        >
+                          <User size={14} className="text-slate-500" />
+                          <span>Host Profile & Bio</span>
+                        </button>
 
-                      <button
-                        onClick={() => handleNavClick('settings')}
-                        className="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-semibold text-slate-700 hover:text-[#1E2761] hover:bg-slate-100 transition-colors cursor-pointer"
-                      >
-                        <Settings size={14} className="text-slate-500" />
-                        <span>Audio & Video Settings</span>
-                      </button>
+                        <button
+                          onClick={() => handleNavClick('settings')}
+                          className="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-semibold text-slate-700 hover:text-[#1E2761] hover:bg-slate-100 transition-colors cursor-pointer"
+                        >
+                          <Settings size={14} className="text-slate-500" />
+                          <span>Audio & Video Settings</span>
+                        </button>
 
-                      <button
-                        onClick={() => handleNavClick('pricing')}
-                        className="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-semibold text-slate-700 hover:text-[#1E2761] hover:bg-slate-100 transition-colors cursor-pointer"
-                      >
-                        <Sparkles size={14} className="text-amber-500" />
-                        <span>Plans & Upgrades</span>
-                      </button>
-                    </div>
+                        <button
+                          onClick={() => handleNavClick('pricing')}
+                          className="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-semibold text-slate-700 hover:text-[#1E2761] hover:bg-slate-100 transition-colors cursor-pointer"
+                        >
+                          <Sparkles size={14} className="text-amber-500" />
+                          <span>Plans & Upgrades</span>
+                        </button>
+                      </div>
 
-                    <div className="border-t border-slate-100 my-1 pt-1">
-                      {isAuthenticated ? (
+                      <div className="border-t border-slate-100 my-1 pt-1">
                         <button
                           onClick={() => {
                             setShowProfileDropdown(false);
@@ -702,26 +685,76 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
                           <LogOut size={14} />
                           <span>Sign Out</span>
                         </button>
-                      ) : (
-                        <button
-                          onClick={() => handleNavClick('auth')}
-                          className="w-full flex items-center space-x-2.5 px-3 py-2 rounded-xl text-xs font-bold text-white bg-[#FF5A36] hover:bg-[#E04826] transition-colors cursor-pointer justify-center"
-                        >
-                          <LogIn size={14} />
-                          <span>Sign In / Register</span>
-                        </button>
-                      )}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
             </div>
 
-            {/* 6. Boxed Square Hamburger Button [ ≡ ] (Hidden on User Dashboard) */}
-            {!isUserDashboard && (
+          </div>
+        ) : (
+          /* =========================================================================
+              MODE 2: PUBLIC WEBSITE HEADER (Visible outside dashboards / before signin)
+             ========================================================================= */
+          <div className="w-full max-w-[1800px] h-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-24 flex items-center justify-between">
+            
+            {/* Logo on Left */}
+            <div 
+              onClick={() => handleNavClick(isAuthenticated ? 'user-dashboard' : 'dashboard')}
+              className="flex items-center space-x-3 cursor-pointer select-none group"
+            >
+              <div className="relative">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#1E2761] border border-[#151A44] flex items-center justify-center text-white font-bold text-sm overflow-hidden shadow-sm transition-transform duration-200 group-hover:scale-105">
+                  <Video className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                </div>
+                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-[#FF5A36] border-2 border-[#FEFEFE] rounded-full animate-pulse"></span>
+              </div>
+              <span className="font-extrabold text-base sm:text-lg tracking-wider text-[#1E2761] uppercase">
+                WABISEMINAR
+              </span>
+            </div>
+
+            {/* Center Navigation Links (Revealed smoothly when scrolling) */}
+            <AnimatePresence>
+              {isScrolled && (
+                <motion.nav 
+                  initial={{ opacity: 0, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.25, ease: "easeOut" }}
+                  className="hidden lg:flex items-center space-x-3 xl:space-x-5"
+                >
+                  {menuItems.map((item) => {
+                    const isActive = item.id === 'home'
+                      ? (currentView === 'dashboard' || currentView === 'user-dashboard')
+                      : currentView === item.view;
+                    return (
+                      <button
+                        key={item.id}
+                        onClick={() => handleMenuItemClick(item)}
+                        className={`text-xs xl:text-sm font-semibold transition-colors cursor-pointer select-none bg-transparent border-0 px-3 py-1 rounded-full ${
+                          isActive
+                            ? 'text-[#FF5A36] font-bold bg-[#FF5A36]/10'
+                            : 'text-[#1E2761]/85 hover:text-[#FF5A36] hover:bg-[#1E2761]/5'
+                        }`}
+                      >
+                        {item.label}
+                      </button>
+                    );
+                  })}
+                </motion.nav>
+              )}
+            </AnimatePresence>
+
+            {/* Right Side: Boxed Square Hamburger Button [ ≡ ] + Electric Coral Sign In Button */}
+            <div className="flex items-center space-x-2.5 sm:space-x-3">
+              
+              {/* Boxed Square Hamburger Button [ ≡ ] */}
               <button
                 onClick={() => setIsDrawerOpen(true)}
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg border border-[#E4E8EE] bg-[#FEFEFE] hover:bg-[#E4E8EE]/40 flex flex-col items-center justify-center space-y-1 transition-all cursor-pointer shadow-xs focus:outline-none shrink-0"
+                className="w-10 h-10 rounded-lg border border-[#E4E8EE] bg-[#FEFEFE] hover:bg-[#E4E8EE]/40 flex flex-col items-center justify-center space-y-1 transition-all cursor-pointer shadow-sm focus:outline-none"
                 aria-label="Toggle navigation menu"
                 title="Open Navigation Menu"
               >
@@ -729,15 +762,34 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
                 <span className="w-4 h-[2px] bg-[#1E2761] rounded-full"></span>
                 <span className="w-4 h-[2px] bg-[#1E2761] rounded-full"></span>
               </button>
-            )}
 
+              {/* Solid Electric Coral Sign In / Dashboard Button */}
+              {isAuthenticated ? (
+                <button 
+                  onClick={() => handleNavClick('user-dashboard')}
+                  className="bg-[#1E2761] hover:bg-[#151A44] text-white px-4 py-2 rounded-lg font-bold text-xs sm:text-sm shadow-sm transition-all cursor-pointer flex items-center space-x-1.5"
+                >
+                  <div className="w-4 h-4 rounded-full bg-white/20 text-white flex items-center justify-center text-[10px] font-bold">
+                    {userInitial}
+                  </div>
+                  <span>Dashboard</span>
+                </button>
+              ) : (
+                <button
+                  onClick={() => handleNavClick('auth')}
+                  className="bg-[#FF5A36] hover:bg-[#E04826] text-white px-4 sm:px-5 py-2 rounded-lg font-bold text-xs sm:text-sm shadow-md shadow-[#FF5A36]/20 transition-all cursor-pointer flex items-center space-x-1.5"
+                >
+                  <span>Sign In</span>
+                </button>
+              )}
+
+            </div>
           </div>
+        )}
 
-        </div>
-
-        {/* Mobile Search Overlay Bar */}
+        {/* Mobile Search Overlay Bar (Dashboard Mode Only) */}
         <AnimatePresence>
-          {showMobileSearch && (
+          {isDashboardMode && showMobileSearch && (
             <motion.div 
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}

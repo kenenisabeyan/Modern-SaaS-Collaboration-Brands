@@ -141,12 +141,12 @@ function App() {
     };
   }, []);
 
-  const isUserDashboard = currentView === 'user-dashboard';
+  const isDashboardMode = isAuthenticated && ['user-dashboard', 'profile', 'settings'].includes(currentView);
   const showHeaderFooter = currentView !== 'meeting';
-  const showFooter = showHeaderFooter && !isUserDashboard;
+  const showFooter = showHeaderFooter && !isDashboardMode;
 
   return (
-    <div className={`min-h-screen flex flex-col font-sans relative overflow-x-hidden ${isUserDashboard ? 'bg-[#F5F7FA]' : 'bg-[#1E2761]'} text-[#1E2761]`}>
+    <div className={`min-h-screen flex flex-col font-sans relative overflow-x-hidden ${isDashboardMode ? 'bg-[#F5F7FA]' : 'bg-[#1E2761]'} text-[#1E2761]`}>
       <ParticleBackground />
       {showHeaderFooter && <ScrollEnhancer />}
       
