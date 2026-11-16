@@ -93,7 +93,7 @@ export default function HowItWorks({ onNavigate }) {
             className="max-w-4xl mx-auto flex flex-col items-center"
           >
             <motion.h1 variants={fadeIn} className="text-4xl sm:text-6xl md:text-7xl font-extrabold mb-4 sm:mb-6 tracking-tight leading-[1.08] text-[#1E2761]">
-              How <span className="text-[#FF5A36]">WabiSeminar</span> Works
+              How <span className="text-[#FF5A36]">CoVideo</span> Works
             </motion.h1>
             <motion.p variants={fadeIn} className="text-base sm:text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl font-normal mb-8">
               From creating your account to conducting full HD interactive masterclasses, everything is designed to be frictionless.
