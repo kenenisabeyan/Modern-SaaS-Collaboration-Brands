@@ -145,7 +145,7 @@ export default function Features({ onNavigate, initialSection }) {
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
             <div className="text-center mb-12 sm:mb-16">
               <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1E2761] mb-4 tracking-tight">
-                How <span className="text-[#FF5A36]">WabiSeminar</span> Works
+                How <span className="text-[#FF5A36]">CoVideo</span> Works
               </h2>
               <p className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto font-normal">
                 From creating your account to conducting full HD interactive sessions, everything is designed to be frictionless.
@@ -404,7 +404,7 @@ export default function Features({ onNavigate, initialSection }) {
                   Designed for lively masterclasses.
                 </h2>
                 <p className="text-slate-600 text-base sm:text-lg mb-6 leading-relaxed">
-                  Engage your audience with tools built for interaction. Whether you're presenting a slide deck, reviewing code, or hosting a Q&A, WabiSeminar makes collaboration feel natural.
+                  Engage your audience with tools built for interaction. Whether you're presenting a slide deck, reviewing code, or hosting a Q&A, CoVideo makes collaboration feel natural.
                 </p>
                 <ul className="space-y-3.5">
                   {[
