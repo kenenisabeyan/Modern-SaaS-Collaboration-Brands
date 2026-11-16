@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { motion } from 'framer-motion';
+import { scrollSection, scrollStagger, scrollItem, viewportConfig } from '../utils/animations.js';
 import { 
   Video, VideoOff, Mic, MicOff, Plus, Link as LinkIcon, Calendar, Clock, 
   Loader2, ArrowRight, Copy, Check, Trash2, X, Sparkles, Camera, Play
@@ -277,7 +278,12 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
             HERO LAUNCHPAD: Simple, Clear, Friction-Free 2-Column Layout
             Inspired by Google Meet & Whereby simplicity
            ======================================================== */}
-        <section className="bg-white border border-[#E4E8EE] rounded-3xl p-6 sm:p-10 lg:p-12 shadow-sm mb-10 transition-all">
+        <motion.section 
+          initial="hidden"
+          animate="visible"
+          variants={scrollSection}
+          className="bg-white border border-[#E4E8EE] rounded-3xl p-6 sm:p-10 lg:p-12 shadow-sm mb-10 transition-all"
+        >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
             {/* Left Side: The 2 Core Actions (Start or Join) */}
