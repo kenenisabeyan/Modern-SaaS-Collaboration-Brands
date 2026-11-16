@@ -431,31 +431,31 @@ export default function Features({ onNavigate, initialSection }) {
         </section>
 
         {/* 7. Integrated "About WabiSeminar" Mission Section */}
-        <section id="about" className="w-full bg-[#1E2761] text-white py-16 sm:py-24 mb-20 sm:mb-32 border-0 shadow-none">
+        <section id="about" className="w-full bg-[#FFFFFF] text-[#1E2761] py-16 sm:py-24 mb-20 sm:mb-32 border-0 shadow-none">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
             <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-3xl sm:text-5xl font-extrabold text-white mb-6 tracking-tight">
+              <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1E2761] mb-6 tracking-tight">
                 About <span className="text-[#FF5A36]">WabiSeminar</span>
               </h2>
-              <p className="text-slate-300 text-base sm:text-lg leading-relaxed mb-10 font-normal">
+              <p className="text-slate-600 text-base sm:text-lg leading-relaxed mb-10 font-normal">
                 WabiSeminar was created to eliminate the clutter, bloat, and paywalls of legacy video conferencing platforms. We believe high-definition, interactive masterclasses and meetings should be accessible directly in any browser with zero downloads, zero setup, and bank-grade privacy.
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-left">
-                <div className="bg-white/5 border border-white/10 p-6 rounded-2xl">
-                  <p className="text-3xl font-extrabold text-[#FF5A36] mb-1">0 sec</p>
-                  <p className="text-sm font-bold text-white">Zero Installation</p>
-                  <p className="text-xs text-slate-400 mt-1">Runs 100% in modern browsers with zero plugins or downloads.</p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+                <div className="bg-[#F5F7FA] border border-[#E4E8EE] p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col items-center text-center">
+                  <p className="text-3xl sm:text-4xl font-extrabold text-[#FF5A36] mb-2 font-mono">0 sec</p>
+                  <p className="text-base font-bold text-[#1E2761]">Zero Installation</p>
+                  <p className="text-xs sm:text-sm text-slate-500 mt-2 leading-relaxed">Runs 100% in modern browsers with zero plugins or downloads.</p>
                 </div>
-                <div className="bg-white/5 border border-white/10 p-6 rounded-2xl">
-                  <p className="text-3xl font-extrabold text-white mb-1">1080p</p>
-                  <p className="text-sm font-bold text-white">Ultra HD Clarity</p>
-                  <p className="text-xs text-slate-400 mt-1">Adaptive WebRTC streaming optimized for low-bandwidth networks.</p>
+                <div className="bg-[#F5F7FA] border border-[#E4E8EE] p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col items-center text-center">
+                  <p className="text-3xl sm:text-4xl font-extrabold text-[#1E2761] mb-2 font-mono">1080p</p>
+                  <p className="text-base font-bold text-[#1E2761]">Ultra HD Clarity</p>
+                  <p className="text-xs sm:text-sm text-slate-500 mt-2 leading-relaxed">Adaptive WebRTC streaming optimized for low-bandwidth networks.</p>
                 </div>
-                <div className="bg-white/5 border border-white/10 p-6 rounded-2xl">
-                  <p className="text-3xl font-extrabold text-[#FF5A36] mb-1">100%</p>
-                  <p className="text-sm font-bold text-white">Private & Encrypted</p>
-                  <p className="text-xs text-slate-400 mt-1">End-to-end cryptographic encryption for video, audio, and chat.</p>
+                <div className="bg-[#F5F7FA] border border-[#E4E8EE] p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col items-center text-center">
+                  <p className="text-3xl sm:text-4xl font-extrabold text-[#FF5A36] mb-2 font-mono">100%</p>
+                  <p className="text-base font-bold text-[#1E2761]">Private & Encrypted</p>
+                  <p className="text-xs sm:text-sm text-slate-500 mt-2 leading-relaxed">End-to-end cryptographic encryption for video, audio, and chat.</p>
                 </div>
               </div>
             </div>
@@ -463,7 +463,7 @@ export default function Features({ onNavigate, initialSection }) {
         </section>
 
         {/* 8. CTA Section */}
-        <section className="w-full bg-white py-16 sm:py-24 border-0 shadow-none text-center">
+        <section className="w-full bg-[#F5F7FA] py-16 sm:py-24 border-0 shadow-none text-center">
           <div className="max-w-4xl mx-auto px-4 sm:px-8 lg:px-12">
             <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1E2761] mb-4 tracking-tight">
               Ready to host your next masterclass?
