@@ -61,7 +61,7 @@ const faqData = [
     category: "Technical Support",
     icon: <Wrench size={20} className="text-[#FF5A36]" />,
     questions: [
-      { q: "What browsers are supported?", a: "WabiSeminar works flawlessly on all modern browsers including Chrome, Edge, Safari, and Firefox. No plugins required." },
+      { q: "What browsers are supported?", a: "CoVideo works flawlessly on all modern browsers including Chrome, Edge, Safari, and Firefox. No plugins required." },
       { q: "Why is my camera not working?", a: "Ensure that your browser has permission to access your camera and microphone. You can reset these permissions by clicking the lock icon next to the URL bar." },
       { q: "How do I report a bug?", a: "You can reach out directly to our technical team via the Contact Support button below, and we'll investigate the issue immediately." }
     ]
