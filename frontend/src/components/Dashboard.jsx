@@ -8,6 +8,7 @@ import {
   BookOpen, Heart, ArrowRight, X, Briefcase, Globe
 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { scrollSection, scrollStagger, scrollItem, viewportConfig } from '../utils/animations.js';
 
 export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
   const [joinId, setJoinId] = useState('');
@@ -362,7 +363,14 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
         {/* ========================================================
             FEATURES SECTION
            ======================================================== */}
-        <section id="features" className="py-16 sm:py-24 bg-white border-t border-[#E4E8EE] px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-20">
+        <motion.section 
+          id="features" 
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+          variants={scrollSection}
+          className="py-16 sm:py-24 bg-white border-t border-[#E4E8EE] px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-20"
+        >
           <div className="max-w-[1720px] mx-auto">
             
             <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-18">
@@ -374,10 +382,10 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <motion.div variants={scrollStagger} className="grid grid-cols-1 md:grid-cols-3 gap-8">
               
               {/* Card 1: Ultra HD Video with Continuous Animated #FF5A36 Border Beam (90° Rectangle Border Radius) */}
-              <div className="relative p-[2px] overflow-hidden rounded-none shadow-sm hover:shadow-xl hover:shadow-[#FF5A36]/15 transition-all group flex flex-col bg-[#E4E8EE]">
+              <motion.div variants={scrollItem} className="relative p-[2px] overflow-hidden rounded-none shadow-sm hover:shadow-xl hover:shadow-[#FF5A36]/15 transition-all group flex flex-col bg-[#E4E8EE]">
                 {/* Continuous Rotating Electric Coral (#FF5A36) Border Beam */}
                 <div 
                   className="absolute inset-[-250%] animate-spin-beam pointer-events-none"
@@ -397,10 +405,10 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                     Experience crystal-clear video and audio quality powered by advanced WebRTC architecture, ensuring you always look your best.
                   </p>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Card 2: Real-time Chat with Continuous Animated #FF5A36 Border Beam (90° Rectangle Border Radius) */}
-              <div className="relative p-[2px] overflow-hidden rounded-none shadow-sm hover:shadow-xl hover:shadow-[#FF5A36]/15 transition-all group flex flex-col bg-[#E4E8EE]">
+              <motion.div variants={scrollItem} className="relative p-[2px] overflow-hidden rounded-none shadow-sm hover:shadow-xl hover:shadow-[#FF5A36]/15 transition-all group flex flex-col bg-[#E4E8EE]">
                 {/* Continuous Rotating Electric Coral (#FF5A36) Border Beam */}
                 <div 
                   className="absolute inset-[-250%] animate-spin-beam pointer-events-none"
@@ -420,10 +428,10 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                     Keep your audience engaged with lightning-fast built-in chat. Share links, answer questions, and foster community instantly.
                   </p>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Card 3: Screen Sharing with Continuous Animated #FF5A36 Border Beam (90° Rectangle Border Radius) */}
-              <div className="relative p-[2px] overflow-hidden rounded-none shadow-sm hover:shadow-xl hover:shadow-[#FF5A36]/15 transition-all group flex flex-col bg-[#E4E8EE]">
+              <motion.div variants={scrollItem} className="relative p-[2px] overflow-hidden rounded-none shadow-sm hover:shadow-xl hover:shadow-[#FF5A36]/15 transition-all group flex flex-col bg-[#E4E8EE]">
                 {/* Continuous Rotating Electric Coral (#FF5A36) Border Beam */}
                 <div 
                   className="absolute inset-[-250%] animate-spin-beam pointer-events-none"
@@ -443,18 +451,24 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                     Present your masterclass seamlessly. Share your entire screen, specific windows, or browser tabs with zero lag.
                   </p>
                 </div>
-              </div>
+              </motion.div>
 
-            </div>
+            </motion.div>
 
           </div>
-        </section>
+        </motion.section>
 
 
         {/* ========================================================
             UNIVERSAL PLATFORM / BEYOND STANDARD MEETINGS
            ======================================================== */}
-        <section className="py-16 sm:py-24 bg-[#F5F7FA] border-t border-[#E4E8EE] px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-20">
+        <motion.section 
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+          variants={scrollSection}
+          className="py-16 sm:py-24 bg-[#F5F7FA] border-t border-[#E4E8EE] px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-20"
+        >
           <div className="max-w-[1720px] mx-auto text-center">
             
             <h2 className="text-3xl sm:text-5xl font-extrabold mb-4 tracking-tight text-[#1E2761]">
@@ -464,9 +478,9 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               From interactive cohort workshops to high-stakes team syncs, WabiSeminar delivers the masterclass tools, ultra-low latency, and frictionless access that generic meeting tools lack.
             </p>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <motion.div variants={scrollStagger} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               
-              <div className="bg-white border border-[#E4E8EE] hover:border-[#1E2761]/30 p-8 rounded-3xl flex flex-col items-center text-center shadow-sm hover:-translate-y-1 transition-all">
+              <motion.div variants={scrollItem} className="bg-white border border-[#E4E8EE] hover:border-[#1E2761]/30 p-8 rounded-3xl flex flex-col items-center text-center shadow-sm hover:-translate-y-1 transition-all">
                 <div className="w-14 h-14 rounded-2xl bg-[#1E2761]/10 border border-[#1E2761]/20 flex items-center justify-center text-[#1E2761] mb-6 mx-auto">
                   <GraduationCap size={28} />
                 </div>
@@ -474,9 +488,9 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 <p className="text-slate-600 text-sm leading-relaxed">
                   Host live cohorts, workshops, and code walkthroughs with stage spotlight controls and zero attendee downloads.
                 </p>
-              </div>
+              </motion.div>
 
-              <div className="bg-white border border-[#E4E8EE] hover:border-[#FF5A36]/40 p-8 rounded-3xl flex flex-col items-center text-center shadow-sm hover:-translate-y-1 transition-all">
+              <motion.div variants={scrollItem} className="bg-white border border-[#E4E8EE] hover:border-[#FF5A36]/40 p-8 rounded-3xl flex flex-col items-center text-center shadow-sm hover:-translate-y-1 transition-all">
                 <div className="w-14 h-14 rounded-2xl bg-[#FF5A36]/10 border border-[#FF5A36]/20 flex items-center justify-center text-[#FF5A36] mb-6 mx-auto">
                   <Briefcase size={28} />
                 </div>
@@ -484,9 +498,9 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 <p className="text-slate-600 text-sm leading-relaxed">
                   Run sprint reviews, all-hands, and client presentations with crystal-clear audio and zero Google account lock-in.
                 </p>
-              </div>
+              </motion.div>
 
-              <div className="bg-white border border-[#E4E8EE] hover:border-[#1E2761]/30 p-8 rounded-3xl flex flex-col items-center text-center shadow-sm hover:-translate-y-1 transition-all">
+              <motion.div variants={scrollItem} className="bg-white border border-[#E4E8EE] hover:border-[#1E2761]/30 p-8 rounded-3xl flex flex-col items-center text-center shadow-sm hover:-translate-y-1 transition-all">
                 <div className="w-14 h-14 rounded-2xl bg-[#1E2761]/10 border border-[#1E2761]/20 flex items-center justify-center text-[#1E2761] mb-6 mx-auto">
                   <Sparkles size={28} />
                 </div>
@@ -494,9 +508,9 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 <p className="text-slate-600 text-sm leading-relaxed">
                   Broadcast live masterclasses and Q&As with synchronized chat, audience hand-raising, and interactive engagement.
                 </p>
-              </div>
+              </motion.div>
 
-              <div className="bg-white border border-[#E4E8EE] hover:border-[#FF5A36]/40 p-8 rounded-3xl flex flex-col items-center text-center shadow-sm hover:-translate-y-1 transition-all">
+              <motion.div variants={scrollItem} className="bg-white border border-[#E4E8EE] hover:border-[#FF5A36]/40 p-8 rounded-3xl flex flex-col items-center text-center shadow-sm hover:-translate-y-1 transition-all">
                 <div className="w-14 h-14 rounded-2xl bg-[#FF5A36]/10 border border-[#FF5A36]/20 flex items-center justify-center text-[#FF5A36] mb-6 mx-auto">
                   <Globe size={28} />
                 </div>
@@ -504,18 +518,24 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 <p className="text-slate-600 text-sm leading-relaxed">
                   Scale customer seminars and secure summits with transport-level DTLS-SRTP encryption and private room gatekeepers.
                 </p>
-              </div>
+              </motion.div>
 
-            </div>
+            </motion.div>
 
           </div>
-        </section>
+        </motion.section>
 
 
         {/* ========================================================
             TESTIMONIALS SECTION
            ======================================================== */}
-        <section className="py-16 sm:py-24 bg-white border-t border-[#E4E8EE] px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-20">
+        <motion.section 
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+          variants={scrollSection}
+          className="py-16 sm:py-24 bg-white border-t border-[#E4E8EE] px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-20"
+        >
           <div className="max-w-[1720px] mx-auto">
             
             <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-18">
@@ -527,9 +547,9 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <motion.div variants={scrollStagger} className="grid grid-cols-1 md:grid-cols-3 gap-8">
               
-              <div className="bg-[#F5F7FA] border border-[#E4E8EE] p-8 rounded-3xl shadow-sm hover:border-[#FF5A36]/40 transition-all flex flex-col justify-between">
+              <motion.div variants={scrollItem} className="bg-[#F5F7FA] border border-[#E4E8EE] p-8 rounded-3xl shadow-sm hover:border-[#FF5A36]/40 transition-all flex flex-col justify-between">
                 <div>
                   <div className="flex gap-1 text-[#FF5A36] mb-5">
                     <Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" />
@@ -545,9 +565,9 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                     <p className="text-slate-500 text-xs">Lead Designer, StudioX</p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="bg-[#F5F7FA] border border-[#E4E8EE] p-8 rounded-3xl shadow-sm hover:border-[#1E2761]/30 transition-all flex flex-col justify-between">
+              <motion.div variants={scrollItem} className="bg-[#F5F7FA] border border-[#E4E8EE] p-8 rounded-3xl shadow-sm hover:border-[#1E2761]/30 transition-all flex flex-col justify-between">
                 <div>
                   <div className="flex gap-1 text-[#FF5A36] mb-5">
                     <Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" />
@@ -563,9 +583,9 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                     <p className="text-slate-500 text-xs">Executive Coach</p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="bg-[#F5F7FA] border border-[#E4E8EE] p-8 rounded-3xl shadow-sm hover:border-[#1E2761]/30 transition-all flex flex-col justify-between">
+              <motion.div variants={scrollItem} className="bg-[#F5F7FA] border border-[#E4E8EE] p-8 rounded-3xl shadow-sm hover:border-[#1E2761]/30 transition-all flex flex-col justify-between">
                 <div>
                   <div className="flex gap-1 text-[#FF5A36] mb-5">
                     <Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" />
@@ -581,12 +601,12 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                     <p className="text-slate-500 text-xs">CTO, TechFlow</p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
-            </div>
+            </motion.div>
 
           </div>
-        </section>
+        </motion.section>
 
       </main>
 

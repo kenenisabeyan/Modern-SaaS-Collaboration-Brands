@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { scrollSection, scrollStagger, scrollItem, viewportConfig } from '../utils/animations.js';
 import { 
   Video, Shield, Zap, Globe, Users, Target, 
   Cpu, Award, Sparkles, Heart, Lock, ArrowRight, 
