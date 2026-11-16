@@ -119,7 +119,7 @@ export default function UserProfile({ onNavigate }) {
               {username.charAt(0).toUpperCase()}
             </div>
             <h2 className="text-xl sm:text-2xl font-bold text-[#1E2761] mb-1 truncate">{username}</h2>
-            <p className="text-xs sm:text-sm text-slate-500 truncate mb-3">{email || `${username.toLowerCase()}@wabiseminar.com`}</p>
+            <p className="text-xs sm:text-sm text-slate-500 truncate mb-3">{email || `${username.toLowerCase()}@covideo.com`}</p>
             
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FF5A36]/10 text-[#FF5A36] text-xs font-semibold border border-[#FF5A36]/20 mb-6">
               <ShieldCheck size={14} className="text-[#FF5A36]" />
@@ -181,7 +181,7 @@ export default function UserProfile({ onNavigate }) {
                   <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-2">Email Address (Read-only)</label>
                   <input 
                     type="email" 
-                    value={email || `${username.toLowerCase()}@wabiseminar.com`}
+                    value={email || `${username.toLowerCase()}@covideo.com`}
                     disabled
                     className="w-full bg-[#F5F7FA] border border-[#E4E8EE] rounded-2xl px-4 py-3 text-sm text-slate-500 cursor-not-allowed opacity-80 shadow-sm"
                   />

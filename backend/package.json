@@ -1,7 +1,7 @@
 {
-  "name": "wabi-seminar-backend",
+  "name": "covideo-backend",
   "version": "1.0.0",
-  "description": "WabiSeminar Live MVP Backend - Real-time video conferencing platform",
+  "description": "CoVideo Live MVP Backend - Real-time video conferencing platform",
   "main": "src/server.js",
   "type": "module",
   "engines": {

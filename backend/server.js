@@ -27,7 +27,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/rooms', roomRoutes);
 
 app.get('/', (req, res) => {
-  res.json({ status: 'WabiSeminar Live Backend is running' });
+  res.json({ status: 'CoVideo Live Backend is running' });
 });
 
 io.use(async (socket, next) => {

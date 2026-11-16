@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🌐 WabiSeminar Live
+# 🌐 CoVideo Live
 
 ### Enterprise-Grade Real-Time Collaborative Whiteboard & Seminar Platform
 
@@ -24,13 +24,13 @@
 
 ## ⚡ Executive Summary
 
-**WabiSeminar Live** is an end-to-end distributed collaboration platform bridging the gap between interactive visual brainstorming and virtual seminar management. Built with **React 19**, **Node.js/Express**, and **Socket.IO**, backed by **TiDB Cloud Serverless SQL**, it empowers educators, teams, and seminar leaders to host real-time interactive rooms with instant drawing replication, live participant tracking, in-session messaging, and resilient OAuth authentication.
+**CoVideo Live** is an end-to-end distributed collaboration platform bridging the gap between interactive visual brainstorming and virtual seminar management. Built with **React 19**, **Node.js/Express**, and **Socket.IO**, backed by **TiDB Cloud Serverless SQL**, it empowers educators, teams, and seminar leaders to host real-time interactive rooms with instant drawing replication, live participant tracking, in-session messaging, and resilient OAuth authentication.
 
 ---
 
 ## 🎨 Brand Identity & 60-30-10 Design Architecture
 
-WabiSeminar strictly follows the **60-30-10 Design Rule** combined with visual architecture patterns from **iceaddis.com** and **kenenisa-os.vercel.app**:
+CoVideo strictly follows the **60-30-10 Design Rule** combined with visual architecture patterns from **iceaddis.com** and **kenenisa-os.vercel.app**:
 
 | Hierarchy Role | Weight | Palette Hex | Target UI Application |
 |---|---|---|---|
@@ -40,7 +40,7 @@ WabiSeminar strictly follows the **60-30-10 Design Rule** combined with visual a
 
 ### 🌟 Signature UI Components
 1. **Compact Pure White Sticky Header**:
-   - Left: Deep Midnight Blue (`#1E2761`) avatar emblem with an active Electric Coral (`#FF5A36`) live status indicator and bold `WABISEMINAR` logo text.
+   - Left: Deep Midnight Blue (`#1E2761`) avatar emblem with an active Electric Coral (`#FF5A36`) live status indicator and bold `COVIDEO` logo text.
    - Right: Signature boxed square hamburger button `[ ≡ ]` alongside the high-priority Electric Coral `Sign In` / `Dashboard` action button.
 2. **Slide-Out Right Drawer (iceaddis style)**:
    - Deep Midnight Blue (`#1E2761`) slide-out drawer with a backdrop overlay, top-right `✕` close control, and clean accordion navigation (`About`, `Masterclasses (+)`, `Features`, `How It Works`, `Pricing`, `FAQ`, `Contact Us`).
@@ -83,7 +83,7 @@ WabiSeminar strictly follows the **60-30-10 Design Rule** combined with visual a
 
 ### 🧠 The Architecture in Plain English: The "3-Highway" Model
 
-To deliver **sub-50ms collaboration** without crashing or slowing down, WabiSeminar separates data into **three distinct speed lanes**:
+To deliver **sub-50ms collaboration** without crashing or slowing down, CoVideo separates data into **three distinct speed lanes**:
 
 ```
  ┌────────────────────────────────────────────────────────────────────────┐

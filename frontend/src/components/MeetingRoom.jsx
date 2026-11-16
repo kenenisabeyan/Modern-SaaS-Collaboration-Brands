@@ -895,7 +895,7 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
               className="font-extrabold text-xs tracking-wider uppercase text-[#1E2761] hover:text-[#FF5A36] transition-colors cursor-pointer select-none"
               title="Return to Home"
             >
-              WABISEMINAR
+              COVIDEO
             </button>
             <span className="w-1 h-1 rounded-full bg-[#E4E8EE]"></span>
             <span className="font-mono text-xs text-slate-500 font-bold">{roomId}</span>

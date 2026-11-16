@@ -1,4 +1,4 @@
-# WabiSeminar Live MVP Backend
+# CoVideo Live MVP Backend
 
 A real-time video conferencing backend built with Node.js, Express, Socket.IO, and Sequelize ORM. Supports peer-to-peer video calls with WebRTC signaling, real-time chat, and meeting controls for small group seminars (2-4 participants).
 

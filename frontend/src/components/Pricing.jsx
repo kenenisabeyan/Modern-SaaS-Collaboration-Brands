@@ -63,7 +63,7 @@ const faqData = [
     category: "Technical Support",
     icon: <Wrench size={20} className="text-[#FF5A36]" />,
     questions: [
-      { q: "What browsers are supported?", a: "WabiSeminar works flawlessly on all modern browsers including Chrome, Edge, Safari, and Firefox. No plugins required." },
+      { q: "What browsers are supported?", a: "CoVideo works flawlessly on all modern browsers including Chrome, Edge, Safari, and Firefox. No plugins required." },
       { q: "Why is my camera not working?", a: "Ensure that your browser has permission to access your camera and microphone. You can reset these permissions by clicking the lock icon next to the URL bar." },
       { q: "How do I contact support or report an issue?", a: "Reach out directly to our solutions and support team via the Contact section below, and we'll assist you promptly." }
     ]
@@ -552,7 +552,7 @@ export default function Pricing({ onNavigate, initialSection }) {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button 
                 onClick={() => {
-                  window.location.href = "mailto:solutions@wabiseminar.com?subject=Enterprise Inquiry";
+                  window.location.href = "mailto:solutions@covideo.com?subject=Enterprise Inquiry";
                 }}
                 className="bg-[#1E2761] hover:bg-[#151A44] text-white px-9 py-4 rounded-full font-bold text-base shadow-lg shadow-[#1E2761]/25 hover:shadow-xl inline-flex items-center space-x-2 transition-all cursor-pointer group"
               >
