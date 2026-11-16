@@ -114,14 +114,14 @@ export default function UserProfile({ onNavigate }) {
           animate={{ opacity: 1, y: 0 }}
           className="lg:col-span-1"
         >
-          <div className="bg-white rounded-3xl p-6 sm:p-8 text-center shadow-sm relative border-0">
-            <div className="w-24 h-24 sm:w-28 sm:h-28 mx-auto rounded-3xl bg-[#1E2761] text-white flex items-center justify-center text-3xl sm:text-4xl font-extrabold mb-4 shadow-lg shadow-[#1E2761]/20">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 text-center shadow-none relative border-none outline-none">
+            <div className="w-24 h-24 sm:w-28 sm:h-28 mx-auto rounded-3xl bg-[#1E2761] text-white flex items-center justify-center text-3xl sm:text-4xl font-extrabold mb-4 shadow-none">
               {username.charAt(0).toUpperCase()}
             </div>
             <h2 className="text-xl sm:text-2xl font-bold text-[#1E2761] mb-1 truncate">{username}</h2>
             <p className="text-xs sm:text-sm text-slate-500 truncate mb-3">{email || `${username.toLowerCase()}@covideo.com`}</p>
             
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FF5A36]/10 text-[#FF5A36] text-xs font-semibold mb-6 border-0">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FF5A36]/10 text-[#FF5A36] text-xs font-semibold mb-6 border-none shadow-none">
               <ShieldCheck size={14} className="text-[#FF5A36]" />
               <span>Verified Account</span>
             </div>
@@ -130,11 +130,11 @@ export default function UserProfile({ onNavigate }) {
 
             {/* Quick Stats Grid */}
             <div className="grid grid-cols-2 gap-3 text-center">
-              <div className="p-3 rounded-2xl bg-[#F5F7FA] shadow-xs border-0">
+              <div className="p-3 rounded-2xl bg-[#F5F7FA] shadow-none border-none">
                 <p className="text-2xl font-extrabold text-[#1E2761]">{roomCount}</p>
                 <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mt-0.5">Rooms Created</p>
               </div>
-              <div className="p-3 rounded-2xl bg-[#F5F7FA] shadow-xs border-0">
+              <div className="p-3 rounded-2xl bg-[#F5F7FA] shadow-none border-none">
                 <p className="text-2xl font-extrabold text-[#FF5A36]">Pro</p>
                 <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mt-0.5">Tier Plan</p>
               </div>
@@ -149,7 +149,7 @@ export default function UserProfile({ onNavigate }) {
           transition={{ delay: 0.08 }}
           className="lg:col-span-2"
         >
-          <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border-0">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-none border-none outline-none">
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-lg sm:text-xl font-bold text-[#1E2761] flex items-center gap-2">
                 <User size={20} className="text-[#FF5A36]" />
@@ -158,7 +158,7 @@ export default function UserProfile({ onNavigate }) {
               <button 
                 type="button"
                 onClick={() => setIsEditing(!isEditing)}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-[#F5F7FA] hover:bg-slate-200/70 text-[#1E2761] transition-colors cursor-pointer shadow-xs border-0"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-[#F5F7FA] hover:bg-slate-200/70 text-[#1E2761] transition-colors cursor-pointer shadow-none border-none"
               >
                 <Edit3 size={14} className="text-[#1E2761]" />
                 <span>{isEditing ? 'Cancel' : 'Edit Profile'}</span>
@@ -174,7 +174,7 @@ export default function UserProfile({ onNavigate }) {
                     value={editUsername}
                     onChange={(e) => setEditUsername(e.target.value)}
                     required
-                    className="w-full bg-[#F5F7FA] rounded-2xl px-4 py-3 text-sm text-[#1E2761] focus:bg-white focus:ring-2 focus:ring-[#1E2761]/15 outline-none transition-all shadow-xs border-0"
+                    className="w-full bg-[#F5F7FA] rounded-2xl px-4 py-3 text-sm text-[#1E2761] focus:bg-white focus:ring-2 focus:ring-[#1E2761]/15 outline-none transition-all shadow-none border-none"
                   />
                 </div>
                 <div>
@@ -183,7 +183,7 @@ export default function UserProfile({ onNavigate }) {
                     type="email" 
                     value={email || `${username.toLowerCase()}@covideo.com`}
                     disabled
-                    className="w-full bg-[#F5F7FA] rounded-2xl px-4 py-3 text-sm text-slate-500 cursor-not-allowed opacity-80 shadow-xs border-0"
+                    className="w-full bg-[#F5F7FA] rounded-2xl px-4 py-3 text-sm text-slate-500 cursor-not-allowed opacity-80 shadow-none border-none"
                   />
                 </div>
                 <div>
@@ -193,20 +193,20 @@ export default function UserProfile({ onNavigate }) {
                     value={editBio}
                     onChange={(e) => setEditBio(e.target.value)}
                     placeholder="Tell your attendees about yourself..."
-                    className="w-full bg-[#F5F7FA] rounded-2xl px-4 py-3 text-sm text-[#1E2761] focus:bg-white focus:ring-2 focus:ring-[#1E2761]/15 outline-none transition-all resize-none shadow-xs border-0"
+                    className="w-full bg-[#F5F7FA] rounded-2xl px-4 py-3 text-sm text-[#1E2761] focus:bg-white focus:ring-2 focus:ring-[#1E2761]/15 outline-none transition-all resize-none shadow-none border-none"
                   ></textarea>
                 </div>
                 <div className="flex justify-end gap-3 pt-2">
                   <button 
                     type="button"
                     onClick={() => setIsEditing(false)}
-                    className="px-5 py-2.5 rounded-xl font-semibold bg-[#F5F7FA] hover:bg-slate-200/70 text-slate-700 text-sm transition-colors cursor-pointer shadow-xs border-0"
+                    className="px-5 py-2.5 rounded-xl font-semibold bg-[#F5F7FA] hover:bg-slate-200/70 text-slate-700 text-sm transition-colors cursor-pointer shadow-none border-none"
                   >
                     Cancel
                   </button>
                   <button 
                     type="submit"
-                    className="px-6 py-2.5 rounded-xl font-semibold bg-[#FF5A36] hover:bg-[#E04826] text-white text-sm shadow-md shadow-[#FF5A36]/20 transition-all cursor-pointer border-0"
+                    className="px-6 py-2.5 rounded-xl font-semibold bg-[#FF5A36] hover:bg-[#E04826] text-white text-sm shadow-none transition-all cursor-pointer border-none"
                   >
                     Save Changes
                   </button>
@@ -215,17 +215,17 @@ export default function UserProfile({ onNavigate }) {
             ) : (
               <div className="space-y-5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="p-4 rounded-2xl bg-[#F5F7FA] shadow-xs border-0">
+                  <div className="p-4 rounded-2xl bg-[#F5F7FA] shadow-none border-none">
                     <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Username</p>
                     <p className="text-sm font-bold text-[#1E2761]">{username}</p>
                   </div>
-                  <div className="p-4 rounded-2xl bg-[#F5F7FA] shadow-xs border-0">
+                  <div className="p-4 rounded-2xl bg-[#F5F7FA] shadow-none border-none">
                     <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Email</p>
                     <p className="text-sm font-bold text-[#1E2761] truncate">{email || 'Not provided'}</p>
                   </div>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-[#F5F7FA] shadow-xs border-0">
+                <div className="p-4 rounded-2xl bg-[#F5F7FA] shadow-none border-none">
                   <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Bio</p>
                   <p className="text-sm text-slate-700 leading-relaxed">{bio}</p>
                 </div>

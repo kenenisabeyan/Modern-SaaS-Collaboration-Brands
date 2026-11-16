@@ -282,12 +282,12 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
     <>
       <header 
         ref={headerRef}
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 border-b ${
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isDashboardMode 
-            ? 'border-[#E4E8EE] h-16 sm:h-20 bg-white/95 backdrop-blur-md shadow-[0_10px_30px_-10px_rgba(30,39,97,0.08)]' 
+            ? 'h-16 sm:h-20 bg-white/95 backdrop-blur-md shadow-none border-0' 
             : isScrolled
-              ? 'border-[#E4E8EE]/60 h-16 sm:h-20 bg-[#FEFEFE]/95 backdrop-blur-md shadow-[0_12px_30px_-6px_rgba(30,39,97,0.08)]'
-              : 'border-transparent h-16 sm:h-20 bg-[#FEFEFE] shadow-none'
+              ? 'border-b border-[#E4E8EE]/60 h-16 sm:h-20 bg-[#FEFEFE]/95 backdrop-blur-md shadow-[0_12px_30px_-6px_rgba(30,39,97,0.08)]'
+              : 'border-b border-transparent h-16 sm:h-20 bg-[#FEFEFE] shadow-none'
         }`}
       >
         {/* =========================================================================
@@ -304,26 +304,24 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
                 title="Return to Home"
               >
                 <div className="relative">
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#1E2761] border border-[#151A44] flex items-center justify-center text-white font-bold text-sm overflow-hidden shadow-sm transition-transform duration-200 group-hover:scale-105">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#1E2761] flex items-center justify-center text-white font-bold text-sm overflow-hidden shadow-none transition-transform duration-200 group-hover:scale-105 border-0">
                     <Video className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF5A36]" />
                   </div>
-                  <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-[#FF5A36] border-2 border-[#FEFEFE] rounded-full animate-pulse"></span>
+                  <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-[#FF5A36] rounded-full animate-pulse border-0"></span>
                 </div>
                 <span className="font-black text-sm sm:text-base lg:text-lg tracking-wider text-[#1E2761] uppercase hidden xs:inline-block">
                   COVIDEO
                 </span>
               </div>
-
-              <div className="hidden lg:block h-6 w-px bg-slate-200/80 mx-1 xl:mx-2" />
             </div>
 
             {/* CENTER-LEFT: Pill Search Bar */}
             <div className="relative flex-1 max-w-sm sm:max-w-md lg:max-w-lg hidden md:block">
               <div 
-                className={`w-full flex items-center bg-[#F5F7FA] hover:bg-[#EEF2F6] focus-within:bg-white border rounded-full px-4 py-2 transition-all shadow-xs ${
+                className={`w-full flex items-center bg-[#F5F7FA] hover:bg-[#EEF2F6] focus-within:bg-white rounded-full px-4 py-2 transition-all shadow-none border-0 ${
                   isSearchFocused 
-                    ? 'border-[#1E2761] ring-2 ring-[#1E2761]/10 bg-white' 
-                    : 'border-[#E4E8EE]'
+                    ? 'ring-2 ring-[#1E2761]/10 bg-white' 
+                    : ''
                 }`}
               >
                 <Search size={16} className="text-slate-400 shrink-0 mr-2.5" />
@@ -339,13 +337,13 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
                 {searchQuery ? (
                   <button 
                     onClick={() => handleSearchChange('')}
-                    className="p-1 text-slate-400 hover:text-slate-600 rounded-full hover:bg-slate-200 transition-colors ml-1 cursor-pointer"
+                    className="p-1 text-slate-400 hover:text-slate-600 rounded-full hover:bg-slate-200 transition-colors ml-1 cursor-pointer border-0 shadow-none"
                     title="Clear search"
                   >
                     <X size={14} />
                   </button>
                 ) : (
-                  <span className="hidden xl:inline-block px-1.5 py-0.5 text-[10px] font-mono text-slate-400 bg-white border border-slate-200 rounded-md shrink-0 ml-2 shadow-2xs">
+                  <span className="hidden xl:inline-block px-1.5 py-0.5 text-[10px] font-mono text-slate-400 bg-white rounded-md shrink-0 ml-2 shadow-none border-0">
                     ⌘K
                   </span>
                 )}
@@ -403,7 +401,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
               {/* Mobile Search Trigger Button */}
               <button
                 onClick={() => setShowMobileSearch(!showMobileSearch)}
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[#E4E8EE] bg-white hover:bg-slate-50 flex md:hidden items-center justify-center text-slate-700 hover:text-[#1E2761] transition-all cursor-pointer shadow-xs"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#F5F7FA] hover:bg-slate-100 flex md:hidden items-center justify-center text-slate-700 hover:text-[#1E2761] transition-all cursor-pointer shadow-none border-0"
                 title="Search"
               >
                 <Search size={16} />
@@ -413,7 +411,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
               <div className="relative">
                 <button 
                   onClick={() => setShowWorkspaceModal(!showWorkspaceModal)}
-                  className="hidden 2xl:flex items-center space-x-2 border border-[#FF5A36]/30 bg-[#FF5A36]/5 hover:bg-[#FF5A36]/10 text-[#FF5A36] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-xs select-none"
+                  className="hidden 2xl:flex items-center space-x-2 bg-[#FF5A36]/10 hover:bg-[#FF5A36]/15 text-[#FF5A36] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-none select-none border-0"
                   title="CoVideo Masterclass Architecture"
                 >
                   <span className="w-2 h-2 rounded-full bg-[#FF5A36] animate-pulse"></span>
@@ -463,13 +461,13 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
                     setShowNotifications(!showNotifications);
                     setShowProfileDropdown(false);
                   }}
-                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[#E4E8EE] bg-white hover:bg-slate-50 flex items-center justify-center text-slate-700 hover:text-[#1E2761] transition-all relative cursor-pointer shadow-xs"
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#F5F7FA] hover:bg-[#EEF2F6] flex items-center justify-center text-slate-700 hover:text-[#1E2761] transition-all relative cursor-pointer shadow-none border-0"
                   title="Notifications"
                   aria-label="View notifications"
                 >
                   <Bell size={18} />
                   {unreadCount > 0 && (
-                    <span className="absolute -top-1 -right-1 min-w-[18px] sm:min-w-[20px] h-4 sm:h-5 px-1 bg-[#FF5A36] text-white text-[10px] font-extrabold rounded-full flex items-center justify-center shadow-xs">
+                    <span className="absolute -top-1 -right-1 min-w-[18px] sm:min-w-[20px] h-4 sm:h-5 px-1 bg-[#FF5A36] text-white text-[10px] font-extrabold rounded-full flex items-center justify-center shadow-none border-0">
                       {unreadCount}
                     </span>
                   )}
@@ -549,7 +547,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
                     setShowProfileDropdown(false);
                     setShowWorkspaceModal(false);
                   }}
-                  className="bg-[#1E2761] hover:bg-[#151A44] text-white px-3 sm:px-3.5 py-1.5 rounded-full flex items-center space-x-1.5 text-xs font-bold transition-all shadow-xs cursor-pointer select-none"
+                  className="bg-[#1E2761] hover:bg-[#151A44] text-white px-3 sm:px-3.5 py-1.5 rounded-full flex items-center space-x-1.5 text-xs font-bold transition-all shadow-none cursor-pointer select-none border-0"
                   title="Select Language"
                   aria-label="Select Language"
                 >
@@ -614,7 +612,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
                     setShowNotifications(false);
                     setShowLangDropdown(false);
                   }}
-                  className="border border-slate-200/90 hover:border-[#1E2761]/30 bg-white hover:bg-slate-50/80 rounded-full pl-3 sm:pl-3.5 pr-1.5 py-1 flex items-center space-x-2.5 transition-all cursor-pointer shadow-xs select-none"
+                  className="bg-[#F5F7FA] hover:bg-[#EEF2F6] rounded-full pl-3 sm:pl-3.5 pr-1.5 py-1 flex items-center space-x-2.5 transition-all cursor-pointer shadow-none select-none border-0"
                   title="Administration & Account"
                 >
                   <div className="text-left hidden sm:block">
@@ -626,7 +624,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
                     </p>
                   </div>
 
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#1E2761]/10 text-[#1E2761] border border-[#1E2761]/20 font-bold text-xs flex items-center justify-center shrink-0">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#1E2761]/10 text-[#1E2761] font-bold text-xs flex items-center justify-center shrink-0 border-0">
                     {userInitial}
                   </div>
                 </button>
@@ -710,7 +708,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
               {/* Boxed Hamburger Menu Button [ ≡ ] for Dashboard Navigation Drawer */}
               <button
                 onClick={() => setIsDrawerOpen(true)}
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl border border-[#E4E8EE] bg-white hover:bg-slate-50 flex flex-col items-center justify-center space-y-1 transition-all cursor-pointer shadow-xs focus:outline-none"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#F5F7FA] hover:bg-[#EEF2F6] flex flex-col items-center justify-center space-y-1 transition-all cursor-pointer shadow-none focus:outline-none border-0"
                 aria-label="Toggle navigation menu"
                 title="Open Navigation Menu"
               >

@@ -223,7 +223,7 @@ export default function UserSettings({ onNavigate }) {
                 initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
                 className="space-y-6"
               >
-                <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border-0">
+                <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-none border-none outline-none">
                   <h3 className="text-lg sm:text-xl font-bold text-[#1E2761] mb-6 flex items-center gap-2">
                     <Settings size={20} className="text-[#FF5A36]" />
                     <span>General Preferences</span>
@@ -231,14 +231,14 @@ export default function UserSettings({ onNavigate }) {
                   
                   <div className="space-y-4">
                     {/* Theme Mode Toggle */}
-                    <div className="flex items-center justify-between p-4 bg-[#F5F7FA] rounded-2xl shadow-xs border-0">
+                    <div className="flex items-center justify-between p-4 bg-[#F5F7FA] rounded-2xl shadow-none border-none">
                       <div className="pr-4">
                         <h4 className="font-semibold text-sm text-[#1E2761]">Theme Mode</h4>
                         <p className="text-xs text-slate-500 mt-0.5">Toggle between dark mode and light mode.</p>
                       </div>
                       <button 
                         onClick={toggleTheme} 
-                        className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer border-0 ${isLight ? 'bg-[#FF5A36]' : 'bg-[#1E2761]'}`}
+                        className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer border-none shadow-none ${isLight ? 'bg-[#FF5A36]' : 'bg-[#1E2761]'}`}
                         aria-label="Toggle theme"
                       >
                         <div className={`absolute top-1 w-4 h-4 bg-white rounded-full transition-transform ${isLight ? 'right-1' : 'left-1'}`}></div>
@@ -246,28 +246,28 @@ export default function UserSettings({ onNavigate }) {
                     </div>
 
                     {/* Hardware Acceleration */}
-                    <div className="flex items-center justify-between p-4 bg-[#F5F7FA] rounded-2xl shadow-xs border-0">
+                    <div className="flex items-center justify-between p-4 bg-[#F5F7FA] rounded-2xl shadow-none border-none">
                       <div className="pr-4">
                         <h4 className="font-semibold text-sm text-[#1E2761]">Hardware Canvas Acceleration</h4>
                         <p className="text-xs text-slate-500 mt-0.5">Optimizes graphics performance during whiteboard drawing sessions.</p>
                       </div>
                       <button 
                         onClick={() => setHardwareAcc(!hardwareAcc)} 
-                        className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer border-0 ${hardwareAcc ? 'bg-[#FF5A36]' : 'bg-slate-300'}`}
+                        className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer border-none shadow-none ${hardwareAcc ? 'bg-[#FF5A36]' : 'bg-slate-300'}`}
                       >
                         <div className={`absolute top-1 w-4 h-4 bg-white rounded-full transition-transform ${hardwareAcc ? 'right-1' : 'left-1'}`}></div>
                       </button>
                     </div>
 
                     {/* Auto-copy Room Links */}
-                    <div className="flex items-center justify-between p-4 bg-[#F5F7FA] rounded-2xl shadow-xs border-0">
+                    <div className="flex items-center justify-between p-4 bg-[#F5F7FA] rounded-2xl shadow-none border-none">
                       <div className="pr-4">
                         <h4 className="font-semibold text-sm text-[#1E2761]">Auto-copy Invite Links</h4>
                         <p className="text-xs text-slate-500 mt-0.5">Automatically copy the invite URL to your clipboard whenever you create a room.</p>
                       </div>
                       <button 
                         onClick={() => setAutoCopyLink(!autoCopyLink)} 
-                        className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer border-0 ${autoCopyLink ? 'bg-[#FF5A36]' : 'bg-slate-300'}`}
+                        className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer border-none shadow-none ${autoCopyLink ? 'bg-[#FF5A36]' : 'bg-slate-300'}`}
                       >
                         <div className={`absolute top-1 w-4 h-4 bg-white rounded-full transition-transform ${autoCopyLink ? 'right-1' : 'left-1'}`}></div>
                       </button>
@@ -282,7 +282,7 @@ export default function UserSettings({ onNavigate }) {
               <motion.div 
                 key="meetings"
                 initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
-                className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border-0"
+                className="bg-white rounded-3xl p-6 sm:p-8 shadow-none border-none outline-none"
               >
                 <h3 className="text-lg sm:text-xl font-bold text-[#1E2761] mb-6 flex items-center gap-2">
                   <Video size={20} className="text-[#FF5A36]" />
@@ -291,56 +291,56 @@ export default function UserSettings({ onNavigate }) {
 
                 <div className="space-y-4">
                   {/* Default Mic Off */}
-                  <div className="flex items-center justify-between p-4 bg-[#F5F7FA] rounded-2xl shadow-xs border-0">
+                  <div className="flex items-center justify-between p-4 bg-[#F5F7FA] rounded-2xl shadow-none border-none">
                     <div className="pr-4">
                       <h4 className="font-semibold text-sm text-[#1E2761]">Start With Microphone Muted</h4>
                       <p className="text-xs text-slate-500 mt-0.5">Always join rooms with your microphone initially muted.</p>
                     </div>
                     <button 
                       onClick={() => setMuteMicDefault(!muteMicDefault)} 
-                      className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer border-0 ${muteMicDefault ? 'bg-[#FF5A36]' : 'bg-slate-300'}`}
+                      className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer border-none shadow-none ${muteMicDefault ? 'bg-[#FF5A36]' : 'bg-slate-300'}`}
                     >
                       <div className={`absolute top-1 w-4 h-4 bg-white rounded-full transition-transform ${muteMicDefault ? 'right-1' : 'left-1'}`}></div>
                     </button>
                   </div>
 
                   {/* Default Camera Off */}
-                  <div className="flex items-center justify-between p-4 bg-[#F5F7FA] rounded-2xl shadow-xs border-0">
+                  <div className="flex items-center justify-between p-4 bg-[#F5F7FA] rounded-2xl shadow-none border-none">
                     <div className="pr-4">
                       <h4 className="font-semibold text-sm text-[#1E2761]">Start With Camera Turned Off</h4>
                       <p className="text-xs text-slate-500 mt-0.5">Keep your video disabled until you choose to turn it on inside the room.</p>
                     </div>
                     <button 
                       onClick={() => setMuteCamDefault(!muteCamDefault)} 
-                      className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer border-0 ${muteCamDefault ? 'bg-[#FF5A36]' : 'bg-slate-300'}`}
+                      className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer border-none shadow-none ${muteCamDefault ? 'bg-[#FF5A36]' : 'bg-slate-300'}`}
                     >
                       <div className={`absolute top-1 w-4 h-4 bg-white rounded-full transition-transform ${muteCamDefault ? 'right-1' : 'left-1'}`}></div>
                     </button>
                   </div>
 
                   {/* Mirror Video */}
-                  <div className="flex items-center justify-between p-4 bg-[#F5F7FA] rounded-2xl shadow-xs border-0">
+                  <div className="flex items-center justify-between p-4 bg-[#F5F7FA] rounded-2xl shadow-none border-none">
                     <div className="pr-4">
                       <h4 className="font-semibold text-sm text-[#1E2761]">Mirror Self Video</h4>
                       <p className="text-xs text-slate-500 mt-0.5">Mirror your own video preview so it appears like looking in a mirror.</p>
                     </div>
                     <button 
                       onClick={() => setMirrorVideo(!mirrorVideo)} 
-                      className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer border-0 ${mirrorVideo ? 'bg-[#FF5A36]' : 'bg-slate-300'}`}
+                      className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer border-none shadow-none ${mirrorVideo ? 'bg-[#FF5A36]' : 'bg-slate-300'}`}
                     >
                       <div className={`absolute top-1 w-4 h-4 bg-white rounded-full transition-transform ${mirrorVideo ? 'right-1' : 'left-1'}`}></div>
                     </button>
                   </div>
 
                   {/* HD Video */}
-                  <div className="flex items-center justify-between p-4 bg-[#F5F7FA] rounded-2xl shadow-xs border-0">
+                  <div className="flex items-center justify-between p-4 bg-[#F5F7FA] rounded-2xl shadow-none border-none">
                     <div className="pr-4">
                       <h4 className="font-semibold text-sm text-[#1E2761]">High Definition (HD) Video</h4>
                       <p className="text-xs text-slate-500 mt-0.5">Broadcast video in high-clarity 720p/1080p when bandwidth permits.</p>
                     </div>
                     <button 
                       onClick={() => setHdVideo(!hdVideo)} 
-                      className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer border-0 ${hdVideo ? 'bg-[#FF5A36]' : 'bg-slate-300'}`}
+                      className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer border-none shadow-none ${hdVideo ? 'bg-[#FF5A36]' : 'bg-slate-300'}`}
                     >
                       <div className={`absolute top-1 w-4 h-4 bg-white rounded-full transition-transform ${hdVideo ? 'right-1' : 'left-1'}`}></div>
                     </button>
@@ -354,7 +354,7 @@ export default function UserSettings({ onNavigate }) {
               <motion.div 
                 key="notifications"
                 initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
-                className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border-0"
+                className="bg-white rounded-3xl p-6 sm:p-8 shadow-none border-none outline-none"
               >
                 <h3 className="text-lg sm:text-xl font-bold text-[#1E2761] mb-6 flex items-center gap-2">
                   <Volume2 size={20} className="text-[#FF5A36]" />
@@ -363,28 +363,28 @@ export default function UserSettings({ onNavigate }) {
 
                 <div className="space-y-4">
                   {/* Join Sound */}
-                  <div className="flex items-center justify-between p-4 bg-[#F5F7FA] rounded-2xl shadow-xs border-0">
+                  <div className="flex items-center justify-between p-4 bg-[#F5F7FA] rounded-2xl shadow-none border-none">
                     <div className="pr-4">
                       <h4 className="font-semibold text-sm text-[#1E2761]">Play Chime on Participant Join</h4>
                       <p className="text-xs text-slate-500 mt-0.5">Play a subtle sound when new attendees join the meeting room.</p>
                     </div>
                     <button 
                       onClick={() => setSoundJoin(!soundJoin)} 
-                      className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer border-0 ${soundJoin ? 'bg-[#FF5A36]' : 'bg-slate-300'}`}
+                      className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer border-none shadow-none ${soundJoin ? 'bg-[#FF5A36]' : 'bg-slate-300'}`}
                     >
                       <div className={`absolute top-1 w-4 h-4 bg-white rounded-full transition-transform ${soundJoin ? 'right-1' : 'left-1'}`}></div>
                     </button>
                   </div>
 
                   {/* Chat Notification Sound */}
-                  <div className="flex items-center justify-between p-4 bg-[#F5F7FA] rounded-2xl shadow-xs border-0">
+                  <div className="flex items-center justify-between p-4 bg-[#F5F7FA] rounded-2xl shadow-none border-none">
                     <div className="pr-4">
                       <h4 className="font-semibold text-sm text-[#1E2761]">In-Room Chat Sound Alerts</h4>
                       <p className="text-xs text-slate-500 mt-0.5">Play a quiet audio tone when a new chat message arrives during a call.</p>
                     </div>
                     <button 
                       onClick={() => setChatSounds(!chatSounds)} 
-                      className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer border-0 ${chatSounds ? 'bg-[#FF5A36]' : 'bg-slate-300'}`}
+                      className={`w-12 h-6 rounded-full relative transition-colors cursor-pointer border-none shadow-none ${chatSounds ? 'bg-[#FF5A36]' : 'bg-slate-300'}`}
                     >
                       <div className={`absolute top-1 w-4 h-4 bg-white rounded-full transition-transform ${chatSounds ? 'right-1' : 'left-1'}`}></div>
                     </button>
@@ -398,7 +398,7 @@ export default function UserSettings({ onNavigate }) {
               <motion.div 
                 key="security"
                 initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
-                className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border-0"
+                className="bg-white rounded-3xl p-6 sm:p-8 shadow-none border-none outline-none"
               >
                 <h3 className="text-lg sm:text-xl font-bold text-[#1E2761] mb-6 flex items-center gap-2">
                   <Key size={20} className="text-[#FF5A36]" />
@@ -406,7 +406,7 @@ export default function UserSettings({ onNavigate }) {
                 </h3>
                 
                 {message && (
-                  <div className={`p-4 rounded-2xl mb-6 flex items-start gap-3 shadow-xs border-0 ${message.type === 'error' ? 'bg-[#FF5A36]/10 text-[#FF5A36]' : 'bg-[#FF5A36]/10 text-[#FF5A36]'}`}>
+                  <div className={`p-4 rounded-2xl mb-6 flex items-start gap-3 shadow-none border-none ${message.type === 'error' ? 'bg-[#FF5A36]/10 text-[#FF5A36]' : 'bg-[#FF5A36]/10 text-[#FF5A36]'}`}>
                     {message.type === 'error' ? <AlertCircle size={18} className="shrink-0 mt-0.5" /> : <CheckCircle2 size={18} className="shrink-0 mt-0.5 text-[#FF5A36]" />}
                     <p className="text-xs sm:text-sm font-medium">{message.text}</p>
                   </div>
@@ -421,7 +421,7 @@ export default function UserSettings({ onNavigate }) {
                       onChange={(e) => setCurrentPassword(e.target.value)}
                       required
                       placeholder="••••••••••••"
-                      className="w-full bg-[#F5F7FA] rounded-2xl px-4 py-3 text-sm text-[#1E2761] focus:bg-white focus:ring-2 focus:ring-[#1E2761]/15 outline-none transition-all shadow-xs border-0" 
+                      className="w-full bg-[#F5F7FA] rounded-2xl px-4 py-3 text-sm text-[#1E2761] focus:bg-white focus:ring-2 focus:ring-[#1E2761]/15 outline-none transition-all shadow-none border-none" 
                     />
                   </div>
                   <div>
@@ -432,7 +432,7 @@ export default function UserSettings({ onNavigate }) {
                       onChange={(e) => setNewPassword(e.target.value)}
                       required
                       placeholder="At least 6 characters"
-                      className="w-full bg-[#F5F7FA] rounded-2xl px-4 py-3 text-sm text-[#1E2761] focus:bg-white focus:ring-2 focus:ring-[#1E2761]/15 outline-none transition-all shadow-xs border-0" 
+                      className="w-full bg-[#F5F7FA] rounded-2xl px-4 py-3 text-sm text-[#1E2761] focus:bg-white focus:ring-2 focus:ring-[#1E2761]/15 outline-none transition-all shadow-none border-none" 
                     />
                   </div>
                   <div>
@@ -443,14 +443,14 @@ export default function UserSettings({ onNavigate }) {
                       onChange={(e) => setConfirmPassword(e.target.value)}
                       required
                       placeholder="Repeat new password"
-                      className="w-full bg-[#F5F7FA] rounded-2xl px-4 py-3 text-sm text-[#1E2761] focus:bg-white focus:ring-2 focus:ring-[#1E2761]/15 outline-none transition-all shadow-xs border-0" 
+                      className="w-full bg-[#F5F7FA] rounded-2xl px-4 py-3 text-sm text-[#1E2761] focus:bg-white focus:ring-2 focus:ring-[#1E2761]/15 outline-none transition-all shadow-none border-none" 
                     />
                   </div>
                   <div className="pt-2">
                     <button 
                       type="submit"
                       disabled={isLoading}
-                      className="w-full sm:w-auto px-7 py-3 rounded-2xl font-semibold bg-[#FF5A36] hover:bg-[#E04826] text-white transition-all shadow-md shadow-[#FF5A36]/20 disabled:opacity-70 flex items-center justify-center gap-2 text-sm cursor-pointer border-0"
+                      className="w-full sm:w-auto px-7 py-3 rounded-2xl font-semibold bg-[#FF5A36] hover:bg-[#E04826] text-white transition-all shadow-none disabled:opacity-70 flex items-center justify-center gap-2 text-sm cursor-pointer border-none"
                     >
                       {isLoading ? <Loader2 size={16} className="animate-spin text-white" /> : null}
                       <span className="text-white">{isLoading ? 'Updating...' : 'Update Password'}</span>
