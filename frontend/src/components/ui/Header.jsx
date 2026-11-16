@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Video, X, Plus, Minus, Users, LogIn, LogOut, 
-  User, Settings, Sparkles, Shield, ArrowRight 
+  User, Settings, Sparkles, Shield, ArrowRight, LayoutDashboard 
 } from 'lucide-react';
 
 export default function Header({ currentView, onNavigate, isAuthenticated, handleAuthAction }) {
@@ -63,10 +63,10 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
             }, 300);
           } 
         },
-        ...(isAuthenticated ? [{
-          label: 'My Meeting Dashboard',
+        {
+          label: 'Admin Dashboard',
           action: () => handleNavClick('user-dashboard')
-        }] : [])
+        }
       ]
     },
     {
@@ -445,8 +445,16 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
                     </button>
                     
                     <button 
-                      onClick={() => handleNavClick('dashboard')}
+                      onClick={() => handleNavClick('user-dashboard')}
                       className="w-full bg-white/10 hover:bg-white/15 text-white py-3 rounded-xl font-semibold text-sm flex items-center justify-center space-x-2 transition-all cursor-pointer"
+                    >
+                      <LayoutDashboard size={16} />
+                      <span>Admin & User Dashboard</span>
+                    </button>
+                    
+                    <button 
+                      onClick={() => handleNavClick('dashboard')}
+                      className="w-full bg-white/5 hover:bg-white/10 text-slate-300 py-3 rounded-xl font-medium text-sm flex items-center justify-center space-x-2 transition-all cursor-pointer"
                     >
                       <Video size={16} />
                       <span>Host Instant Meeting</span>
