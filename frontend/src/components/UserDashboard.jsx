@@ -78,11 +78,13 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
   }, []);
 
   useEffect(() => {
-    const handleWabiSearch = (e) => {
+    const handleSearch = (e) => {
       setSearchQuery(e.detail || '');
     };
-    window.addEventListener('wabi-search', handleWabiSearch);
-    return () => window.removeEventListener('wabi-search', handleWabiSearch);
+    window.addEventListener('covideo-search', handleSearch);
+    return () => {
+      window.removeEventListener('covideo-search', handleSearch);
+    };
   }, []);
 
   const displayedRooms = useMemo(() => {
@@ -500,7 +502,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
                 <button 
                   onClick={() => {
                     setSearchQuery('');
-                    window.dispatchEvent(new CustomEvent('wabi-search', { detail: '' }));
+                    window.dispatchEvent(new CustomEvent('covideo-search', { detail: '' }));
                   }} 
                   className="text-slate-400 hover:text-[#FF5A36] cursor-pointer"
                   title="Clear filter"

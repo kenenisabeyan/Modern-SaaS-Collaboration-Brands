@@ -618,6 +618,18 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
                 </AnimatePresence>
               </div>
 
+              {/* Boxed Hamburger Menu Button [ ≡ ] for Dashboard Navigation Drawer */}
+              <button
+                onClick={() => setIsDrawerOpen(true)}
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl border border-[#E4E8EE] bg-white hover:bg-slate-50 flex flex-col items-center justify-center space-y-1 transition-all cursor-pointer shadow-xs focus:outline-none"
+                aria-label="Toggle navigation menu"
+                title="Open Navigation Menu"
+              >
+                <span className="w-4 h-[2px] bg-[#1E2761] rounded-full"></span>
+                <span className="w-4 h-[2px] bg-[#1E2761] rounded-full"></span>
+                <span className="w-4 h-[2px] bg-[#1E2761] rounded-full"></span>
+              </button>
+
             </div>
 
           </div>
@@ -640,7 +652,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
                 <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-[#FF5A36] border-2 border-[#FEFEFE] rounded-full animate-pulse"></span>
               </div>
               <span className="font-extrabold text-base sm:text-lg tracking-wider text-[#1E2761] uppercase">
-                WABISEMINAR
+                COVIDEO
               </span>
             </div>
 
@@ -781,7 +793,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
                     </div>
                     <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-[#FF5A36] border-2 border-[#1E2761] rounded-full"></span>
                   </div>
-                  <span className="text-sm font-bold tracking-wider uppercase text-white group-hover:text-[#FF5A36] transition-colors">WABISEMINAR</span>
+                  <span className="text-sm font-bold tracking-wider uppercase text-white group-hover:text-[#FF5A36] transition-colors">COVIDEO</span>
                 </div>
                 
                 {/* Close Button X */}
