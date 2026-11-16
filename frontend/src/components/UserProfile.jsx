@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { scrollSection, scrollStagger, scrollItem } from '../utils/animations.js';
 import { User, Mail, Calendar, ShieldCheck, Edit3, ArrowLeft, Check, Sparkles, Video, Clock } from 'lucide-react';
 import api from '../services/api.js';
 
@@ -66,7 +67,12 @@ export default function UserProfile({ onNavigate }) {
   };
 
   return (
-    <main className="flex-1 pt-20 sm:pt-24 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 w-full max-w-5xl mx-auto text-[#1E2761]">
+    <motion.main 
+      initial="hidden"
+      animate="visible"
+      variants={scrollSection}
+      className="flex-1 pt-20 sm:pt-24 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 w-full max-w-5xl mx-auto text-[#1E2761]"
+    >
       
       {/* Top Navigation */}
       <div className="flex items-center justify-between mb-6 sm:mb-8">
@@ -235,6 +241,6 @@ export default function UserProfile({ onNavigate }) {
           </div>
         </motion.div>
       </div>
-    </main>
+    </motion.main>
   );
 }

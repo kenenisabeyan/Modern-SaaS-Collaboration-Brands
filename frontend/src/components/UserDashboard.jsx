@@ -452,12 +452,18 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
             </div>
 
           </div>
-        </section>
+        </motion.section>
 
         {/* ========================================================
             RECENT MEETINGS SECTION: Clean, Scannable History
            ======================================================== */}
-        <section className="bg-white border border-[#E4E8EE] rounded-3xl p-6 sm:p-8 shadow-sm">
+        <motion.section 
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+          variants={scrollSection}
+          className="bg-white border border-[#E4E8EE] rounded-3xl p-6 sm:p-8 shadow-sm"
+        >
           
           <div className="flex items-center justify-between pb-5 mb-5 border-b border-[#E4E8EE]">
             <div className="flex items-center space-x-2.5">
@@ -477,10 +483,11 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
               <p className="text-xs text-slate-500 font-medium">Loading meetings...</p>
             </div>
           ) : myRooms.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <motion.div variants={scrollStagger} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {myRooms.map((room) => (
-                <div 
+                <motion.div 
                   key={room.id || room.roomId}
+                  variants={scrollItem}
                   className="bg-[#F5F7FA] border border-[#E4E8EE] hover:border-[#1E2761]/30 rounded-2xl p-4 transition-all flex flex-col justify-between gap-3 group"
                 >
                   <div className="flex items-center justify-between">
@@ -522,9 +529,9 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
                     </button>
                   </div>
 
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           ) : (
             <div className="py-10 text-center flex flex-col items-center justify-center">
               <div className="w-12 h-12 rounded-2xl bg-[#F5F7FA] border border-[#E4E8EE] flex items-center justify-center text-[#1E2761] mb-2.5 mx-auto">
@@ -539,7 +546,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
             </div>
           )}
 
-        </section>
+        </motion.section>
 
       </div>
 

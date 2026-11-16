@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { scrollSection } from '../utils/animations.js';
 import { 
   Settings, Bell, Lock, Video, Shield, Key, Loader2, 
   CheckCircle2, AlertCircle, ArrowLeft, Mic, MicOff, VideoOff, 
@@ -147,7 +148,12 @@ export default function UserSettings({ onNavigate }) {
   ];
 
   return (
-    <main className="flex-1 pt-20 sm:pt-24 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 w-full max-w-5xl mx-auto text-[#1E2761]">
+    <motion.main 
+      initial="hidden"
+      animate="visible"
+      variants={scrollSection}
+      className="flex-1 pt-20 sm:pt-24 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 w-full max-w-5xl mx-auto text-[#1E2761]"
+    >
       
       {/* Top Back Navigation */}
       <div className="mb-6">
@@ -457,6 +463,6 @@ export default function UserSettings({ onNavigate }) {
           </AnimatePresence>
         </motion.div>
       </div>
-    </main>
+    </motion.main>
   );
 }
