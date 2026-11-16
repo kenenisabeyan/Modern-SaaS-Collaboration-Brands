@@ -39,6 +39,8 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    overscroll-behavior-y: none;
+    background-color: #1E2761;
   }
   body {
     background-color: #FEFEFE;
@@ -47,6 +49,8 @@
     overflow-x: hidden;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     transition: background-color 0.3s ease, color 0.3s ease;
+    overscroll-behavior-y: none;
+    min-height: 100vh;
   }
   
   .light {

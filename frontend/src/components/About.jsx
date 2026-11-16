@@ -126,7 +126,7 @@ export default function About({ onNavigate, initialSection }) {
 
   return (
     <div className="min-h-screen bg-white text-[#1E2761] font-sans overflow-hidden relative">
-      <main className="pt-20 sm:pt-24 lg:pt-28 pb-16 sm:pb-24 relative z-10 w-full">
+      <main className="pt-20 sm:pt-24 lg:pt-28 pb-0 relative z-10 w-full">
         
         {/* ========================================================
             1. HERO SECTION: THE MISSION & NORTH STAR

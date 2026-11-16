@@ -2,8 +2,10 @@ import { Video, Globe, Mail, MessageCircle } from 'lucide-react';
 
 export default function Footer({ onNavigate }) {
   return (
-    <footer className="border-t border-white/10 bg-[#1E2761] pt-10 lg:pt-12 pb-6 lg:pb-8 px-6 sm:px-10 lg:px-16 xl:px-20 relative z-10 text-white font-sans">
-      <div className="max-w-[1720px] mx-auto">
+    <footer className="border-t border-white/10 bg-[#1E2761] pt-10 lg:pt-12 pb-6 lg:pb-8 px-6 sm:px-10 lg:px-16 xl:px-20 relative z-10 text-white font-sans shadow-[0_100vh_0_100vh_#1E2761]">
+      {/* Downward solid background extension to permanently block any whitespace below the footer during scrolling or overscroll */}
+      <div className="absolute top-full left-0 right-0 h-[1000px] bg-[#1E2761] pointer-events-none -z-10" />
+      <div className="max-w-[1720px] mx-auto relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 mb-8 sm:mb-10">
           
           {/* Brand Section */}

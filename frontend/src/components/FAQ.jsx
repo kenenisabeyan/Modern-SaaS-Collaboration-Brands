@@ -128,7 +128,7 @@ export default function FAQ({ onNavigate }) {
 
   return (
     <div className="min-h-screen bg-white text-[#1E2761] font-sans overflow-hidden relative">
-      <main className="pt-20 sm:pt-24 lg:pt-28 pb-16 sm:pb-24 relative z-10 w-full">
+      <main className="pt-20 sm:pt-24 lg:pt-28 pb-0 relative z-10 w-full">
         
         {/* 1. Hero Section */}
         <section className="text-center mb-10 sm:mb-16 max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-8">
