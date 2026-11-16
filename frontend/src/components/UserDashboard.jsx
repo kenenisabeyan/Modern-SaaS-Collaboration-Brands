@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { scrollSection, scrollStagger, scrollItem, viewportConfig } from '../utils/animations.js';
 import { 
   Video, VideoOff, Mic, MicOff, Plus, Link as LinkIcon, Calendar, Clock, 
-  Loader2, ArrowRight, Copy, Check, Trash2, X, Sparkles, Camera, Play, Search
+  Loader2, ArrowRight, Copy, Check, Trash2, X, Sparkles, Camera, Play, Search,
+  Volume2, ShieldCheck, Zap, Activity, Radio
 } from 'lucide-react';
 import api from '../services/api.js';
 import { roomIdFromPathname } from '../routeUtils.js';
@@ -20,6 +21,9 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
   const [copiedId, setCopiedId] = useState(null);
   const [copiedPersonalLink, setCopiedPersonalLink] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [timeFilter, setTimeFilter] = useState('all');
+  const [showCustomRoomModal, setShowCustomRoomModal] = useState(false);
+  const [customRoomName, setCustomRoomName] = useState('');
   
   // Camera & Mic Quick Preview
   const [isPreviewActive, setIsPreviewActive] = useState(false);
