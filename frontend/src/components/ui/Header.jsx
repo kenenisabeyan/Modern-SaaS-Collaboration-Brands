@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  Video, X, Plus, Minus, Users, LogIn, LogOut, 
+  Video, X, Plus, Minus, LogIn, LogOut, 
   User, Settings, Sparkles, Shield, ArrowRight,
-  Search, Bell, ChevronDown, Check, Camera,
+  Search, Bell, Camera,
   Link as LinkIcon, Radio, Layers, Activity, HelpCircle
 } from 'lucide-react';
 

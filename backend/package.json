@@ -11,7 +11,7 @@
     "build": "npm rebuild sqlite3 --build-from-source || echo 'Backend ready'",
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "test": "vitest",
+    "test": "vitest --fileParallelism=false",
     "test:watch": "vitest --watch",
     "test:ui": "vitest --ui",
     "db:init": "node scripts/init-database.js",
