@@ -22,7 +22,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
   const [showWorkspaceModal, setShowWorkspaceModal] = useState(false);
   const [selectedLang, setSelectedLang] = useState(() => localStorage.getItem('wabi_lang') || 'EN');
   
-  const isDashboardSection = ['dashboard', 'user-dashboard', 'profile', 'settings'].includes(currentView);
+  const isUserDashboard = currentView === 'user-dashboard';
   
   // Notification items matching WabiSeminar ecosystem
   const [notifications, setNotifications] = useState([
@@ -717,8 +717,8 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
               </AnimatePresence>
             </div>
 
-            {/* 6. Boxed Square Hamburger Button [ ≡ ] (Hidden on Dashboard Sections) */}
-            {!isDashboardSection && (
+            {/* 6. Boxed Square Hamburger Button [ ≡ ] (Hidden on User Dashboard) */}
+            {!isUserDashboard && (
               <button
                 onClick={() => setIsDrawerOpen(true)}
                 className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg border border-[#E4E8EE] bg-[#FEFEFE] hover:bg-[#E4E8EE]/40 flex flex-col items-center justify-center space-y-1 transition-all cursor-pointer shadow-xs focus:outline-none shrink-0"
