@@ -353,13 +353,13 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
         
         {/* ========================================================
             HERO LAUNCHPAD: Simple, Clear, Friction-Free 2-Column Layout
-            Inspired by Google Meet & Whereby simplicity
+            Inspired by Google Meet & Whereby simplicity (Zero Borders)
            ======================================================== */}
         <motion.section 
           initial="hidden"
           animate="visible"
           variants={scrollSection}
-          className="bg-white border border-[#E4E8EE] rounded-3xl p-6 sm:p-10 lg:p-12 shadow-sm mb-10 transition-all"
+          className="bg-white rounded-3xl p-6 sm:p-10 lg:p-12 shadow-sm mb-10 transition-all border-0"
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
@@ -367,7 +367,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
             <div className="lg:col-span-7 flex flex-col justify-center items-start text-left">
               
               {/* User Greeting & Status */}
-              <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-bold bg-[#FF5A36]/10 text-[#FF5A36] border border-[#FF5A36]/20 mb-4">
+              <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-bold bg-[#FF5A36]/10 text-[#FF5A36] mb-4 border-0">
                 <span className="w-2 h-2 rounded-full bg-[#FF5A36] animate-pulse"></span>
                 <span>Welcome back, {username}</span>
               </div>
@@ -387,7 +387,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
                 <button
                   onClick={() => handleCreateRoom()}
                   disabled={isCreating}
-                  className="px-7 py-4 rounded-2xl bg-[#FF5A36] hover:bg-[#E04826] text-white font-bold text-sm sm:text-base shadow-md shadow-[#FF5A36]/25 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center space-x-2.5 cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed shrink-0"
+                  className="px-7 py-4 rounded-2xl bg-[#FF5A36] hover:bg-[#E04826] text-white font-bold text-sm sm:text-base shadow-md shadow-[#FF5A36]/25 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center space-x-2.5 cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed shrink-0 border-0"
                 >
                   {isCreating ? (
                     <>
@@ -403,7 +403,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
                 </button>
 
                 {/* Action 2: Clean Inline Join Input & Button */}
-                <div className="flex-1 flex items-center bg-[#F5F7FA] border border-[#E4E8EE] focus-within:border-[#1E2761] focus-within:bg-white rounded-2xl p-1.5 transition-all shadow-xs">
+                <div className="flex-1 flex items-center bg-[#F5F7FA] focus-within:bg-white rounded-2xl p-1.5 transition-all shadow-xs border-0">
                   <input
                     type="text"
                     value={joinId}
@@ -415,7 +415,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
                   <button
                     onClick={handleJoinRoom}
                     disabled={isJoining || !joinId.trim()}
-                    className="px-4 py-2.5 rounded-xl font-bold bg-[#1E2761] hover:bg-[#151A44] text-white text-xs sm:text-sm transition-all shadow-xs disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer shrink-0"
+                    className="px-4 py-2.5 rounded-xl font-bold bg-[#1E2761] hover:bg-[#151A44] text-white text-xs sm:text-sm transition-all shadow-xs disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer shrink-0 border-0"
                   >
                     {isJoining ? <Loader2 size={14} className="animate-spin text-white" /> : 'Join'}
                   </button>
@@ -425,7 +425,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
 
               {/* Personal Room Link Pill & Custom Name Action */}
               <div className="flex flex-wrap items-center gap-2.5">
-                <div className="inline-flex items-center space-x-2 text-xs text-slate-500 bg-[#F5F7FA] border border-[#E4E8EE] rounded-xl px-3 py-1.5">
+                <div className="inline-flex items-center space-x-2 text-xs text-slate-500 bg-[#F5F7FA] rounded-xl px-3 py-1.5 border-0 shadow-2xs">
                   <span className="font-semibold text-slate-400">Your permanent link:</span>
                   <span className="font-mono font-bold text-[#1E2761]">{personalRoomId}</span>
                   <button
@@ -439,7 +439,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
 
                 <button
                   onClick={() => setShowCustomRoomModal(true)}
-                  className="inline-flex items-center space-x-1.5 text-xs font-bold text-[#1E2761] hover:text-[#FF5A36] bg-[#F5F7FA] hover:bg-slate-200/60 border border-[#E4E8EE] rounded-xl px-3 py-1.5 transition-colors cursor-pointer"
+                  className="inline-flex items-center space-x-1.5 text-xs font-bold text-[#1E2761] hover:text-[#FF5A36] bg-[#F5F7FA] hover:bg-slate-200/60 rounded-xl px-3 py-1.5 transition-colors cursor-pointer border-0 shadow-2xs"
                   title="Create a custom room name"
                 >
                   <Plus size={13} className="text-[#FF5A36]" />
@@ -451,7 +451,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
 
             {/* Right Side: Clean, Compact Camera & Mic Studio Preview */}
             <div className="lg:col-span-5">
-              <div className="w-full aspect-video bg-[#1E2761] rounded-2xl relative overflow-hidden flex items-center justify-center border border-[#151A44] shadow-md group">
+              <div className="w-full aspect-video bg-[#1E2761] rounded-2xl relative overflow-hidden flex items-center justify-center shadow-md group border-0">
                 
                 {isPreviewActive && previewStream ? (
                   <>
@@ -473,7 +473,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
 
                     {/* Microphone Meter with Studio Equalizer Bars */}
                     {previewMicActive && (
-                      <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-2.5 py-1.5 rounded-2xl flex items-center space-x-2 border border-[#E4E8EE] shadow-sm z-20">
+                      <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-2.5 py-1.5 rounded-2xl flex items-center space-x-2 shadow-sm z-20 border-0">
                         <Mic size={12} className="text-[#FF5A36]" />
                         <div className="flex items-end space-x-0.5 h-3">
                           {[20, 45, 75, 95, 60, 30].map((h, i) => {
@@ -496,10 +496,10 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
                     <div className="absolute bottom-3 inset-x-0 flex items-center justify-center gap-2 z-20">
                       <button
                         onClick={togglePreviewCam}
-                        className={`p-2 rounded-xl border shadow-sm transition-all cursor-pointer flex items-center justify-center ${
+                        className={`p-2 rounded-xl shadow-sm transition-all cursor-pointer flex items-center justify-center border-0 ${
                           previewCamActive 
-                            ? 'bg-white/90 text-[#1E2761] border-white hover:bg-white' 
-                            : 'bg-[#FF5A36] text-white border-[#FF5A36]'
+                            ? 'bg-white/90 text-[#1E2761] hover:bg-white' 
+                            : 'bg-[#FF5A36] text-white'
                         }`}
                         title={previewCamActive ? "Turn off camera" : "Turn on camera"}
                       >
@@ -508,10 +508,10 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
                       
                       <button
                         onClick={togglePreviewMic}
-                        className={`p-2 rounded-xl border shadow-sm transition-all cursor-pointer flex items-center justify-center ${
+                        className={`p-2 rounded-xl shadow-sm transition-all cursor-pointer flex items-center justify-center border-0 ${
                           previewMicActive 
-                            ? 'bg-white/90 text-[#1E2761] border-white hover:bg-white' 
-                            : 'bg-[#FF5A36] text-white border-[#FF5A36]'
+                            ? 'bg-white/90 text-[#1E2761] hover:bg-white' 
+                            : 'bg-[#FF5A36] text-white'
                         }`}
                         title={previewMicActive ? "Mute mic" : "Unmute mic"}
                       >
@@ -520,7 +520,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
 
                       <button
                         onClick={playSpeakerTest}
-                        className="p-2 rounded-xl border border-white bg-white/90 hover:bg-white text-[#1E2761] shadow-sm transition-all cursor-pointer flex items-center justify-center"
+                        className="p-2 rounded-xl bg-white/90 hover:bg-white text-[#1E2761] shadow-sm transition-all cursor-pointer flex items-center justify-center border-0"
                         title="Test speaker output sound"
                       >
                         <Volume2 size={16} />
@@ -528,7 +528,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
 
                       <button
                         onClick={toggleHardwarePreview}
-                        className="px-3 py-1.5 rounded-xl bg-white/90 hover:bg-white text-[#1E2761] text-xs font-bold border border-white shadow-sm cursor-pointer flex items-center justify-center"
+                        className="px-3 py-1.5 rounded-xl bg-white/90 hover:bg-white text-[#1E2761] text-xs font-bold shadow-sm cursor-pointer flex items-center justify-center border-0"
                       >
                         Turn Off
                       </button>
@@ -536,7 +536,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
                   </>
                 ) : (
                   <div className="flex flex-col items-center justify-center p-6 text-center text-white">
-                    <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-white mb-2.5 mx-auto border border-white/15">
+                    <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-white mb-2.5 mx-auto">
                       <Camera size={24} className="text-[#FF5A36]" />
                     </div>
                     <p className="text-xs text-slate-300 max-w-xs mb-3 font-normal">
@@ -545,14 +545,14 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
                     <div className="flex items-center gap-2">
                       <button
                         onClick={toggleHardwarePreview}
-                        className="px-4 py-2 rounded-xl bg-white/15 hover:bg-white/25 text-white text-xs font-bold transition-all border border-white/20 cursor-pointer flex items-center space-x-1.5"
+                        className="px-4 py-2 rounded-xl bg-white/15 hover:bg-white/25 text-white text-xs font-bold transition-all cursor-pointer flex items-center space-x-1.5 border-0"
                       >
                         <Play size={12} className="fill-current" />
                         <span>Preview Camera</span>
                       </button>
                       <button
                         onClick={playSpeakerTest}
-                        className="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition-all border border-white/15 cursor-pointer flex items-center space-x-1.5"
+                        className="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition-all cursor-pointer flex items-center space-x-1.5 border-0"
                         title="Play speaker test sound"
                       >
                         <Volume2 size={13} />
