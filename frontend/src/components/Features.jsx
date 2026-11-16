@@ -339,62 +339,63 @@ export default function Features({ onNavigate, initialSection }) {
               </motion.div>
             ))}
           </motion.div>
-        </section>
+        </div>
+      </motion.section>
 
-        {/* 4. Deep Dive WebRTC Architecture */}
-        <motion.section 
-          id="architecture" 
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportConfig}
-          variants={scrollSection}
-          className="w-full bg-white py-16 sm:py-24 mb-20 sm:mb-32 border-0 shadow-none"
-        >
-          <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
-            <div className="max-w-3xl mx-auto text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1E2761] mb-4">
-                Cutting-Edge WebRTC Infrastructure
-              </h2>
-              <p className="text-slate-600 text-base leading-relaxed">
-                We combine peer-to-peer WebRTC media streaming with WebSocket signaling to ensure minimal latency and top tier security.
-              </p>
-            </div>
-
-            <motion.div variants={scrollStagger} className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              <motion.div variants={scrollItem} className="bg-[#F5F7FA] p-6 rounded-none border border-[#E4E8EE] shadow-sm text-center">
-                <div className="w-12 h-12 rounded-none bg-[#1E2761]/10 text-[#1E2761] flex items-center justify-center mx-auto mb-4">
-                  <Zap size={24} />
-                </div>
-                <h4 className="font-bold text-[#1E2761] mb-2">Direct P2P Routing</h4>
-                <p className="text-slate-600 text-xs sm:text-sm">Video feeds stream directly between peers for maximum clarity.</p>
-              </motion.div>
-
-              <motion.div variants={scrollItem} className="bg-[#F5F7FA] p-6 rounded-none border border-[#E4E8EE] shadow-sm text-center">
-                <div className="w-12 h-12 rounded-none bg-[#FF5A36]/10 text-[#FF5A36] flex items-center justify-center mx-auto mb-4">
-                  <MessageSquare size={24} />
-                </div>
-                <h4 className="font-bold text-[#1E2761] mb-2">Socket.IO Signaling</h4>
-                <p className="text-slate-600 text-xs sm:text-sm">Instant handshake and state synchronization with zero delay.</p>
-              </motion.div>
-
-              <motion.div variants={scrollItem} className="bg-[#F5F7FA] p-6 rounded-none border border-[#E4E8EE] shadow-sm text-center">
-                <div className="w-12 h-12 rounded-none bg-[#1E2761]/10 text-[#1E2761] flex items-center justify-center mx-auto mb-4">
-                  <Shield size={24} />
-                </div>
-                <h4 className="font-bold text-[#1E2761] mb-2">DTLS-SRTP Security</h4>
-                <p className="text-slate-600 text-xs sm:text-sm">Every packet is cryptographically encrypted at the transport level.</p>
-              </motion.div>
-            </motion.div>
+      {/* 4. Deep Dive WebRTC Architecture (#F5F7FA Canvas) */}
+      <motion.section 
+        id="architecture" 
+        initial="hidden"
+        whileInView="visible"
+        viewport={viewportConfig}
+        variants={scrollSection}
+        className="w-full bg-[#F5F7FA] py-16 sm:py-24 mb-20 sm:mb-32 border-0 shadow-none"
+      >
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
+          <div className="max-w-3xl mx-auto text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1E2761] mb-4">
+              Cutting-Edge WebRTC Infrastructure
+            </h2>
+            <p className="text-slate-600 text-base leading-relaxed">
+              We combine peer-to-peer WebRTC media streaming with WebSocket signaling to ensure minimal latency and top tier security.
+            </p>
           </div>
-        </motion.section>
 
-        {/* 5. Interactive Collaboration Section */}
-        <motion.section 
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportConfig}
-          variants={scrollSection}
-          className="w-full bg-[#F5F7FA] py-16 sm:py-24 mb-20 sm:mb-32 border-0 shadow-none"
+          <motion.div variants={scrollStagger} className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <motion.div variants={scrollItem} className="bg-white p-6 rounded-2xl border border-[#E4E8EE] shadow-sm text-center">
+              <div className="w-12 h-12 rounded-xl bg-[#1E2761]/10 text-[#1E2761] flex items-center justify-center mx-auto mb-4">
+                <Zap size={24} />
+              </div>
+              <h4 className="font-bold text-[#1E2761] mb-2">Direct P2P Routing</h4>
+              <p className="text-slate-600 text-xs sm:text-sm">Video feeds stream directly between peers for maximum clarity.</p>
+            </motion.div>
+
+            <motion.div variants={scrollItem} className="bg-white p-6 rounded-2xl border border-[#E4E8EE] shadow-sm text-center">
+              <div className="w-12 h-12 rounded-xl bg-[#FF5A36]/10 text-[#FF5A36] flex items-center justify-center mx-auto mb-4">
+                <MessageSquare size={24} />
+              </div>
+              <h4 className="font-bold text-[#1E2761] mb-2">Socket.IO Signaling</h4>
+              <p className="text-slate-600 text-xs sm:text-sm">Instant handshake and state synchronization with zero delay.</p>
+            </motion.div>
+
+            <motion.div variants={scrollItem} className="bg-white p-6 rounded-2xl border border-[#E4E8EE] shadow-sm text-center">
+              <div className="w-12 h-12 rounded-xl bg-[#1E2761]/10 text-[#1E2761] flex items-center justify-center mx-auto mb-4">
+                <Shield size={24} />
+              </div>
+              <h4 className="font-bold text-[#1E2761] mb-2">DTLS-SRTP Security</h4>
+              <p className="text-slate-600 text-xs sm:text-sm">Every packet is cryptographically encrypted at the transport level.</p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* 5. Interactive Collaboration Section (White Canvas) */}
+      <motion.section 
+        initial="hidden"
+        whileInView="visible"
+        viewport={viewportConfig}
+        variants={scrollSection}
+        className="w-full bg-white py-16 sm:py-24 mb-20 sm:mb-32 border-0 shadow-none"
         >
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
