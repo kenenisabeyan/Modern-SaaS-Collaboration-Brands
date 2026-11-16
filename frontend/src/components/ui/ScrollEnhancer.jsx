@@ -34,8 +34,8 @@ export default function ScrollEnhancer() {
     });
   };
 
-  // Circular progress calculations (Radius = 18, circumference = 2 * π * 18 ≈ 113.1)
-  const radius = 18;
+  // Circular progress calculations (Radius = 20, center = 24, circumference = 2 * π * 20 ≈ 125.66)
+  const radius = 20;
   const circumference = 2 * Math.PI * radius;
   const strokeDashoffset = circumference - (scrollPercent / 100) * circumference;
 
@@ -60,14 +60,14 @@ export default function ScrollEnhancer() {
             <button
               onClick={scrollToTop}
               aria-label="Back to top"
-              className="relative w-12 h-12 rounded-full bg-white/90 backdrop-blur-md border border-[#E4E8EE] shadow-lg shadow-[#1E2761]/10 text-[#1E2761] hover:text-[#FF5A36] hover:border-[#FF5A36]/40 hover:shadow-xl hover:shadow-[#FF5A36]/20 transition-all duration-300 flex items-center justify-center cursor-pointer group-hover:-translate-y-1 active:translate-y-0 select-none"
+              className="relative w-12 h-12 rounded-full bg-white/95 backdrop-blur-md border border-[#E4E8EE] shadow-lg shadow-[#1E2761]/10 text-[#1E2761] hover:text-[#FF5A36] hover:border-[#FF5A36]/40 hover:shadow-xl hover:shadow-[#FF5A36]/20 transition-all duration-300 flex items-center justify-center cursor-pointer group-hover:-translate-y-1 active:translate-y-0 select-none"
             >
               {/* SVG Circular Progress Ring */}
-              <svg className="absolute inset-0 w-full h-full -rotate-90 pointer-events-none p-[2px]">
+              <svg viewBox="0 0 48 48" className="absolute inset-0 w-full h-full -rotate-90 pointer-events-none">
                 {/* Track background */}
                 <circle
-                  cx="22"
-                  cy="22"
+                  cx="24"
+                  cy="24"
                   r={radius}
                   className="stroke-[#E4E8EE]"
                   strokeWidth="2.5"
@@ -75,8 +75,8 @@ export default function ScrollEnhancer() {
                 />
                 {/* Active progress track */}
                 <circle
-                  cx="22"
-                  cy="22"
+                  cx="24"
+                  cy="24"
                   r={radius}
                   stroke="#FF5A36"
                   strokeWidth="2.5"
