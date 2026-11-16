@@ -100,7 +100,7 @@ export default function Auth({ onNavigate }) {
 
           <div className="text-center space-y-1.5">
             <h1 className="text-xl sm:text-2xl font-extrabold tracking-wider text-[#1E2761] uppercase group-hover:text-[#FF5A36] transition-colors">
-              WABISEMINAR
+              COVIDEO
             </h1>
             <p className="text-xs sm:text-sm text-slate-500">
               {isLogin ? 'Sign in to manage and join masterclasses' : 'Create an account to host unlimited sessions'}
