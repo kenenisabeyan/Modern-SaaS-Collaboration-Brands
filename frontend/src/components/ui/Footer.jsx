@@ -2,11 +2,9 @@ import { Video, Globe, Mail, MessageCircle } from 'lucide-react';
 
 export default function Footer({ onNavigate }) {
   return (
-    <footer className="border-t border-white/10 bg-[#1E2761] pt-10 lg:pt-12 pb-6 lg:pb-8 px-6 sm:px-10 lg:px-16 xl:px-20 relative z-10 text-white font-sans shadow-[0_100vh_0_100vh_#1E2761]">
-      {/* Downward solid background extension to permanently block any whitespace below the footer during scrolling or overscroll */}
-      <div className="absolute top-full left-0 right-0 h-[1000px] bg-[#1E2761] pointer-events-none -z-10" />
-      <div className="max-w-[1720px] mx-auto relative z-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 mb-8 sm:mb-10">
+    <footer className="border-t border-white/10 bg-[#1E2761] pt-8 sm:pt-10 pb-5 sm:pb-6 px-4 sm:px-8 lg:px-12 xl:px-16 relative z-10 text-white font-sans overflow-hidden">
+      <div className="max-w-[1720px] mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-8 mb-6 sm:mb-8">
           
           {/* Brand Section */}
           <div className="col-span-1 sm:col-span-2 lg:col-span-1">
@@ -73,7 +71,7 @@ export default function Footer({ onNavigate }) {
         </div>
         
         {/* Footer Bottom */}
-        <div className="border-t border-white/10 pt-5 sm:pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-slate-400">
+        <div className="border-t border-white/10 pt-4 sm:pt-5 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-slate-400">
           <p className="text-center sm:text-left text-slate-400">&copy; {new Date().getFullYear()} WabiSeminar Inc. All rights reserved.</p>
           <div className="flex items-center space-x-6">
             <div className="flex items-center space-x-2">
