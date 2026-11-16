@@ -23,7 +23,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
   // These upgraded header elements are ONLY visible inside dashboards after sign-in
   const isDashboardMode = isAuthenticated && ['user-dashboard', 'profile', 'settings'].includes(currentView);
 
-  // Notification items matching WabiSeminar ecosystem
+  // Notification items matching CoVideo ecosystem
   const [notifications, setNotifications] = useState([
     {
       id: 1,
@@ -67,7 +67,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
 
   const unreadCount = notifications.filter(n => n.unread).length;
 
-  // Quick search items across WabiSeminar
+  // Quick search items across CoVideo
   const searchItems = [
     {
       category: 'Meeting Actions',
@@ -135,7 +135,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
   // Dispatch search query to active dashboard views
   const handleSearchChange = (val) => {
     setSearchQuery(val);
-    window.dispatchEvent(new CustomEvent('wabi-search', { detail: val }));
+    window.dispatchEvent(new CustomEvent('covideo-search', { detail: val }));
   };
 
   const markAllNotificationsAsRead = () => {
@@ -203,7 +203,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
       view: 'about',
       action: () => handleNavClick('about'),
       subItems: [
-        { label: 'The WabiSeminar Story', action: () => {
+        { label: 'The CoVideo Story', action: () => {
           handleNavClick('about');
           setTimeout(() => document.getElementById('genesis')?.scrollIntoView({ behavior: 'smooth' }), 150);
         }},
@@ -288,7 +288,7 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
                   <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-[#FF5A36] border-2 border-[#FEFEFE] rounded-full animate-pulse"></span>
                 </div>
                 <span className="font-black text-sm sm:text-base lg:text-lg tracking-wider text-[#1E2761] uppercase hidden xs:inline-block">
-                  WABISEMINAR
+                  COVIDEO
                 </span>
               </div>
 
@@ -392,10 +392,10 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
                 <button 
                   onClick={() => setShowWorkspaceModal(!showWorkspaceModal)}
                   className="hidden 2xl:flex items-center space-x-2 border border-[#FF5A36]/30 bg-[#FF5A36]/5 hover:bg-[#FF5A36]/10 text-[#FF5A36] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-xs select-none"
-                  title="WabiSeminar Masterclass Architecture"
+                  title="CoVideo Masterclass Architecture"
                 >
                   <span className="w-2 h-2 rounded-full bg-[#FF5A36] animate-pulse"></span>
-                  <span>WABISEMINAR MASTERCLASS SUITE</span>
+                  <span>COVIDEO MASTERCLASS SUITE</span>
                 </button>
 
                 <AnimatePresence>
