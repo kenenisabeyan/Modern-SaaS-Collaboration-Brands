@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { scrollSection, scrollStagger, scrollItem, viewportConfig } from '../utils/animations.js';
 import { 
   Video, VideoOff, Mic, MicOff, Plus, Link as LinkIcon, Calendar, Clock, 
-  Loader2, ArrowRight, Copy, Check, Trash2, X, Sparkles, Camera, Play
+  Loader2, ArrowRight, Copy, Check, Trash2, X, Sparkles, Camera, Play, Search
 } from 'lucide-react';
 import api from '../services/api.js';
 import { roomIdFromPathname } from '../routeUtils.js';
@@ -19,6 +19,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
   const [isDeleting, setIsDeleting] = useState(false);
   const [copiedId, setCopiedId] = useState(null);
   const [copiedPersonalLink, setCopiedPersonalLink] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   
   // Camera & Mic Quick Preview
   const [isPreviewActive, setIsPreviewActive] = useState(false);
@@ -75,6 +76,23 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
       }
     };
   }, []);
+
+  useEffect(() => {
+    const handleWabiSearch = (e) => {
+      setSearchQuery(e.detail || '');
+    };
+    window.addEventListener('wabi-search', handleWabiSearch);
+    return () => window.removeEventListener('wabi-search', handleWabiSearch);
+  }, []);
+
+  const displayedRooms = useMemo(() => {
+    if (!searchQuery.trim()) return myRooms;
+    const q = searchQuery.toLowerCase().trim();
+    return myRooms.filter(room => 
+      (room.roomId && room.roomId.toLowerCase().includes(q)) ||
+      (room.title && room.title.toLowerCase().includes(q))
+    );
+  }, [myRooms, searchQuery]);
 
   const toggleHardwarePreview = async () => {
     if (isPreviewActive) {
@@ -465,16 +483,32 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
           className="bg-white border border-[#E4E8EE] rounded-3xl p-6 sm:p-8 shadow-sm"
         >
           
-          <div className="flex items-center justify-between pb-5 mb-5 border-b border-[#E4E8EE]">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 mb-5 border-b border-[#E4E8EE] gap-3">
             <div className="flex items-center space-x-2.5">
               <Clock size={18} className="text-[#1E2761]" />
               <h2 className="text-lg sm:text-xl font-black text-[#1E2761]">
                 Your Recent Meetings
               </h2>
               <span className="px-2 py-0.5 rounded-full bg-[#1E2761]/8 text-[#1E2761] text-xs font-bold">
-                {myRooms.length}
+                {displayedRooms.length}
               </span>
             </div>
+
+            {searchQuery && (
+              <div className="flex items-center space-x-2 bg-[#1E2761]/5 border border-[#1E2761]/10 px-3 py-1 rounded-full text-xs font-semibold text-[#1E2761]">
+                <span>Filtering: "{searchQuery}"</span>
+                <button 
+                  onClick={() => {
+                    setSearchQuery('');
+                    window.dispatchEvent(new CustomEvent('wabi-search', { detail: '' }));
+                  }} 
+                  className="text-slate-400 hover:text-[#FF5A36] cursor-pointer"
+                  title="Clear filter"
+                >
+                  <X size={12} />
+                </button>
+              </div>
+            )}
           </div>
 
           {isLoading ? (
@@ -482,9 +516,9 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
               <Loader2 className="animate-spin text-[#FF5A36]" size={28} />
               <p className="text-xs text-slate-500 font-medium">Loading meetings...</p>
             </div>
-          ) : myRooms.length > 0 ? (
+          ) : displayedRooms.length > 0 ? (
             <motion.div variants={scrollStagger} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {myRooms.map((room) => (
+              {displayedRooms.map((room) => (
                 <motion.div 
                   key={room.id || room.roomId}
                   variants={scrollItem}
@@ -532,6 +566,14 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
                 </motion.div>
               ))}
             </motion.div>
+          ) : searchQuery ? (
+            <div className="py-12 bg-[#F5F7FA] rounded-2xl border border-dashed border-[#E4E8EE] text-center p-6 flex flex-col items-center">
+              <Search className="text-slate-400 mb-2" size={28} />
+              <h3 className="text-sm font-bold text-[#1E2761]">No meetings found matching "{searchQuery}"</h3>
+              <p className="text-xs text-slate-500 mt-1 max-w-xs">
+                Check the room ID or search another term.
+              </p>
+            </div>
           ) : (
             <div className="py-10 text-center flex flex-col items-center justify-center">
               <div className="w-12 h-12 rounded-2xl bg-[#F5F7FA] border border-[#E4E8EE] flex items-center justify-center text-[#1E2761] mb-2.5 mx-auto">
