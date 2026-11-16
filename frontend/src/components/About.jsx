@@ -135,10 +135,10 @@ export default function About({ onNavigate }) {
 
 
         {/* ========================================================
-            2. THE ORIGIN STORY: WHY WE BUILT WABISEMINAR
+            2. THE ORIGIN STORY: WHY WE BUILT WABISEMINAR (Zero borders, full-bleed canvas)
            ======================================================== */}
-        <section className="mb-20 sm:mb-32 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
-          <div className="bg-[#F5F7FA] border border-[#E4E8EE] rounded-3xl p-8 sm:p-12 lg:p-16">
+        <section className="w-full bg-[#F5F7FA] py-16 sm:py-24 mb-20 sm:mb-32 border-0 shadow-none">
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
               
               <div className="lg:col-span-6 space-y-5 text-left">
@@ -171,7 +171,7 @@ export default function About({ onNavigate }) {
               <div className="lg:col-span-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   
-                  <div className="bg-white p-6 rounded-2xl border border-[#E4E8EE] shadow-sm">
+                  <div className="bg-white p-6 rounded-2xl border-0 shadow-sm hover:shadow-md transition-shadow">
                     <div className="w-10 h-10 rounded-xl bg-[#1E2761]/10 text-[#1E2761] flex items-center justify-center mb-4">
                       <Clock size={20} />
                     </div>
@@ -181,7 +181,7 @@ export default function About({ onNavigate }) {
                     </p>
                   </div>
 
-                  <div className="bg-white p-6 rounded-2xl border border-[#E4E8EE] shadow-sm">
+                  <div className="bg-white p-6 rounded-2xl border-0 shadow-sm hover:shadow-md transition-shadow">
                     <div className="w-10 h-10 rounded-xl bg-[#FF5A36]/10 text-[#FF5A36] flex items-center justify-center mb-4">
                       <Monitor size={20} />
                     </div>
@@ -191,7 +191,7 @@ export default function About({ onNavigate }) {
                     </p>
                   </div>
 
-                  <div className="bg-white p-6 rounded-2xl border border-[#E4E8EE] shadow-sm">
+                  <div className="bg-white p-6 rounded-2xl border-0 shadow-sm hover:shadow-md transition-shadow">
                     <div className="w-10 h-10 rounded-xl bg-[#FF5A36]/10 text-[#FF5A36] flex items-center justify-center mb-4">
                       <Lock size={20} />
                     </div>
@@ -201,7 +201,7 @@ export default function About({ onNavigate }) {
                     </p>
                   </div>
 
-                  <div className="bg-white p-6 rounded-2xl border border-[#E4E8EE] shadow-sm">
+                  <div className="bg-white p-6 rounded-2xl border-0 shadow-sm hover:shadow-md transition-shadow">
                     <div className="w-10 h-10 rounded-xl bg-[#1E2761]/10 text-[#1E2761] flex items-center justify-center mb-4">
                       <Users size={20} />
                     </div>
@@ -365,7 +365,7 @@ export default function About({ onNavigate }) {
             {pillars.map((item, idx) => (
               <div 
                 key={idx}
-                className="bg-white border border-[#E4E8EE] rounded-3xl p-8 sm:p-10 shadow-sm hover:border-[#1E2761]/40 hover:shadow-xl transition-all flex flex-col justify-between"
+                className="bg-white border-0 rounded-3xl p-8 sm:p-10 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between"
               >
                 <div>
                   <span className="text-xs font-bold text-[#FF5A36] uppercase tracking-wider mb-2 block">{item.role}</span>
@@ -403,7 +403,7 @@ export default function About({ onNavigate }) {
               </button>
               <button 
                 onClick={() => onNavigate('features')}
-                className="bg-white hover:bg-slate-50 text-[#1E2761] border border-[#E4E8EE] px-8 py-4 rounded-full font-bold text-base transition-all cursor-pointer shadow-sm"
+                className="bg-white hover:bg-slate-50 text-[#1E2761] border-0 px-8 py-4 rounded-full font-bold text-base transition-all cursor-pointer shadow-sm hover:shadow-md"
               >
                 Explore All Features
               </button>
