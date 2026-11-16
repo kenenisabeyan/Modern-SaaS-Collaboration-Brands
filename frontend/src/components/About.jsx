@@ -143,14 +143,14 @@ export default function About({ onNavigate, initialSection }) {
             </motion.h1>
 
             <motion.p variants={fadeIn} className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto mb-12 font-normal leading-relaxed">
-              We founded WabiSeminar on a straightforward belief: video meetings should be as instantaneous, frictionless, and respectful as real-life conversations.
+              We founded CoVideo on a straightforward belief: video meetings should be as instantaneous, frictionless, and respectful as real-life conversations.
             </motion.p>
           </motion.div>
         </section>
 
 
         {/* ========================================================
-            2. THE ORIGIN STORY: WHY WE BUILT WABISEMINAR (Zero borders, full-bleed canvas)
+            2. THE ORIGIN STORY: WHY WE BUILT COVIDEO (Zero borders, full-bleed canvas)
            ======================================================== */}
         <motion.section 
           id="genesis"
@@ -172,7 +172,7 @@ export default function About({ onNavigate, initialSection }) {
                   For years, video conferencing has been dominated by legacy software that demands invasive downloads, forces arbitrary 40-minute cutoffs, and complicates simple meetings with account gates and bloated menus.
                 </p>
                 <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                  We set out to engineer a platform that strips away the artificial friction. WabiSeminar leverages cutting-edge browser WebRTC technology to deliver instant encrypted rooms, crisp screen sharing, and interactive moderation tools directly in your browser tab.
+                  We set out to engineer a platform that strips away the artificial friction. CoVideo leverages cutting-edge browser WebRTC technology to deliver instant encrypted rooms, crisp screen sharing, and interactive moderation tools directly in your browser tab.
                 </p>
                 <div className="pt-2 flex flex-wrap gap-4">
                   <div className="flex items-center space-x-2 text-xs sm:text-sm font-bold text-[#1E2761]">
@@ -323,7 +323,7 @@ export default function About({ onNavigate, initialSection }) {
             <div className="max-w-3xl mx-auto text-center mb-14">
               <span className="text-xs font-extrabold tracking-wider uppercase text-[#FF5A36]">Engineered for Performance</span>
               <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1E2761] mt-2 mb-4 tracking-tight">
-                Under the Hood of WabiSeminar
+                Under the Hood of CoVideo
               </h2>
               <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
                 By combining WebRTC peer connections with ultra-responsive WebSocket signaling, we deliver high performance with zero middleman servers re-encoding your raw video.
@@ -386,7 +386,7 @@ export default function About({ onNavigate, initialSection }) {
 
 
         {/* ========================================================
-            5. WHO WABISEMINAR EMPOWERS
+            5. WHO COVIDEO EMPOWERS
            ======================================================== */}
         <motion.section 
           id="audiences"
@@ -401,7 +401,7 @@ export default function About({ onNavigate, initialSection }) {
               Built for <span className="text-[#FF5A36]">Everyone</span>
             </h2>
             <p className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto font-normal">
-              Whether you are teaching twenty students or hosting an international executive sync, WabiSeminar adapts to your workflow.
+              Whether you are teaching twenty students or hosting an international executive sync, CoVideo adapts to your workflow.
             </p>
           </div>
 

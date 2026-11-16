@@ -378,7 +378,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 Everything You Need for Perfect Seminars
               </h2>
               <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
-                WabiSeminar brings together the best tools for video collaboration in one beautiful, frictionless package.
+                CoVideo brings together the best tools for video collaboration in one beautiful, frictionless package.
               </p>
             </div>
 
@@ -475,7 +475,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               Built for Everyone <span className="text-[#FF5A36]">Beyond Standard Meetings</span>
             </h2>
             <p className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto mb-12 font-normal leading-relaxed">
-              From interactive cohort workshops to high-stakes team syncs, WabiSeminar delivers the masterclass tools, ultra-low latency, and frictionless access that generic meeting tools lack.
+              From interactive cohort workshops to high-stakes team syncs, CoVideo delivers the masterclass tools, ultra-low latency, and frictionless access that generic meeting tools lack.
             </p>
             
             <motion.div variants={scrollStagger} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
