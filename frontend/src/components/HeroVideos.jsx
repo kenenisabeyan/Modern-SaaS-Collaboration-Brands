@@ -46,7 +46,7 @@ export default function HeroVideos({ className = '' }) {
 
       {/* Video Container: Completely borderless, seamless edge transition, full 1886x1080 resolution visibility */}
       <div 
-        className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-none bg-[#FEFEFE] aspect-[1886/1080] w-full flex items-center justify-center border-0 outline-none"
+        className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-none bg-[#1E2761] aspect-[1886/1080] w-full flex items-center justify-center border-0 outline-none"
       >
         {!hasError ? (
           <video
@@ -71,8 +71,8 @@ export default function HeroVideos({ className = '' }) {
         ) : (
           <div className="w-full h-full flex flex-col items-center justify-center p-8 bg-[#1E2761] text-white text-center">
             <span className="w-3 h-3 rounded-full bg-[#FF5A36] animate-ping mb-3"></span>
-            <p className="text-sm font-bold text-white tracking-wide">Live Masterclass Interactive Session</p>
-            <p className="text-xs text-slate-300 mt-1">Connecting participants in Ultra HD...</p>
+            <p className="text-sm font-bold text-white tracking-wide">WabiSeminar Ultra HD Stream</p>
+            <p className="text-xs text-slate-300 mt-1">Connecting participants in 1080p 60fps...</p>
           </div>
         )}
       </div>
