@@ -502,7 +502,7 @@ export default function Features({ onNavigate, initialSection }) {
           </div>
         </motion.section>
 
-        {/* 7. Integrated "About WabiSeminar" Mission Section */}
+        {/* 7. Integrated "About CoVideo" Mission Section */}
         <motion.section 
           id="about" 
           initial="hidden"
@@ -514,10 +514,10 @@ export default function Features({ onNavigate, initialSection }) {
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1E2761] mb-6 tracking-tight">
-                About <span className="text-[#FF5A36]">WabiSeminar</span>
+                About <span className="text-[#FF5A36]">CoVideo</span>
               </h2>
               <p className="text-slate-600 text-base sm:text-lg leading-relaxed mb-10 font-normal">
-                WabiSeminar was created to eliminate the clutter, bloat, and paywalls of legacy video conferencing platforms. We believe high-definition, interactive masterclasses and meetings should be accessible directly in any browser with zero downloads, zero setup, and bank-grade privacy.
+                CoVideo was created to eliminate the clutter, bloat, and paywalls of legacy video conferencing platforms. We believe high-definition, interactive masterclasses and meetings should be accessible directly in any browser with zero downloads, zero setup, and bank-grade privacy.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
@@ -554,7 +554,7 @@ export default function Features({ onNavigate, initialSection }) {
               Ready to host your next masterclass?
             </h2>
             <p className="text-slate-600 text-base sm:text-lg max-w-xl mx-auto mb-8 font-normal">
-              Join thousands of educators and creators who have upgraded their meeting experience with WabiSeminar.
+              Join thousands of educators and creators who have upgraded their meeting experience with CoVideo.
             </p>
             <button 
               onClick={() => onNavigate(localStorage.getItem('token') ? 'user-dashboard' : 'dashboard')}
