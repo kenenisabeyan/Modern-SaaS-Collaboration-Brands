@@ -141,7 +141,7 @@ function App() {
     };
   }, []);
 
-  const showHeaderFooter = currentView !== 'meeting';
+  const showHeaderFooter = currentView !== 'meeting' && currentView !== 'user-dashboard';
 
   return (
     <div className="min-h-screen flex flex-col font-sans relative overflow-x-hidden bg-[#1E2761] text-[#1E2761]">
@@ -166,11 +166,12 @@ function App() {
           )}
 
           {currentView === 'user-dashboard' && (
-            isAuthenticated ? (
-              <UserDashboard onNavigate={setCurrentView} onJoinRoom={navigateToRoom} notify={notify} />
-            ) : (
-              <Auth onNavigate={handleAuthSuccess} />
-            )
+            <UserDashboard 
+              onNavigate={setCurrentView} 
+              onJoinRoom={navigateToRoom} 
+              notify={notify} 
+              isAuthenticated={isAuthenticated} 
+            />
           )}
 
           {currentView === 'profile' && isAuthenticated && (
