@@ -141,10 +141,12 @@ function App() {
     };
   }, []);
 
+  const isDashboardSection = ['dashboard', 'user-dashboard', 'profile', 'settings'].includes(currentView);
   const showHeaderFooter = currentView !== 'meeting';
+  const showFooter = showHeaderFooter && !isDashboardSection;
 
   return (
-    <div className="min-h-screen flex flex-col font-sans relative overflow-x-hidden bg-[#1E2761] text-[#1E2761]">
+    <div className={`min-h-screen flex flex-col font-sans relative overflow-x-hidden ${isDashboardSection ? 'bg-[#F5F7FA]' : 'bg-[#1E2761]'} text-[#1E2761]`}>
       <ParticleBackground />
       {showHeaderFooter && <ScrollEnhancer />}
       
@@ -191,7 +193,7 @@ function App() {
         </PageTransition>
       </AnimatePresence>
 
-      {showHeaderFooter && <Footer onNavigate={setCurrentView} />}
+      {showFooter && <Footer onNavigate={setCurrentView} />}
 
       {toast && (
         <div className="fixed top-4 left-1/2 z-[100] w-[min(calc(100vw-1.5rem),28rem)] -translate-x-1/2 px-2 sm:px-0">
