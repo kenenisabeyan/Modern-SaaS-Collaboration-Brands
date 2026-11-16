@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { scrollSection, scrollStagger, scrollItem, viewportConfig } from '../utils/animations.js';
 import { 
   Video, Monitor, Shield, Zap, Globe, MessageSquare, Layers,
   ArrowRight, Smartphone, Activity, CheckCircle, Layout,

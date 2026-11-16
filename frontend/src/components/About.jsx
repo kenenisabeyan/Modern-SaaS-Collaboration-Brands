@@ -145,7 +145,13 @@ export default function About({ onNavigate }) {
         {/* ========================================================
             2. THE ORIGIN STORY: WHY WE BUILT WABISEMINAR (Zero borders, full-bleed canvas)
            ======================================================== */}
-        <section className="w-full bg-[#F5F7FA] py-16 sm:py-24 mb-20 sm:mb-32 border-0 shadow-none">
+        <motion.section 
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+          variants={scrollSection}
+          className="w-full bg-[#F5F7FA] py-16 sm:py-24 mb-20 sm:mb-32 border-0 shadow-none"
+        >
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
               
@@ -177,9 +183,9 @@ export default function About({ onNavigate }) {
               </div>
 
               <div className="lg:col-span-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <motion.div variants={scrollStagger} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   
-                  <div className="bg-white p-6 rounded-2xl border-0 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center text-center">
+                  <motion.div variants={scrollItem} className="bg-white p-6 rounded-2xl border-0 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center text-center">
                     <div className="w-12 h-12 rounded-xl bg-[#1E2761]/10 text-[#1E2761] flex items-center justify-center mb-4 mx-auto">
                       <Clock size={22} />
                     </div>
@@ -187,9 +193,9 @@ export default function About({ onNavigate }) {
                     <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">
                       Hold comprehensive masterclasses and team discussions without timers rushing you.
                     </p>
-                  </div>
+                  </motion.div>
 
-                  <div className="bg-white p-6 rounded-2xl border-0 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center text-center">
+                  <motion.div variants={scrollItem} className="bg-white p-6 rounded-2xl border-0 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center text-center">
                     <div className="w-12 h-12 rounded-xl bg-[#FF5A36]/10 text-[#FF5A36] flex items-center justify-center mb-4 mx-auto">
                       <Monitor size={22} />
                     </div>
@@ -197,9 +203,9 @@ export default function About({ onNavigate }) {
                     <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">
                       Attendees click the invite link and join immediately without installing dependencies.
                     </p>
-                  </div>
+                  </motion.div>
 
-                  <div className="bg-white p-6 rounded-2xl border-0 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center text-center">
+                  <motion.div variants={scrollItem} className="bg-white p-6 rounded-2xl border-0 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center text-center">
                     <div className="w-12 h-12 rounded-xl bg-[#FF5A36]/10 text-[#FF5A36] flex items-center justify-center mb-4 mx-auto">
                       <Lock size={22} />
                     </div>
@@ -207,9 +213,9 @@ export default function About({ onNavigate }) {
                     <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">
                       Encrypted transport ensures conversations and data are never sold or mined for advertising.
                     </p>
-                  </div>
+                  </motion.div>
 
-                  <div className="bg-white p-6 rounded-2xl border-0 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center text-center">
+                  <motion.div variants={scrollItem} className="bg-white p-6 rounded-2xl border-0 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center text-center">
                     <div className="w-12 h-12 rounded-xl bg-[#1E2761]/10 text-[#1E2761] flex items-center justify-center mb-4 mx-auto">
                       <Users size={22} />
                     </div>
@@ -217,20 +223,26 @@ export default function About({ onNavigate }) {
                     <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">
                       Hosts screen and admit attendees safely, eliminating disruptions and unauthorized visitors.
                     </p>
-                  </div>
+                  </motion.div>
 
-                </div>
+                </motion.div>
               </div>
 
             </div>
           </div>
-        </section>
+        </motion.section>
 
 
         {/* ========================================================
             3. CORE ARCHITECTURAL PRINCIPLES (BEAM CARDS)
            ======================================================== */}
-        <section className="mb-20 sm:mb-32 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
+        <motion.section 
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+          variants={scrollSection}
+          className="mb-20 sm:mb-32 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12"
+        >
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1E2761] mb-4 tracking-tight">
               Our Core <span className="text-[#FF5A36]">Pillars</span>
@@ -283,13 +295,19 @@ export default function About({ onNavigate }) {
               </motion.div>
             ))}
           </motion.div>
-        </section>
+        </motion.section>
 
 
         {/* ========================================================
             4. TECHNICAL ARCHITECTURE: UNDER THE HOOD (Zero borders, #F5F7FA canvas)
            ======================================================== */}
-        <section className="w-full bg-[#F5F7FA] text-[#1E2761] py-16 sm:py-24 mb-20 sm:mb-32 border-0 shadow-none">
+        <motion.section 
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+          variants={scrollSection}
+          className="w-full bg-[#F5F7FA] text-[#1E2761] py-16 sm:py-24 mb-20 sm:mb-32 border-0 shadow-none"
+        >
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
             
             <div className="max-w-3xl mx-auto text-center mb-14">
@@ -302,9 +320,9 @@ export default function About({ onNavigate }) {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <motion.div variants={scrollStagger} className="grid grid-cols-1 md:grid-cols-3 gap-8">
               
-              <div className="bg-white border-0 shadow-sm hover:shadow-md transition-shadow p-8 rounded-3xl flex flex-col items-center text-center">
+              <motion.div variants={scrollItem} className="bg-white border-0 shadow-sm hover:shadow-md transition-shadow p-8 rounded-3xl flex flex-col items-center text-center">
                 <div className="w-14 h-14 rounded-2xl bg-[#FF5A36]/10 text-[#FF5A36] flex items-center justify-center mb-6 mx-auto">
                   <Zap size={26} />
                 </div>
@@ -312,9 +330,9 @@ export default function About({ onNavigate }) {
                 <p className="text-slate-600 text-sm leading-relaxed">
                   Audio and video streams travel directly between peer browsers whenever possible, eliminating central server bottlenecks and guaranteeing minimal round-trip latency.
                 </p>
-              </div>
+              </motion.div>
 
-              <div className="bg-white border-0 shadow-sm hover:shadow-md transition-shadow p-8 rounded-3xl flex flex-col items-center text-center">
+              <motion.div variants={scrollItem} className="bg-white border-0 shadow-sm hover:shadow-md transition-shadow p-8 rounded-3xl flex flex-col items-center text-center">
                 <div className="w-14 h-14 rounded-2xl bg-[#1E2761]/10 text-[#1E2761] flex items-center justify-center mb-6 mx-auto">
                   <Shield size={26} />
                 </div>
@@ -322,9 +340,9 @@ export default function About({ onNavigate }) {
                 <p className="text-slate-600 text-sm leading-relaxed">
                   All media tracks are encrypted via standard Datagram Transport Layer Security (DTLS) and Secure Real-time Transport Protocol (SRTP) from end to end.
                 </p>
-              </div>
+              </motion.div>
 
-              <div className="bg-white border-0 shadow-sm hover:shadow-md transition-shadow p-8 rounded-3xl flex flex-col items-center text-center">
+              <motion.div variants={scrollItem} className="bg-white border-0 shadow-sm hover:shadow-md transition-shadow p-8 rounded-3xl flex flex-col items-center text-center">
                 <div className="w-14 h-14 rounded-2xl bg-[#FF5A36]/10 text-[#FF5A36] flex items-center justify-center mb-6 mx-auto">
                   <Cpu size={26} />
                 </div>
@@ -332,9 +350,9 @@ export default function About({ onNavigate }) {
                 <p className="text-slate-600 text-sm leading-relaxed">
                   Our WebRTC pipeline continuously monitors packet loss and jitter, automatically adjusting resolution and framerate to maintain clear audio during bandwidth dips.
                 </p>
-              </div>
+              </motion.div>
 
-            </div>
+            </motion.div>
 
             {/* Performance Metrics Bar */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-12 border-t border-[#E4E8EE] mt-12 text-center">
@@ -354,13 +372,19 @@ export default function About({ onNavigate }) {
             </div>
 
           </div>
-        </section>
+        </motion.section>
 
 
         {/* ========================================================
             5. WHO WABISEMINAR EMPOWERS
            ======================================================== */}
-        <section className="mb-20 sm:mb-32 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
+        <motion.section 
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+          variants={scrollSection}
+          className="mb-20 sm:mb-32 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12"
+        >
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1E2761] mb-4 tracking-tight">
               Built for <span className="text-[#FF5A36]">Everyone</span>
@@ -370,10 +394,11 @@ export default function About({ onNavigate }) {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <motion.div variants={scrollStagger} className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {pillars.map((item, idx) => (
-              <div 
+              <motion.div 
                 key={idx}
+                variants={scrollItem}
                 className="bg-white border-0 rounded-3xl p-8 sm:p-10 shadow-sm hover:shadow-xl transition-all flex flex-col items-center text-center justify-between"
               >
                 <div className="flex flex-col items-center text-center w-full">
@@ -388,16 +413,22 @@ export default function About({ onNavigate }) {
                   <span className="text-xs font-semibold text-slate-400">Target Benchmark:</span>
                   <span className="text-xs font-bold text-[#1E2761] bg-[#F5F7FA] px-2.5 py-1 rounded-md">{item.metric}</span>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
-        </section>
+          </motion.div>
+        </motion.section>
 
 
         {/* ========================================================
             6. BOTTOM CTA - FULL BLEED EDGE-TO-EDGE
            ======================================================== */}
-        <section className="w-full bg-[#F5F7FA] py-16 sm:py-24 border-0 shadow-none text-center">
+        <motion.section 
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+          variants={scrollSection}
+          className="w-full bg-[#F5F7FA] py-16 sm:py-24 border-0 shadow-none text-center"
+        >
           <div className="max-w-4xl mx-auto px-4 sm:px-8 lg:px-12">
             <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1E2761] mb-4 tracking-tight">
               Experience video collaboration without boundaries.
@@ -421,7 +452,7 @@ export default function About({ onNavigate }) {
               </button>
             </div>
           </div>
-        </section>
+        </motion.section>
 
       </main>
     </div>
