@@ -407,18 +407,35 @@ export default function Features({ onNavigate, initialSection }) {
                 whileInView="visible" 
                 viewport={{ once: true }} 
                 variants={fadeIn}
-                className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl shadow-[#1E2761]/15 aspect-[1886/1080] bg-[#1E2761] border-0"
+                className="bg-white border border-[#E4E8EE] rounded-3xl p-6 sm:p-8 flex flex-col justify-center space-y-4 shadow-sm"
               >
-                <video
-                  ref={interactiveVideoRef}
-                  src="/videos/hero-video.mp4"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="auto"
-                  className="w-full h-full object-cover border-0 outline-none block pointer-events-none"
-                />
+                <div className="flex items-center justify-between border-b border-slate-200 pb-4">
+                  <div className="flex items-center space-x-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#1E2761]/40"></span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#1E2761]/20"></span>
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#FF5A36]"></span>
+                  </div>
+                  <span className="text-xs font-bold text-slate-500 font-mono">Live Masterclass Room</span>
+                </div>
+                <div className="h-48 sm:h-56 md:h-64 bg-[#1E2761] rounded-2xl flex items-center justify-center text-white relative overflow-hidden">
+                  <video
+                    ref={interactiveVideoRef}
+                    src="/videos/hero-video.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="auto"
+                    className="w-full h-full object-cover border-0 outline-none block pointer-events-none"
+                  />
+                </div>
+                <div className="flex items-center justify-between pt-1">
+                  <div className="flex items-center space-x-2">
+                    <span className="w-2 h-2 rounded-full bg-[#FF5A36] animate-pulse"></span>
+                    <span className="text-xs font-semibold text-slate-600">Connected Encrypted</span>
+                  </div>
+                  <span className="text-xs font-bold text-[#FF5A36]">Active</span>
+                </div>
               </motion.div>
             </div>
           </div>
