@@ -85,21 +85,27 @@ export default function Auth({ onNavigate }) {
       
       <div className="w-full max-w-md p-6 sm:p-10 bg-white rounded-3xl border border-[#E4E8EE] shadow-[0_10px_35px_rgba(30,39,97,0.05)] flex flex-col items-center space-y-6 sm:space-y-7 z-10 relative">
         
-        {/* Top Icon */}
-        <div className="relative">
-          <div className="w-12 h-12 rounded-full bg-[#1E2761] border border-[#151A44] flex items-center justify-center text-white font-bold text-sm overflow-hidden shadow-sm">
-            <Video size={22} className="text-white" />
+        {/* Top Logo (Clickable to Home) */}
+        <div 
+          onClick={() => onNavigate('dashboard')} 
+          className="flex flex-col items-center cursor-pointer select-none group space-y-3"
+          title="Return to Home"
+        >
+          <div className="relative">
+            <div className="w-12 h-12 rounded-full bg-[#1E2761] border border-[#151A44] flex items-center justify-center text-white font-bold text-sm overflow-hidden shadow-sm transition-transform duration-200 group-hover:scale-105">
+              <Video size={22} className="text-[#FF5A36]" />
+            </div>
+            <span className="absolute bottom-0 right-0 w-3 h-3 bg-[#FF5A36] border-2 border-white rounded-full animate-pulse"></span>
           </div>
-          <span className="absolute bottom-0 right-0 w-3 h-3 bg-[#FF5A36] border-2 border-white rounded-full animate-pulse"></span>
-        </div>
 
-        <div className="text-center space-y-1.5">
-          <h1 className="text-xl sm:text-2xl font-extrabold tracking-wider text-[#1E2761] uppercase">
-            WABISEMINAR
-          </h1>
-          <p className="text-xs sm:text-sm text-slate-500">
-            {isLogin ? 'Sign in to manage and join masterclasses' : 'Create an account to host unlimited sessions'}
-          </p>
+          <div className="text-center space-y-1.5">
+            <h1 className="text-xl sm:text-2xl font-extrabold tracking-wider text-[#1E2761] uppercase group-hover:text-[#FF5A36] transition-colors">
+              WABISEMINAR
+            </h1>
+            <p className="text-xs sm:text-sm text-slate-500">
+              {isLogin ? 'Sign in to manage and join masterclasses' : 'Create an account to host unlimited sessions'}
+            </p>
+          </div>
         </div>
         
         <form onSubmit={handleSubmit} className="w-full space-y-4 sm:space-y-5">

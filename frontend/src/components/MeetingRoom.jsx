@@ -884,8 +884,19 @@ export default function MeetingRoom({ onLeave, roomId, notify }) {
           
           {/* Top-Left: Brand Badge & Meeting Code (mobile fallback) */}
           <div className="pointer-events-auto flex items-center space-x-2.5 bg-white/95 backdrop-blur-xl border border-[#E4E8EE] px-4 py-2 rounded-full text-[#1E2761] shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-[#FF5A36] shrink-0"></span>
-            <span className="font-extrabold text-xs tracking-wider uppercase text-[#1E2761]">WABISEMINAR</span>
+            <span className="w-2 h-2 rounded-full bg-[#FF5A36] shrink-0 animate-pulse"></span>
+            <button
+              type="button"
+              onClick={() => {
+                if (window.confirm('Do you want to leave this meeting session and return to the home page?')) {
+                  onLeave();
+                }
+              }}
+              className="font-extrabold text-xs tracking-wider uppercase text-[#1E2761] hover:text-[#FF5A36] transition-colors cursor-pointer select-none"
+              title="Return to Home"
+            >
+              WABISEMINAR
+            </button>
             <span className="w-1 h-1 rounded-full bg-[#E4E8EE]"></span>
             <span className="font-mono text-xs text-slate-500 font-bold">{roomId}</span>
             <button 

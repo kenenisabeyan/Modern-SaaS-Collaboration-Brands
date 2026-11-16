@@ -17,10 +17,8 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [showMobileSearch, setShowMobileSearch] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
-  const [showLangDropdown, setShowLangDropdown] = useState(false);
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
   const [showWorkspaceModal, setShowWorkspaceModal] = useState(false);
-  const [selectedLang, setSelectedLang] = useState(() => localStorage.getItem('wabi_lang') || 'EN');
   
   // These upgraded header elements are ONLY visible inside dashboards after sign-in
   const isDashboardMode = isAuthenticated && ['user-dashboard', 'profile', 'settings'].includes(currentView);
@@ -69,15 +67,6 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
 
   const unreadCount = notifications.filter(n => n.unread).length;
 
-  // Languages supported
-  const languages = [
-    { code: 'EN', name: 'English (US)', flag: '🇺🇸' },
-    { code: 'ES', name: 'Español (ES)', flag: '🇪🇸' },
-    { code: 'FR', name: 'Français (FR)', flag: '🇫🇷' },
-    { code: 'DE', name: 'Deutsch (DE)', flag: '🇩🇪' },
-    { code: 'AM', name: 'አማርኛ (AM)', flag: '🇪🇹' }
-  ];
-
   // Quick search items across WabiSeminar
   const searchItems = [
     {
@@ -116,7 +105,6 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
       if (headerRef.current && !headerRef.current.contains(e.target)) {
         setIsSearchFocused(false);
         setShowNotifications(false);
-        setShowLangDropdown(false);
         setShowProfileDropdown(false);
       }
     };
@@ -135,7 +123,6 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
       if (e.key === 'Escape') {
         setIsSearchFocused(false);
         setShowNotifications(false);
-        setShowLangDropdown(false);
         setShowProfileDropdown(false);
         setShowWorkspaceModal(false);
         setShowMobileSearch(false);
@@ -149,12 +136,6 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
   const handleSearchChange = (val) => {
     setSearchQuery(val);
     window.dispatchEvent(new CustomEvent('wabi-search', { detail: val }));
-  };
-
-  const handleSelectLang = (lang) => {
-    setSelectedLang(lang.code);
-    localStorage.setItem('wabi_lang', lang.code);
-    setShowLangDropdown(false);
   };
 
   const markAllNotificationsAsRead = () => {
@@ -173,7 +154,6 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
     setIsSearchFocused(false);
     setShowMobileSearch(false);
     setShowNotifications(false);
-    setShowLangDropdown(false);
     setShowProfileDropdown(false);
     onNavigate(id);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -297,8 +277,9 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
             {/* LEFT: Circular Brand Logo Badge & Name */}
             <div className="flex items-center space-x-2 sm:space-x-3 shrink-0">
               <div 
-                onClick={() => handleNavClick('user-dashboard')}
+                onClick={() => handleNavClick('dashboard')}
                 className="flex items-center space-x-2.5 sm:space-x-3 cursor-pointer select-none group"
+                title="Return to Home"
               >
                 <div className="relative">
                   <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#1E2761] border border-[#151A44] flex items-center justify-center text-white font-bold text-sm overflow-hidden shadow-sm transition-transform duration-200 group-hover:scale-105">
@@ -458,7 +439,6 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
                 <button
                   onClick={() => {
                     setShowNotifications(!showNotifications);
-                    setShowLangDropdown(false);
                     setShowProfileDropdown(false);
                   }}
                   className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[#E4E8EE] bg-white hover:bg-slate-50 flex items-center justify-center text-slate-700 hover:text-[#1E2761] transition-all relative cursor-pointer shadow-xs"
@@ -538,65 +518,12 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
                 </AnimatePresence>
               </div>
 
-              {/* Language Selector Pill Button */}
-              <div className="relative">
-                <button
-                  onClick={() => {
-                    setShowLangDropdown(!showLangDropdown);
-                    setShowNotifications(false);
-                    setShowProfileDropdown(false);
-                  }}
-                  className="bg-[#1E2761] hover:bg-[#151A44] text-white px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full text-xs font-bold flex items-center space-x-1.5 shadow-sm transition-all cursor-pointer select-none"
-                  title="Select language"
-                >
-                  <Globe size={14} className="text-white shrink-0" />
-                  <span className="tracking-wide">{selectedLang}</span>
-                  <ChevronDown size={13} className={`text-white/80 shrink-0 transition-transform ${showLangDropdown ? 'rotate-180' : ''}`} />
-                </button>
-
-                <AnimatePresence>
-                  {showLangDropdown && (
-                    <motion.div 
-                      initial={{ opacity: 0, y: 6 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 4 }}
-                      transition={{ duration: 0.18 }}
-                      className="absolute right-0 top-12 mt-1 w-44 bg-white rounded-2xl border border-slate-200 shadow-xl overflow-hidden z-50 p-1.5 text-left"
-                    >
-                      <div className="px-3 py-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-                        Select Language
-                      </div>
-                      {languages.map((lang) => (
-                        <button
-                          key={lang.code}
-                          onClick={() => handleSelectLang(lang)}
-                          className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-colors cursor-pointer ${
-                            selectedLang === lang.code 
-                              ? 'bg-[#1E2761]/8 text-[#1E2761] font-bold' 
-                              : 'text-slate-700 hover:bg-slate-100 hover:text-[#1E2761]'
-                          }`}
-                        >
-                          <span className="flex items-center space-x-2">
-                            <span>{lang.flag}</span>
-                            <span>{lang.name}</span>
-                          </span>
-                          {selectedLang === lang.code && (
-                            <Check size={14} className="text-[#FF5A36]" />
-                          )}
-                        </button>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-
               {/* User Profile / Administration Pill Card */}
               <div className="relative">
                 <button
                   onClick={() => {
                     setShowProfileDropdown(!showProfileDropdown);
                     setShowNotifications(false);
-                    setShowLangDropdown(false);
                   }}
                   className="border border-slate-200/90 hover:border-[#1E2761]/30 bg-white hover:bg-slate-50/80 rounded-full pl-3 sm:pl-3.5 pr-1.5 py-1 flex items-center space-x-2.5 transition-all cursor-pointer shadow-xs select-none"
                   title="Account & Profile"
@@ -700,10 +627,11 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
              ========================================================================= */
           <div className="w-full max-w-[1800px] h-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-24 flex items-center justify-between">
             
-            {/* Logo on Left */}
+            {/* Logo on Left (Navigates to Home) */}
             <div 
-              onClick={() => handleNavClick(isAuthenticated ? 'user-dashboard' : 'dashboard')}
+              onClick={() => handleNavClick('dashboard')}
               className="flex items-center space-x-3 cursor-pointer select-none group"
+              title="Return to Home"
             >
               <div className="relative">
                 <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#1E2761] border border-[#151A44] flex items-center justify-center text-white font-bold text-sm overflow-hidden shadow-sm transition-transform duration-200 group-hover:scale-105">
@@ -842,14 +770,18 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
             >
               {/* Drawer Header */}
               <div className="p-6 sm:p-8 flex items-center justify-between border-b border-white/10">
-                <div className="flex items-center space-x-2.5">
+                <div 
+                  onClick={() => handleNavClick('dashboard')}
+                  className="flex items-center space-x-2.5 cursor-pointer select-none group"
+                  title="Return to Home"
+                >
                   <div className="relative">
-                    <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
+                    <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:scale-105 transition-transform">
                       <Video className="text-[#FF5A36] w-4 h-4" />
                     </div>
                     <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-[#FF5A36] border-2 border-[#1E2761] rounded-full"></span>
                   </div>
-                  <span className="text-sm font-bold tracking-wider uppercase text-white">WABISEMINAR</span>
+                  <span className="text-sm font-bold tracking-wider uppercase text-white group-hover:text-[#FF5A36] transition-colors">WABISEMINAR</span>
                 </div>
                 
                 {/* Close Button X */}

@@ -10,7 +10,7 @@ export default function Footer({ onNavigate }) {
           <div className="col-span-1 sm:col-span-2 lg:col-span-1">
             <div 
               onClick={() => { 
-                onNavigate(localStorage.getItem('token') ? 'user-dashboard' : 'dashboard'); 
+                onNavigate('dashboard'); 
                 window.scrollTo({ top: 0, behavior: 'smooth' }); 
               }}
               className="flex items-center space-x-2.5 mb-3.5 cursor-pointer select-none group"
