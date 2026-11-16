@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { scrollSection, scrollStagger, scrollItem, viewportConfig } from '../utils/animations.js';
 import { 
   Check, X, ArrowRight, ChevronDown, Loader2, Sparkles, Shield, 
   Zap, Video, DollarSign, Users, Wrench, Search, MessageSquare, Mail
