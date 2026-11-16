@@ -178,9 +178,9 @@ export default function About({ onNavigate }) {
               <div className="lg:col-span-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   
-                  <div className="bg-white p-6 rounded-2xl border-0 shadow-sm hover:shadow-md transition-shadow">
-                    <div className="w-10 h-10 rounded-xl bg-[#1E2761]/10 text-[#1E2761] flex items-center justify-center mb-4">
-                      <Clock size={20} />
+                  <div className="bg-white p-6 rounded-2xl border-0 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center text-center">
+                    <div className="w-12 h-12 rounded-xl bg-[#1E2761]/10 text-[#1E2761] flex items-center justify-center mb-4 mx-auto">
+                      <Clock size={22} />
                     </div>
                     <h3 className="font-bold text-[#1E2761] mb-1.5">No 40-Min Cutoffs</h3>
                     <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">
@@ -188,9 +188,9 @@ export default function About({ onNavigate }) {
                     </p>
                   </div>
 
-                  <div className="bg-white p-6 rounded-2xl border-0 shadow-sm hover:shadow-md transition-shadow">
-                    <div className="w-10 h-10 rounded-xl bg-[#FF5A36]/10 text-[#FF5A36] flex items-center justify-center mb-4">
-                      <Monitor size={20} />
+                  <div className="bg-white p-6 rounded-2xl border-0 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center text-center">
+                    <div className="w-12 h-12 rounded-xl bg-[#FF5A36]/10 text-[#FF5A36] flex items-center justify-center mb-4 mx-auto">
+                      <Monitor size={22} />
                     </div>
                     <h3 className="font-bold text-[#1E2761] mb-1.5">Zero Downloads</h3>
                     <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">
@@ -198,9 +198,9 @@ export default function About({ onNavigate }) {
                     </p>
                   </div>
 
-                  <div className="bg-white p-6 rounded-2xl border-0 shadow-sm hover:shadow-md transition-shadow">
-                    <div className="w-10 h-10 rounded-xl bg-[#FF5A36]/10 text-[#FF5A36] flex items-center justify-center mb-4">
-                      <Lock size={20} />
+                  <div className="bg-white p-6 rounded-2xl border-0 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center text-center">
+                    <div className="w-12 h-12 rounded-xl bg-[#FF5A36]/10 text-[#FF5A36] flex items-center justify-center mb-4 mx-auto">
+                      <Lock size={22} />
                     </div>
                     <h3 className="font-bold text-[#1E2761] mb-1.5">Private by Default</h3>
                     <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">
@@ -208,9 +208,9 @@ export default function About({ onNavigate }) {
                     </p>
                   </div>
 
-                  <div className="bg-white p-6 rounded-2xl border-0 shadow-sm hover:shadow-md transition-shadow">
-                    <div className="w-10 h-10 rounded-xl bg-[#1E2761]/10 text-[#1E2761] flex items-center justify-center mb-4">
-                      <Users size={20} />
+                  <div className="bg-white p-6 rounded-2xl border-0 shadow-sm hover:shadow-md transition-shadow flex flex-col items-center text-center">
+                    <div className="w-12 h-12 rounded-xl bg-[#1E2761]/10 text-[#1E2761] flex items-center justify-center mb-4 mx-auto">
+                      <Users size={22} />
                     </div>
                     <h3 className="font-bold text-[#1E2761] mb-1.5">Waiting Room Gate</h3>
                     <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">
@@ -263,20 +263,21 @@ export default function About({ onNavigate }) {
                 />
 
                 {/* Inner Card Content Surface */}
-                <div className="relative w-full h-full bg-white group-hover:bg-[#FFFFFF] p-8 rounded-none flex flex-col justify-between transition-colors duration-300">
-                  <div>
-                    <div className="flex items-center justify-between mb-6">
+                <div className="relative w-full h-full bg-white group-hover:bg-[#FFFFFF] p-8 rounded-none flex flex-col items-center text-center justify-between transition-colors duration-300">
+                  <div className="w-full flex flex-col items-center text-center">
+                    <div className="w-full flex items-center justify-between mb-5">
                       <span className="text-3xl font-black text-slate-200 group-hover:text-slate-400 transition-colors font-mono">
                         {item.number}
                       </span>
-                      <div className={`w-12 h-12 rounded-none flex items-center justify-center border ${item.color}`}>
-                        {item.icon}
-                      </div>
+                      <div className={`h-1.5 w-8 rounded-none ${item.accent}`}></div>
+                    </div>
+                    <div className={`w-14 h-14 rounded-none flex items-center justify-center border ${item.color} mb-6 mx-auto group-hover:scale-105 transition-transform`}>
+                      {item.icon}
                     </div>
                     <h3 className={`text-xl font-bold text-[#1E2761] ${item.hoverTextColor} transition-colors mb-3`}>{item.title}</h3>
                     <p className="text-slate-600 text-sm leading-relaxed mb-6">{item.desc}</p>
                   </div>
-                  <div className={`h-1.5 w-12 rounded-none ${item.accent}`}></div>
+                  <div className={`h-1.5 w-12 rounded-none ${item.accent} mx-auto`}></div>
                 </div>
               </motion.div>
             ))}
@@ -302,9 +303,9 @@ export default function About({ onNavigate }) {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               
-              <div className="bg-white border-0 shadow-sm hover:shadow-md transition-shadow p-8 rounded-3xl">
-                <div className="w-12 h-12 rounded-2xl bg-[#FF5A36]/10 text-[#FF5A36] flex items-center justify-center mb-6">
-                  <Zap size={24} />
+              <div className="bg-white border-0 shadow-sm hover:shadow-md transition-shadow p-8 rounded-3xl flex flex-col items-center text-center">
+                <div className="w-14 h-14 rounded-2xl bg-[#FF5A36]/10 text-[#FF5A36] flex items-center justify-center mb-6 mx-auto">
+                  <Zap size={26} />
                 </div>
                 <h3 className="text-xl font-bold text-[#1E2761] mb-2">P2P Media Routing</h3>
                 <p className="text-slate-600 text-sm leading-relaxed">
@@ -312,9 +313,9 @@ export default function About({ onNavigate }) {
                 </p>
               </div>
 
-              <div className="bg-white border-0 shadow-sm hover:shadow-md transition-shadow p-8 rounded-3xl">
-                <div className="w-12 h-12 rounded-2xl bg-[#1E2761]/10 text-[#1E2761] flex items-center justify-center mb-6">
-                  <Shield size={24} />
+              <div className="bg-white border-0 shadow-sm hover:shadow-md transition-shadow p-8 rounded-3xl flex flex-col items-center text-center">
+                <div className="w-14 h-14 rounded-2xl bg-[#1E2761]/10 text-[#1E2761] flex items-center justify-center mb-6 mx-auto">
+                  <Shield size={26} />
                 </div>
                 <h3 className="text-xl font-bold text-[#1E2761] mb-2">Cryptographic DTLS-SRTP</h3>
                 <p className="text-slate-600 text-sm leading-relaxed">
@@ -322,9 +323,9 @@ export default function About({ onNavigate }) {
                 </p>
               </div>
 
-              <div className="bg-white border-0 shadow-sm hover:shadow-md transition-shadow p-8 rounded-3xl">
-                <div className="w-12 h-12 rounded-2xl bg-[#FF5A36]/10 text-[#FF5A36] flex items-center justify-center mb-6">
-                  <Cpu size={24} />
+              <div className="bg-white border-0 shadow-sm hover:shadow-md transition-shadow p-8 rounded-3xl flex flex-col items-center text-center">
+                <div className="w-14 h-14 rounded-2xl bg-[#FF5A36]/10 text-[#FF5A36] flex items-center justify-center mb-6 mx-auto">
+                  <Cpu size={26} />
                 </div>
                 <h3 className="text-xl font-bold text-[#1E2761] mb-2">Dynamic Bitrate Scaling</h3>
                 <p className="text-slate-600 text-sm leading-relaxed">
@@ -372,15 +373,18 @@ export default function About({ onNavigate }) {
             {pillars.map((item, idx) => (
               <div 
                 key={idx}
-                className="bg-white border-0 rounded-3xl p-8 sm:p-10 shadow-sm hover:shadow-xl transition-all flex flex-col justify-between"
+                className="bg-white border-0 rounded-3xl p-8 sm:p-10 shadow-sm hover:shadow-xl transition-all flex flex-col items-center text-center justify-between"
               >
-                <div>
+                <div className="flex flex-col items-center text-center w-full">
+                  <div className={`w-14 h-14 rounded-2xl ${item.color} flex items-center justify-center mb-6 mx-auto`}>
+                    {item.icon}
+                  </div>
                   <span className="text-xs font-bold text-[#FF5A36] uppercase tracking-wider mb-2 block">{item.role}</span>
                   <h3 className="text-xl sm:text-2xl font-bold text-[#1E2761] mb-4">{item.title}</h3>
                   <p className="text-slate-600 text-sm leading-relaxed mb-6">{item.desc}</p>
                 </div>
-                <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-xs font-semibold text-slate-400">Target Benchmark</span>
+                <div className="pt-4 border-t border-slate-100 w-full flex items-center justify-center space-x-2">
+                  <span className="text-xs font-semibold text-slate-400">Target Benchmark:</span>
                   <span className="text-xs font-bold text-[#1E2761] bg-[#F5F7FA] px-2.5 py-1 rounded-md">{item.metric}</span>
                 </div>
               </div>
