@@ -23,10 +23,17 @@ const staggerContainer = {
   }
 };
 
-export default function About({ onNavigate }) {
+export default function About({ onNavigate, initialSection }) {
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    if (initialSection) {
+      setTimeout(() => {
+        const el = document.getElementById(initialSection);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 120);
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [initialSection]);
 
   const corePrinciples = [
     {
@@ -146,6 +153,7 @@ export default function About({ onNavigate }) {
             2. THE ORIGIN STORY: WHY WE BUILT WABISEMINAR (Zero borders, full-bleed canvas)
            ======================================================== */}
         <motion.section 
+          id="genesis"
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
@@ -237,6 +245,7 @@ export default function About({ onNavigate }) {
             3. CORE ARCHITECTURAL PRINCIPLES (BEAM CARDS)
            ======================================================== */}
         <motion.section 
+          id="pillars"
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
@@ -302,6 +311,7 @@ export default function About({ onNavigate }) {
             4. TECHNICAL ARCHITECTURE: UNDER THE HOOD (Zero borders, #F5F7FA canvas)
            ======================================================== */}
         <motion.section 
+          id="architecture"
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
@@ -379,6 +389,7 @@ export default function About({ onNavigate }) {
             5. WHO WABISEMINAR EMPOWERS
            ======================================================== */}
         <motion.section 
+          id="audiences"
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}

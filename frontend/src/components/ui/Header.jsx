@@ -78,15 +78,30 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
       subItems: [
         {
           label: 'The WabiSeminar Story',
-          action: () => handleNavClick('about')
+          action: () => {
+            handleNavClick('about');
+            setTimeout(() => {
+              document.getElementById('genesis')?.scrollIntoView({ behavior: 'smooth' });
+            }, 150);
+          }
         },
         {
           label: 'Our Core Pillars',
-          action: () => handleNavClick('about')
+          action: () => {
+            handleNavClick('about');
+            setTimeout(() => {
+              document.getElementById('pillars')?.scrollIntoView({ behavior: 'smooth' });
+            }, 150);
+          }
         },
         {
           label: 'Technical Architecture',
-          action: () => handleNavClick('about')
+          action: () => {
+            handleNavClick('about');
+            setTimeout(() => {
+              document.getElementById('architecture')?.scrollIntoView({ behavior: 'smooth' });
+            }, 150);
+          }
         }
       ]
     },
