@@ -113,10 +113,10 @@ export default function Features({ onNavigate, initialSection }) {
   ];
 
   return (
-    <div className="min-h-screen bg-[#F5F7FA] text-[#1E2761] font-sans overflow-hidden relative">
+    <div className="min-h-screen bg-white text-[#1E2761] font-sans overflow-hidden relative">
       <main className="pt-20 sm:pt-24 lg:pt-28 pb-16 sm:pb-24 relative z-10 w-full">
         
-        {/* 1. Hero Section */}
+        {/* 1. Hero Section (White Canvas) */}
         <section className="text-center mb-16 sm:mb-24 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
           <motion.div
             initial="hidden"
@@ -133,71 +133,88 @@ export default function Features({ onNavigate, initialSection }) {
           </motion.div>
         </section>
 
-        {/* 2. Integrated "How It Works" 4-Step Process */}
-        <section id="how-it-works" className="mb-20 sm:mb-32 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1E2761] mb-4 tracking-tight">
-              How <span className="text-[#FF5A36]">WabiSeminar</span> Works
-            </h2>
-            <p className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto font-normal">
-              From creating your account to conducting full HD interactive sessions, everything is designed to be frictionless.
-            </p>
-          </div>
+        {/* 2. Integrated "How It Works" 4-Step Process (#F5F7FA Canvas) */}
+        <motion.section 
+          id="how-it-works" 
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+          variants={scrollSection}
+          className="w-full bg-[#F5F7FA] py-16 sm:py-24 mb-20 sm:mb-32 border-0 shadow-none"
+        >
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1E2761] mb-4 tracking-tight">
+                How <span className="text-[#FF5A36]">WabiSeminar</span> Works
+              </h2>
+              <p className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto font-normal">
+                From creating your account to conducting full HD interactive sessions, everything is designed to be frictionless.
+              </p>
+            </div>
 
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative"
-          >
-            {steps.map((step, idx) => (
-              <motion.div 
-                key={idx} 
-                variants={fadeIn}
-                whileHover={{ y: -5 }}
-                className={`relative p-[2px] overflow-hidden rounded-none shadow-sm hover:shadow-xl ${step.shadowColor} transition-all flex flex-col justify-between bg-[#E4E8EE] group`}
-              >
-                {/* Rotating Border Beam */}
-                <div 
-                  className="absolute inset-[-250%] animate-spin-beam pointer-events-none"
-                  style={{
-                    background: `conic-gradient(from 0deg, #E4E8EE 0deg, #E4E8EE 220deg, ${step.beamFade} 260deg, ${step.beamGlow} 310deg, ${step.beamColor} 360deg)`,
-                    animationDelay: `${-(idx * 0.88)}s`
-                  }}
-                />
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={staggerContainer}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative"
+            >
+              {steps.map((step, idx) => (
+                <motion.div 
+                  key={idx} 
+                  variants={fadeIn}
+                  whileHover={{ y: -5 }}
+                  className={`relative p-[2px] overflow-hidden rounded-none shadow-sm hover:shadow-xl ${step.shadowColor} transition-all flex flex-col justify-between bg-[#E4E8EE] group`}
+                >
+                  {/* Rotating Border Beam */}
+                  <div 
+                    className="absolute inset-[-250%] animate-spin-beam pointer-events-none"
+                    style={{
+                      background: `conic-gradient(from 0deg, #E4E8EE 0deg, #E4E8EE 220deg, ${step.beamFade} 260deg, ${step.beamGlow} 310deg, ${step.beamColor} 360deg)`,
+                      animationDelay: `${-(idx * 0.88)}s`
+                    }}
+                  />
 
-                {/* Inner Card Content Surface */}
-                <div className="relative w-full h-full bg-white group-hover:bg-[#FFFFFF] p-8 rounded-none flex flex-col justify-between transition-colors duration-300">
-                  <div>
-                    <div className="flex items-center justify-between mb-6">
-                      <span className="text-3xl font-black text-slate-200 group-hover:text-slate-400 transition-colors font-mono">
-                        {step.number}
-                      </span>
-                      <div className={`w-12 h-12 rounded-none flex items-center justify-center border ${step.color}`}>
-                        {step.icon}
+                  {/* Inner Card Content Surface */}
+                  <div className="relative w-full h-full bg-white group-hover:bg-[#FFFFFF] p-8 rounded-none flex flex-col justify-between transition-colors duration-300">
+                    <div>
+                      <div className="flex items-center justify-between mb-6">
+                        <span className="text-3xl font-black text-slate-200 group-hover:text-slate-400 transition-colors font-mono">
+                          {step.number}
+                        </span>
+                        <div className={`w-12 h-12 rounded-none flex items-center justify-center border ${step.color}`}>
+                          {step.icon}
+                        </div>
                       </div>
+                      <h3 className={`text-xl font-bold text-[#1E2761] ${step.hoverTextColor} transition-colors mb-3`}>{step.title}</h3>
+                      <p className="text-slate-600 text-sm leading-relaxed mb-6">{step.desc}</p>
                     </div>
-                    <h3 className={`text-xl font-bold text-[#1E2761] ${step.hoverTextColor} transition-colors mb-3`}>{step.title}</h3>
-                    <p className="text-slate-600 text-sm leading-relaxed mb-6">{step.desc}</p>
+                    <div className={`h-1.5 w-12 rounded-none ${step.accent}`}></div>
                   </div>
-                  <div className={`h-1.5 w-12 rounded-none ${step.accent}`}></div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </section>
-
-        {/* 3. Main Feature Grid */}
-        <section id="features-list" className="mb-20 sm:mb-32 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1E2761] mb-4 tracking-tight">
-              Platform <span className="text-[#FF5A36]">Capabilities</span>
-            </h2>
-            <p className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto font-normal">
-              Engineered with next-generation WebRTC audio, video, and collaboration tools.
-            </p>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
+        </motion.section>
+
+        {/* 3. Main Feature Grid (White Canvas) */}
+        <motion.section 
+          id="features-list" 
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+          variants={scrollSection}
+          className="w-full bg-white py-16 sm:py-24 mb-20 sm:mb-32 border-0 shadow-none"
+        >
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1E2761] mb-4 tracking-tight">
+                Platform <span className="text-[#FF5A36]">Capabilities</span>
+              </h2>
+              <p className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto font-normal">
+                Engineered with next-generation WebRTC audio, video, and collaboration tools.
+              </p>
+            </div>
 
           <motion.div 
             initial="hidden"
