@@ -278,49 +278,49 @@ export default function About({ onNavigate }) {
 
 
         {/* ========================================================
-            4. TECHNICAL ARCHITECTURE: UNDER THE HOOD
+            4. TECHNICAL ARCHITECTURE: UNDER THE HOOD (Zero borders, #F5F7FA canvas)
            ======================================================== */}
-        <section className="w-full bg-[#1E2761] text-white py-16 sm:py-24 mb-20 sm:mb-32 border-0 shadow-none">
+        <section className="w-full bg-[#F5F7FA] text-[#1E2761] py-16 sm:py-24 mb-20 sm:mb-32 border-0 shadow-none">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
             
             <div className="max-w-3xl mx-auto text-center mb-14">
               <span className="text-xs font-extrabold tracking-wider uppercase text-[#FF5A36]">Engineered for Performance</span>
-              <h2 className="text-3xl sm:text-5xl font-extrabold text-white mt-2 mb-4 tracking-tight">
+              <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1E2761] mt-2 mb-4 tracking-tight">
                 Under the Hood of WabiSeminar
               </h2>
-              <p className="text-slate-300 text-base sm:text-lg leading-relaxed">
+              <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
                 By combining WebRTC peer connections with ultra-responsive WebSocket signaling, we deliver high performance with zero middleman servers re-encoding your raw video.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               
-              <div className="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm">
-                <div className="w-12 h-12 rounded-2xl bg-[#FF5A36]/20 border border-[#FF5A36]/40 text-[#FF5A36] flex items-center justify-center mb-6">
+              <div className="bg-white border-0 shadow-sm hover:shadow-md transition-shadow p-8 rounded-3xl">
+                <div className="w-12 h-12 rounded-2xl bg-[#FF5A36]/10 text-[#FF5A36] flex items-center justify-center mb-6">
                   <Zap size={24} />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">P2P Media Routing</h3>
-                <p className="text-slate-300 text-sm leading-relaxed">
+                <h3 className="text-xl font-bold text-[#1E2761] mb-2">P2P Media Routing</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
                   Audio and video streams travel directly between peer browsers whenever possible, eliminating central server bottlenecks and guaranteeing minimal round-trip latency.
                 </p>
               </div>
 
-              <div className="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm">
-                <div className="w-12 h-12 rounded-2xl bg-white/15 border border-white/20 text-white flex items-center justify-center mb-6">
+              <div className="bg-white border-0 shadow-sm hover:shadow-md transition-shadow p-8 rounded-3xl">
+                <div className="w-12 h-12 rounded-2xl bg-[#1E2761]/10 text-[#1E2761] flex items-center justify-center mb-6">
                   <Shield size={24} />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">Cryptographic DTLS-SRTP</h3>
-                <p className="text-slate-300 text-sm leading-relaxed">
+                <h3 className="text-xl font-bold text-[#1E2761] mb-2">Cryptographic DTLS-SRTP</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
                   All media tracks are encrypted via standard Datagram Transport Layer Security (DTLS) and Secure Real-time Transport Protocol (SRTP) from end to end.
                 </p>
               </div>
 
-              <div className="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm">
-                <div className="w-12 h-12 rounded-2xl bg-[#FF5A36]/20 border border-[#FF5A36]/40 text-[#FF5A36] flex items-center justify-center mb-6">
+              <div className="bg-white border-0 shadow-sm hover:shadow-md transition-shadow p-8 rounded-3xl">
+                <div className="w-12 h-12 rounded-2xl bg-[#FF5A36]/10 text-[#FF5A36] flex items-center justify-center mb-6">
                   <Cpu size={24} />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">Dynamic Bitrate Scaling</h3>
-                <p className="text-slate-300 text-sm leading-relaxed">
+                <h3 className="text-xl font-bold text-[#1E2761] mb-2">Dynamic Bitrate Scaling</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
                   Our WebRTC pipeline continuously monitors packet loss and jitter, automatically adjusting resolution and framerate to maintain clear audio during bandwidth dips.
                 </p>
               </div>
@@ -328,16 +328,16 @@ export default function About({ onNavigate }) {
             </div>
 
             {/* Performance Metrics Bar */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-12 border-t border-white/10 mt-12 text-center">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-12 border-t border-[#E4E8EE] mt-12 text-center">
               {techMilestones.map((m, i) => (
                 <div key={i} className="p-4">
                   <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#FF5A36] mb-1 font-mono">
                     {m.value}
                   </div>
-                  <div className="text-xs sm:text-sm font-bold text-white mb-0.5">
+                  <div className="text-xs sm:text-sm font-bold text-[#1E2761] mb-0.5">
                     {m.label}
                   </div>
-                  <div className="text-[11px] text-slate-400">
+                  <div className="text-[11px] text-slate-500">
                     {m.sub}
                   </div>
                 </div>
