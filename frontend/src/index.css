@@ -82,6 +82,17 @@
   .live-indicator {
     @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#FF5A36]/10 text-[#FF5A36] border border-[#FF5A36]/20;
   }
+
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    20%, 60% { transform: rotate(-14deg); }
+    40%, 80% { transform: rotate(14deg); }
+  }
+  .animate-wiggle {
+    animation: wiggle 1.5s ease-in-out infinite;
+    display: inline-block;
+    transform-origin: 70% 70%;
+  }
   /* Premium SaaS Card */
   .premium-card {
     @apply bg-white/[0.02] backdrop-blur-2xl border border-white/[0.08] shadow-[0_8px_30px_rgb(0,0,0,0.4)] rounded-2xl sm:rounded-3xl relative overflow-hidden transition-all duration-500 hover:border-white/[0.15] hover:bg-white/[0.04];

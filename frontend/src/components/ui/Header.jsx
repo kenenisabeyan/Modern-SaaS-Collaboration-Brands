@@ -63,10 +63,10 @@ export default function Header({ currentView, onNavigate, isAuthenticated, handl
             }, 300);
           } 
         },
-        ...(isAuthenticated ? [{
-          label: 'My Meeting Dashboard',
+        {
+          label: 'Admin & Host Dashboard',
           action: () => handleNavClick('user-dashboard')
-        }] : [])
+        }
       ]
     },
     {
