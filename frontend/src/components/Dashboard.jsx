@@ -543,7 +543,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                 What Our Community Says
               </h2>
               <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
-                See why thousands of professionals choose WabiSeminar over legacy conferencing platforms.
+                See why thousands of professionals choose CoVideo over legacy conferencing platforms.
               </p>
             </div>
 
@@ -555,7 +555,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                     <Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" />
                   </div>
                   <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-6 font-normal">
-                    "WabiSeminar completely changed how I host my design masterclasses. The UI is gorgeous, and my students love that they don't have to download any software."
+                    "CoVideo completely changed how I host my design masterclasses. The UI is gorgeous, and my students love that they don't have to download any software."
                   </p>
                 </div>
                 <div className="flex items-center gap-3.5">
@@ -591,7 +591,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
                     <Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" /><Star size={18} fill="currentColor" />
                   </div>
                   <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-6 font-normal">
-                    "We moved our entire remote engineering team over to WabiSeminar for our daily standups. It's fast, free, and secure. What more could you ask for?"
+                    "We moved our entire remote engineering team over to CoVideo for our daily standups. It's fast, free, and secure. What more could you ask for?"
                   </p>
                 </div>
                 <div className="flex items-center gap-3.5">
@@ -612,7 +612,7 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
 
 
       {/* ========================================================
-          "ABOUT WABISEMINAR" INFORMATION MODAL
+          "ABOUT COVIDEO" INFORMATION MODAL
          ======================================================== */}
       {showInfoModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200">
@@ -628,9 +628,9 @@ export default function Dashboard({ onNavigate, onJoinRoom, notify }) {
               <Video size={28} />
             </div>
 
-            <h3 className="text-2xl font-extrabold text-[#1E2761] mb-3">About WabiSeminar</h3>
+            <h3 className="text-2xl font-extrabold text-[#1E2761] mb-3">About CoVideo</h3>
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
-              WabiSeminar is a completely free, high-quality video collaboration platform designed for seamless masterclasses, webinars, and team meetings.
+              CoVideo is a completely free, high-quality video collaboration platform designed for seamless masterclasses, webinars, and team meetings.
             </p>
 
             <div className="space-y-4 mb-8">
