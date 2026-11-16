@@ -353,13 +353,13 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
         
         {/* ========================================================
             HERO LAUNCHPAD: Simple, Clear, Friction-Free 2-Column Layout
-            Inspired by Google Meet & Whereby simplicity (Zero Borders)
+            Inspired by Google Meet & Whereby simplicity (#F1F4F8 Canvas)
            ======================================================== */}
         <motion.section 
           initial="hidden"
           animate="visible"
           variants={scrollSection}
-          className="bg-white rounded-3xl p-6 sm:p-10 lg:p-12 shadow-sm mb-10 transition-all border-0"
+          className="bg-[#F1F4F8] rounded-3xl p-6 sm:p-10 lg:p-12 shadow-sm mb-10 transition-all border-0"
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
@@ -403,7 +403,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
                 </button>
 
                 {/* Action 2: Clean Inline Join Input & Button */}
-                <div className="flex-1 flex items-center bg-[#F5F7FA] focus-within:bg-white rounded-2xl p-1.5 transition-all shadow-xs border-0">
+                <div className="flex-1 flex items-center bg-white focus-within:ring-2 focus-within:ring-[#1E2761]/15 rounded-2xl p-1.5 transition-all shadow-xs border-0">
                   <input
                     type="text"
                     value={joinId}
@@ -425,7 +425,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
 
               {/* Personal Room Link Pill & Custom Name Action */}
               <div className="flex flex-wrap items-center gap-2.5">
-                <div className="inline-flex items-center space-x-2 text-xs text-slate-500 bg-[#F5F7FA] rounded-xl px-3 py-1.5 border-0 shadow-2xs">
+                <div className="inline-flex items-center space-x-2 text-xs text-slate-500 bg-white rounded-xl px-3 py-1.5 border-0 shadow-2xs">
                   <span className="font-semibold text-slate-400">Your permanent link:</span>
                   <span className="font-mono font-bold text-[#1E2761]">{personalRoomId}</span>
                   <button
@@ -439,7 +439,7 @@ export default function UserDashboard({ onNavigate, onJoinRoom, notify }) {
 
                 <button
                   onClick={() => setShowCustomRoomModal(true)}
-                  className="inline-flex items-center space-x-1.5 text-xs font-bold text-[#1E2761] hover:text-[#FF5A36] bg-[#F5F7FA] hover:bg-slate-200/60 rounded-xl px-3 py-1.5 transition-colors cursor-pointer border-0 shadow-2xs"
+                  className="inline-flex items-center space-x-1.5 text-xs font-bold text-[#1E2761] hover:text-[#FF5A36] bg-white hover:bg-slate-50 rounded-xl px-3 py-1.5 transition-colors cursor-pointer border-0 shadow-2xs"
                   title="Create a custom room name"
                 >
                   <Plus size={13} className="text-[#FF5A36]" />
