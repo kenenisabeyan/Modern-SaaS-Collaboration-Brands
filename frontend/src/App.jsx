@@ -16,6 +16,7 @@ import Footer from './components/ui/Footer';
 import UserDashboard from './components/UserDashboard';
 import UserProfile from './components/UserProfile';
 import UserSettings from './components/UserSettings';
+import ScrollEnhancer from './components/ui/ScrollEnhancer';
 
 function readRouteSnapshot() {
   if (typeof window !== 'undefined') {
@@ -145,6 +146,7 @@ function App() {
   return (
     <div className="min-h-screen flex flex-col font-sans relative overflow-x-hidden bg-[#FEFEFE] text-[#1E2761]">
       <ParticleBackground />
+      {showHeaderFooter && <ScrollEnhancer />}
       
       {showHeaderFooter && (
         <Header 
