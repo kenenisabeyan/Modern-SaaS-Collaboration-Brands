@@ -172,19 +172,29 @@
     @apply bg-white border border-[#0DA9CF]/30 text-[#0DA9CF] hover:bg-[#0DA9CF]/10 shadow-sm;
   }
 
-  /* Custom Scrollbar */
+  /* Ultra-Clean Modern Scrollbar */
   ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+    width: 8px;
+    height: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: transparent;
+    background: #F5F7FA;
   }
   ::-webkit-scrollbar-thumb {
-    @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
+    background: #CAD3DF;
+    border-radius: 9999px;
+    border: 2px solid #F5F7FA;
+    transition: background-color 0.2s ease;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #FF5A36;
   }
   .light ::-webkit-scrollbar-thumb {
-    @apply bg-slate-300 hover:bg-slate-400;
+    background: #CAD3DF;
+    border: 2px solid #F5F7FA;
+  }
+  .light ::-webkit-scrollbar-thumb:hover {
+    background: #FF5A36;
   }
 
   /* Professional Ultra-Slim Modern Scrollbar for Hero Controls & Horizontal Sliders */
