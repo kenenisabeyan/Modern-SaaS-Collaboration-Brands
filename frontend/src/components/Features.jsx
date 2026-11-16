@@ -459,45 +459,47 @@ export default function Features({ onNavigate, initialSection }) {
           </div>
         </motion.section>
 
-        {/* 6. Three Core Architectural Pillars */}
+        {/* 6. Three Core Architectural Pillars (#F5F7FA Canvas) */}
         <motion.section 
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
           variants={scrollSection}
-          className="mb-20 sm:mb-32 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12"
+          className="w-full bg-[#F5F7FA] py-16 sm:py-24 mb-20 sm:mb-32 border-0 shadow-none"
         >
-          <motion.div variants={scrollStagger} className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div variants={scrollItem} className="bg-white border border-[#E4E8EE] p-8 rounded-3xl shadow-sm hover:border-[#1E2761]/40 hover:shadow-lg transition-all flex flex-col items-center text-center">
-              <div className="w-12 h-12 rounded-2xl bg-[#1E2761]/10 text-[#1E2761] border border-[#1E2761]/20 flex items-center justify-center mb-6 mx-auto">
-                <Layout size={26} />
-              </div>
-              <h3 className="text-xl font-bold mb-3 text-[#1E2761]">Adaptive Streaming</h3>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                Our smart WebRTC engine dynamically adjusts video quality based on each participant's network connection, preventing lag and disconnects.
-              </p>
-            </motion.div>
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
+            <motion.div variants={scrollStagger} className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <motion.div variants={scrollItem} className="bg-white border border-[#E4E8EE] p-8 rounded-3xl shadow-sm hover:border-[#1E2761]/40 hover:shadow-lg transition-all flex flex-col items-center text-center">
+                <div className="w-12 h-12 rounded-2xl bg-[#1E2761]/10 text-[#1E2761] border border-[#1E2761]/20 flex items-center justify-center mb-6 mx-auto">
+                  <Layout size={26} />
+                </div>
+                <h3 className="text-xl font-bold mb-3 text-[#1E2761]">Adaptive Streaming</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  Our smart WebRTC engine dynamically adjusts video quality based on each participant's network connection, preventing lag and disconnects.
+                </p>
+              </motion.div>
 
-            <motion.div variants={scrollItem} className="bg-white border border-[#E4E8EE] p-8 rounded-3xl shadow-sm hover:border-[#FF5A36]/40 hover:shadow-lg transition-all flex flex-col items-center text-center">
-              <div className="w-12 h-12 rounded-2xl bg-[#FF5A36]/10 text-[#FF5A36] border border-[#FF5A36]/20 flex items-center justify-center mb-6 mx-auto">
-                <Shield size={26} />
-              </div>
-              <h3 className="text-xl font-bold mb-3 text-[#1E2761]">Privacy by Design</h3>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                Every stream is encrypted end-to-end. Hosts have complete control over who enters the room with mandatory admission approvals.
-              </p>
-            </motion.div>
+              <motion.div variants={scrollItem} className="bg-white border border-[#E4E8EE] p-8 rounded-3xl shadow-sm hover:border-[#FF5A36]/40 hover:shadow-lg transition-all flex flex-col items-center text-center">
+                <div className="w-12 h-12 rounded-2xl bg-[#FF5A36]/10 text-[#FF5A36] border border-[#FF5A36]/20 flex items-center justify-center mb-6 mx-auto">
+                  <Shield size={26} />
+                </div>
+                <h3 className="text-xl font-bold mb-3 text-[#1E2761]">Privacy by Design</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  Every stream is encrypted end-to-end. Hosts have complete control over who enters the room with mandatory admission approvals.
+                </p>
+              </motion.div>
 
-            <motion.div variants={scrollItem} className="bg-white border border-[#E4E8EE] p-8 rounded-3xl shadow-sm hover:border-[#1E2761]/40 hover:shadow-lg transition-all flex flex-col items-center text-center">
-              <div className="w-12 h-12 rounded-2xl bg-[#1E2761]/10 text-[#1E2761] border border-[#1E2761]/20 flex items-center justify-center mb-6 mx-auto">
-                <Activity size={26} />
-              </div>
-              <h3 className="text-xl font-bold mb-3 text-[#1E2761]">Zero Lag Sync</h3>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                Sub-50ms peer-to-peer audio and screen sharing ensures questions, presentations, and code walk-throughs remain perfectly synchronized.
-              </p>
+              <motion.div variants={scrollItem} className="bg-white border border-[#E4E8EE] p-8 rounded-3xl shadow-sm hover:border-[#1E2761]/40 hover:shadow-lg transition-all flex flex-col items-center text-center">
+                <div className="w-12 h-12 rounded-2xl bg-[#1E2761]/10 text-[#1E2761] border border-[#1E2761]/20 flex items-center justify-center mb-6 mx-auto">
+                  <Activity size={26} />
+                </div>
+                <h3 className="text-xl font-bold mb-3 text-[#1E2761]">Zero Lag Sync</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  Sub-50ms peer-to-peer audio and screen sharing ensures questions, presentations, and code walk-throughs remain perfectly synchronized.
+                </p>
+              </motion.div>
             </motion.div>
-          </motion.div>
+          </div>
         </motion.section>
 
         {/* 7. Integrated "About WabiSeminar" Mission Section */}
