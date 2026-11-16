@@ -64,7 +64,7 @@ export default function Footer({ onNavigate }) {
           <div>
             <h4 className="font-bold text-white mb-3 sm:mb-4 tracking-wide text-xs uppercase">Company</h4>
             <ul className="space-y-2 text-xs sm:text-sm text-slate-300">
-              <li><button onClick={() => onNavigate('about')} className="hover:text-[#FF5A36] transition-colors text-left cursor-pointer">About WabiSeminar</button></li>
+              <li><button onClick={() => onNavigate('about')} className="hover:text-[#FF5A36] transition-colors text-left cursor-pointer">About CoVideo</button></li>
               <li><button onClick={() => onNavigate('contact')} className="hover:text-[#FF5A36] transition-colors text-left cursor-pointer">Contact Us</button></li>
             </ul>
           </div>
@@ -72,7 +72,7 @@ export default function Footer({ onNavigate }) {
         
         {/* Footer Bottom */}
         <div className="border-t border-white/10 pt-4 sm:pt-5 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-slate-400">
-          <p className="text-center sm:text-left text-slate-400">&copy; {new Date().getFullYear()} WabiSeminar Inc. All rights reserved.</p>
+          <p className="text-center sm:text-left text-slate-400">&copy; {new Date().getFullYear()} CoVideo Inc. All rights reserved.</p>
           <div className="flex items-center space-x-6">
             <div className="flex items-center space-x-2">
               <span className="w-2 h-2 rounded-full bg-[#FF5A36] animate-pulse"></span>
