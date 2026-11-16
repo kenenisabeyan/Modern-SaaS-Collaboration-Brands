@@ -3,7 +3,8 @@ import { motion } from 'framer-motion';
 import { 
   Video, Shield, Zap, Globe, Users, Target, 
   Cpu, Award, Sparkles, Heart, Lock, ArrowRight, 
-  CheckCircle, Clock, Layers, MessageSquare, Monitor
+  CheckCircle, Clock, Layers, MessageSquare, Monitor,
+  GraduationCap, Briefcase
 } from 'lucide-react';
 
 const fadeIn = {
@@ -86,19 +87,25 @@ export default function About({ onNavigate }) {
       title: "Educators & Masterclass Creators",
       role: "Interactive Teaching",
       desc: "Conduct high-impact cohort workshops with synchronized hand-raising, waiting room gatekeepers, and live chat moderation.",
-      metric: "100+ Cohorts"
+      metric: "100+ Cohorts",
+      icon: <GraduationCap size={26} />,
+      color: "bg-[#FF5A36]/10 text-[#FF5A36] border border-[#FF5A36]/20"
     },
     {
       title: "Remote Product & Engineering Teams",
       role: "Frictionless Syncs",
       desc: "Hop into instant pairing rooms, share 60fps code walk-throughs, and run daily standups without scheduling overhead.",
-      metric: "< 45ms Latency"
+      metric: "< 45ms Latency",
+      icon: <Briefcase size={26} />,
+      color: "bg-[#1E2761]/10 text-[#1E2761] border border-[#1E2761]/20"
     },
     {
       title: "Global Organizations & Communities",
       role: "Scalable Townhalls",
       desc: "Host company-wide all-hands or public webinars with reliable global STUN/TURN fallback and zero attendee sign-in friction.",
-      metric: "99.99% Uptime"
+      metric: "99.99% Uptime",
+      icon: <Globe size={26} />,
+      color: "bg-[#FF5A36]/10 text-[#FF5A36] border border-[#FF5A36]/20"
     }
   ];
 
