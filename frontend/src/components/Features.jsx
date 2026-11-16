@@ -302,7 +302,14 @@ export default function Features({ onNavigate, initialSection }) {
         </section>
 
         {/* 4. Deep Dive WebRTC Architecture */}
-        <section id="architecture" className="w-full bg-white py-16 sm:py-24 mb-20 sm:mb-32 border-0 shadow-none">
+        <motion.section 
+          id="architecture" 
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+          variants={scrollSection}
+          className="w-full bg-white py-16 sm:py-24 mb-20 sm:mb-32 border-0 shadow-none"
+        >
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
             <div className="max-w-3xl mx-auto text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1E2761] mb-4">
@@ -313,36 +320,42 @@ export default function Features({ onNavigate, initialSection }) {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              <div className="bg-[#F5F7FA] p-6 rounded-none border border-[#E4E8EE] shadow-sm text-center">
+            <motion.div variants={scrollStagger} className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <motion.div variants={scrollItem} className="bg-[#F5F7FA] p-6 rounded-none border border-[#E4E8EE] shadow-sm text-center">
                 <div className="w-12 h-12 rounded-none bg-[#1E2761]/10 text-[#1E2761] flex items-center justify-center mx-auto mb-4">
                   <Zap size={24} />
                 </div>
                 <h4 className="font-bold text-[#1E2761] mb-2">Direct P2P Routing</h4>
                 <p className="text-slate-600 text-xs sm:text-sm">Video feeds stream directly between peers for maximum clarity.</p>
-              </div>
+              </motion.div>
 
-              <div className="bg-[#F5F7FA] p-6 rounded-none border border-[#E4E8EE] shadow-sm text-center">
+              <motion.div variants={scrollItem} className="bg-[#F5F7FA] p-6 rounded-none border border-[#E4E8EE] shadow-sm text-center">
                 <div className="w-12 h-12 rounded-none bg-[#FF5A36]/10 text-[#FF5A36] flex items-center justify-center mx-auto mb-4">
                   <MessageSquare size={24} />
                 </div>
                 <h4 className="font-bold text-[#1E2761] mb-2">Socket.IO Signaling</h4>
                 <p className="text-slate-600 text-xs sm:text-sm">Instant handshake and state synchronization with zero delay.</p>
-              </div>
+              </motion.div>
 
-              <div className="bg-[#F5F7FA] p-6 rounded-none border border-[#E4E8EE] shadow-sm text-center">
+              <motion.div variants={scrollItem} className="bg-[#F5F7FA] p-6 rounded-none border border-[#E4E8EE] shadow-sm text-center">
                 <div className="w-12 h-12 rounded-none bg-[#1E2761]/10 text-[#1E2761] flex items-center justify-center mx-auto mb-4">
                   <Shield size={24} />
                 </div>
                 <h4 className="font-bold text-[#1E2761] mb-2">DTLS-SRTP Security</h4>
                 <p className="text-slate-600 text-xs sm:text-sm">Every packet is cryptographically encrypted at the transport level.</p>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
-        </section>
+        </motion.section>
 
         {/* 5. Interactive Collaboration Section */}
-        <section className="w-full bg-[#F5F7FA] py-16 sm:py-24 mb-20 sm:mb-32 border-0 shadow-none">
+        <motion.section 
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+          variants={scrollSection}
+          className="w-full bg-[#F5F7FA] py-16 sm:py-24 mb-20 sm:mb-32 border-0 shadow-none"
+        >
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
@@ -394,12 +407,18 @@ export default function Features({ onNavigate, initialSection }) {
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* 6. Three Core Architectural Pillars */}
-        <section className="mb-20 sm:mb-32 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white border border-[#E4E8EE] p-8 rounded-3xl shadow-sm hover:border-[#1E2761]/40 hover:shadow-lg transition-all flex flex-col items-center text-center">
+        <motion.section 
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+          variants={scrollSection}
+          className="mb-20 sm:mb-32 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12"
+        >
+          <motion.div variants={scrollStagger} className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <motion.div variants={scrollItem} className="bg-white border border-[#E4E8EE] p-8 rounded-3xl shadow-sm hover:border-[#1E2761]/40 hover:shadow-lg transition-all flex flex-col items-center text-center">
               <div className="w-12 h-12 rounded-2xl bg-[#1E2761]/10 text-[#1E2761] border border-[#1E2761]/20 flex items-center justify-center mb-6 mx-auto">
                 <Layout size={26} />
               </div>
@@ -407,9 +426,9 @@ export default function Features({ onNavigate, initialSection }) {
               <p className="text-slate-600 text-sm leading-relaxed">
                 Our smart WebRTC engine dynamically adjusts video quality based on each participant's network connection, preventing lag and disconnects.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="bg-white border border-[#E4E8EE] p-8 rounded-3xl shadow-sm hover:border-[#FF5A36]/40 hover:shadow-lg transition-all flex flex-col items-center text-center">
+            <motion.div variants={scrollItem} className="bg-white border border-[#E4E8EE] p-8 rounded-3xl shadow-sm hover:border-[#FF5A36]/40 hover:shadow-lg transition-all flex flex-col items-center text-center">
               <div className="w-12 h-12 rounded-2xl bg-[#FF5A36]/10 text-[#FF5A36] border border-[#FF5A36]/20 flex items-center justify-center mb-6 mx-auto">
                 <Shield size={26} />
               </div>
@@ -417,9 +436,9 @@ export default function Features({ onNavigate, initialSection }) {
               <p className="text-slate-600 text-sm leading-relaxed">
                 Every stream is encrypted end-to-end. Hosts have complete control over who enters the room with mandatory admission approvals.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="bg-white border border-[#E4E8EE] p-8 rounded-3xl shadow-sm hover:border-[#1E2761]/40 hover:shadow-lg transition-all flex flex-col items-center text-center">
+            <motion.div variants={scrollItem} className="bg-white border border-[#E4E8EE] p-8 rounded-3xl shadow-sm hover:border-[#1E2761]/40 hover:shadow-lg transition-all flex flex-col items-center text-center">
               <div className="w-12 h-12 rounded-2xl bg-[#1E2761]/10 text-[#1E2761] border border-[#1E2761]/20 flex items-center justify-center mb-6 mx-auto">
                 <Activity size={26} />
               </div>
@@ -427,12 +446,19 @@ export default function Features({ onNavigate, initialSection }) {
               <p className="text-slate-600 text-sm leading-relaxed">
                 Sub-50ms peer-to-peer audio and screen sharing ensures questions, presentations, and code walk-throughs remain perfectly synchronized.
               </p>
-            </div>
-          </div>
-        </section>
+            </motion.div>
+          </motion.div>
+        </motion.section>
 
         {/* 7. Integrated "About WabiSeminar" Mission Section */}
-        <section id="about" className="w-full bg-[#FFFFFF] text-[#1E2761] py-16 sm:py-24 mb-20 sm:mb-32 border-0 shadow-none">
+        <motion.section 
+          id="about" 
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+          variants={scrollSection}
+          className="w-full bg-[#FFFFFF] text-[#1E2761] py-16 sm:py-24 mb-20 sm:mb-32 border-0 shadow-none"
+        >
           <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-12">
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1E2761] mb-6 tracking-tight">
@@ -461,10 +487,16 @@ export default function Features({ onNavigate, initialSection }) {
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* 8. CTA Section */}
-        <section className="w-full bg-[#F5F7FA] py-16 sm:py-24 border-0 shadow-none text-center">
+        <motion.section 
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+          variants={scrollSection}
+          className="w-full bg-[#F5F7FA] py-16 sm:py-24 border-0 shadow-none text-center"
+        >
           <div className="max-w-4xl mx-auto px-4 sm:px-8 lg:px-12">
             <h2 className="text-3xl sm:text-5xl font-extrabold text-[#1E2761] mb-4 tracking-tight">
               Ready to host your next masterclass?
@@ -480,7 +512,7 @@ export default function Features({ onNavigate, initialSection }) {
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
-        </section>
+        </motion.section>
 
       </main>
     </div>
